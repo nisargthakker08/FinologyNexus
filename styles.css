@@ -1,0 +1,236 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: rgba(0, 0, 0, 0.05); /* Light transparent background */
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, rgba(0, 100, 0, 0.8), rgba(0, 0, 0, 0.7)); /* Gradient effect */
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  animation: fadeIn 2s ease-in;
+}
+
+header h1 {
+  font-size: 60px;
+}
+
+header p {
+  font-size: 20px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+header .cta-btn {
+  display: inline-block;
+  background-color: #006400;
+  color: white;
+  padding: 12px 30px;
+  font-size: 18px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+header .cta-btn:hover {
+  background-color: #004d00;
+}
+
+/* Navigation */
+nav {
+  background: rgba(0, 128, 0, 0.7); /* Semi-transparent green */
+  text-align: center;
+  padding: 15px 0;
+  animation: slideIn 2s ease-in-out;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #004d00; /* Darker green */
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('C:/Users/LENOVO/Documents/Personal Docs/Finology/images/herostyle.png'); /* Full absolute path */
+  background-size: cover;
+  background-position: center;
+  color: green;
+  text-align: center;
+  padding: 100px 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h2 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.hero .cta-btn {
+  background-color: #0066cc;
+  color: white;
+  padding: 12px 30px;
+  font-size: 18px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero .cta-btn:hover {
+  background-color: #004999;
+}
+
+/* Core Services Section */
+.core-services {
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+}
+
+.core-services h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.service-icons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-box:hover {
+  transform: scale(1.05);
+}
+
+.service-box img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.service-box h3 {
+  font-size: 24px;
+  color: #006400;
+}
+
+.service-box p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background-color: rgba(0, 100, 0, 0.1); /* Light transparent green */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.testimonial-slider {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.testimonial {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  width: 250px;
+  margin: 0 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: rgba(0, 100, 0, 0.8); /* Semi-transparent footer */
+  color: white;
+  text-align: center;
+  padding: 15px;
+  animation: fadeIn 3s ease-in;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
