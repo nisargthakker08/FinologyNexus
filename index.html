@@ -8,7 +8,116 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* your existing style code goes here, same as you already had */
+    :root {
+      --primary-color: #1A73E8;
+      --secondary-color: #F1F3F4;
+      --accent-color: #34A853;
+      --dark-color: #202124;
+      --light-color: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--secondary-color);
+      color: var(--dark-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header .logo {
+      height: 60px;
+    }
+
+    nav {
+      background-color: var(--dark-color);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1573164574396-9d9b4c45df4f?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .core-services, .testimonials, .contact-form {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .service-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-box {
+      width: 280px;
+      background-color: var(--light-color);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .service-box img {
+      width: 64px;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .cta-btn {
+      background-color: var(--accent-color);
+      padding: 0.75rem 1.5rem;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .cta-btn:hover {
+      background-color: #2c8b43;
+    }
+
+    .tagline {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
