@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +13,10 @@
       background-color: #f5f5f5;
       color: #333;
     }
+
+    /* Hero Section */
     header {
-      background: url('images/hero-blur.jpg') no-repeat center center/cover;
+      background: url('https://via.placeholder.com/1600x900/333/fff?text=Hero+Image') no-repeat center center/cover;
       height: 100vh;
       position: relative;
       display: flex;
@@ -22,6 +25,7 @@
       text-align: center;
       color: #fff;
     }
+
     header::after {
       content: '';
       position: absolute;
@@ -31,23 +35,29 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
     }
+
     header .content {
       position: relative;
       z-index: 1;
     }
+
     header .logo {
       width: 150px;
       margin-bottom: 20px;
     }
+
     header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
     }
+
     header p {
       font-size: 1.2rem;
       max-width: 600px;
       margin: 0 auto;
     }
+
+    /* Services Section */
     .services {
       display: flex;
       flex-wrap: wrap;
@@ -55,23 +65,65 @@
       padding: 60px 20px;
       background-color: #fff;
     }
+
     .service {
       flex: 1 1 300px;
       max-width: 300px;
       margin: 20px;
       text-align: center;
+      position: relative;
     }
+
     .service img {
       width: 80px;
       margin-bottom: 20px;
     }
+
     .service h3 {
       margin-bottom: 10px;
     }
+
     .service p {
       font-size: 0.95rem;
       color: #666;
     }
+
+    .service .ribbon {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      background-color: #007bff;
+      color: white;
+      padding: 5px 15px;
+      font-size: 0.85rem;
+      transform: rotate(-45deg);
+      width: 200px;
+      text-align: center;
+    }
+
+    /* Navigation Ribbons for Sections */
+    .navigation {
+      display: flex;
+      justify-content: space-evenly;
+      background-color: #222;
+      padding: 20px;
+    }
+
+    .nav-item {
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .nav-item:hover {
+      background-color: #0056b3;
+    }
+
+    /* Footer Section */
     footer {
       background-color: #222;
       color: #fff;
@@ -79,50 +131,86 @@
       padding: 40px 20px;
       position: relative;
     }
+
     footer img.footer-graphic {
       width: 100%;
       max-height: 200px;
       object-fit: cover;
       margin-bottom: 20px;
     }
+
     footer p {
       margin: 0;
       font-size: 0.9rem;
     }
+
   </style>
 </head>
+
 <body>
 
+  <!-- Navigation Bar (Ribbons for Services, About Us, and Contact) -->
+  <div class="navigation">
+    <a href="#services" class="nav-item">Services</a>
+    <a href="#about-us" class="nav-item">About Us</a>
+    <a href="#contact" class="nav-item">Contact</a>
+  </div>
+
+  <!-- Hero Section -->
   <header>
     <div class="content">
-      <img src="images/logo.png" alt="Finology Nexus Logo" class="logo" />
+      <img src="https://via.placeholder.com/150" alt="Finology Nexus Logo" class="logo" />
       <h1>Empowering Your Financial Journey</h1>
       <p>Providing expert bookkeeping, financial planning, and advisory services tailored for your business success.</p>
     </div>
   </header>
 
-  <section class="services">
+  <!-- Services Section -->
+  <section class="services" id="services">
     <div class="service">
-      <img src="images/bookkeeping-icon.png" alt="Bookkeeping Icon" />
+      <div class="ribbon">Bookkeeping</div>
+      <img src="https://via.placeholder.com/80" alt="Bookkeeping Icon" />
       <h3>Bookkeeping</h3>
       <p>Seamless and accurate financial records for smarter decision-making.</p>
     </div>
     <div class="service">
-      <img src="images/reporting-icon.png" alt="Reporting Icon" />
+      <div class="ribbon">Reporting</div>
+      <img src="https://via.placeholder.com/80" alt="Reporting Icon" />
       <h3>Reporting</h3>
       <p>Comprehensive financial & data reports tailored for strategic insights.</p>
     </div>
     <div class="service">
-      <img src="images/advisory-icon.png" alt="Advisory Icon" />
+      <div class="ribbon">Advisory</div>
+      <img src="https://via.placeholder.com/80" alt="Advisory Icon" />
       <h3>Advisory</h3>
       <p>Expert advice to navigate complex financial landscapes and drive growth.</p>
     </div>
   </section>
 
+  <!-- About Us Section -->
+  <section id="about-us">
+    <div style="padding: 60px 20px; background-color: #f8f8f8;">
+      <h2>About Us</h2>
+      <p>We are a team of dedicated financial experts providing top-notch services to help you manage your finances with ease. Our mission is to simplify financial processes and deliver actionable insights that drive your business forward.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div style="padding: 60px 20px;">
+      <h2>Contact Us</h2>
+      <p>Feel free to reach out to us for any inquiries or to schedule a consultation.</p>
+      <p>Email: contact@finologynexus.com</p>
+      <p>Phone: (123) 456-7890</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
   <footer>
-    <img src="images/footer-graphic.jpg" alt="Footer Graphic" class="footer-graphic" />
+    <img src="https://via.placeholder.com/1600x400" alt="Footer Graphic" class="footer-graphic" />
     <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
   </footer>
 
 </body>
+
 </html>
