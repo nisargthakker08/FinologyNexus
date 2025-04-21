@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finology Nexus</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
@@ -23,25 +23,24 @@
 
     header {
       background-color: var(--primary-color);
-      padding: 2rem 1rem 1rem 1rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
 
     header img.logo {
       height: 60px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     header h1 {
       color: var(--white);
-      margin: 0.3rem 0;
+      margin: 0.5rem 0;
       font-size: 2rem;
     }
 
     header p.tagline {
       color: var(--white);
       font-style: italic;
-      font-size: 1rem;
     }
 
     nav {
@@ -64,34 +63,26 @@
     }
 
     .hero {
-      position: relative;
-      height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+      background-image: url('https://images.unsplash.com/photo-1621628457500-4c2d57f4a6c0?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 6rem 2rem;
       text-align: center;
-      overflow: hidden;
+      color: white;
+      position: relative;
     }
 
     .hero::before {
-      content: '';
+      content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-      filter: blur(8px);
-      z-index: 1;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
     }
 
-    .hero-content {
+    .hero h2, .hero p, .hero .cta-btn {
       position: relative;
-      z-index: 2;
-      padding: 0 2rem;
+      z-index: 1;
     }
 
     .hero h2 {
@@ -156,7 +147,7 @@
     }
 
     footer img {
-      height: 80px;
+      height: 100px;
       margin-top: 1rem;
     }
   </style>
@@ -177,23 +168,36 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-content">
-      <h2>Empowering Businesses Through Finance & Data</h2>
-      <p>Reliable outsourced solutions for bookkeeping, reporting, and data support.</p>
-      <a href="services.html" class="cta-btn">Explore Services</a>
-    </div>
+    <h2>Empowering Businesses Through Finance & Data</h2>
+    <p>Reliable outsourced solutions for bookkeeping, reporting, and data support.</p>
+    <a href="services.html" class="cta-btn">Explore Services</a>
   </section>
 
   <section class="services">
     <h2>Our Core Offerings</h2>
     <div class="service-boxes">
       <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/bookkeeping.png" alt="Bookkeeping Icon"/>
+        <img src="https://img.icons8.com/ios-filled/100/open-book--v2.png" alt="Bookkeeping Icon"/>
         <h3>Bookkeeping</h3>
         <p>Seamless and accurate financial records for smarter decision-making.</p>
       </div>
       <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/bar-chart.png" alt="Reporting Icon"/>
+        <img src="https://img.icons8.com/ios-filled/100/combo-chart--v1.png" alt="Reporting Icon"/>
         <h3>Reporting</h3>
         <p>Comprehensive financial & data reports tailored for strategic insights.</p>
       </div>
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/artificial-intelligence.png" alt="Data Support Icon"/>
+        <h3>Data Support</h3>
+        <p>Expert data collection, validation, and research for fintech workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+    <img src="https://images.unsplash.com/photo-1581090700227-1c7172f2ff63?auto=format&fit=crop&w=800&q=80" alt="Footer Graphic">
+  </footer>
+
+</body>
+</html>
