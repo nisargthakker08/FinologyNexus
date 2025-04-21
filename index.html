@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Finology Nexus</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
@@ -64,12 +64,34 @@
     }
 
     .hero {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-image: url('https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
-      padding: 6rem 2rem;
-      text-align: center;
-      color: white;
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 2rem;
     }
 
     .hero h2 {
@@ -155,9 +177,11 @@
   </nav>
 
   <section class="hero">
-    <h2>Empowering Businesses Through Finance & Data</h2>
-    <p>Reliable outsourced solutions for bookkeeping, reporting, and data support.</p>
-    <a href="services.html" class="cta-btn">Explore Services</a>
+    <div class="hero-content">
+      <h2>Empowering Businesses Through Finance & Data</h2>
+      <p>Reliable outsourced solutions for bookkeeping, reporting, and data support.</p>
+      <a href="services.html" class="cta-btn">Explore Services</a>
+    </div>
   </section>
 
   <section class="services">
@@ -173,18 +197,6 @@
         <h3>Reporting</h3>
         <p>Comprehensive financial & data reports tailored for strategic insights.</p>
       </div>
-      <div class="service">
-        <img src="https://img.icons8.com/ios-filled/100/graph.png" alt="Data Support Icon"/>
-        <h3>Data Support</h3>
-        <p>Expert data collection, validation, and research for fintech workflows.</p>
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
-    <img src="https://images.unsplash.com/photo-1581090700227-1e8b876fe98d?auto=format&fit=crop&w=800&q=80" alt="Finance Footer Graphic">
-  </footer>
-
-</body>
-</html>
+::contentReference[oaicite:2]{index=2}
+ 
