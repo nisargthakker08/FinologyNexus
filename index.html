@@ -4,132 +4,185 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finology Nexus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
     :root {
-      --primary: #004D80;
-      --accent: #20B2AA;
-      --background: #F7F9FB;
-      --text-dark: #1A1A1A;
-      --text-light: #FFFFFF;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      --primary-color: #004080;
+      --accent-color: #00B894;
+      --light-bg: #F5F7FA;
+      --dark-text: #202124;
+      --white: #ffffff;
     }
 
     body {
-      background-color: var(--background);
-      color: var(--text-dark);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
     }
 
     header {
-      background-color: var(--primary);
-      color: var(--text-light);
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background-color: var(--primary-color);
+      padding: 2rem 1rem;
+      text-align: center;
     }
 
-    header img {
-      height: 50px;
+    header img.logo {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      color: var(--white);
+      margin: 0.5rem 0;
+      font-size: 2rem;
+    }
+
+    header p.tagline {
+      color: var(--white);
+      font-style: italic;
+    }
+
+    nav {
+      background-color: var(--white);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     nav a {
-      color: var(--text-light);
+      color: var(--primary-color);
       text-decoration: none;
-      margin-left: 2rem;
       font-weight: 600;
-      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--accent-color);
     }
 
     .hero {
-      background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1600&q=80');
+      background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a6b9c51?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
       padding: 6rem 2rem;
       text-align: center;
-      color: var(--text-light);
+      color: white;
     }
 
-    .hero h1 {
-      font-size: 3rem;
+    .hero h2 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
     .hero p {
       font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
+      margin-bottom: 2rem;
     }
 
-    .cta {
-      margin-top: 2rem;
-      background-color: var(--accent);
-      color: white;
+    .cta-btn {
+      background-color: var(--accent-color);
       padding: 0.75rem 1.5rem;
+      border: none;
       border-radius: 6px;
-      text-decoration: none;
+      color: white;
       font-weight: bold;
-      display: inline-block;
+      text-decoration: none;
     }
 
-    .about-section {
+    .cta-btn:hover {
+      background-color: #019877;
+    }
+
+    .services {
       padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
+      background-color: var(--white);
       text-align: center;
     }
 
-    .about-section img {
-      max-width: 100%;
-      border-radius: 12px;
-      margin: 2rem 0;
+    .services h2 {
+      margin-bottom: 2rem;
+    }
+
+    .service-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .service {
+      background-color: var(--light-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .service img {
+      height: 60px;
+      margin-bottom: 1rem;
     }
 
     footer {
-      background-color: var(--primary);
+      background-color: var(--primary-color);
       color: white;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 2rem 1rem;
+    }
+
+    footer img {
+      height: 100px;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://i.ibb.co/KsHKvFq/finology-logo.png" alt="Finology Nexus Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="contactus.html">Contact</a>
-    </nav>
+    <img src="https://i.ibb.co/KsHKvFq/finology-logo.png" alt="Finology Nexus Logo" class="logo">
+    <h1>Finology Nexus</h1>
+    <p class="tagline">Transforming Financial and Data Operations</p>
   </header>
 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+
   <section class="hero">
-    <h1>Finology Nexus</h1>
-    <p>Bridging data, finance & intelligence for empowered businesses across the globe.</p>
-    <a href="services.html" class="cta">Explore Services</a>
+    <h2>Empowering Businesses Through Finance & Data</h2>
+    <p>Reliable outsourced solutions for bookkeeping, reporting, and data support.</p>
+    <a href="services.html" class="cta-btn">Explore Services</a>
   </section>
 
-  <section class="about-section">
-    <h2>Why Choose Finology Nexus?</h2>
-    <p>We specialize in data operations, finance process outsourcing, and decision-enabling insights. Our solutions are tailored for startups, enterprises, and growing businesses looking for reliable back-end support.</p>
-    <img src="https://images.unsplash.com/photo-1581092795360-8c3d2c4f67de?auto=format&fit=crop&w=1200&q=80" alt="Business Intelligence">
+  <section class="services">
+    <h2>Our Core Offerings</h2>
+    <div class="service-boxes">
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/bookkeeping.png" alt="Bookkeeping Icon"/>
+        <h3>Bookkeeping</h3>
+        <p>Seamless and accurate financial records for smarter decision-making.</p>
+      </div>
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/bar-chart.png" alt="Reporting Icon"/>
+        <h3>Reporting</h3>
+        <p>Comprehensive financial & data reports tailored for strategic insights.</p>
+      </div>
+      <div class="service">
+        <img src="https://img.icons8.com/ios-filled/100/graph.png" alt="Advisory Icon"/>
+        <h3>Data Support</h3>
+        <p>Expert data collection, validation, and research for fintech workflows.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+    <img src="https://images.unsplash.com/photo-1531177071257-858c5f4b5622?auto=format&fit=crop&w=800&q=80" alt="Footer Graphic">
   </footer>
 
 </body>
