@@ -120,11 +120,37 @@
       margin-bottom: 20px;
       color: #0077cc;
     }
-    .why-trust-section p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 17px;
-      color: #444;
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .trust-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .trust-card i {
+      font-size: 32px;
+      color: #0077cc;
+      margin-bottom: 12px;
+    }
+    .trust-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .trust-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
     }
 
     footer {
@@ -203,7 +229,33 @@
 
   <section class="why-trust-section">
     <h2>Why Teams Trust Us</h2>
-    <p>At Finology Nexus, our partners rely on us for accuracy, discretion, domain expertise, and proactive communication. Whether you're scaling up or refining operations, our agile teams adapt to your pace.</p>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Accuracy</h3>
+        <p>We deliver precise data and documentation you can rely on—every time.</p>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-user-secret"></i>
+        <h3>Discretion</h3>
+        <p>Your data privacy and confidentiality are always our top priority.</p>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Domain Expertise</h3>
+        <p>Years of hands-on experience across finance, compliance, and data support.</p>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-comments"></i>
+        <h3>Proactive Communication</h3>
+        <p>We keep you in the loop—before you even ask—with clear, timely updates.</p>
+      </div>
+      <div class="trust-card">
+        <i class="fas fa-people-carry"></i>
+        <h3>Agile Teams</h3>
+        <p>We adapt quickly to your evolving needs and scale efficiently with your goals.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
