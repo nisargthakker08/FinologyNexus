@@ -1,178 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us | Finology Nexus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f5f9fc;
-      color: #1f2a40;
-    }
-    header {
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #1f2a40;
-      font-weight: 600;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    .section {
-      padding: 80px 40px;
-      text-align: center;
-    }
-    .section h2 {
-      font-size: 36px;
-      color: #0077cc;
-      margin-bottom: 20px;
-    }
-    .section p {
-      max-width: 800px;
-      margin: 0 auto 30px;
-      font-size: 18px;
-      color: #3a4a61;
-    }
-    .values {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 50px;
-    }
-    .value-card {
-      background: white;
-      border-radius: 12px;
-      padding: 30px 25px;
-      max-width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-    .value-card:hover {
-      transform: translateY(-6px);
-    }
-    .value-card i {
-      font-size: 32px;
-      color: #0077cc;
-      margin-bottom: 15px;
-    }
-    .value-card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #1f2a40;
-    }
-    .value-card p {
-      font-size: 15px;
-      color: #3a4a61;
-    }
-    footer {
-      background: #1f2a40;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-    .social-icons a {
-      color: white;
-      margin: 0 10px;
-      font-size: 18px;
-    }
-  </style>
+  <title>About Us - Finology Nexus</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-    <span style="font-weight:700; font-size: 22px;">Finology Nexus</span>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="contactus.html">Contact</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <div class="logo">Finology <span style="color: #4bb6d5;">Nexus</span></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="aboutus.html" class="active">About Us</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  </header>
 
-<section class="section" data-aos="fade-up">
-  <h2>Who We Are</h2>
-  <p>Finology Nexus is your operational partner—built for speed, precision, and scalability. We enable fintech and financial teams to thrive by handling the behind-the-scenes work with unmatched professionalism.</p>
-</section>
+  <main class="content">
 
-<section class="section" data-aos="fade-up" style="background:#eef7fb;">
-  <h2>Our Vision</h2>
-  <p>To be the most trusted partner for scaling fintech operations by delivering world-class process support, financial research assistance, and operational excellence with a human touch.</p>
-</section>
+    <!-- Who We Are -->
+    <section class="section" data-aos="fade-up">
+      <h2>Who We Are</h2>
+      <p>
+        Finology Nexus is a modern outsourcing partner specializing in high-precision support services for finance, product ops, and business research teams.
+        For over five years, we’ve been the silent backbone helping ambitious companies simplify execution, reduce turnaround time, and improve quality through disciplined processes.
+      </p>
+      <p>
+        Our team works as an extension of yours—embedding into your tools, routines, and metrics to keep your backend operations running smoothly.
+        From day-to-day tasks to fast-moving projects, we handle it all with ownership and intelligence.
+      </p>
+    </section>
 
-<section class="section" data-aos="fade-up">
-  <h2>Why Choose Us?</h2>
-  <p>We’re not a traditional BPO. Our DNA is rooted in finance and tech. That’s why we build services that are lean, reliable, and future-ready.</p>
-  <div class="values">
+    <!-- Vision -->
+    <section class="section light-bg" data-aos="fade-up">
+      <h2>Our Vision</h2>
+      <p>
+        To be the most dependable, agile, and process-driven operational partner for growth-stage businesses around the world.
+        We envision a future where scale doesn't compromise quality—and backend execution is handled with the same finesse as strategy.
+      </p>
+      <p>
+        At Finology Nexus, we aim to reimagine outsourced operations by blending sharp people with smart systems—delivering results that are always on time, accurate, and client-first.
+      </p>
+    </section>
 
-    <div class="value-card" data-aos="zoom-in">
-      <i class="fas fa-user-check"></i>
-      <h3>Ownership First</h3>
-      <p>We behave like an extension of your team—not vendors. Our work ethic is rooted in accountability and proactive delivery.</p>
+    <!-- Why Choose Us -->
+    <section class="section" data-aos="fade-up">
+      <h2>Why Choose Us?</h2>
+      <div class="values">
+        <div class="value-card" data-aos="fade-up" data-aos-delay="50">
+          <i class="fas fa-check-circle"></i>
+          <h3>True Partnership</h3>
+          <p>We don’t just deliver tasks—we integrate into your systems, reflect your culture, and evolve with your pace.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-sliders-h"></i>
+          <h3>Structured Execution</h3>
+          <p>Our team operates with SOPs, trackers, checklists, and QA—all built for predictable, scalable output.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="150">
+          <i class="fas fa-bolt"></i>
+          <h3>Speed with Consistency</h3>
+          <p>We handle quick-turn tasks and high-volume workloads without compromising attention to detail.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-layer-group"></i>
+          <h3>Scalable Teams</h3>
+          <p>From a single analyst to a full process pod, we grow with your requirements while maintaining quality.</p>
+        </div>
+        <div class="value-card" data-aos="fade-up" data-aos-delay="250">
+          <i class="fas fa-star"></i>
+          <h3>Fintech Focused</h3>
+          <p>We deeply understand financial data, reporting cycles, and compliance norms—making us a perfect fit for fintechs and research-led teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="section light-bg" data-aos="fade-up">
+      <h2>Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-event" data-aos="fade-up">
+          <span class="year">2019</span>
+          <p>Founded with a mission to bring sharp, dependable support to financial and data-driven teams.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-up" data-aos-delay="100">
+          <span class="year">2020</span>
+          <p>Built strong documentation, QA routines, and integrated reporting formats across client processes.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-up" data-aos-delay="200">
+          <span class="year">2021</span>
+          <p>Expanded service lines to include product operations, web automation, and investor data support.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-up" data-aos-delay="300">
+          <span class="year">2022–2023</span>
+          <p>Scaled to full-fledged pods managing multiple verticals: financial updates, dashboards, M&A research, and tax operations.</p>
+        </div>
+        <div class="timeline-event" data-aos="fade-up" data-aos-delay="400">
+          <span class="year">2024–2025</span>
+          <p>Emerging as a preferred strategic outsourcing partner for fintechs and high-growth companies worldwide.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
+    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+  </footer>
 
-    <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
-      <i class="fas fa-bolt"></i>
-      <h3>Fast & Flexible</h3>
-      <p>From urgent requests to custom trackers—we adapt quickly and execute even quicker.</p>
-    </div>
-
-    <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
-      <i class="fas fa-microscope"></i>
-      <h3>Detail Obsessed</h3>
-      <p>Whether it's tagging a document or updating data—we sweat the small stuff, so you don’t have to.</p>
-    </div>
-
-    <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
-      <i class="fas fa-heart"></i>
-      <h3>People + Process</h3>
-      <p>We combine skilled professionals with streamlined processes to deliver consistently reliable support.</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" data-aos="fade-up" style="background:#eef7fb;">
-  <h2>Let’s Build Something Reliable</h2>
-  <p>Looking for a team that understands your tools, adapts fast, and delivers excellence? You’re in the right place.</p>
-  <a href="contactus.html" style="padding: 14px 28px; background: #0077cc; color: white; font-weight: bold; border-radius: 6px; text-decoration: none;">Let’s Connect</a>
-</section>
-
-<footer>
-  <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
-  <div class="social-icons">
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-  </div>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
-
+  <script>AOS.init();</script>
 </body>
 </html>
