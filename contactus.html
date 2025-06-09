@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finology Nexus | Contact</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
     body {
       margin: 0;
@@ -50,37 +50,15 @@
     nav a:hover {
       color: #0077cc;
     }
-    .contact-top {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      color: white;
-    }
-    .contact-top h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-    .contact-top p {
-      font-size: 18px;
-    }
-    .highlight-email {
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      background: white;
-      color: #0077cc;
-      padding: 10px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-    }
-    .highlight-email:hover {
-      background: #f0f8ff;
-    }
-    .contact-form-section {
+    .contact-section {
       max-width: 600px;
-      margin: 0 auto;
-      padding: 60px 20px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #0077cc;
     }
     form {
       display: flex;
@@ -111,6 +89,11 @@
     }
     button:hover {
       background: #005fa3;
+    }
+    .contact-email {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px;
     }
     footer {
       background: #1f2937;
@@ -147,19 +130,19 @@
     </nav>
   </header>
 
-  <section class="contact-top" data-aos="fade-down">
-    <h2>Start a Conversation</h2>
-    <p>We’re here to help. Drop us a message and we’ll get back shortly.</p>
-    <a href="mailto:info@finologynexus.online" class="highlight-email">info@finologynexus.online</a>
-  </section>
-
-  <section class="contact-form-section" data-aos="fade-up">
+  <section class="contact-section" data-aos="fade-up">
+    <h2>Let’s Connect</h2>
+    <p>Have a question, project idea, or looking for tailored financial support? We're just a message away. Reach out to explore how Finology Nexus can add value to your operations.</p>
     <form action="mailto:info@finologynexus.online" method="POST" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
       <button type="submit">Send Message</button>
     </form>
+    <div class="contact-email">
+      Or write to us directly: <br />
+      <a href="mailto:info@finologynexus.online">info@finologynexus.online</a>
+    </div>
   </section>
 
   <footer>
