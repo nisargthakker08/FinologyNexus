@@ -453,3 +453,40 @@ a.button:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
+/* Smooth Button Hover */
+.cta-btn {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Link Hover Underline Animation */
+nav a {
+  position: relative;
+  overflow: hidden;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #0077cc;
+  bottom: 0;
+  left: -100%;
+  transition: left 0.3s ease;
+}
+nav a:hover::after {
+  left: 0;
+}
+
+/* Card Icon Bounce on Hover */
+.card:hover i {
+  animation: bounceIcon 0.5s ease;
+}
+
+@keyframes bounceIcon {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
