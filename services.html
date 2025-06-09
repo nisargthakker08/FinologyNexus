@@ -4,59 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Finology Nexus | Services</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-  <meta name="description" content="Partner with Finology Nexus for expert financial research, workflow support, and scalable outsourcing services built for growth.">
-  <meta name="keywords" content="financial research, outsourcing partner, Finology Nexus, fintech support, back-office services">
-  <meta name="author" content="Finology Nexus">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.finologynexus.online/">
-  <meta property="og:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-  <meta property="og:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://www.finologynexus.online/">
-  <meta name="twitter:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-  <meta name="twitter:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
-  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
-
-  <!-- Fonts & Icons -->
+  <meta name="description" content="Explore the wide range of outsourcing solutions offered by Finology Nexus, including research, process support, and workflow enhancement.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
+      background-color: #f9fbfc;
       color: #333;
     }
     header {
+      background: #fff;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #ffffff;
-      padding: 20px 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     header .logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     header img {
       height: 40px;
     }
-    header .company-name {
+    .company-name {
       font-size: 20px;
       font-weight: bold;
       background: linear-gradient(to right, #0077cc, #00c6ff);
@@ -66,117 +39,101 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
     }
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
-      transition: color 0.3s;
+      position: relative;
     }
-    nav a:hover {
-      color: #0077cc;
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #0077cc;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
     }
     .hero {
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
-      padding: 100px 40px 60px;
+      padding: 80px 20px;
       text-align: center;
     }
     .hero h1 {
-      font-size: 52px;
-      margin-bottom: 20px;
+      font-size: 40px;
+      margin-bottom: 10px;
     }
     .hero p {
-      font-size: 20px;
-      max-width: 720px;
-      margin: auto;
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
     }
-    .section {
-      padding: 60px 40px;
+    .services-section {
+      padding: 80px 20px;
       text-align: center;
     }
-    .section h2 {
+    .section-title {
       font-size: 36px;
       margin-bottom: 20px;
-      color: #0077cc;
+      color: #1f2937;
     }
-    .section p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 18px;
-      color: #555;
-    }
-    .card-container {
+    .services-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
       margin-top: 40px;
     }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
+    .service-card {
+      background: #ffffff;
       width: 300px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      text-align: left;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.07);
+    .service-card:hover {
+      transform: translateY(-5px);
     }
-    .card i {
-      background: #eef7fb;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 32px;
+    .service-icon {
+      font-size: 28px;
       color: #0077cc;
       margin-bottom: 15px;
-      line-height: 1;
     }
-    .card h3 {
-      font-size: 20px;
-      margin: 15px 0 10px;
-      color: #1e293b;
+    .service-card h3 {
+      color: #0077cc;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
     }
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    footer .socials {
-      display: flex;
-      gap: 20px;
-      align-items: center;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 60px;
     }
     footer .socials a {
       color: white;
+      margin: 0 10px;
       font-size: 20px;
-      text-decoration: none;
       transition: color 0.3s;
     }
     footer .socials a:hover {
       color: #00c6ff;
-    }
-    .cta-btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #0077cc;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
-    }
-    .cta-btn:hover {
-      background: #005fa3;
     }
   </style>
 </head>
@@ -184,7 +141,7 @@
 
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
@@ -197,94 +154,50 @@
     </nav>
   </header>
 
-  <div class="hero" data-aos="fade-in">
-    <h1 class="animated-heading">Discover Tailored Financial Services</h1>
-    <p>Everything you need to streamline, support, and scale your operations.</p>
-  </div>
-
-  <section class="section" data-aos="fade-up">
-    <h2>What We Offer</h2>
-    <p>Our services are crafted to function as an extension of your team, integrating seamlessly into your existing processes and empowering your core operations.</p>
-    <div class="card-container">
-      <div class="card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Financial Research</h3>
-        <p>We deliver tailored financial data sets, deep analysis, and comparative insights to support investor decks, internal dashboards, and board updates—backed by meticulous validation.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-cogs"></i>
-        <h3>Workflow Support</h3>
-        <p>From tagging and QA to schedule-driven updates, our hands-on approach helps teams maintain operational consistency while freeing up bandwidth for high-impact work.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-file-invoice"></i>
-        <h3>Reports & Dashboards</h3>
-        <p>We build custom reports and real-time dashboards that align with stakeholder needs, enabling accurate reporting, decision-making, and compliance tracking.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-laptop-code"></i>
-        <h3>Data Automation</h3>
-        <p>Reduce manual load with smart automation tools—data scraping, processing, and delivery pipelines using robust, maintainable Python and API-based workflows.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-book"></i>
-        <h3>Bookkeeping</h3>
-        <p>We handle ledger management, reconciliation, and month-end closures using reliable and accurate processes tailored to your business model and accounting tools.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-receipt"></i>
-        <h3>Tax Preparation</h3>
-        <p>Our team ensures all financials are structured for tax readiness—accurate, timely, and aligned with your jurisdictional obligations and audit standards.</p>
-      </div>
-    </div>
+  <section class="hero">
+    <h1>Our Services</h1>
+    <p>Empowering businesses with dependable research, process management, and scalable outsourcing — across finance, operations, and compliance support.</p>
   </section>
 
-  <section class="section" style="background: #eef7fb;" data-aos="fade-up">
-    <h2>Why Teams Trust Us</h2>
-    <p>We’re more than an outsourcing firm—we’re your embedded support system, tuned to your pace, tools, and growth vision.</p>
-    <div class="card-container">
-      <div class="card">
-        <i class="fas fa-users-cog"></i>
-        <h3>Client-Centric Approach</h3>
-        <p>We work within your platforms, naming conventions, and deliverable formats—like your in-house team would.</p>
+  <section class="services-section">
+    <h2 class="section-title">What We Offer</h2>
+    <div class="services-container">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Research & Analysis</h3>
+        <p>We deliver precise and insightful research tailored to your needs—whether it's financial modeling, competitor benchmarking, investment summaries, or business intelligence. Our specialists dive deep into primary data, turning complex datasets into actionable insights for strategic decision-making.</p>
       </div>
-      <div class="card">
-        <i class="fas fa-user-tie"></i>
-        <h3>Experienced Analysts</h3>
-        <p>Our experts come with domain-specific knowledge, allowing us to work with minimal onboarding and maximum impact.</p>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>Process Management</h3>
+        <p>Our experts handle your business-critical tasks like document processing, audit trails, validations, reconciliations, and client reporting with consistency and accuracy. We reduce bottlenecks and enhance efficiency, so your team can focus on innovation and growth.</p>
       </div>
-      <div class="card">
-        <i class="fas fa-rocket"></i>
-        <h3>Scalable Delivery</h3>
-        <p>Whether it's one task or a multi-member engagement, our teams are built to grow with your business needs.</p>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-code-branch"></i></div>
+        <h3>Workflow Enhancement</h3>
+        <p>We work closely with you to understand your operational ecosystem and improve existing workflows. From automation suggestions to detailed SOP creation, we bring agility and clarity to the way your business functions, helping reduce overhead and improve turnaround times.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-user-shield"></i></div>
+        <h3>Compliance Support</h3>
+        <p>Whether you’re navigating regulatory shifts, managing periodic filings, or staying on top of KYC/AML obligations, our team ensures you remain compliant. We offer both proactive monitoring and detailed compliance documentation services for complete peace of mind.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-handshake-angle"></i></div>
+        <h3>Outsourcing Partnerships</h3>
+        <p>We serve as a dependable extension of your team. From startups needing flexible support to enterprises requiring structured delivery, our partnership model scales with your needs while maintaining high quality, confidentiality, and a strong focus on client success.</p>
       </div>
     </div>
-  </section>
-
-  <section class="section" data-aos="fade-up">
-    <h2>Let’s Build Something Reliable</h2>
-    <p>Whether you're a startup looking for structure or a scale-up optimizing performance, our reliable foundations make daily execution smoother and smarter.</p>
-    <a href="contactus.html" class="cta-btn">Let’s Talk</a>
   </section>
 
   <footer>
     <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
     <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" title="Facebook">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
+      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>
