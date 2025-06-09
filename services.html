@@ -42,60 +42,59 @@
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
-      text-align: center;
     }
 
     .services h2 {
+      text-align: center;
+      margin-bottom: 3rem;
       font-size: 2rem;
       color: #1e2a38;
-      margin-bottom: 1rem;
-    }
-
-    .services p.lead {
-      font-size: 1.1rem;
-      color: #555;
-      margin-bottom: 3rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
     }
 
-    .service-box {
-      background: white;
+    .service-card {
+      background-color: white;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
     }
 
-    .service-box:hover {
+    .service-card:hover {
       transform: translateY(-5px);
     }
 
-    .service-box img {
+    .service-card img {
       width: 64px;
+      height: 64px;
       margin-bottom: 1rem;
     }
 
-    .service-box h3 {
+    .service-card h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.25rem;
       color: #1e2a38;
-      margin-bottom: 0.5rem;
     }
 
-    .service-box p {
-      color: #444;
+    .service-card p {
       font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
+      text-align: left;
     }
 
     footer {
       background-color: #2e3a4d;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -103,7 +102,7 @@
 
   <header>
     <h1>Our Services</h1>
-    <p>Helping businesses grow smarter with financial precision and tech-driven support.</p>
+    <p>Comprehensive solutions to empower your financial operations.</p>
   </header>
 
   <nav>
@@ -115,49 +114,59 @@
 
   <section class="services">
     <h2>What We Offer</h2>
-    <p class="lead">Explore our range of core services designed to simplify, streamline, and scale your financial operations.</p>
-
     <div class="grid">
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/bookkeeping.png" alt="Bookkeeping">
-        <h3>Bookkeeping</h3>
-        <p>Accurate and efficient record-keeping to ensure compliance and support better decision-making.</p>
-      </div>
-
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/graph-report.png" alt="Reporting">
-        <h3>Financial Reporting</h3>
-        <p>Timely, clear, and customized financial reports for internal and external stakeholders.</p>
-      </div>
-
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/strategy-board.png" alt="Advisory">
-        <h3>Advisory Services</h3>
-        <p>Strategic financial advice to support investment decisions, business expansion, and risk mitigation.</p>
-      </div>
-
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/file-search.png" alt="Research">
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4221/4221440.png" alt="Financial Research">
         <h3>Financial Research</h3>
-        <p>Company profiling, valuations, benchmarking, and deep-dive financial analysis for institutions and investors.</p>
+        <p>
+          We provide deep-dive financial analysis across industries, including ratio assessments, competitor benchmarking, trend identification, and financial modeling. Our insights power confident decisions for investors, analysts, and corporate teams.
+        </p>
       </div>
 
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/money-bag-euro.png" alt="Tax">
-        <h3>Tax Preparation</h3>
-        <p>Professional support for tax planning, preparation, and compliance for individuals and businesses.</p>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920209.png" alt="Product Support">
+        <h3>Product Support</h3>
+        <p>
+          From onboarding assistance to data validation and ticket resolution, we deliver end-to-end support for fintech platforms, CRMs, and data tools. We ensure seamless backend processes to keep your product running at full capacity.
+        </p>
       </div>
 
-      <div class="service-box">
-        <img src="https://img.icons8.com/ios-filled/100/data-configuration.png" alt="Automation">
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2599/2599784.png" alt="Outsourcing">
+        <h3>Operational Outsourcing</h3>
+        <p>
+          We act as your extended team—handling recurring financial tasks, data entry, quality checks, and review workflows with speed and precision. Scale your operations with confidence, while maintaining compliance and accuracy.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/706/706784.png" alt="Automation">
         <h3>Data Scraping & Automation</h3>
-        <p>Smart automation tools and data scraping solutions that reduce manual effort and improve turnaround.</p>
+        <p>
+          Our automation capabilities allow us to extract structured data from regulatory websites, S3 buckets, PDFs, and APIs. We reduce manual errors, boost delivery speed, and enable smarter pipelines for real-time data access.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2554/2554972.png" alt="Bookkeeping">
+        <h3>Bookkeeping</h3>
+        <p>
+          Accurate and organized financial records are the foundation of every successful business. Our team manages day-to-day bookkeeping, expense categorization, and ledger maintenance to keep your books investor-ready at all times.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2620/2620973.png" alt="Tax">
+        <h3>Tax Preparation</h3>
+        <p>
+          We assist businesses with tax data compilation, document review, and preliminary preparation of annual returns. Our process ensures timely, audit-compliant submissions and reduced financial risk.
+        </p>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+    &copy; 2025 Finology Nexus. All rights reserved. | Built for excellence in financial services.
   </footer>
 
 </body>
