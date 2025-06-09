@@ -9,22 +9,25 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #F1F3F4;
+      background-color: #f9f9f9;
       color: #202124;
     }
 
     header {
-      background-color: #1A73E8;
+      background-color: #1e2a38;
       color: white;
-      padding: 2rem;
-      text-align: center;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header strong {
+      font-size: 1.5rem;
     }
 
     nav {
-      background-color: #202124;
-      padding: 1rem;
       display: flex;
-      justify-content: center;
       gap: 2rem;
     }
 
@@ -35,55 +38,91 @@
     }
 
     nav a:hover {
-      color: #34A853;
+      color: #ff8c00;
     }
 
     .about {
       padding: 4rem 2rem;
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
-      text-align: center;
     }
 
     .about img {
-      max-width: 100%;
-      border-radius: 12px;
+      width: 100%;
+      border-radius: 10px;
       margin-bottom: 2rem;
     }
 
+    .about h2 {
+      color: #1e2a38;
+      margin-top: 2rem;
+    }
+
+    .about p {
+      line-height: 1.7;
+      font-size: 1rem;
+      color: #444;
+      margin-top: 1rem;
+    }
+
     footer {
-      background-color: #202124;
+      background-color: #1e2a38;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>About Us</h1>
-    <p>Finology Nexus – Where finance meets innovation.</p>
+    <div><strong>Finology Nexus</strong></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
   </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="aboutus.html">About Us</a>
-    <a href="contactus.html">Contact</a>
-  </nav>
 
   <section class="about">
     <img src="https://images.unsplash.com/photo-1601933470928-c5d7e11b3c1c" alt="Team Collaboration">
-    <h2>Our Vision</h2>
-    <p>We aim to simplify complex financial processes and empower businesses to grow with confidence. With a team of seasoned professionals, we bring accuracy, reliability, and personalized attention to every client.</p>
 
-    <h2>Who We Are</h2>
-    <p>Founded by a team of finance experts, Finology Nexus provides high-quality bookkeeping, advisory, and reporting services to global clients. We're your partners in building a strong financial foundation.</p>
+    <h2>Our Vision</h2>
+    <p>At Finology Nexus, our vision is to be the leading partner for financial institutions, fintech innovators, and investment platforms—delivering precise, scalable, and technology-driven financial solutions.</p>
+
+    <h2>Our Story</h2>
+    <p>Finology Nexus was founded with a simple but powerful idea: to make complex financial work simpler, faster, and more accurate. Backed by a team of experienced finance professionals, we began by offering core support services for global clients and have now expanded into comprehensive financial research, analytics, and operational outsourcing.</p>
+
+    <h2>Our Strength</h2>
+    <p>We blend domain expertise with a process-driven approach and use of the latest tools to serve clients in investment research, financial modeling, due diligence, and fintech product support. Our professionals are trained across industry verticals and technology platforms like Excel VBA, Appian, SQL, and custom dashboards.</p>
+
+    <h2>Why Choose Us</h2>
+    <p>
+      ✔ Proven track record with high client retention<br>
+      ✔ Skilled finance professionals with 8+ years average experience<br>
+      ✔ End-to-end support: from data processing to delivery-ready reports<br>
+      ✔ Flexible engagement models to scale with your needs<br>
+      ✔ Strong focus on accuracy, turnaround time, and confidentiality
+    </p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+    &copy; 2025 Finology Nexus. All rights reserved. | Your growth, our expertise.
   </footer>
 
 </body>
