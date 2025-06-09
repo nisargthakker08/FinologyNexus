@@ -367,3 +367,34 @@ footer .socials i {
     padding-left: 1rem;
   }
 }
+footer {
+  background: #1f2937;
+  color: white;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+}
+footer .socials {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+footer .socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s;
+  text-decoration: none;
+  line-height: 1;
+  border: none;
+}
+footer .socials a:hover {
+  color: #00c6ff;
+}
