@@ -506,3 +506,33 @@ nav a:hover::after {
   line-height: 1; /* prevent baseline shift */
   border: none;
 }
+footer .socials {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+footer .socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  transition: color 0.3s ease;
+}
+
+footer .socials a:hover {
+  color: #00c6ff;
+}
+
+footer .socials i {
+  line-height: 1;
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+}
