@@ -3,207 +3,262 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Finology Nexus</title>
+  <title>Finology Nexus - Financial Research & Support</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
-    body {
+    :root {
+      --primary: #1A73E8;
+      --bg: #ffffff;
+      --text: #202124;
+      --accent: #34A853;
+      --gray: #f1f3f4;
+    }
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
-      background-color: #f9fbfd;
-      color: #202124;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #ffffff;
+      background-color: var(--bg);
+      padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 1rem;
     }
 
     .logo-container img {
       height: 40px;
+      background-color: #fff;
+      padding: 4px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     nav a {
-      margin-left: 1.5rem;
+      margin: 0 1rem;
       text-decoration: none;
-      color: #1a73e8;
+      color: var(--text);
       font-weight: 600;
     }
 
     nav a:hover {
-      color: #0b57d0;
+      color: var(--primary);
     }
 
     .hero {
-      background: url('https://cdn.pixabay.com/photo/2021/06/30/15/39/business-6378454_1280.png') center/contain no-repeat;
-      background-color: #e8f0fe;
+      padding: 4rem 2rem;
       text-align: center;
-      padding: 5rem 1rem 8rem;
+      background: url('https://www.transparenttextures.com/patterns/white-wall-3.png');
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      color: var(--primary);
       margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
+      color: #555;
       max-width: 600px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .section {
       padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+      text-align: center;
     }
 
     .section h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      text-align: center;
-    }
-
-    .card img {
-      height: 60px;
+      font-size: 2rem;
+      color: var(--primary);
       margin-bottom: 1rem;
     }
 
-    footer {
-      background-color: #1a73e8;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
+    .services-grid, .diff-grid, .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
       margin-top: 2rem;
     }
 
-    /* AOS Animations */
-    [data-aos] {
-      transition: all 0.6s ease;
+    .card {
+      background: var(--gray);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      height: 48px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .tech-grid img {
+      height: 40px;
+      margin: 10px;
+    }
+
+    .cta {
+      padding: 4rem 2rem;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 2rem;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    footer {
+      background: #202124;
+      color: white;
+      text-align: center;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="logo-container">
-      <img src="Finology Nexus Logo" alt="Finology Nexus Logo" />
-      <strong style="font-size: 1.3rem; color: #1a73e8;">Finology Nexus</strong>
+      <img src="logo.png" alt="Finology Nexus Logo" />
+      <h1 style="font-size: 1.5rem;">Finology Nexus</h1>
     </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="aboutus.html">About Us</a>
+      <a href="aboutus.html">About</a>
       <a href="contactus.html">Contact</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <h1>Empowering Financial Innovation</h1>
-    <p>Your trusted partner in data-driven finance, research, and automation solutions.</p>
+    <h1>Empowering Finance Through Precision</h1>
+    <p>We offer intelligent financial research and product support, backed by automation and domain expertise.</p>
   </section>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <h2>Our Services</h2>
-    <div class="grid">
-      <div class="card" data-aos="fade-up">
-        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="Research Icon" />
-        <h3>Financial Research</h3>
-        <p>Accurate research, benchmarking, and custom financial modeling tailored to your niche needs.</p>
+  <section class="section">
+    <h2>Our Core Services</h2>
+    <div class="services-grid">
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/accounting.png" alt="Bookkeeping" />
+        <h3>Bookkeeping</h3>
+        <p>End-to-end bookkeeping services tailored to your accounting structure with full accuracy and timeliness.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://cdn-icons-png.flaticon.com/512/4240/4240628.png" alt="Support Icon" />
-        <h3>Product Support</h3>
-        <p>Backend documentation, process management, and data validation for fintech platforms.</p>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/report-file.png" alt="Reporting" />
+        <h3>Financial Reporting</h3>
+        <p>Clear, compliant, and timely reports customized to your business needs.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://cdn-icons-png.flaticon.com/512/3771/3771632.png" alt="Outsourcing Icon" />
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/combo-chart.png" alt="Tax Prep" />
+        <h3>Tax Preparation</h3>
+        <p>Accurate, deadline-driven, and compliant tax preparation services across jurisdictions.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/data-configuration.png" alt="Automation" />
         <h3>Data Scraping & Automation</h3>
-        <p>Extract, process, and auto-structure data at scale from regulatory portals and web sources.</p>
+        <p>Web automation and data scraping using Python, Selenium, and APIs — driving faster turnarounds.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://cdn-icons-png.flaticon.com/512/3985/3985429.png" alt="Bookkeeping Icon" />
-        <h3>Bookkeeping & Tax</h3>
-        <p>Clean books, reconciliations, and tax-ready reports built with compliance and clarity.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="section" id="why">
-    <h2>Why Choose Finology Nexus</h2>
-    <div class="grid">
-      <div class="card" data-aos="zoom-in">
-        <img src="https://cdn-icons-png.flaticon.com/512/535/535234.png" alt="Quality" />
-        <h3>Unmatched Quality</h3>
-        <p>Double-layer quality checks for reliable, publish-ready outputs every time.</p>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="100">
-        <img src="https://cdn-icons-png.flaticon.com/512/2807/2807887.png" alt="Speed" />
-        <h3>Speed & Flexibility</h3>
-        <p>We adapt to your delivery cycles, turnarounds, and unexpected surges smoothly.</p>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="200">
-        <img src="https://cdn-icons-png.flaticon.com/512/837/837667.png" alt="Tech" />
-        <h3>Modern Tools</h3>
-        <p>Automated pipelines, APIs, and collaborative platforms power our delivery model.</p>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/workflow.png" alt="Process Support" />
+        <h3>Process Support</h3>
+        <p>We assist across CRAs, 10-K/10-Q reviews, M&A research, and operational data checks with a deep fintech lens.</p>
       </div>
     </div>
   </section>
 
-  <!-- Tech Stack -->
-  <section class="section" id="tech">
+  <section class="section">
+    <h2>Key Differentiators</h2>
+    <p>How is <strong>Finology Nexus</strong> different from conventional BPOs?</p>
+    <div class="diff-grid">
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/idea.png" alt="Insightful">
+        <h3>Insight-Driven Support</h3>
+        <p>We go beyond processing. Our experts provide context, judgment, and recommendations with each output.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/settings.png" alt="Custom">
+        <h3>Tailored Workflows</h3>
+        <p>From Appian to email to Slack — we plug into your systems and mirror your workflows, seamlessly.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/robot.png" alt="Tech">
+        <h3>Tech-First Mindset</h3>
+        <p>Using Python, APIs, and automated tools, we build scalable solutions that evolve with your business.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/fluency-systems-filled/48/handshake.png" alt="Partnership">
+        <h3>True Partnership</h3>
+        <p>We act as an extension of your internal team — fully integrated and outcome-driven.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <h2>Tech Stack & Tools</h2>
-    <div class="grid">
-      <div class="card" data-aos="fade-up">
-        <h3>Python / BeautifulSoup / Selenium</h3>
-        <p>For data scraping, parsing, and batch automation workflows.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <h3>Appian & Airtable</h3>
-        <p>Process management and light-database platforms tailored for teams.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <h3>Excel VBA / Power Query</h3>
-        <p>Heavy-lifting on financial files, bulk tagging, and logic-driven automations.</p>
-      </div>
+    <div class="tech-grid">
+      <img src="https://img.icons8.com/color/48/python.png" alt="Python">
+      <img src="https://img.icons8.com/color/48/excel.png" alt="Excel">
+      <img src="https://img.icons8.com/color/48/google-docs.png" alt="Google Docs">
+      <img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack">
+      <img src="https://img.icons8.com/color/48/amazon-s3.png" alt="AWS S3">
+      <img src="https://img.icons8.com/color/48/appian.png" alt="Appian">
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Finology Nexus. All rights reserved. | Designed for fintech excellence.
-  </footer>
+  <section class="cta">
+    <h2>Let’s Elevate Your Finance Ops</h2>
+    <p>Connect with Finology Nexus and experience finance done differently.</p>
+    <a href="contactus.html">Contact Us</a>
+  </section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <footer>
+    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
