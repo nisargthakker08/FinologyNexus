@@ -3,171 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services - Finology Nexus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Our Services | Finology Nexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      color: #202124;
+      background: #f5f9fc;
+      color: #1f2a40;
     }
-
     header {
-      background-color: #1e2a38;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #2e3a4d;
-      padding: 1rem;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 15px 40px;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-
     nav a {
-      color: white;
+      margin-left: 25px;
       text-decoration: none;
+      color: #1f2a40;
       font-weight: 600;
     }
-
-    nav a:hover {
-      color: #ff8c00;
+    .logo {
+      display: flex;
+      align-items: center;
     }
-
-    .services {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
     }
-
-    .services h2 {
+    .section {
+      padding: 80px 40px;
       text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2rem;
-      color: #1e2a38;
     }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem;
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #0077cc;
     }
-
-    .service-card {
-      background-color: white;
-      padding: 2rem;
+    .section p {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 18px;
+      color: #3a4a61;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .card {
+      background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      text-align: center;
+      padding: 30px 20px;
+      max-width: 320px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card i {
+      font-size: 34px;
+      color: #0077cc;
+      margin-bottom: 15px;
       transition: transform 0.3s ease;
     }
-
-    .service-card:hover {
-      transform: translateY(-5px);
+    .card:hover i {
+      transform: scale(1.3) rotate(5deg);
     }
-
-    .service-card img {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1rem;
+    .card h3 {
+      font-size: 22px;
+      color: #1f2a40;
+      margin-bottom: 12px;
     }
-
-    .service-card h3 {
-      margin: 1rem 0 0.5rem;
-      font-size: 1.25rem;
-      color: #1e2a38;
+    .card p {
+      font-size: 15px;
+      color: #3a4a61;
+      line-height: 1.6;
     }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.5;
-      text-align: left;
-    }
-
     footer {
-      background-color: #2e3a4d;
+      background: #1f2a40;
       color: white;
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
+      padding: 30px;
+    }
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+    /* Floating Contact Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #0077cc;
+      color: white;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-decoration: none;
+      transition: background 0.3s ease;
+      z-index: 999;
+    }
+    .floating-btn:hover {
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Our Services</h1>
-    <p>Comprehensive solutions to empower your financial operations.</p>
-  </header>
-
+<header>
+  <div class="logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+    <span style="font-weight:700; font-size: 22px;">Finology Nexus</span>
+  </div>
   <nav>
     <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
     <a href="aboutus.html">About Us</a>
+    <a href="services.html">Services</a>
     <a href="contactus.html">Contact</a>
   </nav>
+</header>
 
-  <section class="services">
-    <h2>What We Offer</h2>
-    <div class="grid">
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/4221/4221440.png" alt="Financial Research">
-        <h3>Financial Research</h3>
-        <p>
-          We provide deep-dive financial analysis across industries, including ratio assessments, competitor benchmarking, trend identification, and financial modeling. Our insights power confident decisions for investors, analysts, and corporate teams.
-        </p>
-      </div>
+<section class="section" data-aos="fade-up">
+  <h2>Our Services</h2>
+  <p>Built for fast-growing fintech teams, our services are lean, scalable, and tightly aligned with operational excellence.</p>
+  
+  <div class="card-container">
 
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920209.png" alt="Product Support">
-        <h3>Product Support</h3>
-        <p>
-          From onboarding assistance to data validation and ticket resolution, we deliver end-to-end support for fintech platforms, CRMs, and data tools. We ensure seamless backend processes to keep your product running at full capacity.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2599/2599784.png" alt="Outsourcing">
-        <h3>Operational Outsourcing</h3>
-        <p>
-          We act as your extended team—handling recurring financial tasks, data entry, quality checks, and review workflows with speed and precision. Scale your operations with confidence, while maintaining compliance and accuracy.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/706/706784.png" alt="Automation">
-        <h3>Data Scraping & Automation</h3>
-        <p>
-          Our automation capabilities allow us to extract structured data from regulatory websites, S3 buckets, PDFs, and APIs. We reduce manual errors, boost delivery speed, and enable smarter pipelines for real-time data access.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" alt="Bookkeeping Icon">
-        <h3>Bookkeeping</h3>
-        <p>
-          Accurate and organized financial records are the foundation of every successful business. Our team manages day-to-day bookkeeping, expense categorization, and ledger maintenance to keep your books investor-ready at all times.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2620/2620973.png" alt="Tax">
-        <h3>Tax Preparation</h3>
-        <p>
-          We assist businesses with tax data compilation, document review, and preliminary preparation of annual returns. Our process ensures timely, audit-compliant submissions and reduced financial risk.
-        </p>
-      </div>
+    <div class="card" data-aos="fade-up">
+      <i class="fas fa-chart-line"></i>
+      <h3>Financial Research Support</h3>
+      <p>From extracting financials and company metrics to organizing data by quarter or region—we support your research team with accurate, clean insights, ready for analysis.</p>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2025 Finology Nexus. All rights reserved. | Built for excellence in financial services.
-  </footer>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <i class="fas fa-cogs"></i>
+      <h3>Workflow Assistance</h3>
+      <p>We blend into your ecosystem to help with tagging, quality checks, reporting, and operational reviews—whether it’s spreadsheets, tools, or custom trackers.</p>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-bullhorn"></i>
+      <h3>Market Intelligence</h3>
+      <p>We manage dashboards, news trackers, and alert systems—so your teams can stay current on trends, peers, and product shifts without data delays.</p>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <i class="fas fa-book"></i>
+      <h3>Product Ops & Docs</h3>
+      <p>Whether it’s documenting internal releases, writing SOPs, or assisting with test case summaries—our team ensures smooth internal alignment and clarity.</p>
+    </div>
+
+    <div class="card" data-aos="fade-up" data-aos-delay="400">
+      <i class="fas fa-calculator"></i>
+      <h3>Bookkeeping & Tax</h3>
+      <p>We offer full-cycle bookkeeping and tax preparation support—accurate entries, reconciliations, and filing assistance that adapt to your local compliance needs.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" data-aos="fade-up" style="background:#eef7fb;">
+  <h2>What Makes Us Different?</h2>
+  <div class="card-container">
+
+    <div class="card">
+      <i class="fas fa-plug"></i>
+      <h3>Plug-and-Play Support</h3>
+      <p>We don’t need hand-holding. Our team is trained to operate within your systems from day one—reducing ramp-up time and boosting efficiency.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Fintech-Led Thinking</h3>
+      <p>We come from finance and product backgrounds, so we understand the domain language and urgency your teams face.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-layer-group"></i>
+      <h3>Modular, Scalable Delivery</h3>
+      <p>Start with one task or one team—we can grow our engagement as you scale. We move fast, adapt faster, and integrate deeper.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" data-aos="fade-up">
+  <h2>Let’s Build Something Reliable</h2>
+  <p>Looking for dependable operational partners? Let’s co-create scalable support systems that evolve with your needs.</p>
+  <a href="contactus.html" style="padding: 15px 30px; background: #0077cc; color: white; font-weight: bold; border-radius: 6px; text-decoration: none;">Get in Touch</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<!-- Floating Contact Button -->
+<a href="contactus.html" class="floating-btn"><i class="fas fa-envelope"></i> Contact Us</a>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 
 </body>
 </html>
