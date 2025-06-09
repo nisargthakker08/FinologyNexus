@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finology Nexus - Services</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finology Nexus | Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
     body {
       margin: 0;
@@ -32,7 +32,9 @@
     header .company-name {
       font-size: 20px;
       font-weight: bold;
-      color: #0077cc;
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
     nav ul {
       list-style: none;
@@ -55,7 +57,7 @@
       text-align: center;
     }
     .hero h1 {
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 20px;
     }
     .hero p {
@@ -88,22 +90,26 @@
     .card {
       background: white;
       padding: 30px;
-      border-radius: 10px;
-      width: 280px;
+      border-radius: 12px;
+      width: 300px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.07);
     }
     .card i {
-      font-size: 40px;
+      background: #eef7fb;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 32px;
       color: #0077cc;
       margin-bottom: 15px;
     }
     .card h3 {
-      margin: 15px 0;
       font-size: 20px;
+      margin: 15px 0 10px;
       color: #1e293b;
     }
     footer {
@@ -123,13 +129,28 @@
     footer .socials a:hover {
       color: #00c6ff;
     }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #0077cc;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: #005fa3;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-group">
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
-      <span class="company-name" style="background: linear-gradient(to right, #0077cc, #00c6ff); -webkit-background-clip: text; color: transparent;">Finology Nexus</span>
+      <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
       <ul>
@@ -142,102 +163,73 @@
   </header>
 
   <div class="hero" data-aos="fade-in">
-    <h1>Reimagining Financial Support Services</h1>
-    <p>Your trusted partner for research, reporting, process support, and automation—delivered with excellence and consistency.</p>
+    <h1 class="animated-heading">Discover Tailored Financial Services</h1>
+    <p>Everything you need to streamline, support, and scale your operations.</p>
   </div>
 
   <section class="section" data-aos="fade-up">
     <h2>What We Offer</h2>
-    <p>Comprehensive outsourcing services tailored for your evolving financial and operational needs.</p>
+    <p>Our services are crafted to function as an extension of your team, integrating seamlessly into your existing processes and empowering your core operations.</p>
     <div class="card-container">
       <div class="card">
         <i class="fas fa-chart-line"></i>
         <h3>Financial Research</h3>
-        <p>We provide tailored financial research that aligns with your strategic and reporting needs. Our team delivers clean, structured data to support internal analysis, benchmarking, and stakeholder reporting. Whether you're tracking industry trends or preparing for critical reviews, our outputs are precise, well-organized, and ready for integration into your decision-making framework.</p>
+        <p>We deliver tailored financial data sets, deep analysis, and comparative insights to support investor decks, internal dashboards, and board updates—backed by meticulous validation.</p>
       </div>
       <div class="card">
         <i class="fas fa-cogs"></i>
-        <h3>Process Support</h3>
-        <p>Our professionals offer dependable support for recurring business workflows. From document tagging and verification to quality reviews and ongoing updates, we integrate seamlessly with your internal systems to ensure consistency, accuracy, and timely execution. You can rely on us to uphold your processes with the same diligence as your in-house teams.</p>
+        <h3>Workflow Support</h3>
+        <p>From tagging and QA to schedule-driven updates, our hands-on approach helps teams maintain operational consistency while freeing up bandwidth for high-impact work.</p>
       </div>
       <div class="card">
         <i class="fas fa-file-invoice"></i>
         <h3>Reports & Dashboards</h3>
-        <p>Clear, timely reporting is key to informed decision-making. We help you transform complex datasets into executive-ready reports and dashboards, tailored to your specific metrics and business objectives. With attention to detail and a strong grasp of your requirements, we ensure each deliverable adds real value to your leadership and compliance efforts.</p>
+        <p>We build custom reports and real-time dashboards that align with stakeholder needs, enabling accurate reporting, decision-making, and compliance tracking.</p>
       </div>
       <div class="card">
         <i class="fas fa-laptop-code"></i>
-        <h3>Automation & Scraping</h3>
-        <p>We develop smart automation solutions to streamline your data operations. From extraction and transformation to integration across systems, our tools minimize manual effort while enhancing accuracy. Built on robust technologies like Python, APIs, and cloud platforms, our solutions adapt to your scale and workflow with ease and reliability.</p>
+        <h3>Data Automation</h3>
+        <p>Reduce manual load with smart automation tools—data scraping, processing, and delivery pipelines using robust, maintainable Python and API-based workflows.</p>
       </div>
       <div class="card">
         <i class="fas fa-book"></i>
         <h3>Bookkeeping</h3>
-        <p>Our bookkeeping support ensures your financial records remain organized, up-to-date, and audit-ready. We follow your accounting policies closely and handle reconciliations, ledger management, and monthly closures with care and consistency. Our services provide the financial clarity and discipline required to support your growth.</p>
+        <p>We handle ledger management, reconciliation, and month-end closures using reliable and accurate processes tailored to your business model and accounting tools.</p>
       </div>
       <div class="card">
         <i class="fas fa-receipt"></i>
         <h3>Tax Preparation</h3>
-        <p>We assist with comprehensive tax preparation services that align with regulatory timelines and your internal review cycles. From document collation to preliminary workpapers, our team supports your tax function with structured, deadline-oriented execution — helping you stay ahead of compliance obligations without the stress.</p>
+        <p>Our team ensures all financials are structured for tax readiness—accurate, timely, and aligned with your jurisdictional obligations and audit standards.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up" style="background: #eef7fb;">
-    <h2>What Makes Us Different?</h2>
-    <p>We align with your goals, work in your tools, and embed ourselves in your team’s rhythm for seamless execution.</p>
+  <section class="section" style="background: #eef7fb;" data-aos="fade-up">
+    <h2>Why Teams Trust Us</h2>
+    <p>We’re more than an outsourcing firm—we’re your embedded support system, tuned to your pace, tools, and growth vision.</p>
     <div class="card-container">
       <div class="card">
         <i class="fas fa-users-cog"></i>
-        <h3>Integrated Partnership</h3>
-        <p>We become an extension of your team, not just a vendor.</p>
+        <h3>Client-Centric Approach</h3>
+        <p>We work within your platforms, naming conventions, and deliverable formats—like your in-house team would.</p>
       </div>
       <div class="card">
-        <i class="fas fa-brain"></i>
-        <h3>Skilled Finance Talent</h3>
-        <p>Analysts and operators trained on real business scenarios—not just theory.</p>
+        <i class="fas fa-user-tie"></i>
+        <h3>Experienced Analysts</h3>
+        <p>Our experts come with domain-specific knowledge, allowing us to work with minimal onboarding and maximum impact.</p>
       </div>
       <div class="card">
         <i class="fas fa-rocket"></i>
         <h3>Scalable Delivery</h3>
-        <p>Ramp up from pilots to fully managed teams in a matter of weeks.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" data-aos="fade-up" style="background: #eaf6ff;">
-    <h2>Why Teams Trust Us</h2>
-    <p>Backed by experience, trust, and operational maturity, we help your teams stay focused on what matters most.</p>
-    <div class="card-container">
-      <div class="card">
-        <i class="fas fa-check-circle"></i>
-        <h3>Quality-Driven Processes</h3>
-        <p>Our QA systems and SOPs ensure consistent, top-grade outputs every time.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-user-graduate"></i>
-        <h3>Financial Domain Experts</h3>
-        <p>We understand the why behind every workflow, not just the what.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-clock"></i>
-        <h3>Reliable Turnarounds</h3>
-        <p>Timelines you can depend on—every deliverable, every day.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-shield-alt"></i>
-        <h3>Data Confidentiality</h3>
-        <p>Secure, privacy-first approach to all client interactions and files.</p>
+        <p>Whether it's one task or a multi-member engagement, our teams are built to grow with your business needs.</p>
       </div>
     </div>
   </section>
 
   <section class="section" data-aos="fade-up">
     <h2>Let’s Build Something Reliable</h2>
-    <p>Whether you're launching or scaling, our team becomes your long-term ally for smart execution.</p>
-    <div style="margin-top: 40px;">
-      <a href="contactus.html" style="padding: 15px 30px; background: #0077cc; color: white; text-decoration: none; font-weight: bold; border-radius: 6px; box-shadow: 0 3px 6px rgba(0,0,0,0.1); transition: background 0.3s;">Get In Touch</a>
-    </div>
+    <p>Whether you're a startup looking for structure or a scale-up optimizing performance, our reliable foundations make daily execution smoother and smarter.</p>
+    <a href="contactus.html" class="cta-btn">Let’s Talk</a>
   </section>
 
   <footer>
