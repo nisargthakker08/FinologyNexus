@@ -4,227 +4,191 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | Finology Nexus</title>
-
-  <!-- Font Awesome via jsDelivr CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" integrity="sha384-MHFy3iA2tO5+Evhq1PfBBUzDYaFsL1Zb3vPU+0YcbX6qQx0shKOzIeqvF6d0V/9S" crossorigin="anonymous"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      background-color: #f5f9fc;
-      color: #2a2a2a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fbfc;
+      color: #333;
     }
-
-    .navbar {
-      background-color: #ffffff;
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      background: #ffffff;
+      padding: 20px 40px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
-    .logo-container {
+    header .logo-group {
       display: flex;
       align-items: center;
+      gap: 12px;
     }
-
-    .logo-container img {
-      width: 45px;
-      height: 45px;
-      margin-right: 10px;
+    header img {
+      height: 40px;
     }
-
-    .logo-container h1 {
-      font-size: 1.8rem;
-      margin: 0;
-      font-weight: 700;
-      background: linear-gradient(to right, #43389f, #a1c4fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    header .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0077cc;
     }
-
-    .nav-links a {
-      color: #333;
-      margin-left: 25px;
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav a {
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
     }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #007acc;
+    nav a:hover {
+      color: #0077cc;
     }
-
-    header {
+    .hero {
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      color: white;
+      padding: 100px 40px 60px;
       text-align: center;
-      padding: 40px 20px 20px;
     }
-
-    header h2 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    .section {
-      padding: 60px 40px;
-    }
-
-    .section-light {
-      background-color: #ffffff;
-    }
-
-    .section-dark {
-      background-color: #eaf3fb;
-    }
-
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #0f3057;
-    }
-
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
-    .icon-banner i {
-      font-size: 40px;
-      color: #4e9ed4;
+    .hero h1 {
+      font-size: 42px;
       margin-bottom: 15px;
     }
-
-    footer {
-      background-color: #ffffff;
-      color: #333;
+    .hero p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .section {
+      padding: 60px 40px;
       text-align: center;
-      padding: 30px 0 10px;
-      font-size: 0.9rem;
-      border-top: 1px solid #ccc;
     }
-
-    .social-icons {
-      margin-bottom: 12px;
+    .section h2 {
+      font-size: 34px;
+      color: #0077cc;
+      margin-bottom: 20px;
     }
-
-    .social-icons a {
-      margin: 0 10px;
-      color: #4e9ed4;
-      font-size: 1.4rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    .section p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 18px;
+      color: #555;
     }
-
-    .social-icons a:hover {
-      color: #0f3057;
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
     }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .nav-links a {
-        display: inline-block;
-        margin: 10px;
-      }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+    }
+    .card i {
+      font-size: 40px;
+      color: #0077cc;
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #1e293b;
+    }
+    footer {
+      background: #1f2937;
+      color: white;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    footer .socials a {
+      color: white;
+      margin-right: 20px;
+      font-size: 20px;
+    }
+    footer .socials a:hover {
+      color: #00c6ff;
     }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo-container">
-      <img src="Finology Nexus Logo.png" alt="Logo" />
-      <h1>Finology Nexus</h1>
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="aboutus.html" class="active">About Us</a>
-      <a href="contactus.html">Contact</a>
-    </div>
-  </div>
-
-  <!-- Page Header -->
   <header>
-    <h2>About Us</h2>
-    <p>Your Strategic Outsourcing Partner in Fintech & Research</p>
+    <div class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <span class="company-name" style="background: linear-gradient(to right, #0077cc, #00c6ff); -webkit-background-clip: text; color: transparent;">Finology Nexus</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Who We Are -->
-  <div class="section section-light">
-    <div class="content">
-      <div class="icon-banner"><i class="fas fa-users"></i></div>
-      <h2>Who We Are</h2>
-      <p>
-        Finology Nexus is a fintech-focused outsourcing partner that blends precision, reliability, and agility.
-        We specialize in supporting data-heavy processes, financial analytics, and research tasks for global clients.
-        Our team acts as an extension of your internal operations — without the overhead.
-      </p>
-    </div>
+  <div class="hero" data-aos="fade-in">
+    <h1>Who We Are</h1>
+    <p>Finology Nexus is your committed partner for seamless financial operations. With deep expertise and passion for precision, we help you scale smarter and operate better.</p>
   </div>
 
-  <!-- Our Vision -->
-  <div class="section section-dark">
-    <div class="content">
-      <div class="icon-banner"><i class="fas fa-eye"></i></div>
-      <h2>Our Vision</h2>
-      <p>
-        To empower fintech and research-focused firms worldwide by delivering efficient, scalable, and
-        intelligent outsourcing solutions — allowing them to focus on innovation while we handle the backend excellence.
-      </p>
-    </div>
-  </div>
+  <section class="section" data-aos="fade-up">
+    <h2>Our Vision</h2>
+    <p>We envision a future where outsourcing isn’t a compromise—it’s a competitive edge. At Finology Nexus, we bridge global talent with financial workflows, ensuring businesses of every size receive dependable, high-quality support that grows with them.</p>
+  </section>
 
-  <!-- Our Mission -->
-  <div class="section section-light">
-    <div class="content">
-      <div class="icon-banner"><i class="fas fa-bullseye"></i></div>
-      <h2>Our Mission</h2>
-      <p>
-        Our mission is to redefine what outsourcing means for modern businesses. We don’t just offer support —
-        we co-create value. Whether it’s handling complex datasets, streamlining financial insights, or tailoring
-        workflows to client systems, we ensure every task is executed with clarity, speed, and purpose.
-        We aim to build trust through transparency, consistency, and unmatched work ethic.
-      </p>
+  <section class="section" data-aos="fade-up" style="background: #eef7fb;">
+    <h2>What Sets Us Apart</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fas fa-handshake-angle"></i>
+        <h3>Long-Term Partnerships</h3>
+        <p>We don't just deliver tasks—we build relationships that evolve with your business needs.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-user-tie"></i>
+        <h3>Client-Centric Model</h3>
+        <p>Each client is unique, and so is our approach. We adapt our support to fit your goals and systems.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-chart-pie"></i>
+        <h3>Financial Domain Expertise</h3>
+        <p>Our leadership and team bring experience in finance, compliance, research, and tech-led reporting.</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Our Journey -->
-  <div class="section section-dark">
-    <div class="content">
-      <div class="icon-banner"><i class="fas fa-rocket"></i></div>
-      <h2>Our Journey</h2>
-      <p>
-        Over the past five years, Finology Nexus has evolved from a boutique research outfit to a robust
-        outsourcing partner with a global footprint. From supporting startups to enabling enterprise-level
-        efficiency — our journey is defined by transformation, adaptation, and long-term collaborations.
-      </p>
-    </div>
-  </div>
+  <section class="section" data-aos="fade-up">
+    <h2>Our Journey</h2>
+    <p>Founded in 2020, Finology Nexus has grown from a boutique support unit to a trusted partner for fintechs, investment firms, and data providers. We’ve been delivering quality outsourcing support for over 5 years—and we’re just getting started. Our clients trust us not just for our output, but for our ownership, adaptability, and embedded thinking.</p>
+  </section>
 
-  <!-- Footer -->
   <footer>
-    <div class="social-icons">
-      <a href="https://linkedin.com/company/finologynexus" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://twitter.com/finologynexus" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="mailto:contact@finologynexus.com"><i class="fas fa-envelope"></i></a>
+    <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
+    <div class="socials">
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
-    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
