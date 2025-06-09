@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finology Nexus | Home</title>
-  <meta name="description" content="Finology Nexus is your trusted partner for financial research, operational support, and tailored outsourcing solutions.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="description" content="Finology Nexus offers expert outsourcing, research, and support solutions for forward-thinking businesses." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
@@ -21,7 +21,7 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    header .logo-group {
+    .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -62,6 +62,7 @@
     nav a:hover::after {
       width: 100%;
     }
+
     .hero {
       text-align: center;
       padding: 100px 20px;
@@ -69,7 +70,7 @@
       color: white;
     }
     .hero h1 {
-      font-size: 48px;
+      font-size: 46px;
       margin-bottom: 20px;
     }
     .hero p {
@@ -77,6 +78,7 @@
       max-width: 700px;
       margin: auto;
     }
+
     section {
       padding: 80px 20px;
       text-align: center;
@@ -91,6 +93,7 @@
       margin: auto;
       color: #555;
     }
+
     .features {
       display: flex;
       flex-wrap: wrap;
@@ -99,17 +102,30 @@
       margin-top: 50px;
     }
     .feature-box {
-      background: #f4f7fa;
+      background: #ffffff;
       padding: 30px;
       border-radius: 16px;
       width: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      text-align: left;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-box:hover {
+      transform: translateY(-5px);
+    }
+    .feature-box i {
+      font-size: 32px;
+      color: #00aaff;
+      margin-bottom: 15px;
     }
     .feature-box h3 {
       color: #0077cc;
       margin-bottom: 10px;
     }
+    .feature-box p {
+      color: #555;
+    }
+
     footer {
       background: #1f2937;
       color: white;
@@ -144,44 +160,50 @@
   </header>
 
   <section class="hero">
-    <h1>Smarter Outsourcing for Financial Leaders</h1>
-    <p>We deliver expert financial research, operational support, and tailored solutions to help you grow, adapt, and scale.</p>
+    <h1>Smarter Outsourcing for Ambitious Businesses</h1>
+    <p>We empower growth-oriented teams with seamless support, tailored operations, and deep domain expertise across industries.</p>
   </section>
 
   <section>
     <h2 class="section-title">What We Do</h2>
-    <p class="section-description">Finology Nexus specializes in empowering financial organizations with back-office efficiency, reliable reporting, and expert domain support across varied verticals.</p>
+    <p class="section-description">Finology Nexus helps teams unlock focus and scale by delivering dependable support solutions — whether in finance, operations, compliance, or niche workflows.</p>
     <div class="features">
       <div class="feature-box">
-        <h3>Financial Research</h3>
-        <p>We provide in-depth research, data extraction, and financial modeling to support investor intelligence, credit assessments, and due diligence activities.</p>
+        <i class="fas fa-chart-line"></i>
+        <h3>Research & Analytics</h3>
+        <p>In-depth research, data insights, and market intelligence to drive better decisions and smarter strategies.</p>
       </div>
       <div class="feature-box">
+        <i class="fas fa-cogs"></i>
         <h3>Process Support</h3>
-        <p>Our team works as an extension of your back office — managing documentation, validations, and custom workflows with unmatched efficiency and compliance alignment.</p>
+        <p>Reliable back-end support — from documentation to validations — delivered with speed, accuracy, and compliance in mind.</p>
       </div>
       <div class="feature-box">
-        <h3>Tailored Outsourcing</h3>
-        <p>Whether you're a fintech startup or an enterprise fund, we provide flexible and secure outsourcing partnerships built to scale with your business goals.</p>
+        <i class="fas fa-handshake"></i>
+        <h3>Outsourcing Partnership</h3>
+        <p>Customized solutions tailored to your business model, helping you scale without the overhead and stress.</p>
       </div>
     </div>
   </section>
 
   <section>
     <h2 class="section-title">Why Finology Nexus</h2>
-    <p class="section-description">Choosing Finology Nexus means partnering with a team that not only understands finance, but understands you. We believe in thoughtful execution, domain-driven strategies, and seamless support.</p>
+    <p class="section-description">We go beyond tasks — offering clarity, capability, and consistency that modern businesses need in an outsourcing partner.</p>
     <div class="features">
       <div class="feature-box">
-        <h3>Domain Expertise</h3>
-        <p>Our team brings deep experience in finance, fintech, and compliance, ensuring precision, relevance, and speed across all deliverables.</p>
+        <i class="fas fa-user-tie"></i>
+        <h3>Expert Team</h3>
+        <p>We bring cross-industry experience that helps us plug into your needs quickly and deliver meaningful outcomes.</p>
       </div>
       <div class="feature-box">
-        <h3>Seamless Integration</h3>
-        <p>We blend into your ecosystem — adapting to your tools, turnaround cycles, and quality checks with minimal friction and maximum reliability.</p>
+        <i class="fas fa-plug"></i>
+        <h3>Seamless Onboarding</h3>
+        <p>We blend into your systems and workflows with minimal friction — becoming a natural extension of your team.</p>
       </div>
       <div class="feature-box">
-        <h3>Reliable & Scalable</h3>
-        <p>From nimble startups to enterprise-scale operations, our flexible engagement models adapt to your growth without compromising quality or consistency.</p>
+        <i class="fas fa-expand-arrows-alt"></i>
+        <h3>Scalable Delivery</h3>
+        <p>Whether you're starting small or expanding fast, we flex and grow with your operations.</p>
       </div>
     </div>
   </section>
