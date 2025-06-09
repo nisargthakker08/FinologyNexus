@@ -4,28 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | Finology Nexus</title>
+
   <!-- SEO Meta Tags -->
-<meta name="title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-<meta name="description" content="Discover expert financial research, process support, and customized outsourcing services with Finology Nexus. Partner with us for scalable, dependable solutions.">
-<meta name="keywords" content="financial research, outsourcing partner, Finology Nexus, fintech support, back-office services">
-<meta name="author" content="Finology Nexus">
-<meta name="robots" content="index, follow">
+  <meta name="title" content="Finology Nexus - Financial Research & Outsourcing Partner">
+  <meta name="description" content="Discover expert financial research, process support, and customized outsourcing services with Finology Nexus. Partner with us for scalable, dependable solutions.">
+  <meta name="keywords" content="financial research, outsourcing partner, Finology Nexus, fintech support, back-office services">
+  <meta name="author" content="Finology Nexus">
+  <meta name="robots" content="index, follow">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.finologynexus.online/">
-<meta property="og:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-<meta property="og:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
-<meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.finologynexus.online/">
+  <meta property="og:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
+  <meta property="og:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://www.finologynexus.online/">
-<meta name="twitter:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
-<meta name="twitter:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
-<meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.finologynexus.online/">
+  <meta name="twitter:title" content="Finology Nexus - Financial Research & Outsourcing Partner">
+  <meta name="twitter:description" content="Explore how Finology Nexus helps businesses scale smarter with reliable outsourcing in fintech and financial research.">
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
   <style>
     body {
       margin: 0;
@@ -40,6 +43,8 @@
       background: #ffffff;
       padding: 20px 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 10;
     }
     header .logo-group {
       display: flex;
@@ -52,12 +57,16 @@
     header .company-name {
       font-size: 20px;
       font-weight: bold;
-      color: #0077cc;
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
     nav ul {
       list-style: none;
       display: flex;
       gap: 30px;
+      margin: 0;
+      padding: 0;
     }
     nav a {
       text-decoration: none;
@@ -65,9 +74,40 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: #0077cc;
     }
+
+    /* Hamburger Toggle */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+    }
+    .menu-toggle i {
+      font-size: 24px;
+      color: #0077cc;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 15px;
+        display: none;
+      }
+      nav.active ul {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
     .hero {
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
@@ -126,6 +166,7 @@
       font-size: 20px;
       color: #1e293b;
     }
+
     footer {
       background: #1f2937;
       color: white;
@@ -143,19 +184,33 @@
     footer .socials a:hover {
       color: #00c6ff;
     }
+
+    @media (max-width: 600px) {
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer .socials a {
+        margin: 10px;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
-      <span class="company-name" style="background: linear-gradient(to right, #0077cc, #00c6ff); -webkit-background-clip: text; color: transparent;">Finology Nexus</span>
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus company logo" />
+      <span class="company-name">Finology Nexus</span>
+    </div>
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <i class="fas fa-bars"></i>
     </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="aboutus.html" class="active">About Us</a></li>
         <li><a href="contactus.html">Contact</a></li>
       </ul>
     </nav>
@@ -199,22 +254,15 @@
 
   <footer>
     <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
-<div class="socials">
-  <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" title="LinkedIn">
-    <i class="fab fa-linkedin"></i>
-  </a>
-  <a href="https://www.facebook.com/finologynexus/" target="_blank" title="Facebook">
-    <i class="fab fa-facebook"></i>
-  </a>
-  <a href="https://www.instagram.com/finologynexus/" target="_blank" title="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-</div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/finologynexus/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/finologynexus/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+  <script>AOS.init();</script>
+
 </body>
 </html>
