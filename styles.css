@@ -279,3 +279,31 @@ footer img {
   height: 100px;
   margin-top: 1rem;
 }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+/* Smooth transition for nav links */
+nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #00c6ff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
