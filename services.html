@@ -3,111 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Services | Finology Nexus</title>
+  <title>Services | Finology Nexus</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
+    :root {
+      --primary: #004c8a;
+      --accent: #00a8e8;
+      --bg-light: #f4faff;
+      --text-dark: #1a2a40;
+      --text-light: #4a6074;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f5f9fc;
-      color: #1f2a40;
+      background: var(--bg-light);
+      color: var(--text-dark);
     }
+
     header {
       background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       padding: 15px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
     }
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #1f2a40;
-      font-weight: 600;
-    }
+
     .logo {
       display: flex;
       align-items: center;
     }
+
     .logo img {
-      height: 40px;
+      height: 38px;
       margin-right: 10px;
     }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
     .section {
       padding: 80px 40px;
       text-align: center;
     }
+
     .section h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #0077cc;
+      font-size: 34px;
+      color: var(--primary);
+      margin-bottom: 16px;
     }
+
     .section p {
-      max-width: 800px;
-      margin: 0 auto 40px;
       font-size: 18px;
-      color: #3a4a61;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      color: var(--text-light);
     }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
     }
+
     .card {
       background: white;
-      border-radius: 12px;
-      padding: 30px 20px;
+      border-radius: 14px;
+      padding: 30px 25px;
       max-width: 320px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.07);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      text-align: left;
     }
+
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
+
     .card i {
       font-size: 34px;
-      color: #0077cc;
+      color: var(--accent);
       margin-bottom: 15px;
-      transition: transform 0.3s ease;
     }
-    .card:hover i {
-      transform: scale(1.3) rotate(5deg);
-    }
+
     .card h3 {
-      font-size: 22px;
-      color: #1f2a40;
+      font-size: 20px;
+      color: var(--text-dark);
       margin-bottom: 12px;
     }
+
     .card p {
       font-size: 15px;
-      color: #3a4a61;
+      color: var(--text-light);
       line-height: 1.6;
     }
+
+    .cta-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: var(--accent);
+    }
+
     footer {
-      background: #1f2a40;
+      background: var(--primary);
       color: white;
       text-align: center;
-      padding: 30px;
+      padding: 35px 20px 20px;
     }
+
     .social-icons a {
       color: white;
       margin: 0 10px;
       font-size: 18px;
     }
-    /* Floating Contact Button */
+
     .floating-btn {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background: #0077cc;
+      background: var(--accent);
       color: white;
       padding: 14px 20px;
       font-size: 16px;
@@ -118,8 +159,9 @@
       transition: background 0.3s ease;
       z-index: 999;
     }
+
     .floating-btn:hover {
-      background: #005fa3;
+      background: var(--primary);
     }
   </style>
 </head>
@@ -127,7 +169,7 @@
 
 <header>
   <div class="logo">
-    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
     <span style="font-weight:700; font-size: 22px;">Finology Nexus</span>
   </div>
   <nav>
@@ -140,72 +182,73 @@
 
 <section class="section" data-aos="fade-up">
   <h2>Our Services</h2>
-  <p>Built for fast-growing fintech teams, our services are lean, scalable, and tightly aligned with operational excellence.</p>
-  
+  <p>We specialize in tailored outsourcing for fast-paced fintech and ops teams—designed to reduce friction, improve accuracy, and scale with your needs.</p>
+
   <div class="card-container">
 
     <div class="card" data-aos="fade-up">
-      <i class="fas fa-chart-line"></i>
-      <h3>Financial Research Support</h3>
-      <p>From extracting financials and company metrics to organizing data by quarter or region—we support your research team with accurate, clean insights, ready for analysis.</p>
+      <i class="fas fa-magnifying-glass-chart"></i>
+      <h3>Financial Research</h3>
+      <p>We assist with quarterly financials, metric extractions, and SEC/filing-based reviews—organized and clean for fast consumption by your analysts.</p>
     </div>
 
     <div class="card" data-aos="fade-up" data-aos-delay="100">
-      <i class="fas fa-cogs"></i>
-      <h3>Workflow Assistance</h3>
-      <p>We blend into your ecosystem to help with tagging, quality checks, reporting, and operational reviews—whether it’s spreadsheets, tools, or custom trackers.</p>
+      <i class="fas fa-tasks"></i>
+      <h3>Workflow Execution</h3>
+      <p>Tagging, validation, QC, spreadsheet assistance—whether recurring or ad hoc, our teams blend into your tools and workflows to support operations end-to-end.</p>
     </div>
 
     <div class="card" data-aos="fade-up" data-aos-delay="200">
-      <i class="fas fa-bullhorn"></i>
+      <i class="fas fa-rss"></i>
       <h3>Market Intelligence</h3>
-      <p>We manage dashboards, news trackers, and alert systems—so your teams can stay current on trends, peers, and product shifts without data delays.</p>
+      <p>Our team manages competitor trackers, news flows, and insights dashboards—keeping your decision-makers one step ahead.</p>
     </div>
 
     <div class="card" data-aos="fade-up" data-aos-delay="300">
-      <i class="fas fa-book"></i>
-      <h3>Product Ops & Docs</h3>
-      <p>Whether it’s documenting internal releases, writing SOPs, or assisting with test case summaries—our team ensures smooth internal alignment and clarity.</p>
+      <i class="fas fa-file-lines"></i>
+      <h3>Product Docs & Ops</h3>
+      <p>From internal SOPs and product changelogs to QA logs and test summaries—your documentation stays crisp, current, and audit-friendly.</p>
     </div>
 
     <div class="card" data-aos="fade-up" data-aos-delay="400">
       <i class="fas fa-calculator"></i>
-      <h3>Bookkeeping & Tax</h3>
-      <p>We offer full-cycle bookkeeping and tax preparation support—accurate entries, reconciliations, and filing assistance that adapt to your local compliance needs.</p>
+      <h3>Bookkeeping Support</h3>
+      <p>Full-cycle bookkeeping, tax data prep, and reconciliations—customized to your local accounting needs and fiscal calendar.</p>
     </div>
 
   </div>
 </section>
 
-<section class="section" data-aos="fade-up" style="background:#eef7fb;">
-  <h2>What Makes Us Different?</h2>
+<section class="section" data-aos="fade-up" style="background: #eaf6ff;">
+  <h2>Why Teams Trust Us</h2>
+  <p>It’s not just what we do—it’s how we work: fast, flexible, and focused on outcomes.</p>
   <div class="card-container">
 
     <div class="card">
-      <i class="fas fa-plug"></i>
-      <h3>Plug-and-Play Support</h3>
-      <p>We don’t need hand-holding. Our team is trained to operate within your systems from day one—reducing ramp-up time and boosting efficiency.</p>
+      <i class="fas fa-plug-circle-check"></i>
+      <h3>Quick Onboarding</h3>
+      <p>We integrate into your systems and SOPs within days—no long ramp-ups, no micromanagement required.</p>
     </div>
 
     <div class="card">
-      <i class="fas fa-lightbulb"></i>
-      <h3>Fintech-Led Thinking</h3>
-      <p>We come from finance and product backgrounds, so we understand the domain language and urgency your teams face.</p>
+      <i class="fas fa-brain"></i>
+      <h3>Domain Aligned</h3>
+      <p>We understand the nuance of fintech, metrics, tools, and urgency—because we come from the same ecosystem.</p>
     </div>
 
     <div class="card">
       <i class="fas fa-layer-group"></i>
-      <h3>Modular, Scalable Delivery</h3>
-      <p>Start with one task or one team—we can grow our engagement as you scale. We move fast, adapt faster, and integrate deeper.</p>
+      <h3>Modular Delivery</h3>
+      <p>Need 1 task? Or 10 ongoing? Our support scales with your roadmap and budget—nothing bloated, everything useful.</p>
     </div>
 
   </div>
 </section>
 
 <section class="section" data-aos="fade-up">
-  <h2>Let’s Build Something Reliable</h2>
-  <p>Looking for dependable operational partners? Let’s co-create scalable support systems that evolve with your needs.</p>
-  <a href="contactus.html" style="padding: 15px 30px; background: #0077cc; color: white; font-weight: bold; border-radius: 6px; text-decoration: none;">Get in Touch</a>
+  <h2>Let’s Work Together</h2>
+  <p>We’re ready to plug into your operations. Let’s build a process that evolves as you grow.</p>
+  <a href="contactus.html" class="cta-btn">Contact Our Team</a>
 </section>
 
 <footer>
@@ -217,8 +260,7 @@
   </div>
 </footer>
 
-<!-- Floating Contact Button -->
-<a href="contactus.html" class="floating-btn"><i class="fas fa-envelope"></i> Contact Us</a>
+<a href="contactus.html" class="floating-btn"><i class="fas fa-envelope"></i> Let's Connect</a>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>AOS.init();</script>
