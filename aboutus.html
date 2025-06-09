@@ -1,172 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Finology Nexus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>About Us | Finology Nexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #121212;
-      color: #f0f0f0;
+      background: #f5f9fc;
+      color: #1f2a40;
     }
-
     header {
-      background-color: #1e2a38;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-    }
-
-    header p {
-      color: #cccccc;
-      margin-top: 0.5rem;
-    }
-
-    nav {
-      background-color: #000000;
-      padding: 1rem;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 15px 40px;
       display: flex;
-      justify-content: center;
-      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-
     nav a {
-      color: #ffffff;
+      margin-left: 25px;
       text-decoration: none;
+      color: #1f2a40;
       font-weight: 600;
     }
-
-    nav a:hover {
-      color: #ff9800;
-    }
-
-    .banner {
-      background: url('https://images.unsplash.com/photo-1549921296-3a6b90c0bb5c?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      height: 300px;
+    .logo {
       display: flex;
       align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 36px;
+      color: #0077cc;
+      margin-bottom: 20px;
+    }
+    .section p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      color: #3a4a61;
+    }
+    .values {
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .value-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px 25px;
+      max-width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+    .value-card:hover {
+      transform: translateY(-6px);
+    }
+    .value-card i {
+      font-size: 32px;
+      color: #0077cc;
+      margin-bottom: 15px;
+    }
+    .value-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #1f2a40;
+    }
+    .value-card p {
+      font-size: 15px;
+      color: #3a4a61;
+    }
+    footer {
+      background: #1f2a40;
       color: white;
       text-align: center;
+      padding: 30px;
     }
-
-    .banner h2 {
-      font-size: 2.5rem;
-      background: rgba(0,0,0,0.6);
-      padding: 1rem 2rem;
-      border-radius: 8px;
-    }
-
-    .about-section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 4rem 2rem;
-    }
-
-    .about-section h3 {
-      color: #ff9800;
-      margin-top: 2rem;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .pillar {
-      background-color: #1e1e1e;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
-    }
-
-    .pillar img {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      background-color: #1e2a38;
-      color: #cccccc;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>About Finology Nexus</h1>
-    <p>Driving smarter financial decisions through innovation & precision.</p>
-  </header>
-
+<header>
+  <div class="logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+    <span style="font-weight:700; font-size: 22px;">Finology Nexus</span>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
     <a href="aboutus.html">About Us</a>
     <a href="contactus.html">Contact</a>
   </nav>
+</header>
 
-  <section class="banner">
-    <h2>Where Finance Meets Future</h2>
-  </section>
+<section class="section" data-aos="fade-up">
+  <h2>Who We Are</h2>
+  <p>Finology Nexus is your operational partner—built for speed, precision, and scalability. We enable fintech and financial teams to thrive by handling the behind-the-scenes work with unmatched professionalism.</p>
+</section>
 
-  <section class="about-section">
-    <h3>Our Vision</h3>
-    <p>
-      At Finology Nexus, our vision is to bridge the gap between data-driven finance and operational excellence.
-      We believe in creating scalable, insightful, and trustworthy solutions that help financial institutions
-      and startups streamline their backend and analytical processes.
-    </p>
+<section class="section" data-aos="fade-up" style="background:#eef7fb;">
+  <h2>Our Vision</h2>
+  <p>To be the most trusted partner for scaling fintech operations by delivering world-class process support, financial research assistance, and operational excellence with a human touch.</p>
+</section>
 
-    <h3>Who We Are</h3>
-    <p>
-      Founded by a group of finance and technology experts, Finology Nexus is a strategic outsourcing partner
-      for financial research, fintech support, and operations. With a sharp focus on accuracy, data automation,
-      and confidentiality, we offer our clients an edge in managing complex data workflows while optimizing costs.
-    </p>
+<section class="section" data-aos="fade-up">
+  <h2>Why Choose Us?</h2>
+  <p>We’re not a traditional BPO. Our DNA is rooted in finance and tech. That’s why we build services that are lean, reliable, and future-ready.</p>
+  <div class="values">
 
-    <h3>Our Pillars of Excellence</h3>
-    <div class="pillars">
-      <div class="pillar">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/privacy-policy.png" alt="Confidentiality">
-        <h4>Confidentiality First</h4>
-        <p>We maintain strict controls on client data and ensure complete privacy and compliance in all workflows.</p>
-      </div>
-      <div class="pillar">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/data-configuration.png" alt="Insight">
-        <h4>Data-Driven Insight</h4>
-        <p>We transform complex data into actionable intelligence through meticulous analysis and review practices.</p>
-      </div>
-      <div class="pillar">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/robot.png" alt="Automation">
-        <h4>Process Automation</h4>
-        <p>Leveraging automation to handle repetitive workflows, reducing manual errors and increasing turnaround time.</p>
-      </div>
-      <div class="pillar">
-        <img src="https://img.icons8.com/ios-filled/100/ffffff/approval.png" alt="Quality">
-        <h4>Relentless Quality</h4>
-        <p>Our commitment to quality is reflected in consistent delivery, cross-level audits, and client satisfaction.</p>
-      </div>
+    <div class="value-card" data-aos="zoom-in">
+      <i class="fas fa-user-check"></i>
+      <h3>Ownership First</h3>
+      <p>We behave like an extension of your team—not vendors. Our work ethic is rooted in accountability and proactive delivery.</p>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2025 Finology Nexus. All rights reserved.
-  </footer>
+    <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+      <i class="fas fa-bolt"></i>
+      <h3>Fast & Flexible</h3>
+      <p>From urgent requests to custom trackers—we adapt quickly and execute even quicker.</p>
+    </div>
+
+    <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+      <i class="fas fa-microscope"></i>
+      <h3>Detail Obsessed</h3>
+      <p>Whether it's tagging a document or updating data—we sweat the small stuff, so you don’t have to.</p>
+    </div>
+
+    <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+      <i class="fas fa-heart"></i>
+      <h3>People + Process</h3>
+      <p>We combine skilled professionals with streamlined processes to deliver consistently reliable support.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" data-aos="fade-up" style="background:#eef7fb;">
+  <h2>Let’s Build Something Reliable</h2>
+  <p>Looking for a team that understands your tools, adapts fast, and delivers excellence? You’re in the right place.</p>
+  <a href="contactus.html" style="padding: 14px 28px; background: #0077cc; color: white; font-weight: bold; border-radius: 6px; text-decoration: none;">Let’s Connect</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 
 </body>
 </html>
