@@ -15,13 +15,29 @@
 
     header {
       background-color: #101a2c;
-      padding: 1.5rem 2rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 100;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-container img {
+      height: 40px;
+    }
+
+    .logo-container span {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #00bfa6;
     }
 
     nav a {
@@ -133,7 +149,10 @@
 <body>
 
   <header>
-    <div style="font-size: 1.5rem; font-weight: 700; color: #00bfa6;">Finology Nexus</div>
+    <div class="logo-container">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <span>Finology Nexus</span>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
@@ -152,30 +171,30 @@
     <h2>What We Do</h2>
     <div class="services">
       <div class="service-card">
-        <img src="https://img.icons8.com/fluency/96/financial-growth-analysis.png" alt="Research">
+        <img src="https://cdn-icons-png.flaticon.com/512/3988/3988383.png" alt="Research" />
         <h3>Financial Research</h3>
-        <p>From earnings analysis to benchmarking — we provide deep-dive, investor-ready reports tailored to client objectives.</p>
+        <p>Investor-grade deep dives, competitive benchmarking, and earnings model support to guide smarter decisions.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/color/96/accounting.png" alt="Bookkeeping">
+        <img src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png" alt="Bookkeeping" />
         <h3>Bookkeeping</h3>
-        <p>Clean, scalable, and audit-ready books powered by our precision-driven bookkeeping workflows.</p>
+        <p>Real-time, reconciled books with monthly closes to keep your financials clean, scalable, and audit-ready.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/external-flat-juicy-fish/60/external-tax-taxation-flat-flat-juicy-fish.png" alt="Tax Prep">
+        <img src="https://cdn-icons-png.flaticon.com/512/4305/4305331.png" alt="Tax Prep" />
         <h3>Tax Preparation</h3>
-        <p>Ensure compliance and maximize efficiency with professional tax prep tailored to global norms and deadlines.</p>
+        <p>From tax forms to planning strategies, we ensure you meet deadlines and maximize your deductions globally.</p>
       </div>
       <div class="service-card">
-        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/automated-process.png" alt="Data Scraping">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Automation" />
         <h3>Data Scraping & Automation</h3>
-        <p>Leverage structured scraping and RPA-based automations to access hard-to-find financial data — in real time.</p>
+        <p>APIs, RPA bots, and structured crawlers that turn scattered financial data into structured intelligence.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Finology Nexus | Where Finance Meets Innovation | Built for performance & trust
+    &copy; 2025 Finology Nexus | Where Finance Meets Innovation
   </footer>
 
 </body>
