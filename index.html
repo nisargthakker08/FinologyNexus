@@ -2,241 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Finology Nexus</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
-      background-color: #0a0f1b;
-      color: #f1f1f1;
+      background-color: #ffffff;
+      color: #1e1e1e;
     }
 
     header {
-      background-color: #101a2c;
-      padding: 1.2rem 2rem;
+      padding: 1.5rem 3rem;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .logo-container {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
     }
 
-    .logo-container img {
+    .logo img {
       height: 40px;
-      width: auto;
-      filter: drop-shadow(0 0 3px rgba(0,191,166,0.5));
-    }
-
-    .logo-container span {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #00bfa6;
+      margin-right: 10px;
     }
 
     nav a {
-      color: #ffffff;
-      margin-left: 1.5rem;
+      margin-left: 2rem;
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #00bfa6;
+      color: #1e1e1e;
     }
 
     .hero {
-      background: linear-gradient(135deg, #0a0f1b, #101a2c);
-      padding: 6rem 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: #00bfa6;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      color: #e0e0e0;
-    }
-
-    .hero button {
-      background-color: #00bfa6;
-      color: #0a0f1b;
-      border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .hero button:hover {
-      background-color: #00a58f;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #ffffff;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .service-card {
-      background: #151d30;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 255, 200, 0.05);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .service-card img {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: #00bfa6;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: #cccccc;
-    }
-
-    .tools-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 5%;
+      background-color: #f9f9f9;
     }
 
-    .tool-item {
-      background: #101a2c;
-      padding: 1rem 1.5rem;
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #444;
+    }
+
+    .hero-text .btn {
+      background-color: #1a73e8;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
       border-radius: 8px;
-      font-weight: 600;
-      color: #00bfa6;
-      box-shadow: 0 2px 8px rgba(0, 255, 200, 0.05);
+      font-size: 1rem;
+      cursor: pointer;
+      margin-right: 1rem;
+      transition: background 0.3s ease;
     }
 
-    footer {
-      background-color: #101a2c;
-      text-align: center;
-      padding: 2rem;
-      color: #888;
-      font-size: 0.9rem;
+    .hero-text .btn:hover {
+      background-color: #155cc0;
+    }
+
+    .hero-img {
+      max-width: 45%;
+    }
+
+    .hero-img img {
+      width: 100%;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text, .hero-img {
+        max-width: 100%;
+      }
+      nav {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
-    <div class="logo-container">
-      <img src="logo.png" alt="Finology Nexus Logo" />
-      <span>Finology Nexus</span>
+    <div class="logo">
+      <img src="https://i.ibb.co/yYCrvn1/logo-transparent.png" alt="Finology Nexus Logo">
+      <h2>Finology Nexus</h2>
     </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="aboutus.html">About</a>
+      <a href="aboutus.html">About Us</a>
       <a href="contactus.html">Contact</a>
     </nav>
   </header>
 
-  <section class="hero" data-aos="fade-up">
-    <h1>Empowering Fintech Solutions</h1>
-    <p>Specialized outsourcing, research & automation for tomorrow’s finance leaders</p>
-    <button onclick="location.href='contactus.html'">Let's Collaborate</button>
-  </section>
-
-  <section class="section" data-aos="fade-up">
-    <h2>What We Do</h2>
-    <div class="services">
-      <div class="service-card" data-aos="zoom-in">
-        <img src="https://cdn-icons-png.flaticon.com/512/3988/3988383.png" alt="Research" />
-        <h3>Financial Research</h3>
-        <p>Investor-grade insights, earnings model support, and detailed benchmarking tailored to client goals.</p>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-        <img src="https://cdn-icons-png.flaticon.com/512/4290/4290854.png" alt="Bookkeeping" />
-        <h3>Bookkeeping</h3>
-        <p>Month-end close, reconciliations, vendor tracking, and real-time visibility into business performance.</p>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-        <img src="https://cdn-icons-png.flaticon.com/512/4305/4305331.png" alt="Tax Prep" />
-        <h3>Tax Preparation</h3>
-        <p>Full-service tax compliance, documentation support, and strategic tax-saving consultation for global clients.</p>
-      </div>
-      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-        <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Automation" />
-        <h3>Data Scraping & Automation</h3>
-        <p>Data bots, web crawlers, API pipelines — we automate financial workflows from source to report.</p>
-      </div>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Empowering Financial Operations with Precision</h1>
+      <p>We provide robust financial research, automation, and backend support to elevate your business efficiency.</p>
+      <button class="btn" onclick="location.href='contactus.html'">Get in Touch</button>
+      <button class="btn" style="background-color: #fbbc05; color: #1e1e1e;" onclick="location.href='services.html'">Explore Services</button>
+    </div>
+    <div class="hero-img">
+      <img src="https://assets10.lottiefiles.com/packages/lf20_vnikrcia.json" alt="Fintech Illustration">
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Tech Stack & Tools</h2>
-    <div class="tools-grid">
-      <div class="tool-item">Python</div>
-      <div class="tool-item">Appian</div>
-      <div class="tool-item">QuickBooks</div>
-      <div class="tool-item">Excel Macros</div>
-      <div class="tool-item">Amazon S3</div>
-      <div class="tool-item">BeautifulSoup</div>
-      <div class="tool-item">Selenium</div>
-      <div class="tool-item">Power BI</div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Finology Nexus | Where Finance Meets Innovation
-  </footer>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  </script>
 </body>
 </html>
