@@ -9,19 +9,28 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      color: #202124;
+      background-color: #121212;
+      color: #f0f0f0;
     }
 
     header {
       background-color: #1e2a38;
-      color: white;
       padding: 2rem;
       text-align: center;
     }
 
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+    }
+
+    header p {
+      color: #cccccc;
+      margin-top: 0.5rem;
+    }
+
     nav {
-      background-color: #2e3a4d;
+      background-color: #000000;
       padding: 1rem;
       display: flex;
       justify-content: center;
@@ -29,71 +38,71 @@
     }
 
     nav a {
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
     }
 
     nav a:hover {
-      color: #ff8c00;
+      color: #ff9800;
     }
 
-    .about {
-      max-width: 1100px;
+    .banner {
+      background: url('https://images.unsplash.com/photo-1549921296-3a6b90c0bb5c?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .banner h2 {
+      font-size: 2.5rem;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem 2rem;
+      border-radius: 8px;
+    }
+
+    .about-section {
+      max-width: 1000px;
       margin: auto;
       padding: 4rem 2rem;
     }
 
-    .section {
-      margin-bottom: 4rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+    .about-section h3 {
+      color: #ff9800;
+      margin-top: 2rem;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
+      margin-top: 2rem;
     }
 
-    .section:nth-child(even) {
-      flex-direction: row-reverse;
+    .pillar {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
     }
 
-    .section img {
-      flex: 1 1 250px;
-      max-width: 250px;
-      height: auto;
-    }
-
-    .section .text {
-      flex: 2;
-    }
-
-    .section h2 {
-      color: #1e2a38;
-      margin-bottom: 0.75rem;
-    }
-
-    .section p {
-      color: #444;
-      font-size: 1rem;
-      line-height: 1.6;
+    .pillar img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
     }
 
     footer {
-      background-color: #2e3a4d;
-      color: white;
+      background-color: #1e2a38;
+      color: #cccccc;
       text-align: center;
       padding: 1.5rem;
+      margin-top: 3rem;
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        flex-direction: column !important;
-        text-align: center;
-      }
-
-      .section img {
-        margin-bottom: 1rem;
-      }
     }
   </style>
 </head>
@@ -101,7 +110,7 @@
 
   <header>
     <h1>About Finology Nexus</h1>
-    <p>Where precision, process, and performance meet.</p>
+    <p>Driving smarter financial decisions through innovation & precision.</p>
   </header>
 
   <nav>
@@ -111,52 +120,52 @@
     <a href="contactus.html">Contact</a>
   </nav>
 
-  <section class="about">
+  <section class="banner">
+    <h2>Where Finance Meets Future</h2>
+  </section>
 
-    <div class="section">
-      <img src="https://cdn-icons-png.flaticon.com/512/2633/2633305.png" alt="Vision Icon">
-      <div class="text">
-        <h2>Our Vision</h2>
-        <p>
-          At Finology Nexus, our mission is to redefine the standard of financial process outsourcing. We blend innovation with precision to help businesses simplify complexity, optimize operations, and focus on growth.
-        </p>
+  <section class="about-section">
+    <h3>Our Vision</h3>
+    <p>
+      At Finology Nexus, our vision is to bridge the gap between data-driven finance and operational excellence.
+      We believe in creating scalable, insightful, and trustworthy solutions that help financial institutions
+      and startups streamline their backend and analytical processes.
+    </p>
+
+    <h3>Who We Are</h3>
+    <p>
+      Founded by a group of finance and technology experts, Finology Nexus is a strategic outsourcing partner
+      for financial research, fintech support, and operations. With a sharp focus on accuracy, data automation,
+      and confidentiality, we offer our clients an edge in managing complex data workflows while optimizing costs.
+    </p>
+
+    <h3>Our Pillars of Excellence</h3>
+    <div class="pillars">
+      <div class="pillar">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/privacy-policy.png" alt="Confidentiality">
+        <h4>Confidentiality First</h4>
+        <p>We maintain strict controls on client data and ensure complete privacy and compliance in all workflows.</p>
+      </div>
+      <div class="pillar">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/data-configuration.png" alt="Insight">
+        <h4>Data-Driven Insight</h4>
+        <p>We transform complex data into actionable intelligence through meticulous analysis and review practices.</p>
+      </div>
+      <div class="pillar">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/robot.png" alt="Automation">
+        <h4>Process Automation</h4>
+        <p>Leveraging automation to handle repetitive workflows, reducing manual errors and increasing turnaround time.</p>
+      </div>
+      <div class="pillar">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/approval.png" alt="Quality">
+        <h4>Relentless Quality</h4>
+        <p>Our commitment to quality is reflected in consistent delivery, cross-level audits, and client satisfaction.</p>
       </div>
     </div>
-
-    <div class="section">
-      <img src="https://cdn-icons-png.flaticon.com/512/4341/4341139.png" alt="Team Icon">
-      <div class="text">
-        <h2>Who We Are</h2>
-        <p>
-          We are a dynamic team of finance professionals, data specialists, and process designers with years of experience supporting global clients. Our backgrounds span corporate finance, research, tax, and compliance – unified under a single mission: excellence.
-        </p>
-      </div>
-    </div>
-
-    <div class="section">
-      <img src="https://cdn-icons-png.flaticon.com/512/2191/2191530.png" alt="Workflow Icon">
-      <div class="text">
-        <h2>Our Approach</h2>
-        <p>
-          We integrate seamlessly with your operations using tools like Appian, Amazon S3, and internal CRMs. With automated task pipelines, customized dashboards, and real-time updates, we ensure accuracy, transparency, and speed across all engagements.
-        </p>
-      </div>
-    </div>
-
-    <div class="section">
-      <img src="https://cdn-icons-png.flaticon.com/512/1754/1754596.png" alt="Values Icon">
-      <div class="text">
-        <h2>What Makes Us Different</h2>
-        <p>
-          Finology Nexus goes beyond outsourcing — we are partners in transformation. Our strength lies in continuous improvement, zero-error delivery models, and deep integration with your evolving business goals. We think long-term and deliver daily.
-        </p>
-      </div>
-    </div>
-
   </section>
 
   <footer>
-    &copy; 2025 Finology Nexus. All rights reserved. | Empowering financial operations.
+    &copy; 2025 Finology Nexus. All rights reserved.
   </footer>
 
 </body>
