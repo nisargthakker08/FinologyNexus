@@ -3,86 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Finology Nexus</title>
+  <title>About Us | Finology Nexus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     .about-section {
       padding: 4rem 2rem;
-      background-color: var(--white);
+      background-color: var(--light-bg);
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
 
     .about-section h2 {
-      font-size: 2.5rem;
       color: var(--primary-color);
       margin-bottom: 1rem;
     }
 
     .about-section p {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto 2rem;
-      line-height: 1.8;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
 
-    .about-grid {
+    .highlights {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
       justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
     }
 
-    .about-box {
-      background-color: var(--light-bg);
+    .highlight-box {
+      background-color: var(--white);
+      border-radius: 12px;
       padding: 2rem;
-      border-radius: 10px;
-      max-width: 350px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      max-width: 300px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
     }
 
-    .about-box:hover {
+    .highlight-box:hover {
       transform: translateY(-5px);
     }
 
-    .about-box h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary-color);
+    .highlight-box h4 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
     }
 
-    .about-box p {
+    .highlight-box p {
       font-size: 0.95rem;
     }
 
-    .timeline-text {
-      font-style: italic;
-      color: var(--primary-color);
-      margin: 2rem auto 1rem;
+    .vision-block {
+      background-color: var(--white);
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+      border-left: 5px solid var(--accent-color);
+      animation: fadeInUp 1s ease-in-out;
     }
 
-    .footer-socials img {
-      height: 30px;
-      margin: 0 0.5rem;
-      transition: opacity 0.3s ease;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    .footer-socials img:hover {
-      opacity: 0.7;
-    }
-
-    header img.logo {
-      height: 55px;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="logo">
-    <h1>Finology Nexus</h1>
-    <p class="tagline">Where Precision Meets Partnership</p>
+    <img src="Finology Nexus Logo.png" class="logo" alt="Finology Nexus Logo">
+    <h1 style="font-weight: 700; font-size: 2.5rem;">
+      <span style="color: var(--white);">Finology</span> <span style="color: var(--accent-color);">Nexus</span>
+    </h1>
+    <p class="tagline">Reliable Outsourcing, Smart Execution</p>
   </header>
 
   <nav>
@@ -94,42 +93,46 @@
 
   <section class="about-section">
     <h2>Who We Are</h2>
-    <p>Finology Nexus is your trusted partner for smart, scalable, and specialized outsourcing. We don’t just deliver tasks — we integrate seamlessly into your processes to ensure precision, responsiveness, and long-term value. With hands-on experience in financial support, research, reporting, and data operations, we simplify complexity for fast-growing businesses and finance teams.</p>
-    
-    <h2>Our Vision</h2>
-    <p>We envision transforming outsourcing into an intelligent, collaborative, and tech-enabled experience. Our goal is to empower teams with reliable backend support that adapts with their pace, without losing sight of accuracy, confidentiality, and cost-efficiency.</p>
+    <p>
+      Finology Nexus is a boutique outsourcing partner designed for the fast-moving world of fintech and modern business operations. We bridge the gap between quality execution and flexible support—offering a dedicated team that feels like your own.
+    </p>
 
-    <h2>Why Choose Us?</h2>
-    <div class="about-grid">
-      <div class="about-box">
-        <h3>📌 Domain Expertise</h3>
-        <p>With deep roots in financial research, product support, and automation, we understand your business language and needs from day one.</p>
+    <div class="vision-block">
+      <h2>Our Vision</h2>
+      <p>
+        To be the most dependable and insightful outsourcing ally for forward-thinking businesses. We envision a future where operational excellence and innovative support services empower companies to scale, adapt, and thrive — all without compromising quality.
+      </p>
+    </div>
+
+    <div class="highlights">
+      <div class="highlight-box">
+        <h4>5+ Years of Reliability</h4>
+        <p>We’ve been delivering dependable, detail-driven support for more than five years — and we’re just getting started.</p>
       </div>
-      <div class="about-box">
-        <h3>⚙️ Seamless Integration</h3>
-        <p>Our teams plug into your workflows using your tools and systems — without disruptions or hand-holding.</p>
+      <div class="highlight-box">
+        <h4>Client-Centric Support</h4>
+        <p>We plug directly into your existing systems and make your operations smoother, faster, and more dependable.</p>
       </div>
-      <div class="about-box">
-        <h3>🔒 Confidential & Compliant</h3>
-        <p>We follow rigorous data security and compliance measures to safeguard your sensitive information.</p>
-      </div>
-      <div class="about-box">
-        <h3>🚀 Scalable Support</h3>
-        <p>Whether you’re scaling rapidly or just starting out, our agile model grows with your priorities and processes.</p>
+      <div class="highlight-box">
+        <h4>Specialized Across Functions</h4>
+        <p>From finance and market intelligence to automation and product documentation — our versatility is your advantage.</p>
       </div>
     </div>
 
-    <p class="timeline-text">We’ve been delivering quality outsourcing support for over 5 years — and we’re just getting started.</p>
+    <h2>Why Choose Us?</h2>
+    <p>
+      At Finology Nexus, we believe execution is everything. That’s why we go beyond standard BPO. Our agile team is trained not just to follow instructions, but to understand the "why" behind the work. With a focus on quality, speed, and integration, we help you build a reliable backbone to scale.
+    </p>
   </section>
 
   <footer>
     <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
-    <div class="footer-socials">
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-      <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+    <div style="margin-top: 1rem;">
+      <a href="#" style="margin: 0 10px; color: white;">LinkedIn</a>
+      <a href="#" style="margin: 0 10px; color: white;">Facebook</a>
+      <a href="#" style="margin: 0 10px; color: white;">Instagram</a>
     </div>
+    <img src="images/Finology Nexus Logo (1).png" alt="Logo" />
   </footer>
-
 </body>
 </html>
