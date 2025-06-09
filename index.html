@@ -1,158 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Finology Nexus | Financial Research & Outsourcing Partner</title>
-  <meta name="description" content="Expert financial research and scalable outsourcing solutions for fintech and financial firms.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finology Nexus | Home</title>
+  <meta name="description" content="Finology Nexus is your trusted partner for financial research, operational support, and tailored outsourcing solutions.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
-    :root {
-      --primary: #0077cc;
-      --secondary: #00c6ff;
-      --bg: #f7fafd;
-      --text: #1f2937;
-      --card-bg: #ffffff;
-    }
-
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background-color: #f9fbfc;
+      color: #333;
     }
-
     header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: white;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      background: #fff;
       padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
-    .logo-group {
+    header .logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
-
-    .logo-group img {
+    header img {
       height: 40px;
     }
-
     .company-name {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: linear-gradient(to right, #0077cc, #00c6ff);
       -webkit-background-clip: text;
       color: transparent;
     }
-
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
-      padding: 0;
+      gap: 25px;
       margin: 0;
+      padding: 0;
     }
-
     nav a {
       text-decoration: none;
-      color: var(--text);
+      color: #333;
       font-weight: 600;
       position: relative;
-      transition: color 0.3s;
     }
-
-    nav a:hover {
-      color: var(--primary);
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #0077cc;
+      transition: width 0.3s;
     }
-
+    nav a:hover::after {
+      width: 100%;
+    }
     .hero {
       text-align: center;
-      padding: 100px 20px 80px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      padding: 100px 20px;
+      background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
     }
-
     .hero h1 {
-      font-size: 50px;
-      font-weight: 700;
+      font-size: 48px;
       margin-bottom: 20px;
     }
-
     .hero p {
       font-size: 20px;
       max-width: 700px;
       margin: auto;
     }
-
-    .section {
+    section {
       padding: 80px 20px;
       text-align: center;
     }
-
-    .section h2 {
+    .section-title {
       font-size: 36px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+      color: #1f2937;
     }
-
-    .features, .why-us {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 0 20px;
-    }
-
-    .feature, .why-item {
-      background: var(--card-bg);
-      padding: 30px 25px;
-      border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-    }
-
-    .feature:hover, .why-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .feature i, .why-item i {
-      font-size: 34px;
-      color: var(--primary);
-      margin-bottom: 12px;
-    }
-
-    .feature h3, .why-item h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .feature p, .why-item p {
-      font-size: 15px;
+    .section-description {
+      max-width: 800px;
+      margin: auto;
       color: #555;
     }
-
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 50px;
+    }
+    .feature-box {
+      background: #f4f7fa;
+      padding: 30px;
+      border-radius: 16px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      text-align: left;
+    }
+    .feature-box h3 {
+      color: #0077cc;
+      margin-bottom: 10px;
+    }
     footer {
       background: #1f2937;
       color: white;
-      padding: 40px 20px;
+      padding: 30px 20px;
       text-align: center;
     }
-
-    .socials a {
+    footer .socials a {
       color: white;
-      margin: 0 12px;
+      margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
-
-    .socials a:hover {
-      color: var(--secondary);
+    footer .socials a:hover {
+      color: #00c6ff;
     }
   </style>
 </head>
@@ -172,49 +143,45 @@
     </nav>
   </header>
 
-  <section class="hero" data-aos="fade-down">
-    <h1>Empowering Fintech & Finance</h1>
-    <p>Your partner in financial research and back-office excellence. Reliable. Scalable. Tailored for impact.</p>
+  <section class="hero">
+    <h1>Smarter Outsourcing for Financial Leaders</h1>
+    <p>We deliver expert financial research, operational support, and tailored solutions to help you grow, adapt, and scale.</p>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>What We Do</h2>
+  <section>
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-description">Finology Nexus specializes in empowering financial organizations with back-office efficiency, reliable reporting, and expert domain support across varied verticals.</p>
     <div class="features">
-      <div class="feature">
-        <i class="fas fa-chart-line"></i>
+      <div class="feature-box">
         <h3>Financial Research</h3>
-        <p>We specialize in deep-dive financial statement analysis, valuations, and credit profiling across industries.</p>
+        <p>We provide in-depth research, data extraction, and financial modeling to support investor intelligence, credit assessments, and due diligence activities.</p>
       </div>
-      <div class="feature">
-        <i class="fas fa-cogs"></i>
+      <div class="feature-box">
         <h3>Process Support</h3>
-        <p>Partner with us to handle operational tasks, documentation, and data extraction — with quality and precision.</p>
+        <p>Our team works as an extension of your back office — managing documentation, validations, and custom workflows with unmatched efficiency and compliance alignment.</p>
       </div>
-      <div class="feature">
-        <i class="fas fa-project-diagram"></i>
-        <h3>Custom Workflows</h3>
-        <p>We align with your internal systems to offer tailored support models for repeatable and evolving workflows.</p>
+      <div class="feature-box">
+        <h3>Tailored Outsourcing</h3>
+        <p>Whether you're a fintech startup or an enterprise fund, we provide flexible and secure outsourcing partnerships built to scale with your business goals.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Why Finology Nexus</h2>
-    <div class="why-us">
-      <div class="why-item">
-        <i class="fas fa-user-shield"></i>
+  <section>
+    <h2 class="section-title">Why Finology Nexus</h2>
+    <p class="section-description">Choosing Finology Nexus means partnering with a team that not only understands finance, but understands you. We believe in thoughtful execution, domain-driven strategies, and seamless support.</p>
+    <div class="features">
+      <div class="feature-box">
         <h3>Domain Expertise</h3>
-        <p>Our team brings deep experience in finance, fintech, and compliance, ensuring accuracy and relevance.</p>
+        <p>Our team brings deep experience in finance, fintech, and compliance, ensuring precision, relevance, and speed across all deliverables.</p>
       </div>
-      <div class="why-item">
-        <i class="fas fa-sync-alt"></i>
+      <div class="feature-box">
         <h3>Seamless Integration</h3>
-        <p>We blend into your ecosystem — adapting to your tools, schedules, and review mechanisms with ease.</p>
+        <p>We blend into your ecosystem — adapting to your tools, turnaround cycles, and quality checks with minimal friction and maximum reliability.</p>
       </div>
-      <div class="why-item">
-        <i class="fas fa-users-cog"></i>
+      <div class="feature-box">
         <h3>Reliable & Scalable</h3>
-        <p>From startups to large enterprises, we provide flexible engagement models that scale with your business.</p>
+        <p>From nimble startups to enterprise-scale operations, our flexible engagement models adapt to your growth without compromising quality or consistency.</p>
       </div>
     </div>
   </section>
@@ -227,10 +194,5 @@
       <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>
