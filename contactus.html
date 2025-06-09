@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Connect with Finology Nexus – your trusted partner for financial research, operational support, and tailored outsourcing solutions." />
   <title>Finology Nexus | Contact</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
@@ -14,6 +15,9 @@
       color: #333;
     }
     header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -40,17 +44,32 @@
       list-style: none;
       display: flex;
       gap: 30px;
+      padding: 0;
+      margin: 0;
     }
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
-      transition: color 0.3s;
+      position: relative;
     }
-    nav a:hover {
+    nav a:hover,
+    nav a:focus {
       color: #0077cc;
     }
-
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #0077cc;
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
     .contact-top {
       text-align: center;
       padding: 80px 20px 40px;
@@ -66,7 +85,6 @@
       max-width: 700px;
       margin: 0 auto;
     }
-
     .contact-form-section {
       max-width: 700px;
       margin: 0 auto;
@@ -102,20 +120,12 @@
     button:hover {
       background: #005fa3;
     }
-
-    .post-form-info {
+    .footer-extra-info {
       text-align: center;
-      margin-top: 30px;
-      font-size: 16px;
+      padding-top: 20px;
+      font-size: 14px;
+      color: #555;
     }
-    .post-form-info a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    .post-form-info a:hover {
-      text-decoration: underline;
-    }
-
     footer {
       background: #1f2937;
       color: white;
@@ -166,9 +176,9 @@
       <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <div class="post-form-info">
-      <p>Email us directly at <a href="mailto:info@finologynexus.online">info@finologynexus.online</a></p>
-      <p>For updates, follow us on <a href="https://www.linkedin.com/company/finologynexus" target="_blank">LinkedIn</a></p>
+    <div class="footer-extra-info">
+      Email us at: <a href="mailto:info@finologynexus.online" style="color: #0077cc; text-decoration: none;">info@finologynexus.online</a><br>
+      For updates, follow our <a href="https://www.linkedin.com/company/finologynexus" target="_blank" style="color: #0077cc; text-decoration: underline;">LinkedIn page</a>
     </div>
   </section>
 
