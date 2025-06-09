@@ -16,18 +16,15 @@
     header {
       background-color: #1e2a38;
       color: white;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header strong {
-      font-size: 1.5rem;
+      padding: 2rem;
+      text-align: center;
     }
 
     nav {
+      background-color: #2e3a4d;
+      padding: 1rem;
       display: flex;
+      justify-content: center;
       gap: 2rem;
     }
 
@@ -41,33 +38,22 @@
       color: #ff8c00;
     }
 
-    .hero {
-      background-color: #f3f4f6;
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 800px;
-      margin: auto;
-    }
-
     .services {
-      padding: 3rem 2rem 5rem;
+      padding: 4rem 2rem;
+      text-align: center;
       max-width: 1200px;
       margin: auto;
     }
 
+    .services h2 {
+      font-size: 2rem;
+      color: #1e2a38;
+      margin-bottom: 2rem;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
@@ -75,7 +61,7 @@
       background: white;
       padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
       text-align: center;
       transition: transform 0.3s ease;
     }
@@ -90,77 +76,81 @@
     }
 
     .service-box h3 {
-      margin: 1rem 0 0.5rem;
       color: #1e2a38;
+      margin-bottom: 0.5rem;
     }
 
     .service-box p {
       font-size: 0.95rem;
-      color: #444;
+      color: #555;
+      line-height: 1.6;
     }
 
     footer {
-      background-color: #1e2a38;
+      background-color: #2e3a4d;
       color: white;
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      padding: 1rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div><strong>Finology Nexus</strong></div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="aboutus.html">About Us</a>
-      <a href="contactus.html">Contact</a>
-    </nav>
+    <h1>Our Services</h1>
+    <p>Reliable, scalable, and customized financial solutions for modern businesses.</p>
   </header>
 
-  <section class="hero">
-    <h1>Our Services</h1>
-    <p>Explore our wide range of tailored solutions, built to support fintech firms and financial institutions with unmatched precision, quality, and professionalism.</p>
-  </section>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
 
   <section class="services">
+    <h2>What We Offer</h2>
     <div class="grid">
       <div class="service-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Financial Research">
+        <img src="https://img.icons8.com/ios-filled/100/book.png" alt="Research">
         <h3>Financial Research</h3>
-        <p>In-depth company analysis, valuations, peer benchmarking, and investment reports designed to assist asset managers and advisory firms with accurate decision-making tools.</p>
+        <p>Custom equity and debt research, benchmarking, and modeling tailored to your portfolio needs.</p>
       </div>
 
       <div class="service-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/1904/1904425.png" alt="Product Support">
-        <h3>Product Support</h3>
-        <p>Reliable and consistent support for fintech platforms, data systems, and analytical tools, including testing, quality assurance, and data enrichment processes.</p>
+        <img src="https://img.icons8.com/ios-filled/100/api-settings.png" alt="Data Scraping">
+        <h3>Data Scraping & Automation</h3>
+        <p>Automated pipelines for EDGAR, private filings, web data, and structured extraction using APIs and crawlers.</p>
       </div>
 
       <div class="service-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Operational Outsourcing">
-        <h3>Operational Outsourcing</h3>
-        <p>Customized business process outsourcing solutions across financial services, helping clients reduce cost and enhance operational efficiency with skilled resources.</p>
+        <img src="https://img.icons8.com/ios-filled/100/ledger.png" alt="Bookkeeping">
+        <h3>Bookkeeping</h3>
+        <p>Accurate ledger maintenance, reconciliations, and financial clarity for businesses of all sizes.</p>
       </div>
 
       <div class="service-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050525.png" alt="Reporting & Dashboards">
-        <h3>Reporting & Dashboards</h3>
-        <p>We deliver automated and custom reports, dashboards, and analytics that empower business intelligence and streamline internal and external reporting frameworks.</p>
+        <img src="https://img.icons8.com/ios-filled/100/graph-report.png" alt="Reporting">
+        <h3>Reporting</h3>
+        <p>Management and investor reports, KPIs, variance analysis, and dashboards delivered on time.</p>
       </div>
 
       <div class="service-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/4139/4139962.png" alt="Data Management">
-        <h3>Data Management</h3>
-        <p>Structured data collection, cleaning, and validation support for private and public companies, aiding in seamless integration into client workflows and databases.</p>
+        <img src="https://img.icons8.com/ios-filled/100/calculator.png" alt="Tax Preparation">
+        <h3>Tax Preparation</h3>
+        <p>Compliance-ready tax filing support for individuals, startups, and international businesses.</p>
+      </div>
+
+      <div class="service-box">
+        <img src="https://img.icons8.com/ios-filled/100/strategy-board.png" alt="Advisory">
+        <h3>Advisory</h3>
+        <p>Strategic financial guidance, cost structuring, and investment readiness support from experts.</p>
       </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Finology Nexus. All rights reserved. | Your growth, our expertise.
+    <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
   </footer>
 
 </body>
