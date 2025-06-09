@@ -8,38 +8,51 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
+    :root {
+      --primary: #0077cc;
+      --secondary: #00c6ff;
+      --bg: #f7fafd;
+      --text: #1f2937;
+      --card-bg: #ffffff;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
     }
+
     header {
       position: sticky;
       top: 0;
       z-index: 999;
+      background: white;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #ffffff;
-      padding: 20px 40px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    header .logo-group {
+
+    .logo-group {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    header img {
+
+    .logo-group img {
       height: 40px;
     }
-    header .company-name {
-      font-size: 20px;
+
+    .company-name {
+      font-size: 22px;
       font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      background: linear-gradient(to right, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       color: transparent;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -47,93 +60,106 @@
       padding: 0;
       margin: 0;
     }
+
     nav a {
       text-decoration: none;
-      color: #333;
+      color: var(--text);
       font-weight: 600;
       position: relative;
+      transition: color 0.3s;
     }
-    nav a:hover::after {
-      width: 100%;
+
+    nav a:hover {
+      color: var(--primary);
     }
-    nav a:hover,
-    nav a:focus {
-      color: #0077cc;
-    }
+
     .hero {
       text-align: center;
       padding: 100px 20px 80px;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
     }
+
     .hero h1 {
-      font-size: 48px;
+      font-size: 50px;
+      font-weight: 700;
       margin-bottom: 20px;
     }
+
     .hero p {
       font-size: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: auto;
     }
+
     .section {
-      padding: 80px 40px;
+      padding: 80px 20px;
       text-align: center;
     }
+
     .section h2 {
       font-size: 36px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
+
     .features, .why-us {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
+      padding: 0 20px;
     }
+
     .feature, .why-item {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
-      text-align: center;
+      background: var(--card-bg);
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
     }
+
+    .feature:hover, .why-item:hover {
+      transform: translateY(-5px);
+    }
+
     .feature i, .why-item i {
-      font-size: 32px;
+      font-size: 34px;
+      color: var(--primary);
       margin-bottom: 12px;
-      color: #0077cc;
     }
+
     .feature h3, .why-item h3 {
-      margin-bottom: 10px;
       font-size: 20px;
+      margin-bottom: 10px;
     }
+
     .feature p, .why-item p {
       font-size: 15px;
       color: #555;
     }
+
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      flex-direction: column;
-      gap: 10px;
+      padding: 40px 20px;
+      text-align: center;
     }
+
     .socials a {
       color: white;
-      margin-right: 20px;
+      margin: 0 12px;
       font-size: 20px;
       transition: color 0.3s;
     }
+
     .socials a:hover {
-      color: #00c6ff;
+      color: var(--secondary);
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
@@ -196,9 +222,9 @@
   <footer>
     <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
     <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
 
