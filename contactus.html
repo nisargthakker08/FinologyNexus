@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Finology Nexus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finology Nexus | Contact</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <style>
@@ -50,73 +50,67 @@
     nav a:hover {
       color: #0077cc;
     }
-    .hero {
+    .contact-top {
+      text-align: center;
+      padding: 80px 20px 40px;
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
-      padding: 100px 40px 60px;
-      text-align: center;
     }
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+    .contact-top h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
     }
-    .hero p {
-      font-size: 20px;
-      max-width: 720px;
-      margin: auto;
-    }
-    .section {
-      padding: 60px 40px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .form-group input,
-    .form-group textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-    .cta-btn {
-      display: inline-block;
-      padding: 15px 30px;
-      background: #0077cc;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-    .cta-btn:hover {
-      background: #005fa3;
-    }
-    .contact-info {
-      margin-top: 40px;
-      text-align: center;
+    .contact-top p {
       font-size: 18px;
     }
-    .contact-info a {
+    .highlight-email {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      background: white;
       color: #0077cc;
+      padding: 10px 20px;
+      border-radius: 30px;
       text-decoration: none;
     }
-    .contact-info a:hover {
-      text-decoration: underline;
+    .highlight-email:hover {
+      background: #f0f8ff;
+    }
+    .contact-form-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+    input, textarea {
+      padding: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+    }
+    button {
+      padding: 15px;
+      font-size: 16px;
+      background: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005fa3;
     }
     footer {
       background: #1f2937;
@@ -153,36 +147,19 @@
     </nav>
   </header>
 
-  <div class="hero" data-aos="fade-in">
-    <h1>Let’s Get in Touch</h1>
-    <p>Whether you have questions or are ready to collaborate, we’d love to hear from you.</p>
-  </div>
+  <section class="contact-top" data-aos="fade-down">
+    <h2>Start a Conversation</h2>
+    <p>We’re here to help. Drop us a message and we’ll get back shortly.</p>
+    <a href="mailto:info@finologynexus.online" class="highlight-email">info@finologynexus.online</a>
+  </section>
 
-  <section class="section" data-aos="fade-up">
+  <section class="contact-form-section" data-aos="fade-up">
     <form action="mailto:info@finologynexus.online" method="POST" enctype="text/plain">
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="company">Company (Optional)</label>
-        <input type="text" id="company" name="company" />
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      <button type="submit" class="cta-btn">Send Message</button>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
-
-    <div class="contact-info">
-      <p>Email us directly at <a href="mailto:info@finologynexus.online">info@finologynexus.online</a></p>
-      <p>Follow us on <a href="#">LinkedIn</a> for updates and insights.</p>
-    </div>
   </section>
 
   <footer>
