@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Finology Nexus services – Bookkeeping, tax prep, research, data enrichment, financial support & more." />
   <title>Finology Nexus | Services</title>
-  <meta name="description" content="Explore the comprehensive outsourcing services offered by Finology Nexus – your partner in financial research, operations, and data-driven support." />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="Finology Nexus services, financial outsourcing, data support, fintech services">
+  <meta name="author" content="Finology Nexus">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Finology Nexus - Services">
+  <meta property="og:description" content="Discover our full range of outsourcing services built for fintech, investment, and data-driven companies." />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
+      background: #f9fbfd;
       color: #333;
     }
     header {
@@ -21,12 +29,12 @@
       padding: 20px 40px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    header .logo-group {
+    .logo-group {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    header img {
+    .logo-group img {
       height: 40px;
     }
     .company-name {
@@ -51,54 +59,73 @@
     nav a:hover {
       color: #0077cc;
     }
-    .hero {
+
+    .services-header {
+      text-align: center;
+      padding: 80px 20px 30px;
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
-      text-align: center;
-      padding: 80px 20px 40px;
     }
-    .hero h1 {
+    .services-header h2 {
       font-size: 42px;
       margin-bottom: 10px;
     }
-    .hero p {
+    .services-header p {
       font-size: 18px;
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
     }
-    .services-section {
-      padding: 60px 20px;
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 40px;
       max-width: 1200px;
       margin: auto;
     }
-    .service-box {
+    .service-card {
       background: #fff;
-      border-radius: 16px;
       padding: 30px;
-      margin-bottom: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .service-box h2 {
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .service-card i {
+      font-size: 36px;
       color: #0077cc;
+      margin-bottom: 15px;
+    }
+    .service-card h3 {
+      font-size: 22px;
       margin-bottom: 10px;
     }
-    .service-box p {
-      color: #555;
+    .service-card p {
+      font-size: 15px;
       line-height: 1.6;
+      color: #555;
     }
+
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 20px;
-      text-align: center;
+      padding: 30px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
-    footer .socials a {
+    .socials a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
-    footer .socials a:hover {
+    .socials a:hover {
       color: #00c6ff;
     }
   </style>
@@ -106,7 +133,7 @@
 <body>
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
@@ -119,49 +146,56 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Outsourcing Solutions Tailored for Progress</h1>
-    <p>Whether you're scaling operations or optimizing workflows, Finology Nexus empowers your team with precision-driven services and reliable support.</p>
+  <section class="services-header">
+    <h2>Our Services</h2>
+    <p>From finance to data, we deliver precise and scalable solutions tailored to your operational needs.</p>
   </section>
 
-  <section class="services-section">
-    <div class="service-box">
-      <h2>Financial Research & Analysis</h2>
-      <p>Our team delivers high-quality financial research including data extraction, ratio analysis, financial modeling, and industry benchmarking. Whether it’s for credit assessment, investor documentation, or market evaluation, we provide strategic insights tailored to your objectives.</p>
+  <section class="services-grid">
+    <div class="service-card">
+      <i class="fas fa-book"></i>
+      <h3>Bookkeeping & Reporting</h3>
+      <p>Accurate and timely financial records, reconciliations, and reporting support to help you maintain clean books and informed decisions.</p>
     </div>
-
-    <div class="service-box">
-      <h2>Bookkeeping & Transactional Support</h2>
-      <p>We offer full-spectrum bookkeeping support – from ledger entries and reconciliations to accounts payable and receivable processing. Our accuracy-driven approach ensures up-to-date financials and clear records for audits or decision-making.</p>
+    <div class="service-card">
+      <i class="fas fa-file-invoice-dollar"></i>
+      <h3>Tax Preparation Support</h3>
+      <p>Assistance in organizing tax documents, creating schedules, and prepping deliverables for CPAs and compliance consultants.</p>
     </div>
-
-    <div class="service-box">
-      <h2>Tax Preparation Support</h2>
-      <p>Our experts assist in organizing financial data, preparing working papers, and compiling reports to support your tax professionals. We help streamline the preparation phase for faster and more compliant filings.</p>
+    <div class="service-card">
+      <i class="fas fa-magnifying-glass-chart"></i>
+      <h3>Equity & Credit Research</h3>
+      <p>From models to reports, we assist in data gathering, market comps, and insights to support analysts in high-quality research output.</p>
     </div>
-
-    <div class="service-box">
-      <h2>Data Scraping & Information Capture</h2>
-      <p>We build robust workflows for extracting and aggregating structured or unstructured data from trusted sources, platforms, or regulatory sites — tailored for custom dashboards, analytics, and research models.</p>
+    <div class="service-card">
+      <i class="fas fa-database"></i>
+      <h3>Data Scraping & Structuring</h3>
+      <p>We automate data collection from structured/unstructured sources and convert it into usable formats for BI, analysis, and visualization.</p>
     </div>
-
-    <div class="service-box">
-      <h2>Process Support & Task Management</h2>
-      <p>From document management and validation workflows to communication tracking and system updates — our team integrates into your process ecosystem, delivering on-time, audit-ready outputs with minimal hand-holding.</p>
+    <div class="service-card">
+      <i class="fas fa-chart-line"></i>
+      <h3>Financial Analysis Support</h3>
+      <p>Enhance your internal processes with benchmarking, ratio analysis, variance reports, and scenario modeling built by our experts.</p>
     </div>
-
-    <div class="service-box">
-      <h2>Why Teams Trust Us</h2>
-      <p>Our clients count on us for our accuracy, responsiveness, and ability to scale. We don’t just take instructions — we take ownership. Finology Nexus combines domain understanding with operational agility to deliver real outcomes consistently.</p>
+    <div class="service-card">
+      <i class="fas fa-handshake"></i>
+      <h3>Process Enhancement & Virtual Assistance</h3>
+      <p>Need an extended team? We offer dedicated resources who can plug into your operations and drive consistency and efficiency.</p>
     </div>
   </section>
 
   <footer>
     <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
     <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com/finologynexus/" target="_blank" title="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://www.instagram.com/finologynexus/" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
   </footer>
 </body>
