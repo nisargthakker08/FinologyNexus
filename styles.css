@@ -490,3 +490,19 @@ nav a:hover::after {
   50% { transform: translateY(-8px); }
   100% { transform: translateY(0); }
 }
+.socials a {
+  color: white;
+  margin-right: 20px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none; /* prevent borders */
+}
+
+.socials a i {
+  pointer-events: none;
+  line-height: 1; /* prevent baseline shift */
+  border: none;
+}
