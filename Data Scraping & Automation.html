@@ -93,16 +93,8 @@
       color: #0077cc;
       font-size: 22px;
       margin-top: 40px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       border-left: 4px solid #00c6ff;
       padding-left: 12px;
-    }
-
-    h2 i {
-      font-size: 18px;
-      color: #00c6ff;
     }
 
     p {
@@ -113,23 +105,54 @@
     footer {
       background: #1f2937;
       color: white;
+      padding: 40px 20px 10px;
       margin-top: 60px;
-      font-size: 15px;
     }
 
-    footer a {
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-group img {
+      height: 30px;
+    }
+
+    .footer-logo-group span {
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .footer-socials a {
       color: white;
-      text-decoration: none;
-    }
-
-    footer .socials a {
       margin: 0 8px;
       font-size: 20px;
       transition: color 0.3s;
     }
 
-    footer .socials a:hover {
+    .footer-socials a:hover {
       color: #00c6ff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -162,7 +185,7 @@
       Our team ensures the data is delivered clean, reliable, and ready to use — no manual overhead.
     </p>
 
-    <h2><i class="fas fa-robot"></i> Our Capabilities</h2>
+    <h2>Our Capabilities</h2>
     <p>
       • Web scraping scripts (Python/Node.js)<br/>
       • Pagination, dynamic content, and login-handling<br/>
@@ -171,7 +194,7 @@
       • Email or API-based delivery
     </p>
 
-    <h2><i class="fas fa-check-double"></i> Why Finology Nexus?</h2>
+    <h2>Why Finology Nexus?</h2>
     <p>
       We combine technical precision with financial context. Our scrapers aren't just code — they're business-aware, scalable, and error-tolerant.
       We validate each step so you're not stuck with broken pipelines or dirty data.
@@ -179,25 +202,20 @@
   </div>
 
   <footer>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; padding: 20px 10px;">
-      <div style="flex: 1 1 250px; text-align: left;">
-        <img src="Finology Nexus Logo.png" alt="Logo" style="height: 35px; vertical-align: middle;">
-        <span style="margin-left: 10px; font-size: 18px;">Finology Nexus</span>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
       </div>
-      <div style="flex: 1 1 250px; text-align: center; font-size: 15px;">
-        <a href="index.html">Home</a>
-        <a href="services.html" style="margin: 0 10px;">Services</a>
-        <a href="blog.html" style="margin: 0 10px;">Blog</a>
-        <a href="aboutus.html" style="margin: 0 10px;">About</a>
-        <a href="contactus.html">Contact</a>
-      </div>
-      <div class="socials" style="flex: 1 1 250px; text-align: right;">
+      <div class="footer-socials">
         <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <div style="text-align: center; padding: 10px; font-size: 13px;">&copy; 2025 Finology Nexus. All rights reserved.</div>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
+    </div>
   </footer>
 
 </body>
