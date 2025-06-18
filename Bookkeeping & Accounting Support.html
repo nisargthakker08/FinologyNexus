@@ -75,10 +75,6 @@
       color: #0077cc;
     }
 
-    nav a.active::after {
-      display: none;
-    }
-
     .hero-banner {
       background: linear-gradient(135deg, #0077cc, #00c6ff);
       color: white;
@@ -111,11 +107,6 @@
       gap: 10px;
     }
 
-    h2 i {
-      font-size: 20px;
-      color: #00c6ff;
-    }
-
     p {
       color: #555;
       line-height: 1.7;
@@ -124,41 +115,60 @@
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 15px;
-      margin-top: 60px;
+      padding: 40px 20px 10px;
     }
 
-    footer .socials {
-      margin-top: 10px;
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 10px;
     }
 
-    footer .socials a {
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-group img {
+      height: 30px;
+    }
+
+    .footer-logo-group span {
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .footer-socials a {
       color: white;
-      margin: 0 10px;
+      margin: 0 8px;
       font-size: 20px;
       transition: color 0.3s;
     }
 
-    footer .socials a:hover {
+    .footer-socials a:hover {
       color: #00c6ff;
     }
 
-    @media (max-width: 600px) {
-      .hero-banner h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 20px;
-      }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
@@ -173,14 +183,14 @@
   </header>
 
   <div class="hero-banner">
-    <h1><i class="fas fa-chart-bar"></i> Financial Research & Analytics</h1>
+    <h1>Financial Research & Analytics</h1>
     <p>Customized insights to fuel smarter strategies and sharper decisions.</p>
   </div>
 
   <div class="container">
     <p>At Finology Nexus, we specialize in turning financial data into actionable intelligence. Our Financial Research & Analytics services are designed for decision-makers who need clarity, context, and confidence. We support investment teams, founders, and product heads with reliable and on-demand insights tailored to your specific goals.</p>
 
-    <h2><i class="fas fa-cogs"></i> What We Offer</h2>
+    <h2>What We Offer</h2>
     <p>
       • Company profiling and financial statement analysis<br/>
       • Peer benchmarking and ratio analysis<br/>
@@ -189,18 +199,26 @@
       • Report generation and investor decks
     </p>
 
-    <h2><i class="fas fa-star"></i> Why Choose Us?</h2>
+    <h2>Why Choose Us?</h2>
     <p>
       We blend precision, speed, and flexibility — helping you scale your research bandwidth without the cost or complexity of in-house teams. Whether it’s a one-off project or continuous support, we act as a true extension of your thinking.
     </p>
   </div>
 
   <footer>
-    <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
     </div>
   </footer>
 </body>
