@@ -9,26 +9,153 @@
   <meta name="author" content="Finology Nexus" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f9fbfc; color: #333; }
-    header { background: #fff; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    .logo-group { display: flex; align-items: center; gap: 10px; }
-    header img { height: 40px; }
-    .company-name { font-size: 20px; font-weight: bold; background: linear-gradient(to right, #0077cc, #00c6ff); -webkit-background-clip: text; color: transparent; }
-    nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-    nav a { text-decoration: none; color: #333; font-weight: 600; position: relative; }
-    nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: #0077cc; transition: width 0.3s; }
-    nav a:hover::after { width: 100%; }
-    .page-header { background-color: #0077cc; color: white; padding: 2rem 1rem; text-align: center; }
-    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-    .blog-post { background: white; margin-bottom: 2rem; padding: 1.5rem; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); transition: transform 0.3s; }
-    .blog-post:hover { transform: translateY(-5px); }
-    .blog-post h2 { margin-top: 0; color: #0077cc; }
-    .blog-post p { color: #555; }
-    .read-more { display: inline-block; margin-top: 1rem; color: #00c6ff; text-decoration: none; font-weight: 600; }
-    .read-more:hover { text-decoration: underline; }
-    footer { background: #1f2937; color: white; padding: 30px 20px; text-align: center; }
-    footer .socials a { color: white; margin: 0 10px; font-size: 20px; transition: color 0.3s; }
-    footer .socials a:hover { color: #00c6ff; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fbfc;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #0077cc;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #0077cc;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0077cc, #00c6ff);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero-banner h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .hero-banner p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .blog-post {
+      background: white;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-post h2 {
+      margin-top: 0;
+      color: #0077cc;
+    }
+
+    .blog-post p {
+      color: #555;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #00c6ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #1f2937;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    footer .socials a:hover {
+      color: #00c6ff;
+    }
   </style>
 </head>
 <body>
@@ -41,14 +168,14 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
         <li><a href="aboutus.html">About Us</a></li>
         <li><a href="contactus.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="page-header">
+  <section class="hero-banner">
     <h1>Insights from Finology Nexus</h1>
     <p>Smart takes on finance, outsourcing, and operations</p>
   </section>
