@@ -101,6 +101,14 @@
       height: auto;
       border-radius: 12px;
       margin-bottom: 1rem;
+      display: block;
+    }
+    .blog-post .fallback-icon {
+      font-size: 60px;
+      color: #0077cc;
+      margin-bottom: 1rem;
+      display: none;
+      text-align: center;
     }
     .blog-post h2 {
       margin-top: 0;
@@ -148,7 +156,7 @@
       <ul>
         <li><a href="index.html" class="nav-link home">Home</a></li>
         <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link blog" aria-current="page">Blog</a></li>
+        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
         <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
         <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
       </ul>
@@ -162,14 +170,20 @@
 
   <div class="container">
     <div class="blog-post">
-      <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters" alt="Why Startups Need Financial Research Support">
+      <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters"
+           alt="Why Startups Need Financial Research Support"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <div class="fallback-icon"><i class="fas fa-chart-line"></i></div>
       <h2>Why Growing Startups Need Financial Research Support</h2>
       <p>Startups often face rapid decision-making, and having accurate, timely financial insights can be a game-changer. From market benchmarking to customized data models, here's why financial research should be part of your scaling strategy.</p>
       <a class="read-more" href="blog1.html">Read More</a>
     </div>
 
     <div class="blog-post">
-      <img src="https://via.placeholder.com/900x400/00c6ff/ffffff?text=What+To+Outsource+Early" alt="Things Founders Should Outsource Early">
+      <img src="https://via.placeholder.com/900x400/00c6ff/ffffff?text=What+To+Outsource+Early"
+           alt="Things Founders Should Outsource Early"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <div class="fallback-icon"><i class="fas fa-tasks"></i></div>
       <h2>3 Things Founders Should Outsource Early</h2>
       <p>From bookkeeping to compliance tracking, discover which tasks you can delegate early to boost productivity and reduce operational headaches — without losing control of your business.</p>
       <a class="read-more" href="blog2.html">Read More</a>
