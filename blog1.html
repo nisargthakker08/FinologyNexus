@@ -81,6 +81,7 @@
     }
     nav a.active {
       color: #0077cc;
+      text-decoration: none !important;
     }
     nav a.active::after {
       width: 100%;
@@ -103,12 +104,19 @@
 
     .thumbnail {
       max-width: 1000px;
-      margin: 20px auto;
+      margin: 30px auto 0;
       padding: 0 20px;
+      text-align: center;
     }
     .thumbnail img {
       width: 100%;
       border-radius: 12px;
+      display: block;
+    }
+    .thumbnail i {
+      font-size: 60px;
+      color: #0077cc;
+      margin-top: 30px;
     }
 
     .container {
@@ -130,8 +138,8 @@
     }
     .back-link a {
       color: #0077cc;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
     }
     .back-link a:hover {
       text-decoration: underline;
@@ -179,7 +187,8 @@
   </div>
 
   <div class="thumbnail">
-    <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters" alt="Financial Research Support" />
+    <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters" alt="Financial Research Support" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline-block';">
+    <i id="fallback-icon" class="fas fa-chart-line" style="display:none;"></i>
   </div>
 
   <div class="container">
