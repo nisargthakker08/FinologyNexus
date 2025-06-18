@@ -13,6 +13,7 @@
       background: #f9fbfc;
       color: #333;
     }
+
     header {
       background: #fff;
       padding: 20px 40px;
@@ -20,15 +21,21 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     header img {
       height: 40px;
     }
+
     .company-name {
       font-size: 20px;
       font-weight: bold;
@@ -36,6 +43,7 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -43,19 +51,18 @@
       margin: 0;
       padding: 0;
     }
+
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
       position: relative;
     }
+
     nav a:hover,
     nav a.active {
       color: #0077cc;
       font-weight: 700;
-    }
-    nav a::after {
-      display: none;
     }
 
     .page-header {
@@ -63,13 +70,28 @@
       color: white;
       padding: 60px 20px;
       text-align: center;
+      box-shadow: inset 0 -1px 6px rgba(0,0,0,0.1);
     }
+
     .page-header h1 {
       font-size: 2.5rem;
       margin-bottom: 10px;
+      animation: fadeInDown 1s ease-in-out;
     }
+
     .page-header p {
       font-size: 1.1rem;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .services {
@@ -78,10 +100,12 @@
       padding: 0 20px;
       text-align: center;
     }
+
     .services h2 {
       font-size: 2rem;
       color: #0077cc;
     }
+
     .services p {
       color: #555;
       margin-bottom: 30px;
@@ -92,18 +116,23 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
+
     .service {
       perspective: 1000px;
+      cursor: pointer;
     }
+
     .card-inner {
       position: relative;
       height: 250px;
       transform-style: preserve-3d;
       transition: transform 0.6s;
     }
+
     .service:hover .card-inner {
       transform: rotateY(180deg);
     }
+
     .card-front, .card-back {
       backface-visibility: hidden;
       position: absolute;
@@ -117,11 +146,12 @@
       padding: 25px;
       box-sizing: border-box;
     }
+
     .card-front {
       background: white;
       z-index: 2;
-      transform: rotateY(0deg);
     }
+
     .card-back {
       background: #0077cc;
       transform: rotateY(180deg);
@@ -131,22 +161,26 @@
       font-weight: 600;
       font-size: 1.1rem;
     }
+
     .card-front i {
       font-size: 2rem;
       color: #00c6ff;
       margin-bottom: 12px;
     }
+
     .card-front h3 {
       color: #0077cc;
       margin: 8px 0;
       font-size: 1.1rem;
     }
+
     .card-front p {
       color: #555;
       font-size: 14.5px;
       line-height: 1.6;
       margin: 0;
     }
+
     .service a {
       text-decoration: none;
       color: inherit;
@@ -160,12 +194,14 @@
       padding: 30px 20px;
       margin-top: 60px;
     }
+
     footer .socials a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
+
     footer .socials a:hover {
       color: #00c6ff;
     }
@@ -174,6 +210,9 @@
       nav ul {
         flex-wrap: wrap;
         justify-content: center;
+      }
+      .card-inner {
+        height: auto;
       }
     }
   </style>
@@ -187,11 +226,11 @@
   </div>
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="aboutus.html">About Us</a></li>
-      <li><a href="contactus.html">Contact</a></li>
+      <li><a href="index.html" class="nav-link home">Home</a></li>
+      <li><a href="services.html" class="nav-link services">Services</a></li>
+      <li><a href="blog.html" class="nav-link blog">Blog</a></li>
+      <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+      <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -282,6 +321,26 @@
     <a href="https://instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
+
+<script>
+  const path = window.location.pathname;
+  const file = path.substring(path.lastIndexOf('/') + 1);
+  const links = {
+    'index.html': 'home',
+    'services.html': 'services',
+    'blog.html': 'blog',
+    'blog1.html': 'blog',
+    'blog2.html': 'blog',
+    'aboutus.html': 'about',
+    'contactus.html': 'contact'
+  };
+
+  const current = links[file];
+  if (current) {
+    const activeLink = document.querySelector(`.nav-link.${current}`);
+    if (activeLink) activeLink.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
