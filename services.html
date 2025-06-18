@@ -44,7 +44,7 @@
       padding: 0;
     }
     nav a {
-      text-decoration: none;
+      text-decoration: none !important;
       color: #333;
       font-weight: 600;
       position: relative;
@@ -92,27 +92,53 @@
       gap: 30px;
     }
     .service {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .card-inner {
       background: white;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s;
-      text-align: left;
-      cursor: pointer;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
     }
-    .service:hover {
-      transform: translateY(-6px);
+    .service:hover .card-inner {
+      transform: rotateY(180deg);
     }
-    .service i {
+    .card-front, .card-back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .card-front {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: #0077cc;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .card-inner {
+      position: relative;
+      height: 250px;
+    }
+    .card-inner i {
       font-size: 2rem;
       color: #00c6ff;
       margin-bottom: 15px;
     }
-    .service h3 {
+    .card-inner h3 {
       color: #0077cc;
       margin: 10px 0 5px;
     }
-    .service p {
+    .card-inner p {
       color: #555;
       font-size: 15px;
       line-height: 1.6;
@@ -176,41 +202,83 @@
   <p>From hands-on financial support to automation workflows, our team helps your business stay lean and move fast — without sacrificing quality.</p>
 
   <div class="service-grid">
-    <a href="Financial Research & Analytics.html" class="service">
-      <i class="fas fa-chart-line"></i>
-      <h3>Financial Research & Analytics</h3>
-      <p>We deliver deep financial insights — from company analysis and peer benchmarking to valuation and data modeling — tailored to your context.</p>
-    </a>
+    <div class="service" onclick="location.href='Financial Research & Analytics.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-chart-line"></i>
+          <h3>Financial Research & Analytics</h3>
+          <p>Deep insights — company analysis, benchmarking, valuation, and modeling tailored to your context.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
 
-    <a href="Bookkeeping & Accounting Support.html" class="service">
-      <i class="fas fa-book"></i>
-      <h3>Bookkeeping & Accounting Support</h3>
-      <p>Get accurate books, clean reconciliations, and stress-free reporting — whether for internal tracking or investor readiness.</p>
-    </a>
+    <div class="service" onclick="location.href='Bookkeeping & Accounting Support.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-book"></i>
+          <h3>Bookkeeping & Accounting Support</h3>
+          <p>Accurate books, clean reconciliations, stress-free reporting — for internal or investor use.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
 
-    <a href="Tax Preparation & Reporting.html" class="service">
-      <i class="fas fa-file-invoice-dollar"></i>
-      <h3>Tax Preparation & Reporting</h3>
-      <p>We support your accounting firm or internal team with structured documentation, data gathering, and schedule prep for filings.</p>
-    </a>
+    <div class="service" onclick="location.href='Tax Preparation & Reporting.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Tax Preparation & Reporting</h3>
+          <p>Structured documentation, schedule prep, and support for your accounting or internal teams.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
 
-    <a href="Data Scraping & Automation.html" class="service">
-      <i class="fas fa-database"></i>
-      <h3>Data Scraping & Automation</h3>
-      <p>We extract structured data from public sources or client portals using scalable, script-driven workflows — with built-in validations.</p>
-    </a>
+    <div class="service" onclick="location.href='Data Scraping & Automation.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-database"></i>
+          <h3>Data Scraping & Automation</h3>
+          <p>Script-driven workflows for data extraction from public portals — with built-in validations.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
 
-    <a href="Process Documentation & Workflow Support.html" class="service">
-      <i class="fas fa-cogs"></i>
-      <h3>Process Documentation & Workflow Support</h3>
-      <p>Our team executes SOP-driven tasks with clarity and consistency — from data tagging to quality control to audit prep.</p>
-    </a>
+    <div class="service" onclick="location.href='Process Documentation & Workflow Support.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-cogs"></i>
+          <h3>Process Documentation & Workflow Support</h3>
+          <p>SOP-driven task support from tagging to audits — executed with clarity and consistency.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
 
-    <a href="Outsourcing Partnership.html" class="service">
-      <i class="fas fa-handshake"></i>
-      <h3>Outsourcing Partnership</h3>
-      <p>We function as your extended team — integrating seamlessly into your stack, processes, and pace — with a focus on dependability.</p>
-    </a>
+    <div class="service" onclick="location.href='Outsourcing Partnership.html'">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-handshake"></i>
+          <h3>Outsourcing Partnership</h3>
+          <p>We integrate into your stack and pace, offering dependable long-term operational support.</p>
+        </div>
+        <div class="card-back">
+          <span>Read More</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
