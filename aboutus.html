@@ -10,7 +10,7 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "s1b20qvd2s");
-</script>
+  </script>
 
   <!-- SEO Meta Tags -->
   <meta name="title" content="Finology Nexus - Financial Research & Outsourcing Partner">
@@ -86,7 +86,6 @@
       color: #0077cc;
     }
 
-    /* Hamburger Toggle */
     .menu-toggle {
       display: none;
       cursor: pointer;
@@ -130,6 +129,7 @@
       max-width: 800px;
       margin: auto;
     }
+
     .section {
       padding: 60px 40px;
       text-align: center;
@@ -145,6 +145,7 @@
       font-size: 18px;
       color: #555;
     }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -215,11 +216,11 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="aboutus.html" class="active">About Us</a></li>
-        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="index.html" class="nav-link home">Home</a></li>
+        <li><a href="services.html" class="nav-link services">Services</a></li>
+        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
+        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -271,6 +272,26 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  <!-- Active Nav Script -->
+  <script>
+    const path = window.location.pathname;
+    const file = path.substring(path.lastIndexOf('/') + 1);
+    const links = {
+      'index.html': 'home',
+      'services.html': 'services',
+      'blog.html': 'blog',
+      'blog1.html': 'blog',
+      'blog2.html': 'blog',
+      'aboutus.html': 'about',
+      'contactus.html': 'contact'
+    };
+    const current = links[file];
+    if (current) {
+      const activeLink = document.querySelector(`.nav-link.${current}`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
