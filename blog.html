@@ -16,7 +16,6 @@
       background: #f9fbfc;
       color: #333;
     }
-
     header {
       background: #fff;
       padding: 20px 40px;
@@ -25,17 +24,14 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
     .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
     header img {
       height: 40px;
     }
-
     .company-name {
       font-size: 20px;
       font-weight: bold;
@@ -43,7 +39,6 @@
       -webkit-background-clip: text;
       color: transparent;
     }
-
     nav ul {
       list-style: none;
       display: flex;
@@ -51,14 +46,12 @@
       margin: 0;
       padding: 0;
     }
-
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
       position: relative;
     }
-
     nav a::after {
       content: '';
       position: absolute;
@@ -69,34 +62,21 @@
       background: #0077cc;
       transition: width 0.3s;
     }
-
     nav a:hover::after {
       width: 100%;
     }
-
     nav a.active {
       color: #0077cc;
     }
-
     nav a.active::after {
       width: 100%;
     }
 
-    .hero-banner {
-      background: linear-gradient(135deg, #0077cc, #00c6ff);
+    .page-header {
+      background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
-      padding: 60px 20px;
+      padding: 2rem 1rem;
       text-align: center;
-    }
-
-    .hero-banner h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .hero-banner p {
-      font-size: 1.2rem;
-      margin-top: 10px;
     }
 
     .container {
@@ -113,20 +93,22 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.05);
       transition: transform 0.3s;
     }
-
     .blog-post:hover {
       transform: translateY(-5px);
     }
-
+    .blog-post img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
     .blog-post h2 {
       margin-top: 0;
       color: #0077cc;
     }
-
     .blog-post p {
       color: #555;
     }
-
     .read-more {
       display: inline-block;
       margin-top: 1rem;
@@ -134,7 +116,6 @@
       text-decoration: none;
       font-weight: 600;
     }
-
     .read-more:hover {
       text-decoration: underline;
     }
@@ -145,20 +126,19 @@
       padding: 30px 20px;
       text-align: center;
     }
-
     footer .socials a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
-
     footer .socials a:hover {
       color: #00c6ff;
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo-group">
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
@@ -166,28 +146,30 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="index.html" class="nav-link home">Home</a></li>
+        <li><a href="services.html" class="nav-link services">Services</a></li>
+        <li><a href="blog.html" class="nav-link blog" aria-current="page">Blog</a></li>
+        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="hero-banner">
+  <section class="page-header">
     <h1>Insights from Finology Nexus</h1>
     <p>Smart takes on finance, outsourcing, and operations</p>
   </section>
 
   <div class="container">
     <div class="blog-post">
+      <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters" alt="Why Startups Need Financial Research Support">
       <h2>Why Growing Startups Need Financial Research Support</h2>
       <p>Startups often face rapid decision-making, and having accurate, timely financial insights can be a game-changer. From market benchmarking to customized data models, here's why financial research should be part of your scaling strategy.</p>
       <a class="read-more" href="blog1.html">Read More</a>
     </div>
 
     <div class="blog-post">
+      <img src="https://via.placeholder.com/900x400/00c6ff/ffffff?text=What+To+Outsource+Early" alt="Things Founders Should Outsource Early">
       <h2>3 Things Founders Should Outsource Early</h2>
       <p>From bookkeeping to compliance tracking, discover which tasks you can delegate early to boost productivity and reduce operational headaches — without losing control of your business.</p>
       <a class="read-more" href="blog2.html">Read More</a>
@@ -202,5 +184,28 @@
       <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
+
+  <script>
+    const path = window.location.pathname;
+    const file = path.substring(path.lastIndexOf('/') + 1);
+    const links = {
+      'index.html': 'home',
+      'services.html': 'services',
+      'blog.html': 'blog',
+      'blog1.html': 'blog',
+      'blog2.html': 'blog',
+      'aboutus.html': 'about',
+      'contactus.html': 'contact'
+    };
+    const current = links[file];
+    if (current) {
+      const activeLink = document.querySelector(`.nav-link.${current}`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+        activeLink.setAttribute('aria-current', 'page');
+      }
+    }
+  </script>
+
 </body>
 </html>
