@@ -49,18 +49,12 @@
       font-weight: 600;
       position: relative;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #0077cc;
-      transition: width 0.3s;
+    nav a:hover,
+    nav a.active {
+      color: #0077cc;
     }
-    nav a:hover::after {
-      width: 100%;
+    nav a::after {
+      display: none;
     }
 
     .hero-banner {
@@ -85,11 +79,17 @@
     }
     h2 {
       color: #0077cc;
-      font-size: 24px;
-      margin-top: 30px;
+      font-size: 22px;
+      margin-top: 40px;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-left: 4px solid #00c6ff;
+      padding-left: 12px;
+    }
+    h2 i {
+      font-size: 18px;
+      color: #00c6ff;
     }
     p {
       color: #555;
@@ -150,7 +150,7 @@
 
     <h2><i class="fas fa-star"></i> Why Clients Trust Us</h2>
     <p>
-      We believe in dependability above all. Our partnerships are built on proactive delivery, clear documentation, and accountability. From daily task tracking to quarterly reviews, we adapt to how *you* run ops — not the other way around.
+      We believe in dependability above all. Our partnerships are built on proactive delivery, clear documentation, and accountability. From daily task tracking to quarterly reviews, we adapt to how <em>you</em> run ops — not the other way around.
     </p>
   </div>
 
