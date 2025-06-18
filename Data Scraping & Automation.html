@@ -49,18 +49,13 @@
       font-weight: 600;
       position: relative;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #0077cc;
-      transition: width 0.3s;
+    nav a:hover,
+    nav a.active {
+      color: #0077cc;
+      font-weight: 700;
     }
-    nav a:hover::after {
-      width: 100%;
+    nav a::after {
+      display: none;
     }
 
     .hero-banner {
