@@ -49,20 +49,11 @@
       font-weight: 600;
       position: relative;
     }
+    nav a:hover,
+    nav a.active {
+      color: #0077cc;
+    }
     nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #0077cc;
-      transition: width 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a.active::after {
       display: none;
     }
 
@@ -88,11 +79,17 @@
     }
     h2 {
       color: #0077cc;
-      font-size: 24px;
-      margin-top: 30px;
+      font-size: 22px;
+      margin-top: 40px;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-left: 4px solid #00c6ff;
+      padding-left: 12px;
+    }
+    h2 i {
+      font-size: 18px;
+      color: #00c6ff;
     }
     p {
       color: #555;
@@ -140,7 +137,9 @@
   </div>
 
   <div class="container">
-    <p>We assist accounting firms and internal finance teams with structured documentation, accurate data gathering, and tax schedule preparation. Our role is to simplify and streamline your tax compliance process so you can meet deadlines confidently and reduce stress during reporting cycles.</p>
+    <p>
+      We assist accounting firms and internal finance teams with structured documentation, accurate data gathering, and tax schedule preparation. Our role is to simplify and streamline your tax compliance process so you can meet deadlines confidently and reduce stress during reporting cycles.
+    </p>
 
     <h2><i class="fas fa-file-invoice-dollar"></i> Our Deliverables</h2>
     <p>
