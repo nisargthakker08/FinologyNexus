@@ -7,7 +7,6 @@
   <meta name="description" content="Discover expert financial research, process support, and customized outsourcing services with Finology Nexus. Partner with us for scalable, dependable solutions.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-
   <style>
     body {
       margin: 0;
@@ -28,7 +27,7 @@
       z-index: 1000;
     }
 
-    header .logo-group {
+    .logo-group {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -38,7 +37,7 @@
       height: 40px;
     }
 
-    header .company-name {
+    .company-name {
       font-size: 20px;
       font-weight: bold;
       background: linear-gradient(to right, #0077cc, #00c6ff);
@@ -152,22 +151,53 @@
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      padding: 40px 20px 10px;
     }
 
-    footer .socials a {
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-group img {
+      height: 30px;
+    }
+
+    .footer-logo-group span {
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .footer-socials a {
       color: white;
-      margin-right: 20px;
+      margin: 0 8px;
       font-size: 20px;
       transition: color 0.3s;
     }
 
-    footer .socials a:hover {
+    .footer-socials a:hover {
       color: #00c6ff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
 
     @media (max-width: 768px) {
@@ -177,8 +207,11 @@
         justify-content: center;
       }
       footer {
-        flex-direction: column;
         text-align: center;
+      }
+      .footer-main {
+        flex-direction: column;
+        align-items: center;
         gap: 15px;
       }
     }
@@ -188,7 +221,7 @@
 
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Company Logo" />
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
@@ -239,11 +272,19 @@
   </section>
 
   <footer>
-    <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
     </div>
   </footer>
 
