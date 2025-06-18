@@ -4,27 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | Finology Nexus</title>
-  <meta name="description" content="Explore specialized services offered by Finology Nexus including financial research, bookkeeping, tax prep, data scraping, and dedicated process support teams.">
+  <meta name="description" content="Explore specialized services offered by Finology Nexus including financial research, bookkeeping, tax prep, data scraping, and dedicated process support teams." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9fbfc; color: #333; }
-    header, footer { background: #fff; padding: 20px 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-    .logo-group { display: flex; align-items: center; gap: 10px; }
-    .company-name { font-size: 20px; font-weight: bold; background: linear-gradient(to right, #0077cc, #00c6ff); -webkit-background-clip: text; color: transparent; }
-    nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
-    nav a { text-decoration: none; color: #333; font-weight: 600; position: relative; }
-    nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background: #0077cc; transition: width 0.3s; }
-    nav a:hover::after, nav a.active::after { width: 100%; }
-    nav a.active { color: #0077cc; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f9fbfc;
+      color: #333;
+    }
+    header {
+      background: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    header img {
+      height: 40px;
+    }
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      background: linear-gradient(to right, #0077cc, #00c6ff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #0077cc;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a.active {
+      color: #0077cc;
+    }
+    nav a.active::after {
+      display: none;
+    }
 
-    .hero {
+    .page-header {
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
-      padding: 80px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    .hero p { font-size: 1.1rem; }
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 1.1rem;
+    }
 
     .services {
       max-width: 1200px;
@@ -32,8 +89,14 @@
       padding: 0 20px;
       text-align: center;
     }
-    .services h2 { font-size: 2rem; color: #0077cc; }
-    .services p { color: #555; margin-bottom: 30px; }
+    .services h2 {
+      font-size: 2rem;
+      color: #0077cc;
+    }
+    .services p {
+      color: #555;
+      margin-bottom: 30px;
+    }
 
     .service-grid {
       display: grid;
@@ -48,7 +111,9 @@
       transition: transform 0.3s;
       text-align: left;
     }
-    .service:hover { transform: translateY(-6px); }
+    .service:hover {
+      transform: translateY(-6px);
+    }
     .service i {
       font-size: 2rem;
       color: #00c6ff;
@@ -58,7 +123,11 @@
       color: #0077cc;
       margin: 10px 0 5px;
     }
-    .service p { color: #555; font-size: 15px; line-height: 1.6; }
+    .service p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
 
     footer {
       background: #1f2937;
@@ -73,11 +142,15 @@
       font-size: 20px;
       transition: color 0.3s;
     }
-    footer .socials a:hover { color: #00c6ff; }
+    footer .socials a:hover {
+      color: #00c6ff;
+    }
 
     @media(max-width: 768px) {
-      header, footer { flex-direction: column; text-align: center; }
-      nav ul { flex-wrap: wrap; justify-content: center; }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -91,15 +164,15 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="aboutus.html">About Us</a></li>
-      <li><a href="contactus.html">Contact</a></li>
+      <li><a href="services.html" class="nav-link services active">Services</a></li>
+      <li><a href="blog.html" class="nav-link blog">Blog</a></li>
+      <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+      <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<section class="hero">
+<section class="page-header">
   <h1>Our Services</h1>
   <p>Built for businesses that value clarity, flexibility, and precision.</p>
 </section>
@@ -155,6 +228,28 @@
     <a href="https://instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
+
+<script>
+  const path = window.location.pathname;
+  const file = path.substring(path.lastIndexOf('/') + 1);
+  const links = {
+    'index.html': 'home',
+    'services.html': 'services',
+    'blog.html': 'blog',
+    'blog1.html': 'blog',
+    'blog2.html': 'blog',
+    'aboutus.html': 'about',
+    'contactus.html': 'contact'
+  };
+  const current = links[file];
+  if (current) {
+    const activeLink = document.querySelector(`.nav-link.${current}`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+      activeLink.setAttribute('aria-current', 'page');
+    }
+  }
+</script>
 
 </body>
 </html>
