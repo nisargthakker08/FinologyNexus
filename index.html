@@ -4,13 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Finology Nexus | Home</title>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "s1b20qvd2s");
-</script>
   <meta name="description" content="Finology Nexus offers expert outsourcing, research, and support solutions for forward-thinking businesses." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -20,6 +13,7 @@
       background-color: #f9fbfc;
       color: #333;
     }
+
     header {
       background: #fff;
       padding: 20px 40px;
@@ -28,14 +22,17 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+
     .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     header img {
       height: 40px;
     }
+
     .company-name {
       font-size: 20px;
       font-weight: bold;
@@ -43,6 +40,7 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -50,12 +48,14 @@
       margin: 0;
       padding: 0;
     }
+
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
       position: relative;
     }
+
     nav a::after {
       content: '';
       position: absolute;
@@ -66,8 +66,13 @@
       background: #0077cc;
       transition: width 0.3s;
     }
+
     nav a:hover::after {
       width: 100%;
+    }
+
+    nav a.active {
+      color: #0077cc;
     }
 
     .hero {
@@ -76,10 +81,12 @@
       background: linear-gradient(to right, #0077cc, #00c6ff);
       color: white;
     }
+
     .hero h1 {
       font-size: 46px;
       margin-bottom: 20px;
     }
+
     .hero p {
       font-size: 20px;
       max-width: 700px;
@@ -90,11 +97,13 @@
       padding: 80px 20px;
       text-align: center;
     }
+
     .section-title {
       font-size: 36px;
       margin-bottom: 20px;
       color: #1f2937;
     }
+
     .section-description {
       max-width: 800px;
       margin: auto;
@@ -108,6 +117,7 @@
       justify-content: center;
       margin-top: 50px;
     }
+
     .feature-box {
       background: #ffffff;
       padding: 30px;
@@ -117,18 +127,22 @@
       text-align: center;
       transition: transform 0.3s;
     }
+
     .feature-box:hover {
       transform: translateY(-5px);
     }
+
     .feature-box i {
       font-size: 32px;
       color: #00aaff;
       margin-bottom: 15px;
     }
+
     .feature-box h3 {
       color: #0077cc;
       margin-bottom: 10px;
     }
+
     .feature-box p {
       color: #555;
     }
@@ -139,12 +153,14 @@
       padding: 30px 20px;
       text-align: center;
     }
+
     footer .socials a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
+
     footer .socials a:hover {
       color: #00c6ff;
     }
@@ -157,14 +173,14 @@
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav>
-  <ul>
-    <li><a href="index.html" class="nav-link home">Home</a></li>
-    <li><a href="services.html" class="nav-link services">Services</a></li>
-    <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-    <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-    <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
-  </ul>
-</nav>
+      <ul>
+        <li><a href="index.html" class="nav-link home">Home</a></li>
+        <li><a href="services.html" class="nav-link services">Services</a></li>
+        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
+        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <section class="hero">
@@ -224,5 +240,26 @@
       <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
   </footer>
+
+  <!-- Navigation Highlight Script -->
+  <script>
+    const path = window.location.pathname;
+    const file = path.substring(path.lastIndexOf('/') + 1);
+    const links = {
+      'index.html': 'home',
+      'services.html': 'services',
+      'blog.html': 'blog',
+      'blog1.html': 'blog',
+      'blog2.html': 'blog',
+      'aboutus.html': 'about',
+      'contactus.html': 'contact'
+    };
+
+    const current = links[file];
+    if (current) {
+      const activeLink = document.querySelector(`.nav-link.${current}`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  </script>
 </body>
 </html>
