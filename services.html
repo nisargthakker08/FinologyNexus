@@ -49,23 +49,11 @@
       font-weight: 600;
       position: relative;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #0077cc;
-      transition: width 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover,
     nav a.active {
       color: #0077cc;
     }
-    nav a.active::after {
+    nav a::after {
       display: none;
     }
 
@@ -110,6 +98,7 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s;
       text-align: left;
+      cursor: pointer;
     }
     .service:hover {
       transform: translateY(-6px);
@@ -131,6 +120,7 @@
     .service a {
       text-decoration: none;
       color: inherit;
+      display: block;
     }
 
     footer {
@@ -162,7 +152,7 @@
 
 <header>
   <div class="logo-group">
-    <img src="Finology Nexus Logo.png" alt="Logo" height="40">
+    <img src="Finology Nexus Logo.png" alt="Logo">
     <span class="company-name">Finology Nexus</span>
   </div>
   <nav>
@@ -186,37 +176,37 @@
   <p>From hands-on financial support to automation workflows, our team helps your business stay lean and move fast — without sacrificing quality.</p>
 
   <div class="service-grid">
-    <a href="financial-research.html" class="service">
+    <a href="Financial Research & Analytics.html" class="service">
       <i class="fas fa-chart-line"></i>
       <h3>Financial Research & Analytics</h3>
       <p>We deliver deep financial insights — from company analysis and peer benchmarking to valuation and data modeling — tailored to your context.</p>
     </a>
 
-    <a href="bookkeeping-support.html" class="service">
+    <a href="Bookkeeping & Accounting Support.html" class="service">
       <i class="fas fa-book"></i>
       <h3>Bookkeeping & Accounting Support</h3>
       <p>Get accurate books, clean reconciliations, and stress-free reporting — whether for internal tracking or investor readiness.</p>
     </a>
 
-    <a href="tax-prep.html" class="service">
+    <a href="Tax Preparation & Reporting.html" class="service">
       <i class="fas fa-file-invoice-dollar"></i>
       <h3>Tax Preparation & Reporting</h3>
       <p>We support your accounting firm or internal team with structured documentation, data gathering, and schedule prep for filings.</p>
     </a>
 
-    <a href="data-scraping.html" class="service">
+    <a href="Data Scraping & Automation.html" class="service">
       <i class="fas fa-database"></i>
       <h3>Data Scraping & Automation</h3>
       <p>We extract structured data from public sources or client portals using scalable, script-driven workflows — with built-in validations.</p>
     </a>
 
-    <a href="process-support.html" class="service">
+    <a href="Process Documentation & Workflow Support.html" class="service">
       <i class="fas fa-cogs"></i>
       <h3>Process Documentation & Workflow Support</h3>
       <p>Our team executes SOP-driven tasks with clarity and consistency — from data tagging to quality control to audit prep.</p>
     </a>
 
-    <a href="outsourcing-partnership.html" class="service">
+    <a href="Outsourcing Partnership.html" class="service">
       <i class="fas fa-handshake"></i>
       <h3>Outsourcing Partnership</h3>
       <p>We function as your extended team — integrating seamlessly into your stack, processes, and pace — with a focus on dependability.</p>
@@ -232,28 +222,6 @@
     <a href="https://instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
   </div>
 </footer>
-
-<script>
-  const path = window.location.pathname;
-  const file = path.substring(path.lastIndexOf('/') + 1);
-  const links = {
-    'index.html': 'home',
-    'services.html': 'services',
-    'blog.html': 'blog',
-    'blog1.html': 'blog',
-    'blog2.html': 'blog',
-    'aboutus.html': 'about',
-    'contactus.html': 'contact'
-  };
-  const current = links[file];
-  if (current) {
-    const activeLink = document.querySelector(`.nav-link.${current}`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-      activeLink.setAttribute('aria-current', 'page');
-    }
-  }
-</script>
 
 </body>
 </html>
