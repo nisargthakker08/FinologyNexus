@@ -49,21 +49,9 @@
       font-weight: 600;
       position: relative;
     }
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #0077cc;
-      transition: width 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a.active::after {
-      display: none;
+    nav a:hover,
+    nav a.active {
+      color: #0077cc;
     }
 
     .hero-banner {
@@ -86,14 +74,23 @@
       margin: 40px auto;
       padding: 0 20px;
     }
+
     h2 {
       color: #0077cc;
-      font-size: 24px;
-      margin-top: 30px;
+      font-size: 22px;
+      margin-top: 40px;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-left: 4px solid #00c6ff;
+      padding-left: 12px;
     }
+
+    h2 i {
+      font-size: 18px;
+      color: #00c6ff;
+    }
+
     p {
       color: #555;
       line-height: 1.7;
@@ -106,12 +103,14 @@
       text-align: center;
       margin-top: 60px;
     }
+
     footer .socials a {
       color: white;
       margin: 0 10px;
       font-size: 20px;
       transition: color 0.3s;
     }
+
     footer .socials a:hover {
       color: #00c6ff;
     }
@@ -140,7 +139,9 @@
   </div>
 
   <div class="container">
-    <p>Behind every smart business decision is a solid understanding of the numbers. At Finology Nexus, we bring clarity and control to your financial operations through efficient bookkeeping and accounting support. Our team helps ensure that your records are reliable, reconciled, and ready for audits, internal use, or investor scrutiny.</p>
+    <p>
+      Behind every smart business decision is a solid understanding of the numbers. At Finology Nexus, we bring clarity and control to your financial operations through efficient bookkeeping and accounting support. Our team helps ensure that your records are reliable, reconciled, and ready for audits, internal use, or investor scrutiny.
+    </p>
 
     <h2><i class="fas fa-file-invoice-dollar"></i> What We Offer</h2>
     <p>
