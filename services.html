@@ -44,7 +44,7 @@
       padding: 0;
     }
     nav a {
-      text-decoration: none !important;
+      text-decoration: none;
       color: #333;
       font-weight: 600;
       position: relative;
@@ -52,6 +52,7 @@
     nav a:hover,
     nav a.active {
       color: #0077cc;
+      font-weight: 700;
     }
     nav a::after {
       display: none;
@@ -93,15 +94,12 @@
     }
     .service {
       perspective: 1000px;
-      cursor: pointer;
     }
     .card-inner {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-      transition: transform 0.6s;
+      position: relative;
+      height: 250px;
       transform-style: preserve-3d;
+      transition: transform 0.6s;
     }
     .service:hover .card-inner {
       transform: rotateY(180deg);
@@ -110,38 +108,44 @@
       backface-visibility: hidden;
       position: absolute;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 25px;
+      box-sizing: border-box;
     }
     .card-front {
+      background: white;
       z-index: 2;
       transform: rotateY(0deg);
     }
     .card-back {
-      transform: rotateY(180deg);
       background: #0077cc;
+      transform: rotateY(180deg);
       color: white;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      border-radius: 12px;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
-    .card-inner {
-      position: relative;
-      height: 250px;
-    }
-    .card-inner i {
+    .card-front i {
       font-size: 2rem;
       color: #00c6ff;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
-    .card-inner h3 {
+    .card-front h3 {
       color: #0077cc;
-      margin: 10px 0 5px;
+      margin: 8px 0;
+      font-size: 1.1rem;
     }
-    .card-inner p {
+    .card-front p {
       color: #555;
-      font-size: 15px;
+      font-size: 14.5px;
       line-height: 1.6;
+      margin: 0;
     }
     .service a {
       text-decoration: none;
@@ -184,10 +188,10 @@
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="nav-link services active">Services</a></li>
-      <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-      <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-      <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="contactus.html">Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -202,83 +206,71 @@
   <p>From hands-on financial support to automation workflows, our team helps your business stay lean and move fast — without sacrificing quality.</p>
 
   <div class="service-grid">
-    <div class="service" onclick="location.href='Financial Research & Analytics.html'">
+    <a href="Financial Research & Analytics.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-chart-line"></i>
           <h3>Financial Research & Analytics</h3>
-          <p>Deep insights — company analysis, benchmarking, valuation, and modeling tailored to your context.</p>
+          <p>Deep insights — from company analysis and benchmarking to valuations & modeling.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
 
-    <div class="service" onclick="location.href='Bookkeeping & Accounting Support.html'">
+    <a href="Bookkeeping & Accounting Support.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-book"></i>
           <h3>Bookkeeping & Accounting Support</h3>
-          <p>Accurate books, clean reconciliations, stress-free reporting — for internal or investor use.</p>
+          <p>Accurate books, clean reconciliations & reporting — for internal or investor use.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
 
-    <div class="service" onclick="location.href='Tax Preparation & Reporting.html'">
+    <a href="Tax Preparation & Reporting.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-file-invoice-dollar"></i>
           <h3>Tax Preparation & Reporting</h3>
-          <p>Structured documentation, schedule prep, and support for your accounting or internal teams.</p>
+          <p>Structured documentation & schedule support to assist filings and deadlines.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
 
-    <div class="service" onclick="location.href='Data Scraping & Automation.html'">
+    <a href="Data Scraping & Automation.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-database"></i>
           <h3>Data Scraping & Automation</h3>
-          <p>Script-driven workflows for data extraction from public portals — with built-in validations.</p>
+          <p>Script-driven workflows for scalable, validated data collection from public sources.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
 
-    <div class="service" onclick="location.href='Process Documentation & Workflow Support.html'">
+    <a href="Process Documentation & Workflow Support.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-cogs"></i>
           <h3>Process Documentation & Workflow Support</h3>
-          <p>SOP-driven task support from tagging to audits — executed with clarity and consistency.</p>
+          <p>SOP-driven execution from tagging and audit prep to quality control tasks.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
 
-    <div class="service" onclick="location.href='Outsourcing Partnership.html'">
+    <a href="Outsourcing Partnership.html" class="service">
       <div class="card-inner">
         <div class="card-front">
           <i class="fas fa-handshake"></i>
           <h3>Outsourcing Partnership</h3>
-          <p>We integrate into your stack and pace, offering dependable long-term operational support.</p>
+          <p>Embedded support model that blends into your operations with long-term dependability.</p>
         </div>
-        <div class="card-back">
-          <span>Read More</span>
-        </div>
+        <div class="card-back">Read More</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
