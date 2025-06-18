@@ -13,20 +13,21 @@ body {
   color: var(--dark-text);
 }
 
+/* ---------- HEADER + NAV ---------- */
 header {
-  background-color: var(--primary-color);
+  background-color: var(--white);
   padding: 2rem 1rem;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--white);
-  transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
 }
 
 header img.logo {
   height: 60px;
+  object-fit: contain;
   margin-bottom: 1rem;
 }
 
@@ -82,6 +83,7 @@ nav a.active {
   border-bottom: 2px solid var(--accent-color);
 }
 
+/* ---------- HERO SECTION ---------- */
 .hero {
   position: relative;
   background-image: url('https://images.pexels.com/photos/19783674/pexels-photo-19783674.jpeg');
@@ -120,6 +122,7 @@ nav a.active {
   margin-bottom: 2rem;
 }
 
+/* ---------- BUTTONS ---------- */
 .cta-btn,
 .cta-button,
 button,
@@ -143,6 +146,7 @@ a.button:hover {
   box-shadow: 0 8px 20px rgba(0, 118, 255, 0.25);
 }
 
+/* ---------- SECTIONS & SERVICES ---------- */
 .services {
   padding: 4rem 2rem;
   background-color: var(--white);
@@ -196,6 +200,7 @@ a.button:hover {
   margin: 0 auto 1.5rem;
 }
 
+/* ---------- VALUE CARDS ---------- */
 .values {
   display: flex;
   justify-content: center;
@@ -234,6 +239,7 @@ a.button:hover {
   100% { transform: translateY(0); }
 }
 
+/* ---------- TIMELINE ---------- */
 .timeline {
   max-width: 900px;
   margin: 0 auto;
@@ -273,100 +279,104 @@ a.button:hover {
   line-height: 1.6;
 }
 
-footer {
+/* ---------- BLOG STYLING ---------- */
+.page-header {
   background-color: var(--primary-color);
   color: white;
+  padding: 3rem 1rem;
   text-align: center;
-  padding: 2rem 1rem;
 }
 
-footer .socials {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.blog-post {
+  background: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+}
+
+.blog-post h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.blog-post p {
+  color: #555;
+}
+
+.read-more {
+  display: inline-block;
   margin-top: 1rem;
-}
-
-footer .socials a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: white;
-  font-size: 20px;
+  color: var(--accent-color);
   text-decoration: none;
-  border: none;
-  background: transparent;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
-footer .socials a:hover {
-  color: #00c6ff;
+.read-more:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
-footer .socials i {
-  line-height: 1;
-  border: none;
-  box-shadow: none;
-  text-decoration: none;
+/* ---------- TRUST CARDS ---------- */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 768px) {
-  header,
-  footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    text-align: center;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 0;
-  }
-
-  .service,
-  .value-card,
-  .service-card,
-  .why-card {
-    width: 100% !important;
-    max-width: 100%;
-  }
-
-  .services-grid,
-  .why-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .hero h1,
-  .cta h2 {
-    font-size: 24px;
-  }
-
-  .hero p,
-  .cta p,
-  .contact-top p {
-    font-size: 16px;
-  }
-
-  .contact-top h2 {
-    font-size: 28px;
-  }
-
-  .contact-form-section,
-  .services-container,
-  .about-content,
-  form {
-    padding: 20px;
-  }
-
-  .timeline-event {
-    padding-left: 1rem;
-  }
+.trust-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
 }
+
+.trust-card i {
+  font-size: 32px;
+  color: #0077cc;
+  margin-bottom: 12px;
+}
+
+.trust-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.trust-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ---------- FOOTER ---------- */
 footer {
   background: #1f2937;
   color: white;
@@ -377,13 +387,16 @@ footer {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 10px;
+  text-align: center;
 }
+
 footer .socials {
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
 }
+
 footer .socials a {
   display: inline-flex;
   align-items: center;
@@ -393,39 +406,57 @@ footer .socials a {
   transition: color 0.3s;
   text-decoration: none;
   line-height: 1;
-  border: none;
 }
+
 footer .socials a:hover {
   color: #00c6ff;
 }
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.trust-card {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  text-align: center;
-}
-.trust-card i {
-  font-size: 32px;
-  color: #0077cc;
-  margin-bottom: 12px;
-}
-.trust-card h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #333;
-}
-.trust-card p {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
+
+/* ---------- MEDIA QUERIES ---------- */
+@media (max-width: 768px) {
+  header, footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 0;
+  }
+
+  .service, .value-card, .service-card, .why-card {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .services-grid, .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero h1, .cta h2 {
+    font-size: 24px;
+  }
+
+  .hero p, .cta p, .contact-top p {
+    font-size: 16px;
+  }
+
+  .contact-top h2 {
+    font-size: 28px;
+  }
+
+  .contact-form-section, .services-container, .about-content, form {
+    padding: 20px;
+  }
+
+  .timeline-event {
+    padding-left: 1rem;
+  }
+
+  .container {
+    padding: 0 1.2rem;
+  }
 }
