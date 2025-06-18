@@ -13,6 +13,7 @@
       background-color: #f9fbfc;
       color: #333;
     }
+
     header {
       background: #fff;
       padding: 20px 40px;
@@ -21,14 +22,17 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+
     .logo-group {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     header img {
       height: 40px;
     }
+
     .company-name {
       font-size: 20px;
       font-weight: bold;
@@ -36,6 +40,7 @@
       -webkit-background-clip: text;
       color: transparent;
     }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -43,16 +48,19 @@
       margin: 0;
       padding: 0;
     }
+
     nav a {
       text-decoration: none;
       color: #333;
       font-weight: 600;
       position: relative;
     }
+
     nav a:hover,
     nav a.active {
       color: #0077cc;
     }
+
     nav a::after {
       display: none;
     }
@@ -63,10 +71,12 @@
       padding: 60px 20px;
       text-align: center;
     }
+
     .hero-banner h1 {
       margin: 0;
       font-size: 2.5rem;
     }
+
     .hero-banner p {
       font-size: 1.2rem;
       margin-top: 10px;
@@ -77,6 +87,7 @@
       margin: 40px auto;
       padding: 0 20px;
     }
+
     h2 {
       color: #0077cc;
       font-size: 22px;
@@ -87,10 +98,12 @@
       border-left: 4px solid #00c6ff;
       padding-left: 12px;
     }
+
     h2 i {
       font-size: 18px;
       color: #00c6ff;
     }
+
     p {
       color: #555;
       line-height: 1.7;
@@ -99,18 +112,53 @@
     footer {
       background: #1f2937;
       color: white;
-      padding: 30px 20px;
-      text-align: center;
-      margin-top: 60px;
+      padding: 40px 20px 10px;
     }
-    footer .socials a {
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-group img {
+      height: 30px;
+    }
+
+    .footer-logo-group span {
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .footer-socials a {
       color: white;
-      margin: 0 10px;
+      margin: 0 8px;
       font-size: 20px;
       transition: color 0.3s;
     }
-    footer .socials a:hover {
+
+    .footer-socials a:hover {
       color: #00c6ff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -138,30 +186,38 @@
 
   <div class="container">
     <p>
-      We assist accounting firms and internal finance teams with structured documentation, accurate data gathering, and tax schedule preparation. Our role is to simplify and streamline your tax compliance process so you can meet deadlines confidently and reduce stress during reporting cycles.
+      At Finology Nexus, we help accounting firms and finance teams simplify tax season by preparing structured, audit-friendly documentation. From year-end reconciliations to compiling supporting schedules, we serve as your dependable tax prep partner.
     </p>
 
     <h2><i class="fas fa-file-invoice-dollar"></i> Our Deliverables</h2>
     <p>
-      • Data cleanup and reconciliation for tax year<br/>
-      • Collecting and compiling supporting documentation<br/>
-      • Preparation of working schedules and tax-ready reports<br/>
-      • 1099/1065/K-1 support coordination (if applicable)<br/>
-      • Flexible formats to match your CPA’s requirements
+      • Year-end data cleanup and reconciliations<br />
+      • Compilation of documentation and schedules<br />
+      • Preparation of tax-ready workpapers and summaries<br />
+      • 1099/1065/K-1 coordination and draft support<br />
+      • Flexible format delivery (Excel, PDF, portals, etc.)
     </p>
 
     <h2><i class="fas fa-check-circle"></i> Why Partner With Us?</h2>
     <p>
-      Our team operates in sync with your tax calendar. Whether you need us during tax season or year-round, we deliver efficient, audit-friendly documentation that saves hours of internal review.
+      We work in sync with your tax calendar — supporting you during crunch periods or all year round. Our clear documentation, proactive coordination, and fast turnaround help reduce review time and ensure accurate compliance.
     </p>
   </div>
 
   <footer>
-    <div>&copy; 2025 Finology Nexus. All rights reserved.</div>
-    <div class="socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
     </div>
   </footer>
 </body>
