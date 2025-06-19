@@ -348,6 +348,56 @@
   </div>
 </section>
 
+<!-- New Section: Who We Help -->
+<section style="background: #ffffff; padding: 60px 20px; text-align: center;">
+  <h2 class="section-title" style="font-size: 32px; color: #0077cc; margin-bottom: 20px;">Who We Help</h2>
+  <p class="section-description" style="max-width: 800px; margin: auto; font-size: 16px; color: #555; margin-bottom: 40px;">
+    Whether you're building a startup or scaling a team, Finology Nexus is built to support the unsung operators behind great companies.
+  </p>
+  <div class="service-grid" style="max-width: 1000px; margin: auto;">
+    <div class="service">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-rocket"></i>
+          <h3>Startups</h3>
+          <p>Preparing for investor rounds and need reliable back-office clarity? We’ve got you.</p>
+        </div>
+        <div class="card-back">Operations Made Simple</div>
+      </div>
+    </div>
+    <div class="service">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-university"></i>
+          <h3>Fintech Firms</h3>
+          <p>Looking for backend teams that understand finance and compliance? That’s our strength.</p>
+        </div>
+        <div class="card-back">Built for Financial Precision</div>
+      </div>
+    </div>
+    <div class="service">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-building"></i>
+          <h3>KPOs & BPOs</h3>
+          <p>Need dependable research support or delivery frameworks? We plug in smoothly.</p>
+        </div>
+        <div class="card-back">Reliable Delivery</div>
+      </div>
+    </div>
+    <div class="service">
+      <div class="card-inner">
+        <div class="card-front">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Early-Stage Founders</h3>
+          <p>Wearing too many hats? Let us help you focus while we manage the grind.</p>
+        </div>
+        <div class="card-back">Delegate With Confidence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-main">
     <div class="footer-logo-group">
@@ -372,12 +422,9 @@
     'index.html': 'home',
     'services.html': 'services',
     'blog.html': 'blog',
-    'blog1.html': 'blog',
-    'blog2.html': 'blog',
     'aboutus.html': 'about',
     'contactus.html': 'contact'
   };
-
   const current = links[file];
   if (current) {
     const activeLink = document.querySelector(`.nav-link.${current}`);
