@@ -203,6 +203,46 @@
 </div>
 
 <footer>
+  <!-- Floating CTA Button -->
+<a href="contactus.html" class="floating-cta" title="Let’s Talk">
+  <i class="fas fa-comments"></i> Let’s Talk
+</a>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(to right, #00c6ff, #0077cc);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    z-index: 1000;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    transition: background 0.3s;
+  }
+
+  .floating-cta:hover {
+    background: linear-gradient(to right, #0077cc, #005b99);
+  }
+
+  .floating-cta i {
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .floating-cta {
+      padding: 10px 14px;
+      font-size: 14px;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+</style>
+
   <div class="footer-main">
     <div class="footer-logo-group">
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
