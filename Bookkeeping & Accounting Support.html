@@ -6,6 +6,7 @@
   <title>Bookkeeping & Accounting Support | Finology Nexus</title>
   <meta name="description" content="Streamline your books with Finology Nexus. Expert bookkeeping, reconciliations, invoicing, and accounting support for startups, CPAs, and firms." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     body {
       margin: 0;
@@ -21,6 +22,9 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo-group {
@@ -163,8 +167,43 @@
       color: #aaa;
       margin-top: 10px;
     }
+
+    /* Floating CTA Button */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      z-index: 1000;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background 0.3s;
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, #0077cc, #005b99);
+    }
+
+    .floating-cta i {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .floating-cta {
+        padding: 10px 14px;
+        font-size: 14px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo-group">
@@ -208,61 +247,27 @@
     </p>
   </div>
 
+  <!-- CTA Button -->
+  <a href="contactus.html" class="floating-cta" title="Let’s Talk">
+    <i class="fas fa-comments"></i> Let’s Talk
+  </a>
+
   <footer>
-    <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
-
-<style>
-  .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
-
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
-    }
-  }
-</style>
-  <div class="footer-main">
-    <div class="footer-logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-      <span>Finology Nexus</span>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
     </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2025 Finology Nexus. All rights reserved.
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
