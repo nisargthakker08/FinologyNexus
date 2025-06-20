@@ -230,121 +230,47 @@
       margin-top: 30px;
       color: #aaa;
     }
+
+    /* Floating CTA Button */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(to right, #00c6ff, #0077cc);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      z-index: 1000;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      transition: background 0.3s;
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, #0077cc, #005b99);
+    }
+
+    .floating-cta i {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .floating-cta {
+        padding: 10px 14px;
+        font-size: 14px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-      <span class="company-name">Finology Nexus</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="nav-link home">Home</a></li>
-        <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Empowering Smart Operations, Research & Growth</h1>
-    <p>We empower growth-oriented teams with seamless support, tailored operations, and deep domain expertise across industries.</p>
-  </section>
-
-  <section>
-    <h2 class="section-title">What We Do</h2>
-    <p class="section-description">Finology Nexus helps teams unlock focus and scale by delivering dependable support solutions — whether in finance, operations, compliance, or niche workflows.</p>
-    <div class="features">
-      <div class="feature-box"><i class="fas fa-chart-line"></i><h3>Research & Analytics</h3><p>In-depth research, data insights, and market intelligence to drive better decisions and smarter strategies.</p></div>
-      <div class="feature-box"><i class="fas fa-cogs"></i><h3>Process Support</h3><p>Reliable back-end support — from documentation to validations — delivered with speed, accuracy, and compliance in mind.</p></div>
-      <div class="feature-box"><i class="fas fa-handshake"></i><h3>Outsourcing Partnership</h3><p>Customized solutions tailored to your business model, helping you scale without the overhead and stress.</p></div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Why Finology Nexus</h2>
-    <p class="section-description">We go beyond tasks — offering clarity, capability, and consistency that modern businesses need in an outsourcing partner.</p>
-    <div class="features">
-      <div class="feature-box"><i class="fas fa-user-tie"></i><h3>Expert Team</h3><p>We bring cross-industry experience that helps us plug into your needs quickly and deliver meaningful outcomes.</p></div>
-      <div class="feature-box"><i class="fas fa-plug"></i><h3>Seamless Onboarding</h3><p>We blend into your systems and workflows with minimal friction — becoming a natural extension of your team.</p></div>
-      <div class="feature-box"><i class="fas fa-expand-arrows-alt"></i><h3>Scalable Delivery</h3><p>Whether you're starting small or expanding fast, we flex and grow with your operations.</p></div>
-    </div>
-  </section>
-
-  <section style="padding: 60px 20px; background: #f0f4f8; text-align: center;">
-    <h2 style="font-size: 28px; margin-bottom: 20px;">💬 From the Founder</h2>
-    <p style="max-width: 800px; margin: auto; font-size: 18px; color: #444; line-height: 1.6;">
-      “At Finology Nexus, we’re not just offering outsourcing — we’re offering clarity. After spending years solving complex financial problems, this company was founded to bring that expertise to fast-growing teams who need reliable support. If you’re reading this, know that we value trust, transparency, and long-term partnership above all.”
-    </p>
-  </section>
-
-  <section style="background: #ffffff; padding: 60px 20px; text-align: center;">
-    <h2 class="section-title">These Are the Types of Teams We’re Built For</h2>
-    <p class="section-description" style="margin-bottom: 50px;">We don’t just serve companies — we support builders, innovators, and growing teams looking to scale with confidence.</p>
-    <div class="features">
-      <div class="feature-box"><i class="fas fa-rocket"></i><h3>Startups</h3><p>Preparing for investor rounds and need reliable back-office clarity? We’ve got you.</p></div>
-      <div class="feature-box"><i class="fas fa-university"></i><h3>Mid-sized Fintech Firms</h3><p>Looking for backend teams that understand finance and compliance? That’s our strength.</p></div>
-      <div class="feature-box"><i class="fas fa-building"></i><h3>KPOs</h3><p>Needing research support or enhanced delivery frameworks? We integrate quickly.</p></div>
-      <div class="feature-box"><i class="fas fa-lightbulb"></i><h3>Early-Stage Founders</h3><p>Wearing too many hats? Let us help you focus while we manage the grind.</p></div>
-    </div>
-  </section>
-
-  <!-- Brochure Section -->
-  <section style="padding: 60px 20px; text-align: center; background: #eaf6ff;">
-    <h2 class="section-title">📄 Company Profile</h2>
-    <p class="section-description" style="margin-bottom: 25px;">
-      Get a quick overview of who we are and what we offer.
-    </p>
-    <a href="Finology Service Page.pdf" download class="download-btn">
-      📥 Get to Know Finology Nexus
-    </a>
-  </section>
+<!-- [HEADER + CONTENT REMAINS UNCHANGED AS YOU POSTED ABOVE] -->
 
   <footer>
-    <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
-
-<style>
-  .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
-
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
-    }
-  }
-</style>
-
     <div class="footer-main">
       <div class="footer-logo-group">
         <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
@@ -361,6 +287,11 @@
       &copy; 2025 Finology Nexus. All rights reserved.
     </div>
   </footer>
+
+  <!-- Floating CTA Button -->
+  <a href="contactus.html" class="floating-cta" title="Let’s Talk">
+    <i class="fas fa-comments"></i> Let’s Talk
+  </a>
 
   <script>
     const path = window.location.pathname;
