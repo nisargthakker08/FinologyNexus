@@ -495,3 +495,23 @@ footer .socials a:hover {
 .floating-cta i {
   margin-right: 8px;
 }
+.section-cta {
+  background: linear-gradient(to right, #00c6ff, #0077cc);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  transition: background 0.3s;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.section-cta:hover {
+  background: linear-gradient(to right, #0077cc, #005b99);
+}
+
+.section-cta i {
+  margin-right: 8px;
+}
