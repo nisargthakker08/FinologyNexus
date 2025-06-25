@@ -1426,3 +1426,16 @@ nav ul li a {
   color: #f0f0f0;
   font-size: 1.1rem;
 }
+.cta-button.secondary {
+  background-color: #f3f4f6;  /* Light background */
+  color: #1f2937;             /* Dark text for contrast */
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button.secondary:hover {
+  background-color: #e2e8f0;
+}
