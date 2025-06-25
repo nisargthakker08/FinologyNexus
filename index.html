@@ -42,55 +42,63 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="160" height="40" class="logo" style="object-fit: contain;">
-      <span class="company-name">Finology Nexus</span>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__container">
+      <div class="header__logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="header__logo">
+        <span class="header__company-name">Finology Nexus</span>
+      </div>
+      <button class="menu-toggle" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav">
+        <ul class="nav__list" id="nav-menu">
+          <li><a href="index.html" class="nav__link active">Home</a></li>
+          <li><a href="services.html" class="nav__link">Solutions</a></li>
+          <li><a href="industries.html" class="nav__link">Industries</a></li>
+          <li><a href="case-studies.html" class="nav__link">Case Studies</a></li>
+          <li><a href="aboutus.html" class="nav__link">About</a></li>
+          <li><a href="contactus.html" class="btn btn--primary btn--sm">Get Started</a></li>
+        </ul>
+      </nav>
     </div>
-    <button class="menu-toggle" aria-label="Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav>
-      <ul id="nav-menu">
-        <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="services.html" class="nav-link">Solutions</a></li>
-        <li><a href="industries.html" class="nav-link">Industries</a></li>
-        <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
-        <li><a href="aboutus.html" class="nav-link">About</a></li>
-        <li><a href="contactus.html" class="cta-button nav-link">Get Started</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <h1>AI-Enhanced Business Support for Scaling Teams</h1>
-        <p style="color:#f0f0f0;">We combine human expertise with smart automation to deliver operational support that grows with your business.</p>
-        <a href="finance-checkup.html" class="cta-button btn-primary">
-          <i class="fas fa-calendar-alt"></i> Book Free Consultation
-        </a>
+        <h1 class="hero__title">AI-Enhanced Business Support for Scaling Teams</h1>
+        <p class="hero__subtitle">We combine human expertise with smart automation to deliver operational support that grows with your business.</p>
+        <div class="hero__buttons">
+          <a href="finance-checkup.html" class="btn btn--primary btn--lg">
+            <i class="fas fa-calendar-alt"></i> Book Free Consultation
+          </a>
+        </div>
       </div>
     </section>
+
     <!-- Trust Indicators -->
     <section class="trust-indicators">
-      <div class="trust-grid">
-        <div class="trust-item">
-          <span class="trust-value">85%</span>
-          <span>Client Retention</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-value">10+</span>
-          <span>Experts Supporting You</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-value">3.5x</span>
-          <span>Avg. ROI Delivered</span>
-        </div>
-        <div class="trust-item">
-          <span class="trust-value">24/7</span>
-          <span>Global Support</span>
+      <div class="container">
+        <div class="trust__grid">
+          <div class="trust-item">
+            <span class="trust-item__value">85%</span>
+            <span class="trust-item__label">Client Retention</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-item__value">10+</span>
+            <span class="trust-item__label">Experts Supporting You</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-item__value">3.5x</span>
+            <span class="trust-item__label">Avg. ROI Delivered</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-item__value">24/7</span>
+            <span class="trust-item__label">Global Support</span>
+          </div>
         </div>
       </div>
     </section>
@@ -98,25 +106,27 @@
     <!-- Solutions Section -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Strategic Support Solutions</h2>
-        <p class="section-subtitle">
-          We specialize in these high-impact areas where teams need reliable expertise
-        </p>
+        <div class="section__header">
+          <h2 class="section__title">Strategic Support Solutions</h2>
+          <p class="section__subtitle">
+            We specialize in these high-impact areas where teams need reliable expertise
+          </p>
+        </div>
         
-        <div class="features-grid">
+        <div class="features__grid">
           <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-robot"></i></div>
-            <h3>AI-Powered Process Automation</h3>
+            <div class="feature-card__icon"><i class="fas fa-robot"></i></div>
+            <h3 class="feature-card__title">AI-Powered Process Automation</h3>
             <p>Implement smart workflows that reduce manual work by 60-80% while maintaining accuracy.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Financial Intelligence</h3>
+            <div class="feature-card__icon"><i class="fas fa-chart-line"></i></div>
+            <h3 class="feature-card__title">Financial Intelligence</h3>
             <p>Market research, competitor analysis, and data insights to inform strategic decisions.</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon"><i class="fas fa-users-gear"></i></div>
-            <h3>Scalable Operations</h3>
+            <div class="feature-card__icon"><i class="fas fa-users-gear"></i></div>
+            <h3 class="feature-card__title">Scalable Operations</h3>
             <p>Flexible staffing models that adapt to your workload fluctuations and growth cycles.</p>
           </div>
         </div>
@@ -124,67 +134,71 @@
     </section>
 
     <!-- Industry Focus -->
-    <section class="section" style="background: #f8fafc;">
+    <section class="section section--sm" style="background-color: var(--gray-light);">
       <div class="container">
-        <h2 class="section-title">Specialized For Your Industry</h2>
-        <p class="section-subtitle">
-          We speak your language and understand your unique challenges
-        </p>
+        <div class="section__header">
+          <h2 class="section__title">Specialized For Your Industry</h2>
+          <p class="section__subtitle">
+            We speak your language and understand your unique challenges
+          </p>
+        </div>
         
-        <div class="features-grid">
+        <div class="features__grid">
           <div class="feature-card">
-            <h3><i class="fas fa-coins" style="color: var(--primary); margin-right: 0.5rem;"></i> Fintech & Banking</h3>
+            <h3><i class="fas fa-coins" style="color: var(--primary); margin-right: var(--space-xs);"></i> Fintech & Banking</h3>
             <p>Compliance-ready support for payments, risk analysis, and financial operations.</p>
           </div>
           <div class="feature-card">
-            <h3><i class="fas fa-heart-pulse" style="color: var(--primary); margin-right: 0.5rem;"></i> Healthcare</h3>
+            <h3><i class="fas fa-heart-pulse" style="color: var(--primary); margin-right: var(--space-xs);"></i> Healthcare</h3>
             <p>HIPAA-compliant backoffice solutions for providers and healthtech companies.</p>
           </div>
           <div class="feature-card">
-            <h3><i class="fas fa-bolt" style="color: var(--primary); margin-right: 0.5rem;"></i> SaaS & Tech</h3>
+            <h3><i class="fas fa-bolt" style="color: var(--primary); margin-right: var(--space-xs);"></i> SaaS & Tech</h3>
             <p>Scalable support for customer onboarding, data operations, and investor reporting.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Founder's Note replacing Testimonial -->
+    <!-- Founder's Note -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Founder's Note</h2>
-        <div class="features-grid">
+        <div class="section__header">
+          <h2 class="section__title">Founder's Note</h2>
+        </div>
+        <div class="features__grid">
           <div class="feature-card">
-            <div class="testimonial-content">
+            <div class="testimonial__content">
               “At Finology Nexus, we believe growth is fueled by systems that combine sharp insight with reliable execution. We're not just a service provider — we're your strategic growth partner.”<br><br>
               <strong>— Founder</strong>
             </div>
           </div>
           <div class="feature-card">
-            <div style="margin-bottom: 1.5rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <div style="margin-bottom: var(--space-lg);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xxs);">
                 <span>Process Efficiency</span>
                 <span>+68%</span>
               </div>
-              <div style="height: 8px; background: #e2e8f0; border-radius: 4px;">
-                <div style="width: 68%; height: 100%; background: var(--primary); border-radius: 4px;"></div>
+              <div style="height: 8px; background: var(--gray-light); border-radius: var(--radius-sm);">
+                <div style="width: 68%; height: 100%; background: var(--primary); border-radius: var(--radius-sm);"></div>
               </div>
             </div>
-            <div style="margin-bottom: 1.5rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <div style="margin-bottom: var(--space-lg);">
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xxs);">
                 <span>Cost Reduction</span>
                 <span>-42%</span>
               </div>
-              <div style="height: 8px; background: #e2e8f0; border-radius: 4px;">
-                <div style="width: 42%; height: 100%; background: var(--secondary); border-radius: 4px;"></div>
+              <div style="height: 8px; background: var(--gray-light); border-radius: var(--radius-sm);">
+                <div style="width: 42%; height: 100%; background: var(--secondary); border-radius: var(--radius-sm);"></div>
               </div>
             </div>
             <div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xxs);">
                 <span>Implementation Speed</span>
                 <span>2.1x Faster</span>
               </div>
-              <div style="height: 8px; background: #e2e8f0; border-radius: 4px;">
-                <div style="width: 100%; height: 100%; background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+              <div style="height: 8px; background: var(--gray-light); border-radius: var(--radius-sm);">
+                <div style="width: 100%; height: 100%; background: linear-gradient(to right, var(--primary), var(--secondary)); border-radius: var(--radius-sm);"></div>
               </div>
             </div>
           </div>
@@ -193,33 +207,66 @@
     </section>
 
     <!-- Tech Stack -->
-    <section class="section" style="background: white;">
+    <section class="section tech-stack">
       <div class="container">
-        <h2 class="section-title">Integrated With Your Stack</h2>
-        <p class="section-subtitle">We work with the platforms you already use</p>
-        <div class="tech-stack">
-          <img src="appianicon.png" alt="Appian" loading="lazy">
-          <img src="mozendalogo.png" alt="Mozenda" loading="lazy">
-          <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS" loading="lazy">
-          <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce" loading="lazy">
-          <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" loading="lazy">
+        <div class="section__header">
+          <h2 class="section__title">Integrated With Your Stack</h2>
+          <p class="section__subtitle">We work with the platforms you already use</p>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="services.html" class="btn">
-            View all 25+ integrations <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+        <div class="tech-stack__grid">
+          <div class="tech-item">
+            <img src="appianicon.png" alt="Appian" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Appian</span>
+          </div>
+          <div class="tech-item">
+            <img src="mozendalogo.png" alt="Mozenda" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Mozenda</span>
+          </div>
+          <div class="tech-item">
+            <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">AWS</span>
+          </div>
+          <div class="tech-item">
+            <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Salesforce</span>
+          </div>
+          <div class="tech-item">
+            <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Python</span>
+          </div>
+        </div>
+        <div class="text-center" style="margin-top: var(--space-xl);">
+          <a href="services.html" class="btn btn--outline">
+            View all 25+ integrations <i class="fas fa-arrow-right" style="margin-left: var(--space-xxs);"></i>
           </a>
         </div>
       </div>
     </section>
+
     <!-- CTA Section -->
-    <section id="consultation" class="cta-section">
+    <section class="cta">
       <div class="container">
-        <h2 class="section-title">Ready to Transform Your Operations?</h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
-          Book a free 30-minute consultation with our solutions team to explore how we can support your growth.
-        </p>
-        <a href="finance-checkup.html" class="cta-button btn-secondary" style="margin-top: 1.5rem;">
-          <i class="fas fa-calendar-alt"></i> Schedule Now
+        <div class="section__header">
+          <h2 class="section__title cta__title">Ready to Transform Your Operations?</h2>
+          <p class="section__subtitle">
+            Book a free 30-minute consultation with our solutions team to explore how we can support your growth.
+          </p>
+        </div>
+        <div class="cta__buttons">
+          <a href="finance-checkup.html" class="btn btn--secondary btn--lg">
+            <i class="fas fa-calendar-alt"></i> Schedule Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Profile -->
+    <section class="section section--sm" style="background-color: var(--light);">
+      <div class="container text-center">
+        <h2 class="section__title">Get to Know Us Better</h2>
+        <p class="section__subtitle">Download our company profile to explore our services, expertise, and growth story.</p>
+        <a href="Finology-Nexus-Company-Profile.pdf" class="btn btn--primary" download style="margin-top: var(--space-md);">
+          <i class="fas fa-file-download"></i> Download Company Profile
         </a>
       </div>
     </section>
@@ -230,66 +277,57 @@
     <i class="fas fa-comments"></i> Chat With Us
   </a>
   
-  <!-- Company Profile Download Section -->
-<section class="section" style="background-color: #f0f4f8; padding: 2rem 0;">
-  <div class="container" style="text-align: center;">
-    <h2 class="section-title">Get to Know Us Better</h2>
-    <p class="section-subtitle">Download our company profile to explore our services, expertise, and growth story.</p>
-    <a href="Finology-Nexus-Company-Profile.pdf" class="btn btn-primary" download style="margin-top: 1rem; display: inline-block;">
-      <i class="fas fa-file-download"></i> Download Company Profile
-    </a>
-  </div>
-</section>
-
   <!-- Footer -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand">
-  <img src="Finology Nexus Logo.png" alt="Finology Nexus" class="footer-logo">
-  <span class="footer-name">Finology Nexus</span>
-</div>
-      <p class="footer-description">
-        Strategic support solutions for growth-focused businesses.
-      </p>
-    </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus" class="footer__logo">
+            <span class="footer__name">Finology Nexus</span>
+          </div>
+          <p class="footer__description">
+            Strategic support solutions for growth-focused businesses.
+          </p>
+        </div>
 
-    <div class="footer-links">
-      <h3>Solutions</h3>
-      <ul>
-        <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-        <li><a href="Process Documentation & Workflow Support.html">Process Automation</a></li>
-        <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping & Accounting Support</a></li>
-      </ul>
-    </div>
+        <div>
+          <h3 class="footer__title">Solutions</h3>
+          <ul class="footer__links">
+            <li><a href="Financial Research & Analytics.html" class="footer__link">Financial Research</a></li>
+            <li><a href="Process Documentation & Workflow Support.html" class="footer__link">Process Automation</a></li>
+            <li><a href="Bookkeeping & Accounting Support.html" class="footer__link">Bookkeeping Support</a></li>
+          </ul>
+        </div>
 
-    <div class="footer-links">
-      <h3>Company</h3>
-      <ul>
-        <li><a href="/about">About Us</a></li>
-      </ul>
-    </div>
+        <div>
+          <h3 class="footer__title">Company</h3>
+          <ul class="footer__links">
+            <li><a href="/about" class="footer__link">About Us</a></li>
+          </ul>
+        </div>
 
-    <div>
-      <h3>Connect</h3>
-      <div class="social-links">
-        <a href="https://linkedin.com/company/finology-nexus" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/finologynexus" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-        <a href="https://facebook.com/finologynexus" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <div>
+          <h3 class="footer__title">Connect</h3>
+          <div class="social-links">
+            <a href="https://linkedin.com/company/finology-nexus" aria-label="LinkedIn" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/finologynexus" aria-label="Twitter" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/finologynexus" aria-label="Facebook" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+          </div>
+          <a href="mailto:info@finologynexus.online" class="footer__link">info@finologynexus.online</a>
+        </div>
       </div>
-      <a href="mailto:info@finologynexus.online" class="footer-description">info@finologynexus.online</a>
-    </div>
-  </div>
 
-  <div class="copyright">
-    &copy; 2025 Finology Nexus. All rights reserved.
-  </div>
-</footer>
+      <div class="footer__copyright">
+        &copy; 2025 Finology Nexus. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
   <script>
     // Mobile menu toggle
     document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.getElementById('nav-menu').classList.toggle('show');
+      document.getElementById('nav-menu').classList.toggle('nav__list--open');
     });
 
     // Track CTA clicks
