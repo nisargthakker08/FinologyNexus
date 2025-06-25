@@ -403,54 +403,51 @@
   <a href="contactus.html" class="floating-cta" aria-label="Contact Us">
     <i class="fas fa-comments"></i> Get in Touch
   </a>
+<!-- Scripts -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('#nav-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('show');
+    });
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <div class="footer-logo" style="display: flex; align-items: center; gap: 0.5rem;">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus" width="140" height="38" style="object-fit: contain;">
-            <span style="font-size: 1.1rem; font-weight: 600; color: #ffffff;">Finology Nexus</span>
-          </div>
-          <p class="footer-about">Strategic business support solutions for growth-focused companies.</p>
-          <div class="social-links">
-            <a href="https://linkedin.com/company/finology-nexus" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/finologynexus" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com/finologynexus" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-          </div>
-        </div>
+    // Solution filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const solutionCards = document.querySelectorAll('.solution-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        solutionCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
 
-        <div class="footer-col">
-          <h4>Solutions</h4>
-          <ul class="footer-links">
-            <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-            <li><a href="Bookkeeping & Accounting Support.html">Accounting Support</a></li>
-            <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-            <li><a href="Process Documentation & Workflow Support.html">Process Support</a></li>
-          </ul>
-        </div>
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="contact"], a[href*="tel"]').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.dataLayer) {
+          dataLayer.push({
+            'event': 'cta_click',
+            'cta_type': this.textContent.trim(),
+            'location': this.closest('section') ? this.closest('section').id || 'floating' : 'unknown'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
 
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul class="footer-links">
-            <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="contactus.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <p><i class="fas fa-envelope"></i> <a href="mailto:info@finologynexus.online">info@finologynexus.online</a></p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 Finology Nexus. All rights reserved.</p>
-        <div class="legal-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  
