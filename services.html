@@ -28,66 +28,67 @@
 </head>
 
 <body>
-
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Header -->
-  <header class="main-header">
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="160" height="40" loading="lazy">
-      <span class="company-name">Finology Nexus</span>
+  <header class="header">
+    <div class="container header__container">
+      <div class="header__logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="header__logo">
+        <span class="header__company-name">Finology Nexus</span>
+      </div>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav">
+        <ul class="nav__list" id="nav-menu">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="services.html" class="nav__link active">Solutions</a></li>
+          <li><a href="industries.html" class="nav__link">Industries</a></li>
+          <li><a href="case-studies.html" class="nav__link">Case Studies</a></li>
+          <li><a href="aboutus.html" class="nav__link">About</a></li>
+          <li><a href="contactus.html" class="btn btn--primary nav__link">Get Started</a></li>
+        </ul>
+      </nav>
     </div>
-    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav class="main-nav">
-      <ul id="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="services.html" class="nav-link active">Solutions</a></li>
-        <li><a href="industries.html" class="nav-link">Industries</a></li>
-        <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
-        <li><a href="aboutus.html" class="nav-link">About</a></li>
-        <li><a href="contactus.html" class="cta-button nav-link">Get Started</a></li>
-      </ul>
-    </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="page-hero">
+  <section class="hero">
     <div class="container">
-      <h1>Scalable Business Process Support</h1>
-      <p class="hero-subtitle">Expert-driven, tech-powered services to streamline finance, operations, and data workflows</p>
-      <div class="hero-cta">
-  <a href="finance-checkup.html" class="cta-button primary">
-    <i class="fas fa-calendar-alt"></i> Book Consultation
-  </a>
-  <a href="Finology Service Page.pdf" download class="cta-button secondary">
-    <i class="fas fa-download"></i> Download Solutions Guide
-  </a>
-</div>
+      <h1 class="hero__title">Scalable Business Process Support</h1>
+      <p class="hero__subtitle">Expert-driven, tech-powered services to streamline finance, operations, and data workflows</p>
+      <div class="hero__buttons">
+        <a href="finance-checkup.html" class="btn btn--primary">
+          <i class="fas fa-calendar-alt"></i> Book Consultation
+        </a>
+        <a href="Finology Service Page.pdf" download class="btn btn--secondary">
+          <i class="fas fa-download"></i> Download Solutions Guide
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Trust Indicators -->
   <section class="trust-indicators">
     <div class="container">
-      <div class="trust-grid">
+      <div class="trust__grid">
         <div class="trust-item">
-          <span class="trust-value">85%</span>
-          <span class="trust-label">Client Retention</span>
+          <span class="trust-item__value">85%</span>
+          <span class="trust-item__label">Client Retention</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">10+</span>
-          <span class="trust-label">Experts On Team</span>
+          <span class="trust-item__value">10+</span>
+          <span class="trust-item__label">Experts On Team</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">3.5x</span>
-          <span class="trust-label">Avg. ROI Delivered</span>
+          <span class="trust-item__value">3.5x</span>
+          <span class="trust-item__label">Avg. ROI Delivered</span>
         </div>
         <div class="trust-item">
-          <span class="trust-value">24/7</span>
-          <span class="trust-label">Global Support</span>
+          <span class="trust-item__value">24/7</span>
+          <span class="trust-item__label">Global Support</span>
         </div>
       </div>
     </div>
@@ -96,154 +97,154 @@
   <!-- Main Content -->
   <main id="main-content">
     <!-- Solutions Grid -->
-    <section id="solutions" class="solutions-section">
+    <section class="section">
       <div class="container">
-        <div class="section-header">
-          <h2>Our Core Solutions</h2>
-          <p class="section-subtitle">Comprehensive services to support your business at every stage</p>
+        <div class="section__header">
+          <h2 class="section__title">Our Core Solutions</h2>
+          <p class="section__subtitle">Comprehensive services to support your business at every stage</p>
         </div>
         
-        <div class="solutions-filter">
-          <button class="filter-btn active" data-filter="all">All Solutions</button>
-          <button class="filter-btn" data-filter="financial">Financial</button>
-          <button class="filter-btn" data-filter="operational">Operational</button>
-          <button class="filter-btn" data-filter="technical">Technical</button>
+        <div class="filter-buttons">
+          <button class="btn btn--outline filter-btn active" data-filter="all">All Solutions</button>
+          <button class="btn btn--outline filter-btn" data-filter="financial">Financial</button>
+          <button class="btn btn--outline filter-btn" data-filter="operational">Operational</button>
+          <button class="btn btn--outline filter-btn" data-filter="technical">Technical</button>
         </div>
         
-        <div class="solutions-grid">
+        <div class="features__grid">
           <!-- Solution 1 -->
-          <article class="solution-card financial" data-category="financial">
-            <a href="Financial Research & Analytics.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-chart-line"></i></div>
-                  <h3>Financial Research & Analytics</h3>
+          <article class="feature-card financial" data-category="financial">
+            <a href="Financial Research & Analytics.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-chart-line"></i></div>
+                  <h3 class="feature-card__title">Financial Research & Analytics</h3>
                   <p>Comprehensive analysis including company research, benchmarking, and valuation modeling.</p>
-                  <span class="solution-category">Financial</span>
+                  <span class="feature-card__category">Financial</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Deep market insights</li>
                     <li>Competitor benchmarking</li>
                     <li>Financial modeling</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
           </article>
 
           <!-- Solution 2 -->
-          <article class="solution-card financial" data-category="financial">
-            <a href="Bookkeeping & Accounting Support.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-book"></i></div>
-                  <h3>Bookkeeping & Accounting Support</h3>
+          <article class="feature-card financial" data-category="financial">
+            <a href="Bookkeeping & Accounting Support.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-book"></i></div>
+                  <h3 class="feature-card__title">Bookkeeping & Accounting Support</h3>
                   <p>Accurate financial record keeping, reconciliations, and reporting support.</p>
-                  <span class="solution-category">Financial</span>
+                  <span class="feature-card__category">Financial</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Clean financial records</li>
                     <li>Timely reporting</li>
                     <li>Audit-ready documentation</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
           </article>
 
           <!-- Solution 3 -->
-          <article class="solution-card financial" data-category="financial">
-            <a href="Tax Preparation & Reporting.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                  <h3>Tax Preparation & Reporting</h3>
+          <article class="feature-card financial" data-category="financial">
+            <a href="Tax Preparation & Reporting.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                  <h3 class="feature-card__title">Tax Preparation & Reporting</h3>
                   <p>Structured documentation and schedule support for tax filings.</p>
-                  <span class="solution-category">Financial</span>
+                  <span class="feature-card__category">Financial</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Compliance assurance</li>
                     <li>Document organization</li>
                     <li>Deadline management</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
           </article>
 
           <!-- Solution 4 -->
-          <article class="solution-card technical" data-category="technical">
-            <a href="Data Scraping & Automation.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-database"></i></div>
-                  <h3>Data Scraping & Automation</h3>
+          <article class="feature-card technical" data-category="technical">
+            <a href="Data Scraping & Automation.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-database"></i></div>
+                  <h3 class="feature-card__title">Data Scraping & Automation</h3>
                   <p>Custom data collection and processing workflows from public sources.</p>
-                  <span class="solution-category">Technical</span>
+                  <span class="feature-card__category">Technical</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Automated data collection</li>
                     <li>Custom validation</li>
                     <li>Structured outputs</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
           </article>
 
           <!-- Solution 5 -->
-          <article class="solution-card operational" data-category="operational">
-            <a href="Process Documentation & Workflow Support.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-cogs"></i></div>
-                  <h3>Process Documentation & Support</h3>
+          <article class="feature-card operational" data-category="operational">
+            <a href="Process Documentation & Workflow Support.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-cogs"></i></div>
+                  <h3 class="feature-card__title">Process Documentation & Support</h3>
                   <p>SOP-driven execution for quality control and operational tasks.</p>
-                  <span class="solution-category">Operational</span>
+                  <span class="feature-card__category">Operational</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Standardized processes</li>
                     <li>Quality assurance</li>
                     <li>Scalable workflows</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
           </article>
 
           <!-- Solution 6 -->
-          <article class="solution-card operational" data-category="operational">
-            <a href="Outsourcing Partnership.html" class="solution-link">
-              <div class="card-inner">
-                <div class="card-front">
-                  <div class="solution-icon"><i class="fas fa-handshake"></i></div>
-                  <h3>Outsourcing Partnership</h3>
+          <article class="feature-card operational" data-category="operational">
+            <a href="Outsourcing Partnership.html" class="feature-card__link">
+              <div class="feature-card__inner">
+                <div class="feature-card__front">
+                  <div class="feature-card__icon"><i class="fas fa-handshake"></i></div>
+                  <h3 class="feature-card__title">Outsourcing Partnership</h3>
                   <p>Dedicated teams that integrate with your operations.</p>
-                  <span class="solution-category">Operational</span>
+                  <span class="feature-card__category">Operational</span>
                 </div>
-                <div class="card-back">
+                <div class="feature-card__back">
                   <h4>Key Benefits</h4>
-                  <ul class="benefits-list">
+                  <ul class="feature-card__benefits">
                     <li>Long-term support</li>
                     <li>Flexible scaling</li>
                     <li>Domain expertise</li>
                   </ul>
-                  <span class="cta-text">Learn More</span>
+                  <span class="feature-card__cta">Learn More</span>
                 </div>
               </div>
             </a>
@@ -253,94 +254,94 @@
     </section>
 
     <!-- Client Types Section -->
-    <section class="client-types">
+    <section class="section section--sm">
       <div class="container">
-        <div class="section-header">
-          <h2>Who We Help</h2>
-          <p class="section-subtitle">Tailored solutions for different business needs</p>
+        <div class="section__header">
+          <h2 class="section__title">Who We Help</h2>
+          <p class="section__subtitle">Tailored solutions for different business needs</p>
         </div>
         
-        <div class="client-grid">
-          <div class="client-card">
-            <div class="client-icon">
+        <div class="features__grid">
+          <div class="feature-card">
+            <div class="feature-card__icon">
               <i class="fas fa-rocket"></i>
             </div>
-            <h3>Startups</h3>
+            <h3 class="feature-card__title">Startups</h3>
             <p>Preparing for investor rounds and need reliable back-office clarity? We've got you covered.</p>
-            <a href="startup-solutions.html" class="client-link">Startup Solutions <i class="fas fa-arrow-right"></i></a>
+            <a href="startup-solutions.html" class="btn btn--outline">Startup Solutions <i class="fas fa-arrow-right"></i></a>
           </div>
           
-          <div class="client-card">
-            <div class="client-icon">
+          <div class="feature-card">
+            <div class="feature-card__icon">
               <i class="fas fa-university"></i>
             </div>
-            <h3>Fintech Firms</h3>
+            <h3 class="feature-card__title">Fintech Firms</h3>
             <p>Looking for backend teams that understand finance and compliance? That's our strength.</p>
-            <a href="fintech-solutions.html" class="client-link">Fintech Solutions <i class="fas fa-arrow-right"></i></a>
+            <a href="fintech-solutions.html" class="btn btn--outline">Fintech Solutions <i class="fas fa-arrow-right"></i></a>
           </div>
           
-          <div class="client-card">
-            <div class="client-icon">
+          <div class="feature-card">
+            <div class="feature-card__icon">
               <i class="fas fa-building"></i>
             </div>
-            <h3>KPOs & BPOs</h3>
+            <h3 class="feature-card__title">KPOs & BPOs</h3>
             <p>Need dependable research support or delivery frameworks? We plug in smoothly.</p>
-            <a href="kpo-solutions.html" class="client-link">KPO Solutions <i class="fas fa-arrow-right"></i></a>
+            <a href="kpo-solutions.html" class="btn btn--outline">KPO Solutions <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Tech Stack Section -->
-    <section class="tech-stack-section">
+    <section class="section tech-stack">
       <div class="container">
-        <div class="section-header">
-          <h2>Technology We Use</h2>
-          <p class="section-subtitle">Platforms that power our solutions</p>
+        <div class="section__header">
+          <h2 class="section__title">Technology We Use</h2>
+          <p class="section__subtitle">Platforms that power our solutions</p>
         </div>
 
-        <div class="tech-grid">
+        <div class="tech-stack__grid">
           <div class="tech-item">
-            <img src="appianicon.png" alt="Appian" width="64" height="64" loading="lazy">
-            <span>Appian</span>
-            <small>Low-code automation</small>
+            <img src="appianicon.png" alt="Appian" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Appian</span>
+            <small class="tech-item__category">Low-code automation</small>
           </div>
           <div class="tech-item">
-            <img src="mozendalogo.png" alt="Mozenda" width="64" height="64" loading="lazy">
-            <span>Mozenda</span>
-            <small>Data extraction</small>
+            <img src="mozendalogo.png" alt="Mozenda" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Mozenda</span>
+            <small class="tech-item__category">Data extraction</small>
           </div>
           <div class="tech-item">
-            <img src="https://img.icons8.com/color/64/000000/amazon-web-services.png" alt="AWS" width="64" height="64" loading="lazy">
-            <span>AWS</span>
-            <small>Cloud infrastructure</small>
+            <img src="https://img.icons8.com/color/64/000000/amazon-web-services.png" alt="AWS" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">AWS</span>
+            <small class="tech-item__category">Cloud infrastructure</small>
           </div>
           <div class="tech-item">
-            <img src="https://img.icons8.com/color/64/000000/salesforce.png" alt="Salesforce" width="64" height="64" loading="lazy">
-            <span>Salesforce</span>
-            <small>CRM integration</small>
+            <img src="https://img.icons8.com/color/64/000000/salesforce.png" alt="Salesforce" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Salesforce</span>
+            <small class="tech-item__category">CRM integration</small>
           </div>
           <div class="tech-item">
-            <img src="https://img.icons8.com/color/64/000000/python.png" alt="Python" width="64" height="64" loading="lazy">
-            <span>Python</span>
-            <small>Automation scripts</small>
+            <img src="https://img.icons8.com/color/64/000000/python.png" alt="Python" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Python</span>
+            <small class="tech-item__category">Automation scripts</small>
           </div>
           <div class="tech-item">
-            <img src="https://img.icons8.com/color/96/microsoft-excel-2019--v1.png" alt="Excel VBA" width="64" height="64" loading="lazy">
-            <span>Excel VBA</span>
-            <small>Reporting automation</small>
+            <img src="https://img.icons8.com/color/96/microsoft-excel-2019--v1.png" alt="Excel VBA" class="tech-item__icon" loading="lazy">
+            <span class="tech-item__name">Excel VBA</span>
+            <small class="tech-item__category">Reporting automation</small>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section id="consultation" class="cta-section">
+    <section class="cta">
       <div class="container">
-        <h2 class="section-title">Ready to Streamline Your Operations?</h2>
-        <p class="section-subtitle">Schedule a free consultation to discuss how we can support your business goals.</p>
-        <div class="cta-buttons">
-          <a href="finance-checkup.html" class="cta-button primary">
+        <h2 class="section__title">Ready to Streamline Your Operations?</h2>
+        <p class="section__subtitle">Schedule a free consultation to discuss how we can support your business goals.</p>
+        <div class="cta__buttons">
+          <a href="finance-checkup.html" class="btn btn--primary btn--lg">
             <i class="fas fa-envelope"></i> Contact Us
           </a>
         </div>
@@ -353,76 +354,77 @@
     <i class="fas fa-comments"></i> Get in Touch
   </a>
 
- <!-- Updated Footer Section -->
-<footer class="main-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col footer-about">
-        <div class="footer-logo">
-          <img src="Finology Nexus Logo.png" alt="Finology Nexus" width="140" height="38" loading="lazy">
-          <span>Finology Nexus</span>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__col">
+          <div class="footer__brand">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus" class="footer__logo">
+            <span class="footer__name">Finology Nexus</span>
+          </div>
+          <p class="footer__description">Strategic business support solutions for growth-focused companies.</p>
+          <div class="social-links">
+            <a href="https://linkedin.com/company/finology-nexus" aria-label="LinkedIn" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/finologynexus" aria-label="Twitter" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/finologynexus" aria-label="Facebook" class="social-links__link" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          </div>
         </div>
-        <p>Strategic business support solutions for growth-focused companies.</p>
-        <div class="social-links">
-          <a href="https://linkedin.com/company/finology-nexus" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://twitter.com/finologynexus" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-          <a href="https://facebook.com/finologynexus" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Solutions</h4>
+          <ul class="footer__links">
+            <li><a href="Financial Research & Analytics.html" class="footer__link">Financial Research</a></li>
+            <li><a href="Bookkeeping & Accounting Support.html" class="footer__link">Accounting Support</a></li>
+            <li><a href="Data Scraping & Automation.html" class="footer__link">Data Automation</a></li>
+            <li><a href="Process Documentation & Workflow Support.html" class="footer__link">Process Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Company</h4>
+          <ul class="footer__links">
+            <li><a href="aboutus.html" class="footer__link">About Us</a></li> 
+            <li><a href="blog.html" class="footer__link">Blog</a></li>
+            <li><a href="contactus.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__title">Contact Us</h4>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:info@finologynexus.online" class="footer__link">info@finologynexus.online</a></p>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Solutions</h4>
-        <ul class="footer-links">
-          <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-          <li><a href="Bookkeeping & Accounting Support.html">Accounting Support</a></li>
-          <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-          <li><a href="Process Documentation & Workflow Support.html">Process Support</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul class="footer-links">
-          <li><a href="aboutus.html">About Us</a></li> 
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contactus.html">Cotact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col footer-contact">
-        <h4>Contact Us</h4>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:info@finologynexus.online">info@finologynexus.online</a></p>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="copyright">&copy; 2025 Finology Nexus. All rights reserved.</div>
-      <div class="legal-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <span>|</span>
-        <a href="terms.html">Terms of Service</a>
-        <span>|</span>
-        <a href="cookies.html">Cookie Policy</a>
+      <div class="footer__copyright">
+        <div class="copyright">&copy; 2025 Finology Nexus. All rights reserved.</div>
+        <div class="legal-links">
+          <a href="privacy.html" class="footer__link">Privacy Policy</a>
+          <span>|</span>
+          <a href="terms.html" class="footer__link">Terms of Service</a>
+          <span>|</span>
+          <a href="cookies.html" class="footer__link">Cookie Policy</a>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
   
   <!-- Scripts -->
   <script>
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
-      const navMenu = document.querySelector('#nav-menu');
+      const navMenu = document.querySelector('.nav__list');
       
       menuToggle.addEventListener('click', () => {
         const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
         menuToggle.setAttribute('aria-expanded', !expanded);
-        navMenu.classList.toggle('show');
+        navMenu.classList.toggle('nav__list--open');
       });
 
       // Solution filtering
       const filterButtons = document.querySelectorAll('.filter-btn');
-      const solutionCards = document.querySelectorAll('.solution-card');
+      const solutionCards = document.querySelectorAll('.feature-card');
       
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -456,7 +458,8 @@
       // Reduced motion preference
       const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       if (mediaQuery.matches) {
-        document.documentElement.style.setProperty('--transition-speed', '0ms');
+        document.documentElement.style.setProperty('--transition', 'none');
+        document.documentElement.style.setProperty('--transition-slow', 'none');
       }
     });
   </script>
