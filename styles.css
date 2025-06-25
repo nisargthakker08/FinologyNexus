@@ -1360,3 +1360,69 @@ nav ul li a {
   font-weight: 600;
   color: #ffffff;
 }
+.tech-stack-section {
+  background-color: #f9fafc;
+  padding: 3rem 0;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.tech-item {
+  text-align: center;
+  max-width: 140px;
+}
+
+.tech-item img {
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo img {
+  object-fit: contain;
+  width: 140px;
+  height: auto;
+}
+.cta-button.secondary {
+  background-color: #ffffff;
+  color: #1f2937;
+  border: 1px solid #ccc;
+}
+
+.cta-button.secondary:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.company-name {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+.hero-subtitle {
+  color: #f0f0f0;
+  font-size: 1.1rem;
+}
