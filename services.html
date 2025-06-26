@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -890,25 +890,30 @@
   <i class="fas fa-comments"></i> Let's Talk
 </a>
 
+<!-- Add your JavaScript code HERE (replace the old script block) -->
 <script>
-  // Mobile menu toggle
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('nav');
-  
-  menuToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    menuToggle.innerHTML = nav.classList.contains('active') 
-      ? '<i class="fas fa-times"></i>' 
-      : '<i class="fas fa-bars"></i>';
-  });
-  
-  // Set active nav link based on current page
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
+  document.addEventListener("DOMContentLoaded", function() {
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      menuToggle.innerHTML = nav.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Set active nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.href === window.location.href) {
+        link.classList.add('active');
+      }
+    });
   });
 </script>
+
+</body> <!-- Closing body tag -->
 
 </body>
 </html>
