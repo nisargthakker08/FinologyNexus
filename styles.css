@@ -502,3 +502,65 @@ footer {
     scroll-behavior: auto !important;
   }
 }
+/* =================== */
+/* HEADER CTA FIXES */
+/* =================== */
+.header-cta {
+  margin-left: 1.5rem;
+  padding: 0.5rem 1.25rem;
+  white-space: nowrap;
+  height: fit-content;
+  align-self: center;
+}
+
+/* =================== */
+/* HERO BUTTON FIXES */
+/* =================== */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+  min-width: 180px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+}
+
+/* =================== */
+/* TECH BUTTON FIXES */
+/* =================== */
+.tech-stack-container .btn {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+}
+
+/* =================== */
+/* RESPONSIVE FIXES */
+/* =================== */
+@media (max-width: 768px) {
+  .header-cta {
+    margin-left: 0;
+    margin-top: 0.75rem;
+    width: 100%;
+    order: 3;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
