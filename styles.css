@@ -553,3 +553,47 @@ footer {
   background: linear-gradient(to right, var(--primary-blue), #005b99);
   transform: translateY(-3px);
 }
+/* ===== SECONDARY BUTTON ===== */
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+  transition: var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ===== HERO BUTTONS UPDATE ===== */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.hero-buttons .btn {
+  min-width: 220px;
+  padding: 0.875rem 1.875rem;
+  height: 52px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
