@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | Finology Nexus</title>
   <meta name="description" content="Explore specialized services offered by Finology Nexus including financial research, bookkeeping, tax prep, data scraping, and dedicated process support teams." />
-   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,545 +18,890 @@
     gtag('config', 'G-GZ1RDVHZZP');
   </script>
 
-   <!-- Microsoft Clarity tag -->
-<script src="clarity.js"></script>
+  <!-- Microsoft Clarity tag -->
+  <script src="clarity.js"></script>
   
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
-      color: #333;
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-dark);
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 5rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ========== HEADER & NAVIGATION ========== */
     header {
-      background: #fff;
-      padding: 20px 40px;
+      background: var(--white);
+      padding: 1rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      box-shadow: var(--shadow-sm);
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: box-shadow 0.3s ease;
     }
 
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    header img {
-      height: 40px;
+      gap: 0.625rem;
     }
 
     .company-name {
-      font-size: 20px;
-      font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 1.5rem;
       margin: 0;
       padding: 0;
     }
 
     nav a {
       text-decoration: none;
-      color: #333;
+      color: var(--text-dark);
       font-weight: 600;
       position: relative;
+      transition: var(--transition);
+      font-size: 0.95rem;
     }
 
-    nav a:hover,
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary-blue);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
     nav a.active {
-      color: #0077cc;
-      font-weight: 700;
+      color: var(--primary-blue);
     }
 
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-blue);
+    }
+
+    /* ========== PAGE HEADER ========== */
     .page-header {
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      color: white;
-      padding: 60px 20px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 6rem 1.25rem;
       text-align: center;
       box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
     }
 
     .page-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.875rem;
+      margin-bottom: 1.25rem;
       animation: fadeInDown 1s ease-in-out;
     }
 
     .page-header p {
-      font-size: 1.1rem;
+      font-size: 1.25rem;
+      max-width: 43.75rem;
+      margin: 0 auto;
       animation: fadeInUp 1s ease-in-out;
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .services {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .services h2 {
-      font-size: 2rem;
-      color: #0077cc;
-    }
-
-    .services p {
-      color: #555;
-      margin-bottom: 30px;
+    /* ========== SERVICES SECTION ========== */
+    .services-section {
+      background-color: var(--white);
     }
 
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 2rem;
+      margin-top: 3rem;
     }
 
-    .service {
-      perspective: 1000px;
-      cursor: pointer;
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
     }
 
-    .card-inner {
+    .service-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .service-card-header {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 1.5rem;
       position: relative;
-      height: 250px;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
     }
 
-    .service:hover .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      backface-visibility: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 25px;
-      box-sizing: border-box;
-    }
-
-    .card-front {
-      background: white;
-      z-index: 2;
-    }
-
-    .card-back {
-      background: #0077cc;
-      transform: rotateY(180deg);
-      color: white;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .card-front i {
+    .service-card-header i {
       font-size: 2rem;
-      color: #00c6ff;
-      margin-bottom: 12px;
+      margin-bottom: 1rem;
+      display: inline-block;
     }
 
-    .card-front h3 {
-      color: #0077cc;
-      margin: 8px 0;
-      font-size: 1.1rem;
+    .service-card-header h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
     }
 
-    .card-front p {
-      color: #555;
-      font-size: 14.5px;
-      line-height: 1.6;
-      margin: 0;
+    .service-card-body {
+      padding: 1.5rem;
     }
 
-    .service a {
+    .service-card-body p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-medium);
+    }
+
+    .service-features li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary-blue);
+    }
+
+    .btn-service {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
       text-decoration: none;
-      color: inherit;
-      display: block;
+      transition: var(--transition);
+      width: 100%;
     }
 
+    .btn-service:hover {
+      background: var(--primary-blue-dark);
+    }
+
+    .btn-service i {
+      margin-left: 0.5rem;
+    }
+
+    /* ========== WHO WE HELP SECTION ========== */
+    .clients-section {
+      background-color: var(--light-bg);
+    }
+
+    .client-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .client-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .client-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: var(--shadow-md);
+    }
+
+    .client-card i {
+      font-size: 2.5rem;
+      color: var(--secondary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .client-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .client-card p {
+      color: var(--text-medium);
+    }
+
+    /* ========== TECH STACK SECTION ========== */
+    .tech-stack {
+      background-color: var(--white);
+      padding: 2.5rem 1.25rem;
+    }
+
+    .tech-stack-container {
+      max-width: 68.75rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .tech-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .tech-logos img {
+      height: 2.5rem;
+      width: auto;
+      transition: var(--transition);
+    }
+
+    .tech-logos img:hover {
+      transform: scale(1.1);
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 4rem 1.25rem;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== FOOTER ========== */
     footer {
-      background: #1f2937;
-      color: white;
-      padding: 30px 20px;
-      margin-top: 60px;
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 3rem 1.25rem 1.5rem;
     }
 
     .footer-main {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      gap: 20px;
+      align-items: flex-start;
+      max-width: 75rem;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
     }
 
     .footer-logo-group img {
-      height: 30px;
+      height: 2rem;
     }
 
     .footer-logo-group span {
-      font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(to right, #00c6ff, #0077cc);
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
-    .footer-socials a {
-      color: white;
-      margin: 0 8px;
-      font-size: 20px;
-      transition: color 0.3s;
+    .footer-about {
+      color: #d1d5db;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
       text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-blue);
+    }
+
+    .footer-socials {
+      margin-top: 1.5rem;
+    }
+
+    .footer-socials a {
+      color: var(--white);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
     }
 
     .footer-socials a:hover {
-      color: #00c6ff;
+      color: var(--secondary-blue);
+      transform: translateY(-2px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 14px;
-      margin-top: 30px;
-      color: #aaa;
+      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
     }
 
-    @media (max-width: 768px) {
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .card-inner {
-        height: auto;
-      }
-    }
-  .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
-
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
+    /* ========== FLOATING CTA ========== */
     .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
+      position: fixed;
+      bottom: 1.875rem;
+      right: 1.875rem;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 1.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
     }
-  }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, var(--primary-blue), #005b99);
+      transform: translateY(-3px);
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+      
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+      }
+      
+      nav.active {
+        display: block;
+        margin-top: 1rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .tech-logos {
+        gap: 1.5rem;
+      }
+      
+      .tech-logos img {
+        height: 2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .footer-main {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .footer-column {
+        width: 100%;
+      }
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .page-header h1,
+      .page-header p {
+        animation: none;
+      }
+    }
+
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div class="logo-group">
-    <img src="Finology Nexus Logo.png" alt="Logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
     <span class="company-name">Finology Nexus</span>
   </div>
   <nav>
     <ul>
-      <li><a href="index.html" class="nav-link home">Home</a></li>
-      <li><a href="services.html" class="nav-link services">Services</a></li>
-      <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-      <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-      <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link active">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+      <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+      <li><a href="contactus.html" class="nav-link">Contact</a></li>
     </ul>
   </nav>
+  <button class="menu-toggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
 </header>
 
 <section class="page-header">
-  <h1>Our Services</h1>
-  <p>Built for businesses that value clarity, flexibility, and precision.</p>
+  <div class="container">
+    <h1>Precision Financial Services</h1>
+    <p>We deliver specialized financial operations support that scales with your business needs, combining human expertise with smart automation.</p>
+  </div>
 </section>
 
-<section class="services">
-  <h2>What We Offer</h2>
-  <p>From hands-on financial support to automation workflows, our team helps your business stay lean and move fast — without sacrificing quality.</p>
-
-  <div class="service-grid">
-    <a href="Financial Research & Analytics.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
+<section class="section services-section">
+  <div class="container">
+    <h2 class="section-title">Our Core Services</h2>
+    <p class="section-description">From routine financial operations to complex research projects, our team becomes an extension of your finance department with measurable results.</p>
+    
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-card-header">
           <i class="fas fa-chart-line"></i>
           <h3>Financial Research & Analytics</h3>
-          <p>Deep insights — from company analysis and benchmarking to valuations & modeling.</p>
         </div>
-        <div class="card-back">Read More</div>
-      </div>
-    </a>
-
-    <a href="Bookkeeping & Accounting Support.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-book"></i>
-          <h3>Bookkeeping & Accounting Support</h3>
-          <p>Accurate books, clean reconciliations & reporting — for internal or investor use.</p>
+        <div class="service-card-body">
+          <p>Comprehensive financial analysis including competitor benchmarking, valuation modeling, and investment research with actionable insights.</p>
+          <ul class="service-features">
+            <li>Company & industry research</li>
+            <li>Financial modeling & valuation</li>
+            <li>Investment thesis support</li>
+            <li>Market trend analysis</li>
+          </ul>
+          <a href="Financial Research & Analytics.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-        <div class="card-back">Read More</div>
       </div>
-    </a>
-
-    <a href="Tax Preparation & Reporting.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <h3>Tax Preparation & Reporting</h3>
-          <p>Structured documentation & schedule support to assist filings and deadlines.</p>
-        </div>
-        <div class="card-back">Read More</div>
-      </div>
-    </a>
-
-    <a href="Data Scraping & Automation.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-database"></i>
-          <h3>Data Scraping & Automation</h3>
-          <p>Script-driven workflows for scalable, validated data collection from public sources.</p>
-        </div>
-        <div class="card-back">Read More</div>
-      </div>
-    </a>
-
-    <a href="Process Documentation & Workflow Support.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-cogs"></i>
-          <h3>Process Documentation & Workflow Support</h3>
-          <p>SOP-driven execution from tagging and audit prep to quality control tasks.</p>
-        </div>
-        <div class="card-back">Read More</div>
-      </div>
-    </a>
-
-    <a href="Outsourcing Partnership.html" class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-handshake"></i>
-          <h3>Outsourcing Partnership</h3>
-          <p>Embedded support model that blends into your operations with long-term dependability.</p>
-        </div>
-        <div class="card-back">Read More</div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- New Section: Who We Help -->
-<section style="background: #ffffff; padding: 60px 20px; text-align: center;">
-  <h2 class="section-title" style="font-size: 32px; color: #0077cc; margin-bottom: 20px;">Who We Help</h2>
-  <p class="section-description" style="max-width: 800px; margin: auto; font-size: 16px; color: #555; margin-bottom: 40px;">
-    Whether you're building a startup or scaling a team, Finology Nexus is built to support the unsung operators behind great companies.
-  </p>
-  <div class="service-grid" style="max-width: 1000px; margin: auto;">
-    <div class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-rocket"></i>
-          <h3>Startups</h3>
-          <p>Preparing for investor rounds and need reliable back-office clarity? We’ve got you.</p>
-        </div>
-        <div class="card-back">Operations Made Simple</div>
-      </div>
-    </div>
-    <div class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-university"></i>
-          <h3>Fintech Firms</h3>
-          <p>Looking for backend teams that understand finance and compliance? That’s our strength.</p>
-        </div>
-        <div class="card-back">Built for Financial Precision</div>
-      </div>
-    </div>
-    <div class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-building"></i>
-          <h3>KPOs & BPOs</h3>
-          <p>Need dependable research support or delivery frameworks? We plug in smoothly.</p>
-        </div>
-        <div class="card-back">Reliable Delivery</div>
-      </div>
-    </div>
-    <div class="service">
-      <div class="card-inner">
-        <div class="card-front">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Early-Stage Founders</h3>
-          <p>Wearing too many hats? Let us help you focus while we manage the grind.</p>
-        </div>
-        <div class="card-back">Delegate With Confidence</div>
-      </div>
-    </div>
-  </div>
-</section>
-  
-<!-- Tech Stack Section -->
-<section id="tech-stack" style="background-color: #f9fafb; padding: 60px 20px;">
-  <div style="max-width: 1100px; margin: 0 auto; text-align: center; font-family: 'Inter', sans-serif;">
-    
-    <h2 style="font-size: 2rem; font-weight: 600; color: #1f2937; margin-bottom: 10px;">
-      ⚙️ Platforms That Power Our Process
-    </h2>
-    <p style="color: #4b5563; font-size: 1rem; margin-bottom: 40px;">
-      These platforms reflect our experience in building automation flows, performing data validations, and supporting scalable finance operations.
-    </p>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;">
       
-      <!-- Appian -->
-      <div style="width: 100px; text-align: center;">
-        <img src="/appianicon.png" alt="Appian" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">Appian</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">Low-code task workflow automation</small>
+      <div class="service-card">
+        <div class="service-card-header">
+          <i class="fas fa-book"></i>
+          <h3>Bookkeeping & Accounting</h3>
+        </div>
+        <div class="service-card-body">
+          <p>End-to-end bookkeeping services from transaction processing to financial statement preparation with month-end close support.</p>
+          <ul class="service-features">
+            <li>Accounts payable/receivable</li>
+            <li>Bank & credit card reconciliations</li>
+            <li>Monthly financial reporting</li>
+            <li>Chart of accounts optimization</li>
+          </ul>
+          <a href="Bookkeeping & Accounting Support.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- Mozenda -->
-      <div style="width: 100px; text-align: center;">
-        <img src="/mozendalogo.png" alt="Mozenda" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">Mozenda</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">Web scraping & data extraction</small>
+      
+      <div class="service-card">
+        <div class="service-card-header">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Tax Preparation & Compliance</h3>
+        </div>
+        <div class="service-card-body">
+          <p>Tax documentation organization, schedule preparation, and filing support to ensure compliance across jurisdictions.</p>
+          <ul class="service-features">
+            <li>Tax document organization</li>
+            <li>Schedule preparation</li>
+            <li>Sales tax support</li>
+            <li>Tax filing coordination</li>
+          </ul>
+          <a href="Tax Preparation & Reporting.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- AWS -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">AWS</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">Cloud document flow & storage</small>
+      
+      <div class="service-card">
+        <div class="service-card-header">
+          <i class="fas fa-database"></i>
+          <h3>Data Automation & Scraping</h3>
+        </div>
+        <div class="service-card-body">
+          <p>Custom data collection solutions that extract, validate, and structure public financial data for your analysis.</p>
+          <ul class="service-features">
+            <li>Web scraping & data extraction</li>
+            <li>SEC/EDGAR data collection</li>
+            <li>Automated data validation</li>
+            <li>Custom reporting formats</li>
+          </ul>
+          <a href="Data Scraping & Automation.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- Python -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">Python</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">Automation scripts & data handling</small>
+      
+      <div class="service-card">
+        <div class="service-card-header">
+          <i class="fas fa-cogs"></i>
+          <h3>Process Documentation</h3>
+        </div>
+        <div class="service-card-body">
+          <p>Standard Operating Procedure (SOP) development and workflow optimization for consistent financial operations.</p>
+          <ul class="service-features">
+            <li>SOP documentation</li>
+            <li>Workflow mapping</li>
+            <li>Quality control systems</li>
+            <li>Audit preparation</li>
+          </ul>
+          <a href="Process Documentation & Workflow Support.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- EDGAR -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/ios-filled/50/000000/database.png" alt="EDGAR" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">EDGAR</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">SEC filings & data extraction</small>
+      
+      <div class="service-card">
+        <div class="service-card-header">
+          <i class="fas fa-handshake"></i>
+          <h3>Dedicated Finance Teams</h3>
+        </div>
+        <div class="service-card-body">
+          <p>Embedded finance professionals who integrate with your team to handle specialized functions on an ongoing basis.</p>
+          <ul class="service-features">
+            <li>Dedicated resource model</li>
+            <li>Flexible engagement terms</li>
+            <li>Specialized skill matching</li>
+            <li>Performance reporting</li>
+          </ul>
+          <a href="Outsourcing Partnership.html" class="btn-service">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- API -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/external-flat-juicy-fish/60/external-api-coding-and-development-flat-flat-juicy-fish.png" alt="API" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">API</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">API integration for financial ops</small>
-      </div>
-
-      <!-- Excel VBA -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel VBA" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">Excel VBA</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">Macros for audits & reporting</small>
-      </div>
-
-      <!-- Salesforce -->
-      <div style="width: 100px; text-align: center;">
-        <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce" style="height: 48px; margin-bottom: 10px;">
-        <p style="font-size: 0.95rem; color: #374151; margin: 0;">Salesforce</p>
-        <small style="font-size: 0.75rem; color: #6b7280;">CRM data workflows & reports</small>
-      </div>
-
     </div>
   </div>
-</section>  
+</section>
+
+<section class="section clients-section">
+  <div class="container">
+    <h2 class="section-title">Who We Serve</h2>
+    <p class="section-description">Our services are designed to support financial operations across industries and business stages.</p>
+    
+    <div class="client-types">
+      <div class="client-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Startups</h3>
+        <p>Scaling companies that need financial operations support without the overhead of full-time hires.</p>
+      </div>
+      
+      <div class="client-card">
+        <i class="fas fa-university"></i>
+        <h3>Financial Services</h3>
+        <p>Banks, funds, and fintech firms requiring specialized research and back-office support.</p>
+      </div>
+      
+      <div class="client-card">
+        <i class="fas fa-building"></i>
+        <h3>Professional Services</h3>
+        <p>Accounting firms and consultants needing overflow capacity or specialized skills.</p>
+      </div>
+      
+      <div class="client-card">
+        <i class="fas fa-globe"></i>
+        <h3>International Businesses</h3>
+        <p>Companies operating across borders needing localized financial support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech-stack">
+  <div class="tech-stack-container">
+    <h2 class="section-title">Our Technology Stack</h2>
+    <p class="section-description">We combine financial expertise with modern tools to deliver efficient, accurate results.</p>
+    
+    <div class="tech-logos">
+      <img src="appianicon.png" alt="Appian" title="Appian - Workflow Automation">
+      <img src="mozendalogo.png" alt="Mozenda" title="Mozenda - Data Extraction">
+      <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS" title="AWS - Cloud Infrastructure">
+      <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" title="Python - Data Processing">
+      <img src="https://img.icons8.com/ios-filled/50/000000/database.png" alt="EDGAR" title="EDGAR - SEC Filings">
+      <img src="https://img.icons8.com/external-flat-juicy-fish/60/external-api-coding-and-development-flat-flat-juicy-fish.png" alt="API" title="API Integrations">
+      <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" title="Excel VBA">
+      <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce" title="Salesforce CRM">
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="section-title" style="color: var(--white);">Ready to streamline your financial operations?</h2>
+      <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Let's discuss how we can support your business with the right mix of expertise and efficiency.</p>
+      <div class="cta-buttons">
+        <a href="contactus.html" class="btn btn-primary" style="background: var(--white); color: var(--primary-blue);">
+          <i class="fas fa-envelope"></i> Contact Us
+        </a>
+        <a href="tel:+1234567890" class="btn btn-secondary">
+          <i class="fas fa-phone"></i> Call Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
-
-
-  <div class="footer-main">
-    <div class="footer-logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-      <span>Finology Nexus</span>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-column">
+        <div class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+          <span>Finology Nexus</span>
+        </div>
+        <p class="footer-about">
+          We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.facebook.com/finologynexus/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/finologynexus/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
+            <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping</a></li>
+            <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
+            <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
+            <li><a href="Process Documentation & Workflow Support.html">Process Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> info@finologynexus.com</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="footer-socials">
-      <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-       <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+    
+    <div class="footer-bottom">
+      &copy; 2023 Finology Nexus. All rights reserved.
     </div>
-  </div>
-  <div class="footer-bottom">
-    &copy; 2020 Finology Nexus. All rights reserved.
   </div>
 </footer>
 
+<!-- Floating CTA Button -->
+<a href="contactus.html" class="floating-cta" title="Let's Talk">
+  <i class="fas fa-comments"></i> Let's Talk
+</a>
+
 <script>
-  const path = window.location.pathname;
-  const file = path.substring(path.lastIndexOf('/') + 1);
-  const links = {
-    'index.html': 'home',
-    'services.html': 'services',
-    'blog.html': 'blog',
-    'aboutus.html': 'about',
-    'contactus.html': 'contact'
-  };
-  const current = links[file];
-  if (current) {
-    const activeLink = document.querySelector(`.nav-link.${current}`);
-    if (activeLink) activeLink.classList.add('active');
-  }
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuToggle.innerHTML = nav.classList.contains('active') 
+      ? '<i class="fas fa-times"></i>' 
+      : '<i class="fas fa-bars"></i>';
+  });
+  
+  // Set active nav link based on current page
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });
 </script>
 
 </body>
