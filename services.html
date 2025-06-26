@@ -9,23 +9,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GZ1RDVHZZP');
-  </script>
-
-  <!-- Microsoft Clarity tag -->
+  <!-- Microsoft Clarity -->
   <script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "s1b20qvd2s");
-</script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","s1b20qvd2s");
+  </script>
   
   <style>
     :root {
@@ -79,6 +78,60 @@
       margin: 0 auto;
       color: var(--text-medium);
       font-size: 1.1rem;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 180px;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-service {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary-blue);
+      color: var(--white);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .btn-service:hover {
+      background: var(--primary-blue-dark);
+    }
+
+    .btn-service i {
+      margin-left: 0.5rem;
     }
 
     /* ========== LAYOUT COMPONENTS ========== */
@@ -167,6 +220,7 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--primary-blue);
+      padding: 0.5rem;
     }
 
     /* ========== PAGE HEADER ========== */
@@ -273,28 +327,6 @@
       position: absolute;
       left: 0;
       color: var(--secondary-blue);
-    }
-
-    .btn-service {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      background: var(--primary-blue);
-      color: var(--white);
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      width: 100%;
-    }
-
-    .btn-service:hover {
-      background: var(--primary-blue-dark);
-    }
-
-    .btn-service i {
-      margin-left: 0.5rem;
     }
 
     /* ========== WHO WE HELP SECTION ========== */
@@ -607,13 +639,16 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header>
   <div class="logo-group">
-    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
     <span class="company-name">Finology Nexus</span>
   </div>
-  <nav>
+  <nav id="main-nav">
     <ul>
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="services.html" class="nav-link active">Services</a></li>
@@ -622,7 +657,7 @@
       <li><a href="contactus.html" class="nav-link">Contact</a></li>
     </ul>
   </nav>
-  <button class="menu-toggle" aria-label="Toggle navigation">
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
     <i class="fas fa-bars"></i>
   </button>
 </header>
@@ -653,7 +688,7 @@
             <li>Investment thesis support</li>
             <li>Market trend analysis</li>
           </ul>
-          <a href="Financial Research & Analytics.html" class="btn-service">
+          <a href="financial-research-analytics.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -672,7 +707,7 @@
             <li>Monthly financial reporting</li>
             <li>Chart of accounts optimization</li>
           </ul>
-          <a href="Bookkeeping & Accounting Support.html" class="btn-service">
+          <a href="bookkeeping-accounting.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -691,7 +726,7 @@
             <li>Sales tax support</li>
             <li>Tax filing coordination</li>
           </ul>
-          <a href="Tax Preparation & Reporting.html" class="btn-service">
+          <a href="tax-preparation.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -710,7 +745,7 @@
             <li>Automated data validation</li>
             <li>Custom reporting formats</li>
           </ul>
-          <a href="Data Scraping & Automation.html" class="btn-service">
+          <a href="data-automation.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -729,7 +764,7 @@
             <li>Quality control systems</li>
             <li>Audit preparation</li>
           </ul>
-          <a href="Process Documentation & Workflow Support.html" class="btn-service">
+          <a href="process-documentation.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -748,7 +783,7 @@
             <li>Specialized skill matching</li>
             <li>Performance reporting</li>
           </ul>
-          <a href="Outsourcing Partnership.html" class="btn-service">
+          <a href="dedicated-teams.html" class="btn-service">
             Learn More <i class="fas fa-arrow-right"></i>
           </a>
         </div>
@@ -796,14 +831,14 @@
     <p class="section-description">We combine financial expertise with modern tools to deliver efficient, accurate results.</p>
     
     <div class="tech-logos">
-      <img src="appianicon.png" alt="Appian" title="Appian - Workflow Automation">
-      <img src="mozendalogo.png" alt="Mozenda" title="Mozenda - Data Extraction">
-      <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS" title="AWS - Cloud Infrastructure">
-      <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" title="Python - Data Processing">
-      <img src="https://img.icons8.com/ios-filled/50/000000/database.png" alt="EDGAR" title="EDGAR - SEC Filings">
-      <img src="https://img.icons8.com/external-flat-juicy-fish/60/external-api-coding-and-development-flat-flat-juicy-fish.png" alt="API" title="API Integrations">
-      <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" title="Excel VBA">
-      <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce" title="Salesforce CRM">
+      <img src="appianicon.png" alt="Appian - Workflow Automation" loading="lazy">
+      <img src="mozendalogo.png" alt="Mozenda - Data Extraction" loading="lazy">
+      <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS - Cloud Infrastructure" loading="lazy">
+      <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python - Data Processing" loading="lazy">
+      <img src="https://img.icons8.com/ios-filled/50/000000/database.png" alt="EDGAR - SEC Filings" loading="lazy">
+      <img src="https://img.icons8.com/external-flat-juicy-fish/60/external-api-coding-and-development-flat-flat-juicy-fish.png" alt="API Integrations" loading="lazy">
+      <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel VBA" loading="lazy">
+      <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce CRM" loading="lazy">
     </div>
   </div>
 </section>
@@ -814,10 +849,10 @@
       <h2 class="section-title" style="color: var(--white);">Ready to streamline your financial operations?</h2>
       <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">Let's discuss how we can support your business with the right mix of expertise and efficiency.</p>
       <div class="cta-buttons">
-        <a href="contactus.html" class="btn btn-primary" style="background: var(--white); color: var(--primary-blue);">
+        <a href="contactus.html" class="btn btn-primary">
           <i class="fas fa-envelope"></i> Contact Us
         </a>
-        <a href="tel:+1234567890" class="btn btn-secondary">
+        <a href="tel:+91 9510406535" class="btn btn-secondary">
           <i class="fas fa-phone"></i> Call Now
         </a>
       </div>
@@ -830,17 +865,17 @@
     <div class="footer-main">
       <div class="footer-column">
         <div class="footer-logo-group">
-          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
           <span>Finology Nexus</span>
         </div>
         <p class="footer-about">
           We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
         </p>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://x.com/FinologyN57162" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.facebook.com/finologynexus/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/finologynexus/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
       
@@ -849,10 +884,10 @@
           <h4>Services</h4>
           <ul>
             <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-            <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping</a></li>
+            <li><a href="Bookkeeping & Accounting Suppor">Bookkeeping</a></li>
             <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
             <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-            <li><a href="Process Documentation & Workflow Support.html">Process Documentation</a></li>
+            <li><a href="Process Documentation & Workflow">Process Documentation</a></li>
           </ul>
         </div>
       </div>
@@ -880,17 +915,16 @@
     </div>
     
     <div class="footer-bottom">
-      &copy; 2023 Finology Nexus. All rights reserved.
+      &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
     </div>
   </div>
 </footer>
 
 <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let's Talk">
+<a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
   <i class="fas fa-comments"></i> Let's Talk
 </a>
 
-<!-- Add your JavaScript code HERE (replace the old script block) -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Mobile menu toggle
@@ -898,10 +932,11 @@
     const nav = document.querySelector('nav');
     
     menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-      menuToggle.innerHTML = nav.classList.contains('active') 
+      const isExpanded = nav.classList.toggle('active');
+      menuToggle.innerHTML = isExpanded 
         ? '<i class="fas fa-times"></i>' 
         : '<i class="fas fa-bars"></i>';
+      menuToggle.setAttribute('aria-expanded', isExpanded);
     });
     
     // Set active nav link
@@ -910,8 +945,10 @@
         link.classList.add('active');
       }
     });
+    
+    // Update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   });
 </script>
-
 </body>
 </html>
