@@ -116,13 +116,16 @@ p {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  padding: var(--space-md) var(--space-lg);
+  padding: 0.9rem 2rem;
   border-radius: var(--radius-md);
   font-weight: 600;
   transition: var(--transition-normal);
   text-align: center;
   cursor: pointer;
   border: none;
+  min-width: 200px;
+  height: 50px;
+  box-sizing: border-box;
 }
 
 .btn-primary {
@@ -140,7 +143,6 @@ p {
   background: transparent;
   color: var(--color-white);
   border: 2px solid var(--color-white);
-  padding: 0.875rem 1.875rem;
 }
 
 .btn-outline:hover {
@@ -195,48 +197,34 @@ header {
 nav {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
 }
 
 nav ul {
-  list-style: none;
   display: flex;
-  gap: var(--space-lg);
+  align-items: center;
+  gap: var(--space-md);
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-nav a {
-  font-weight: 600;
-  position: relative;
-  padding: var(--space-xs) 0;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background: var(--color-primary);
-  transition: var(--transition-normal);
-}
-
-nav a:hover::after,
-nav a.active::after {
-  width: 100%;
+/* Position Free Consultation after Contact */
+nav ul li:last-child {
+  margin-left: var(--space-lg);
 }
 
 .header-cta {
-  margin-left: var(--space-lg);
+  padding: 0.6rem 1.5rem;
   white-space: nowrap;
-  padding: var(--space-sm) var(--space-md);
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+  color: white;
   border-radius: var(--radius-md);
   font-weight: 600;
   transition: var(--transition-normal);
-  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-  color: var(--color-white);
 }
 
 .header-cta:hover {
@@ -278,9 +266,9 @@ nav a.active::after {
 
 .hero-buttons {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-lg);
   justify-content: center;
-  margin-top: var(--space-xl);
+  margin: 2.5rem auto 0;
 }
 
 /* ========== FEATURES SECTION ========== */
@@ -358,7 +346,9 @@ nav a.active::after {
 }
 
 .tech-stack-container .btn {
-  margin-top: var(--space-lg);
+  margin: 2rem auto 0;
+  min-width: 240px;
+  padding: 0.9rem 2.5rem;
 }
 
 /* ========== FOOTER ========== */
@@ -408,16 +398,6 @@ footer {
   font-size: var(--text-sm);
 }
 
-/* ========== UTILITY CLASSES ========== */
-.mt-auto { margin-top: auto; }
-.mb-auto { margin-bottom: auto; }
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* ========== RESPONSIVE STYLES ========== */
 @media (max-width: 768px) {
   header {
@@ -434,25 +414,27 @@ footer {
     width: 100%;
     order: 3;
     display: none;
-    flex-direction: column;
-    gap: var(--space-sm);
   }
   
   nav.active {
-    display: flex;
+    display: block;
     margin-top: var(--space-md);
   }
   
   nav ul {
     flex-direction: column;
+    align-items: stretch;
     gap: var(--space-sm);
   }
   
-  .header-cta {
+  nav ul li:last-child {
     margin-left: 0;
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+  
+  .header-cta {
     width: 100%;
-    text-align: center;
+    margin-top: var(--space-sm);
   }
   
   .hero h1 {
@@ -465,12 +447,13 @@ footer {
   
   .hero-buttons {
     flex-direction: column;
-    align-items: center;
+    gap: var(--space-md);
   }
   
-  .hero-buttons .btn {
+  .hero-buttons .btn,
+  .tech-stack-container .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
   }
   
   .features {
@@ -493,6 +476,12 @@ footer {
   }
 }
 
+/* ========== ANIMATIONS ========== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ========== ACCESSIBILITY ========== */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -500,67 +489,5 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-/* =================== */
-/* HEADER CTA FIXES */
-/* =================== */
-.header-cta {
-  margin-left: 1.5rem;
-  padding: 0.5rem 1.25rem;
-  white-space: nowrap;
-  height: fit-content;
-  align-self: center;
-}
-
-/* =================== */
-/* HERO BUTTON FIXES */
-/* =================== */
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.hero-buttons .btn {
-  min-width: 180px;
-  text-align: center;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.875rem 1.5rem;
-}
-
-/* =================== */
-/* TECH BUTTON FIXES */
-/* =================== */
-.tech-stack-container .btn {
-  margin-top: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-}
-
-/* =================== */
-/* RESPONSIVE FIXES */
-/* =================== */
-@media (max-width: 768px) {
-  .header-cta {
-    margin-left: 0;
-    margin-top: 0.75rem;
-    width: 100%;
-    order: 3;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-  }
-  
-  .hero-buttons .btn {
-    width: 100%;
-    max-width: 250px;
   }
 }
