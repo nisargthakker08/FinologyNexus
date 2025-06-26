@@ -210,15 +210,28 @@
     }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-      padding: 0.875rem 1.875rem;
-    }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  text-align: center;
+  cursor: pointer;
+  padding: 0.875rem 1.875rem;
+  font-size: 1rem;
+  background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
 
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.1);
-    }
+.btn-secondary:hover {
+  background: linear-gradient(to right, #005fa3, #00a4e0);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
 
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-1.25rem); }
