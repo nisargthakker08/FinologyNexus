@@ -16,25 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GZ1RDVHZZP');
-  </script>
-
-   <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
-  
-
   <style>
     :root {
       --primary-blue: #0077cc;
@@ -68,36 +49,14 @@
       color: var(--text-dark);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      opacity: 1 !important;
     }
 
-    /* ========== TYPOGRAPHY ========== */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 1.25rem;
-      color: var(--text-dark);
-    }
-
-    .section-subtitle {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary-blue);
-    }
-
-    /* ========== LAYOUT COMPONENTS ========== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .section {
-      padding: 5rem 1.25rem;
+    /* DEBUG: Ensure all content stays visible */
+    body * {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: revert !important;
     }
 
     /* ========== HEADER & NAVIGATION ========== */
@@ -141,7 +100,6 @@
       color: var(--text-dark);
       font-weight: 600;
       position: relative;
-      transition: var(--transition);
       font-size: 0.95rem;
     }
 
@@ -156,21 +114,11 @@
       transition: var(--transition);
     }
 
-    nav a:hover::after,
-    nav a.active::after {
+    nav a:hover::after {
       width: 100%;
     }
 
     nav a.active {
-      color: var(--primary-blue);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
       color: var(--primary-blue);
     }
 
@@ -181,12 +129,7 @@
       border-radius: var(--radius-sm);
       font-weight: 600;
       font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .header-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      text-decoration: none;
     }
 
     /* ========== HERO SECTION ========== */
@@ -224,7 +167,6 @@
       padding: 0.875rem 1.875rem;
       font-weight: 600;
       border-radius: var(--radius-sm);
-      transition: var(--transition);
       min-width: 220px;
       text-decoration: none;
     }
@@ -234,12 +176,6 @@
       color: var(--white);
       border: none;
       box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
     }
 
     /* ========== MAIN CONTENT ========== */
@@ -261,12 +197,6 @@
       padding: 1.5rem;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .service-feature:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
     }
 
     .service-feature h3 {
@@ -323,46 +253,6 @@
       padding: 0 1rem;
     }
 
-    .testimonial {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: var(--radius-md);
-      margin: 3rem 0;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-    }
-
-    .testimonial:before {
-      content: '"';
-      font-size: 5rem;
-      color: rgba(0, 119, 204, 0.1);
-      position: absolute;
-      top: 0.5rem;
-      left: 1rem;
-      line-height: 1;
-    }
-
-    .testimonial-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-text {
-      font-style: italic;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      color: var(--primary-blue);
-    }
-
-    .testimonial-role {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-
     /* ========== FOOTER ========== */
     footer {
       background: var(--dark-bg);
@@ -380,62 +270,11 @@
       gap: 1.25rem;
     }
 
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-    }
-
-    .footer-logo-group span {
-      font-size: 1.125rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
     .footer-socials a {
       color: var(--white);
       margin: 0 0.5rem;
       font-size: 1.25rem;
-      transition: var(--transition);
       text-decoration: none;
-    }
-
-    .footer-socials a:hover {
-      color: var(--secondary-blue);
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.875rem;
-      margin-top: 1.875rem;
-      color: #aaa;
-    }
-
-    /* ========== FLOATING CTA ========== */
-    .floating-cta {
-      position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-    }
-
-    .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
     }
 
     /* ========== RESPONSIVE STYLES ========== */
@@ -443,20 +282,6 @@
       header {
         padding: 1rem;
         flex-wrap: wrap;
-      }
-      
-      .menu-toggle {
-        display: block;
-      }
-      
-      nav {
-        width: 100%;
-        display: none;
-        margin-top: 1rem;
-      }
-      
-      nav.active {
-        display: block;
       }
       
       nav ul {
@@ -468,17 +293,9 @@
         font-size: 2rem;
       }
       
-      .hero p {
-        font-size: 1rem;
-      }
-      
       .hero-buttons {
         flex-direction: column;
         align-items: center;
-      }
-      
-      .tech-logos {
-        gap: 1.5rem;
       }
     }
   </style>
@@ -500,139 +317,92 @@
       </ul>
     </nav>
     <a href="contactus.html" class="header-cta">Get Started</a>
-    <button class="menu-toggle" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
   </header>
 
   <div class="hero">
-    <div class="container">
-      <h1>Professional Bookkeeping & Accounting Services</h1>
-      <p>Precision financial management tailored to your business needs. Focus on growth while we handle your numbers.</p>
-      <div class="hero-buttons">
-        <a href="#services" class="btn btn-primary">
-          <i class="fas fa-chart-line"></i> Explore Services
-        </a>
-        <a href="contactus.html" class="btn btn-primary">
-          <i class="fas fa-calendar-check"></i> Schedule Consultation
-        </a>
-      </div>
+    <h1>Professional Bookkeeping & Accounting Services</h1>
+    <p>Precision financial management tailored to your business needs. Focus on growth while we handle your numbers.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn btn-primary">
+        <i class="fas fa-chart-line"></i> Explore Services
+      </a>
+      <a href="contactus.html" class="btn btn-primary">
+        <i class="fas fa-calendar-check"></i> Schedule Consultation
+      </a>
     </div>
   </div>
 
-  <div class="section">
-    <div class="service-content">
-      <h2 id="services" class="section-title"><i class="fas fa-tasks"></i> Our Comprehensive Services</h2>
-      <p class="section-description">We offer end-to-end financial management solutions designed to streamline your operations, ensure compliance, and provide the insights you need to make informed decisions.</p>
-
-      <div class="service-features">
-        <div class="service-feature">
-          <h3><i class="fas fa-book"></i> Full-Cycle Bookkeeping</h3>
-          <ul>
-            <li>Daily transaction recording</li>
-            <li>Bank & credit card reconciliations</li>
-            <li>Accounts payable/receivable management</li>
-            <li>Monthly financial close</li>
-            <li>Chart of accounts optimization</li>
-          </ul>
-        </div>
-        <div class="service-feature">
-          <h3><i class="fas fa-calculator"></i> Accounting Support</h3>
-          <ul>
-            <li>Financial statement preparation</li>
-            <li>Accrual to cash conversion</li>
-            <li>Depreciation schedules</li>
-            <li>Payroll accounting</li>
-            <li>Tax preparation support</li>
-          </ul>
-        </div>
-        <div class="service-feature">
-          <h3><i class="fas fa-chart-pie"></i> CFO Advisory Services</h3>
-          <ul>
-            <li>Financial forecasting</li>
-            <li>Cash flow management</li>
-            <li>Budgeting & planning</li>
-            <li>KPIs & performance metrics</li>
-            <li>Investor reporting</li>
-          </ul>
-        </div>
+  <div class="service-content">
+    <h2 id="services">Our Comprehensive Services</h2>
+    
+    <div class="service-features">
+      <div class="service-feature">
+        <h3><i class="fas fa-book"></i> Full-Cycle Bookkeeping</h3>
+        <ul>
+          <li>Daily transaction recording</li>
+          <li>Bank & credit card reconciliations</li>
+          <li>Accounts payable/receivable management</li>
+        </ul>
       </div>
-
-      <div class="tech-stack">
-        <h2 class="section-subtitle"><i class="fas fa-code"></i> Our Technology Partners</h2>
-        <p>We work with all major accounting platforms to ensure seamless integration with your existing systems.</p>
-        <div class="tech-logos">
-          <div class="tech-logo">QuickBooks</div>
-          <div class="tech-logo">Xero</div>
-          <div class="tech-logo">Zoho Books</div>
-          <div class="tech-logo">Wave</div>
-          <div class="tech-logo">NetSuite</div>
-        </div>
+      <div class="service-feature">
+        <h3><i class="fas fa-calculator"></i> Accounting Support</h3>
+        <ul>
+          <li>Financial statement preparation</li>
+          <li>Payroll accounting</li>
+          <li>Tax preparation support</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="testimonial">
-        <div class="testimonial-content">
-          <p class="testimonial-text">"Finology Nexus transformed our financial operations. Their team implemented efficient processes that saved us 20 hours per month in accounting work, while providing insights that helped us secure a $500K funding round. They're truly partners in our success."</p>
-          <div class="testimonial-author">Sarah Johnson</div>
-          <div class="testimonial-role">CEO, TechStart Inc.</div>
-        </div>
+    <div class="tech-stack">
+      <h2><i class="fas fa-code"></i> Our Technology Partners</h2>
+      <div class="tech-logos">
+        <div class="tech-logo">QuickBooks</div>
+        <div class="tech-logo">Xero</div>
+        <div class="tech-logo">Zoho Books</div>
       </div>
     </div>
   </div>
-
-  <!-- CTA Button -->
-  <a href="contactus.html" class="floating-cta" title="Let's Talk Accounting">
-    <i class="fas fa-comments"></i> Let's Talk Accounting
-  </a>
 
   <footer>
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-logo-group">
-          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-          <span>Finology Nexus</span>
-        </div>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://x.com/FinologyN57162" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.facebook.com/finologynexus/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.instagram.com/finologynexus/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+    <div class="footer-main">
+      <div class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology Nexus</span>
       </div>
-      <div class="footer-bottom">
-        &copy; 2025 Finology Nexus. All rights reserved. | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a> | <a href="terms.html" style="color: #aaa;">Terms of Service</a>
+      <div class="footer-socials">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
       </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Finology Nexus. All rights reserved.
     </div>
   </footer>
 
+  <!-- Minimal JavaScript with safety checks -->
   <script>
-    // Initialize after DOM loads
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function() {
-          nav.classList.toggle('active');
-        });
-      }
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-
-      // Ensure all content is visible
+      // Ensure all content stays visible
       document.body.style.opacity = '1';
+      
+      // Simple mobile menu toggle
+      const menuToggle = document.createElement('button');
+      menuToggle.className = 'menu-toggle';
+      menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      menuToggle.setAttribute('aria-label', 'Toggle navigation');
+      
+      const header = document.querySelector('header');
+      if (header) {
+        header.appendChild(menuToggle);
+        
+        const nav = document.querySelector('nav');
+        if (nav) {
+          menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+          });
+        }
+      }
     });
   </script>
 </body>
