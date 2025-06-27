@@ -627,3 +627,16 @@ main, section, .container {
   visibility: visible !important;
   opacity: 1 !important;
 }
+/* Add this to your stylesheet */
+main, section, .container, 
+.services-grid, .tech-stack, 
+.testimonial, footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+  contain: none !important; /* Explicitly override containment */
+}
