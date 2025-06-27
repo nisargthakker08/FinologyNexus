@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog | Finology Nexus</title>
-  <meta name="description" content="Explore insights from Finology Nexus. Discover trends, tips, and strategies on outsourcing, finance, compliance, and business growth.">
-   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  <meta name="keywords" content="outsourcing blog, finance insights, business growth, bookkeeping, financial research, Finology Nexus">
-  <meta name="author" content="Finology Nexus">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Finology Nexus - Financial Insights & Business Growth</title>
+  <meta name="description" content="Expert insights from Finology Nexus on financial modeling, business valuation, outsourcing strategies, and operational efficiency for startups and growing businesses.">
+  <link rel="icon" type="image/png" href="assets/images/finology-logofavicon.png">
   
-   <!-- Google tag (gtag.js) -->
+  <!-- Primary Meta Tags -->
+  <meta name="keywords" content="financial blog, business valuation, financial modeling, startup growth, outsourcing strategies, Finology Nexus">
+  <meta name="author" content="Finology Nexus">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.finologynexus.online/blog.html">
+  <meta property="og:title" content="Case Studies | Finology Nexus - Financial Insights & Business Growth">
+  <meta property="og:description" content="Expert insights on financial modeling, business valuation, and operational efficiency for startups and growing businesses.">
+  <meta property="og:image" content="https://www.finologynexus.online/assets/images/blog-social-share.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.finologynexus.online/blog.html">
+  <meta property="twitter:title" content="Blog | Finology Nexus - Financial Insights & Business Growth">
+  <meta property="twitter:description" content="Expert insights on financial modeling, business valuation, and operational efficiency for startups and growing businesses.">
+  <meta property="twitter:image" content="https://www.finologynexus.online/assets/images/blog-social-share.jpg">
+
+  <!-- Preload Resources -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,321 +48,358 @@
     gtag('config', 'G-GZ1RDVHZZP');
   </script>
 
-   <!-- Microsoft Clarity tag -->
-<script src="clarity.js"></script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+  </script>
   
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9fbfc;
-      color: #333;
-    }
-
-    header {
-      background: #fff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    header img {
-      height: 40px;
-    }
-
-    .company-name {
-      font-size: 20px;
-      font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      position: relative;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #0077cc;
-    }
-
-    .page-header {
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      color: white;
-      padding: 80px 20px 60px;
-      text-align: center;
-      box-shadow: inset 0 -1px 6px rgba(0,0,0,0.1);
-    }
-
-    .page-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .page-header p {
-      font-size: 1.1rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .blog-post {
-      background: white;
-      margin-bottom: 2rem;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .blog-post:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-    }
-
-    .blog-post i {
-      font-size: 40px;
-      color: #00c6ff;
-      margin-bottom: 1rem;
-    }
-
-    .blog-post h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      color: #0077cc;
-    }
-
-    .blog-post p {
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .read-more {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #0077cc;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .read-more:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background: #1f2937;
-      color: white;
-      padding: 40px 20px 10px;
-    }
-
-    .footer-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-      padding-bottom: 10px;
-    }
-
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-logo-group img {
-      height: 30px;
-    }
-
-    .footer-logo-group span {
-      font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(to right, #00c6ff, #0077cc);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .footer-socials a {
-      color: white;
-      margin: 0 8px;
-      font-size: 20px;
-      transition: color 0.3s;
-    }
-
-    .footer-socials a:hover {
-      color: #00c6ff;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 768px) {
-      nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .footer-main {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+  <!-- Schema.org markup for Google -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Blog | Finology Nexus",
+      "description": "Expert insights on financial modeling, business valuation, and operational efficiency for startups and growing businesses.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Finology Nexus",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.finologynexus.online/assets/images/logo.png"
+        }
       }
     }
-     .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
-
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
-    }
-  }
-  </style>
+  </script>
 </head>
 <body>
-
+  <!-- Skip to Content Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
   <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-      <span class="company-name">Finology Nexus</span>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo-group">
+          <a href="index.html">
+            <img src="Finology Nexus logo.png" alt="Finology Nexus Logo" width="160" height="48" loading="eager">
+          </a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
+        
+        <nav id="main-nav" aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html" class="nav-link home">Home</a></li>
+            <li><a href="services.html" class="nav-link services">Services</a></li>
+            <li><a href="blog.html" class="nav-link blog active" aria-current="page">Case Studies</a></li>
+            <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+            <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+          </ul>
+        </nav>
+        
+        <a href="contactus.html" class="header-cta" aria-label="Contact us">
+          Get Started <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="nav-link home">Home</a></li>
-        <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <section class="page-header">
-    <h1>Insights from Finology Nexus</h1>
-    <p>Smart takes on finance, outsourcing, and operations</p>
-  </section>
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Financial Insights & Business Growth Strategies</h1>
+          <p class="hero-description">Expert analysis and practical advice to help your business thrive</p>
+          
+          <div class="hero-buttons">
+            <a href="#featured-posts" class="btn btn-primary">
+              <i class="fas fa-book-reader" aria-hidden="true"></i> Read Our Articles
+            </a>
+            <a href="services.html" class="btn btn-secondary">
+              <i class="fas fa-chart-line" aria-hidden="true"></i> Explore Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="container">
+    <!-- Blog Posts Section -->
+    <section class="section" id="featured-posts">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Latest Articles</h2>
+          <p class="section-description">Discover our most recent insights and analysis</p>
+        </div>
+        
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+            <div class="blog-post-icon">
+              <i class="fas fa-clock" aria-hidden="true"></i>
+            </div>
+            
+            <div class="blog-post-content">
+              <h3 itemprop="headline">How Finology Nexus Could Help a SaaS Startup Save 20 Hours a Month</h3>
+              <p itemprop="description">Discover how a fast-growing SaaS company could reduce manual work, improve financial clarity, and reclaim time by outsourcing the right backend tasks — without sacrificing quality.</p>
+              
+              <div class="post-meta">
+                <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Finology Team</span>
+                </span>
+                <time datetime="2024-06-15" class="post-date" itemprop="datePublished">June 15, 2024</time>
+              </div>
+              
+              <a href="blog-saas-startup-savings.html" class="read-more" itemprop="url">
+                Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Article 2 -->
+          <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+            <div class="blog-post-icon">
+              <i class="fas fa-chart-line" aria-hidden="true"></i>
+            </div>
+            
+            <div class="blog-post-content">
+              <h3 itemprop="headline">Why Growing Startups Need Financial Research Support</h3>
+              <p itemprop="description">Startups often face rapid decision-making, and having accurate, timely financial insights can be a game-changer. From market benchmarking to customized data models, here's why financial research should be part of your scaling strategy.</p>
+              
+              <div class="post-meta">
+                <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Finology Team</span>
+                </span>
+                <time datetime="2024-06-10" class="post-date" itemprop="datePublished">June 10, 2024</time>
+              </div>
+              
+              <a href="blog-financial-research-support.html" class="read-more" itemprop="url">
+                Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+          
+          <!-- Article 3 -->
+          <article class="blog-post" itemscope itemtype="https://schema.org/BlogPosting">
+            <div class="blog-post-icon">
+              <i class="fas fa-tasks" aria-hidden="true"></i>
+            </div>
+            
+            <div class="blog-post-content">
+              <h3 itemprop="headline">3 Things Founders Should Outsource Early</h3>
+              <p itemprop="description">From bookkeeping to compliance tracking, discover which tasks you can delegate early to boost productivity and reduce operational headaches — without losing control of your business.</p>
+              
+              <div class="post-meta">
+                <span class="post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                  <span itemprop="name">Finology Team</span>
+                </span>
+                <time datetime="2024-06-05" class="post-date" itemprop="datePublished">June 5, 2024</time>
+              </div>
+              
+              <a href="blog-outsourcing-early.html" class="read-more" itemprop="url">
+                Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <div class="blog-post">
-      <i class="fas fa-clock"></i>
-      <h2>How Finology Nexus Could Help a SaaS Startup Save 20 Hours a Month</h2>
-      <p>Discover how a fast-growing SaaS company could reduce manual work, improve financial clarity, and reclaim time by outsourcing the right backend tasks — without sacrificing quality.</p>
-      <a class="read-more" href="blog3.html">Read More</a>
-    </div>
+    <!-- Founder's Note -->
+    <section class="section bg-light">
+      <div class="container">
+        <div class="founder-note">
+          <blockquote>
+            <p>"When I started Finology Nexus, I saw how opaque financial advisory can be—especially for early-stage businesses. Our mission is to demystify valuation and modeling so you can focus on growth."</p>
+            <footer>
+              <p class="founder-signature">—Founder & CEO</p>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
 
-    <div class="blog-post">
-      <i class="fas fa-chart-line"></i>
-      <h2>Why Growing Startups Need Financial Research Support</h2>
-      <p>Startups often face rapid decision-making, and having accurate, timely financial insights can be a game-changer. From market benchmarking to customized data models, here's why financial research should be part of your scaling strategy.</p>
-      <a class="read-more" href="blog1.html">Read More</a>
-    </div>
+    <!-- Newsletter CTA -->
+    <section class="section newsletter-cta">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div class="newsletter-content">
+            <h2>Stay Updated with Financial Insights</h2>
+            <p>Subscribe to our newsletter for the latest articles, tips, and industry analysis.</p>
+          </div>
+          
+          <form class="newsletter-form" action="https://yourdomain.com/subscribe" method="POST">
+            <div class="form-group">
+              <label for="email" class="visually-hidden">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-primary">
+                Subscribe <i class="fas fa-envelope" aria-hidden="true"></i>
+              </button>
+            </div>
+            <p class="form-note">We respect your privacy. Unsubscribe at any time.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="blog-post">
-      <i class="fas fa-tasks"></i>
-      <h2>3 Things Founders Should Outsource Early</h2>
-      <p>From bookkeeping to compliance tracking, discover which tasks you can delegate early to boost productivity and reduce operational headaches — without losing control of your business.</p>
-      <a class="read-more" href="blog2.html">Read More</a>
-    </div>
-
-  </div>
-
+  <!-- Footer -->
   <footer>
-    <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
- 
-    <div class="footer-main">
-      <div class="footer-logo-group">
-        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-        <span>Finology Nexus</span>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-logo-group">
+            <a href="index.html">
+              <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="140" height="42" loading="lazy">
+            </a>
+          </div>
+          
+          <p class="footer-tagline">Strategic financial solutions for growing businesses.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-links-group">
+            <h3 class="footer-links-title">Company</h3>
+            <ul>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="blog.html">Case Studies</a></li>
+              <li><a href="careers.html">Careers</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links-group">
+            <h3 class="footer-links-title">Resources</h3>
+            <ul>
+              <li><a href="guides.html">Guides</a></li>
+              <li><a href="tools.html">Free Tools</a></li>
+              <li><a href="case-studies.html">Case Studies</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links-group">
+            <h3 class="footer-links-title">Connect</h3>
+            <ul>
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      
+      <div class="footer-bottom">
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/FinologyNexus" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://facebook.com/finologynexus" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com/finologynexus" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        
+        <div class="footer-copyright">
+          <p>&copy; <span id="current-year"></span> Finology Nexus. All rights reserved.</p>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2020 Finology Nexus. All rights reserved.
     </div>
   </footer>
 
-  <script>
-    const path = window.location.pathname;
-    const file = path.substring(path.lastIndexOf('/') + 1);
-    const links = {
-      'index.html': 'home',
-      'services.html': 'services',
-      'blog.html': 'blog',
-      'blog1.html': 'blog',
-      'blog2.html': 'blog',
-      'blog3.html': 'blog',
-      'aboutus.html': 'about',
-      'contactus.html': 'contact'
-    };
-    const current = links[file];
-    if (current) {
-      const activeLink = document.querySelector(`.nav-link.${current}`);
-      if (activeLink) activeLink.classList.add('active');
-    }
-  </script>
+  <!-- Floating CTA -->
+  <a href="contactus.html" class="floating-cta" aria-label="Contact us">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
 
+  <!-- JavaScript -->
+  <script>
+    // Current year for footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    
+    menuToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      mainNav.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          mainNav.classList.remove('active');
+          document.body.classList.remove('nav-open');
+        }
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Active link highlighting
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-link');
+    
+    function onScroll() {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        item.removeAttribute('aria-current');
+        
+        if (item.classList.contains(current + '-link')) {
+          item.classList.add('active');
+          item.setAttribute('aria-current', 'page');
+        }
+      });
+    }
+    
+    window.addEventListener('scroll', onScroll);
+  </script>
 </body>
 </html>
