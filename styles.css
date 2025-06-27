@@ -640,3 +640,64 @@ main, section, .container,
   z-index: 1 !important;
   contain: none !important; /* Explicitly override containment */
 }
+/* ========== CRITICAL LAYOUT FIXES ========== */
+
+/* Ensure structural elements maintain their display */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Override protection for critical elements */
+body,
+header, nav, main, footer,
+.container, section,
+.services-grid, .tech-logos,
+.service-card, .tech-logo {
+  all: initial;
+  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Restore specific display types */
+.services-grid {
+  display: grid !important;
+}
+
+.tech-logos {
+  display: flex !important;
+}
+
+/* ========== SAFETY RESETS ========== */
+
+/* Prevent any accidental hiding */
+[style*="display:none"],
+[style*="visibility:hidden"],
+[style*="opacity:0"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* ========== RESPONSIVE FIXES ========== */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tech-logos {
+    flex-direction: column;
+    align-items: center;
+  }
+}
