@@ -10,7 +10,7 @@
   <meta name="author" content="Finology Nexus" />
   <meta property="og:title" content="Premium Bookkeeping & Accounting Services | Finology Nexus" />
   <meta property="og:description" content="Professional financial services to streamline your business operations and drive growth." />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus" />
+  <meta property="og:image" content="https://placehold.co/1200x630.png?text=Finology+Nexus" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -361,14 +361,16 @@
       margin: 2rem 0;
     }
 
-    .tech-logos img {
-      height: 2.5rem;
-      width: auto;
-      transition: var(--transition);
-    }
-
-    .tech-logos img:hover {
-      transform: scale(1.1);
+    .tech-logo-placeholder {
+      width: 150px;
+      height: 50px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      font-weight: 600;
+      color: var(--primary-blue);
     }
 
     /* ========== FOUNDER NOTE ========== */
@@ -718,10 +720,6 @@
         gap: 1.5rem;
       }
       
-      .tech-logos img {
-        height: 2rem;
-      }
-      
       .founder-note {
         padding: 1.5rem;
       }
@@ -889,11 +887,11 @@
         <h2><i class="fas fa-code"></i> Our Technology Partners</h2>
         <p>We work with all major accounting platforms to ensure seamless integration with your existing systems.</p>
         <div class="tech-logos">
-          <img src="https://via.placeholder.com/150x50?text=QuickBooks" alt="QuickBooks">
-          <img src="https://via.placeholder.com/150x50?text=Xero" alt="Xero">
-          <img src="https://via.placeholder.com/150x50?text=Zoho+Books" alt="Zoho Books">
-          <img src="https://via.placeholder.com/150x50?text=Wave" alt="Wave">
-          <img src="https://via.placeholder.com/150x50?text=NetSuite" alt="NetSuite">
+          <div class="tech-logo-placeholder">QuickBooks</div>
+          <div class="tech-logo-placeholder">Xero</div>
+          <div class="tech-logo-placeholder">Zoho Books</div>
+          <div class="tech-logo-placeholder">Wave</div>
+          <div class="tech-logo-placeholder">NetSuite</div>
         </div>
       </div>
     </div>
