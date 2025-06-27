@@ -195,7 +195,21 @@
           max-width: 800px;
           margin: 0 auto;
         }
+        .section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+  padding: 0 var(--space-md); /* Added for mobile responsiveness */
+}
 
+.section-title {
+  margin-bottom: var(--space-md);
+}
+
+.section-description {
+  color: var(--text-medium);
+  line-height: 1.6;
+}
         /* ===== Services Grid ===== */
         .services-grid {
           display: grid;
@@ -531,8 +545,10 @@
     <!-- Main Content -->
     <main class="container">
         <section id="services">
-            <h2 class="section-title">Our Comprehensive Services</h2>
-            <p class="section-description">We offer end-to-end financial management solutions designed to streamline your operations, ensure compliance, and provide the insights you need to make informed decisions.</p>
+            <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto var(--space-xl);">
+  <h2 class="section-title">Our Comprehensive Services</h2>
+  <p class="section-description">We offer end-to-end financial management solutions designed to streamline your operations, ensure compliance, and provide the insights you need to make informed decisions.</p>
+</div>
             
             <div class="services-grid">
                 <!-- Service Card 1 -->
