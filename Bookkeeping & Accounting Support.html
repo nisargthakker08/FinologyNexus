@@ -210,55 +210,60 @@
   color: var(--text-medium);
   line-height: 1.6;
 }
+
         /* ===== Services Grid ===== */
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: var(--space-xl);
-          margin: var(--space-xxl) 0;
-        }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  margin: var(--space-xxl) 0;
+}
 
-        .service-card {
-          background: var(--white);
-          padding: var(--space-xl);
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-sm);
-          transition: var(--transition-normal);
-        }
+.service-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+}
 
-        .service-card:hover {
-          transform: translateY(-5px);
-          box-shadow: var(--shadow-md);
-        }
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
 
-        .service-card h3 {
-          color: var(--primary-blue);
-          margin-bottom: var(--space-md);
-          font-size: 1.5rem;
-          display: flex;
-          align-items: center;
-          gap: var(--space-sm);
-        }
+.service-card h3 {
+  color: var(--primary-blue);
+  margin-bottom: var(--space-md);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
-        .service-card ul {
-          margin-top: var(--space-md);
-        }
+/* Consolidated UL/LI rules - no duplicates */
+.service-card ul {
+  margin-top: var(--space-md);
+  list-style: none; /* Disables default bullets */
+  padding-left: 0;   /* Removes default padding */
+}
 
-        .service-card li {
-          margin-bottom: var(--space-sm);
-          position: relative;
-          padding-left: var(--space-md);
-          color: var(--text-medium);
-        }
+.service-card li {
+  margin-bottom: var(--space-sm);
+  position: relative;
+  padding-left: var(--space-md);
+  color: var(--text-medium);
+  line-height: 1.6;  /* Better readability */
+}
 
-        .service-card li::before {
-          content: "•";
-          color: var(--secondary-blue);
-          position: absolute;
-          left: 0;
-          font-weight: bold;
-        }
-
+.service-card li::before {
+  content: "•";
+  color: var(--secondary-blue);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+        
 /* ===== Tech Stack Section ===== */
 .tech-stack {
   background: var(--white);
