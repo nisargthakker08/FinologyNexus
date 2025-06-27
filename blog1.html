@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Why Startups Need Financial Research Support | Finology Nexus</title>
-  <meta name="description" content="Learn how financial research empowers startups to make smarter decisions, impress investors, and grow sustainably." />
-   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  <meta name="keywords" content="financial research, startup finance, outsourcing, Finology Nexus" />
-  <meta name="author" content="Finology Nexus" />
-  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Learn how financial research empowers startups to make smarter decisions, impress investors, and grow sustainably.">
+  <link rel="icon" type="image/png" href="finology-logofavicon.png">
+  <meta name="keywords" content="financial research, startup finance, outsourcing, Finology Nexus">
+  <meta name="author" content="Finology Nexus">
+  <meta name="robots" content="index, follow">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Why Startups Need Financial Research Support | Finology Nexus">
   <meta property="og:description" content="Learn how financial research empowers startups to make smarter decisions, impress investors, and grow sustainably.">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Financial+Research+Support">
+  <meta property="og:image" content="https://www.finologynexus.online/assets/images/blog-research-support.jpg">
   <meta property="og:url" content="https://www.finologynexus.online/blog1.html">
   <meta property="og:type" content="article">
 
@@ -21,150 +21,225 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Why Startups Need Financial Research Support">
   <meta name="twitter:description" content="Discover how startups benefit from outsourced financial research to scale smarter.">
-  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Financial+Research+Support">
+  <meta name="twitter:image" content="https://www.finologynexus.online/assets/images/blog-research-support.jpg">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
-   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GZ1RDVHZZP');
-  </script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-   <!-- Microsoft Clarity tag -->
-<script src="clarity.js"></script>
-  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
-      color: #333;
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --white: #ffffff;
+      --text-dark: #333;
+      --text-medium: #555;
+      --text-light: #777;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-xxl: 48px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+      --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+      --transition-slow: 0.5s ease;
     }
 
+    /* ===== Base Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== Layout Components ===== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section {
+      padding: var(--space-xxl) 0;
+    }
+
+    /* ===== Header ===== */
     header {
-      background: #fff;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      background: var(--white);
+      padding: var(--space-md) 0;
+      box-shadow: var(--shadow-sm);
       position: sticky;
       top: 0;
       z-index: 1000;
     }
 
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: var(--space-sm);
     }
 
-    header img {
+    .logo-group img {
       height: 40px;
     }
 
     .company-name {
       font-size: 20px;
       font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
+    /* ===== Navigation ===== */
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: var(--space-lg);
       margin: 0;
       padding: 0;
     }
 
     nav a {
-      text-decoration: none;
-      color: #333;
       font-weight: 600;
       position: relative;
+      color: var(--text-dark);
     }
 
     nav a:hover,
     nav a.active {
-      color: #0077cc;
+      color: var(--primary-blue);
     }
 
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary-blue);
+      transition: var(--transition-normal);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* ===== Hero Banner ===== */
     .hero-banner {
-      background: linear-gradient(135deg, #0077cc, #00c6ff);
-      color: white;
-      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: var(--space-xxl) var(--space-md);
       text-align: center;
     }
 
     .hero-banner h1 {
       font-size: 2.5rem;
-      margin-bottom: 10px;
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
     }
 
     .hero-banner p {
       font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== Blog Content ===== */
+    .blog-content {
+      max-width: 900px;
+      margin: var(--space-xxl) auto;
+      padding: 0 var(--space-md);
+    }
+
+    .blog-content h2 {
+      color: var(--primary-blue);
+      font-size: 1.5rem;
+      margin: var(--space-lg) 0 var(--space-md);
+    }
+
+    .blog-content p {
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
     }
 
     .thumbnail {
-      max-width: 1000px;
-      margin: 30px auto 0;
-      padding: 0 20px;
+      margin: var(--space-xl) auto 0;
       text-align: center;
     }
 
     .thumbnail img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .thumbnail i {
-      font-size: 60px;
-      color: #0077cc;
-      margin-top: 30px;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      color: #0077cc;
-      font-size: 24px;
-      margin-top: 30px;
-    }
-
-    p {
-      color: #555;
-      line-height: 1.7;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
     }
 
     .back-link {
-      margin-top: 40px;
+      margin-top: var(--space-xxl);
+      text-align: center;
     }
 
     .back-link a {
-      color: #0077cc;
+      color: var(--primary-blue);
       font-weight: 600;
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
     }
 
     .back-link a:hover {
       text-decoration: underline;
     }
 
+    /* ===== Footer ===== */
     footer {
-      background: #1f2937;
-      color: white;
-      padding: 40px 20px 10px;
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: var(--space-xl) var(--space-md) var(--space-md);
+      position: relative;
     }
 
     .footer-main {
@@ -174,12 +249,13 @@
       flex-wrap: wrap;
       max-width: 1200px;
       margin: auto;
+      padding-bottom: var(--space-md);
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: var(--space-sm);
     }
 
     .footer-logo-group img {
@@ -189,168 +265,283 @@
     .footer-logo-group span {
       font-size: 18px;
       font-weight: bold;
-      background: linear-gradient(to right, #00c6ff, #0077cc);
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
+    .footer-socials {
+      display: flex;
+      gap: var(--space-md);
+    }
+
     .footer-socials a {
-      color: white;
-      margin: 0 8px;
-      font-size: 20px;
-      transition: color 0.3s;
+      color: var(--white);
+      font-size: 1.2rem;
+      transition: var(--transition-normal);
     }
 
     .footer-socials a:hover {
-      color: #00c6ff;
+      color: var(--secondary-blue);
+      transform: translateY(-2px);
     }
 
     .footer-bottom {
       text-align: center;
       font-size: 14px;
-      color: #aaa;
-      margin-top: 10px;
+      color: rgba(255,255,255,0.7);
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* ===== Floating CTA ===== */
+    .floating-cta {
+      position: fixed;
+      bottom: var(--space-xl);
+      right: var(--space-xl);
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: var(--transition-normal);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-blue-dark));
+      transform: translateY(-2px);
+    }
+
+    /* ===== Responsive Styles ===== */
     @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+      
       nav ul {
+        margin-top: var(--space-md);
         flex-wrap: wrap;
         justify-content: center;
       }
+      
+      .hero-banner h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-banner p {
+        font-size: 1rem;
+      }
+      
       .footer-main {
         flex-direction: column;
-        gap: 15px;
+        gap: var(--space-md);
+        text-align: center;
+      }
+      
+      .footer-socials {
+        justify-content: center;
+      }
+      
+      .floating-cta {
+        bottom: var(--space-md);
+        right: var(--space-md);
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 14px;
       }
     }
-  .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
 
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
+    /* ===== Accessibility ===== */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-blue);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      transition: top 0.3s;
     }
-  }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
   </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZ1RDVHZZP');
+  </script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "s1b20qvd2s");
+  </script>
 </head>
 <body>
+ 
 
+  <!-- Header -->
   <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
-      <span class="company-name">Finology Nexus</span>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo-group">
+          <a href="index.html">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="160" height="48" loading="eager">
+          </a>
+          <span class="company-name">Finology Nexus</span>
+        </div>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html" class="nav-link home">Home</a></li>
+            <li><a href="services.html" class="nav-link services">Services</a></li>
+            <li><a href="blog.html" class="nav-link blog active" aria-current="page">Case Studies</a></li>
+            <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
+            <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="nav-link home">Home</a></li>
-        <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <div class="hero-banner">
-    <h1>Why Growing Startups Need Financial Research Support</h1>
-    <p>Smart insights. Better strategy. Confident scaling.</p>
+  <!-- Hero Banner -->
+  <div class="hero-banner fade-in">
+    <div class="container">
+      <h1>Why Growing Startups Need Financial Research Support</h1>
+      <p>Smart insights. Better strategy. Confident scaling.</p>
+    </div>
   </div>
 
-  <div class="thumbnail">
-    <img src="https://via.placeholder.com/900x400/0077cc/ffffff?text=Financial+Research+Matters"
-         alt="Illustration: Financial Research Benefits"
-         onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline-block';">
-    <i id="fallback-icon" class="fas fa-chart-line" style="display:none;"></i>
+  <!-- Thumbnail Image -->
+  <div class="container">
+    <div class="thumbnail fade-in">
+      <img src="assets/images/blog-research-support.jpg"
+           alt="Illustration showing financial research benefits for startups"
+           loading="lazy"
+           width="900"
+           height="500"
+           onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='inline-block';">
+      <i id="fallback-icon" class="fas fa-chart-line" style="display:none; font-size: 3rem; color: var(--primary-blue); margin: 20px 0;"></i>
+    </div>
   </div>
 
-  <main>
+  <!-- Main Content -->
+  <main id="main-content" class="blog-content fade-in">
     <article>
-      <p>Startups face decisions at lightning speed. Whether it’s pricing, product planning, or pitching to investors, they need insights — not instincts. That’s where financial research plays a crucial role.</p>
+      <p>Startups face decisions at lightning speed. Whether it's pricing, product planning, or pitching to investors, they need insights — not instincts. That's where financial research plays a crucial role.</p>
 
       <h2>1. Competitive Benchmarking</h2>
-      <p>Knowing your market isn’t just about gut feeling — it’s about real data. Financial researchers can provide a bird’s-eye view of what similar companies are doing, spending, and targeting.</p>
+      <p>Knowing your market isn't just about gut feeling — it's about real data. Financial researchers can provide a bird's-eye view of what similar companies are doing, spending, and targeting. This helps you position your startup effectively in the competitive landscape.</p>
 
       <h2>2. Investor Confidence</h2>
-      <p>Detailed research helps you back your business case with hard numbers. Whether it’s market sizing or projections, it helps investors believe in your vision.</p>
+      <p>Detailed research helps you back your business case with hard numbers. Whether it's market sizing or projections, it helps investors believe in your vision. Well-researched financial models demonstrate professionalism and reduce perceived risk.</p>
 
       <h2>3. Smarter Forecasting</h2>
-      <p>Growth planning requires more than a spreadsheet. Financial research teams use models, trends, and data tools to help predict and prepare for what’s ahead.</p>
+      <p>Growth planning requires more than a spreadsheet. Financial research teams use models, trends, and data tools to help predict and prepare for what's ahead. This leads to more accurate cash flow projections and better resource allocation.</p>
+
+      <h2>4. Risk Mitigation</h2>
+      <p>Financial research helps identify potential pitfalls before they become problems. By analyzing market trends and competitor financials, you can anticipate challenges and develop contingency plans.</p>
 
       <h2>Final Word</h2>
-      <p>Outsourcing your financial research means more time to build, while experts bring you the clarity to scale. It’s not a luxury — it’s a competitive advantage.</p>
+      <p>Outsourcing your financial research means more time to build, while experts bring you the clarity to scale. It's not a luxury — it's a competitive advantage that can make the difference between thriving and just surviving in today's competitive startup ecosystem.</p>
     </article>
 
     <div class="back-link">
-      <a href="blog.html">&larr; Back to Blog</a>
+      <a href="blog.html"><i class="fas fa-arrow-left"></i> Back to Blog</a>
     </div>
   </main>
 
-  <footer>
-    <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
-    <div class="footer-main">
-      <div class="footer-logo-group">
-        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" />
-        <span>Finology Nexus</span>
+  <!-- Footer -->
+  <footer class="fade-in">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-logo-group">
+          <a href="index.html">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="120" height="36" loading="lazy">
+          </a>
+          <span>Finology Nexus</span>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/FinologyNexus" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
       </div>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-         <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/finologynexus/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/finologynexus/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <div class="footer-bottom">
+        &copy; <script>document.write(new Date().getFullYear())</script> Finology Nexus. All rights reserved.
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2020 Finology Nexus. All rights reserved.
     </div>
   </footer>
 
-  <script>
-    const path = window.location.pathname;
-    const file = path.substring(path.lastIndexOf('/') + 1);
-    const links = {
-      'index.html': 'home',
-      'services.html': 'services',
-      'blog.html': 'blog',
-      'blog1.html': 'blog',
-      'blog2.html': 'blog',
-      'aboutus.html': 'about',
-      'contactus.html': 'contact'
-    };
-    const current = links[file];
-    if (current) {
-      const activeLink = document.querySelector(`.nav-link.${current}`);
-      if (activeLink) {
-        activeLink.classList.add('active');
-        activeLink.setAttribute('aria-current', 'page');
-      }
-    }
-  </script>
+  <!-- Floating CTA -->
+  <a href="contactus.html" class="floating-cta" aria-label="Contact us">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
 
+  <script>
+    // Highlight active nav link
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = location.pathname.split('/').pop().toLowerCase();
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').toLowerCase();
+        if (currentPage.includes(linkPage)) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+
+      // Add fade-in class to elements as they come into view
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(element => {
+        fadeObserver.observe(element);
+      });
+    });
+  </script>
 </body>
 </html>
