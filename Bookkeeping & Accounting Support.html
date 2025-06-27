@@ -735,37 +735,44 @@ button:focus-visible {
     <a href="contactus.html" class="floating-cta">
         <i class="fas fa-comments"></i> Let's Talk
     </a>
+    
+<script>
+// Double safety check for content visibility
+function ensureContentVisible() {
+  const elements = [
+    'main', 'section', '.container', 
+    '.services-grid', '.tech-stack',
+    '.testimonial', 'footer'
+  ].flatMap(selector => 
+    Array.from(document.querySelectorAll(selector)));
+  
+  elements.forEach(el => {
+    el.style.display = 'block';
+    el.style.visibility = 'visible';
+    el.style.opacity = '1';
+    el.style.height = 'auto';
+    el.style.overflow = 'visible';
+    el.style.contain = 'none'; // Explicitly disable containment
+  });
+}
 
-    <!-- JavaScript with Content Protection -->
-    <script>
-        // Simple mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav ul');
-            
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', function() {
-                    nav.classList.toggle('active');
-                });
-            }
-            
-            // Force visibility of critical elements
-            const elements = document.querySelectorAll('main, section, .container, .services-grid, .tech-stack, .testimonial, footer');
-            elements.forEach(el => {
-                el.style.display = 'block';
-                el.style.visibility = 'visible';
-                el.style.opacity = '1';
-            });
-        });
+// Run on both DOM ready and page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    document.querySelector('nav ul')?.classList.toggle('active');
+  });
+  
+  // First visibility check
+  ensureContentVisible();
+});
 
-        // Fallback in case DOMContentLoaded doesn't fire
-        setTimeout(() => {
-            const elements = document.querySelectorAll('main, section, .container');
-            elements.forEach(el => {
-                el.style.display = 'block';
-                el.style.visibility = 'visible';
-            });
-        }, 1000);
-    </script>
+// Final check after everything loads
+window.addEventListener('load', ensureContentVisible);
+
+// Ultimate fallback
+setTimeout(ensureContentVisible, 1500);
+</script>
+  
 </body>
 </html>
