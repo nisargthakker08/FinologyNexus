@@ -7,39 +7,45 @@
     <meta name="description" content="Expert bookkeeping, accounting support, and CFO services for startups and growing businesses">
     <link rel="icon" href="finology-logofavicon.png" type="image/png">
     
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
-
     <!-- Emergency fallback for JS disabled -->
     <noscript>
       <style>
-        /* Show everything if JavaScript fails */
-        body > * {
+        /* Comprehensive noscript styles */
+        body, header, nav, main, section, footer, div, ul, li {
           display: block !important;
           visibility: visible !important;
           opacity: 1 !important;
         }
+        .services-grid {
+          display: grid !important;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        }
+        .footer-container {
+          display: grid !important;
+        }
+        .tech-logos {
+          display: flex !important;
+        }
+        /* Visual warning */
+        .noscript-warning {
+          padding: 1rem;
+          background: #ffeb3b;
+          color: #000;
+          text-align: center;
+          font-weight: bold;
+        }
       </style>
+      <div class="noscript-warning">JavaScript is disabled. Some features may not work properly.</div>
     </noscript>
 
     <style>
@@ -74,6 +80,11 @@
             line-height: 1.6;
             opacity: 1 !important;
             visibility: visible !important;
+        }
+
+        /* Structural element defaults */
+        header, nav, main, section, footer, div, ul, li {
+            display: block;
         }
 
         img {
@@ -223,6 +234,7 @@
             margin: 3rem auto;
             padding: 0 1.5rem;
             display: block !important;
+            contain: content;
         }
 
         .section-title {
@@ -238,6 +250,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
             gap: 2rem;
             margin: 3rem 0;
+            contain: content;
         }
 
         .service-card {
@@ -352,6 +365,7 @@
             color: var(--white);
             padding: 4rem 1.5rem 2rem;
             display: block !important;
+            contain: content;
         }
 
         .footer-container {
@@ -690,8 +704,9 @@
 
     <!-- JavaScript -->
     <script>
-        // Simple mobile menu toggle
+        // DOM Ready Handler
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle only
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('nav ul');
             
@@ -701,18 +716,65 @@
                 });
             }
             
-            // Debugging - log if any elements are hidden
+            // Emergency content visibility protection
+            const protectElements = [
+                '.hero', '#services', '.services-grid',
+                '.tech-stack', '.testimonial', 'footer'
+            ];
+            
+            protectElements.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    el.style.display = 'block';
+                    el.style.visibility = 'visible';
+                    el.style.opacity = '1';
+                });
+            });
+            
+            // Debug hidden elements
             setTimeout(() => {
-                const hiddenElements = document.querySelectorAll('body *');
-                hiddenElements.forEach(el => {
+                document.querySelectorAll('*').forEach(el => {
                     const style = window.getComputedStyle(el);
-                    if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
-                        console.warn('Hidden element detected:', el);
+                    if (style.display === 'none' || style.visibility === 'hidden') {
+                        console.warn('Hidden element:', el);
                         el.style.outline = '2px solid red';
                     }
                 });
-            }, 1000);
+            }, 2000);
         });
+
+        // Load analytics scripts after 3 seconds to prevent interference
+        setTimeout(() => {
+            // Google Tag Manager
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','G-GZ1RDVHZZP');
+
+            // Microsoft Clarity
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window,document,"clarity","script","s1b20qvd2s");
+        }, 3000);
+    </script>
+
+    <!-- Emergency visibility safeguard -->
+    <script>
+    window.addEventListener('load', function() {
+        const criticalElements = document.querySelectorAll(
+            'header, nav, .hero, .container, .services-grid, footer'
+        );
+        
+        criticalElements.forEach(el => {
+            if (window.getComputedStyle(el).display === 'none') {
+                el.style.display = 'block !important';
+                el.style.visibility = 'visible !important';
+            }
+        });
+    });
     </script>
 </body>
 </html>
