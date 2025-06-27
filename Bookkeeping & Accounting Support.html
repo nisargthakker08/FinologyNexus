@@ -57,6 +57,19 @@
   --transition: all 0.3s ease;
 }
 
+/* Emergency visibility override */
+main, section, .container, 
+.services-grid, .tech-stack, 
+.testimonial, footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -179,7 +192,6 @@ nav a.active {
   color: var(--white);
   display: flex !important;
   flex-direction: column !important;
-  contain: content;
 }
 
 .hero h1 {
@@ -233,7 +245,6 @@ nav a.active {
   margin: 3rem auto;
   padding: 0 1.5rem;
   display: block !important;
-  contain: content;
 }
 
 .section-title {
@@ -257,7 +268,6 @@ nav a.active {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
   gap: 2rem;
   margin: 3rem 0;
-  contain: content;
 }
 
 .service-card {
@@ -308,7 +318,6 @@ nav a.active {
   border-radius: var(--radius-md);
   margin: 4rem 0;
   text-align: center;
-  contain: content;
 }
 
 .tech-logos {
@@ -339,7 +348,6 @@ nav a.active {
   margin: 4rem 0;
   position: relative;
   box-shadow: var(--shadow-sm);
-  contain: content;
 }
 
 .testimonial::before {
@@ -379,7 +387,6 @@ footer {
   color: var(--white);
   padding: 4rem 1.5rem 2rem;
   display: block !important;
-  contain: content;
 }
 
 .footer-container {
@@ -743,33 +750,22 @@ button:focus-visible {
             }
             
             // Force visibility of critical elements
-            const criticalElements = [
-                'header', 'nav', '.hero', '.container', 
-                '.services-grid', '.tech-stack', '.testimonial', 'footer'
-            ];
-            
-            criticalElements.forEach(selector => {
-                const elements = document.querySelectorAll(selector);
-                elements.forEach(el => {
-                    el.style.display = 'block';
-                    el.style.visibility = 'visible';
-                    el.style.opacity = '1';
-                });
+            const elements = document.querySelectorAll('main, section, .container, .services-grid, .tech-stack, .testimonial, footer');
+            elements.forEach(el => {
+                el.style.display = 'block';
+                el.style.visibility = 'visible';
+                el.style.opacity = '1';
             });
         });
 
-
-
-        // Final visibility check after all resources load
-        window.addEventListener('load', function() {
-            document.querySelectorAll('body > *').forEach(el => {
-                const style = window.getComputedStyle(el);
-                if (style.display === 'none' || style.visibility === 'hidden') {
-                    el.style.display = 'block !important';
-                    el.style.visibility = 'visible !important';
-                }
+        // Fallback in case DOMContentLoaded doesn't fire
+        setTimeout(() => {
+            const elements = document.querySelectorAll('main, section, .container');
+            elements.forEach(el => {
+                el.style.display = 'block';
+                el.style.visibility = 'visible';
             });
-        });
+        }, 1000);
     </script>
 </body>
 </html>
