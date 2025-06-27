@@ -259,35 +259,78 @@
           font-weight: bold;
         }
 
-        /* ===== Tech Stack Section ===== */
-        .tech-stack {
-          background: var(--white);
-          padding: var(--space-xxl) var(--space-md);
-          border-radius: var(--radius-md);
-          margin: var(--space-xxl) 0;
-          text-align: center;
-        }
+/* ===== Tech Stack Section ===== */
+.tech-stack {
+  background: var(--white);
+  padding: var(--space-xxl) var(--space-md);
+  border-radius: var(--radius-md);
+  margin: var(--space-xxl) 0;
+  text-align: center;
+}
 
-        .tech-logos {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: var(--space-xl);
-          margin: var(--space-xl) 0;
-        }
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xl);
+  margin: var(--space-xl) 0;
+}
 
-        .tech-logo {
-          background: #f0f0f0;
-          padding: var(--space-md) var(--space-xl);
-          border-radius: var(--radius-sm);
-          font-weight: 600;
-          color: var(--primary-blue);
-          min-width: 150px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+.tech-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 150px;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-sm);
+  background: #f0f0f0;
+  transition: all 0.3s ease;
+}
 
+.tech-logo:hover {
+  transform: translateY(-5px);
+  background: #e0e0e0;
+}
+
+.tech-logo img {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(80%);
+}
+
+.tech-logo:hover img {
+  filter: grayscale(0) opacity(100%);
+}
+
+.tech-logo span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-blue);
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tech-logo {
+    min-width: 120px;
+    padding: var(--space-sm) var(--space-md);
+    gap: 0.5rem;
+  }
+  
+  .tech-logo img {
+    height: 30px;
+    max-width: 90px;
+  }
+  
+  .tech-logo span {
+    font-size: 0.8rem;
+  }
+}
+        
         /* ===== Testimonial ===== */
         .testimonial {
           background: var(--white);
@@ -595,11 +638,26 @@
             <p>We work with all major accounting platforms to ensure seamless integration with your existing systems.</p>
             
             <div class="tech-logos">
-                <div class="tech-logo">QuickBooks</div>
-                <div class="tech-logo">Xero</div>
-                <div class="tech-logo">Zoho Books</div>
-                <div class="tech-logo">Wave</div>
-                <div class="tech-logo">NetSuite</div>
+  <div class="tech-logo">
+    <img src="QuickBooks.png.svg" alt="QuickBooks" width="120" loading="lazy">
+    <span>QuickBooks</span>
+  </div>
+  <div class="tech-logo">
+    <img src="xero.png" alt="Xero" width="90" loading="lazy">
+    <span>Xero</span>
+  </div>
+  <div class="tech-logo">
+    <img src="zoho-logo-web.png" alt="Zoho Books" width="100" loading="lazy">
+    <span>Zoho Books</span>
+  </div>
+  <div class="tech-logo">
+    <img src="wave.png" alt="Wave" width="100" loading="lazy">
+    <span>Wave</span>
+  </div>
+  <div class="tech-logo">
+    <img src="NetSuite.png.jpeg" alt="NetSuite" width="110" loading="lazy">
+    <span>NetSuite</span>
+  </div>
             </div>
         </section>
 
