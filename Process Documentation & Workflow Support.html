@@ -225,17 +225,32 @@
 
     /* ========== PAGE HEADER ========== */
     .page-header {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
       color: var(--white);
       padding: 6rem 1.25rem;
       text-align: center;
       box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"></path></svg>');
+      background-size: cover;
+      opacity: 0.1;
     }
 
     .page-header h1 {
       font-size: 2.875rem;
       margin-bottom: 1.25rem;
       animation: fadeInDown 1s ease-in-out;
+      position: relative;
     }
 
     .page-header p {
@@ -243,6 +258,7 @@
       max-width: 43.75rem;
       margin: 0 auto;
       animation: fadeInUp 1s ease-in-out;
+      position: relative;
     }
 
     @keyframes fadeInDown {
@@ -255,144 +271,71 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== SERVICE DETAIL SECTION ========== */
-    .service-detail {
-      background-color: var(--white);
-      padding: 4rem 0;
-    }
-
-    .service-overview {
-      max-width: 800px;
-      margin: 0 auto 3rem;
-      text-align: center;
-    }
-
-    .service-stats {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+    /* ========== VALUE PROPOSITION SECTION ========== */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin: 3rem 0;
+      margin-top: 3rem;
     }
 
-    .stat-card {
+    .value-card {
       background: var(--white);
       border-radius: var(--radius-md);
       padding: 2rem;
-      min-width: 220px;
       box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
       border-top: 4px solid var(--secondary-blue);
     }
 
-    .stat-card h3 {
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .value-card i {
       font-size: 2.5rem;
       color: var(--primary-blue);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .stat-card p {
+    .value-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .value-card p {
       color: var(--text-medium);
-      font-size: 0.9rem;
-      font-weight: 500;
     }
 
-    .benefits-grid {
+    /* ========== SERVICE FEATURES SECTION ========== */
+    .service-features-section {
+      background-color: var(--white);
+    }
+
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin: 3rem 0;
+      margin-top: 3rem;
       text-align: left;
     }
 
-    .benefit-card {
+    .feature-card {
       background: var(--white);
       border-radius: var(--radius-md);
       padding: 2rem;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
-      border-left: 4px solid transparent;
     }
 
-    .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-left-color: var(--secondary-blue);
-    }
-
-    .benefit-card i {
-      font-size: 1.5rem;
-      color: var(--secondary-blue);
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .benefit-card h3 {
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-
-    .process-steps {
-      counter-reset: step-counter;
-      max-width: 800px;
-      margin: 3rem auto;
-    }
-
-    .process-step {
-      position: relative;
-      padding-left: 4rem;
-      margin-bottom: 2rem;
-      text-align: left;
-    }
-
-    .process-step::before {
-      counter-increment: step-counter;
-      content: counter(step-counter);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      background: var(--secondary-blue);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .process-step h3 {
-      color: var(--primary-blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .use-cases {
-      background: var(--light-bg);
-      padding: 4rem 0;
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-
-    .case-card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      text-align: left;
-    }
-
-    .case-card:hover {
+    .feature-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
 
-    .case-card h3 {
+    .feature-card h3 {
       color: var(--primary-blue);
       margin-bottom: 1rem;
       display: flex;
@@ -400,8 +343,87 @@
       gap: 0.75rem;
     }
 
-    .case-card h3 i {
+    .feature-card h3 i {
       color: var(--secondary-blue);
+    }
+
+    .feature-card ul {
+      list-style: none;
+    }
+
+    .feature-card li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-medium);
+    }
+
+    .feature-card li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary-blue);
+    }
+
+    /* ========== PROCESS SECTION ========== */
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      left: 1.5rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--secondary-blue);
+      z-index: 1;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--primary-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .step-content {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      flex-grow: 1;
+      text-align: left;
+    }
+
+    .step-content h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      color: var(--text-medium);
     }
 
     /* ========== TECH STACK SECTION ========== */
@@ -410,29 +432,44 @@
       padding: 2.5rem 1.25rem;
     }
 
-    .tech-stack-container {
-      max-width: 68.75rem;
-      margin: 0 auto;
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .tech-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
       text-align: center;
-    }
-
-    .tech-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2.5rem;
-      align-items: center;
-      margin: 2rem 0;
-    }
-
-    .tech-logos img {
-      height: 2.5rem;
-      width: auto;
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
 
-    .tech-logos img:hover {
-      transform: scale(1.1);
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tech-icon img {
+      height: 50px;
+      width: auto;
+      margin-bottom: 1rem;
+      transition: var(--transition);
+    }
+
+    .tech-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+
+    .tech-card p {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      font-weight: 500;
     }
 
     /* ========== CTA SECTION ========== */
@@ -616,16 +653,13 @@
         font-size: 1rem;
       }
       
+      .value-props,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
       .section-title {
         font-size: 1.75rem;
-      }
-      
-      .tech-logos {
-        gap: 1.5rem;
-      }
-      
-      .tech-logos img {
-        height: 2rem;
       }
       
       .cta-buttons {
@@ -640,16 +674,6 @@
       
       .footer-column {
         width: 100%;
-      }
-
-      .service-stats {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .stat-card {
-        width: 100%;
-        max-width: 300px;
       }
     }
 
@@ -704,137 +728,200 @@
 
   <section class="page-header">
     <div class="container">
-      <h1>Process Documentation & Workflow Support</h1>
-      <p>Transform your financial operations with standardized, audit-ready workflows that reduce errors by 40% and improve efficiency</p>
+      <h1><i class="fas fa-cogs"></i> Process Documentation & Workflow Support</h1>
+      <p>Transform operational chaos into standardized, audit-ready workflows that reduce errors by 40%</p>
     </div>
   </section>
 
-  <section class="service-detail">
+  <section class="section">
     <div class="container">
-      <div class="service-overview">
-        <h2 class="section-title">Operational Excellence Through Standardization</h2>
-        <p class="section-description">We help financial teams establish consistent, documented processes that ensure quality, reduce risk, and create audit-ready workflows. Our approach combines industry best practices with your unique operational requirements.</p>
-      </div>
-
-      <div class="service-stats">
-        <div class="stat-card">
-          <h3>40%</h3>
-          <p>Reduction in process errors</p>
+      <h2 class="section-title">Operational Consistency Through Documentation</h2>
+      <p class="section-description">Inconsistent processes create risk, inefficiency, and training challenges. Our documentation services create clarity, accountability, and quality control in your financial operations.</p>
+      
+      <div class="value-props">
+        <div class="value-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Risk Reduction</h3>
+          <p>Minimize compliance risks with clearly documented procedures that meet audit requirements.</p>
         </div>
-        <div class="stat-card">
-          <h3>70%</h3>
-          <p>Faster onboarding for new staff</p>
+        
+        <div class="value-card">
+          <i class="fas fa-clock"></i>
+          <h3>Efficiency Gains</h3>
+          <p>Reduce process variation that creates rework and inefficiencies across your team.</p>
         </div>
-        <div class="stat-card">
-          <h3>100%</h3>
-          <p>Audit-ready documentation</p>
-        </div>
-      </div>
-
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <i class="fas fa-clipboard-check"></i>
-          <h3>SOP Development</h3>
-          <p>Comprehensive Standard Operating Procedures that document every step of your financial processes with clear instructions and quality checkpoints.</p>
-        </div>
-        <div class="benefit-card">
-          <i class="fas fa-project-diagram"></i>
-          <h3>Workflow Mapping</h3>
-          <p>Visual workflow diagrams that identify bottlenecks, redundancies, and opportunities for automation in your financial operations.</p>
-        </div>
-        <div class="benefit-card">
-          <i class="fas fa-search-dollar"></i>
-          <h3>Quality Control Systems</h3>
-          <p>Built-in verification steps and approval workflows that ensure accuracy and compliance at every stage of your processes.</p>
+        
+        <div class="value-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Training Acceleration</h3>
+          <p>Cut new hire ramp-up time by 70% with clear, step-by-step process documentation.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <h2 class="section-title">Our Process Documentation Approach</h2>
-      <p class="section-description">We follow a structured methodology to document and optimize your financial workflows</p>
+  <section class="section service-features-section">
+    <div class="container">
+      <h2 class="section-title">Our Documentation Services</h2>
+      <p class="section-description">Comprehensive support for creating and maintaining your financial process documentation</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-file-alt"></i> SOP Development</h3>
+          <ul>
+            <li>Standard Operating Procedure documentation</li>
+            <li>Step-by-step process flows with decision trees</li>
+            <li>Role-based responsibility matrices</li>
+            <li>Version control and change management</li>
+          </ul>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-project-diagram"></i> Workflow Mapping</h3>
+          <ul>
+            <li>Current state process visualization</li>
+            <li>Bottleneck and redundancy identification</li>
+            <li>Future state optimization recommendations</li>
+            <li>Swimlane diagrams for cross-functional processes</li>
+          </ul>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-check-double"></i> Quality Control Systems</h3>
+          <ul>
+            <li>Checklist-based verification protocols</li>
+            <li>Approval workflow documentation</li>
+            <li>Error prevention controls</li>
+            <li>Audit trail requirements</li>
+          </ul>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-sync-alt"></i> Process Improvement</h3>
+          <ul>
+            <li>Continuous improvement frameworks</li>
+            <li>KPI-based process monitoring</li>
+            <li>Automation opportunity assessment</li>
+            <li>Change management documentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section tech-stack">
+    <div class="container">
+      <h2 class="section-title">Documentation Platform Expertise</h2>
+      <p class="section-description">We work with all major documentation platforms to match your existing systems</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/confluence.png" alt="Confluence" loading="lazy">
+          </div>
+          <h3>Confluence</h3>
+          <p>Knowledge Management</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/microsoft-visio.png" alt="Visio" loading="lazy">
+          </div>
+          <h3>Visio</h3>
+          <p>Process Mapping</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/lucidchart.png" alt="Lucidchart" loading="lazy">
+          </div>
+          <h3>Lucidchart</h3>
+          <p>Visual Workflows</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/google-docs.png" alt="Google Docs" loading="lazy">
+          </div>
+          <h3>Google Docs</h3>
+          <p>Collaborative Editing</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/microsoft-word.png" alt="Word" loading="lazy">
+          </div>
+          <h3>MS Word</h3>
+          <p>Policy Documentation</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">
+            <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" loading="lazy">
+          </div>
+          <h3>Excel</h3>
+          <p>Process Checklists</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--light-bg);">
+    <div class="container">
+      <h2 class="section-title">Our Documentation Methodology</h2>
+      <p class="section-description">A proven approach to creating effective, user-friendly process documentation</p>
+      
       <div class="process-steps">
         <div class="process-step">
-          <h3>Process Discovery</h3>
-          <p>We conduct in-depth interviews and shadow your team to understand current workflows, pain points, and compliance requirements.</p>
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Process Discovery</h3>
+            <p>We conduct interviews and observe workflows to document current processes exactly as performed.</p>
+          </div>
         </div>
+        
         <div class="process-step">
-          <h3>Documentation Drafting</h3>
-          <p>Our specialists create clear, step-by-step SOPs with screenshots, templates, and decision trees tailored to your operations.</p>
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Gap Analysis</h3>
+            <p>Identify discrepancies between documented and actual processes, plus compliance requirements.</p>
+          </div>
         </div>
+        
         <div class="process-step">
-          <h3>Tool Integration</h3>
-          <p>We align documentation with your existing tools (Excel, accounting software, etc.) for seamless adoption.</p>
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Documentation Drafting</h3>
+            <p>Create clear, visual SOPs with screenshots, templates, and quality checkpoints.</p>
+          </div>
         </div>
+        
         <div class="process-step">
-          <h3>Training & Implementation</h3>
-          <p>We train your team on new processes and provide ongoing support during the transition period.</p>
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Stakeholder Review</h3>
+            <p>Collaboratively refine documentation with subject matter experts and process owners.</p>
+          </div>
         </div>
+        
         <div class="process-step">
-          <h3>Continuous Improvement</h3>
-          <p>Regular reviews to update documentation as your processes evolve and new best practices emerge.</p>
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Training & Implementation</h3>
+            <p>Train teams on new processes and documentation systems for successful adoption.</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="use-cases">
-    <div class="container">
-      <h2 class="section-title">Where Our Documentation Services Deliver Value</h2>
-      <p class="section-description">Financial teams across industries leverage our process documentation expertise</p>
-
-      <div class="case-grid">
-        <div class="case-card">
-          <h3><i class="fas fa-landmark"></i> Financial Reporting</h3>
-          <p>Standardized month-end close procedures that reduce reconciliation time by 30% while improving accuracy for SEC filings and internal reports.</p>
-        </div>
-        <div class="case-card">
-          <h3><i class="fas fa-hand-holding-usd"></i> Accounts Payable/Receivable</h3>
-          <p>Documented workflows for invoice processing, payment approvals, and collections that create clear audit trails and reduce processing errors.</p>
-        </div>
-        <div class="case-card">
-          <h3><i class="fas fa-file-invoice-dollar"></i> Tax Preparation</h3>
-          <p>Checklist-driven processes for gathering documents, preparing schedules, and reviewing filings that ensure nothing gets missed.</p>
-        </div>
-        <div class="case-card">
-          <h3><i class="fas fa-chart-pie"></i> Financial Analysis</h3>
-          <p>Standardized methodologies for financial modeling and analysis that ensure consistency across team members and time periods.</p>
-        </div>
-        <div class="case-card">
-          <h3><i class="fas fa-database"></i> Data Management</h3>
-          <p>Documented procedures for data collection, validation, and transformation that improve reliability of downstream reporting.</p>
-        </div>
-        <div class="case-card">
-          <h3><i class="fas fa-user-shield"></i> Compliance Processes</h3>
-          <p>Clear documentation of control procedures and evidence requirements for SOX, SOC, and other compliance frameworks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tech-stack">
-    <div class="container">
-      <h2 class="section-title">Our Documentation Toolkit</h2>
-      <p class="section-description">We combine financial expertise with the right tools to deliver comprehensive documentation</p>
-      
-      <div class="tech-logos">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-word.png" alt="Microsoft Word" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/confluence.png" alt="Confluence" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/google-docs.png" alt="Google Docs" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-visio.png" alt="Visio" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/lucidchart.png" alt="Lucidchart" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/screenflow.png" alt="Screenflow" loading="lazy">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" loading="lazy">
       </div>
     </div>
   </section>
 
   <section class="cta-section">
     <div class="cta-content">
-      <h2 class="section-title">Ready to Standardize Your Financial Processes?</h2>
-      <p>Our process documentation specialists can help you create audit-ready workflows in as little as 4 weeks.</p>
+      <h2>Ready to Standardize Your Financial Processes?</h2>
+      <p>Our documentation specialists can help you create audit-ready workflows in as little as 4 weeks.</p>
       <div class="cta-buttons">
-        <a href="contactus.html" class="btn btn-secondary">Schedule Consultation</a>
-        <a href="services.html" class="btn btn-primary">Explore All Services</a>
+        <a href="contactus.html" class="btn btn-primary">Schedule Consultation</a>
+        <a href="services.html" class="btn btn-secondary">View All Services</a>
       </div>
     </div>
   </section>
