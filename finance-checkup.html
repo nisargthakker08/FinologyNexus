@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free Finance Health Check | Finology Nexus</title>
   <meta name="description" content="Get a free financial health checkup for your startup — fast, expert-backed, and 100% free."/>
-   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,88 +20,311 @@
     gtag('config', 'G-GZ1RDVHZZP');
   </script>
 
-   <!-- Microsoft Clarity tag -->
-<script src="clarity.js"></script>
+  <!-- Microsoft Clarity tag -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","s1b20qvd2s");
+  </script>
   
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --white: #ffffff;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --border-color: #e5e7eb;
+      --success-green: #10b981;
+      --error-red: #ef4444;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
       margin: 0;
-      background: #f9fbfc;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
     .wrapper {
-      max-width: 600px;
-      margin: 60px auto;
-      background: #fff;
-      padding: 40px 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      max-width: 640px;
+      margin: 40px auto;
+      background: var(--white);
+      padding: 50px 40px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    .wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+    }
+
     .logo {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .logo img {
-      height: 50px;
-    }
-    .company-name {
-      font-size: 22px;
-      font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    h1 {
-      color: #0077cc;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #555;
+      gap: 12px;
       margin-bottom: 30px;
     }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .company-name {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h1 {
+      color: var(--primary-blue);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .subtitle {
+      color: var(--text-medium);
+      font-size: 16px;
+      margin-bottom: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .benefits {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .benefit-item {
+      background: rgba(0, 198, 255, 0.1);
+      color: var(--primary-blue);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .benefit-item i {
+      font-size: 14px;
+    }
+
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 20px;
+      margin-top: 30px;
+      text-align: left;
     }
-    input, textarea, button {
-      padding: 12px 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .form-group label.required::after {
+      content: ' *';
+      color: var(--error-red);
+    }
+
+    input, textarea, select {
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
       font-size: 15px;
+      font-family: inherit;
+      transition: var(--transition);
     }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--secondary-blue);
+      box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.1);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
     button {
-      background: linear-gradient(to right, #00c6ff, #0077cc);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      font-weight: 600;
+      padding: 16px;
+      border-radius: var(--radius-sm);
       border: none;
-      transition: background 0.3s ease;
+      font-size: 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
     }
+
     button:hover {
-      background: linear-gradient(to right, #0077cc, #005b99);
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-blue-dark));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
     .back-link {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       margin-top: 30px;
       text-decoration: none;
-      color: #0077cc;
+      color: var(--primary-blue);
+      font-weight: 500;
+      transition: var(--transition);
     }
+
     .back-link:hover {
+      color: var(--primary-blue-dark);
       text-decoration: underline;
     }
+
+    .back-link i {
+      font-size: 14px;
+    }
+
     #formResponse {
       display: none;
-      color: green;
-      font-weight: bold;
+      padding: 16px;
+      border-radius: var(--radius-sm);
       margin-top: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .success-message {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .error-message {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error-red);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .privacy-note {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    .privacy-note a {
+      color: var(--primary-blue);
+      text-decoration: none;
+    }
+
+    .privacy-note a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        margin: 20px auto;
+        padding: 40px 20px;
+        border-radius: 0;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .benefits {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .benefit-item {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: var(--white);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -109,49 +335,147 @@
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
       <span class="company-name">Finology Nexus</span>
     </div>
-    <h1>📋Request Business Clarity Review Check</h1>
-    <p>Startups move fast. We help your numbers keep up.<br>Submit this form and we'll review your finance setup — free of charge.</p>
+    
+    <h1>📋 Request Your Free Business Clarity Review</h1>
+    <p class="subtitle">Startups move fast. We help your numbers keep up. Submit this form and we'll review your finance setup — completely free with no obligations.</p>
+    
+    <div class="benefits">
+      <div class="benefit-item">
+        <i class="fas fa-check-circle"></i> Expert analysis
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-check-circle"></i> No obligation
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-check-circle"></i> Actionable insights
+      </div>
+    </div>
 
     <!-- Contact Form -->
-    <form id="healthCheckForm" action="https://formspree.io/f/xwpbrbvw" method="POST" onsubmit="return handleSubmit(event)">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="company" placeholder="Company Name" required />
-      <textarea name="message" placeholder="Tell us briefly about your current setup (optional)" rows="4"></textarea>
-      <input type="hidden" name="_subject" value="New Health Check Request from Website" />
-      <button type="submit"><i class="fas fa-paper-plane"></i> Request My Free Checkup</button>
+    <form id="healthCheckForm" action="https://formspree.io/f/xwpbrbvw" method="POST">
+      <div class="form-group">
+        <label for="name" class="required">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="John Smith" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email" class="required">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@yourcompany.com" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="company" class="required">Company Name</label>
+        <input type="text" id="company" name="company" placeholder="Your Startup Inc." required />
+      </div>
+      
+      <div class="form-group">
+        <label for="stage">Business Stage</label>
+        <select id="stage" name="stage">
+          <option value="">Select your stage</option>
+          <option value="Pre-Seed">Pre-Seed</option>
+          <option value="Seed">Seed</option>
+          <option value="Series A">Series A</option>
+          <option value="Series B+">Series B+</option>
+          <option value="Established">Established Business</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Tell us about your current financial setup</label>
+        <textarea id="message" name="message" placeholder="What financial tools are you using? What challenges are you facing? (Optional)"></textarea>
+      </div>
+      
+      <input type="hidden" name="_subject" value="New Finance Health Check Request" />
+      <input type="hidden" name="_replyto" value="" id="replyTo" />
+      
+      <button type="submit" id="submitBtn">
+        <span id="btnText">Request My Free Checkup</span>
+        <span id="btnSpinner" class="spinner" style="display: none;"></span>
+      </button>
+      
+      <p class="privacy-note">
+        By submitting this form, you agree to our <a href="privacy.html">Privacy Policy</a>. We'll never share your information without your permission.
+      </p>
     </form>
 
-    <!-- Success Message -->
-    <div id="formResponse">✅ Thank you! Your request has been submitted.</div>
+    <!-- Response Messages -->
+    <div id="formResponse" class="success-message">
+      <i class="fas fa-check-circle"></i> Thank you! Your request has been submitted. We'll be in touch within 24 hours.
+    </div>
+    
+    <div id="formError" class="error-message" style="display: none;">
+      <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or email us directly at info@finologynexus.online
+    </div>
 
     <!-- Back to Home Link -->
-    <a href="index.html" class="back-link">&larr; Back to Home</a>
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
   </div>
 
   <script>
-    function handleSubmit(event) {
-      event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('healthCheckForm');
-      const formData = new FormData(form);
-
-      fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          form.reset();
-          document.getElementById('formResponse').style.display = 'block';
-        } else {
-          alert("Oops! Something went wrong. Please try again.");
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnSpinner = document.getElementById('btnSpinner');
+      const successMessage = document.getElementById('formResponse');
+      const errorMessage = document.getElementById('formError');
+      const replyTo = document.getElementById('replyTo');
+      
+      // Set reply-to email dynamically
+      const emailInput = document.getElementById('email');
+      emailInput.addEventListener('input', function() {
+        replyTo.value = this.value;
+      });
+      
+      form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.textContent = 'Submitting...';
+        btnSpinner.style.display = 'inline-block';
+        
+        try {
+          const formData = new FormData(form);
+          
+          const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            // Success
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'conversion', {
+                'send_to': 'G-GZ1RDVHZZP/healthcheck_submit'
+              });
+            }
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          // Error
+          console.error('Error:', error);
+          errorMessage.style.display = 'block';
+          successMessage.style.display = 'none';
+        } finally {
+          // Reset button state
+          submitBtn.disabled = false;
+          btnText.textContent = 'Request My Free Checkup';
+          btnSpinner.style.display = 'none';
         }
       });
-
-      return false;
-    }
+    });
   </script>
 
 </body>
