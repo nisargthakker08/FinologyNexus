@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | Finology Nexus</title>
-  <meta name="description" content="Discover expert financial research, process support, and customized outsourcing services with Finology Nexus. Partner with us for scalable, dependable solutions.">
-   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <meta name="description" content="Discover the team behind Finology Nexus - your trusted partner for financial research, process support, and customized outsourcing solutions.">
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-     <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,352 +19,982 @@
     gtag('config', 'G-GZ1RDVHZZP');
   </script>
 
-   <!-- Microsoft Clarity tag -->
-<script src="clarity.js"></script>
+  <!-- Microsoft Clarity tag -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","s1b20qvd2s");
+  </script>
   
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fbfc;
-      color: #333;
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-dark);
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 180px;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 5rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ========== HEADER & NAVIGATION ========== */
     header {
+      background: var(--white);
+      padding: 1rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #ffffff;
-      padding: 20px 40px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: var(--shadow-sm);
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: box-shadow 0.3s ease;
     }
 
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    header img {
-      height: 40px;
+      gap: 0.625rem;
     }
 
     .company-name {
-      font-size: 20px;
-      font-weight: bold;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 1.5rem;
       margin: 0;
       padding: 0;
     }
 
     nav a {
       text-decoration: none;
-      color: #333;
+      color: var(--text-dark);
       font-weight: 600;
-      transition: color 0.3s;
+      position: relative;
+      transition: var(--transition);
+      font-size: 0.95rem;
     }
 
-    nav a:hover,
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary-blue);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
     nav a.active {
-      color: #0077cc;
+      color: var(--primary-blue);
     }
 
-    .hero {
-      background: linear-gradient(to right, #0077cc, #00c6ff);
-      color: white;
-      padding: 100px 40px 60px;
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-blue);
+      padding: 0.5rem;
+    }
+
+    /* ========== PAGE HEADER ========== */
+    .page-header {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 6rem 1.25rem;
       text-align: center;
-      box-shadow: inset 0 -1px 6px rgba(0,0,0,0.1);
+      box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
+    .page-header h1 {
+      font-size: 2.875rem;
+      margin-bottom: 1.25rem;
       animation: fadeInDown 1s ease-in-out;
     }
 
-    .hero p {
-      font-size: 18px;
-      max-width: 800px;
-      margin: auto;
+    .page-header p {
+      font-size: 1.25rem;
+      max-width: 43.75rem;
+      margin: 0 auto;
       animation: fadeInUp 1s ease-in-out;
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .section {
-      padding: 70px 40px;
+    /* ========== ABOUT HERO ========== */
+    .about-hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('team-meeting.jpg') center/cover no-repeat;
+      opacity: 0.15;
+      z-index: 1;
+    }
+
+    /* ========== MISSION SECTION ========== */
+    .mission-section {
+      background-color: var(--white);
+    }
+
+    .mission-statement {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .mission-statement p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      font-style: italic;
+      position: relative;
+    }
+
+    .mission-statement p::before,
+    .mission-statement p::after {
+      content: '"';
+      font-size: 3rem;
+      color: rgba(255,255,255,0.2);
+      position: absolute;
+    }
+
+    .mission-statement p::before {
+      top: -1rem;
+      left: -1.5rem;
+    }
+
+    .mission-statement p::after {
+      bottom: -2rem;
+      right: -1.5rem;
+    }
+
+    /* ========== TEAM SECTION ========== */
+    .team-section {
+      background-color: var(--light-bg);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
       text-align: center;
     }
 
-    .section h2 {
-      font-size: 34px;
-      color: #0077cc;
-      margin-bottom: 20px;
+    .team-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: var(--shadow-lg);
     }
 
-    .section p {
-      max-width: 850px;
-      margin: auto;
-      font-size: 18px;
-      color: #555;
-    }
-
-    .card-container {
+    .team-card-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-color: #f0f7fc;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
     }
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+    .team-icon {
+      font-size: 4rem;
+      color: var(--primary-blue);
+      opacity: 0.7;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    .team-card-body {
+      padding: 1.5rem;
     }
 
-    .card i {
-      font-size: 40px;
-      color: #0077cc;
-      margin-bottom: 15px;
+    .team-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
     }
 
-    .card h3 {
-      margin: 10px 0;
-      font-size: 20px;
-      color: #1e293b;
+    .team-card p.position {
+      color: var(--secondary-blue);
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
+    .team-card p.bio {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ========== VALUES SECTION ========== */
+    .values-section {
+      background-color: var(--white);
+    }
+
+    .values-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .value-card {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 4px solid var(--secondary-blue);
+    }
+
+    .value-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: var(--shadow-md);
+    }
+
+    .value-card i {
+      font-size: 2.5rem;
+      color: var(--secondary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .value-card p {
+      color: var(--text-medium);
+    }
+
+    /* ========== TIMELINE SECTION ========== */
+    .timeline-section {
+      background-color: var(--light-bg);
+      position: relative;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background-color: var(--secondary-blue);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--primary-blue);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+    }
+
+    .timeline-content {
+      padding: 20px;
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-content h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      color: var(--text-medium);
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 4rem 1.25rem;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== FOOTER ========== */
     footer {
-      background: #1f2937;
-      color: white;
-      padding: 40px 20px 10px;
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 3rem 1.25rem 1.5rem;
     }
 
     .footer-main {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-      padding-bottom: 10px;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 75rem;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
     }
 
     .footer-logo-group img {
-      height: 30px;
+      height: 2rem;
     }
 
     .footer-logo-group span {
-      font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(to right, #00c6ff, #0077cc);
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
+    .footer-about {
+      color: #d1d5db;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-blue);
+    }
+
+    .footer-socials {
+      margin-top: 1.5rem;
+    }
+
     .footer-socials a {
-      color: white;
-      margin: 0 8px;
-      font-size: 20px;
-      transition: color 0.3s;
+      color: var(--white);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
     }
 
     .footer-socials a:hover {
-      color: #00c6ff;
+      color: var(--secondary-blue);
+      transform: translateY(-2px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 10px;
+      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
     }
 
+    /* ========== FLOATING CTA ========== */
+    .floating-cta {
+      position: fixed;
+      bottom: 1.875rem;
+      right: 1.875rem;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 1.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, var(--primary-blue), #005b99);
+      transform: translateY(-3px);
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
     @media (max-width: 768px) {
-      nav ul {
+      header {
+        padding: 1rem;
         flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
       }
-      footer {
-        text-align: center;
+      
+      .menu-toggle {
+        display: block;
+        order: 1;
       }
-      .footer-main {
+      
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+      }
+      
+      nav.active {
+        display: block;
+        margin-top: 1rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .team-grid,
+      .values-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .timeline::before {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-dot {
+        left: 21px !important;
+      }
+      
+      .cta-buttons {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+      }
+      
+      .footer-main {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .footer-column {
+        width: 100%;
       }
     }
-      .floating-cta {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(to right, #00c6ff, #0077cc);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-    z-index: 1000;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    transition: background 0.3s;
-  }
 
-  .floating-cta:hover {
-    background: linear-gradient(to right, #0077cc, #005b99);
-  }
-
-  .floating-cta i {
-    margin-right: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta {
-      padding: 10px 14px;
-      font-size: 14px;
-      bottom: 20px;
-      right: 20px;
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .page-header h1,
+      .page-header p {
+        animation: none;
+      }
     }
-  }
+
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Company Logo" />
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
       <span class="company-name">Finology Nexus</span>
     </div>
-    <nav>
+    <nav id="main-nav">
       <ul>
-        <li><a href="index.html" class="nav-link home">Home</a></li>
-        <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link blog">Blog</a></li>
-        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link active">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
-  <div class="hero" data-aos="fade-in">
-    <h1>Who We Are</h1>
-    <p>Finology Nexus is your committed partner for seamless financial operations. With deep expertise and passion for precision, we help you scale smarter and operate better.</p>
-  </div>
-
-  <section class="section" data-aos="fade-up">
-    <h2>Our Vision</h2>
-    <p>We envision a future where outsourcing isn’t a compromise—it’s a competitive edge. At Finology Nexus, we bridge global talent with financial workflows, ensuring businesses of every size receive dependable, high-quality support that grows with them.</p>
+  <section class="page-header about-hero">
+    <div class="about-hero-image"></div>
+    <div class="container about-hero-content">
+      <h1>Your Trusted Financial Operations Partner</h1>
+      <p>Finology Nexus combines financial expertise with operational excellence to deliver scalable solutions that drive efficiency and growth for our clients.</p>
+    </div>
   </section>
 
-  <section class="section" data-aos="fade-up" style="background: #eef7fb;">
-    <h2>What Sets Us Apart</h2>
-    <div class="card-container">
-      <div class="card">
-        <i class="fas fa-handshake-angle"></i>
-        <h3>Long-Term Partnerships</h3>
-        <p>We don't just deliver tasks—we build relationships that evolve with your business needs.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-user-tie"></i>
-        <h3>Client-Centric Model</h3>
-        <p>Each client is unique, and so is our approach. We adapt our support to fit your goals and systems.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-chart-pie"></i>
-        <h3>Financial Domain Expertise</h3>
-        <p>Our leadership and team bring experience in finance, compliance, research, and tech-led reporting.</p>
+  <section class="section mission-section">
+    <div class="container">
+      <h2 class="section-title">Our Mission</h2>
+      <p class="section-description">We're committed to transforming financial operations through strategic outsourcing solutions that deliver measurable value.</p>
+      
+      <div class="mission-statement" data-aos="fade-up">
+        <p>To empower financial services firms and businesses with scalable, expert-led operational support that enhances efficiency, reduces costs, and enables strategic focus on core competencies.</p>
       </div>
     </div>
   </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Our Journey</h2>
-    <p>Founded in 2020, Finology Nexus has grown from a boutique support unit to a trusted partner for fintechs, investment firms, and data providers. We’ve been delivering quality outsourcing support for over 5 years—and we’re just getting started. Our clients trust us not just for our output, but for our ownership, adaptability, and embedded thinking.</p>
+  <section class="section team-section">
+    <div class="container">
+      <h2 class="section-title">Our Approach</h2>
+      <p class="section-description">We've built our service model on three foundational pillars that ensure exceptional results for our clients.</p>
+      
+      <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+          <div class="team-card-image">
+            <i class="fas fa-users team-icon"></i>
+          </div>
+          <div class="team-card-body">
+            <h3>Expert-Led Services</h3>
+            <p class="position">Financial Operations Specialists</p>
+            <p class="bio">Our team consists of professionals with deep financial services experience who understand the nuances of back-office operations and reporting requirements.</p>
+          </div>
+        </div>
+        
+        <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-card-image">
+            <i class="fas fa-cogs team-icon"></i>
+          </div>
+          <div class="team-card-body">
+            <h3>Process Excellence</h3>
+            <p class="position">Standardized Methodologies</p>
+            <p class="bio">We implement proven workflows and quality control measures to ensure consistency and accuracy in all our deliverables.</p>
+          </div>
+        </div>
+        
+        <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-card-image">
+            <i class="fas fa-chart-line team-icon"></i>
+          </div>
+          <div class="team-card-body">
+            <h3>Technology-Enabled</h3>
+            <p class="position">Smart Automation</p>
+            <p class="bio">We leverage appropriate technology tools to enhance efficiency while maintaining the human oversight needed for financial accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values-section">
+    <div class="container">
+      <h2 class="section-title">Our Core Values</h2>
+      <p class="section-description">These principles guide every decision we make and every service we deliver.</p>
+      
+      <div class="values-container">
+        <div class="value-card" data-aos="fade-up">
+          <i class="fas fa-handshake"></i>
+          <h3>Client Partnership</h3>
+          <p>We view every engagement as a long-term partnership, not just a service contract.</p>
+        </div>
+        
+        <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-bullseye"></i>
+          <h3>Precision Focus</h3>
+          <p>Financial operations demand accuracy. We build checks and balances into every process.</p>
+        </div>
+        
+        <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Continuous Innovation</h3>
+          <p>We constantly seek better ways to deliver results through technology and process improvements.</p>
+        </div>
+        
+        <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Integrity First</h3>
+          <p>We maintain the highest ethical standards in all our client interactions and operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section timeline-section">
+    <div class="container">
+      <h2 class="section-title">Our Journey</h2>
+      <p class="section-description">From our founding to becoming a trusted financial operations partner.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2020 - Foundation</h3>
+            <p>Founded with a vision to provide specialized financial operations support to small and mid-sized firms.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2021 - First Major Client</h3>
+            <p>Onboarded our first institutional client, a regional investment firm needing research support.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2022 - Service Expansion</h3>
+            <p>Launched dedicated accounting and tax support services in response to client needs.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2023 - Technology Integration</h3>
+            <p>Implemented automation tools and proprietary workflows to enhance service delivery.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>2024 - Strategic Growth</h3>
+            <p>Expanded our client base across North America and Europe with specialized financial services.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Optimize Your Financial Operations?</h2>
+        <p>Discover how Finology Nexus can transform your back-office functions with our specialized outsourcing solutions.</p>
+        <div class="cta-buttons">
+          <a href="contactus.html" class="btn btn-secondary">Get in Touch</a>
+          <a href="services.html" class="btn btn-primary">Explore Services</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <!-- Floating CTA Button -->
-<a href="contactus.html" class="floating-cta" title="Let’s Talk">
-  <i class="fas fa-comments"></i> Let’s Talk
-</a>
-
-
-
-
-    <div class="footer-main">
-      <div class="footer-logo-group">
-        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-        <span>Finology Nexus</span>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-column">
+          <div class="footer-logo-group">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
+            <span>Finology Nexus</span>
+          </div>
+          <p class="footer-about">
+            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
+              <li><a href="Bookkeeping & Accounting Suppor">Bookkeeping</a></li>
+              <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
+              <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
+              <li><a href="Process Documentation & Workflow">Process Documentation</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="blog.html">Case Studies</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Contact</h4>
+            <ul>
+              <li><i class="fas fa-envelope"></i> info@finologynexus.com</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin"></i></a>
-         <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/finologynexus/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/finologynexus/" target="_blank"><i class="fab fa-instagram"></i></a>
+      
+      <div class="footer-bottom">
+        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2020 Finology Nexus. All rights reserved.
     </div>
   </footer>
+
+  <!-- Floating CTA Button -->
+  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
-
-  <!-- Nav Active State Script -->
   <script>
-    const path = window.location.pathname;
-    const file = path.substring(path.lastIndexOf('/') + 1);
-    const links = {
-      'index.html': 'home',
-      'services.html': 'services',
-      'blog.html': 'blog',
-      'blog1.html': 'blog',
-      'blog2.html': 'blog',
-      'aboutus.html': 'about',
-      'contactus.html': 'contact'
-    };
-    const current = links[file];
-    if (current) {
-      const activeLink = document.querySelector(`.nav-link.${current}`);
-      if (activeLink) activeLink.classList.add('active');
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = nav.classList.toggle('active');
+        menuToggle.innerHTML = isExpanded 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Set active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Update copyright year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    });
   </script>
-
 </body>
 </html>
