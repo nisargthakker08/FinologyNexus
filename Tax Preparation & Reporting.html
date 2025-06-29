@@ -472,6 +472,13 @@
       font-weight: 500;
     }
 
+    .tech-icon img {
+  height: 50px;       /* Fixed height */
+  width: auto;        /* Width adjusts proportionally */
+  max-width: 100%;    /* Prevent overflow */
+  object-fit: contain; /* Maintain aspect ratio */
+  margin-bottom: 1rem;
+}
     /* ========== CTA SECTION ========== */
     .cta-section {
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
