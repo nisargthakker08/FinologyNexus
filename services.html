@@ -1069,8 +1069,7 @@
   </div>
 </section>
 
-             
-  <!-- Sample Report CTA Section -->
+<!-- Sample Report CTA Section -->
 <section class="sample-report-cta" style="background: var(--white); padding: 3rem 0; margin: 3rem 0; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
   <div class="container" style="max-width: 800px; margin: 0 auto; padding: 0 1.5rem; text-align: center;">
     <h2 class="section-title" style="font-size: 1.75rem; color: var(--primary-blue); margin-bottom: 1rem;">
@@ -1081,12 +1080,14 @@
     </p>
     
     <div style="margin-top: 2rem;">
-      <a href="Sample Report.pdf" 
-         class="btn download-btn" 
+      <button id="downloadSampleBtn" 
+         class="download-btn" 
          style="background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)); 
                 color: white; 
                 padding: 1rem 2.25rem;
                 border-radius: 50px;
+                border: none;
+                cursor: pointer;
                 display: inline-flex; 
                 align-items: center; 
                 gap: 0.75rem;
@@ -1094,9 +1095,11 @@
                 font-weight: 600;
                 box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
                 transition: all 0.3s ease;
-                margin-bottom: 1rem;">
+                margin-bottom: 1rem;
+                font-family: inherit;
+                font-size: 1rem;">
         <i class="fas fa-download"></i> Download Sample Report (PDF)
-      </a>
+      </button>
       <p style="font-size: 0.875rem; color: var(--text-light); margin-top: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
         <i class="fas fa-lock" style="color: var(--success);"></i>
         Sample based on anonymized client data. Your information will remain confidential.
@@ -1105,6 +1108,22 @@
   </div>
 </section>
 
+<script>
+  document.getElementById('downloadSampleBtn').addEventListener('click', function() {
+    // Create a temporary anchor element
+    const link = document.createElement('a');
+    link.href = 'Sample Report.pdf';
+    link.download = 'Sample Report.pdf'; // Force download with this filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Track the download
+    console.log('Sample report downloaded');
+    // If using Google Analytics: gtag('event', 'download', {'event_category': 'sample_report'});
+  });
+</script>           
+  
 <script>
   // Add click tracking for analytics (optional)
   document.querySelector('.download-btn').addEventListener('click', function() {
