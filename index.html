@@ -46,7 +46,9 @@
   <style>
     :root {
       --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
       --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -73,8 +75,74 @@
       background-color: var(--light-bg);
       color: var(--text-dark);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-dark);
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 180px;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      border: none;
+    }
+    
+    .btn-secondary {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 5rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ========== HEADER & NAVIGATION ========== */
     header {
       background: var(--white);
       padding: 1rem 2.5rem;
@@ -85,17 +153,13 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: box-shadow 0.3s ease;
     }
 
     .logo-group {
       display: flex;
       align-items: center;
       gap: 0.625rem;
-    }
-
-    header img {
-      height: 2.5rem;
-      width: auto;
     }
 
     .company-name {
@@ -135,27 +199,13 @@
       transition: var(--transition);
     }
 
-    nav a:hover::after {
+    nav a:hover::after,
+    nav a.active::after {
       width: 100%;
     }
 
     nav a.active {
       color: var(--primary-blue);
-    }
-
-    .header-cta {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .header-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
     }
 
     .menu-toggle {
@@ -165,14 +215,16 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--primary-blue);
+      padding: 0.5rem;
     }
 
+    /* ========== HERO SECTION ========== */
     .hero {
-      text-align: center;
-      padding: 6.25rem 1.25rem;
       background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       color: var(--white);
-      box-shadow: inset 0 -1px 8px rgba(0,0,0,0.1);
+      padding: 6rem 1.25rem;
+      text-align: center;
+      box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
       position: relative;
       overflow: hidden;
     }
@@ -180,250 +232,224 @@
     .hero h1 {
       font-size: 2.875rem;
       margin-bottom: 1.25rem;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
       animation: fadeInDown 1s ease-in-out;
-      line-height: 1.2;
-      position: relative;
-      z-index: 2;
     }
 
     .hero p {
       font-size: 1.25rem;
       max-width: 43.75rem;
       margin: 0 auto 2rem;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 2;
+      animation: fadeInUp 1s ease-in-out;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1rem;
       justify-content: center;
-      position: relative;
-      z-index: 2;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
     }
-
-    .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  transition: var(--transition);
-  text-align: center;
-  cursor: pointer;
-  padding: 0.875rem 1.875rem;
-  font-size: 1rem;
-  background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-  color: var(--white);
-  border: none;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary:hover {
-  background: linear-gradient(to right, #005fa3, #00a4e0);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
 
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    section {
-      padding: 5rem 1.25rem;
-      text-align: center;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(1.25rem); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 1.25rem;
-      color: var(--text-dark);
-      font-weight: 700;
-    }
-
-    .section-description {
-      max-width: 50rem;
-      margin: 0 auto;
-      color: var(--text-medium);
-      font-size: 1.1rem;
-    }
-
-    .features {
+    /* ========== STATS BAR ========== */
+    .stats-bar {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.875rem;
       justify-content: center;
-      margin-top: 3.125rem;
-    }
-
-    .feature-box {
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
       background: var(--white);
-      padding: 1.875rem;
-      border-radius: var(--radius-lg);
-      width: 18.75rem;
-      box-shadow: var(--shadow-md);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      max-width: 900px;
+      margin: -3rem auto 3rem auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
       text-align: center;
-      transition: var(--transition);
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-box-content {
+      padding: 1rem;
       flex: 1;
+      min-width: 150px;
     }
 
-    .feature-box:hover {
-      transform: translateY(-0.3125rem);
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+    }
+
+    /* ========== SERVICES SECTION ========== */
+    .services-section {
+      background-color: var(--white);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-0.5rem);
       box-shadow: var(--shadow-lg);
     }
 
-    .feature-box i {
-      font-size: 2rem;
-      color: var(--secondary-blue);
-      margin-bottom: 0.9375rem;
-    }
-
-    .feature-box h3 {
-      color: var(--primary-blue);
-      margin-bottom: 0.625rem;
-      font-size: 1.25rem;
-    }
-
-    .feature-box p {
-      color: var(--text-medium);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .feature-benefits {
-      text-align: left;
-      margin: 1rem 0 0 1.5rem;
-      color: var(--text-medium);
-      font-size: 0.9rem;
-    }
-
-    .feature-benefits li {
-      margin-bottom: 0.5rem;
+    .service-card-header {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 1.5rem;
       position: relative;
     }
 
-    .feature-benefits li:before {
-      content: "→";
+    .service-card-header i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .service-card-header h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card-body {
+      padding: 1.5rem;
+    }
+
+    .service-card-body p {
+      color: var(--text-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-medium);
+    }
+
+    .service-features li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
       position: absolute;
-      left: -1.25rem;
+      left: 0;
       color: var(--secondary-blue);
     }
 
-    .btn {
-      display: inline-block;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: var(--radius-sm);
+    /* ========== WHY CHOOSE US SECTION ========== */
+    .benefits-section {
+      background-color: var(--light-bg);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
       text-align: center;
-      cursor: pointer;
     }
 
-    .btn-primary {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      padding: 0.875rem 1.875rem;
-      font-size: 1rem;
-    }
-
-    .btn-primary:hover {
-      background: linear-gradient(to right, #005fa3, #00a4e0);
-      transform: translateY(-2px);
+    .benefit-card:hover {
+      transform: translateY(-0.5rem);
       box-shadow: var(--shadow-md);
     }
 
-    .btn i {
-      margin-right: 0.5rem;
-    }
-
-    footer {
-      background: var(--dark-bg);
-      color: var(--white);
-      padding: 1.875rem 1.25rem;
-    }
-
-    .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 75rem;
-      margin: 0 auto;
-      gap: 1.25rem;
-    }
-
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-    }
-
-    .footer-logo-group img {
-      height: 1.875rem;
-      width: auto;
-    }
-
-    .footer-logo-group span {
-      font-size: 1.125rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .footer-socials a {
-      color: var(--white);
-      margin: 0 0.5rem;
-      font-size: 1.25rem;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-
-    .footer-socials a:hover {
+    .benefit-card i {
+      font-size: 2.5rem;
       color: var(--secondary-blue);
-      transform: translateY(-2px);
+      margin-bottom: 1rem;
     }
 
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.875rem;
-      margin-top: 1.875rem;
-      color: #aaa;
+    .benefit-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
     }
 
-    .floating-cta {
-      position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
+    .benefit-card p {
+      color: var(--text-medium);
+    }
+
+    /* ========== TESTIMONIAL SECTION ========== */
+    .testimonial-section {
+      background-color: var(--white);
+    }
+
+    .testimonial {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #f0f4f8;
+      padding: 3rem;
+      border-radius: var(--radius-md);
+      position: relative;
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    .testimonial:before {
+      content: '"';
+      font-size: 5rem;
+      color: rgba(0, 119, 204, 0.1);
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      line-height: 1;
+    }
+
+    .testimonial p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .testimonial-author {
       font-weight: 600;
-      text-decoration: none;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
+      color: var(--primary-blue);
+      font-style: normal;
     }
 
-    .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
-    }
-
+    /* ========== TECH STACK SECTION ========== */
     .tech-stack {
       background-color: var(--white);
       padding: 2.5rem 1.25rem;
@@ -454,65 +480,267 @@
       transform: scale(1.1);
     }
 
-    .founder-note {
-      background: #f0f4f8;
-      padding: 2.5rem;
-      border-radius: var(--radius-md);
-      max-width: 60rem;
-      margin: 2rem auto;
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 4rem 1.25rem;
       text-align: center;
-      position: relative;
-      border-left: 4px solid var(--primary-blue);
     }
 
-    .founder-note:before {
-      content: '"';
-      font-size: 5rem;
-      color: rgba(0, 119, 204, 0.1);
-      position: absolute;
-      top: 0.5rem;
-      left: 1rem;
-      line-height: 1;
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .founder-note p {
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      position: relative;
-    }
-
-    .founder-signature {
-      font-weight: 600;
-      color: var(--primary-blue);
-      font-style: normal;
-    }
-
-    .stats-bar {
+    .cta-buttons {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin: 2rem 0;
+      gap: 1.5rem;
+      margin-top: 2rem;
       flex-wrap: wrap;
     }
 
-    .stat-item {
+    /* ========== FREE ASSESSMENT SECTION ========== */
+    .free-assessment {
+      padding: 5rem 1.25rem;
+      background: var(--light-bg);
       text-align: center;
-      padding: 1rem;
     }
 
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
+    .assessment-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .assessment-container h2 {
       color: var(--primary-blue);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .stat-label {
-      font-size: 0.9rem;
+    .assessment-container p {
       color: var(--text-medium);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    .assessment-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .feature-list i {
+      color: var(--secondary-blue);
+      margin-top: 0.25rem;
+    }
+
+    .assessment-form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-box {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 119, 204, 0.1);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .assessment-form input,
+    .assessment-form textarea {
+      width: 100%;
+      padding: 0.875rem;
+      border: 1px solid #e0e0e0;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      transition: var(--transition);
+      margin-bottom: 1rem;
+    }
+
+    .assessment-form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .assessment-form input:focus,
+    .assessment-form textarea:focus {
+      border-color: var(--primary-blue);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.1);
+    }
+
+    .assessment-form button {
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .assessment-form button:hover {
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-blue-dark));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 3rem 1.25rem 1.5rem;
+    }
+
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 75rem;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-group img {
+      height: 2rem;
+    }
+
+    .footer-logo-group span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-about {
+      color: #d1d5db;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-blue);
+    }
+
+    .footer-socials {
+      margin-top: 1.5rem;
+    }
+
+    .footer-socials a {
+      color: var(--white);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .footer-socials a:hover {
+      color: var(--secondary-blue);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    /* ========== FLOATING CTA ========== */
+    .floating-cta {
+      position: fixed;
+      bottom: 1.875rem;
+      right: 1.875rem;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 1.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, var(--primary-blue), #005b99);
+      transform: translateY(-3px);
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
     @media (max-width: 768px) {
       header {
         padding: 1rem;
@@ -553,15 +781,10 @@
         align-items: center;
       }
       
-      .features {
+      .stats-bar {
         flex-direction: column;
-        align-items: center;
-      }
-      
-      .feature-box {
-        width: 100%;
-        max-width: 25rem;
-        min-height: auto;
+        gap: 1rem;
+        margin: -2rem auto 2rem auto;
       }
       
       .section-title {
@@ -576,50 +799,72 @@
         height: 2rem;
       }
       
-      .founder-note {
-        padding: 1.5rem;
+      .assessment-features {
+        grid-template-columns: 1fr;
       }
       
-      .stats-bar {
-        flex-direction: column;
-        gap: 1rem;
+      .form-row {
+        grid-template-columns: 1fr;
       }
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .hero h1,
+      .hero p {
+        animation: none;
+      }
+    }
+
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-blue);
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="160" height="40" loading="lazy">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
       <span class="company-name">Finology Nexus</span>
     </div>
-    
-    <button class="menu-toggle" aria-label="Toggle navigation menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    
     <nav id="main-nav">
       <ul>
-        <li><a href="index.html" class="nav-link home">Home</a></li>
-        <li><a href="services.html" class="nav-link services">Services</a></li>
-        <li><a href="blog.html" class="nav-link case-studies">Case Studies</a></li>
-        <li><a href="aboutus.html" class="nav-link about">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link contact">Contact</a></li>
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
-     
     </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
   <section class="hero">
-    <h1>Strategic Financial Operations Support for Scaling Companies</h1>
-    <p>We help fintechs and investment firms streamline operations, reduce costs by 40% on average, and make data-driven decisions through our specialized solutions.</p>
-    <div class="hero-buttons">
-  <a href="/services" class="btn btn-primary">
-    <i class="fas fa-chart-line"></i> Explore Services
-  </a>
-  <a href="blog.html" class="btn btn-secondary">
-    <i class="fas fa-book-open"></i> View Case Studies
-  </a>
+    <div class="container">
+      <h1>Strategic Financial Operations Support for Scaling Companies</h1>
+      <p>We help fintechs and investment firms streamline operations, reduce costs by 40% on average, and make data-driven decisions through our specialized solutions.</p>
+      <div class="hero-buttons">
+        <a href="/services" class="btn btn-primary">
+          <i class="fas fa-chart-line"></i> Explore Services
+        </a>
+        <a href="blog.html" class="btn btn-secondary">
+          <i class="fas fa-book-open"></i> View Case Studies
+        </a>
+      </div>
     </div>
   </section>
 
@@ -636,111 +881,155 @@
       <div class="stat-number">50+</div>
       <div class="stat-label">Projects Completed</div>
     </div>
+    <div class="stat-item">
+      <div class="stat-number">12+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
   </div>
 
-  <section>
-    <h2 class="section-title">Our Specialized Services</h2>
-    <p class="section-description">Finology Nexus helps financial teams unlock focus and scale through our comprehensive support solutions</p>
-    <div class="features">
-      <div class="feature-box">
-        <div class="feature-box-content">
-          <i class="fas fa-chart-line" aria-hidden="true"></i>
-          <h3>Research & Analytics</h3>
-          <p>Transform raw data into strategic insights and actionable intelligence:</p>
-          <ul class="feature-benefits">
-            <li>Market trend analysis</li>
-            <li>Competitor benchmarking</li>
-            <li>Custom reporting frameworks</li>
-          </ul>
+  <section class="section services-section">
+    <div class="container">
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-description">Finology Nexus helps financial teams unlock focus and scale through our comprehensive support solutions</p>
+      
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-card-header">
+            <i class="fas fa-chart-line"></i>
+            <h3>Research & Analytics</h3>
+          </div>
+          <div class="service-card-body">
+            <p>Transform raw data into strategic insights and actionable intelligence for better decision making.</p>
+            <ul class="service-features">
+              <li>Market trend analysis</li>
+              <li>Competitor benchmarking</li>
+              <li>Financial modeling</li>
+              <li>Custom reporting</li>
+            </ul>
+            <a href="services.html#research" class="btn btn-primary" style="width: 100%; text-align: center;">
+              Learn More
+            </a>
+          </div>
         </div>
-        <a href="services.html#research" class="btn btn-primary" style="margin-top: auto; align-self: center;">
-          Learn More
-        </a>
-      </div>
-      <div class="feature-box">
-        <div class="feature-box-content">
-          <i class="fas fa-cogs" aria-hidden="true"></i>
-          <h3>Process Support</h3>
-          <p>Comprehensive back-office solutions that free your team for high-value work:</p>
-          <ul class="feature-benefits">
-            <li>Documentation management</li>
-            <li>Regulatory compliance</li>
-            <li>Workflow automation</li>
-          </ul>
+        
+        <div class="service-card">
+          <div class="service-card-header">
+            <i class="fas fa-cogs"></i>
+            <h3>Process Support</h3>
+          </div>
+          <div class="service-card-body">
+            <p>Comprehensive back-office solutions that free your team for high-value work.</p>
+            <ul class="service-features">
+              <li>Documentation management</li>
+              <li>Regulatory compliance</li>
+              <li>Workflow automation</li>
+              <li>Quality control</li>
+            </ul>
+            <a href="services.html#process" class="btn btn-primary" style="width: 100%; text-align: center;">
+              Learn More
+            </a>
+          </div>
         </div>
-        <a href="services.html#process" class="btn btn-primary" style="margin-top: auto; align-self: center;">
-          Learn More
-        </a>
-      </div>
-      <div class="feature-box">
-        <div class="feature-box-content">
-          <i class="fas fa-handshake" aria-hidden="true"></i>
-          <h3>Outsourcing Partnership</h3>
-          <p>Custom solutions that grow with your business needs:</p>
-          <ul class="feature-benefits">
-            <li>Dedicated account managers</li>
-            <li>Flexible engagement models</li>
-            <li>Scalable team support</li>
-          </ul>
+        
+        <div class="service-card">
+          <div class="service-card-header">
+            <i class="fas fa-handshake"></i>
+            <h3>Outsourcing Partnership</h3>
+          </div>
+          <div class="service-card-body">
+            <p>Custom solutions that grow with your business needs and scale as you grow.</p>
+            <ul class="service-features">
+              <li>Dedicated account managers</li>
+              <li>Flexible engagement models</li>
+              <li>Scalable team support</li>
+              <li>Performance reporting</li>
+            </ul>
+            <a href="services.html#outsourcing" class="btn btn-primary" style="width: 100%; text-align: center;">
+              Learn More
+            </a>
+          </div>
         </div>
-        <a href="services.html#outsourcing" class="btn btn-primary" style="margin-top: auto; align-self: center;">
-          Learn More
-        </a>
       </div>
     </div>
   </section>
 
-  <section style="background: #f0f4f8;">
-    <h2 class="section-title">Why Financial Teams Choose Us</h2>
-    <p class="section-description">What sets Finology Nexus apart in delivering exceptional value</p>
-    <div class="features">
-      <div class="feature-box">
-        <i class="fas fa-user-tie" aria-hidden="true"></i>
-        <h3>Deep Domain Expertise</h3>
-        <p>Our team brings 12+ years average experience in financial operations and regulatory compliance.</p>
-      </div>
-      <div class="feature-box">
-        <i class="fas fa-plug" aria-hidden="true"></i>
-        <h3>Seamless Integration</h3>
-        <p>We become an extension of your team with minimal onboarding friction.</p>
-      </div>
-      <div class="feature-box">
-        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        <h3>Enterprise-Grade Security</h3>
-        <p>SOC 2 compliant systems and rigorous data protection protocols.</p>
+  <section class="section benefits-section">
+    <div class="container">
+      <h2 class="section-title">Why Financial Teams Choose Us</h2>
+      <p class="section-description">What sets Finology Nexus apart in delivering exceptional value</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Deep Domain Expertise</h3>
+          <p>Our team brings 12+ years average experience in financial operations and regulatory compliance.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-plug"></i>
+          <h3>Seamless Integration</h3>
+          <p>We become an extension of your team with minimal onboarding friction.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Enterprise Security</h3>
+          <p>SOC 2 compliant systems and rigorous data protection protocols.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-chart-pie"></i>
+          <h3>Measurable Results</h3>
+          <p>Clear KPIs and regular reporting to demonstrate value delivered.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section style="background: var(--white); padding: 3.75rem 1.25rem; text-align: center;">
-    <h2 class="section-title">Who We Help Most</h2>
-    <p class="section-description">Financial teams that trust us with their critical operations</p>
-    <div class="features">
-      <div class="feature-box">
-        <i class="fas fa-rocket" aria-hidden="true"></i>
-        <h3>Scaling Fintechs</h3>
-        <p>Series A-C startups needing compliant back-office support and investor-ready reporting</p>
-      </div>
-      <div class="feature-box">
-        <i class="fas fa-university" aria-hidden="true"></i>
-        <h3>Investment Firms</h3>
-        <p>VCs, PEs and hedge funds requiring due diligence and portfolio monitoring</p>
-      </div>
-      <div class="feature-box">
-        <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
-        <h3>Financial Advisors</h3>
-        <p>RIAs and wealth managers streamlining client reporting and operations</p>
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Who We Help Most</h2>
+      <p class="section-description">Financial teams that trust us with their critical operations</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <i class="fas fa-rocket"></i>
+          <h3>Scaling Fintechs</h3>
+          <p>Series A-C startups needing compliant back-office support and investor-ready reporting</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-university"></i>
+          <h3>Investment Firms</h3>
+          <p>VCs, PEs and hedge funds requiring due diligence and portfolio monitoring</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Financial Advisors</h3>
+          <p>RIAs and wealth managers streamlining client reporting and operations</p>
+        </div>
+        
+        <div class="benefit-card">
+          <i class="fas fa-globe"></i>
+          <h3>International Businesses</h3>
+          <p>Companies operating across borders needing localized financial support</p>
+        </div>
       </div>
     </div>
-    
-    <div class="founder-note">
-  <p>"After 12 years leading financial operations at Fortune 500 companies, I saw growing firms struggling with the same challenges: not enough specialized talent, inefficient processes, and ballooning operational costs. We built Finology Nexus to provide enterprise-grade support tailored for scaling businesses - combining deep expertise with the flexibility you need during rapid growth."</p>
-  <div class="founder-signature">— Founder & CEO</div>
-</div>
-</section>
-  
-  <section class="tech-stack">
-    <div class="tech-stack-container">
+  </section>
+
+  <section class="section testimonial-section">
+    <div class="container">
+      <div class="testimonial">
+        <p>"After 12 years leading financial operations at Fortune 500 companies, I saw growing firms struggling with the same challenges: not enough specialized talent, inefficient processes, and ballooning operational costs. We built Finology Nexus to provide enterprise-grade support tailored for scaling businesses - combining deep expertise with the flexibility you need during rapid growth."</p>
+        <div class="testimonial-author">— Founder & CEO</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tech-stack">
+    <div class="container">
       <h2 class="section-title">Technology Ecosystem</h2>
       <p class="section-description">We work with leading platforms to deliver efficient, integrated solutions</p>
       
@@ -762,112 +1051,188 @@
     </div>
   </section>
 
-  <section style="background: #eef7fb; padding: 3.75rem 1.25rem; border-radius: var(--radius-md); margin: 2.5rem auto; max-width: 62.5rem; text-align: center;">
-    <h2 style="color: var(--primary-blue); font-size: 1.625rem; margin-bottom: 0.75rem;">
-      Free Financial Operations Assessment ($2,500 Value)
-    </h2>
-    <p style="color: var(--text-medium); font-size: 1rem; max-width: 43.75rem; margin: 0 auto 1.875rem;">
-      Get a customized review of your financial operations with actionable recommendations:
-    </p>
-    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-      <div style="text-align: left; max-width: 20rem;">
-        <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">You'll Receive:</h4>
-        <ul style="color: var(--text-medium); margin-left: 1.5rem;">
-          <li style="margin-bottom: 0.5rem;">Cost-saving opportunities</li>
-          <li style="margin-bottom: 0.5rem;">Process efficiency analysis</li>
-          <li style="margin-bottom: 0.5rem;">Compliance health check</li>
-          <li>Technology optimization tips</li>
-        </ul>
-      </div>
-      <div style="text-align: left; max-width: 20rem;">
-        <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Perfect For:</h4>
-        <ul style="color: var(--text-medium); margin-left: 1.5rem;">
-          <li style="margin-bottom: 0.5rem;">Fintechs preparing for funding</li>
-          <li style="margin-bottom: 0.5rem;">Firms experiencing growth pains</li>
-          <li>Teams with manual processes</li>
-        </ul>
+  <section class="section free-assessment">
+    <div class="container">
+      <div class="assessment-container">
+        <h2>Free Financial Operations Assessment</h2>
+        <p>Get a customized review of your financial operations with actionable recommendations - no strings attached.</p>
+        
+        <div class="assessment-features">
+          <div>
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">What's Included:</h3>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check"></i>
+                Process efficiency score
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                Compliance checklist
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                Cost-saving opportunities
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                Key financial metrics
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">How It Works:</h3>
+            <ul class="feature-list">
+              <li>
+                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">1</span>
+                Complete our 2-min questionnaire
+              </li>
+              <li>
+                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">2</span>
+                Receive analysis within 24 hours
+              </li>
+              <li>
+                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">3</span>
+                Optional 30-min consultation
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <form class="assessment-form" action="https://formsubmit.co/info@finologynexus.online" method="POST">
+          <div class="form-box">
+            <input type="hidden" name="_subject" value="New Assessment Request">
+            <input type="hidden" name="_template" value="box">
+            
+            <div class="form-row">
+              <input type="text" name="first_name" placeholder="First Name" required>
+              <input type="text" name="last_name" placeholder="Last Name">
+            </div>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="company" placeholder="Company Name">
+            <textarea name="message" placeholder="Tell us about your current financial setup (optional)"></textarea>
+            <button type="submit">Get My Free Assessment</button>
+            <p style="font-size: 12px; color: var(--text-light); margin-top: 1rem;">
+              We respect your privacy. By submitting, you agree to our <a href="privacy.html" style="color: var(--primary-blue);">Privacy Policy</a>.
+            </p>
+          </div>
+        </form>
       </div>
     </div>
-    <a href="finance-checkup.html" class="btn btn-primary" style="margin-top: 2rem;">
-      <i class="fas fa-calendar-check"></i> Schedule Free Assessment
-    </a>
   </section>
 
-  <section style="padding: 3.75rem 1.25rem; text-align: center; background: #eaf6ff;">
-    <h2 class="section-title">Ready to Streamline Your Operations?</h2>
-    <p class="section-description" style="margin-bottom: 1.5625rem;">
-      Download our company profile to learn how we can support your growth.
-    </p>
-    <a href="assets/Finology Service Page.pdf" download class="btn btn-primary">
-      <i class="fas fa-download"></i> Download Company Profile
-    </a>
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Streamline Your Operations?</h2>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem;">Download our company profile to learn how we can support your growth.</p>
+        <div class="cta-buttons">
+          <a href="assets/Finology Service Page.pdf" download class="btn btn-primary">
+            <i class="fas fa-download"></i> Download Profile
+          </a>
+          <a href="contactus.html" class="btn btn-secondary">
+            <i class="fas fa-calendar"></i> Schedule Call
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
-
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
-    <i class="fas fa-comments"> </i> Let's Talk
-  </a>
 
   <footer>
-    <div class="footer-main">
-      <div class="footer-logo-group">
-        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="120" height="30" loading="lazy">
-        <span>Finology Nexus</span>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-column">
+          <div class="footer-logo-group">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
+            <span>Finology Nexus</span>
+          </div>
+          <p class="footer-about">
+            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
+          </p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="services.html#research">Financial Research</a></li>
+              <li><a href="services.html#process">Process Support</a></li>
+              <li><a href="services.html#outsourcing">Outsourcing</a></li>
+              <li><a href="services.html">View All Services</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="blog.html">Case Studies</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <div class="footer-links">
+            <h4>Contact</h4>
+            <ul>
+              <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
+              <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
+      
+      <div class="footer-bottom">
+        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
       </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; <span id="current-year"></span> Finology Nexus. All rights reserved. | <a href="privacy.html" style="color: #aaa;">Privacy Policy</a> | <a href="terms.html" style="color: #aaa;">Terms of Service</a>
     </div>
   </footer>
 
+  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
+
   <script>
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.getElementById('main-nav');
-    
-    menuToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', mainNav.classList.contains('active'));
-    });
-    
-    // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Active link detection
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if (window.location.pathname.includes(link.getAttribute('href'))) {
-        link.classList.add('active');
-      }
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-link, .header-cta').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          mainNav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
+    document.addEventListener("DOMContentLoaded", function() {
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = nav.classList.toggle('active');
+        menuToggle.innerHTML = isExpanded 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Set active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
         }
       });
-    });
-
-    // Sticky header on scroll
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-      } else {
-        header.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-      }
+      
+      // Update copyright year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
     });
   </script>
 </body>
