@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Finology Nexus</title>
+  <meta name="description" content="Finology Nexus privacy policy outlining how we collect, use, and protect your personal information." />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-medium);
+    }
+
+    ul, ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-blue-dark);
+    }
+
+    /* Header styles */
+    header {
+      background: var(--white);
+      padding: 1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .company-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      position: relative;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary-blue);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--primary-blue);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-blue);
+      padding: 0.5rem;
+    }
+
+    /* Main content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .privacy-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .privacy-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-header p {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .privacy-section {
+      margin-bottom: 3rem;
+    }
+
+    .privacy-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--light-bg);
+    }
+
+    .privacy-section h3 {
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Footer styles */
+    footer {
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 3rem 1.25rem 1.5rem;
+    }
+
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 75rem;
+      margin: 0 auto;
+      gap: 3rem;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-group img {
+      height: 2rem;
+    }
+
+    .footer-logo-group span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-about {
+      color: #d1d5db;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-blue);
+    }
+
+    .footer-socials {
+      margin-top: 1.5rem;
+    }
+
+    .footer-socials a {
+      color: var(--white);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .footer-socials a:hover {
+      color: var(--secondary-blue);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+      
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+      }
+      
+      nav.active {
+        display: block;
+        margin-top: 1rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .privacy-header h1 {
+        font-size: 2rem;
+      }
+      
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .footer-main {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .footer-column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+      <span class="company-name">Finology Nexus</span>
+    </div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <main class="container">
+    <div class="privacy-header">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: January 1, 2025</p>
+    </div>
+
+    <div class="privacy-section">
+      <p>Finology Nexus ("us", "we", or "our") operates the finologynexus.online website (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Information Collection and Use</h2>
+      <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
+      
+      <h3>Types of Data Collected</h3>
+      <p><strong>Personal Data:</strong> While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</p>
+      <ul>
+        <li>Email address</li>
+        <li>First name and last name</li>
+        <li>Phone number</li>
+        <li>Company name</li>
+        <li>Cookies and Usage Data</li>
+      </ul>
+      
+      <h3>Usage Data</h3>
+      <p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Use of Data</h2>
+      <p>Finology Nexus uses the collected data for various purposes:</p>
+      <ul>
+        <li>To provide and maintain our Service</li>
+        <li>To notify you about changes to our Service</li>
+        <li>To allow you to participate in interactive features of our Service when you choose to do so</li>
+        <li>To provide customer support</li>
+        <li>To gather analysis or valuable information so that we can improve our Service</li>
+        <li>To monitor the usage of our Service</li>
+        <li>To detect, prevent and address technical issues</li>
+      </ul>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Data Security</h2>
+      <p>The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Service Providers</h2>
+      <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used.</p>
+      <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Links to Other Sites</h2>
+      <p>Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
+      <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+      <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.</p>
+      <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy, please contact us:</p>
+      <ul>
+        <li>By email: privacy@finologynexus.online</li>
+        <li>By visiting this page on our website: <a href="contactus.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-column">
+        <div class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
+          <span>Finology Nexus</span>
+        </div>
+        <p class="footer-about">
+          We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#research">Financial Research</a></li>
+            <li><a href="services.html#process">Process Support</a></li>
+            <li><a href="services.html#outsourcing">Outsourcing</a></li>
+            <li><a href="services.html">View All Services</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = nav.classList.toggle('active');
+        menuToggle.innerHTML = isExpanded 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+      });
+      
+      // Set active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Update copyright year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
