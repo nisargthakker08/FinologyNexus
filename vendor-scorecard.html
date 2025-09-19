@@ -288,7 +288,7 @@
     }
     
     #risk-form button:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
+      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light);
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
@@ -366,6 +366,65 @@
     
     .progress-low {
       background-color: var(--risk-low);
+    }
+
+    /* ========== IMPROVED BENEFITS SECTION ========== */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 4px solid var(--primary-blue);
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .benefit-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      border-radius: 50%;
+      font-size: 1.8rem;
+    }
+
+    .benefit-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .benefit-card p {
+      color: var(--text-medium);
+      line-height: 1.6;
+    }
+
+    .benefit-number {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      font-size: 5rem;
+      font-weight: 800;
+      color: rgba(0, 119, 204, 0.05);
+      z-index: 0;
     }
 
     /* ========== FOOTER ========== */
@@ -541,6 +600,10 @@
         flex-direction: column;
         gap: 2rem;
       }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Focus styles for accessibility */
@@ -566,14 +629,13 @@
       <i class="fas fa-bars"></i>
     </button>
     
-    <nav>
+    <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="products.html" class="nav-link">Solutions</a></li>
+        <li><a href="products.html" class="nav-link active">Solutions</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="blog.html" class="nav-link">Case Studies</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-        <li><a href="vendor-scorecard.html" class="nav-link active">Free Tool</a></li>
         <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
@@ -718,34 +780,46 @@
     </div>
   </section>
 
-  <!-- Benefits Section -->
-  <section class="section why-choose">
+  <!-- Improved Benefits Section -->
+  <section class="section">
     <div class="container">
       <h2 class="section-title">Why Use Our Vendor Health Scorecard?</h2>
       
       <div class="benefits-grid">
         <div class="benefit-card">
-          <i class="fas fa-bolt"></i>
+          <div class="benefit-number">01</div>
+          <div class="benefit-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
           <h3>Quick Assessment</h3>
-          <p>Complete the 12-question assessment in just 5 minutes and get instant results.</p>
+          <p>Complete our streamlined 12-question assessment in just 5 minutes and receive instant, actionable results.</p>
         </div>
         
         <div class="benefit-card">
-          <i class="fas fa-chart-pie"></i>
+          <div class="benefit-number">02</div>
+          <div class="benefit-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
           <h3>Data-Driven Insights</h3>
-          <p>Move beyond gut feelings with standardized, objective evaluation criteria.</p>
+          <p>Move beyond gut feelings with our standardized, objective evaluation criteria that provides consistent scoring.</p>
         </div>
         
         <div class="benefit-card">
-          <i class="fas fa-file-pdf"></i>
+          <div class="benefit-number">03</div>
+          <div class="benefit-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
           <h3>Professional Report</h3>
-          <p>Download a beautifully formatted PDF report to share with your team.</p>
+          <p>Download a beautifully formatted PDF report complete with your company branding to share with stakeholders.</p>
         </div>
         
         <div class="benefit-card">
-          <i class="fas fa-rocket"></i>
+          <div class="benefit-number">04</div>
+          <div class="benefit-icon">
+            <i class="fas fa-lock-open"></i>
+          </div>
           <h3>No Commitment</h3>
-          <p>Completely free with no email required. Get started immediately.</p>
+          <p>Completely free with no email required. Get started immediately without any obligations or hidden costs.</p>
         </div>
       </div>
     </div>
