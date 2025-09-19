@@ -223,6 +223,14 @@
       margin: 0 auto 2rem;
     }
 
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
     .scorecard-container {
       max-width: 800px;
       margin: 0 auto;
@@ -288,7 +296,7 @@
     }
     
     #risk-form button:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light);
+      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
@@ -369,6 +377,11 @@
     }
 
     /* ========== IMPROVED BENEFITS SECTION ========== */
+    .benefits-section {
+      background-color: var(--light-bg);
+      padding: 5rem 1.25rem;
+    }
+
     .benefits-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -386,6 +399,10 @@
       position: relative;
       overflow: hidden;
       border-top: 4px solid var(--primary-blue);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .benefit-card:hover {
@@ -415,6 +432,7 @@
     .benefit-card p {
       color: var(--text-medium);
       line-height: 1.6;
+      flex-grow: 1;
     }
 
     .benefit-number {
@@ -427,26 +445,24 @@
       z-index: 0;
     }
 
-    /* ========== FOOTER ========== */
+    /* ========== IMPROVED FOOTER ========== */
     footer {
       background: var(--dark-bg);
       color: var(--white);
-      padding: 3rem 1.25rem 1.5rem;
+      padding: 4rem 1.25rem 1.5rem;
     }
 
     .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
       max-width: 75rem;
       margin: 0 auto;
-      gap: 3rem;
     }
 
     .footer-column {
-      flex: 1;
-      min-width: 200px;
+      display: flex;
+      flex-direction: column;
     }
 
     .footer-logo-group {
@@ -456,8 +472,13 @@
       margin-bottom: 1.5rem;
     }
 
+    .footer-logo-group img {
+      height: 40px;
+      width: auto;
+    }
+
     .footer-logo-group span {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       font-weight: 700;
       background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       -webkit-background-clip: text;
@@ -467,15 +488,28 @@
 
     .footer-about {
       color: #d1d5db;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
 
     .footer-links h4 {
       color: var(--white);
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-links h4:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--secondary-blue);
     }
 
     .footer-links ul {
@@ -490,38 +524,50 @@
       color: #d1d5db;
       text-decoration: none;
       transition: var(--transition);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.25rem 0;
     }
 
     .footer-links a:hover {
       color: var(--secondary-blue);
+      transform: translateX(5px);
     }
 
     .footer-socials {
+      display: flex;
+      gap: 1rem;
       margin-top: 1.5rem;
     }
 
     .footer-socials a {
       color: var(--white);
-      margin-right: 1rem;
-      font-size: 1.25rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: var(--transition);
-      text-decoration: none;
-      display: inline-block;
+      font-size: 1.1rem;
     }
 
     .footer-socials a:hover {
-      color: var(--secondary-blue);
-      transform: translateY(-2px);
+      background: var(--secondary-blue);
+      transform: translateY(-3px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 0.875rem;
-      margin-top: 3rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
       padding-top: 1.5rem;
       border-top: 1px solid #374151;
       color: #9ca3af;
+      max-width: 75rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ========== FLOATING CTA ========== */
@@ -584,6 +630,11 @@
         font-size: 1rem;
       }
       
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
       .scorecard-container {
         padding: 1.5rem;
       }
@@ -597,12 +648,16 @@
       }
       
       .footer-main {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 2rem;
       }
       
       .benefits-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .footer-socials {
+        justify-content: center;
       }
     }
 
@@ -758,7 +813,7 @@
           <fieldset>
             <legend>12. How scalable are their services with your growth?</legend>
             <label><input type="radio" name="q12" value="0" required> Limited capacity for growth</label>
-            <label><input type="radio" name="q12" value="1"> Can accommodate moderate growth</label>
+            <label><input type="radio" name"q12" value="1"> Can accommodate moderate growth</label>
             <label><input type="radio" name="q12" value="2"> Highly scalable for rapid growth</label>
           </fieldset>
 
@@ -781,7 +836,7 @@
   </section>
 
   <!-- Improved Benefits Section -->
-  <section class="section">
+  <section class="benefits-section">
     <div class="container">
       <h2 class="section-title">Why Use Our Vendor Health Scorecard?</h2>
       
@@ -825,22 +880,28 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Improved Footer -->
   <footer>
     <div class="container">
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
             <span>Finology Nexus</span>
           </div>
           <p class="footer-about">
             We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
           </p>
           <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
           </div>
         </div>
         
@@ -872,8 +933,9 @@
           <div class="footer-links">
             <h4>Contact</h4>
             <ul>
-              <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
+              <li><a href="mailto:info@finologynexus.online"><i class="fas fa-envelope"></i> info@finologynexus.online</a></li>
               <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
+              <li><a href="contactus.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Get in Touch</a></li>
             </ul>
           </div>
         </div>
