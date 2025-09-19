@@ -32,9 +32,39 @@
             background-color: var(--white);
         }
         
-        header {
+        .header-container {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
             color: var(--white);
+            padding: 1rem;
+        }
+        
+        .logo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        header {
             padding: 2rem 1rem;
             text-align: center;
         }
@@ -158,10 +188,21 @@
             fieldset {
                 padding: 1rem;
             }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="header-container">
+        <div class="logo-container">
+            <div class="logo">FN</div>
+            <div class="logo-text">Finology Nexus</div>
+        </div>
+    </div>
+
     <header>
         <h1>Vendor Health Scorecard</h1>
         <p>Answer these questions to generate your free risk assessment report instantly.</p>
@@ -273,7 +314,7 @@
             <h2>Your Report is Ready!</h2>
             <p><a id="download-link" href="#">Download Your Vendor Health Report (PDF)</a></p>
             <p><strong>Want a professional to review it with you?</strong></p>
-            <p><a href="mailto:contact@finologynexus.online">Email us to schedule a free consultation.</a></p>
+            <p><a href="mailto:info@finologynexus.online">Email us to schedule a free consultation.</a></p>
         </div>
     </div>
 
@@ -316,7 +357,12 @@
             source.style.color = '#374151';
             
             source.innerHTML = `
-                <h1 style="color: #1a4f8b; text-align: center; margin-bottom: 20px;">Finology Nexus Vendor Health Report</h1>
+                <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
+                    <div style="width: 50px; height: 50px; background-color: #1a4f8b; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <span style="color: white; font-weight: bold; font-size: 20px;">FN</span>
+                    </div>
+                    <h1 style="color: #1a4f8b; margin: 0;">Finology Nexus Vendor Health Report</h1>
+                </div>
                 <p style="text-align: center; margin-bottom: 20px;">Generated on: ${new Date().toLocaleDateString()}</p>
                 <hr style="margin-bottom: 20px;">
                 <h2 style="color: #1a4f8b; text-align: center; margin-bottom: 20px;">Risk Assessment Result: ${riskCategory}</h2>
@@ -325,7 +371,7 @@
                 <p style="margin-bottom: 30px; line-height: 1.6;">${getRecommendations(riskCategory)}</p>
                 <hr style="margin-bottom: 20px;">
                 <p style="font-size: 0.8rem; color: #6b7280; font-style: italic; margin-bottom: 10px;"><em>Disclaimer: This report is generated automatically based on user-input and is for informational purposes only. It is not a substitute for professional advice.</em></p>
-                <p style="text-align: center; margin-top: 30px;">For a detailed analysis, contact us at: contact@finologynexus.online</p>
+                <p style="text-align: center; margin-top: 30px;">For a detailed analysis, contact us at: info@finologynexus.online</p>
             `;
 
             document.body.appendChild(source);
