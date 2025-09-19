@@ -299,7 +299,8 @@
       from { opacity: 0; transform: translateY(1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
-/* ========== PRODUCTS OVERVIEW SECTION ========== */
+
+    /* ========== PRODUCTS OVERVIEW SECTION ========== */
     .products-section {
       padding: 5rem 1.25rem;
       background: var(--light-bg);
@@ -391,7 +392,8 @@
       .products-section .section-title {
         font-size: 2rem;
       }
-    
+    }
+
     /* ========== SERVICES SECTION ========== */
     .services-section {
       background-color: var(--light-bg);
@@ -941,13 +943,17 @@
 <body>
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+      <!-- Placeholder logo using initials -->
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="8" fill="#0077CC"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="20" font-weight="bold">FN</text>
+      </svg>
       <span class="company-name">Finology Nexus</span>
     </div>
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link active">Home</a></li>
-        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
+        <li><a href="solutions.html" class="nav-link">Solutions</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="blog.html" class="nav-link">Case Studies</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
@@ -963,10 +969,10 @@
       <h1>Strategic Financial Operations Support for Scaling Companies</h1>
       <p>We help fintechs and investment firms streamline operations, reduce costs by 40% on average, and make data-driven decisions through our specialized solutions.</p>
       <div class="hero-buttons">
-        <a href="Solutions.html" class="btn btn-tertiary">
+        <a href="solutions.html" class="btn btn-tertiary">
           <i class="fas fa-cube"></i> Our Solutions
         </a>
-        <a href="/services" class="btn btn-primary">
+        <a href="services.html" class="btn btn-primary">
           <i class="fas fa-chart-line"></i> Explore Services
         </a>
         <a href="blog.html" class="btn btn-secondary">
@@ -1012,7 +1018,7 @@
             <p>Data-driven vendor assessments with clear RAG status indicators for quick risk evaluation.</p>
           </div>
           <div class="product-card-footer">
-            <a href="Solutions.html#vendor-health" class="btn btn-primary">Learn More</a>
+            <a href="solutions.html#vendor-health" class="btn btn-primary">Learn More</a>
           </div>
         </div>
 
@@ -1026,7 +1032,7 @@
             <p>Automated compliance monitoring with deadline alerts and document management.</p>
           </div>
           <div class="product-card-footer">
-            <a href="Solutions.html#compliance-tracker" class="btn btn-primary">Learn More</a>
+            <a href="solutions.html#compliance-tracker" class="btn btn-primary">Learn More</a>
           </div>
         </div>
 
@@ -1040,7 +1046,7 @@
             <p>Objective vendor performance tracking with KPI visualization and trend analysis.</p>
           </div>
           <div class="product-card-footer">
-            <a href="Solutions.html#performance-dashboard" class="btn btn-primary">Learn More</a>
+            <a href="solutions.html#performance-dashboard" class="btn btn-primary">Learn More</a>
           </div>
         </div>
 
@@ -1054,7 +1060,7 @@
             <p>Expert financial analysis combining automated tools with human expertise.</p>
           </div>
           <div class="product-card-footer">
-            <a href="Solutions.html#financial-due-diligence" class="btn btn-primary">Learn More</a>
+            <a href="solutions.html#financial-due-diligence" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
@@ -1134,8 +1140,7 @@
       <div class="benefits-grid">
         <div class="benefit-card">
           <i class="fas fa-user-tie"></i>
-          <h3>Deep Domain Expertise</h3>
-          <p>Our team brings 12+ years average experience in financial operations and regulatory compliance.</p>
+         <p>Our team brings 12+ years average experience in financial operations and regulatory compliance.</p>
         </div>
         
         <div class="benefit-card">
@@ -1345,3 +1350,4 @@
   </script>
 </body>
 </html>
+
