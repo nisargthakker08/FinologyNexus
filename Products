@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products | Finology Nexus — Vendor Intelligence Suite</title>
+  <meta name="description" content="Finology Nexus products: Vendor Health Scorecard, Compliance & Risk Tracker, Performance Dashboard, and Financial Due Diligence Reports. Empowering businesses with vendor intelligence." />
+  <meta name="keywords" content="vendor intelligence, vendor health, vendor scorecard, compliance tracker, performance dashboard, due diligence, financial reports">
+  <link rel="icon" href="finology-logofavicon.png" type="image/png">
+
+  <!-- Preconnects and fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* -------------------------------------------------------
+       Global Design Tokens (matches index page colors/feel)
+       ------------------------------------------------------- */
+    :root{
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-2: #3b82f6;
+      --light-bg: #f9fbfc;
+      --card-bg: #ffffff;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --muted: #9ca3af;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --glass: rgba(255,255,255,0.8);
+      --transition: 250ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--light-bg);
+      color:var(--text-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* ---------- Header / Nav ---------- */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1200;
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+      backdrop-filter: blur(4px);
+      box-shadow:var(--shadow-sm);
+    }
+    .nav-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:1rem 1.25rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+    }
+    .brand img{height:40px;width:40px;object-fit:contain}
+    .brand .company-name{
+      font-weight:700;
+      font-size:1.15rem;
+      background:linear-gradient(90deg,var(--primary-blue),var(--secondary-blue-2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      letter-spacing:0.2px;
+    }
+
+    nav.main-nav ul{
+      list-style:none;
+      display:flex;
+      gap:1.25rem;
+      align-items:center;
+      margin:0;
+      padding:0;
+    }
+    .main-nav a{
+      font-weight:600;
+      color:var(--text-dark);
+      padding:0.5rem 0.25rem;
+      position:relative;
+      font-size:0.95rem;
+    }
+    .main-nav a.active{color:var(--primary-blue)}
+    .main-nav a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-6px;
+      height:2px;
+      width:0%;
+      background:var(--primary-blue);
+      transition:width var(--transition);
+      border-radius:2px;
+    }
+    .main-nav a:hover::after{width:100%}
+
+    .menu-toggle{
+      display:none;
+      border:0;
+      background:none;
+      font-size:1.2rem;
+      color:var(--primary-blue);
+      cursor:pointer;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      background:linear-gradient(90deg,var(--primary-blue),var(--secondary-blue-2));
+      color:white;
+      padding:4.25rem 1.25rem;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero .container{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:2rem;
+      align-items:center;
+    }
+    .hero h1{
+      font-size:2.4rem;
+      margin:0 0 0.75rem 0;
+      line-height:1.05;
+      font-weight:800;
+    }
+    .hero p.lead{
+      margin:0 0 1.25rem 0;
+      color:rgba(255,255,255,0.92);
+      font-size:1.05rem;
+    }
+    .hero .hero-ctas{display:flex;gap:0.75rem;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:0.6rem;
+      padding:0.75rem 1.25rem;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      border:0;
+      transition:transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--secondary-blue),var(--primary-blue)); color:white; box-shadow:0 6px 18px rgba(0,119,204,0.18)}
+    .btn-outline{background:transparent; color:white; border:1px solid rgba(255,255,255,0.18)}
+    .btn:hover{transform:translateY(-4px)}
+    .hero .tagline{
+      font-weight:600;
+      font-size:1rem;
+      color:rgba(255,255,255,0.95);
+      margin-top:0.5rem;
+      opacity:0.98;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+      border-radius:14px;
+      padding:1rem;
+      box-shadow:0 6px 26px rgba(12,23,56,0.12);
+      color:white;
+    }
+    .hero-stats{display:flex;gap:0.75rem;flex-direction:column}
+    .stat-item{display:flex;justify-content:space-between;align-items:center;gap:0.5rem}
+    .stat-title{font-size:0.88rem;color:rgba(255,255,255,0.9)}
+    .stat-value{font-weight:800;font-size:1.15rem}
+
+    /* ---------- Products Overview ---------- */
+    .section{
+      padding:3.5rem 1.25rem;
+    }
+    .container{max-width:1200px;margin:0 auto}
+    .section-title{
+      font-size:1.8rem;
+      margin-bottom:0.5rem;
+      color:var(--text-dark);
+      font-weight:800;
+    }
+    .section-sub{
+      color:var(--text-medium);
+      margin-bottom:1.25rem;
+      max-width:66ch;
+    }
+
+    /* ---------- Cards Grid ---------- */
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+    .product-card{
+      background:var(--card-bg);
+      border-radius:14px;
+      padding:1.25rem;
+      box-shadow:var(--shadow-sm);
+      transition:transform var(--transition), box-shadow var(--transition);
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      min-height:320px;
+    }
+    .product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+    .product-card .card-media{
+      height:140px;
+      border-radius:10px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(0,119,204,0.08), rgba(59,130,246,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.05rem;
+      color:var(--primary-blue-dark);
+      font-weight:700;
+    }
+    .product-card h3{margin:0;font-size:1.05rem}
+    .product-card p{margin:0;color:var(--text-medium);flex:1}
+    .product-card .card-footer{display:flex;gap:0.5rem;align-items:center;justify-content:space-between}
+
+    /* ---------- Product Detail Sections (expanded) ---------- */
+    .product-detail{
+      margin-top:2rem;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:2rem;
+      align-items:start;
+    }
+    .detail-main{background:var(--card-bg);padding:1.5rem;border-radius:14px;box-shadow:var(--shadow-sm)}
+    .detail-side{position:sticky;top:110px}
+    .feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-top:1rem}
+    .feature-item{
+      background:linear-gradient(180deg, #fff, #fbfdff);
+      padding:0.75rem;border-radius:10px;border:1px solid rgba(0,0,0,0.04);
+      display:flex;gap:0.75rem;align-items:flex-start;
+    }
+    .feature-item i{font-size:1.25rem;color:var(--secondary-blue-2)}
+    .detail-table{width:100%;border-collapse:collapse;margin-top:1rem}
+    .detail-table td, .detail-table th{padding:0.6rem;border:1px solid rgba(0,0,0,0.06)}
+    .pill{display:inline-block;padding:0.35rem 0.6rem;border-radius:999px;background:linear-gradient(90deg,var(--light-bg),#fff);font-weight:700;font-size:0.85rem;color:var(--primary-blue)}
+
+    /* ---------- Comparison / Why Choose ---------- */
+    .compare{
+      display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;margin-top:1.5rem;
+    }
+    .compare-card{background:var(--card-bg);padding:1.25rem;border-radius:12px;box-shadow:var(--shadow-sm)}
+
+    /* ---------- Testimonials ---------- */
+    .testimonial{
+      background:linear-gradient(180deg,#f6fbff,#ffffff);
+      padding:1.5rem;border-radius:14px;box-shadow:var(--shadow-sm);border-left:4px solid var(--primary-blue);
+    }
+    .testimonial p{margin:0;color:var(--text-dark);font-size:1rem}
+    .testimonial-author{margin-top:0.75rem;font-weight:700;color:var(--primary-blue)}
+
+    /* ---------- FAQ ---------- */
+    .faq{margin-top:1.5rem}
+    .faq-item{background:var(--card-bg);border-radius:12px;padding:1rem;margin-bottom:0.5rem;box-shadow:var(--shadow-sm)}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:0.5rem}
+    .faq-answer{margin-top:0.75rem;color:var(--text-medium);display:none}
+    .faq-item.open .faq-answer{display:block}
+
+    /* ---------- CTA ---------- */
+    .big-cta{
+      margin-top:2rem;background:linear-gradient(90deg,var(--primary-blue),var(--secondary-blue-2));color:white;padding:1.5rem;border-radius:14px;box-shadow:0 12px 40px rgba(0,119,204,0.12)
+    }
+    .big-cta h3{margin:0 0 0.6rem 0}
+    .big-cta p{margin:0;color:rgba(255,255,255,0.9)}
+
+    /* ---------- Footer ---------- */
+    footer{background:var(--text-dark);color:white;padding:2.5rem 1.25rem;margin-top:3rem}
+    .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;align-items:start}
+    .footer-col h4{margin-bottom:0.5rem}
+    .footer-col p, .footer-col a{color:rgba(255,255,255,0.85);font-size:0.95rem}
+    .footer-bottom{margin-top:1.5rem;text-align:center;color:rgba(255,255,255,0.6)}
+
+    /* Floating CTA */
+    .floating-cta{
+      position:fixed;right:1.5rem;bottom:1.5rem;background:linear-gradient(90deg,var(--secondary-blue-2),var(--primary-blue));color:white;padding:0.8rem 1rem;border-radius:999px;box-shadow:var(--shadow-md);z-index:1201;display:flex;gap:0.6rem;align-items:center;font-weight:700}
+    }
+    .floating-cta:hover{transform:translateY(-6px)}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:1100px){
+      .cards-grid{grid-template-columns:repeat(2,1fr)}
+      .product-detail{grid-template-columns:1fr}
+      .hero .container{grid-template-columns:1fr}
+      .detail-side{position:relative;top:auto}
+    }
+    @media (max-width:720px){
+      .cards-grid{grid-template-columns:1fr}
+      .hero h1{font-size:1.8rem}
+      .hero p.lead{font-size:1rem}
+      .main-nav ul{display:none}
+      .menu-toggle{display:inline-block}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus logo">
+        <div class="company-name">Finology Nexus</div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="products.html" class="nav-link active">Products</a></li>
+          <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+          <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+          <li><a href="contactus.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="region" aria-label="Products hero">
+    <div class="container">
+      <div>
+        <h1>Vendor Intelligence Suite</h1>
+        <p class="lead">A practical suite of vendor risk and performance products — productized for procurement, finance and risk teams.</p>
+        <div class="hero-ctas">
+          <a href="contactus.html" class="btn btn-primary"><i class="fas fa-rocket"></i> Request Demo</a>
+          <a href="#products-overview" class="btn btn-outline"><i class="fas fa-info-circle"></i> Learn More</a>
+        </div>
+        <div class="tagline" style="margin-top:1rem;font-size:1rem;font-weight:700">Empowering Businesses with Vendor Intelligence.</div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="false">
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-title">Products Live</div><div class="stat-value">4</div></div>
+          <div class="stat-item"><div class="stat-title">SME & Enterprise Clients</div><div class="stat-value">50+</div></div>
+          <div class="stat-item"><div class="stat-title">Avg. Cost Reduction</div><div class="stat-value">40%</div></div>
+          <div class="stat-item"><div class="stat-title">Avg. Onboarding</div><div class="stat-value">7 days</div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Products Intro -->
+  <section class="section" id="products-overview">
+    <div class="container">
+      <h2 class="section-title">Explore Our Product Suite</h2>
+      <p class="section-sub">Each product is built as a lightweight, usable MVP that scales into a full platform. Start with one product or adopt the whole suite for a unified vendor intelligence capability.</p>
+
+      <!-- Cards Grid -->
+      <div class="cards-grid" role="list" aria-label="Products list">
+        <!-- Vendor Health Scorecard -->
+        <article class="product-card" role="listitem" aria-labelledby="prod1-title">
+          <div class="card-media">
+            <img src="images/vendor-scorecard.jpg" alt="Vendor Health Scorecard visual" style="height:100%;width:100%;object-fit:cover">
+          </div>
+          <h3 id="prod1-title">Vendor Health Scorecard</h3>
+          <p>Quick, standardized vendor health assessments that combine survey inputs, public filings, and news checks into a single vendor score.</p>
+          <div class="card-footer">
+            <span class="pill">Assessment</span>
+            <a class="btn btn-primary" href="vendorhealth.html" aria-label="Open Vendor Health Scorecard details">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Compliance & Risk Tracker -->
+        <article class="product-card" role="listitem" aria-labelledby="prod2-title">
+          <div class="card-media">
+            <img src="images/compliance-tracker.jpg" alt="Compliance Tracker visual" style="height:100%;width:100%;object-fit:cover">
+          </div>
+          <h3 id="prod2-title">Compliance & Risk Tracker</h3>
+          <p>Track certifications, audits, regulatory filings, and create audit-ready timelines and reminders for every supplier.</p>
+          <div class="card-footer">
+            <span class="pill">Monitoring</span>
+            <a class="btn btn-primary" href="compliance.html" aria-label="Open Compliance Tracker details">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Performance Dashboard -->
+        <article class="product-card" role="listitem" aria-labelledby="prod3-title">
+          <div class="card-media">
+            <img src="images/performance-dashboard.jpg" alt="Performance Dashboard visual" style="height:100%;width:100%;object-fit:cover">
+          </div>
+          <h3 id="prod3-title">Performance Dashboard</h3>
+          <p>Interactive dashboards for SLA adherence, delivery timelines, defect ratios, and aggregated vendor KPIs — built for procurement and operations.</p>
+          <div class="card-footer">
+            <span class="pill">Dashboard</span>
+            <a class="btn btn-primary" href="performance.html" aria-label="Open Performance Dashboard details">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Financial Due Diligence -->
+        <article class="product-card" role="listitem" aria-labelledby="prod4-title">
+          <div class="card-media">
+            <img src="images/financial-reports.jpg" alt="Financial Due Diligence visual" style="height:100%;width:100%;object-fit:cover">
+          </div>
+          <h3 id="prod4-title">Financial Due Diligence Reports</h3>
+          <p>Ready-to-share financial due diligence reports: filings, ratios, red flags and recommendations prepared by experienced analysts.</p>
+          <div class="card-footer">
+            <span class="pill">Reports</span>
+            <a class="btn btn-primary" href="duediligence.html" aria-label="Open Financial Due Diligence details">Learn More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Expanded: Vendor Health Scorecard -->
+  <section class="section" aria-labelledby="vhs-title">
+    <div class="container">
+      <h2 id="vhs-title" class="section-title">Vendor Health Scorecard — At a Glance</h2>
+      <p class="section-sub">Fast, consistent vendor assessments built to become part of your procurement SOPs. Templates, scoring logic and recommendation text you can act on.</p>
+
+      <div class="product-detail">
+        <div class="detail-main" aria-describedby="vhs-desc">
+          <h3 id="vhs-desc">What it includes</h3>
+          <p>Vendor Health Scorecard combines client survey responses with external checks (public filings, news scanning, sanctions lists) and presents a clear risk band and suggested mitigations.</p>
+
+          <div class="feature-list" aria-hidden="false">
+            <div class="feature-item"><i class="fas fa-balance-scale"></i><div><strong>Financial Ratios</strong><div style="color:var(--text-medium)">Revenue, margins, leverage & liquidity checks</div></div></div>
+            <div class="feature-item"><i class="fas fa-shield-alt"></i><div><strong>Compliance Checks</strong><div style="color:var(--text-medium)">Filing status, sanctions, certifications</div></div></div>
+            <div class="feature-item"><i class="fas fa-truck"></i><div><strong>Operational Score</strong><div style="color:var(--text-medium)">Delivery performance & quality indicators</div></div></div>
+            <div class="feature-item"><i class="fas fa-newspaper"></i><div><strong>Reputation Signals</strong><div style="color:var(--text-medium)">News sentiment & complaints</div></div></div>
+          </div>
+
+          <h4 style="margin-top:1rem">How scoring works</h4>
+          <table class="detail-table" aria-hidden="false">
+            <thead>
+              <tr><th>Category</th><th>Weight</th><th>Example Metrics</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Financial Health</td><td>40%</td><td>Revenue trend, net margin, debt/equity</td></tr>
+              <tr><td>Operational Performance</td><td>25%</td><td>On-time delivery %, SLA breaches</td></tr>
+              <tr><td>Compliance & Governance</td><td>20%</td><td>Filing timeliness, certifications</td></tr>
+              <tr><td>Reputation & News</td><td>15%</td><td>Negative press, complaints</td></tr>
+            </tbody>
+          </table>
+
+          <h4 style="margin-top:1rem">Deliverables</h4>
+          <ul style="color:var(--text-medium);">
+            <li>PDF report with score, visual timeline, recommendation bullets</li>
+            <li>Raw Excel/CSV with metrics and sources (optional)</li>
+            <li>Quarterly monitoring option (subscription)</li>
+          </ul>
+        </div>
+
+        <aside class="detail-side" aria-label="Vendor Scorecard pricing & CTA">
+          <div class="compare-card">
+            <h4 style="margin-top:0">Quick Pricing</h4>
+            <p style="color:var(--text-medium)">Starter: <strong>$75</strong> / report — single vendor</p>
+            <p style="color:var(--text-medium)">Scale: <strong>$350</strong> / month — up to 10 vendors monitored</p>
+            <p style="color:var(--text-medium)">Enterprise: custom (contact sales)</p>
+
+            <div style="margin-top:1rem">
+              <a class="btn btn-primary" href="contactus.html" style="width:100%;display:inline-flex;justify-content:center">Request Trial</a>
+            </div>
+
+            <div style="margin-top:1rem">
+              <small style="color:var(--muted)">No cloud integration required — reports delivered via secure link / email. We can integrate with your stack if needed.</small>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Expanded: Compliance & Risk Tracker -->
+  <section class="section" aria-labelledby="compliance-title" style="background:linear-gradient(180deg,#fbfeff,#ffffff)">
+    <div class="container">
+      <h2 id="compliance-title" class="section-title">Compliance & Risk Tracker</h2>
+      <p class="section-sub">Centralized tracking for certifications, audit dates, regulatory obligations and remediation tracking.</p>
+
+      <div class="product-detail">
+        <div class="detail-main">
+          <h3>Key capabilities</h3>
+          <div class="feature-list">
+            <div class="feature-item"><i class="fas fa-calendar-check"></i><div><strong>Expiry & Audit Reminders</strong><div style="color:var(--text-medium)">Automated reminders for upcoming expiries</div></div></div>
+            <div class="feature-item"><i class="fas fa-file-contract"></i><div><strong>Document Store</strong><div style="color:var(--text-medium)">Proofs, certificates, contracts</div></div></div>
+            <div class="feature-item"><i class="fas fa-bell"></i><div><strong>Risk Alerts</strong><div style="color:var(--text-medium)">Customizable risk triggers & email alerts</div></div></div>
+            <div class="feature-item"><i class="fas fa-users-cog"></i><div><strong>Audit Trail</strong><div style="color:var(--text-medium)">Readiness for procurement audits</div></div></div>
+          </div>
+
+          <h4 style="margin-top:1rem">How teams use it</h4>
+          <ol style="color:var(--text-medium)">
+            <li>Upload vendor certificates & key docs</li>
+            <li>Set alert thresholds & owners</li>
+            <li>Receive monthly readiness scorecards</li>
+          </ol>
+        </div>
+
+        <aside class="detail-side">
+          <div class="compare-card">
+            <h4 style="margin-top:0">Integration</h4>
+            <p style="color:var(--text-medium)">Lightweight: Excel/Sheet + email delivery. Optionally integrate with Appian, Slack, Teams.</p>
+            <a class="btn btn-primary" href="contactus.html" style="width:100%;display:inline-flex;justify-content:center">Get Integration Info</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Expanded: Performance Dashboard -->
+  <section class="section" aria-labelledby="perf-title">
+    <div class="container">
+      <h2 id="perf-title" class="section-title">Performance Dashboard</h2>
+      <p class="section-sub">Visualize vendor KPIs, filter by region/product lines, and export executive-ready dashboards.</p>
+
+      <div class="product-detail">
+        <div class="detail-main">
+          <h3>Highlights</h3>
+          <p style="color:var(--text-medium)">Interactive widgets for SLA compliance, on-time delivery, quality metrics and aggregated trend charts.</p>
+
+          <div style="margin-top:1rem" class="feature-list">
+            <div class="feature-item"><i class="fas fa-chart-line"></i><div><strong>Trend Analysis</strong><div style="color:var(--text-medium)">Month-on-month and rolling 12-month views</div></div></div>
+            <div class="feature-item"><i class="fas fa-filter"></i><div><strong>Filter & Drilldown</strong><div style="color:var(--text-medium)">Drill to vendor, region or SKU level</div></div></div>
+            <div class="feature-item"><i class="fas fa-download"></i><div><strong>Exportable Reports</strong><div style="color:var(--text-medium)">PDF/PNG/CSV for exec decks</div></div></div>
+            <div class="feature-item"><i class="fas fa-user-shield"></i><div><strong>Access Controls</strong><div style="color:var(--text-medium)">Role-based views for stakeholders</div></div></div>
+          </div>
+        </div>
+
+        <aside class="detail-side">
+          <div class="compare-card">
+            <h4 style="margin-top:0">Demo Snapshot</h4>
+            <p style="color:var(--text-medium)">Request a demo and we’ll prepare a sample dashboard with your sample data.</p>
+            <a class="btn btn-primary" href="contactus.html" style="width:100%;display:inline-flex;justify-content:center">Request Sample</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Expanded: Financial Due Diligence -->
+  <section class="section" aria-labelledby="fdd-title" style="background:linear-gradient(180deg,#fbfeff,#ffffff)">
+    <div class="container">
+      <h2 id="fdd-title" class="section-title">Financial Due Diligence Reports</h2>
+      <p class="section-sub">Analyst-prepared financial summaries: filings digestion, ratio analysis, covenant checks and red-flag commentary.</p>
+
+      <div class="product-detail">
+        <div class="detail-main">
+          <h3>What you receive</h3>
+          <ul style="color:var(--text-medium)">
+            <li>Executive summary with risk band</li>
+            <li>3-year income, balance sheet & cash flow analysis</li>
+            <li>Ratio table and commentary (leverage, liquidity, margin drivers)</li>
+            <li>Source list with links to filings & news</li>
+          </ul>
+
+          <h4 style="margin-top:1rem">Turnaround</h4>
+          <p style="color:var(--text-medium)">Standard: 48–72 hours. Expedited options available for urgent needs.</p>
+        </div>
+
+        <aside class="detail-side">
+          <div class="compare-card">
+            <h4 style="margin-top:0">Ordering</h4>
+            <p style="color:var(--text-medium)">Order per report; discounts on monthly bundles. Optional phone briefing with an analyst.</p>
+            <a class="btn btn-primary" href="contactus.html" style="width:100%;display:inline-flex;justify-content:center">Order Report</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose & Comparison -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Why Finology Nexus</h2>
+      <p class="section-sub">We combine domain experience, practical templates, and low-friction delivery to get you useful vendor intelligence fast.</p>
+
+      <div class="compare">
+        <div class="compare-card">
+          <h4>Practical MVP-first Approach</h4>
+          <p style="color:var(--text-medium)">We build usable products first — which means you get value today and integration later. Minimal onboarding and fast ROI.</p>
+        </div>
+        <div class="compare-card">
+          <h4>Flexible Delivery</h4>
+          <p style="color:var(--text-medium)">Reports via secure links, email, Google Drive, or optional integrations (Appian, Slack, Teams).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" aria-label="Testimonials">
+    <div class="container">
+      <h2 class="section-title">What Clients Say</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem">
+        <div class="testimonial">
+          <p>"Finology Nexus helped us standardize vendor checks across our procurement team. Their scorecard is concise and the analyst reports are actionable."</p>
+          <div class="testimonial-author">— Procurement Lead, UK Retailer</div>
+        </div>
+        <div class="testimonial">
+          <p>"We replaced a messy spreadsheet process with their Compliance Tracker. Now we never miss a certification renewal."</p>
+          <div class="testimonial-author">— Head of Ops, UAE Logistics Firm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq" id="faq">
+        <article class="faq-item">
+          <div class="faq-question"><strong>Are these products cloud-based?</strong><span class="faq-toggle"><i class="fas fa-plus"></i></span></div>
+          <div class="faq-answer">We deliver reports and dashboards without forcing you into cloud. Early-stage customers get PDFs, secure links or Google Drive. Enterprise customers can opt for hosted integrations.</div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-question"><strong>How much setup time is required?</strong><span class="faq-toggle"><i class="fas fa-plus"></i></span></div>
+          <div class="faq-answer">Most products are usable within 3–7 business days. For dashboard integrations, allow 1–2 weeks for data mapping and permissions.</div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-question"><strong>Do you support multiple jurisdictions (US, UK, EU, UAE)?</strong><span class="faq-toggle"><i class="fas fa-plus"></i></span></div>
+          <div class="faq-answer">Yes. Our dataset templates and source checks include common international sources; we can adapt sources per jurisdiction as required.</div>
+        </article>
+
+        <article class="faq-item">
+          <div class="faq-question"><strong>Can we white-label the reports?</strong><span class="faq-toggle"><i class="fas fa-plus"></i></span></div>
+          <div class="faq-answer">Yes — white-labeling and co-branded PDFs are available for Enterprise plans.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Big CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="big-cta">
+        <h3>Ready to get vendor intelligence that drives decisions?</h3>
+        <p>Request a demo and we’ll prepare a tailored sample using your vendors or sample data.</p>
+        <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+          <a class="btn btn-primary" href="contactus.html"><i class="fas fa-calendar-check"></i> Request Demo</a>
+          <a class="btn btn-outline" href="assets/Finology Service Page.pdf" download><i class="fas fa-download"></i> Download Product Brochure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="display:flex;gap:0.5rem;align-items:center">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus" style="height:36px">
+          <div style="font-weight:700;background:linear-gradient(90deg,var(--secondary-blue-2),var(--primary-blue));-webkit-background-clip:text;color:transparent">Finology Nexus</div>
+        </div>
+        <p style="margin-top:0.6rem;color:rgba(255,255,255,0.85)">Specialized vendor intelligence and financial operations support for scaling companies.</p>
+      </div>
+
+      <div class="footer-col footer-links">
+        <h4>Products</h4>
+        <a href="vendorhealth.html">Vendor Health Scorecard</a><br />
+        <a href="compliance.html">Compliance & Risk Tracker</a><br />
+        <a href="performance.html">Performance Dashboard</a><br />
+        <a href="duediligence.html">Due Diligence Reports</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="aboutus.html">About Us</a><br />
+        <a href="blog.html">Case Studies</a><br />
+        <a href="services.html">Services</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-envelope"></i> info@finologynexus.online</p>
+        <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, India</p>
+        <div style="margin-top:0.6rem">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" style="margin-right:0.5rem;color:white"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" style="margin-right:0.5rem;color:white"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank" style="color:white"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Finology Nexus. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating CTA -->
+  <a class="floating-cta" href="contactus.html" aria-label="Contact Finology Nexus">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle behavior
+    (function(){
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav ul');
+      const navArea = document.querySelector('.main-nav');
+
+      menuToggle && menuToggle.addEventListener('click', function(){
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        if(nav.style.display === 'block'){ nav.style.display = ''; this.innerHTML = '<i class=\"fas fa-bars\"></i>'; }
+        else { nav.style.display = 'block'; this.innerHTML = '<i class=\"fas fa-times\"></i>'; }
+      });
+
+      // Close nav on resize
+      window.addEventListener('resize', function(){
+        if(window.innerWidth > 720){
+          nav.style.display = '';
+          menuToggle && menuToggle.setAttribute('aria-expanded','false');
+          menuToggle && (menuToggle.innerHTML = '<i class=\"fas fa-bars\"></i>');
+        }
+      });
+    })();
+
+    // FAQ accordion
+    (function(){
+      const items = document.querySelectorAll('.faq-item');
+      items.forEach(it => {
+        const q = it.querySelector('.faq-question');
+        q.addEventListener('click', function(){
+          const open = it.classList.contains('open');
+          items.forEach(i=>i.classList.remove('open'));
+          if(!open) it.classList.add('open');
+        });
+      });
+    })();
+
+    // Smooth scroll for anchor links
+    (function(){
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          const id = this.getAttribute('href').slice(1);
+          const el = document.getElementById(id);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
