@@ -8,11 +8,6 @@
   <meta name="keywords" content="vendor risk assessment, vendor health scorecard, supplier evaluation, risk management">
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
   
-  <!-- Preconnect to external resources -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   
@@ -47,6 +42,9 @@
       --radius-md: 12px;
       --radius-lg: 16px;
       --transition: all 0.3s ease;
+      --risk-high: #e74c3c;
+      --risk-medium: #f39c12;
+      --risk-low: #2ecc71;
     }
 
     * {
@@ -94,6 +92,7 @@
       transition: var(--transition);
       min-width: 180px;
       text-align: center;
+      gap: 0.5rem;
     }
     
     .btn-primary {
@@ -105,7 +104,7 @@
     .btn-secondary {
       background: var(--white);
       color: var(--primary-blue);
-      border: 2px solid var(--white);
+      border: 2px solid var(--primary-blue);
     }
     
     .btn-primary:hover,
@@ -124,7 +123,6 @@
 
     .section {
       padding: 5rem 1.25rem;
-      text-align: center;
     }
 
     /* ========== HEADER & NAVIGATION ========== */
@@ -138,7 +136,6 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: box-shadow 0.3s ease;
     }
 
     .logo-group {
@@ -226,6 +223,11 @@
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       background-color: var(--light-bg);
+      transition: var(--transition);
+    }
+    
+    fieldset:hover {
+      box-shadow: var(--shadow-sm);
     }
     
     legend {
@@ -236,11 +238,12 @@
     }
     
     label {
-      display: block;
+      display: flex;
+      align-items: center;
       margin-bottom: 0.8rem;
       cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 4px;
+      padding: 0.8rem;
+      border-radius: 6px;
       transition: var(--transition);
     }
     
@@ -249,7 +252,8 @@
     }
     
     input[type="radio"] {
-      margin-right: 0.5rem;
+      margin-right: 0.8rem;
+      accent-color: var(--primary-blue);
     }
     
     #risk-form button {
@@ -283,6 +287,29 @@
       display: none;
     }
     
+    .risk-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+    
+    .risk-high {
+      background-color: var(--risk-high);
+      color: white;
+    }
+    
+    .risk-medium {
+      background-color: var(--risk-medium);
+      color: white;
+    }
+    
+    .risk-low {
+      background-color: var(--risk-low);
+      color: white;
+    }
+    
     #download-link {
       display: inline-block;
       background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
@@ -299,6 +326,31 @@
       background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
+    }
+    
+    .progress-container {
+      width: 100%;
+      background-color: #e9ecef;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .progress-bar {
+      height: 0.5rem;
+      border-radius: 0.5rem;
+      transition: width 0.5s ease;
+    }
+    
+    .progress-high {
+      background-color: var(--risk-high);
+    }
+    
+    .progress-medium {
+      background-color: var(--risk-medium);
+    }
+    
+    .progress-low {
+      background-color: var(--risk-low);
     }
 
     /* ========== FOOTER ========== */
@@ -418,6 +470,7 @@
       transition: var(--transition);
       display: flex;
       align-items: center;
+      gap: 0.5rem;
     }
 
     .floating-cta:hover {
@@ -466,15 +519,6 @@
       }
     }
 
-    /* ========== ACCESSIBILITY ========== */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
     /* Focus styles for accessibility */
     a:focus-visible,
     button:focus-visible,
@@ -502,6 +546,7 @@
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
         <li><a href="blog.html" class="nav-link">Case Studies</a></li>
         <li><a href="vendor-scorecard.html" class="nav-link active">Free Tool</a></li>
@@ -623,10 +668,14 @@
 
       <!-- This is where the PDF download link will appear -->
       <div id="result">
-        <h2>Your Report is Ready!</h2>
-        <p><a id="download-link" href="#">Download Your Vendor Health Report (PDF)</a></p>
+        <h2>Your Vendor Health Report is Ready!</h2>
+        <div id="risk-badge" class="risk-badge"></div>
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p><a id="download-link" href="#"><i class="fas fa-download"></i> Download Your Vendor Health Report (PDF)</a></p>
         <p><strong>Want a professional to review it with you?</strong></p>
-        <p><a href="mailto:info@finologynexus.online">Email us to schedule a free consultation.</a></p>
+        <p><a href="mailto:info@finologynexus.online" class="btn btn-secondary"><i class="fas fa-calendar"></i> Schedule a Free Consultation</a></p>
       </div>
     </div>
   </section>
@@ -652,12 +701,12 @@
         
         <div class="footer-column">
           <div class="footer-links">
-            <h4>Services</h4>
+            <h4>Products</h4>
             <ul>
-              <li><a href="services.html#research">Financial Research</a></li>
-              <li><a href="services.html#process">Process Support</a></li>
-              <li><a href="services.html#outsourcing">Outsourcing</a></li>
-              <li><a href="services.html">View All Services</a></li>
+              <li><a href="products.html">Vendor Health Scorecard</a></li>
+              <li><a href="products.html">Compliance & Risk Tracker</a></li>
+              <li><a href="products.html">Performance Dashboard</a></li>
+              <li><a href="products.html">Financial Due Diligence</a></li>
             </ul>
           </div>
         </div>
@@ -745,50 +794,100 @@
         }
 
         // Determine Risk Category
-        let riskCategory;
+        let riskCategory, riskClass, progressClass, progressWidth;
         if (totalScore <= 10) {
           riskCategory = "High Risk";
+          riskClass = "risk-high";
+          progressClass = "progress-high";
+          progressWidth = "33%";
         } else if (totalScore <= 18) {
           riskCategory = "Medium Risk";
+          riskClass = "risk-medium";
+          progressClass = "progress-medium";
+          progressWidth = "66%";
         } else {
           riskCategory = "Low Risk";
+          riskClass = "risk-low";
+          progressClass = "progress-low";
+          progressWidth = "100%";
         }
 
+        // Update the UI
+        const riskBadge = document.getElementById('risk-badge');
+        riskBadge.textContent = riskCategory;
+        riskBadge.className = `risk-badge ${riskClass}`;
+        
+        const progressBar = document.getElementById('progress-bar');
+        progressBar.className = `progress-bar ${progressClass}`;
+        progressBar.style.width = progressWidth;
+        
         // Generate the PDF
-        generatePDF(totalScore, riskCategory);
+        generatePDF(totalScore, riskCategory, riskClass);
       });
 
-      function generatePDF(score, riskCategory) {
+      function generatePDF(score, riskCategory, riskClass) {
         // Create a hidden div that will become our PDF content
         const source = document.createElement('div');
         source.style.padding = '20px';
         source.style.fontFamily = 'Inter, sans-serif';
         source.style.color = '#374151';
+        source.style.maxWidth = '800px';
         
         source.innerHTML = `
           <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
-            <div style="width: 50px; height: 50px; background-color: #1a4f8b; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+            <div style="width: 50px; height: 50px; background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue)); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
               <span style="color: white; font-weight: bold; font-size: 20px;">FN</span>
             </div>
-            <h1 style="color: #1a4f8b; margin: 0;">Finology Nexus Vendor Health Report</h1>
+            <div>
+              <h1 style="color: #1a4f8b; margin: 0; font-size: 24px;">Finology Nexus</h1>
+              <h2 style="color: #6b7280; margin: 0; font-size: 18px; font-weight: 500;">Vendor Health Report</h2>
+            </div>
           </div>
-          <p style="text-align: center; margin-bottom: 20px;">Generated on: ${new Date().toLocaleDateString()}</p>
-          <hr style="margin-bottom: 20px;">
-          <h2 style="color: #1a4f8b; text-align: center; margin-bottom: 20px;">Risk Assessment Result: ${riskCategory}</h2>
-          <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">Overall Score: ${score}/24</p>
-          <h3 style="color: #1a4f8b; margin-bottom: 15px;">Recommendations:</h3>
-          <p style="margin-bottom: 30px; line-height: 1.6;">${getRecommendations(riskCategory)}</p>
-          <hr style="margin-bottom: 20px;">
-          <p style="font-size: 0.8rem; color: #6b7280; font-style: italic; margin-bottom: 10px;"><em>Disclaimer: This report is generated automatically based on user-input and is for informational purposes only. It is not a substitute for professional advice.</em></p>
-          <p style="text-align: center; margin-top: 30px;">For a detailed analysis, contact us at: info@finologynexus.online</p>
+          
+          <p style="text-align: center; margin-bottom: 20px; color: #6b7280;">Generated on: ${new Date().toLocaleDateString()}</p>
+          
+          <div style="text-align: center; margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 12px;">
+            <h3 style="color: #1a4f8b; margin-bottom: 15px;">Risk Assessment Result</h3>
+            <div style="display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: 600; margin: 10px 0; background-color: ${getRiskColor(riskClass)}; color: white;">
+              ${riskCategory}
+            </div>
+            <p style="font-size: 1.2rem; margin: 15px 0;">Overall Score: <strong>${score}/24</strong></p>
+            
+            <div style="width: 100%; background-color: #e9ecef; border-radius: 0.5rem; margin: 20px auto; max-width: 400px;">
+              <div style="height: 0.5rem; border-radius: 0.5rem; width: ${getProgressWidth(score)}; background-color: ${getRiskColor(riskClass)};"></div>
+            </div>
+          </div>
+          
+          <div style="margin: 30px 0;">
+            <h3 style="color: #1a4f8b; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #ddd;">Key Recommendations</h3>
+            <div style="line-height: 1.6;">
+              ${getRecommendations(riskCategory)}
+            </div>
+          </div>
+          
+          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 30px 0;">
+            <h3 style="color: #1a4f8b; margin-bottom: 15px;">Next Steps</h3>
+            <ul style="line-height: 1.8;">
+              <li>Review this report with your team</li>
+              <li>Consider scheduling a consultation for a detailed analysis</li>
+              <li>Monitor key vendor metrics regularly</li>
+              <li>Develop contingency plans based on risk level</li>
+            </ul>
+          </div>
+          
+          <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #6b7280;">
+            <p><strong>Need professional guidance?</strong></p>
+            <p>Contact us at: info@finologynexus.online</p>
+            <p style="font-size: 0.8rem; margin-top: 20px;"><em>Disclaimer: This report is generated automatically based on user-input and is for informational purposes only. It is not a substitute for professional advice.</em></p>
+          </div>
         `;
 
         document.body.appendChild(source);
 
         // Use html2canvas and jsPDF to create the PDF
-        html2canvas(source).then(canvas => {
+        html2canvas(source, {scale: 2}).then(canvas => {
           const imgData = canvas.toDataURL('image/png');
-          const pdf = new jspdf.jsPDF();
+          const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
           const imgProps = pdf.getImageProperties(imgData);
           const pdfWidth = pdf.internal.pageSize.getWidth();
           const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
@@ -809,11 +908,53 @@
         });
       }
 
+      function getRiskColor(riskClass) {
+        if (riskClass === "risk-high") return "#e74c3c";
+        if (riskClass === "risk-medium") return "#f39c12";
+        return "#2ecc71";
+      }
+      
+      function getProgressWidth(score) {
+        return (score / 24 * 100) + '%';
+      }
+
       function getRecommendations(category) {
-        // Your custom recommendations for each category
-        if (category === "High Risk") return "We recommend immediately reviewing your contract terms and initiating a search for alternative vendors to mitigate potential disruption. Consider implementing additional oversight measures and requesting more frequent performance reports.";
-        if (category === "Medium Risk") return "This vendor requires monitoring. We suggest establishing clearer performance metrics and conducting quarterly reviews. Develop contingency plans in case performance deteriorates and maintain open communication about areas needing improvement.";
-        if (category === "Low Risk") return "This vendor appears to be a stable partner. Maintain open communication and conduct an annual review to ensure continued performance. Continue nurturing the relationship while still monitoring key performance indicators.";
+        if (category === "High Risk") {
+          return `
+            <p style="margin-bottom: 15px;"><strong style="color: #e74c3c;">Immediate Action Recommended</strong></p>
+            <ul style="line-height: 1.8;">
+              <li>Review contract terms and exit clauses immediately</li>
+              <li>Initiate search for alternative vendors to mitigate potential disruption</li>
+              <li>Implement additional oversight measures and request more frequent performance reports</li>
+              <li>Consider reducing dependency on this vendor where possible</li>
+              <li>Schedule an emergency review with the vendor to address concerns</li>
+            </ul>
+          `;
+        }
+        
+        if (category === "Medium Risk") {
+          return `
+            <p style="margin-bottom: 15px;"><strong style="color: #f39c12;">Monitoring Recommended</strong></p>
+            <ul style="line-height: 1.8;">
+              <li>Establish clearer performance metrics and conduct quarterly reviews</li>
+              <li>Develop contingency plans in case performance deteriorates</li>
+              <li>Maintain open communication about areas needing improvement</li>
+              <li>Consider diversifying critical services across multiple vendors</li>
+              <li>Request financial stability reports if not already provided</li>
+            </ul>
+          `;
+        }
+        
+        return `
+          <p style="margin-bottom: 15px;"><strong style="color: #2ecc71;">Stable Partnership</strong></p>
+          <ul style="line-height: 1.8;">
+            <li>This vendor appears to be a stable partner - maintain open communication</li>
+            <li>Conduct an annual review to ensure continued performance</li>
+            <li>Continue nurturing the relationship while monitoring key performance indicators</li>
+            <li>Consider opportunities for strategic partnership and joint innovation</li>
+            <li>Share positive feedback with the vendor to reinforce good practices</li>
+          </ul>
+        `;
       }
     });
   </script>
