@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Vendor Health Scorecard | Finology Nexus</title>
+    <style>
+        /* Import Google Font to match your site */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        /* Color variables to match your site */
+        :root {
+            --primary-blue: #1a4f8b;
+            --secondary-blue: #3b82f6;
+            --light-blue: #e0f2fe;
+            --dark-gray: #374151;
+            --medium-gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-blue);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        fieldset {
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        legend {
+            font-weight: 600;
+            padding: 0 0.5rem;
+            color: var(--primary-blue);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        label:hover {
+            background-color: var(--light-blue);
+        }
+        
+        input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        
+        button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 2rem auto;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        #result {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        #download-link {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: background-color 0.3s;
+        }
+        
+        #download-link:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            margin-top: 2rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            fieldset {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vendor Health Scorecard</h1>
+        <p>Answer these questions to generate your free risk assessment report instantly.</p>
+    </header>
+
+    <div class="container">
+        <form id="risk-form">
+            <!-- QUESTION 1 -->
+            <fieldset>
+                <legend>1. How long have you been working with this vendor?</legend>
+                <label><input type="radio" name="q1" value="0" required> Less than 1 year</label>
+                <label><input type="radio" name="q1" value="1"> 1-3 years</label>
+                <label><input type="radio" name="q1" value="2"> More than 3 years</label>
+            </fieldset>
+
+            <!-- QUESTION 2 -->
+            <fieldset>
+                <legend>2. How would you rate the vendor's communication?</legend>
+                <label><input type="radio" name="q2" value="0" required> Poor</label>
+                <label><input type="radio" name="q2" value="1"> Average</label>
+                <label><input type="radio" name="q2" value="2"> Excellent</label>
+            </fieldset>
+
+            <!-- QUESTION 3 -->
+            <fieldset>
+                <legend>3. How reliable is their service delivery?</legend>
+                <label><input type="radio" name="q3" value="0" required> Frequently delayed or incomplete</label>
+                <label><input type="radio" name="q3" value="1"> Occasionally delayed</label>
+                <label><input type="radio" name="q3" value="2"> Always on time and complete</label>
+            </fieldset>
+
+            <!-- QUESTION 4 -->
+            <fieldset>
+                <legend>4. How would you rate the quality of their work?</legend>
+                <label><input type="radio" name="q4" value="0" required> Poor quality, requires frequent rework</label>
+                <label><input type="radio" name="q4" value="1"> Acceptable with occasional issues</label>
+                <label><input type="radio" name="q4" value="2"> Consistently high quality</label>
+            </fieldset>
+
+            <!-- QUESTION 5 -->
+            <fieldset>
+                <legend>5. How responsive are they to issues or concerns?</legend>
+                <label><input type="radio" name="q5" value="0" required> Slow to respond, often unresolved</label>
+                <label><input type="radio" name="q5" value="1"> Responds but resolution can be slow</label>
+                <label><input type="radio" name="q5" value="2"> Quick response and resolution</label>
+            </fieldset>
+
+            <!-- QUESTION 6 -->
+            <fieldset>
+                <legend>6. How transparent is their pricing structure?</legend>
+                <label><input type="radio" name="q6" value="0" required> Unclear with hidden fees</label>
+                <label><input type="radio" name="q6" value="1"> Mostly clear with some ambiguities</label>
+                <label><input type="radio" name="q6" value="2"> Completely transparent</label>
+            </fieldset>
+
+            <!-- QUESTION 7 -->
+            <fieldset>
+                <legend>7. How well do they adhere to security protocols?</legend>
+                <label><input type="radio" name="q7" value="0" required> Frequent security concerns</label>
+                <label><input type="radio" name="q7" value="1"> Basic compliance with minor issues</label>
+                <label><input type="radio" name="q7" value="2"> Excellent security practices</label>
+            </fieldset>
+
+            <!-- QUESTION 8 -->
+            <fieldset>
+                <legend>8. How innovative are their solutions?</legend>
+                <label><input type="radio" name="q8" value="0" required> Outdated methods and technologies</label>
+                <label><input type="radio" name="q8" value="1"> Occasionally introduces improvements</label>
+                <label><input type="radio" name="q8" value="2"> Continuously innovative and proactive</label>
+            </fieldset>
+
+            <!-- QUESTION 9 -->
+            <fieldset>
+                <legend>9. How would you rate their contract flexibility?</legend>
+                <label><input type="radio" name="q9" value="0" required> Rigid terms with unfavorable conditions</label>
+                <label><input type="radio" name="q9" value="1"> Some flexibility with negotiation</label>
+                <label><input type="radio" name="q9" value="2"> Very flexible and partnership-oriented</label>
+            </fieldset>
+
+            <!-- QUESTION 10 -->
+            <fieldset>
+                <legend>10. How stable is their company financially?</legend>
+                <label><input type="radio" name="q10" value="0" required> Signs of financial distress</label>
+                <label><input type="radio" name="q10" value="1"> Appears stable but limited information</label>
+                <label><input type="radio" name="q10" value="2"> Financially strong with transparent reporting</label>
+            </fieldset>
+
+            <!-- QUESTION 11 -->
+            <fieldset>
+                <legend>11. How would you rate their industry reputation?</legend>
+                <label><input type="radio" name="q11" value="0" required> Poor reputation among peers</label>
+                <label><input type="radio" name="q11" value="1"> Average or mixed reviews</label>
+                <label><input type="radio" name="q11" value="2"> Excellent reputation and references</label>
+            </fieldset>
+
+            <!-- QUESTION 12 -->
+            <fieldset>
+                <legend>12. How scalable are their services with your growth?</legend>
+                <label><input type="radio" name="q12" value="0" required> Limited capacity for growth</label>
+                <label><input type="radio" name="q12" value="1"> Can accommodate moderate growth</label>
+                <label><input type="radio" name="q12" value="2"> Highly scalable for rapid growth</label>
+            </fieldset>
+
+            <button type="submit">Generate My Free Report</button>
+        </form>
+
+        <!-- This is where the PDF download link will appear -->
+        <div id="result">
+            <h2>Your Report is Ready!</h2>
+            <p><a id="download-link" href="#">Download Your Vendor Health Report (PDF)</a></p>
+            <p><strong>Want a professional to review it with you?</strong></p>
+            <p><a href="mailto:contact@finologynexus.online">Email us to schedule a free consultation.</a></p>
+        </div>
+    </div>
+
+    <!-- Libraries to generate the PDF in the browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Our custom scoring and PDF generation code -->
+    <script>
+        // Scoring Logic
+        document.getElementById('risk-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop the form from reloading the page
+
+            // Calculate the total score
+            let totalScore = 0;
+            const formData = new FormData(this);
+            for (let [key, value] of formData) {
+                totalScore += parseInt(value, 10);
+            }
+
+            // Determine Risk Category
+            let riskCategory;
+            if (totalScore <= 10) {
+                riskCategory = "High Risk";
+            } else if (totalScore <= 18) {
+                riskCategory = "Medium Risk";
+            } else {
+                riskCategory = "Low Risk";
+            }
+
+            // Generate the PDF
+            generatePDF(totalScore, riskCategory);
+        });
+
+        function generatePDF(score, riskCategory) {
+            // Create a hidden div that will become our PDF content
+            const source = document.createElement('div');
+            source.style.padding = '20px';
+            source.style.fontFamily = 'Inter, sans-serif';
+            source.style.color = '#374151';
+            
+            source.innerHTML = `
+                <h1 style="color: #1a4f8b; text-align: center; margin-bottom: 20px;">Finology Nexus Vendor Health Report</h1>
+                <p style="text-align: center; margin-bottom: 20px;">Generated on: ${new Date().toLocaleDateString()}</p>
+                <hr style="margin-bottom: 20px;">
+                <h2 style="color: #1a4f8b; text-align: center; margin-bottom: 20px;">Risk Assessment Result: ${riskCategory}</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px;">Overall Score: ${score}/24</p>
+                <h3 style="color: #1a4f8b; margin-bottom: 15px;">Recommendations:</h3>
+                <p style="margin-bottom: 30px; line-height: 1.6;">${getRecommendations(riskCategory)}</p>
+                <hr style="margin-bottom: 20px;">
+                <p style="font-size: 0.8rem; color: #6b7280; font-style: italic; margin-bottom: 10px;"><em>Disclaimer: This report is generated automatically based on user-input and is for informational purposes only. It is not a substitute for professional advice.</em></p>
+                <p style="text-align: center; margin-top: 30px;">For a detailed analysis, contact us at: contact@finologynexus.online</p>
+            `;
+
+            document.body.appendChild(source);
+
+            // Use html2canvas and jsPDF to create the PDF
+            html2canvas(source).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF();
+                const imgProps = pdf.getImageProperties(imgData);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.save('Vendor-Health-Report.pdf');
+
+                // Clean up and show the download link
+                document.body.removeChild(source);
+                document.getElementById('risk-form').style.display = 'none';
+                document.getElementById('result').style.display = 'block';
+            });
+        }
+
+        function getRecommendations(category) {
+            // Your custom recommendations for each category
+            if (category === "High Risk") return "We recommend immediately reviewing your contract terms and initiating a search for alternative vendors to mitigate potential disruption. Consider implementing additional oversight measures and requesting more frequent performance reports.";
+            if (category === "Medium Risk") return "This vendor requires monitoring. We suggest establishing clearer performance metrics and conducting quarterly reviews. Develop contingency plans in case performance deteriorates and maintain open communication about areas needing improvement.";
+            if (category === "Low Risk") return "This vendor appears to be a stable partner. Maintain open communication and conduct an annual review to ensure continued performance. Continue nurturing the relationship while still monitoring key performance indicators.";
+        }
+    </script>
+</body>
+</html>
