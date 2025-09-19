@@ -299,115 +299,99 @@
       from { opacity: 0; transform: translateY(1.25rem); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* ========== PRODUCTS OVERVIEW SECTION ========== */
-  .products-container {
-            max-width: 1000px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2563eb;
-            font-weight: 700;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: #64748b;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .product-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        
-        .product-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            max-width: 400px;
-            text-align: left;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-card-header {
-            padding: 1.5rem;
-            background: #2563eb;
-            color: white;
-        }
-        
-        .product-card-header h3 {
-            font-size: 1.5rem;
-            margin: 0.5rem 0 0 0;
-        }
-        
-        .product-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .product-card-body {
-            padding: 1.5rem;
-        }
-        
-        .product-card-body p {
-            margin-bottom: 1.5rem;
-            color: #64748b;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .product-card-footer {
-            padding: 0 1.5rem 1.5rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn:hover {
-            background-color: #1e40af;
-        }
-        
-        @media (max-width: 768px) {
-            .product-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
+/* ========== PRODUCTS OVERVIEW SECTION ========== */
+    .products-section {
+      padding: 5rem 1.25rem;
+      background: var(--light-bg);
+    }
+    
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .products-section .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+    
+    .products-section .section-description {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      color: var(--text-medium);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .product-card-header {
+      padding: 1.5rem;
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+    
+    .product-card-header h3 {
+      font-size: 1.5rem;
+      margin: 0.5rem 0 0 0;
+    }
+    
+    .product-card-header i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    .product-card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .product-card-body p {
+      margin-bottom: 1.5rem;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    
+    .product-card-footer {
+      padding: 0 1.5rem 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .products-section .section-title {
+        font-size: 2rem;
+      }
+    
     /* ========== SERVICES SECTION ========== */
     .services-section {
       background-color: var(--light-bg);
@@ -1012,72 +996,70 @@
     </div>
   </section>
  <!-- Products Overview Section -->
-<section class="products-section">
-  <div class="products-container">
-    <h2 class="section-title">Our Product Solutions</h2>
-    <p class="section-description">Streamlined tools for vendor risk management and financial operations</p>
-    
-    <div class="product-grid">
+  <section class="products-section" id="solutions">
+    <div class="products-container">
+      <h2 class="section-title">Our Product Solutions</h2>
+      <p class="section-description">Streamlined tools for vendor risk management and financial operations</p>
       
-      <!-- Vendor Health Scorecard -->
-      <div class="product-card">
-        <div class="product-card-header">
-          <i class="fas fa-heartbeat"></i>
-          <h3>Vendor Health Scorecard</h3>
-        </div>
-        <div class="product-card-body">
-          <p>Data-driven vendor assessments with clear RAG status indicators for quick risk evaluation.</p>
+      <div class="product-grid">
+        <!-- Vendor Health Scorecard -->
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Vendor Health Scorecard</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Data-driven vendor assessments with clear RAG status indicators for quick risk evaluation.</p>
+          </div>
           <div class="product-card-footer">
             <a href="Solutions.html#vendor-health" class="btn btn-primary">Learn More</a>
           </div>
         </div>
-      </div>
 
-      <!-- Compliance & Risk Tracker -->
-      <div class="product-card">
-        <div class="product-card-header">
-          <i class="fas fa-calendar-check"></i>
-          <h3>Compliance & Risk Tracker</h3>
-        </div>
-        <div class="product-card-body">
-          <p>Automated compliance monitoring with deadline alerts and document management.</p>
+        <!-- Compliance & Risk Tracker -->
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Compliance & Risk Tracker</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Automated compliance monitoring with deadline alerts and document management.</p>
+          </div>
           <div class="product-card-footer">
             <a href="Solutions.html#compliance-tracker" class="btn btn-primary">Learn More</a>
           </div>
         </div>
-      </div>
 
-      <!-- Performance Dashboard -->
-      <div class="product-card">
-        <div class="product-card-header">
-          <i class="fas fa-chart-line"></i>
-          <h3>Performance Dashboard</h3>
-        </div>
-        <div class="product-card-body">
-          <p>Objective vendor performance tracking with KPI visualization and trend analysis.</p>
+        <!-- Performance Dashboard -->
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-chart-line"></i>
+            <h3>Performance Dashboard</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Objective vendor performance tracking with KPI visualization and trend analysis.</p>
+          </div>
           <div class="product-card-footer">
             <a href="Solutions.html#performance-dashboard" class="btn btn-primary">Learn More</a>
           </div>
         </div>
-      </div>
 
-      <!-- Financial Due Diligence Reports -->
-      <div class="product-card">
-        <div class="product-card-header">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <h3>Financial Due Diligence</h3>
-        </div>
-        <div class="product-card-body">
-          <p>Expert financial analysis combining automated tools with human expertise.</p>
+        <!-- Financial Due Diligence Reports -->
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h3>Financial Due Diligence</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Expert financial analysis combining automated tools with human expertise.</p>
+          </div>
           <div class="product-card-footer">
             <a href="Solutions.html#financial-due-diligence" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
+  </section>
   <section class="section services-section">
     <div class="container">
       <h2 class="section-title">Our Core Services</h2>
@@ -1363,6 +1345,7 @@
   </script>
 </body>
 </html>
+
 
 
 
