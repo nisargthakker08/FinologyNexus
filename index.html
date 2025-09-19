@@ -40,9 +40,6 @@
     });
   </script>
 
-  <!-- Microsoft Clarity tag -->
-  <script src="clarity.js"></script>
-
   <style>
     :root {
       --primary-blue: #0077cc;
@@ -122,9 +119,16 @@
       color: var(--primary-blue);
       border: 2px solid var(--white);
     }
+
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
     
     .btn-primary:hover,
-    .btn-secondary:hover {
+    .btn-secondary:hover,
+    .btn-tertiary:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
     }
@@ -222,7 +226,7 @@
     .hero {
       background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       color: var(--white);
-      padding: 6rem 1.25rem;
+      padding: 6rem 1.25rem 4rem;
       text-align: center;
       box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
       position: relative;
@@ -250,6 +254,42 @@
       flex-wrap: wrap;
     }
 
+    /* Hero Stats */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0 1rem;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .hero-stat-item {
+      text-align: center;
+      padding: 0 1rem;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .hero-stat-number {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-stat-label {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-1.25rem); }
       to { opacity: 1; transform: translateY(0); }
@@ -260,45 +300,99 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== STATS BAR ========== */
-    .stats-bar {
-      display: flex;
-      justify-content: center;
+    /* ========== PRODUCTS OVERVIEW SECTION ========== */
+    .products-section {
+      background-color: var(--white);
+      padding: 5rem 1.25rem;
+    }
+
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .product-card {
       background: var(--white);
-      padding: 2rem;
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      max-width: 900px;
-      margin: -3rem auto 3rem auto;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card-header {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 1.5rem;
       position: relative;
-      z-index: 1;
     }
 
-    .stat-item {
-      text-align: center;
-      padding: 1rem;
-      flex: 1;
-      min-width: 150px;
-    }
-
-    .stat-number {
+    .product-card-header i {
       font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .product-card-header h3 {
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
 
-    .stat-label {
-      font-size: 0.9rem;
+    .product-card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card-body p {
       color: var(--text-medium);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-medium);
+    }
+
+    .product-features li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary-blue);
+    }
+
+    .product-card-footer {
+      margin-top: auto;
     }
 
     /* ========== SERVICES SECTION ========== */
     .services-section {
-      background-color: var(--white);
+      background-color: var(--light-bg);
     }
 
     .service-grid {
@@ -781,14 +875,23 @@
         align-items: center;
       }
       
-      .stats-bar {
+      .hero-stats {
         flex-direction: column;
-        gap: 1rem;
-        margin: -2rem auto 2rem auto;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+      
+      .hero-stat-item {
+        padding: 0.5rem 0;
       }
       
       .section-title {
         font-size: 1.75rem;
+      }
+      
+      .product-grid,
+      .service-grid {
+        grid-template-columns: 1fr;
       }
       
       .tech-logos {
@@ -842,23 +945,25 @@
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
-                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-                <li><a href="contactus.html" class="nav-link">Contact</a></li>
+        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
       <i class="fas fa-bars"></i>
     </button>
   </header>
-
   <section class="hero">
     <div class="container">
       <h1>Strategic Financial Operations Support for Scaling Companies</h1>
       <p>We help fintechs and investment firms streamline operations, reduce costs by 40% on average, and make data-driven decisions through our specialized solutions.</p>
       <div class="hero-buttons">
+        <a href="Solutions.html" class="btn btn-tertiary">
+          <i class="fas fa-cube"></i> Our Solutions
+        </a>
         <a href="/services" class="btn btn-primary">
           <i class="fas fa-chart-line"></i> Explore Services
         </a>
@@ -866,28 +971,101 @@
           <i class="fas fa-book-open"></i> View Case Studies
         </a>
       </div>
+      
+      <!-- Stats integrated into hero section -->
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">90%+</div>
+          <div class="hero-stat-label">Client Retention</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">40%</div>
+          <div class="hero-stat-label">Avg Cost Reduction</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">50+</div>
+          <div class="hero-stat-label">Projects Completed</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">12+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-number">90%+</div>
-      <div class="stat-label">Client Retention</div>
+  <!-- New Products Overview Section -->
+  <section class="products-section">
+    <div class="products-container">
+      <h2 class="section-title">Our Product Solutions</h2>
+      <p class="section-description">Specialized tools and platforms designed to streamline financial operations</p>
+      
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-chart-pie"></i>
+            <h3>Nexus Analytics Suite</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Comprehensive financial data analysis and visualization platform with customizable dashboards and real-time reporting.</p>
+            <ul class="product-features">
+              <li>Interactive financial dashboards</li>
+              <li>Custom metric tracking</li>
+              <li>Automated report generation</li>
+              <li>Multi-data source integration</li>
+            </ul>
+            <div class="product-card-footer">
+              <a href="Solutions.html#analytics" class="btn btn-primary" style="width: 100%; text-align: center;">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-cogs"></i>
+            <h3>Process Automation Engine</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Streamline repetitive financial operations with our customizable automation workflows and integration capabilities.</p>
+            <ul class="product-features">
+              <li>Workflow automation builder</li>
+              <li>API integration hub</li>
+              <li>Error detection system</li>
+              <li>Compliance tracking</li>
+            </ul>
+            <div class="product-card-footer">
+              <a href="Solutions.html#automation" class="btn btn-primary" style="width: 100%; text-align: center;">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-card-header">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Compliance Guardian</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Stay ahead of regulatory requirements with our monitoring and reporting system designed for financial services.</p>
+            <ul class="product-features">
+              <li>Regulatory change alerts</li>
+              <li>Audit trail management</li>
+              <li>Compliance reporting</li>
+              <li>Risk assessment tools</li>
+            </ul>
+            <div class="product-card-footer">
+              <a href="Solutions.html#compliance" class="btn btn-primary" style="width: 100%; text-align: center;">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">40%</div>
-      <div class="stat-label">Avg Cost Reduction</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">50+</div>
-      <div class="stat-label">Projects Completed</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">12+</div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-  </div>
-
+  </section>
   <section class="section services-section">
     <div class="container">
       <h2 class="section-title">Our Core Services</h2>
@@ -979,42 +1157,14 @@
         </div>
         
         <div class="benefit-card">
-          <i class="fas fa-chart-pie"></i>
-          <h3>Measurable Results</h3>
-          <p>Clear KPIs and regular reporting to demonstrate value delivered.</p>
+          <i class="fas fa-bolt"></i>
+          <h3>Rapid Implementation</h3>
+          <p>Quick setup with measurable results in weeks, not months.</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Who We Help Most</h2>
-      <p class="section-description">Financial teams that trust us with their critical operations</p>
-      
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <i class="fas fa-rocket"></i>
-          <h3>Scaling Fintechs</h3>
-          <p>Series A-C startups needing compliant back-office support and investor-ready reporting</p>
-        </div>
-        
-        <div class="benefit-card">
-          <i class="fas fa-university"></i>
-          <h3>Investment Firms</h3>
-          <p>VCs, PEs and hedge funds requiring due diligence and portfolio monitoring</p>
-        </div>
-        
-        <div class="benefit-card">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <h3>Financial Advisors</h3>
-          <p>RIAs and wealth managers streamlining client reporting and operations</p>
-        </div>
-        
-        <div class="benefit-card">
-          <i class="fas fa-globe"></i>
-          <h3>International Businesses</h3>
-          <p>Companies operating across borders needing localized financial support</p>
+<i class="fas fa-rocket"></i>
+          <h3>Scalable Solutions</h3>
+          <p>Flexible support models that grow with your business needs.</p>
         </div>
       </div>
     </div>
@@ -1022,221 +1172,182 @@
 
   <section class="section testimonial-section">
     <div class="container">
+      <h2 class="section-title">Client Success Stories</h2>
+      <p class="section-description">Hear from financial leaders who have transformed their operations with our support</p>
+      
       <div class="testimonial">
-        <p>"After 12 years leading financial operations at Fortune 500 companies, I saw growing firms struggling with the same challenges: not enough specialized talent, inefficient processes, and ballooning operational costs. We built Finology Nexus to provide enterprise-grade support tailored for scaling businesses - combining deep expertise with the flexibility you need during rapid growth."</p>
-        <div class="testimonial-author">— Founder & CEO</div>
+        <p>"Finology Nexus helped us streamline our investment research process, reducing time spent on data aggregation by 65% while improving accuracy. Their team integrated seamlessly with our existing workflows and became true partners in our growth journey."</p>
+        <p class="testimonial-author">— Michael Chen, CFO at Apex Capital Partners</p>
       </div>
     </div>
   </section>
 
-  <section class="section tech-stack">
-    <div class="container">
-      <h2 class="section-title">Technology Ecosystem</h2>
-      <p class="section-description">We work with leading platforms to deliver efficient, integrated solutions</p>
+  <section class="tech-stack">
+    <div class="tech-stack-container">
+      <h2 class="section-title">Our Technology Ecosystem</h2>
+      <p class="section-description">We leverage industry-leading tools and platforms to deliver exceptional results</p>
       
       <div class="tech-logos">
-        <img src="appianicon.png" alt="Appian Low-code Platform" loading="lazy" width="100" height="40">
-        <img src="mozendalogo.png" alt="Mozenda Web Scraping" loading="lazy" width="120" height="40">
-        <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="Amazon Web Services" loading="lazy" width="80" height="40">
-        <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel VBA Automation" loading="lazy" width="80" height="40">
-        <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python Programming" loading="lazy" width="80" height="40">
-        <img src="https://img.icons8.com/color/48/000000/salesforce.png" alt="Salesforce CRM" loading="lazy" width="120" height="40">
+        <img src="https://cdn.worldvectorlogo.com/logos/salesforce.svg" alt="Salesforce">
+        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+        <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python">
+        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-power-bi.svg" alt="Power BI">
+        <img src="https://cdn.worldvectorlogo.com/logos/quickbooks.svg" alt="QuickBooks">
+        <img src="https://cdn.worldvectorlogo.com/logos/xero-1.svg" alt="Xero">
+        <img src="https://cdn.worldvectorlogo.com/logos/sap-2.svg" alt="SAP">
       </div>
-
-      <p style="margin-top: 1.875rem; font-size: 0.95rem; color: var(--text-medium);">
-        Our team is certified in these platforms and can integrate with your existing tech stack.
-      </p>
-      <a href="/services.html#technology" class="btn btn-primary">
-        View Technology Capabilities <i class="fas fa-arrow-right"></i>
-      </a>
     </div>
   </section>
 
-  <section class="section free-assessment">
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Financial Operations?</h2>
+        <p>Join the growing number of financial firms that trust us with their critical operations.</p>
+        <div class="cta-buttons">
+          <a href="contactus.html" class="btn btn-secondary">Schedule a Consultation</a>
+          <a href="tel:+1-555-123-4567" class="btn btn-tertiary">
+            <i class="fas fa-phone"></i> Call Us Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="free-assessment">
     <div class="container">
       <div class="assessment-container">
-        <h2>Free Financial Operations Assessment</h2>
-        <p>Get a customized review of your financial operations with actionable recommendations - no strings attached.</p>
+        <h2>Free Operations Assessment</h2>
+        <p>Let our experts analyze your current financial operations and identify opportunities for improvement.</p>
         
         <div class="assessment-features">
-          <div>
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">What's Included:</h3>
+          <div class="feature-column">
+            <h3>What You'll Get:</h3>
             <ul class="feature-list">
-              <li>
-                <i class="fas fa-check"></i>
-                Process efficiency score
-              </li>
-              <li>
-                <i class="fas fa-check"></i>
-                Compliance checklist
-              </li>
-              <li>
-                <i class="fas fa-check"></i>
-                Cost-saving opportunities
-              </li>
-              <li>
-                <i class="fas fa-check"></i>
-                Key financial metrics
-              </li>
+              <li><i class="fas fa-check-circle"></i> Process efficiency analysis</li>
+              <li><i class="fas fa-check-circle"></i> Cost reduction opportunities</li>
+              <li><i class="fas fa-check-circle"></i> Technology optimization review</li>
             </ul>
           </div>
-          <div>
-            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">How It Works:</h3>
+          <div class="feature-column">
+            <h3>Why It's Valuable:</h3>
             <ul class="feature-list">
-              <li>
-                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">1</span>
-                Complete our 2-min questionnaire
-              </li>
-              <li>
-                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">2</span>
-                Receive analysis within 24 hours
-              </li>
-              <li>
-                <span style="background: var(--primary-blue); color: white; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">3</span>
-                Optional 30-min consultation
-              </li>
+              <li><i class="fas fa-check-circle"></i> No obligation consultation</li>
+              <li><i class="fas fa-check-circle"></i> Customized recommendations</li>
+              <li><i class="fas fa-check-circle"></i> Actionable insights</li>
             </ul>
           </div>
         </div>
         
-        <form class="assessment-form" action="https://formsubmit.co/info@finologynexus.online" method="POST">
+        <div class="assessment-form">
           <div class="form-box">
-            <input type="hidden" name="_subject" value="New Assessment Request">
-            <input type="hidden" name="_template" value="box">
-            
-            <div class="form-row">
-              <input type="text" name="first_name" placeholder="First Name" required>
-              <input type="text" name="last_name" placeholder="Last Name">
-            </div>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="text" name="company" placeholder="Company Name">
-            <textarea name="message" placeholder="Tell us about your current financial setup (optional)"></textarea>
-            <button type="submit">Get My Free Assessment</button>
-            <p style="font-size: 12px; color: var(--text-light); margin-top: 1rem;">
-              We respect your privacy. By submitting, you agree to our <a href="privacypolicy.html" style="color: var(--primary-blue);">Privacy Policy</a>.
-            </p>
+            <form id="assessmentForm">
+              <div class="form-row">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+              </div>
+              <input type="email" placeholder="Work Email" required>
+              <input type="text" placeholder="Company Name" required>
+              <input type="tel" placeholder="Phone Number">
+              <textarea placeholder="Tell us about your current challenges"></textarea>
+              <button type="submit">Request Free Assessment</button>
+            </form>
           </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="section cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Streamline Your Operations?</h2>
-        <p style="font-size: 1.25rem; margin-bottom: 2rem;">Download our company profile to learn how we can support your growth.</p>
-        <div class="cta-buttons">
-          <a href="assets/Finology Service Page.pdf" download class="btn btn-primary">
-            <i class="fas fa-download"></i> Download Profile
-          </a>
-          <a href="contactus.html" class="btn btn-secondary">
-            <i class="fas fa-calendar"></i> Schedule Call
-          </a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-column">
-          <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
-            <span>Finology Nexus</span>
-          </div>
-          <p class="footer-about">
-            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-          </p>
-          <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          </div>
+    <div class="footer-main">
+      <div class="footer-column">
+        <div class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="30" height="30">
+          <span>Finology Nexus</span>
         </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="services.html#research">Financial Research</a></li>
-              <li><a href="services.html#process">Process Support</a></li>
-              <li><a href="services.html#outsourcing">Outsourcing</a></li>
-              <li><a href="services.html">View All Services</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Case Studies</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-              <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Contact</h4>
-            <ul>
-              <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
-              <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
-            </ul>
-          </div>
+        <p class="footer-about">Specialized financial operations support, research analytics, and back-office solutions for scaling fintechs and investment firms.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
         </div>
       </div>
       
-      <div class="footer-bottom">
-        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="Solutions.html#analytics">Nexus Analytics Suite</a></li>
+            <li><a href="Solutions.html#automation">Process Automation</a></li>
+            <li><a href="Solutions.html#compliance">Compliance Guardian</a></li>
+          </ul>
+        </div>
       </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html#research">Research & Analytics</a></li>
+            <li><a href="services.html#process">Process Support</a></li>
+            <li><a href="services.html#outsourcing">Outsourcing Partnership</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+            <li><a href="contactus.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Finology Nexus. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
     </div>
   </footer>
 
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
-    <i class="fas fa-comments"></i> Let's Talk
+  <a href="contactus.html" class="floating-cta">
+    <i class="fas fa-envelope"></i> Get in Touch
   </a>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
+    // Mobile menu toggle functionality
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+      this.setAttribute('aria-expanded', nav.classList.contains('active'));
+    });
+
+    // Form submission handling
+    document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-        menuToggle.setAttribute('aria-expanded', isExpanded);
+      // Track form submission in Google Analytics
+      gtag('event', 'conversion', {
+        'event_category': 'Form Submission',
+        'event_label': 'Free Assessment Request'
       });
       
-      // Set active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
-        }
-      });
-      
-      // Update copyright year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      });
+      // Show success message (in a real implementation, you would send data to a server)
+      alert('Thank you for your interest! Our team will contact you shortly to schedule your free assessment.');
+      this.reset();
+    });
+
+    // Add shadow to header on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 10) {
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.boxShadow = 'var(--shadow-sm)';
+      }
     });
   </script>
 </body>
 </html>
-
-
