@@ -7,13 +7,10 @@
   <meta name="description" content="Free 2-minute RBI-compliant vendor risk quiz. Get instant RAG score + PDF report. Avoid ₹10L/day fines (FY25: 48 NBFCs hit ₹7.29Cr)." />
   <meta name="keywords" content="RBI vendor audit, NBFC compliance, vendor risk scorecard, free vendor health check, RBI fine avoidance" />
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
- 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
- 
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
- 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
   <script>
@@ -176,7 +173,6 @@
       </ul>
     </nav>
   </header>
-
   <!-- HERO -->
   <section class="scorecard-hero">
     <div class="container">
@@ -189,7 +185,6 @@
       </div>
     </div>
   </section>
-
   <!-- FORM -->
   <section id="assessment" class="section">
     <div class="container">
@@ -221,18 +216,15 @@
             <label><input type="radio" name="q5" value="2" required> Yes</label>
             <label><input type="radio" name="q5" value="0"> No</label>
           </fieldset>
-
           <input type="email" placeholder="Work Email (to send full report)" required style="width:100%; padding:1rem; margin:1.5rem 0; border:1px solid #ddd; border-radius:8px; font-size:1rem;">
           <input type="text" placeholder="Company Name" style="width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px;">
-
           <button type="submit">Generate My Free Report</button>
         </form>
-
         <div id="result">
           <h2>Your RBI Vendor Health Report is Ready!</h2>
           <div id="risk-badge" class="risk-badge"></div>
           <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
-          <p><a id="download-link" href="downloads/sample-vendor-report.pdf" download><i class="fas fa-download"></i> Download Sample PDF Report</a></p>
+          <p><a id="download-link" href="#" download><i class="fas fa-download"></i> Download Your Custom Report (PDF)</a></p>
           <div class="cta-box">
             <p><strong>Red/Amber score?</strong> Book our <strong>48-hour ₹2.5L RBI Vendor Audit</strong> – full RAG scorecard + auto-alerts.</p>
             <a href="contactus.html" class="btn btn-primary">Book Audit Now</a>
@@ -242,10 +234,12 @@
     </div>
   </section>
 
+  <!-- PDF Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <script>
-    // Mobile menu + other header scripts (same as before)
+    // Mobile menu
     document.addEventListener("DOMContentLoaded", function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav');
@@ -255,28 +249,133 @@
       });
     });
 
+    // Quiz + PDF Generation
     document.getElementById('risk-form').addEventListener('submit', function(e) {
       e.preventDefault();
+
+      // Calculate score
       let score = 0;
       for (let i = 1; i <= 5; i++) {
         const val = document.querySelector(`input[name="q${i}"]:checked`);
         if (val) score += parseInt(val.value);
       }
-      let riskCategory = score >= 8 ? "GREEN: Low Risk" : score >= 5 ? "AMBER: Medium Risk" : "RED: High Risk";
-      let riskClass = score >= 8 ? "risk-low" : score >= 5 ? "risk-medium" : "risk-high";
-      let progressClass = score >= 8 ? "progress-low" : score >= 5 ? "progress-medium" : "progress-high";
 
-      document.getElementById('risk-badge').textContent = riskCategory;
-      document.getElementById('risk-badge').className = `risk-badge ${riskClass}`;
-      document.getElementById('progress-bar').className = `progress-bar ${progressClass}`;
-      document.getElementById('progress-bar').style.width = `${(score / 10) * 100}%`;
+      const maxScore = 10;
+      const risk = score >= 8 ? { text: 'GREEN: Low Risk', cls: 'risk-low', color: '#2ecc71', title: 'Stable Partnership' }
+                 : score >= 5 ? { text: 'AMBER: Medium Risk', cls: 'risk-medium', color: '#f39c12', title: 'Monitoring Recommended' }
+                 : { text: 'RED: High Risk', cls: 'risk-high', color: '#e74c3c', title: 'Immediate Action Recommended' };
+
+      // Update UI
+      document.getElementById('risk-badge').textContent = risk.text.split(':')[0];
+      document.getElementById('risk-badge').className = `risk-badge ${risk.cls}`;
+      document.getElementById('progress-bar').className = `progress-bar ${risk.cls.includes('low') ? 'progress-low' : risk.cls.includes('medium') ? 'progress-medium' : 'progress-high'}`;
+      document.getElementById('progress-bar').style.width = `${(score / maxScore) * 100}%`;
 
       document.getElementById('risk-form').style.display = 'none';
       document.getElementById('result').style.display = 'block';
       document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
 
       gtag('event', 'conversion', { 'event_category': 'Free Scorecard', 'event_label': 'Report Generated' });
+
+      // Generate PDF
+      generatePDF(score, risk);
     });
+
+    function generatePDF(score, risk) {
+      const date = new Date().toLocaleDateString('en-GB');
+      const company = document.querySelector('input[placeholder="Company Name"]').value || 'Your Company';
+
+      const htmlContent = `
+        <div style="font-family:Inter,sans-serif;padding:30px;max-width:800px;margin:auto;background:#fff;color:#374151;">
+          <div style="display:flex;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px;margin-bottom:20px;">
+            <div style="width:50px;height:50px;background:linear-gradient(to right,#0077cc,#00c6ff);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-right:15px;">
+              <img src="https://finologynexus.online/Finology%20Nexus%20Logo.png" style="width:40px;height:40px;">
+            </div>
+            <div>
+              <h1 style="margin:0;font-size:24px;color:#1a4f8b;">Finology Nexus</h1>
+              <h2 style="margin:0;font-size:18px;color:#6b7280;font-weight:500;">Vendor Health Report</h2>
+            </div>
+          </div>
+
+          <p style="text-align:center;color:#6b7280;margin-bottom:30px;">Generated on: ${date}</p>
+
+          <div style="text-align:center;background:#f8f9fa;padding:25px;border-radius:12px;">
+            <h3 style="color:#1a4f8b;margin-bottom:15px;">Risk Assessment Result</h3>
+            <div style="display:inline-block;padding:8px 20px;border-radius:20px;font-weight:600;background:${risk.color};color:#fff;">
+              ${risk.text.split(':')[0]}
+            </div>
+            <p style="font-size:1.2rem;margin:15px 0;">Overall Score: <strong>${score}/${maxScore}</strong></p>
+            <div style="width:100%;max-width:400px;height:8px;background:#e9ecef;border-radius:4px;margin:20px auto;">
+              <div style="height:100%;width:${(score/maxScore)*100}%;background:${risk.color};border-radius:4px;"></div>
+            </div>
+          </div>
+
+          <div style="margin:30px 0;">
+            <h3 style="color:#1a4f8b;margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:8px;">Key Recommendations</h3>
+            <p style="margin-bottom:12px;"><strong style="color:${risk.color};">${risk.title}</strong></p>
+            <ul style="line-height:1.8;">
+              ${risk.text.includes('RED') ? `
+                <li>Review contract terms and exit clauses immediately</li>
+                <li>Initiate search for alternative vendors</li>
+                <li>Implement additional oversight measures</li>
+                <li>Reduce dependency on this vendor</li>
+                <li>Schedule emergency vendor review</li>` :
+               risk.text.includes('AMBER') ? `
+                <li>Establish clearer performance metrics & quarterly reviews</li>
+                <li>Develop contingency plans</li>
+                <li>Maintain open communication on improvement areas</li>
+                <li>Diversify critical services across vendors</li>
+                <li>Request financial stability reports</li>` :
+               `<li>Maintain open communication</li>
+                <li>Conduct annual review</li>
+                <li>Monitor key performance indicators</li>
+                <li>Explore strategic partnership opportunities</li>
+                <li>Share positive feedback</li>`}
+            </ul>
+          </div>
+
+          <div style="background:#f8f9fa;padding:20px;border-radius:8px;">
+            <h3 style="color:#1a4f8b;margin-bottom:15px;">Next Steps</h3>
+            <ul style="line-height:1.8;">
+              <li>Review this report with your team</li>
+              <li>Consider scheduling a consultation for detailed analysis</li>
+              <li>Monitor key vendor metrics regularly</li>
+              <li>Develop contingency plans based on risk level</li>
+            </ul>
+          </div>
+
+          <div style="text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #ddd;color:#6b7280;">
+            <p><strong>Need professional guidance?</strong></p>
+            <p>info@finologynexus.online</p>
+            <p style="font-size:.8rem;margin-top:20px;"><em>Disclaimer: This report is generated automatically and is for informational purposes only.</em></p>
+          </div>
+        </div>`;
+
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = htmlContent;
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.left = '-9999px';
+      document.body.appendChild(tempDiv);
+
+      html2canvas(tempDiv, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgWidth = pdf.internal.pageSize.getWidth();
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        pdf.save('RBI-Vendor-Health-Report.pdf');
+
+        // Update download link to trigger same file
+        const blob = pdf.output('blob');
+        const url = URL.createObjectURL(blob);
+        const link = document.getElementById('download-link');
+        link.href = url;
+        link.download = 'RBI-Vendor-Health-Report.pdf';
+
+        document.body.removeChild(tempDiv);
+      });
+    }
   </script>
 </body>
 </html>
