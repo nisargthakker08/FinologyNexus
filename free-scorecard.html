@@ -114,6 +114,10 @@
     }
     label:hover { background-color: rgba(0, 119, 204, 0.05); }
     input[type="radio"] { margin-right: 0.8rem; accent-color: var(--primary-blue); }
+    input[type="email"], input[type="text"] {
+      width: 100%; padding: 1rem; margin: 1.5rem 0; 
+      border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;
+    }
     #risk-form button {
       background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       color: var(--white); border: none; padding: 1rem 2rem; font-size: 1.1rem;
@@ -125,10 +129,10 @@
       transform: translateY(-2px); box-shadow: var(--shadow-md);
     }
     #result { text-align: center; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-md); margin-top: 2rem; display: none; }
-    .risk-badge { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem; font-weight: 600; margin: 1rem 0; }
-    .risk-high { background-color: var(--risk-high); color: white; }
-    .risk-medium { background-color: var(--risk-medium); color: white; }
-    .risk-low { background-color: var(--risk-low); color: white; }
+    .risk-badge { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem; font-weight: 600; margin: 1rem 0; color: white; }
+    .risk-high { background-color: var(--risk-high); }
+    .risk-medium { background-color: var(--risk-medium); }
+    .risk-low { background-color: var(--risk-low); }
     #download-link {
       display: inline-block; background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       color: var(--white); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: var(--radius-sm);
@@ -150,7 +154,10 @@
       nav.active { display: block; margin-top: 1rem; }
       nav ul { flex-direction: column; gap: 0.5rem; }
       .scorecard-hero h1 { font-size: 2rem; }
+      .scorecard-hero p { font-size: 1rem; }
       .hero-buttons { flex-direction: column; align-items: center; }
+      .scorecard-container { padding: 1.5rem; }
+      fieldset { padding: 1rem; }
     }
   </style>
 </head>
@@ -209,15 +216,15 @@
           <fieldset>
             <legend>4. Do you have >50 vendors?</legend>
             <label><input type="radio" name="q4" value="0" required> Yes (high risk)</label>
-            <label><input type="radio" name="q4" value="2"> No</label>
+            <label><input type="radio" name="q4" value="2"> No (lower risk)</label>
           </fieldset>
           <fieldset>
             <legend>5. Do you track vendor SLA performance monthly?</legend>
             <label><input type="radio" name="q5" value="2" required> Yes</label>
             <label><input type="radio" name="q5" value="0"> No</label>
           </fieldset>
-          <input type="email" placeholder="Work Email (to send full report)" required style="width:100%; padding:1rem; margin:1.5rem 0; border:1px solid #ddd; border-radius:8px; font-size:1rem;">
-          <input type="text" placeholder="Company Name" style="width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px;">
+          <input type="email" placeholder="Work Email (to send full report)" required>
+          <input type="text" placeholder="Company Name">
           <button type="submit">Generate My Free Report</button>
         </form>
         <div id="result">
@@ -260,16 +267,31 @@
         if (val) score += parseInt(val.value);
       }
 
-      const maxScore = 10;
-      const risk = score >= 8 ? { text: 'GREEN: Low Risk', cls: 'risk-low', color: '#2ecc71', title: 'Stable Partnership' }
-                 : score >= 5 ? { text: 'AMBER: Medium Risk', cls: 'risk-medium', color: '#f39c12', title: 'Monitoring Recommended' }
-                 : { text: 'RED: High Risk', cls: 'risk-high', color: '#e74c3c', title: 'Immediate Action Recommended' };
+      const maxScore = 10; // Fixed maximum score for 5 questions
+      const risk = score >= 8 ? { 
+        text: 'GREEN: Low Risk', 
+        cls: 'risk-low', 
+        color: '#2ecc71', 
+        title: 'RBI Compliant - Well Managed' 
+      } : score >= 5 ? { 
+        text: 'AMBER: Medium Risk', 
+        cls: 'risk-medium', 
+        color: '#f39c12', 
+        title: 'Needs Improvement - RBI Attention Required' 
+      } : { 
+        text: 'RED: High Risk', 
+        cls: 'risk-high', 
+        color: '#e74c3c', 
+        title: 'Critical RBI Compliance Gaps' 
+      };
 
       // Update UI
       document.getElementById('risk-badge').textContent = risk.text.split(':')[0];
       document.getElementById('risk-badge').className = `risk-badge ${risk.cls}`;
-      document.getElementById('progress-bar').className = `progress-bar ${risk.cls.includes('low') ? 'progress-low' : risk.cls.includes('medium') ? 'progress-medium' : 'progress-high'}`;
-      document.getElementById('progress-bar').style.width = `${(score / maxScore) * 100}%`;
+      
+      const progressBar = document.getElementById('progress-bar');
+      progressBar.className = `progress-bar ${risk.cls.replace('risk-', 'progress-')}`;
+      progressBar.style.width = `${(score / maxScore) * 100}%`;
 
       document.getElementById('risk-form').style.display = 'none';
       document.getElementById('result').style.display = 'block';
@@ -277,31 +299,38 @@
 
       gtag('event', 'conversion', { 'event_category': 'Free Scorecard', 'event_label': 'Report Generated' });
 
-      // Generate PDF
-      generatePDF(score, risk);
+      // Generate PDF with correct parameters
+      generatePDF(score, maxScore, risk);
     });
 
-    function generatePDF(score, risk) {
+    function generatePDF(score, maxScore, risk) {
       const date = new Date().toLocaleDateString('en-GB');
       const company = document.querySelector('input[placeholder="Company Name"]').value || 'Your Company';
+      const email = document.querySelector('input[type="email"]').value || 'Not provided';
 
       const htmlContent = `
         <div style="font-family:Inter,sans-serif;padding:30px;max-width:800px;margin:auto;background:#fff;color:#374151;">
           <div style="display:flex;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px;margin-bottom:20px;">
             <div style="width:50px;height:50px;background:linear-gradient(to right,#0077cc,#00c6ff);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-right:15px;">
-              <img src="https://finologynexus.online/Finology%20Nexus%20Logo.png" style="width:40px;height:40px;">
+              <span style="color:white;font-weight:bold;font-size:12px;">FN</span>
             </div>
             <div>
               <h1 style="margin:0;font-size:24px;color:#1a4f8b;">Finology Nexus</h1>
-              <h2 style="margin:0;font-size:18px;color:#6b7280;font-weight:500;">Vendor Health Report</h2>
+              <h2 style="margin:0;font-size:18px;color:#6b7280;font-weight:500;">RBI Vendor Health Assessment Report</h2>
             </div>
           </div>
 
-          <p style="text-align:center;color:#6b7280;margin-bottom:30px;">Generated on: ${date}</p>
+          <div style="margin-bottom:20px;">
+            <p style="margin:5px 0;"><strong>Company:</strong> ${company}</p>
+            <p style="margin:5px 0;"><strong>Email:</strong> ${email}</p>
+            <p style="margin:5px 0;"><strong>Date Generated:</strong> ${date}</p>
+          </div>
+
+          <p style="text-align:center;color:#6b7280;margin-bottom:30px;">RBI Compliance Focused Vendor Risk Assessment</p>
 
           <div style="text-align:center;background:#f8f9fa;padding:25px;border-radius:12px;">
-            <h3 style="color:#1a4f8b;margin-bottom:15px;">Risk Assessment Result</h3>
-            <div style="display:inline-block;padding:8px 20px;border-radius:20px;font-weight:600;background:${risk.color};color:#fff;">
+            <h3 style="color:#1a4f8b;margin-bottom:15px;">RBI Compliance Risk Assessment Result</h3>
+            <div style="display:inline-block;padding:8px 20px;border-radius:20px;font-weight:600;background:${risk.color};color:#fff;margin-bottom:15px;">
               ${risk.text.split(':')[0]}
             </div>
             <p style="font-size:1.2rem;margin:15px 0;">Overall Score: <strong>${score}/${maxScore}</strong></p>
@@ -311,43 +340,28 @@
           </div>
 
           <div style="margin:30px 0;">
-            <h3 style="color:#1a4f8b;margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:8px;">Key Recommendations</h3>
+            <h3 style="color:#1a4f8b;margin-bottom:10px;border-bottom:1px solid #ddd;padding-bottom:8px;">RBI Compliance Recommendations</h3>
             <p style="margin-bottom:12px;"><strong style="color:${risk.color};">${risk.title}</strong></p>
-            <ul style="line-height:1.8;">
-              ${risk.text.includes('RED') ? `
-                <li>Review contract terms and exit clauses immediately</li>
-                <li>Initiate search for alternative vendors</li>
-                <li>Implement additional oversight measures</li>
-                <li>Reduce dependency on this vendor</li>
-                <li>Schedule emergency vendor review</li>` :
-               risk.text.includes('AMBER') ? `
-                <li>Establish clearer performance metrics & quarterly reviews</li>
-                <li>Develop contingency plans</li>
-                <li>Maintain open communication on improvement areas</li>
-                <li>Diversify critical services across vendors</li>
-                <li>Request financial stability reports</li>` :
-               `<li>Maintain open communication</li>
-                <li>Conduct annual review</li>
-                <li>Monitor key performance indicators</li>
-                <li>Explore strategic partnership opportunities</li>
-                <li>Share positive feedback</li>`}
+            <ul style="line-height:1.8;padding-left:20px;">
+              ${getRBIRecommendations(risk.text)}
             </ul>
           </div>
 
-          <div style="background:#f8f9fa;padding:20px;border-radius:8px;">
-            <h3 style="color:#1a4f8b;margin-bottom:15px;">Next Steps</h3>
-            <ul style="line-height:1.8;">
-              <li>Review this report with your team</li>
-              <li>Consider scheduling a consultation for detailed analysis</li>
-              <li>Monitor key vendor metrics regularly</li>
-              <li>Develop contingency plans based on risk level</li>
+          <div style="background:#f8f9fa;padding:20px;border-radius:8px;margin:30px 0;">
+            <h3 style="color:#1a4f8b;margin-bottom:15px;">Immediate RBI Compliance Actions</h3>
+            <ul style="line-height:1.8;padding-left:20px;">
+              <li>Review all vendor contracts for RBI inspection clauses</li>
+              <li>Implement annual vendor BCP testing schedule</li>
+              <li>Set up certificate expiry alert system</li>
+              <li>Establish monthly vendor SLA performance tracking</li>
+              <li>Document all vendor risk mitigation measures</li>
             </ul>
           </div>
 
           <div style="text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #ddd;color:#6b7280;">
-            <p><strong>Need professional guidance?</strong></p>
-            <p>info@finologynexus.online</p>
-            <p style="font-size:.8rem;margin-top:20px;"><em>Disclaimer: This report is generated automatically and is for informational purposes only.</em></p>
+            <p><strong>Need RBI Compliance Assistance?</strong></p>
+            <p>Contact us at: info@finologynexus.online</p>
+            <p style="font-size:.8rem;margin-top:20px;"><em>Disclaimer: This RBI compliance assessment is generated automatically and is for informational purposes only. Professional compliance audit recommended.</em></p>
           </div>
         </div>`;
 
@@ -364,9 +378,8 @@
         const imgWidth = pdf.internal.pageSize.getWidth();
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-        pdf.save('RBI-Vendor-Health-Report.pdf');
-
-        // Update download link to trigger same file
+        
+        // Update download link
         const blob = pdf.output('blob');
         const url = URL.createObjectURL(blob);
         const link = document.getElementById('download-link');
@@ -375,6 +388,34 @@
 
         document.body.removeChild(tempDiv);
       });
+    }
+
+    function getRBIRecommendations(riskLevel) {
+      if (riskLevel.includes('RED')) {
+        return `
+          <li>IMMEDIATE: Add RBI inspection clauses to all vendor contracts</li>
+          <li>URGENT: Implement vendor Business Continuity Plan testing</li>
+          <li>CRITICAL: Set up certificate expiry monitoring system</li>
+          <li>HIGH PRIORITY: Reduce vendor concentration risk (>50 vendors)</li>
+          <li>ESSENTIAL: Establish monthly SLA performance tracking</li>
+        `;
+      } else if (riskLevel.includes('AMBER')) {
+        return `
+          <li>Review and strengthen RBI inspection clauses in contracts</li>
+          <li>Formalize annual BCP testing process with documentation</li>
+          <li>Implement automated certificate expiry alerts</li>
+          <li>Develop vendor rationalization strategy</li>
+          <li>Enhance monthly SLA reporting and review process</li>
+        `;
+      } else {
+        return `
+          <li>Maintain current RBI compliance practices</li>
+          <li>Continue regular vendor contract reviews</li>
+          <li>Sustain annual BCP testing schedule</li>
+          <li>Monitor certificate management system</li>
+          <li>Continue monthly SLA performance tracking</li>
+        `;
+      }
     }
   </script>
 </body>
