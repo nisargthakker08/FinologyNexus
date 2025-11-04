@@ -1,132 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free RBI Vendor Health Scorecard | Finology Nexus</title>
-    <meta name="description" content="Take our 2-minute free quiz and get your instant RBI-compliant vendor risk score (RAG). Avoid ₹10L/day fines.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <style>
-        :root { --blue: #0077cc; --light: #f8f9fa; --green: #28a745; --red: #dc3545; }
-        body { font-family: 'Inter', sans-serif; background: var(--light); margin: 0; padding: 0; color: #333; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .header { text-align: center; padding: 3rem 1rem; background: linear-gradient(135deg, #0077cc, #00c6ff); color: white; border-radius: 16px; }
-        .header h1 { font-size: 2.2rem; margin: 0 0 1rem; }
-        .header p { font-size: 1.1rem; opacity: 0.9; }
-        .form-box { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -3rem; position: relative; z-index: 2; }
-        .step { margin: 2rem 0; }
-        .step h3 { color: var(--blue); display: flex; align-items: center; gap: 0.5rem; }
-        .radio-group { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
-        .radio-label { background: #f1f3f5; padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; flex: 1; min-width: 120px; text-align: center; transition: 0.3s; }
-        .radio-label:hover { background: #e2e6ea; }
-        input[type="radio"]:checked + .radio-label { background: var(--blue); color: white; }
-        input[type="radio"] { display: none; }
-        .btn { background: var(--blue); color: white; padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1.1rem; margin-top: 1.5rem; }
-        .result { margin-top: 2rem; padding: 1.5rem; border-radius: 12px; display: none; text-align: center; font-weight: 600; }
-        .score-green { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .score-amber { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
-        .score-red { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .cta-box { background: #e7f3ff; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; text-align: center; }
-        .cta-box strong { color: var(--blue); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free RBI Vendor Health Scorecard | Finology Nexus</title>
+  <meta name="description" content="Free 2-minute RBI-compliant vendor risk quiz. Get instant RAG score + PDF report. Avoid ₹10L/day fines (FY25: 48 NBFCs hit ₹7.29Cr)." />
+  <meta name="keywords" content="RBI vendor audit, NBFC compliance, vendor risk scorecard, free vendor health check, RBI fine avoidance" />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+ 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ 
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+ 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZ1RDVHZZP');
+  </script>
+  <style>
+    :root {
+      --primary-blue: #0077cc;
+      --primary-blue-dark: #005fa3;
+      --secondary-blue: #00c6ff;
+      --secondary-blue-light: #00a4e0;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
+      --risk-high: #e74c3c;
+      --risk-medium: #f39c12;
+      --risk-low: #2ecc71;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+    .section { padding: 5rem 1.25rem; }
+    /* HEADER */
+    header {
+      background: var(--white);
+      padding: 1rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000;
+    }
+    .logo-group { display: flex; align-items: center; gap: 0.625rem; }
+    .company-name {
+      font-size: 1.25rem; font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .tagline {
+      font-size: 0.9rem; color: var(--text-medium); margin-top: 0.25rem;
+    }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav a {
+      text-decoration: none; color: var(--text-dark); font-weight: 600; position: relative;
+      transition: var(--transition); font-size: 0.95rem;
+    }
+    nav a::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+      background: var(--primary-blue); transition: var(--transition);
+    }
+    nav a:hover::after, nav a.active::after { width: 100%; }
+    nav a.active { color: var(--primary-blue); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-blue); }
+    /* HERO */
+    .scorecard-hero {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white); padding: 6rem 1.25rem; text-align: center; overflow: hidden;
+    }
+    .scorecard-hero h1 { font-size: 2.875rem; margin-bottom: 1.25rem; }
+    .scorecard-hero p { font-size: 1.25rem; max-width: 43.75rem; margin: 0 auto 1rem; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; transition: var(--transition);
+      min-width: 180px; text-align: center; gap: 0.5rem;
+    }
+    .btn-primary { background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue)); color: var(--white); border: none; }
+    .btn-secondary { background: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue); }
+    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    /* FORM */
+    .scorecard-container {
+      max-width: 800px; margin: 0 auto; padding: 2rem; background: var(--white);
+      border-radius: var(--radius-md); box-shadow: var(--shadow-md);
+    }
+    fieldset {
+      border: 1px solid var(--light-bg); border-radius: var(--radius-sm); padding: 1.5rem;
+      margin-bottom: 1.5rem; background-color: var(--light-bg); transition: var(--transition);
+    }
+    fieldset:hover { box-shadow: var(--shadow-sm); }
+    legend { font-weight: 600; padding: 0 0.5rem; color: var(--primary-blue); font-size: 1.1rem; }
+    label {
+      display: flex; align-items: center; margin-bottom: 0.8rem; cursor: pointer;
+      padding: 0.8rem; border-radius: 6px; transition: var(--transition);
+    }
+    label:hover { background-color: rgba(0, 119, 204, 0.05); }
+    input[type="radio"] { margin-right: 0.8rem; accent-color: var(--primary-blue); }
+    #risk-form button {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white); border: none; padding: 1rem 2rem; font-size: 1.1rem;
+      border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: var(--transition);
+      display: block; margin: 2rem auto; width: 100%; max-width: 300px;
+    }
+    #risk-form button:hover {
+      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
+      transform: translateY(-2px); box-shadow: var(--shadow-md);
+    }
+    #result { text-align: center; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-md); margin-top: 2rem; display: none; }
+    .risk-badge { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem; font-weight: 600; margin: 1rem 0; }
+    .risk-high { background-color: var(--risk-high); color: white; }
+    .risk-medium { background-color: var(--risk-medium); color: white; }
+    .risk-low { background-color: var(--risk-low); color: white; }
+    #download-link {
+      display: inline-block; background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: var(--radius-sm);
+      font-weight: 600; margin: 1rem 0; transition: var(--transition);
+    }
+    #download-link:hover { background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light)); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .progress-container { width: 100%; background-color: #e9ecef; border-radius: 0.5rem; margin: 1rem 0; }
+    .progress-bar { height: 0.5rem; border-radius: 0.5rem; transition: width 0.5s ease; }
+    .progress-high { background-color: var(--risk-high); }
+    .progress-medium { background-color: var(--risk-medium); }
+    .progress-low { background-color: var(--risk-low); }
+    .cta-box { background: #e7f3ff; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; text-align: center; }
+    .cta-box strong { color: var(--primary-blue); }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header { padding: 1rem; flex-wrap: wrap; }
+      .menu-toggle { display: block; order: 1; }
+      nav { width: 100%; order: 3; display: none; }
+      nav.active { display: block; margin-top: 1rem; }
+      nav ul { flex-direction: column; gap: 0.5rem; }
+      .scorecard-hero h1 { font-size: 2rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="container">
-
-    <!-- HERO -->
-    <div class="header">
-        <h1>Free RBI Vendor Health Scorecard</h1>
-        <p>Answer 5 quick questions → Get your instant <strong>RAG risk score</strong> in 2 minutes</p>
-        <p><strong>Avoid ₹10L/day RBI fines</strong> – NBFCs fined ₹7.29Cr in 2025</p>
+  <!-- HEADER WITH LOGO, TAGLINE, PRODUCT INFO -->
+  <header>
+    <div class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+      <div>
+        <div class="company-name">Finology Nexus</div>
+        <div class="tagline">Strategic Financial Operations Support • 40% Avg Cost Reduction • SOC2 Compliant</div>
+      </div>
     </div>
+    <button class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- FORM -->
-    <div class="form-box">
-        <form id="scorecard-form">
-            <div class="step">
-                <h3><i class="fas fa-file-contract"></i> 1. Do your vendor contracts have RBI inspection clause?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="q1" value="2" id="q1-yes"><label for="q1-yes" class="radio-label">Yes</label>
-                    <input type="radio" name="q1" value="0" id="q1-no"><label for="q1-no" class="radio-label">No</label>
-                    <input type="radio" name="q1" value="1" id="q1-partial"><label for="q1-partial" class="radio-label">Partial</label>
-                </div>
-            </div>
+  <!-- HERO -->
+  <section class="scorecard-hero">
+    <div class="container">
+      <h1>Free RBI Vendor Health Scorecard</h1>
+      <p>Answer 5 quick RBI-focused questions → Get instant RAG risk score + PDF report in 2 minutes</p>
+      <p><strong>Avoid ₹10L/day RBI fines</strong> – 48 NBFCs fined ₹7.29Cr in FY25 for vendor gaps</p>
+      <div class="hero-buttons">
+        <a href="#assessment" class="btn btn-primary"><i class="fas fa-clipboard-list"></i> Start Free Quiz</a>
+        <a href="Solutions.html" class="btn btn-secondary"><i class="fas fa-cube"></i> All Products</a>
+      </div>
+    </div>
+  </section>
 
-            <div class="step">
-                <h3><i class="fas fa-shield-alt"></i> 2. Do you test vendor BCP annually?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="q2" value="2" id="q2-yes"><label for="q2-yes" class="radio-label">Yes</label>
-                    <input type="radio" name="q2" value="0" id="q2-no"><label for="q2-no" class="radio-label">No</label>
-                </div>
-            </div>
+  <!-- FORM -->
+  <section id="assessment" class="section">
+    <div class="container">
+      <div class="scorecard-container">
+        <form id="risk-form">
+          <fieldset>
+            <legend>1. Do your vendor contracts have RBI inspection clause?</legend>
+            <label><input type="radio" name="q1" value="2" required> Yes</label>
+            <label><input type="radio" name="q1" value="0"> No</label>
+            <label><input type="radio" name="q1" value="1"> Partial</label>
+          </fieldset>
+          <fieldset>
+            <legend>2. Do you test vendor BCP annually?</legend>
+            <label><input type="radio" name="q2" value="2" required> Yes</label>
+            <label><input type="radio" name="q2" value="0"> No</label>
+          </fieldset>
+          <fieldset>
+            <legend>3. Do you get alerts for certificate expiry?</legend>
+            <label><input type="radio" name="q3" value="2" required> Yes</label>
+            <label><input type="radio" name="q3" value="0"> No</label>
+          </fieldset>
+          <fieldset>
+            <legend>4. Do you have >50 vendors?</legend>
+            <label><input type="radio" name="q4" value="0" required> Yes (high risk)</label>
+            <label><input type="radio" name="q4" value="2"> No</label>
+          </fieldset>
+          <fieldset>
+            <legend>5. Do you track vendor SLA performance monthly?</legend>
+            <label><input type="radio" name="q5" value="2" required> Yes</label>
+            <label><input type="radio" name="q5" value="0"> No</label>
+          </fieldset>
 
-            <div class="step">
-                <h3><i class="fas fa-bell"></i> 3. Do you get alerts for certificate expiry?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="q3" value="2" id="q3-yes"><label for="q3-yes" class="radio-label">Yes</label>
-                    <input type="radio" name="q3" value="0" id="q3-no"><label for="q3-no" class="radio-label">No</label>
-                </div>
-            </div>
+          <input type="email" placeholder="Work Email (to send full report)" required style="width:100%; padding:1rem; margin:1.5rem 0; border:1px solid #ddd; border-radius:8px; font-size:1rem;">
+          <input type="text" placeholder="Company Name" style="width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px;">
 
-            <div class="step">
-                <h3><i class="fas fa-users"></i> 4. Do you have >50 vendors?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="q4" value="0" id="q4-yes"><label for="q4-yes" class="radio-label">Yes</label>
-                    <input type="radio" name="q4" value="2" id="q4-no"><label for="q4-no" class="radio-label">No</label>
-                </div>
-            </div>
-
-            <div class="step">
-                <h3><i class="fas fa-chart-line"></i> 5. Do you track vendor SLA performance?</h3>
-                <div class="radio-group">
-                    <input type="radio" name="q5" value="2" id="q5-yes"><label for="q5-yes" class="radio-label">Yes</label>
-                    <input type="radio" name="q5" value="0" id="q5-no"><label for="q5-no" class="radio-label">No</label>
-                </div>
-            </div>
-
-            <!-- EMAIL CAPTURE -->
-            <input type="email" placeholder="Your Work Email (to send report)" required style="width:100%; padding:1rem; margin:1.5rem 0; border:1px solid #ddd; border-radius:8px; font-size:1rem;">
-            <input type="text" placeholder="Company Name" style="width:100%; padding:1rem; margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px;">
-
-            <button type="submit" class="btn">Get My Free Scorecard</button>
+          <button type="submit">Generate My Free Report</button>
         </form>
 
-        <!-- RESULT (Hidden until submit) -->
-        <div id="result" class="result"></div>
-
-        <!-- UPSell CTA -->
-        <div class="cta-box">
-            <p><strong>Your score is ready!</strong> Want a <strong>full 48-hour RBI audit for ₹2.5L</strong> with auto-alerts & proof for RBI?</p>
-            <a href="contactus.html" style="color:var(--blue); font-weight:600;">Book Now →</a>
+        <div id="result">
+          <h2>Your RBI Vendor Health Report is Ready!</h2>
+          <div id="risk-badge" class="risk-badge"></div>
+          <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
+          <p><a id="download-link" href="downloads/sample-vendor-report.pdf" download><i class="fas fa-download"></i> Download Sample PDF Report</a></p>
+          <div class="cta-box">
+            <p><strong>Red/Amber score?</strong> Book our <strong>48-hour ₹2.5L RBI Vendor Audit</strong> – full RAG scorecard + auto-alerts.</p>
+            <a href="contactus.html" class="btn btn-primary">Book Audit Now</a>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </section>
 
-<script>
-    document.getElementById('scorecard-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        let score = 0;
-        for (let i = 1; i <= 5; i++) {
-            const val = document.querySelector(`input[name="q${i}"]:checked`);
-            if (val) score += parseInt(val.value);
-        }
-
-        const result = document.getElementById('result');
-        result.style.display = 'block';
-        if (score >= 8) {
-            result.innerHTML = `<div class="score-green">GREEN: Low Risk (Score: ${score}/10)</div><p>Great job! You're RBI-ready.</p>`;
-        } else if (score >= 5) {
-            result.innerHTML = `<div class="score-amber">AMBER: Medium Risk (Score: ${score}/10)</div><p>Fix 2–3 gaps to avoid fines.</p>`;
-        } else {
-            result.innerHTML = `<div class="score-red">RED: High Risk (Score: ${score}/10)</div><p>Urgent: Book 48-hour audit to avoid ₹10L/day fines!</p>`;
-        }
-
-        // Scroll to result
-        result.scrollIntoView({ behavior: 'smooth' });
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    // Mobile menu + other header scripts (same as before)
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = nav.classList.toggle('active');
+        menuToggle.innerHTML = isExpanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      });
     });
-</script>
 
+    document.getElementById('risk-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const val = document.querySelector(`input[name="q${i}"]:checked`);
+        if (val) score += parseInt(val.value);
+      }
+      let riskCategory = score >= 8 ? "GREEN: Low Risk" : score >= 5 ? "AMBER: Medium Risk" : "RED: High Risk";
+      let riskClass = score >= 8 ? "risk-low" : score >= 5 ? "risk-medium" : "risk-high";
+      let progressClass = score >= 8 ? "progress-low" : score >= 5 ? "progress-medium" : "progress-high";
+
+      document.getElementById('risk-badge').textContent = riskCategory;
+      document.getElementById('risk-badge').className = `risk-badge ${riskClass}`;
+      document.getElementById('progress-bar').className = `progress-bar ${progressClass}`;
+      document.getElementById('progress-bar').style.width = `${(score / 10) * 100}%`;
+
+      document.getElementById('risk-form').style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+
+      gtag('event', 'conversion', { 'event_category': 'Free Scorecard', 'event_label': 'Report Generated' });
+    });
+  </script>
 </body>
 </html>
