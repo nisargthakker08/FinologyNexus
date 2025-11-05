@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finology Nexus | Cut Compliance Costs 40% | Scale Without Regulatory Risk</title>
-  <meta name="description" content="Free RBI Vendor Scorecard reveals hidden compliance gaps. Cut costs 40%, become audit-ready in 90 days. Join forward-thinking financial companies." />
-  <meta name="keywords" content="RBI compliance, vendor scorecard, NBFC audit, fintech operations, free assessment, outsourcing risk" />
-  <link rel="icon" type="image/png" href="finology-favicon.png" />
+  <title>Finology Nexus | Financial Operations & Compliance Automation Platform</title>
+  <meta name="description" content="Automate financial operations, ensure regulatory compliance, and scale confidently with our AI-powered platform and expert services." />
+  <meta name="keywords" content="financial operations, compliance automation, vendor risk management, fintech solutions, NBFC compliance" />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
  
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -111,7 +111,13 @@
       color: var(--primary-blue); 
     }
 
-    /* ENHANCED HERO WITH ANIMATED BACKGROUND */
+    .header-cta {
+      display: flex;
+      gap: 1rem;
+      margin-left: 2rem;
+    }
+
+    /* ENHANCED HERO WITH PARTICLES */
     .hero { 
       background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); 
       color: var(--white); 
@@ -652,6 +658,12 @@
       }
     }
 
+    @media (max-width: 1024px) {
+      .header-cta {
+        display: none;
+      }
+    }
+
     @media (max-width: 768px) {
       header { padding: 1rem; }
       .hero h1 { font-size: 2.75rem; }
@@ -662,73 +674,88 @@
       .assessment-container { padding: 2rem; }
       .hero-stats { padding: 2rem; gap: 2rem; }
       .stat-number { font-size: 2.5rem; }
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ENHANCED HEADER -->
+  <!-- ENHANCED HEADER WITH WORKING CTA BUTTONS -->
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus" width="45">
+      <img src="finology-logofavicon.png" alt="Finology Nexus" width="45">
       <span class="company-name">Finology Nexus</span>
     </div>
-    <button class="menu-toggle" aria-label="Toggle navigation" style="display: none;">
-      <i class="fas fa-bars"></i>
-    </button>
+    
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="solutions.html">Solutions</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="contactus.html">Contact</a></li>
       </ul>
     </nav>
+
+    <div class="header-cta">
+      <a href="free-scorecard.html" class="btn btn-secondary" style="min-width: 180px; padding: 0.75rem 1.5rem;">
+        Free Assessment
+      </a>
+      <a href="contactus.html" class="btn btn-gold" style="min-width: 180px; padding: 0.75rem 1.5rem;">
+        Book Strategy Call
+      </a>
+    </div>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" style="display: none;">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
-  <!-- ENHANCED HERO WITH PARTICLES -->
+  <!-- ENHANCED HERO WITH PROFESSIONAL CONTENT -->
   <section class="hero">
     <div class="particles" id="particles"></div>
     <div class="container">
-      <h1>Stop Overpaying for Compliance.<br>Scale Confidently with 40% Cost Savings.</h1>
-      <p>Discover hidden vendor risks in 5 minutes with our Free RBI-Compliant Scorecard. Transform from audit-anxious to compliance-confident.</p>
+      <h1>Transform Financial Operations with Intelligent Automation</h1>
+      <p>Streamline compliance, reduce operational costs by 40%, and scale your financial business with confidence using our AI-powered platform.</p>
       <div class="hero-cta">
-        <a href="#assessment" class="btn btn-secondary">
-          <i class="fas fa-chart-line"></i>Get My Free Risk Assessment
+        <a href="free-scorecard.html" class="btn btn-secondary">
+          <i class="fas fa-chart-line"></i>Get Free Operations Assessment
         </a>
-        <a href="contact.html" class="btn btn-gold">
-          <i class="fas fa-calendar-check"></i>Book Strategy Session
+        <a href="contactus.html" class="btn btn-gold">
+          <i class="fas fa-calendar-check"></i>Schedule Strategy Session
         </a>
       </div>
 
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-number" data-target="40">0</span>%
-          <div class="stat-label">Potential Cost Reduction</div>
+          <div class="stat-label">Average Cost Reduction</div>
         </div>
         <div class="stat-item">
           <span class="stat-number" data-target="65">0</span>%
-          <div class="stat-label">Faster Audit Preparation</div>
+          <div class="stat-label">Faster Process Completion</div>
         </div>
         <div class="stat-item">
-          <span class="stat-number" data-target="100">0</span>%
-          <div class="stat-label">Compliance Confidence</div>
+          <span class="stat-number" data-target="99">0</span>%
+          <div class="stat-label">Compliance Accuracy</div>
         </div>
         <div class="stat-item">
           <span class="stat-number" data-target="24">0</span>/7
-          <div class="stat-label">Monitoring & Support</div>
+          <div class="stat-label">Automated Monitoring</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ENHANCED PRODUCTS -->
+  <!-- ENHANCED PRODUCTS SECTION -->
   <section class="products-section section">
     <div class="container">
-      <h2 class="section-title">Compliance Tools That Actually Save You Money</h2>
-      <p class="section-subtitle">Stop wasting resources on manual processes. Our automated solutions cut costs while keeping you audit-ready 24/7.</p>
+      <h2 class="section-title">Enterprise-Grade Financial Operations Platform</h2>
+      <p class="section-subtitle">Comprehensive solutions designed to automate, optimize, and secure your financial operations while ensuring regulatory compliance.</p>
 
       <div class="product-grid">
         <div class="product-card">
@@ -737,13 +764,13 @@
             <h3>Vendor Risk Intelligence</h3>
           </div>
           <div class="product-card-body">
-            <p>Get instant Red-Amber-Green risk ratings for every vendor in your ecosystem. No more spreadsheet nightmares or surprise audit failures.</p>
-            <div class="highlight">🚀 Generate audit-ready compliance reports in under 60 seconds</div>
+            <p>Comprehensive vendor risk assessment with real-time monitoring and automated compliance tracking for your entire supply chain.</p>
+            <div class="highlight">🚀 Generate comprehensive risk reports in under 60 seconds</div>
             <p class="free-badge">COMPLIMENTARY FOR QUALIFIED BUSINESSES</p>
           </div>
           <div style="padding:0 2rem 2rem;">
-            <a href="#assessment" class="btn btn-secondary" style="width:100%;">
-              <i class="fas fa-download"></i>Claim Free Assessment
+            <a href="vendor-scorecard.html" class="btn btn-secondary" style="width:100%;">
+              <i class="fas fa-download"></i>Explore Vendor Risk
             </a>
           </div>
         </div>
@@ -751,15 +778,15 @@
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-balance-scale"></i>
-            <h3>RBI Compliance Guardian</h3>
+            <h3>Compliance Automation Suite</h3>
           </div>
           <div class="product-card-body">
-            <p>Automated monitoring of BCP, SLA, and regulatory clauses. Stay ahead of changing RBI guidelines without hiring expensive consultants.</p>
-            <div class="highlight">⚠️ 2025 Alert: 62 NBFCs faced average penalties of ₹8.5L/month</div>
+            <p>Automated regulatory compliance monitoring, deadline tracking, and documentation management for financial institutions.</p>
+            <div class="highlight">⚠️ Proactive alert system for regulatory changes and deadlines</div>
           </div>
           <div style="padding:0 2rem 2rem;">
-            <a href="solutions.html#rbi-auditor" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-eye"></i>View Live Demo
+            <a href="solutions.html" class="btn btn-primary" style="width:100%;">
+              <i class="fas fa-eye"></i>View Compliance Solutions
             </a>
           </div>
         </div>
@@ -767,15 +794,15 @@
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-bell"></i>
-            <h3>Smart Compliance Calendar</h3>
+            <h3>Financial Operations Dashboard</h3>
           </div>
           <div class="product-card-body">
-            <p>Never miss another deadline. Automated alerts, document tracking, and compliance workflows that actually work.</p>
-            <div class="highlight">📅 92% reduction in compliance deadline misses reported by clients</div>
+            <p>Centralized dashboard for monitoring all financial operations, performance metrics, and compliance status in real-time.</p>
+            <div class="highlight">📊 Real-time analytics and customizable reporting dashboards</div>
           </div>
           <div style="padding:0 2rem 2rem;">
-            <a href="solutions.html#tracker" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-rocket"></i>Explore Features
+            <a href="finance-checkup.html" class="btn btn-primary" style="width:100%;">
+              <i class="fas fa-rocket"></i>Explore Dashboard
             </a>
           </div>
         </div>
@@ -783,15 +810,15 @@
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-chart-bar"></i>
-            <h3>Investor-Grade Due Diligence</h3>
+            <h3>Due Diligence Automation</h3>
           </div>
           <div class="product-card-body">
-            <p>Secure funding with confidence. Comprehensive financial analysis and due diligence reports that investors trust.</p>
-            <div class="highlight">💼 85% of clients secure better funding terms using our reports</div>
+            <p>Streamlined due diligence processes with automated document collection, analysis, and investor-ready reporting.</p>
+            <div class="highlight">💼 Accelerate funding rounds with automated due diligence</div>
           </div>
           <div style="padding:0 2rem 2rem;">
-            <a href="contact.html" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-file-invoice"></i>Get Custom Quote
+            <a href="contactus.html" class="btn btn-primary" style="width:100%;">
+              <i class="fas fa-file-invoice"></i>Learn More
             </a>
           </div>
         </div>
@@ -799,107 +826,128 @@
     </div>
   </section>
 
-  <!-- ENHANCED SERVICES -->
+  <!-- ENHANCED SERVICES SECTION -->
   <section class="services-section section">
     <div class="container">
-      <h2 class="section-title">Beyond Software: Your Strategic Operations Partner</h2>
-      <p class="section-subtitle">We don't just sell tools—we become an extension of your team, handling the complex operations so you can focus on growth.</p>
+      <h2 class="section-title">Comprehensive Financial Operations Support</h2>
+      <p class="section-subtitle">Beyond technology - expert services to complement your team and accelerate your growth trajectory.</p>
 
       <div class="service-grid">
         <div class="service-card">
           <i class="fas fa-brain"></i>
-          <h3>Strategic Research & Intelligence</h3>
-          <p>Weekly market intelligence, competitor analysis, and financial modeling that gives you the edge. Make data-driven decisions with confidence.</p>
+          <h3>Financial Research & Analytics</h3>
+          <p>Deep-dive market analysis, competitive intelligence, and financial modeling to support strategic decision-making and growth planning.</p>
+          <a href="Financial Research & Analytics.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
         </div>
         <div class="service-card">
           <i class="fas fa-cogs"></i>
-          <h3>Precision Back-Office Operations</h3>
-          <p>Reconciliation, documentation, quality assurance—handled with military precision. 99.8% accuracy guaranteed across all processes.</p>
+          <h3>Bookkeeping & Accounting</h3>
+          <p>Professional bookkeeping, accounting support, and financial reporting services ensuring accuracy and compliance with accounting standards.</p>
+          <a href="Bookkeeping & Accounting Support.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
         </div>
         <div class="service-card">
           <i class="fas fa-users"></i>
-          <h3>Scalable Team Extension</h3>
-          <p>Dedicated experts who scale with your needs. No recruitment headaches, no training costs, just immediate expertise when you need it.</p>
+          <h3>Strategic Outsourcing</h3>
+          <p>Dedicated financial operations teams that scale with your business needs, providing expertise without the overhead of full-time hires.</p>
+          <a href="Outsourcing Partnership.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-database"></i>
+          <h3>Data Automation</h3>
+          <p>Automated data collection, processing, and analysis to transform raw data into actionable business intelligence and insights.</p>
+          <a href="Data Scraping & Automation.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>Tax Preparation</h3>
+          <p>Comprehensive tax preparation, planning, and compliance services to optimize your tax position and ensure regulatory adherence.</p>
+          <a href="Tax Preparation & Reporting.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-project-diagram"></i>
+          <h3>Process Optimization</h3>
+          <p>Workflow analysis, process documentation, and optimization strategies to enhance operational efficiency and reduce costs.</p>
+          <a href="Process Documentation & Workflow Support.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ENHANCED TESTIMONIALS WITH GENERIC MESSAGING -->
+  <!-- ENHANCED TESTIMONIALS -->
   <section class="testimonial-section">
     <div class="container">
-      <h2 class="section-title">What Financial Leaders Are Saying</h2>
-      <p class="section-subtitle">Early feedback from industry professionals who've experienced our approach to compliance transformation.</p>
+      <h2 class="section-title">Trusted by Financial Innovators</h2>
+      <p class="section-subtitle">Discover how forward-thinking financial companies are transforming their operations with our platform and services.</p>
 
       <div class="testimonial-grid">
         <div class="testimonial">
-          <p>"The vendor risk assessment identified critical gaps we'd completely overlooked. This level of insight is exactly what growing fintechs need to scale safely."</p>
-          <p class="testimonial-author">— Compliance Officer</p>
-          <p class="testimonial-role">Emerging Fintech Platform</p>
+          <p>"The operational efficiency gains we've achieved through Finology Nexus have been remarkable. Our compliance costs decreased by 35% while improving accuracy."</p>
+          <p class="testimonial-author">— Chief Operations Officer</p>
+          <p class="testimonial-role">Emerging Digital Bank</p>
         </div>
         <div class="testimonial">
-          <p>"Finally, a compliance solution that speaks the language of business growth, not just regulatory checkboxes. The strategic approach makes all the difference."</p>
-          <p class="testimonial-author">— Head of Operations</p>
-          <p class="testimonial-role">Digital NBFC</p>
+          <p>"Their vendor risk assessment platform identified critical gaps we had overlooked. The insights helped us avoid potential compliance issues during our audit."</p>
+          <p class="testimonial-author">— Compliance Director</p>
+          <p class="testimonial-role">Financial Technology Company</p>
         </div>
         <div class="testimonial">
-          <p>"The automation potential is staggering. What used to take weeks now happens in hours. This is the future of financial operations management."</p>
-          <p class="testimonial-author">— Technology Director</p>
-          <p class="testimonial-role">Financial Services Group</p>
+          <p>"The combination of technology and expert services has been transformative. We've scaled our operations 3x without increasing our compliance team."</p>
+          <p class="testimonial-author">— Head of Finance</p>
+          <p class="testimonial-role">Growing Fintech Startup</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ENHANCED CTA -->
+  <!-- ENHANCED CTA SECTION -->
   <section class="cta-section">
     <div class="container" style="position:relative;z-index:2;">
-      <h2 style="font-size:2.75rem;margin-bottom:1.5rem;">Ready to Transform Your Compliance Operations?</h2>
-      <p style="font-size:1.3rem;margin-bottom:2.5rem;opacity:0.95;">Join forward-thinking financial companies who are eliminating compliance stress and focusing on growth.</p>
+      <h2 style="font-size:2.75rem;margin-bottom:1.5rem;">Ready to Transform Your Financial Operations?</h2>
+      <p style="font-size:1.3rem;margin-bottom:2.5rem;opacity:0.95;">Join innovative financial companies that are automating compliance, reducing costs, and scaling with confidence.</p>
       <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;">
-        <a href="#assessment" class="btn btn-secondary" style="min-width:280px;">
-          <i class="fas fa-chart-pie"></i>Get Free Risk Analysis
+        <a href="free-scorecard.html" class="btn btn-secondary" style="min-width:280px;">
+          <i class="fas fa-chart-pie"></i>Get Free Operations Assessment
         </a>
-        <a href="tel:+919876543210" class="btn btn-gold" style="min-width:280px;">
-          <i class="fas fa-phone-alt"></i>Speak With Expert
+        <a href="contactus.html" class="btn btn-gold" style="min-width:280px;">
+          <i class="fas fa-phone-alt"></i>Schedule Expert Consultation
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ENHANCED FREE ASSESSMENT -->
+  <!-- ENHANCED FREE ASSESSMENT SECTION -->
   <section class="free-assessment section" id="assessment">
     <div class="assessment-container">
-      <h2 style="font-size:2.25rem;margin-bottom:1rem;">Get Your Complimentary Operations Health Check</h2>
-      <p style="font-size:1.2rem;color:var(--text-medium);margin-bottom:2rem;">5-minute assessment → Custom 15-page PDF with specific risks, savings opportunities, and actionable next steps.</p>
+      <h2 style="font-size:2.25rem;margin-bottom:1rem;">Get Your Complimentary Operations Assessment</h2>
+      <p style="font-size:1.2rem;color:var(--text-medium);margin-bottom:2rem;">Complete our 5-minute assessment and receive a customized 15-page analysis with specific recommendations for optimization and growth.</p>
       
       <div class="assessment-features">
         <div>
-          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">You'll Discover:</h3>
+          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Your Assessment Includes:</h3>
           <ul class="feature-list">
-            <li><i class="fas fa-fire"></i> Vendor risk heat map & vulnerability scores</li>
-            <li><i class="fas fa-money-bill-wave"></i> Hidden cost leaks & optimization areas</li>
-            <li><i class="fas fa-exclamation-triangle"></i> Critical compliance gaps requiring immediate attention</li>
-            <li><i class="fas fa-chart-line"></i> Benchmark against industry standards</li>
+            <li><i class="fas fa-fire"></i> Operational efficiency score & benchmarks</li>
+            <li><i class="fas fa-money-bill-wave"></i> Cost optimization opportunities</li>
+            <li><i class="fas fa-exclamation-triangle"></i> Compliance gap analysis</li>
+            <li><i class="fas fa-chart-line"></i> Vendor risk assessment</li>
           </ul>
         </div>
         <div>
-          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Zero Obligation:</h3>
+          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Completely Confidential:</h3>
           <ul class="feature-list">
-            <li><i class="fas fa-ban"></i> No sales pitch—just pure insights</li>
-            <li><i class="fas fa-bolt"></i> Detailed PDF delivered within 24 hours</li>
-            <li><i class="fas fa-handshake"></i> Optional 30-minute expert review session</li>
-            <li><i class="fas fa-lock"></i> 100% confidential assessment</li>
+            <li><i class="fas fa-ban"></i> No obligation or sales pressure</li>
+            <li><i class="fas fa-bolt"></i> Detailed PDF within 24 hours</li>
+            <li><i class="fas fa-handshake"></i> Optional expert review session</li>
+            <li><i class="fas fa-lock"></i> 100% secure and confidential</li>
           </ul>
         </div>
       </div>
       
       <div class="urgency-badge">
-        <i class="fas fa-clock"></i> Only 5 complimentary assessments available this week. Secure yours now.
+        <i class="fas fa-clock"></i> Limited complimentary assessments available this month. Secure your spot now.
       </div>
       
       <form id="assessmentForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="max-width:600px;margin:2.5rem auto 0;">
-        <input type="hidden" name="_subject" value="Free Operations Health Check Request">
+        <input type="hidden" name="_subject" value="Free Operations Assessment Request">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;">
           <input type="text" name="first_name" placeholder="First Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
           <input type="text" name="last_name" placeholder="Last Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
@@ -907,37 +955,36 @@
         <input type="email" name="email" placeholder="Work Email Address" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);width:100%;margin-bottom:1.25rem;font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
         <input type="text" name="company" placeholder="Company Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);width:100%;margin-bottom:1.25rem;font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
         <button type="submit" class="btn btn-secondary" style="width:100%;padding:1.25rem;font-size:1.15rem;font-weight:800;">
-          <i class="fas fa-download"></i> Download My Free Health Check
+          <i class="fas fa-download"></i> Download Free Assessment
         </button>
       </form>
     </div>
   </section>
 
-  <!-- ENHANCED FOOTER -->
+  <!-- ENHANCED FOOTER WITH PROPER NAVIGATION -->
   <footer>
     <div class="container">
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus" width="35" height="35">
+            <img src="finology-logofavicon.png" alt="Finology Nexus" width="35" height="35">
             <span>Finology Nexus</span>
           </div>
           <p class="footer-about">We empower financial companies to achieve operational excellence, regulatory compliance, and sustainable growth through intelligent automation and strategic partnership.</p>
           <div class="footer-socials">
             <a href="https://linkedin.com/company/finology-nexus" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/FinologyN57162" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://x.com/FinologyNexus" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="https://facebook.com/finologynexus" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://youtube.com/finologynexus" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
         <div class="footer-column">
           <div class="footer-links">
             <h4>Solutions</h4>
             <ul>
-              <li><a href="solutions.html#scorecard">Vendor Risk Intelligence</a></li>
-              <li><a href="solutions.html#rbi-auditor">RBI Compliance Guardian</a></li>
-              <li><a href="solutions.html#tracker">Smart Compliance Calendar</a></li>
-              <li><a href="solutions.html#diligence">Investor Due Diligence</a></li>
+              <li><a href="vendor-scorecard.html">Vendor Risk Intelligence</a></li>
+              <li><a href="solutions.html">Compliance Automation</a></li>
+              <li><a href="finance-checkup.html">Financial Dashboard</a></li>
+              <li><a href="solutions.html">Due Diligence Automation</a></li>
             </ul>
           </div>
         </div>
@@ -945,10 +992,11 @@
           <div class="footer-links">
             <h4>Services</h4>
             <ul>
-              <li><a href="services.html#analytics">Strategic Research & Intelligence</a></li>
-              <li><a href="services.html#support">Precision Back-Office Operations</a></li>
-              <li><a href="services.html#outsourcing">Scalable Team Extension</a></li>
-              <li><a href="services.html#consulting">Compliance Advisory</a></li>
+              <li><a href="Financial Research & Analytics.html">Research & Analytics</a></li>
+              <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping & Accounting</a></li>
+              <li><a href="Outsourcing Partnership.html">Strategic Outsourcing</a></li>
+              <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
+              <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
             </ul>
           </div>
         </div>
@@ -956,21 +1004,22 @@
           <div class="footer-links">
             <h4>Company</h4>
             <ul>
-              <li><a href="about.html">Our Story & Mission</a></li>
-              <li><a href="case-studies.html">Client Success Stories</a></li>
-              <li><a href="contact.html">Contact Our Team</a></li>
-              <li><a href="careers.html">Join Our Team</a></li>
+              <li><a href="aboutus.html">About Us</a></li>
+              <li><a href="blog.html">Blog & Insights</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+              <li><a href="privacypolicy.html">Privacy Policy</a></li>
+              <li><a href="termsofservice.html">Terms of Service</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Finology Nexus. All rights reserved. | <a href="privacy.html" style="color:#9ca3af;">Privacy Policy</a> | <a href="terms.html" style="color:#9ca3af;">Terms of Service</a> | <a href="security.html" style="color:#9ca3af;">Security</a></p>
+        <p>© 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html" style="color:#9ca3af;">Privacy Policy</a> | <a href="termsofservice.html" style="color:#9ca3af;">Terms of Service</a></p>
       </div>
     </div>
   </footer>
 
-  <a href="#assessment" class="floating-cta">
+  <a href="free-scorecard.html" class="floating-cta">
     <i class="fas fa-bolt"></i>Free Assessment
   </a>
 
