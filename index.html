@@ -46,6 +46,9 @@
       --secondary-blue: #0099ff;
       --accent-blue: #0077dd;
       --accent-gold: #cc9900;
+      --accent-gold-light: #e6b800;
+      --accent-purple: #6a0dad;
+      --accent-purple-light: #8a2be2;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -93,7 +96,7 @@
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       border-radius: 2px;
     }
     .section-description {
@@ -116,20 +119,22 @@
       text-align: center;
       gap: 0.5rem;
       font-size: 1rem;
+      position: relative;
+      overflow: hidden;
     }
    
     .btn-primary {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       border: none;
-      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
     }
    
     .btn-secondary {
-      background: var(--secondary-blue);
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
       color: var(--white);
       border: none;
-      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
     }
     .btn-tertiary {
       background: rgba(255, 255, 255, 0.25);
@@ -149,6 +154,22 @@
     .btn-outline:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
+    }
+    
+    /* Button animation effects */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
     }
     /* ========== LAYOUT COMPONENTS ========== */
     .container {
@@ -172,8 +193,14 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
     }
+    
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
     .logo-group {
       display: flex;
       align-items: center;
@@ -189,7 +216,7 @@
     .company-name {
       font-size: 1.75rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -217,7 +244,7 @@
       height: 3px;
       bottom: -6px;
       left: 0;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       transition: var(--transition);
       border-radius: 2px;
     }
@@ -226,7 +253,7 @@
       width: 100%;
     }
     nav a.active {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
     }
     .menu-toggle {
       display: none;
@@ -234,12 +261,12 @@
       border: none;
       font-size: 1.75rem;
       cursor: pointer;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       padding: 0.5rem;
     }
     /* ========== HERO SECTION ========== */
     .hero {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
       color: var(--white);
       padding: 8rem 1.25rem 5rem;
       text-align: center;
@@ -258,6 +285,42 @@
         radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
       animation: float 8s ease-in-out infinite;
     }
+    
+    /* Animated particles background */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+    
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-15px) scale(1.03); }
@@ -330,6 +393,7 @@
       from { opacity: 0; transform: translateY(2rem); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     /* ========== GLOBAL REACH SECTION ========== */
     .global-section {
       background: var(--white);
@@ -353,7 +417,7 @@
     }
     .global-text h3 {
       font-size: 1.75rem;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1.25rem;
     }
     .global-text p {
@@ -371,7 +435,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 0 20px rgba(0,102,204,0.05);
+      box-shadow: inset 0 0 20px rgba(106, 13, 173, 0.05);
     }
     .map-placeholder {
       width: 100%;
@@ -383,7 +447,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       text-align: center;
       padding: 2rem;
     }
@@ -404,16 +468,16 @@
       border-radius: var(--radius-md);
       text-align: center;
       transition: var(--transition);
-      border: 1px solid rgba(0,102,204,0.1);
+      border: 1px solid rgba(106, 13, 173, 0.1);
     }
     .region-item:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
-      border-color: var(--primary-blue);
+      border-color: var(--accent-purple);
     }
     .region-item i {
       font-size: 2.5rem;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1.25rem;
     }
     .region-item h4 {
@@ -469,18 +533,30 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,102,204,0.08);
+      border: 1px solid rgba(106, 13, 173, 0.08);
+      position: relative;
+      overflow: hidden;
     }
    
     .product-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
-      border-color: var(--primary-blue);
+      border-color: var(--accent-purple);
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
     }
    
     .product-card-header {
       padding: 2rem 1.75rem;
-      background: var(--primary-blue);
+      background: var(--accent-purple);
       color: var(--white);
       position: relative;
       overflow: hidden;
@@ -497,7 +573,7 @@
       transform: translate(40%, -40%);
     }
     .product-card-header.compliance {
-      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
     }
    
     .product-card-header i {
@@ -546,19 +622,19 @@
       font-weight: 900;
       position: absolute;
       left: 0;
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       font-size: 1.1rem;
     }
     .highlight-box {
       background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
-      border-left: 5px solid var(--primary-blue);
+      border-left: 5px solid var(--accent-purple);
       padding: 1.25rem;
       margin: 1.5rem 0;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 1.05rem;
     }
     .highlight-box strong {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       font-weight: 700;
     }
    
@@ -606,20 +682,33 @@
       box-shadow: var(--shadow-md);
       transition: var(--transition);
       text-align: left;
-      border: 1px solid rgba(0,102,204,0.08);
+      border: 1px solid rgba(106, 13, 173, 0.08);
+      position: relative;
+      overflow: hidden;
     }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+    }
+    
     .service-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
     }
     .service-card-header {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       padding: 2rem 1.75rem;
       position: relative;
     }
     .service-card-header.compliance {
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
     }
     .service-card-header i {
       font-size: 3rem;
@@ -657,7 +746,7 @@
       font-weight: 900;
       position: absolute;
       left: 0;
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       font-size: 1.1rem;
     }
     /* ========== INDUSTRY EXPERTISE SECTION ========== */
@@ -687,13 +776,15 @@
       box-shadow: var(--shadow-sm);
       font-size: 1.05rem;
       min-width: 180px;
+      position: relative;
+      overflow: hidden;
     }
     .tab-button:hover {
       background: #f0f7ff;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
     }
     .tab-button.active {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       box-shadow: var(--shadow-md);
     }
@@ -704,7 +795,7 @@
       padding: 3rem;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
-      border: 1px solid rgba(0,102,204,0.1);
+      border: 1px solid rgba(106, 13, 173, 0.1);
     }
     .tab-content.active {
       display: block;
@@ -715,7 +806,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .tab-content h3 {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1.5rem;
       font-size: 1.875rem;
     }
@@ -738,7 +829,7 @@
       padding: 1.5rem;
       background: #f8fbff;
       border-radius: var(--radius-md);
-      border-left: 4px solid var(--primary-blue);
+      border-left: 4px solid var(--accent-purple);
       transition: var(--transition);
     }
     .tab-feature:hover {
@@ -746,7 +837,7 @@
       transform: translateX(5px);
     }
     .tab-feature i {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       font-size: 1.5rem;
       margin-top: 0.25rem;
       flex-shrink: 0;
@@ -790,7 +881,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
     }
     .benefit-card:hover {
       transform: translateY(-8px);
@@ -798,12 +889,12 @@
     }
     .benefit-card i {
       font-size: 3.5rem;
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       margin-bottom: 1.5rem;
       display: block;
     }
     .benefit-card h3 {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1rem;
       font-size: 1.5rem;
     }
@@ -829,7 +920,7 @@
       padding: 2.5rem;
       border-radius: var(--radius-lg);
       position: relative;
-      border-left: 5px solid var(--primary-blue);
+      border-left: 5px solid var(--accent-purple);
       box-shadow: var(--shadow-md);
       transition: var(--transition);
     }
@@ -840,7 +931,7 @@
     .testimonial:before {
       content: '"';
       font-size: 6rem;
-      color: rgba(0, 119, 204, 0.12);
+      color: rgba(106, 13, 173, 0.12);
       position: absolute;
       top: 1rem;
       left: 1.5rem;
@@ -858,7 +949,7 @@
     }
     .testimonial-author {
       font-weight: 700;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       font-style: normal;
       font-size: 1.05rem;
       padding-left: 2.5rem;
@@ -892,7 +983,14 @@
       padding: 2rem;
       background: #f8fbff;
       border-radius: var(--radius-lg);
-      border: 1px dashed rgba(0,102,204,0.2);
+      border: 1px dashed rgba(106, 13, 173, 0.2);
+    }
+    .tech-logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition: var(--transition);
     }
     .tech-logos img {
       height: 3rem;
@@ -906,9 +1004,14 @@
       filter: grayscale(0%);
       opacity: 1;
     }
+    .tech-logo-name {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      font-weight: 500;
+    }
     /* ========== CTA SECTION ========== */
     .cta-section {
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       padding: 6rem 1.25rem;
       text-align: center;
@@ -961,10 +1064,10 @@
       padding: 3.5rem;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
-      border: 1px solid rgba(0,102,204,0.1);
+      border: 1px solid rgba(106, 13, 173, 0.1);
     }
     .assessment-container h2 {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1.25rem;
       font-size: 2.5rem;
     }
@@ -986,7 +1089,7 @@
     }
     .feature-column h3 {
       font-size: 1.5rem;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       margin-bottom: 1.5rem;
       position: relative;
       padding-bottom: 0.75rem;
@@ -998,7 +1101,7 @@
       left: 0;
       width: 50px;
       height: 3px;
-      background: var(--secondary-blue);
+      background: var(--accent-gold);
       border-radius: 2px;
     }
     .feature-list {
@@ -1012,7 +1115,7 @@
       font-size: 1.05rem;
     }
     .feature-list i {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       margin-top: 0.35rem;
       font-size: 1.1rem;
     }
@@ -1025,7 +1128,7 @@
       padding: 2.5rem;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
-      border: 1px solid rgba(0, 119, 204, 0.15);
+      border: 1px solid rgba(106, 13, 173, 0.15);
     }
     .form-row {
       display: grid;
@@ -1052,12 +1155,12 @@
     .assessment-form input:focus,
     .assessment-form textarea:focus,
     .assessment-form select:focus {
-      border-color: var(--primary-blue);
+      border-color: var(--accent-purple);
       outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+      box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
     }
     .assessment-form button {
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       color: var(--white);
       border: none;
       padding: 1.25rem;
@@ -1071,7 +1174,7 @@
       letter-spacing: 0.5px;
     }
     .assessment-form button:hover {
-      background: linear-gradient(to right, var(--primary-blue), var(--primary-blue-dark));
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
@@ -1103,7 +1206,7 @@
     .footer-logo-group span {
       font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -1128,7 +1231,7 @@
       left: 0;
       width: 40px;
       height: 3px;
-      background: var(--secondary-blue);
+      background: var(--accent-gold);
       border-radius: 2px;
     }
     .footer-links ul {
@@ -1145,7 +1248,7 @@
       display: inline-block;
     }
     .footer-links a:hover {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       transform: translateX(5px);
     }
     .footer-socials {
@@ -1167,8 +1270,8 @@
       justify-content: center;
     }
     .footer-socials a:hover {
-      color: var(--secondary-blue);
-      background: rgba(0,153,255,0.2);
+      color: var(--accent-gold);
+      background: rgba(204, 153, 0, 0.2);
       transform: translateY(-3px);
     }
     .footer-bottom {
@@ -1180,7 +1283,7 @@
       color: #9ca3af;
     }
     .footer-bottom a {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       text-decoration: none;
     }
     .footer-bottom a:hover {
@@ -1191,7 +1294,7 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       color: var(--white);
       padding: 1rem 1.5rem;
       border-radius: 3rem;
@@ -1208,7 +1311,7 @@
       border: 1px solid rgba(255,255,255,0.2);
     }
     .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
       transform: translateY(-5px) scale(1.05);
       box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
@@ -1351,7 +1454,7 @@
     input:focus-visible,
     textarea:focus-visible,
     select:focus-visible {
-      outline: 3px solid var(--secondary-blue);
+      outline: 3px solid var(--accent-gold);
       outline-offset: 3px;
       border-radius: var(--radius-sm);
     }
@@ -1380,6 +1483,7 @@
   </header>
   
   <section class="hero">
+    <div class="particles" id="particles"></div>
     <div class="container">
       <h1>Global Financial Operations Excellence for Modern Enterprises</h1>
       <p>Strategic financial operations, RBI-compliant automation, advanced research analytics, and enterprise-grade back-office solutions engineered to accelerate growth, ensure regulatory adherence, and drive operational efficiency across global financial markets.</p>
@@ -1864,19 +1968,19 @@
         <div class="testimonial">
           <p>"Finology Nexus transformed our RBI compliance operations from a cost center into a strategic advantage. Their automated circular tracking and reporting platform reduced our compliance workload by 78% while ensuring perfect regulatory adherence."</p>
           <p class="testimonial-author">— Chief Compliance Officer</p>
-          <p class="testimonial-role">Leading NBFC</p>
+          <p class="testimonial-role">Leading NBFC, Mumbai</p>
         </div>
         
         <div class="testimonial">
           <p>"The combination of global best practices with deep RBI expertise enabled us to scale our digital lending platform across India without compromising on compliance or operational efficiency. A true strategic partner."</p>
           <p class="testimonial-author">— Chief Operating Officer</p>
-          <p class="testimonial-role">Leading Fintech Unicorn</p>
+          <p class="testimonial-role">Fintech Unicorn, Bangalore</p>
         </div>
         
         <div class="testimonial">
           <p>"Their vendor risk intelligence platform identified critical supply chain vulnerabilities we didn't know existed. The strategic insights and mitigation frameworks prevented potential regulatory issues and saved us millions."</p>
           <p class="testimonial-author">— Head of Risk Management</p>
-          <p class="testimonial-role">Leading Global Investment Bank</p>
+          <p class="testimonial-role">Global Investment Bank, Singapore</p>
         </div>
       </div>
     </div>
@@ -1888,15 +1992,42 @@
       <p class="section-description">Enterprise-grade technology partners and platforms ensuring seamless integration, security, and performance at scale.</p>
      
       <div class="tech-logos">
-        <img src="https://cdn.worldvectorlogo.com/logos/salesforce.svg" alt="Salesforce">
-        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
-        <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python">
-        <img src="PowerBi Logo.png" alt="Power BI">
-        <img src="https://cdn.worldvectorlogo.com/logos/quickbooks.svg" alt="QuickBooks">
-        <img src="https://cdn.worldvectorlogo.com/logos/xero-1.svg" alt="Xero">
-        <img src="https://cdn.worldvectorlogo.com/logos/sap-2.svg" alt="SAP">
-        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg" alt="Microsoft Azure">
-        <img src="https://cdn.worldvectorlogo.com/logos/amazon-web-services.svg" alt="AWS">
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/salesforce.svg" alt="Salesforce">
+          <div class="tech-logo-name">Salesforce</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+          <div class="tech-logo-name">Tableau</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python">
+          <div class="tech-logo-name">Python</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+          <div class="tech-logo-name">Power BI</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/quickbooks.svg" alt="QuickBooks">
+          <div class="tech-logo-name">QuickBooks</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/xero-1.svg" alt="Xero">
+          <div class="tech-logo-name">Xero</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/sap-2.svg" alt="SAP">
+          <div class="tech-logo-name">SAP</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg" alt="Microsoft Azure">
+          <div class="tech-logo-name">Azure</div>
+        </div>
+        <div class="tech-logo-item">
+          <img src="https://cdn.worldvectorlogo.com/logos/amazon-web-services.svg" alt="AWS">
+          <div class="tech-logo-name">AWS</div>
+        </div>
       </div>
     </div>
   </section>
@@ -2075,13 +2206,13 @@
       this.reset();
     });
 
-    // Header shadow on scroll
+    // Header scroll effect
     window.addEventListener('scroll', function() {
       const header = document.querySelector('header');
       if (window.scrollY > 50) {
-        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        header.classList.add('scrolled');
       } else {
-        header.style.boxShadow = 'var(--shadow-sm)';
+        header.classList.remove('scrolled');
       }
     });
 
@@ -2102,6 +2233,32 @@
         }
       });
     });
+
+    // Create animated particles for hero section
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size and position
+        const size = Math.random() * 5 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 15;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Initialize particles when page loads
+    document.addEventListener('DOMContentLoaded', createParticles);
   </script>
 </body>
 </html>
