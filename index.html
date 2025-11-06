@@ -7,36 +7,32 @@
   <meta name="description" content="Automate financial operations, ensure regulatory compliance, and scale confidently with our AI-powered platform and expert services." />
   <meta name="keywords" content="financial operations, compliance automation, vendor risk management, fintech solutions, NBFC compliance" />
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
- 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
- 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
- 
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-
   <style>
     :root {
       --primary-blue: #0066cc; --primary-blue-dark: #004d99; --secondary-blue: #0099ff;
-      --accent-purple: #7c3aed; --accent-gold: #f59e0b; --danger-red: #dc2626; 
-      --warning-orange: #f97316; --success-emerald: #059669; --dark-bg: #111827; 
-      --light-bg: #f8fafc; --text-dark: #1e293b; --text-medium: #475569; 
-      --text-light: #64748b; --white: #ffffff; --shadow-sm: 0 1px 3px rgba(0,0,0,0.1); 
+      --accent-purple: #7c3aed; --accent-gold: #f59e0b; --danger-red: #dc2626;
+      --warning-orange: #f97316; --success-emerald: #059669; --dark-bg: #111827;
+      --light-bg: #f8fafc; --text-dark: #1e293b; --text-medium: #475569;
+      --text-light: #64748b; --white: #ffffff; --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
       --shadow-md: 0 4px 6px rgba(0,0,0,0.1); --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-      --shadow-xl: 0 20px 40px rgba(0,0,0,0.2); --radius-sm: 8px; --radius-md: 12px; 
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.2); --radius-sm: 8px; --radius-md: 12px;
       --radius-lg: 20px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+   
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', system-ui, sans-serif; background: var(--light-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
     h1, h2, h3 { font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; }
     .section-title { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-dark); }
     .section-subtitle { font-size: 1.25rem; color: var(--text-medium); max-width: 800px; margin: 0 auto 3rem; }
-    
+   
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; transition: var(--transition); min-width: 200px; gap: 0.75rem; font-size: 1.05rem; border: none; cursor: pointer; }
     .btn-primary { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: var(--white); box-shadow: var(--shadow-md); }
     .btn-secondary { background: var(--accent-purple); color: var(--white); box-shadow: var(--shadow-md); }
@@ -44,22 +40,21 @@
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.8); }
     .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
     .btn:active { transform: translateY(-1px); }
-    
+   
     .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
     .section { padding: 6rem 1.5rem; }
-
     /* Enhanced Header with Animation */
-    header { 
-      background: rgba(255, 255, 255, 0.95); 
+    header {
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
-      padding: 1.25rem 2.5rem; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      box-shadow: var(--shadow-sm); 
-      position: sticky; 
-      top: 0; 
-      z-index: 1000; 
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
       border-bottom: 1px solid rgba(0,0,0,0.05);
       animation: slideDown 0.5s ease-out;
     }
@@ -68,62 +63,55 @@
       to { transform: translateY(0); opacity: 1; }
     }
     .logo-group { display: flex; align-items: center; gap: 12px; }
-    .company-name { 
-      font-size: 1.75rem; 
-      font-weight: 800; 
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); 
-      -webkit-background-clip: text; 
-      background-clip: text; 
-      color: transparent; 
+    .company-name {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
-    nav ul { 
-      display: flex; 
-      gap: 2rem; 
-      list-style: none; 
-      margin: 0; 
-      padding: 0; 
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
-    nav a { 
-      color: var(--text-dark); 
-      font-weight: 600; 
-      text-decoration: none; 
-      position: relative; 
-      transition: var(--transition); 
+    nav a {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      transition: var(--transition);
       font-size: 1rem;
       padding: 0.5rem 0;
     }
-    nav a::after { 
-      content: ''; 
-      position: absolute; 
-      width: 0; 
-      height: 3px; 
-      bottom: 0; 
-      left: 0; 
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); 
-      transition: var(--transition); 
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      transition: var(--transition);
       border-radius: 2px;
     }
-    nav a:hover::after, 
-    nav a.active::after { 
-      width: 100%; 
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
     }
-    nav a.active { 
-      color: var(--primary-blue); 
+    nav a.active {
+      color: var(--primary-blue);
     }
-
-    .header-cta {
-      display: flex;
-      gap: 1rem;
-      margin-left: 2rem;
-    }
-
     /* ENHANCED HERO WITH PARTICLES */
-    .hero { 
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); 
-      color: var(--white); 
-      padding: 8rem 1.5rem 6rem; 
-      position: relative; 
-      overflow: hidden; 
+    .hero {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: var(--white);
+      padding: 8rem 1.5rem 6rem;
+      position: relative;
+      overflow: hidden;
     }
     .hero::before {
       content: '';
@@ -132,7 +120,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: 
+      background:
         radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
@@ -152,101 +140,98 @@
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-10px) scale(1.02); }
     }
-    .hero h1 { 
-      font-size: 3.5rem; 
-      margin-bottom: 1.5rem; 
-      animation: fadeInDown 0.8s ease-out; 
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 0.8s ease-out;
       text-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .hero p { 
-      font-size: 1.5rem; 
-      max-width: 800px; 
-      margin: 0 auto 2.5rem; 
-      opacity: 0.95; 
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
       animation: fadeInUp 0.8s ease-out 0.2s both;
       font-weight: 500;
     }
-    .hero-cta { 
-      display: flex; 
-      justify-content: center; 
-      gap: 1.5rem; 
-      flex-wrap: wrap; 
-      margin: 3rem 0; 
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 3rem 0;
       animation: fadeInUp 0.8s ease-out 0.4s both;
     }
-    .hero-cta .btn { 
-      font-size: 1.15rem; 
-      padding: 1.25rem 2.5rem; 
-      min-width: 260px; 
+    .hero-cta .btn {
+      font-size: 1.15rem;
+      padding: 1.25rem 2.5rem;
+      min-width: 260px;
       border-radius: var(--radius-md);
     }
-
     /* Enhanced Stats with Counting Animation */
-    .hero-stats { 
-      display: flex; 
-      justify-content: center; 
-      gap: 3rem; 
-      flex-wrap: wrap; 
-      background: rgba(255,255,255,0.15); 
-      backdrop-filter: blur(20px); 
-      padding: 3rem; 
-      border-radius: var(--radius-lg); 
-      max-width: 1000px; 
-      margin: 4rem auto 0; 
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      max-width: 1000px;
+      margin: 4rem auto 0;
       border: 1px solid rgba(255,255,255,0.2);
       animation: fadeInUp 0.8s ease-out 0.6s both;
       position: relative;
       z-index: 2;
     }
-    .stat-item { 
-      text-align: center; 
-      min-width: 160px; 
+    .stat-item {
+      text-align: center;
+      min-width: 160px;
     }
-    .stat-number { 
-      font-size: 3rem; 
-      font-weight: 800; 
-      color: var(--white); 
-      display: block; 
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--white);
+      display: block;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .stat-label { 
-      font-size: 1rem; 
-      color: rgba(255,255,255,0.95); 
-      font-weight: 600; 
+    .stat-label {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      font-weight: 600;
       margin-top: 0.5rem;
     }
-
-    @keyframes fadeInDown { 
-      from { opacity: 0; transform: translateY(-30px); } 
-      to { opacity: 1; transform: translateY(0); } 
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeInUp { 
-      from { opacity: 0; transform: translateY(30px); } 
-      to { opacity: 1; transform: translateY(0); } 
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-
     /* Enhanced Products with Staggered Animation */
     .products-section { background: var(--light-bg); }
-    .product-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-      gap: 2.5rem; 
-      margin-top: 4rem; 
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
     }
-    .product-card { 
-      background: var(--white); 
-      border-radius: var(--radius-lg); 
-      overflow: hidden; 
-      box-shadow: var(--shadow-md); 
-      transition: var(--transition); 
-      text-align: left; 
-      height: 100%; 
-      display: flex; 
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
+      height: 100%;
+      display: flex;
       flex-direction: column;
       border: 1px solid rgba(0,0,0,0.05);
       opacity: 0;
@@ -257,78 +242,89 @@
     .product-card:nth-child(2) { animation-delay: 0.2s; }
     .product-card:nth-child(3) { animation-delay: 0.3s; }
     .product-card:nth-child(4) { animation-delay: 0.4s; }
-    .product-card:hover { 
-      transform: translateY(-10px); 
-      box-shadow: var(--shadow-xl); 
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
     }
-    .product-card-header { 
-      padding: 2rem; 
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); 
-      color: var(--white); 
+    .product-card-header {
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
       position: relative;
     }
-    .product-card-header i { 
-      font-size: 2.5rem; 
-      margin-bottom: 1rem; 
-      display: block; 
+    .product-card-header i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
       opacity: 0.9;
     }
-    .product-card-header h3 { 
-      font-size: 1.75rem; 
-      margin: 0; 
+    .product-card-header h3 {
+      font-size: 1.75rem;
+      margin: 0;
     }
-    .product-card-body { 
-      padding: 2rem; 
-      flex-grow: 1; 
+    .product-card-body {
+      padding: 2rem;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
-    .product-card-body p { 
-      margin-bottom: 1.5rem; 
-      font-size: 1.1rem; 
-      line-height: 1.7; 
+    .product-card-body p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
       color: var(--text-medium);
       flex-grow: 1;
     }
-    .highlight { 
-      background: linear-gradient(135deg, #fef3c7, #fde68a); 
-      padding: 1rem 1.25rem; 
-      border-radius: var(--radius-md); 
-      font-weight: 700; 
-      color: #92400e; 
-      margin: 1.5rem 0; 
+    .highlight {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      color: #92400e;
+      margin: 1.5rem 0;
       border-left: 4px solid var(--warning-orange);
       font-size: 1.05rem;
     }
-    .free-badge { 
-      background: linear-gradient(135deg, var(--accent-gold), #fbbf24); 
-      color: var(--text-dark); 
-      padding: 0.75rem 1.25rem; 
-      border-radius: 2rem; 
-      font-size: 0.95rem; 
-      font-weight: 800; 
-      display: inline-block; 
-      margin-top: 0.5rem; 
+    .free-badge {
+      background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
+      color: var(--text-dark);
+      padding: 0.75rem 1.25rem;
+      border-radius: 2rem;
+      font-size: 0.95rem;
+      font-weight: 800;
+      display: inline-block;
+      margin-top: 0.5rem;
       text-align: center;
       box-shadow: var(--shadow-sm);
       animation: pulse 2s infinite;
     }
-
+    /* RBI Compliance Alert */
+    .rbi-alert {
+      background: linear-gradient(135deg, var(--danger-red), var(--warning-orange));
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: var(--radius-md);
+      margin: 2rem 0;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--white);
+    }
     /* Enhanced Services with Hover Effects */
     .services-section { background: var(--white); }
-    .service-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 2.5rem; 
-      margin-top: 4rem; 
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
     }
-    .service-card { 
-      background: var(--white); 
-      border-radius: var(--radius-lg); 
-      padding: 2.5rem; 
-      box-shadow: var(--shadow-md); 
-      transition: var(--transition); 
-      text-align: left; 
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
       border: 1px solid rgba(0,0,0,0.05);
       position: relative;
       overflow: hidden;
@@ -348,29 +344,28 @@
       height: 100%;
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     }
-    .service-card:hover { 
-      transform: translateY(-8px); 
-      box-shadow: var(--shadow-xl); 
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
     }
-    .service-card i { 
-      font-size: 2.5rem; 
-      color: var(--primary-blue); 
-      margin-bottom: 1.5rem; 
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    .service-card h3 { 
-      font-size: 1.5rem; 
-      margin-bottom: 1rem; 
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
       color: var(--text-dark);
     }
     .service-card p {
       color: var(--text-medium);
       line-height: 1.7;
     }
-
     /* Enhanced Testimonials with Fade In */
     .testimonial-section { background: var(--light-bg); padding: 6rem 1.5rem; }
     .testimonial-grid {
@@ -379,10 +374,10 @@
       gap: 2rem;
       margin-top: 3rem;
     }
-    .testimonial { 
-      background: var(--white); 
-      padding: 2.5rem; 
-      border-radius: var(--radius-lg); 
+    .testimonial {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
       border-left: 4px solid var(--primary-blue);
       position: relative;
@@ -403,16 +398,16 @@
       opacity: 0.1;
       font-family: serif;
     }
-    .testimonial p { 
-      font-size: 1.1rem; 
-      margin-bottom: 1.5rem; 
+    .testimonial p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
       color: var(--text-medium);
       line-height: 1.7;
       font-style: italic;
     }
-    .testimonial-author { 
-      font-weight: 700; 
-      color: var(--primary-blue); 
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary-blue);
       font-size: 1.05rem;
     }
     .testimonial-role {
@@ -420,12 +415,11 @@
       font-size: 0.95rem;
       margin-top: 0.25rem;
     }
-
     /* Enhanced CTA & Assessment */
-    .cta-section { 
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); 
-      color: var(--white); 
-      padding: 6rem 1.5rem; 
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 6rem 1.5rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -444,17 +438,17 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    .free-assessment { 
-      background: linear-gradient(135deg, #f8fafc, #e2e8f0); 
-      padding: 6rem 1.5rem; 
+    .free-assessment {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      padding: 6rem 1.5rem;
     }
-    .assessment-container { 
-      background: var(--white); 
-      padding: 4rem; 
-      border-radius: var(--radius-lg); 
-      box-shadow: var(--shadow-xl); 
-      max-width: 900px; 
-      margin: 0 auto; 
+    .assessment-container {
+      background: var(--white);
+      padding: 4rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      max-width: 900px;
+      margin: 0 auto;
       position: relative;
       overflow: hidden;
       transform: translateY(30px);
@@ -470,99 +464,98 @@
       height: 4px;
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
     }
-    .assessment-features { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 3rem; 
-      margin: 2.5rem 0; 
-      text-align: left; 
+    .assessment-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 2.5rem 0;
+      text-align: left;
     }
-    .feature-list li { 
-      margin-bottom: 1rem; 
-      display: flex; 
-      align-items: flex-start; 
-      gap: 1rem; 
-      font-size: 1.1rem; 
+    .feature-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 1.1rem;
       color: var(--text-medium);
     }
-    .feature-list i { 
-      color: var(--success-emerald); 
-      margin-top: 0.25rem; 
+    .feature-list i {
+      color: var(--success-emerald);
+      margin-top: 0.25rem;
       flex-shrink: 0;
     }
-
     /* Enhanced Footer */
-    footer { 
-      background: var(--dark-bg); 
-      color: #d1d5db; 
-      padding: 5rem 1.5rem 2rem; 
-      font-size: 0.95rem; 
+    footer {
+      background: var(--dark-bg);
+      color: #d1d5db;
+      padding: 5rem 1.5rem 2rem;
+      font-size: 0.95rem;
     }
-    .footer-main { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: space-between; 
-      max-width: 1200px; 
-      margin: 0 auto 3rem; 
-      gap: 3rem; 
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      gap: 3rem;
     }
-    .footer-column { 
-      flex: 1; 
-      min-width: 250px; 
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
     }
-    .footer-logo-group { 
-      display: flex; 
-      align-items: center; 
-      gap: 0.75rem; 
-      margin-bottom: 1.5rem; 
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
     }
-    .footer-logo-group img { 
-      height: 2.5rem; 
+    .footer-logo-group img {
+      height: 2.5rem;
     }
-    .footer-logo-group span { 
-      font-size: 1.4rem; 
-      font-weight: 800; 
-      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue)); 
-      -webkit-background-clip: text; 
-      color: transparent; 
+    .footer-logo-group span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+      -webkit-background-clip: text;
+      color: transparent;
     }
-    .footer-about { 
-      line-height: 1.7; 
-      margin-bottom: 2rem; 
+    .footer-about {
+      line-height: 1.7;
+      margin-bottom: 2rem;
       color: #9ca3af;
       font-size: 1rem;
     }
-    .footer-links h4 { 
-      color: var(--white); 
-      margin-bottom: 1.5rem; 
-      font-size: 1.2rem; 
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
     }
-    .footer-links ul { 
-      list-style: none; 
+    .footer-links ul {
+      list-style: none;
     }
     .footer-links li {
       margin-bottom: 0.75rem;
     }
-    .footer-links a { 
-      color: #d1d5db; 
-      text-decoration: none; 
-      transition: var(--transition); 
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
       font-size: 1rem;
     }
-    .footer-links a:hover { 
-      color: var(--secondary-blue); 
+    .footer-links a:hover {
+      color: var(--secondary-blue);
       transform: translateX(5px);
     }
-    .footer-socials { 
+    .footer-socials {
       display: flex;
       gap: 1rem;
       margin-top: 1.5rem;
     }
-    .footer-socials a { 
-      color: var(--white); 
-      font-size: 1.4rem; 
-      transition: var(--transition); 
+    .footer-socials a {
+      color: var(--white);
+      font-size: 1.4rem;
+      transition: var(--transition);
       background: rgba(255,255,255,0.1);
       width: 45px;
       height: 45px;
@@ -571,47 +564,45 @@
       align-items: center;
       justify-content: center;
     }
-    .footer-socials a:hover { 
-      color: var(--secondary-blue); 
-      transform: translateY(-3px); 
+    .footer-socials a:hover {
+      color: var(--secondary-blue);
+      transform: translateY(-3px);
       background: rgba(255,255,255,0.2);
     }
-    .footer-bottom { 
-      text-align: center; 
-      padding-top: 2rem; 
-      border-top: 1px solid #374151; 
-      color: #9ca3af; 
-      font-size: 0.9rem; 
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+      font-size: 0.9rem;
       max-width: 1200px;
       margin: 0 auto;
     }
-
     /* Enhanced Floating CTA */
-    .floating-cta { 
-      position: fixed; 
-      bottom: 2rem; 
-      right: 2rem; 
-      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue)); 
-      color: var(--white); 
-      padding: 1rem 1.5rem; 
-      border-radius: 2rem; 
-      font-weight: 700; 
-      box-shadow: var(--shadow-xl); 
-      z-index: 1000; 
-      transition: var(--transition); 
-      display: flex; 
-      align-items: center; 
-      gap: 0.75rem; 
+    .floating-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-xl);
+      z-index: 1000;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       text-decoration: none;
       font-size: 1.05rem;
       animation: pulse 2s infinite;
     }
-    .floating-cta:hover { 
-      transform: translateY(-5px) scale(1.05); 
-      box-shadow: var(--shadow-lg); 
+    .floating-cta:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-lg);
       animation: none;
     }
-
     /* Urgency Badge */
     .urgency-badge {
       background: linear-gradient(135deg, var(--warning-orange), var(--danger-red));
@@ -624,7 +615,6 @@
       box-shadow: var(--shadow-md);
       animation: pulse 2s infinite;
     }
-
     /* Particle Animation for Hero */
     .particles {
       position: absolute;
@@ -657,13 +647,6 @@
         opacity: 0;
       }
     }
-
-    @media (max-width: 1024px) {
-      .header-cta {
-        display: none;
-      }
-    }
-
     @media (max-width: 768px) {
       header { padding: 1rem; }
       .hero h1 { font-size: 2.75rem; }
@@ -682,14 +665,13 @@
   </style>
 </head>
 <body>
-
-  <!-- ENHANCED HEADER WITH WORKING CTA BUTTONS -->
+  <!-- ENHANCED HEADER WITHOUT CTA BUTTONS -->
   <header>
     <div class="logo-group">
       <img src="finology-logofavicon.png" alt="Finology Nexus" width="45">
       <span class="company-name">Finology Nexus</span>
     </div>
-    
+   
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -700,22 +682,11 @@
         <li><a href="contactus.html">Contact</a></li>
       </ul>
     </nav>
-
-    <div class="header-cta">
-      <a href="free-scorecard.html" class="btn btn-secondary" style="min-width: 180px; padding: 0.75rem 1.5rem;">
-        Free Assessment
-      </a>
-      <a href="contactus.html" class="btn btn-gold" style="min-width: 180px; padding: 0.75rem 1.5rem;">
-        Book Strategy Call
-      </a>
-    </div>
-
     <button class="menu-toggle" aria-label="Toggle navigation" style="display: none;">
       <i class="fas fa-bars"></i>
     </button>
   </header>
-
-  <!-- ENHANCED HERO WITH PROFESSIONAL CONTENT -->
+  <!-- ENHANCED HERO WITH BALANCED CONTENT -->
   <section class="hero">
     <div class="particles" id="particles"></div>
     <div class="container">
@@ -729,34 +700,34 @@
           <i class="fas fa-calendar-check"></i>Schedule Strategy Session
         </a>
       </div>
-
       <div class="hero-stats">
         <div class="stat-item">
           <span class="stat-number" data-target="40">0</span>%
-          <div class="stat-label">Average Cost Reduction</div>
+          <div class="stat-label">Cost Reduction</div>
         </div>
         <div class="stat-item">
           <span class="stat-number" data-target="65">0</span>%
-          <div class="stat-label">Faster Process Completion</div>
+          <div class="stat-label">Faster Operations</div>
         </div>
         <div class="stat-item">
           <span class="stat-number" data-target="99">0</span>%
           <div class="stat-label">Compliance Accuracy</div>
         </div>
         <div class="stat-item">
-          <span class="stat-number" data-target="24">0</span>/7
-          <div class="stat-label">Automated Monitoring</div>
+          <span class="stat-number" data-target="50">0</span>+
+          <div class="stat-label">Financial Companies</div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ENHANCED PRODUCTS SECTION -->
+  <!-- ENHANCED PRODUCTS SECTION WITH VENDOR RISK INTELLIGENCE -->
   <section class="products-section section">
     <div class="container">
-      <h2 class="section-title">Enterprise-Grade Financial Operations Platform</h2>
-      <p class="section-subtitle">Comprehensive solutions designed to automate, optimize, and secure your financial operations while ensuring regulatory compliance.</p>
-
+      <h2 class="section-title">Comprehensive Financial Operations Platform</h2>
+      <p class="section-subtitle">End-to-end solutions designed to automate, optimize, and secure your financial operations while ensuring regulatory compliance.</p>
+      <div class="rbi-alert">
+        <i class="fas fa-exclamation-triangle"></i> 2025 Alert: 62 NBFCs faced average penalties of ₹8.5L/month for RBI compliance violations
+      </div>
       <div class="product-grid">
         <div class="product-card">
           <div class="product-card-header">
@@ -766,31 +737,29 @@
           <div class="product-card-body">
             <p>Comprehensive vendor risk assessment with real-time monitoring and automated compliance tracking for your entire supply chain.</p>
             <div class="highlight">🚀 Generate comprehensive risk reports in under 60 seconds</div>
-            <p class="free-badge">COMPLIMENTARY FOR QUALIFIED BUSINESSES</p>
+            <p class="free-badge">FREE VENDOR RISK ASSESSMENT</p>
           </div>
           <div style="padding:0 2rem 2rem;">
             <a href="vendor-scorecard.html" class="btn btn-secondary" style="width:100%;">
-              <i class="fas fa-download"></i>Explore Vendor Risk
+              <i class="fas fa-download"></i>Get Free Risk Assessment
             </a>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-balance-scale"></i>
-            <h3>Compliance Automation Suite</h3>
+            <h3>RBI Compliance Automation</h3>
           </div>
           <div class="product-card-body">
-            <p>Automated regulatory compliance monitoring, deadline tracking, and documentation management for financial institutions.</p>
-            <div class="highlight">⚠️ Proactive alert system for regulatory changes and deadlines</div>
+            <p>Automated RBI compliance monitoring, vendor risk assessment, and regulatory reporting specifically designed for NBFCs and fintechs.</p>
+            <div class="highlight">⚠️ Proactive alerts for RBI regulatory changes and compliance deadlines</div>
           </div>
           <div style="padding:0 2rem 2rem;">
             <a href="solutions.html" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-eye"></i>View Compliance Solutions
+              <i class="fas fa-eye"></i>View RBI Solutions
             </a>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-bell"></i>
@@ -806,7 +775,6 @@
             </a>
           </div>
         </div>
-
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-chart-bar"></i>
@@ -825,13 +793,11 @@
       </div>
     </div>
   </section>
-
   <!-- ENHANCED SERVICES SECTION -->
   <section class="services-section section">
     <div class="container">
       <h2 class="section-title">Comprehensive Financial Operations Support</h2>
       <p class="section-subtitle">Beyond technology - expert services to complement your team and accelerate your growth trajectory.</p>
-
       <div class="service-grid">
         <div class="service-card">
           <i class="fas fa-brain"></i>
@@ -872,23 +838,21 @@
       </div>
     </div>
   </section>
-
   <!-- ENHANCED TESTIMONIALS -->
   <section class="testimonial-section">
     <div class="container">
       <h2 class="section-title">Trusted by Financial Innovators</h2>
       <p class="section-subtitle">Discover how forward-thinking financial companies are transforming their operations with our platform and services.</p>
-
       <div class="testimonial-grid">
         <div class="testimonial">
-          <p>"The operational efficiency gains we've achieved through Finology Nexus have been remarkable. Our compliance costs decreased by 35% while improving accuracy."</p>
-          <p class="testimonial-author">— Chief Operations Officer</p>
-          <p class="testimonial-role">Emerging Digital Bank</p>
-        </div>
-        <div class="testimonial">
-          <p>"Their vendor risk assessment platform identified critical gaps we had overlooked. The insights helped us avoid potential compliance issues during our audit."</p>
+          <p>"The Vendor Risk Intelligence platform identified critical gaps we had completely overlooked. This single insight prevented potential penalties during our last audit."</p>
           <p class="testimonial-author">— Compliance Director</p>
           <p class="testimonial-role">Financial Technology Company</p>
+        </div>
+        <div class="testimonial">
+          <p>"The RBI compliance automation saved us 40% in operational costs while cutting our audit preparation time from 3 weeks to just 4 days. Game-changing for growing NBFCs."</p>
+          <p class="testimonial-author">— Chief Operations Officer</p>
+          <p class="testimonial-role">Emerging Digital NBFC</p>
         </div>
         <div class="testimonial">
           <p>"The combination of technology and expert services has been transformative. We've scaled our operations 3x without increasing our compliance team."</p>
@@ -898,15 +862,14 @@
       </div>
     </div>
   </section>
-
   <!-- ENHANCED CTA SECTION -->
   <section class="cta-section">
     <div class="container" style="position:relative;z-index:2;">
       <h2 style="font-size:2.75rem;margin-bottom:1.5rem;">Ready to Transform Your Financial Operations?</h2>
-      <p style="font-size:1.3rem;margin-bottom:2.5rem;opacity:0.95;">Join innovative financial companies that are automating compliance, reducing costs, and scaling with confidence.</p>
+      <p style="font-size:1.3rem;margin-bottom:2.5rem;opacity:0.95;">Join innovative financial companies that are automating compliance, reducing costs by 40%, and scaling with confidence.</p>
       <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;">
         <a href="free-scorecard.html" class="btn btn-secondary" style="min-width:280px;">
-          <i class="fas fa-chart-pie"></i>Get Free Operations Assessment
+          <i class="fas fa-chart-pie"></i>Get Free Vendor Assessment
         </a>
         <a href="contactus.html" class="btn btn-gold" style="min-width:280px;">
           <i class="fas fa-phone-alt"></i>Schedule Expert Consultation
@@ -914,21 +877,20 @@
       </div>
     </div>
   </section>
-
   <!-- ENHANCED FREE ASSESSMENT SECTION -->
   <section class="free-assessment section" id="assessment">
     <div class="assessment-container">
-      <h2 style="font-size:2.25rem;margin-bottom:1rem;">Get Your Complimentary Operations Assessment</h2>
+      <h2 style="font-size:2.25rem;margin-bottom:1rem;">Get Your Complimentary Vendor Risk Assessment</h2>
       <p style="font-size:1.2rem;color:var(--text-medium);margin-bottom:2rem;">Complete our 5-minute assessment and receive a customized 15-page analysis with specific recommendations for optimization and growth.</p>
-      
+     
       <div class="assessment-features">
         <div>
           <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Your Assessment Includes:</h3>
           <ul class="feature-list">
-            <li><i class="fas fa-fire"></i> Operational efficiency score & benchmarks</li>
+            <li><i class="fas fa-fire"></i> Vendor risk heat map & vulnerability scores</li>
             <li><i class="fas fa-money-bill-wave"></i> Cost optimization opportunities</li>
             <li><i class="fas fa-exclamation-triangle"></i> Compliance gap analysis</li>
-            <li><i class="fas fa-chart-line"></i> Vendor risk assessment</li>
+            <li><i class="fas fa-chart-line"></i> Benchmark against industry standards</li>
           </ul>
         </div>
         <div>
@@ -941,13 +903,13 @@
           </ul>
         </div>
       </div>
-      
+     
       <div class="urgency-badge">
         <i class="fas fa-clock"></i> Limited complimentary assessments available this month. Secure your spot now.
       </div>
-      
+     
       <form id="assessmentForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="max-width:600px;margin:2.5rem auto 0;">
-        <input type="hidden" name="_subject" value="Free Operations Assessment Request">
+        <input type="hidden" name="_subject" value="Free Vendor Risk Assessment Request">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;">
           <input type="text" name="first_name" placeholder="First Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
           <input type="text" name="last_name" placeholder="Last Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
@@ -960,7 +922,6 @@
       </form>
     </div>
   </section>
-
   <!-- ENHANCED FOOTER WITH PROPER NAVIGATION -->
   <footer>
     <div class="container">
@@ -982,7 +943,7 @@
             <h4>Solutions</h4>
             <ul>
               <li><a href="vendor-scorecard.html">Vendor Risk Intelligence</a></li>
-              <li><a href="solutions.html">Compliance Automation</a></li>
+              <li><a href="solutions.html">RBI Compliance Automation</a></li>
               <li><a href="finance-checkup.html">Financial Dashboard</a></li>
               <li><a href="solutions.html">Due Diligence Automation</a></li>
             </ul>
@@ -1018,11 +979,9 @@
       </div>
     </div>
   </footer>
-
   <a href="free-scorecard.html" class="floating-cta">
     <i class="fas fa-bolt"></i>Free Assessment
   </a>
-
   <script>
     // Enhanced stats animation
     document.querySelectorAll('.stat-number').forEach(stat => {
@@ -1039,49 +998,45 @@
         }
       }, 50);
     });
-
     // Particle animation
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
       const particleCount = 15;
-      
+     
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
-        
+       
         // Random properties
         const size = Math.random() * 5 + 2;
         const left = Math.random() * 100;
         const animationDuration = Math.random() * 20 + 10;
         const animationDelay = Math.random() * 5;
-        
+       
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         particle.style.left = `${left}%`;
         particle.style.animationDuration = `${animationDuration}s`;
         particle.style.animationDelay = `${animationDelay}s`;
-        
+       
         particlesContainer.appendChild(particle);
       }
     }
-
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.querySelector('.menu-toggle');
       const nav = document.querySelector('nav ul');
-      
+     
       if (window.innerWidth <= 768) {
         menuToggle.style.display = 'block';
         nav.style.display = 'none';
-        
+       
         menuToggle.addEventListener('click', function() {
           nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
       }
-
       // Create particles
       createParticles();
-
       // Form submission handler
       const form = document.getElementById('assessmentForm');
       if (form) {
@@ -1092,13 +1047,11 @@
           form.reset();
         });
       }
-
       // Scroll animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
       };
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1107,7 +1060,6 @@
           }
         });
       }, observerOptions);
-
       // Observe elements for scroll animation
       document.querySelectorAll('.product-card, .service-card, .testimonial').forEach(el => {
         observer.observe(el);
