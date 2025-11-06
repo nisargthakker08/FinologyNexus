@@ -3,50 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finology Nexus | Financial Operations & Compliance Automation Platform</title>
-  <meta name="description" content="Automate financial operations, ensure regulatory compliance, and scale confidently with our AI-powered platform and expert services." />
-  <meta name="keywords" content="financial operations, compliance automation, vendor risk management, fintech solutions, NBFC compliance" />
+  <title>Finology Nexus | Global Financial Operations & Strategic Support</title>
+  <meta name="description" content="Strategic financial operations support, research analytics, and back-office solutions for scaling fintechs, investment firms, and financial institutions worldwide." />
+  <meta name="keywords" content="financial operations, fintech support, investment research, back-office solutions, business process outsourcing, RBI compliance, global financial services" />
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  <!-- Preconnect -->
+ 
+  <!-- Preconnect to external resources -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+ 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ 
   <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+ 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZ1RDVHZZP');
+   
+    // Track CTA clicks
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.btn-primary, .btn-secondary, .floating-cta').forEach(btn => {
+        btn.addEventListener('click', function() {
+          gtag('event', 'conversion', {
+            'event_category': 'CTA Click',
+            'event_label': this.textContent.trim()
+          });
+        });
+      });
+    });
+  </script>
   <style>
     :root {
-      --primary-blue: #0066cc; --primary-blue-dark: #004d99; --secondary-blue: #0099ff;
-      --accent-purple: #7c3aed; --accent-gold: #f59e0b; --danger-red: #dc2626;
-      --warning-orange: #f97316; --success-emerald: #059669; --dark-bg: #111827;
-      --light-bg: #f8fafc; --text-dark: #1e293b; --text-medium: #475569;
-      --text-light: #64748b; --white: #ffffff; --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1); --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-      --shadow-xl: 0 20px 40px rgba(0,0,0,0.2); --radius-sm: 8px; --radius-md: 12px;
-      --radius-lg: 20px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #004d99;
+      --secondary-blue: #0099ff;
+      --accent-blue: #0077dd;
+      --accent-gold: #cc9900;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--primary-blue);
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      border-radius: 2px;
+    }
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      color: var(--text-medium);
+      font-size: 1.15rem;
+    }
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 200px;
+      text-align: center;
+      gap: 0.5rem;
+      font-size: 1rem;
     }
    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', system-ui, sans-serif; background: var(--light-bg); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
-    h1, h2, h3 { font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; }
-    .section-title { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--text-dark); }
-    .section-subtitle { font-size: 1.25rem; color: var(--text-medium); max-width: 800px; margin: 0 auto 3rem; }
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
    
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; transition: var(--transition); min-width: 200px; gap: 0.75rem; font-size: 1.05rem; border: none; cursor: pointer; }
-    .btn-primary { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: var(--white); box-shadow: var(--shadow-md); }
-    .btn-secondary { background: var(--accent-purple); color: var(--white); box-shadow: var(--shadow-md); }
-    .btn-gold { background: linear-gradient(135deg, var(--accent-gold), #fbbf24); color: var(--text-dark); box-shadow: var(--shadow-md); }
-    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.8); }
-    .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .btn:active { transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--secondary-blue);
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+    }
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
    
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-    .section { padding: 6rem 1.5rem; }
-    /* Enhanced Header with Animation */
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-tertiary:hover,
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    .section {
+      padding: 6rem 1.25rem;
+      text-align: center;
+    }
+    /* ========== HEADER & NAVIGATION ========== */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
+      background: var(--white);
       padding: 1.25rem 2.5rem;
       display: flex;
       justify-content: space-between;
@@ -55,33 +172,39 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      animation: slideDown 0.5s ease-out;
+      transition: box-shadow 0.3s ease;
     }
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .logo-group { display: flex; align-items: center; gap: 12px; }
+   
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+   
     .company-name {
       font-size: 1.75rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
     nav ul {
+      list-style: none;
       display: flex;
       gap: 2rem;
-      list-style: none;
       margin: 0;
       padding: 0;
     }
     nav a {
+      text-decoration: none;
       color: var(--text-dark);
       font-weight: 600;
-      text-decoration: none;
       position: relative;
       transition: var(--transition);
       font-size: 1rem;
@@ -92,9 +215,9 @@
       position: absolute;
       width: 0;
       height: 3px;
-      bottom: 0;
+      bottom: -6px;
       left: 0;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
       transition: var(--transition);
       border-radius: 2px;
     }
@@ -105,11 +228,21 @@
     nav a.active {
       color: var(--primary-blue);
     }
-    /* ENHANCED HERO WITH PARTICLES */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+      color: var(--primary-blue);
+      padding: 0.5rem;
+    }
+    /* ========== HERO SECTION ========== */
     .hero {
       background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
       color: var(--white);
-      padding: 8rem 1.5rem 6rem;
+      padding: 8rem 1.25rem 5rem;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
@@ -121,108 +254,211 @@
       right: 0;
       bottom: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
-      animation: float 6s ease-in-out infinite;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
-      background-size: cover;
+        radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
     }
     @keyframes float {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.02); }
+      50% { transform: translateY(-15px) scale(1.03); }
     }
     .hero h1 {
       font-size: 3.5rem;
       margin-bottom: 1.5rem;
-      animation: fadeInDown 0.8s ease-out;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInDown 1s ease-out;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .hero p {
-      font-size: 1.5rem;
-      max-width: 800px;
+      font-size: 1.35rem;
+      max-width: 50rem;
       margin: 0 auto 2.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
       opacity: 0.95;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-      font-weight: 500;
+      line-height: 1.7;
     }
-    .hero-cta {
+    .hero-buttons {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
       flex-wrap: wrap;
-      margin: 3rem 0;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
+      position: relative;
+      z-index: 2;
     }
-    .hero-cta .btn {
-      font-size: 1.15rem;
-      padding: 1.25rem 2.5rem;
-      min-width: 260px;
-      border-radius: var(--radius-md);
-    }
-    /* Enhanced Stats with Counting Animation */
+    /* Hero Stats */
     .hero-stats {
       display: flex;
       justify-content: center;
       gap: 3rem;
+      margin: 4rem 0 1rem;
       flex-wrap: wrap;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(20px);
-      padding: 3rem;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      padding: 2.5rem;
       border-radius: var(--radius-lg);
       max-width: 1000px;
       margin: 4rem auto 0;
-      border: 1px solid rgba(255,255,255,0.2);
-      animation: fadeInUp 0.8s ease-out 0.6s both;
       position: relative;
-      z-index: 2;
+      border: 1px solid rgba(255,255,255,0.2);
     }
-    .stat-item {
+    .hero-stat-item {
       text-align: center;
+      padding: 0 1.5rem;
+      flex: 1;
       min-width: 160px;
     }
-    .stat-number {
-      font-size: 3rem;
+    .hero-stat-number {
+      font-size: 2.75rem;
       font-weight: 800;
       color: var(--white);
-      display: block;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 0.75rem;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      line-height: 1;
     }
-    .stat-label {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.95);
+    .hero-stat-label {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.95);
       font-weight: 600;
-      margin-top: 0.5rem;
+      letter-spacing: 0.5px;
     }
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
+      from { opacity: 0; transform: translateY(-2rem); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(2rem); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    /* ========== GLOBAL REACH SECTION ========== */
+    .global-section {
+      background: var(--white);
+      padding: 5rem 1.25rem;
     }
-    /* Enhanced Products with Staggered Animation */
-    .products-section { background: var(--light-bg); }
+    .global-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .global-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+    .global-text {
+      flex: 1;
+      text-align: left;
+    }
+    .global-text h3 {
+      font-size: 1.75rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.25rem;
+    }
+    .global-text p {
+      font-size: 1.1rem;
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .global-map {
+      flex: 1;
+      background: #f0f7ff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 20px rgba(0,102,204,0.05);
+    }
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-align: center;
+      padding: 2rem;
+    }
+    .map-placeholder i {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-blue);
+    }
+    .region-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+    .region-item {
+      background: var(--light-bg);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(0,102,204,0.1);
+    }
+    .region-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-blue);
+    }
+    .region-item i {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.25rem;
+    }
+    .region-item h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-dark);
+    }
+    .region-item p {
+      font-size: 0.95rem;
+      color: var(--text-medium);
+    }
+    /* ========== PRODUCTS OVERVIEW SECTION ========== */
+    .products-section {
+      padding: 6rem 1.25rem;
+      background: var(--light-bg);
+    }
+   
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+   
+    .products-section .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+    }
+   
+    .products-section .section-description {
+      font-size: 1.25rem;
+      margin-bottom: 4rem;
+      color: var(--text-medium);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+   
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2.5rem;
-      margin-top: 4rem;
+      margin-top: 2rem;
     }
+   
     .product-card {
       background: var(--white);
       border-radius: var(--radius-lg);
@@ -233,193 +469,448 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease-out forwards;
+      border: 1px solid rgba(0,102,204,0.08);
     }
-    .product-card:nth-child(1) { animation-delay: 0.1s; }
-    .product-card:nth-child(2) { animation-delay: 0.2s; }
-    .product-card:nth-child(3) { animation-delay: 0.3s; }
-    .product-card:nth-child(4) { animation-delay: 0.4s; }
+   
     .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-xl);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-blue);
     }
+   
     .product-card-header {
-      padding: 2rem;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      padding: 2rem 1.75rem;
+      background: var(--primary-blue);
       color: var(--white);
       position: relative;
+      overflow: hidden;
     }
+    .product-card-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transform: translate(40%, -40%);
+    }
+    .product-card-header.compliance {
+      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+    }
+   
     .product-card-header i {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
       margin-bottom: 1rem;
       display: block;
       opacity: 0.9;
     }
+   
     .product-card-header h3 {
       font-size: 1.75rem;
       margin: 0;
+      line-height: 1.2;
     }
+   
     .product-card-body {
-      padding: 2rem;
+      padding: 2rem 1.75rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
+   
     .product-card-body p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+      color: var(--text-medium);
       font-size: 1.1rem;
       line-height: 1.7;
-      color: var(--text-medium);
       flex-grow: 1;
     }
-    .highlight {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      color: #92400e;
+    .product-features {
+      list-style: none;
+      margin: 1.75rem 0;
+      flex-grow: 1;
+    }
+    .product-features li {
+      padding: 0.75rem 0;
+      position: relative;
+      padding-left: 2.25rem;
+      color: var(--text-medium);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .product-features li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary-blue);
+      font-size: 1.1rem;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+      border-left: 5px solid var(--primary-blue);
+      padding: 1.25rem;
       margin: 1.5rem 0;
-      border-left: 4px solid var(--warning-orange);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       font-size: 1.05rem;
     }
-    .free-badge {
-      background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
-      color: var(--text-dark);
-      padding: 0.75rem 1.25rem;
-      border-radius: 2rem;
-      font-size: 0.95rem;
-      font-weight: 800;
-      display: inline-block;
-      margin-top: 0.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      animation: pulse 2s infinite;
-    }
-    /* RBI Compliance Alert */
-    .rbi-alert {
-      background: linear-gradient(135deg, var(--danger-red), var(--warning-orange));
-      color: white;
-      padding: 1.5rem 2rem;
-      border-radius: var(--radius-md);
-      margin: 2rem 0;
-      text-align: center;
+    .highlight-box strong {
+      color: var(--primary-blue);
       font-weight: 700;
-      box-shadow: var(--shadow-md);
-      border-left: 4px solid var(--white);
     }
-    /* Enhanced Services with Hover Effects */
-    .services-section { background: var(--white); }
+   
+    .product-card-footer {
+      padding: 0 1.75rem 1.75rem;
+    }
+   
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+     
+      .products-section .section-title {
+        font-size: 2.25rem;
+      }
+      .global-content {
+        flex-direction: column;
+      }
+      .global-text, .global-map {
+        text-align: center;
+      }
+      .global-text {
+        order: 2;
+      }
+      .global-map {
+        order: 1;
+        margin-bottom: 2rem;
+      }
+    }
+    /* ========== SERVICES SECTION ========== */
+    .services-section {
+      background-color: var(--white);
+      padding: 6rem 1.25rem;
+    }
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2.5rem;
-      margin-top: 4rem;
+      margin-top: 3.5rem;
     }
     .service-card {
       background: var(--white);
       border-radius: var(--radius-lg);
-      padding: 2.5rem;
+      overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: var(--transition);
       text-align: left;
-      border: 1px solid rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,102,204,0.08);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .service-card-header {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      padding: 2rem 1.75rem;
+      position: relative;
+    }
+    .service-card-header.compliance {
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+    }
+    .service-card-header i {
+      font-size: 3rem;
+      margin-bottom: 1.25rem;
+      display: inline-block;
+      opacity: 0.9;
+    }
+    .service-card-header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+    .service-card-body {
+      padding: 2rem 1.75rem;
+    }
+    .service-card-body p {
+      color: var(--text-medium);
+      margin-bottom: 1.75rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .service-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .service-features li {
+      padding: 0.75rem 0;
+      position: relative;
+      padding-left: 2.25rem;
+      color: var(--text-medium);
+      font-size: 1rem;
+    }
+    .service-features li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--secondary-blue);
+      font-size: 1.1rem;
+    }
+    /* ========== INDUSTRY EXPERTISE SECTION ========== */
+    .expertise-section {
+      background: var(--light-bg);
+      padding: 6rem 1.25rem;
+    }
+    .expertise-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .industry-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .tab-button {
+      background: var(--white);
+      border: none;
+      padding: 1.25rem 2rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      font-size: 1.05rem;
+      min-width: 180px;
+    }
+    .tab-button:hover {
+      background: #f0f7ff;
+      color: var(--primary-blue);
+    }
+    .tab-button.active {
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      color: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    .tab-content {
+      display: none;
+      text-align: left;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,102,204,0.1);
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tab-content h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      font-size: 1.875rem;
+    }
+    .tab-content > p {
+      font-size: 1.15rem;
+      color: var(--text-medium);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .tab-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .tab-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: #f8fbff;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--primary-blue);
+      transition: var(--transition);
+    }
+    .tab-feature:hover {
+      background: #f0f7ff;
+      transform: translateX(5px);
+    }
+    .tab-feature i {
+      color: var(--secondary-blue);
+      font-size: 1.5rem;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+    .tab-feature h4 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+    .tab-feature p {
+      color: var(--text-medium);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    /* ========== WHY CHOOSE US SECTION ========== */
+    .benefits-section {
+      background-color: var(--white);
+      padding: 6rem 1.25rem;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+    }
+    .benefit-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease-out forwards;
     }
-    .service-card:nth-child(1) { animation-delay: 0.2s; }
-    .service-card:nth-child(2) { animation-delay: 0.3s; }
-    .service-card:nth-child(3) { animation-delay: 0.4s; }
-    .service-card::before {
+    .benefit-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
     }
-    .service-card:hover {
+    .benefit-card:hover {
       transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-lg);
     }
-    .service-card i {
-      font-size: 2.5rem;
-      color: var(--primary-blue);
+    .benefit-card i {
+      font-size: 3.5rem;
+      color: var(--secondary-blue);
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      display: block;
     }
-    .service-card h3 {
-      font-size: 1.5rem;
+    .benefit-card h3 {
+      color: var(--primary-blue);
       margin-bottom: 1rem;
-      color: var(--text-dark);
+      font-size: 1.5rem;
     }
-    .service-card p {
+    .benefit-card p {
       color: var(--text-medium);
+      font-size: 1.05rem;
       line-height: 1.7;
     }
-    /* Enhanced Testimonials with Fade In */
-    .testimonial-section { background: var(--light-bg); padding: 6rem 1.5rem; }
+    /* ========== TESTIMONIAL SECTION ========== */
+    .testimonial-section {
+      background: linear-gradient(135deg, #f8fbff 0%, #f0f7ff 100%);
+      padding: 6rem 1.25rem;
+    }
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 3rem auto 0;
     }
     .testimonial {
       background: var(--white);
       padding: 2.5rem;
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      border-left: 4px solid var(--primary-blue);
       position: relative;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.6s ease-out forwards;
+      border-left: 5px solid var(--primary-blue);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
     }
-    .testimonial:nth-child(1) { animation-delay: 0.2s; }
-    .testimonial:nth-child(2) { animation-delay: 0.3s; }
-    .testimonial:nth-child(3) { animation-delay: 0.4s; }
-    .testimonial::before {
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .testimonial:before {
       content: '"';
+      font-size: 6rem;
+      color: rgba(0, 119, 204, 0.12);
       position: absolute;
       top: 1rem;
-      right: 2rem;
-      font-size: 4rem;
-      color: var(--primary-blue);
-      opacity: 0.1;
-      font-family: serif;
+      left: 1.5rem;
+      line-height: 1;
+      font-family: Georgia, serif;
     }
     .testimonial p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-medium);
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-bottom: 1.75rem;
+      position: relative;
+      padding-left: 2.5rem;
       line-height: 1.7;
       font-style: italic;
     }
     .testimonial-author {
       font-weight: 700;
       color: var(--primary-blue);
+      font-style: normal;
       font-size: 1.05rem;
+      padding-left: 2.5rem;
     }
     .testimonial-role {
-      color: var(--text-light);
       font-size: 0.95rem;
+      color: var(--text-medium);
+      padding-left: 2.5rem;
       margin-top: 0.25rem;
     }
-    /* Enhanced CTA & Assessment */
+    /* ========== TECH STACK SECTION ========== */
+    .tech-stack {
+      background-color: var(--white);
+      padding: 5rem 1.25rem;
+    }
+    .tech-stack-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .tech-stack-container .section-title {
+      margin-bottom: 1.5rem;
+    }
+    .tech-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3.5rem;
+      align-items: center;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: #f8fbff;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(0,102,204,0.2);
+    }
+    .tech-logos img {
+      height: 3rem;
+      width: auto;
+      transition: var(--transition);
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
+    .tech-logos img:hover {
+      transform: scale(1.15);
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    /* ========== CTA SECTION ========== */
     .cta-section {
       background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
       color: var(--white);
-      padding: 6rem 1.5rem;
+      padding: 6rem 1.25rem;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -427,138 +918,249 @@
     .cta-section::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: rotate 20s linear infinite;
-    }
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .free-assessment {
-      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-      padding: 6rem 1.5rem;
-    }
-    .assessment-container {
-      background: var(--white);
-      padding: 4rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-      transform: translateY(30px);
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.3s forwards;
-    }
-    .assessment-container::before {
-      content: '';
-      position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
+    }
+    .cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .cta-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    /* ========== FREE ASSESSMENT SECTION ========== */
+    .free-assessment {
+      padding: 6rem 1.25rem;
+      background: var(--light-bg);
+      text-align: center;
+    }
+    .assessment-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 3.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0,102,204,0.1);
+    }
+    .assessment-container h2 {
+      color: var(--primary-blue);
+      margin-bottom: 1.25rem;
+      font-size: 2.5rem;
+    }
+    .assessment-container p {
+      color: var(--text-medium);
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.15rem;
+      line-height: 1.7;
     }
     .assessment-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin: 2.5rem 0;
       text-align: left;
+      margin-bottom: 3rem;
+    }
+    .feature-column h3 {
+      font-size: 1.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    .feature-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary-blue);
+      border-radius: 2px;
+    }
+    .feature-list {
+      list-style: none;
     }
     .feature-list li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      font-size: 1.1rem;
-      color: var(--text-medium);
+      font-size: 1.05rem;
     }
     .feature-list i {
-      color: var(--success-emerald);
-      margin-top: 0.25rem;
-      flex-shrink: 0;
+      color: var(--secondary-blue);
+      margin-top: 0.35rem;
+      font-size: 1.1rem;
     }
-    /* Enhanced Footer */
+    .assessment-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-box {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0, 119, 204, 0.15);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .assessment-form input,
+    .assessment-form textarea,
+    .assessment-form select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #d0d7de;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      transition: var(--transition);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .assessment-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .assessment-form input:focus,
+    .assessment-form textarea:focus,
+    .assessment-form select:focus {
+      border-color: var(--primary-blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+    }
+    .assessment-form button {
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+    .assessment-form button:hover {
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-blue-dark));
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    /* ========== FOOTER ========== */
     footer {
       background: var(--dark-bg);
-      color: #d1d5db;
-      padding: 5rem 1.5rem 2rem;
-      font-size: 0.95rem;
+      color: var(--white);
+      padding: 4rem 1.25rem 2rem;
     }
     .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
       max-width: 1200px;
       margin: 0 auto 3rem;
-      gap: 3rem;
     }
     .footer-column {
-      flex: 1;
-      min-width: 250px;
+      min-width: 200px;
     }
     .footer-logo-group {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
     .footer-logo-group img {
       height: 2.5rem;
     }
     .footer-logo-group span {
-      font-size: 1.4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
     .footer-about {
+      color: #d1d5db;
+      font-size: 1rem;
       line-height: 1.7;
       margin-bottom: 2rem;
-      color: #9ca3af;
-      font-size: 1rem;
     }
     .footer-links h4 {
       color: var(--white);
       margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-size: 1.25rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary-blue);
+      border-radius: 2px;
     }
     .footer-links ul {
       list-style: none;
     }
     .footer-links li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
     .footer-links a {
       color: #d1d5db;
       text-decoration: none;
       transition: var(--transition);
       font-size: 1rem;
+      display: inline-block;
     }
     .footer-links a:hover {
       color: var(--secondary-blue);
       transform: translateX(5px);
     }
     .footer-socials {
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
-      margin-top: 1.5rem;
     }
     .footer-socials a {
       color: var(--white);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       transition: var(--transition);
+      display: inline-block;
+      width: 44px;
+      height: 44px;
       background: rgba(255,255,255,0.1);
-      width: 45px;
-      height: 45px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -566,503 +1168,938 @@
     }
     .footer-socials a:hover {
       color: var(--secondary-blue);
+      background: rgba(0,153,255,0.2);
       transform: translateY(-3px);
-      background: rgba(255,255,255,0.2);
     }
     .footer-bottom {
       text-align: center;
+      font-size: 0.95rem;
+      margin-top: 3rem;
       padding-top: 2rem;
       border-top: 1px solid #374151;
       color: #9ca3af;
-      font-size: 0.9rem;
-      max-width: 1200px;
-      margin: 0 auto;
     }
-    /* Enhanced Floating CTA */
+    .footer-bottom a {
+      color: var(--secondary-blue);
+      text-decoration: none;
+    }
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+    /* ========== FLOATING CTA ========== */
     .floating-cta {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
       color: var(--white);
       padding: 1rem 1.5rem;
-      border-radius: 2rem;
+      border-radius: 3rem;
       font-weight: 700;
-      box-shadow: var(--shadow-xl);
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
       z-index: 1000;
       transition: var(--transition);
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      text-decoration: none;
       font-size: 1.05rem;
-      animation: pulse 2s infinite;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
     .floating-cta:hover {
+      background: linear-gradient(to right, var(--primary-blue), #005b99);
       transform: translateY(-5px) scale(1.05);
-      box-shadow: var(--shadow-lg);
-      animation: none;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
-    /* Urgency Badge */
-    .urgency-badge {
-      background: linear-gradient(135deg, var(--warning-orange), var(--danger-red));
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      text-align: center;
-      margin: 2rem 0;
-      box-shadow: var(--shadow-md);
-      animation: pulse 2s infinite;
+    .floating-cta i {
+      font-size: 1.25rem;
     }
-    /* Particle Animation for Hero */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: floatParticle 15s infinite linear;
-    }
-    @keyframes floatParticle {
-      0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.75rem;
       }
-      10% {
-        opacity: 1;
+      .hero p {
+        font-size: 1.2rem;
       }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) translateX(100px) rotate(360deg);
-        opacity: 0;
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
       }
     }
     @media (max-width: 768px) {
-      header { padding: 1rem; }
-      .hero h1 { font-size: 2.75rem; }
-      .hero p { font-size: 1.25rem; }
-      .section-title { font-size: 2rem; }
-      .product-grid { grid-template-columns: 1fr; }
-      .assessment-features { grid-template-columns: 1fr; }
-      .assessment-container { padding: 2rem; }
-      .hero-stats { padding: 2rem; gap: 2rem; }
-      .stat-number { font-size: 2.5rem; }
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+     
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+     
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+        margin-top: 1.5rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+     
+      nav.active {
+        display: block;
+      }
+     
       nav ul {
         flex-direction: column;
         gap: 1rem;
       }
+     
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+     
+      .hero p {
+        font-size: 1.1rem;
+      }
+     
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+     
+      .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+      }
+     
+      .section-title {
+        font-size: 2rem;
+      }
+     
+      .product-grid,
+      .service-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+     
+      .assessment-features {
+        grid-template-columns: 1fr;
+      }
+     
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .industry-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      .tab-button {
+        width: 100%;
+        max-width: 350px;
+      }
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero-stats {
+        padding: 1.5rem;
+      }
+      .hero-stat-number {
+        font-size: 2rem;
+      }
+      .section {
+        padding: 4rem 1rem;
+      }
+      .assessment-container {
+        padding: 2rem;
+      }
+      .form-box {
+        padding: 1.5rem;
+      }
+    }
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+     
+      .hero h1,
+      .hero p {
+        animation: none;
+      }
+      .hero::before {
+        animation: none;
+      }
+    }
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--secondary-blue);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
     }
   </style>
 </head>
 <body>
-  <!-- ENHANCED HEADER WITHOUT CTA BUTTONS -->
   <header>
     <div class="logo-group">
-      <img src="finology-logofavicon.png" alt="Finology Nexus" width="45">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
       <span class="company-name">Finology Nexus</span>
     </div>
    
-    <nav>
+    <nav id="main-nav">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="solutions.html">Solutions</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="aboutus.html">About</a></li>
-        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="industries.html" class="nav-link">Industries</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle" aria-label="Toggle navigation" style="display: none;">
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
       <i class="fas fa-bars"></i>
     </button>
   </header>
-  <!-- ENHANCED HERO WITH BALANCED CONTENT -->
+  
   <section class="hero">
-    <div class="particles" id="particles"></div>
     <div class="container">
-      <h1>Transform Financial Operations with Intelligent Automation</h1>
-      <p>Streamline compliance, reduce operational costs by 40%, and scale your financial business with confidence using our AI-powered platform.</p>
-      <div class="hero-cta">
-        <a href="free-scorecard.html" class="btn btn-secondary">
-          <i class="fas fa-chart-line"></i>Get Free Operations Assessment
+      <h1>Global Financial Operations Excellence for Modern Enterprises</h1>
+      <p>Strategic financial operations, RBI-compliant automation, advanced research analytics, and enterprise-grade back-office solutions engineered to accelerate growth, ensure regulatory adherence, and drive operational efficiency across global financial markets.</p>
+      <div class="hero-buttons">
+        <a href="#solutions" class="btn btn-secondary">
+          <i class="fas fa-cube"></i> Explore Strategic Solutions
         </a>
-        <a href="contactus.html" class="btn btn-gold">
-          <i class="fas fa-calendar-check"></i>Schedule Strategy Session
+        <a href="#assessment" class="btn btn-primary">
+          <i class="fas fa-chart-line"></i> Request Strategic Assessment
+        </a>
+        <a href="contactus.html" class="btn btn-tertiary">
+          <i class="fas fa-calendar"></i> Schedule Discovery Call
         </a>
       </div>
+     
       <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number" data-target="40">0</span>%
-          <div class="stat-label">Cost Reduction</div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">94%</div>
+          <div class="hero-stat-label">Client Retention Excellence</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="65">0</span>%
-          <div class="stat-label">Faster Operations</div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">42%</div>
+          <div class="hero-stat-label">Average Cost Optimization</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="99">0</span>%
-          <div class="stat-label">Compliance Accuracy</div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">65+</div>
+          <div class="hero-stat-label">Global Institutions Served</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="50">0</span>+
-          <div class="stat-label">Financial Companies</div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number">15+</div>
+          <div class="hero-stat-label">Years Strategic Expertise</div>
         </div>
       </div>
     </div>
   </section>
-  <!-- ENHANCED PRODUCTS SECTION WITH VENDOR RISK INTELLIGENCE -->
-  <section class="products-section section">
-    <div class="container">
-      <h2 class="section-title">Comprehensive Financial Operations Platform</h2>
-      <p class="section-subtitle">End-to-end solutions designed to automate, optimize, and secure your financial operations while ensuring regulatory compliance.</p>
-      <div class="rbi-alert">
-        <i class="fas fa-exclamation-triangle"></i> 2025 Alert: 62 NBFCs faced average penalties of ₹8.5L/month for RBI compliance violations
+  
+  <section class="global-section">
+    <div class="global-container">
+      <h2 class="section-title">Global Regulatory Expertise with Local Precision</h2>
+      <p class="section-description">We deliver internationally benchmarked financial operations frameworks with deep local regulatory intelligence, ensuring seamless compliance and across jurisdictions while maintaining operational agility and strategic alignment.</p>
+     
+      <div class="global-content">
+        <div class="global-text">
+          <h3>Strategic Global-Local Partnership Model</h3>
+          <p>Our multidisciplinary team combines global financial operations best practices with granular understanding of local regulatory nuances across 20+ jurisdictions, enabling financial institutions to scale confidently while maintaining full compliance.</p>
+         
+          <div class="region-highlights">
+            <div class="region-item">
+              <i class="fas fa-globe-americas"></i>
+              <h4>Americas</h4>
+              <p>SEC, FINRA, OCC compliance frameworks</p>
+            </div>
+            <div class="region-item">
+              <i class="fas fa-globe-europe"></i>
+              <h4>EMEA</h4>
+              <p>FCA, ESMA, BaFin regulatory expertise</p>
+            </div>
+            <div class="region-item">
+              <i class="fas fa-globe-asia"></i>
+              <h4>APAC</h4>
+              <p>RBI, MAS, ASIC, HKMA compliance focus</p>
+            </div>
+          </div>
+        </div>
+       
+        <div class="global-map">
+          <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <p>Strategic Financial Operations Coverage Across 20+ Jurisdictions</p>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
+  
+  <section class="products-section" id="solutions">
+    <div class="products-container">
+      <h2 class="section-title">Enterprise Financial Operations Platform</h2>
+      <p class="section-description">A comprehensive suite of AI-powered, regulatory-compliant solutions engineered to transform financial operations, accelerate decision-making, and deliver measurable strategic value across your organization.</p>
+     
       <div class="product-grid">
         <div class="product-card">
           <div class="product-card-header">
             <i class="fas fa-shield-alt"></i>
-            <h3>Vendor Risk Intelligence</h3>
+            <h3>Vendor Risk Intelligence Platform</h3>
           </div>
           <div class="product-card-body">
-            <p>Comprehensive vendor risk assessment with real-time monitoring and automated compliance tracking for your entire supply chain.</p>
-            <div class="highlight">🚀 Generate comprehensive risk reports in under 60 seconds</div>
-            <p class="free-badge">FREE VENDOR RISK ASSESSMENT</p>
+            <p>Enterprise-grade vendor risk assessment and continuous monitoring platform with AI-driven scoring, regulatory alignment, and real-time compliance intelligence for complex supply chain ecosystems.</p>
+           
+            <ul class="product-features">
+              <li>AI-powered vendor risk scoring engine</li>
+              <li>Real-time compliance monitoring dashboard</li>
+              <li>Global regulatory framework alignment</li>
+              <li>Automated audit trail generation</li>
+              <li>Predictive risk forecasting</li>
+            </ul>
+            <div class="highlight-box">
+              <strong>Strategic Impact:</strong> Reduce vendor-related operational risks by 68% while ensuring full regulatory compliance across jurisdictions.
+            </div>
           </div>
-          <div style="padding:0 2rem 2rem;">
-            <a href="vendor-scorecard.html" class="btn btn-secondary" style="width:100%;">
-              <i class="fas fa-download"></i>Get Free Risk Assessment
-            </a>
+          <div class="product-card-footer">
+            <a href="vendor-risk.html" class="btn btn-primary" style="width: 100%;">Explore Risk Intelligence</a>
           </div>
         </div>
+        
         <div class="product-card">
-          <div class="product-card-header">
+          <div class="product-card-header compliance">
+            <i class="fas fa-university"></i>
+            <h3>RBI Compliance Automation Suite</h3>
+          </div>
+          <div class="product-card-body">
+            <p>Specialized RBI compliance automation platform with circular tracking, regulatory reporting, documentation management, and audit-ready workflows tailored for Indian financial institutions.</p>
+           
+            <ul class="product-features">
+              <li>Real-time RBI circular tracking & alerts</li>
+              <li>Automated regulatory reporting engine</li>
+              <li>Compliance deadline management</li>
+              <li>Digital documentation repository</li>
+              <li>Audit trail & version control</li>
+            </ul>
+            <div class="highlight-box">
+              <strong>RBI Excellence:</strong> Achieve 100% RBI compliance with automated workflows and zero manual intervention.
+            </div>
+          </div>
+          <div class="product-card-footer">
+            <a href="rbi-compliance.html" class="btn btn-secondary" style="width: 100%;">Explore RBI Solutions</a>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-card-header compliance">
             <i class="fas fa-balance-scale"></i>
-            <h3>RBI Compliance Automation</h3>
+            <h3>Global Compliance Automation</h3>
           </div>
           <div class="product-card-body">
-            <p>Automated RBI compliance monitoring, vendor risk assessment, and regulatory reporting specifically designed for NBFCs and fintechs.</p>
-            <div class="highlight">⚠️ Proactive alerts for RBI regulatory changes and compliance deadlines</div>
+            <p>Multi-jurisdictional compliance monitoring and automated regulatory reporting platform designed for financial institutions operating across international regulatory environments.</p>
+           
+            <ul class="product-features">
+              <li>20+ regulatory framework integration</li>
+              <li>Automated regulatory change management</li>
+              <li>Centralized compliance documentation</li>
+              <li>Real-time audit trail generation</li>
+              <li>Cross-border reporting consolidation</li>
+            </ul>
+            <div class="highlight-box">
+              <strong>Global Standard:</strong> Maintain regulatory excellence across all operating jurisdictions with unified automation.
+            </div>
           </div>
-          <div style="padding:0 2rem 2rem;">
-            <a href="solutions.html" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-eye"></i>View RBI Solutions
-            </a>
+          <div class="product-card-footer">
+            <a href="compliance-automation.html" class="btn btn-secondary" style="width: 100%;">Explore Global Compliance</a>
           </div>
         </div>
+        
         <div class="product-card">
           <div class="product-card-header">
-            <i class="fas fa-bell"></i>
-            <h3>Financial Operations Dashboard</h3>
+            <i class="fas fa-chart-line"></i>
+            <h3>Performance Analytics & Intelligence</h3>
           </div>
           <div class="product-card-body">
-            <p>Centralized dashboard for monitoring all financial operations, performance metrics, and compliance status in real-time.</p>
-            <div class="highlight">📊 Real-time analytics and customizable reporting dashboards</div>
+            <p>Advanced analytics platform delivering real-time operational insights, predictive forecasting, and strategic decision intelligence through customizable KPI dashboards and benchmarking.</p>
+           
+            <ul class="product-features">
+              <li>Real-time operational KPI dashboards</li>
+              <li>AI-driven predictive analytics</li>
+              <li>Custom report builder & scheduler</li>
+              <li>Industry benchmarking intelligence</li>
+              <li>Executive decision support system</li>
+            </ul>
+            <div class="highlight-box">
+              <strong>Data-Driven Strategy:</strong> Transform operational metrics into actionable strategic intelligence for leadership.
+            </div>
           </div>
-          <div style="padding:0 2rem 2rem;">
-            <a href="finance-checkup.html" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-rocket"></i>Explore Dashboard
-            </a>
+          <div class="product-card-footer">
+            <a href="performance-analytics.html" class="btn btn-primary" style="width: 100%;">Explore Analytics Suite</a>
           </div>
         </div>
+        
         <div class="product-card">
           <div class="product-card-header">
-            <i class="fas fa-chart-bar"></i>
-            <h3>Due Diligence Automation</h3>
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h3>Due Diligence Automation Engine</h3>
           </div>
           <div class="product-card-body">
-            <p>Streamlined due diligence processes with automated document collection, analysis, and investor-ready reporting.</p>
-            <div class="highlight">💼 Accelerate funding rounds with automated due diligence</div>
+            <p>Streamlined due diligence platform with automated document collection, AI-powered analysis, risk scoring, and investor-grade reporting for accelerated investment decisions.</p>
+           
+            <ul class="product-features">
+              <li>Automated document collection portal</li>
+              <li>AI financial health assessment</li>
+              <li>Multi-dimensional risk scoring</li>
+              <li>Investor-ready reporting templates</li>
+              <li>Collaborative review workflow</li>
+            </ul>
+            <div class="highlight-box">
+              <strong>Accelerated Decisions:</strong> Reduce due diligence timelines by 72% with intelligent automation and expert validation.
+            </div>
           </div>
-          <div style="padding:0 2rem 2rem;">
-            <a href="contactus.html" class="btn btn-primary" style="width:100%;">
-              <i class="fas fa-file-invoice"></i>Learn More
-            </a>
+          <div class="product-card-footer">
+            <a href="due-diligence.html" class="btn btn-primary" style="width: 100%;">Explore Due Diligence</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- ENHANCED SERVICES SECTION -->
-  <section class="services-section section">
+  
+  <section class="expertise-section">
+    <div class="expertise-container">
+      <h2 class="section-title">Industry-Specific Strategic Expertise</h2>
+      <p class="section-description">Tailored operational frameworks and regulatory intelligence designed to address the unique strategic challenges and growth opportunities within each financial services vertical.</p>
+     
+      <div class="industry-tabs">
+        <button class="tab-button active" data-tab="fintech">Fintech & Digital Banks</button>
+        <button class="tab-button" data-tab="investment">Investment Management</button>
+        <button class="tab-button" data-tab="nbfc">NBFCs & Lending</button>
+        <button class="tab-button" data-tab="wealth">Wealth & Asset Management</button>
+      </div>
+     
+      <div class="tab-content active" id="fintech-tab">
+        <h3>Fintech & Digital Banking Transformation</h3>
+        <p>End-to-end operational support for rapidly scaling fintech platforms and digital banks, combining regulatory compliance expertise with agile operational frameworks to support innovation at scale.</p>
+       
+        <div class="tab-features">
+          <div class="tab-feature">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+              <h4>Digital-Native Operations</h4>
+              <p>Cloud-native operational frameworks optimized for digital financial services with API-first integration capabilities.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-sync-alt"></i>
+            <div>
+              <h4>Hyper-Scalable Infrastructure</h4>
+              <p>Elastic operational models designed to support exponential user growth and product expansion without compromising performance.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <h4>Regulatory Agility Framework</h4>
+              <p>Dynamic compliance management system that adapts to evolving regulations across multiple jurisdictions.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-chart-bar"></i>
+            <div>
+              <h4>Real-Time Performance Intelligence</h4>
+              <p>Advanced analytics suite providing actionable insights into user behavior, operational efficiency, and growth metrics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <div class="tab-content" id="investment-tab">
+        <h3>Investment Management Operations Excellence</h3>
+        <p>Comprehensive operational backbone for private equity, venture capital, and asset management firms managing sophisticated portfolios and complex regulatory requirements.</p>
+       
+        <div class="tab-features">
+          <div class="tab-feature">
+            <i class="fas fa-hand-holding-usd"></i>
+            <div>
+              <h4>Portfolio Operations Platform</h4>
+              <p>Integrated platform for portfolio monitoring, valuation, and performance attribution across multiple asset classes.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-search-dollar"></i>
+            <div>
+              <h4>Investment Due Diligence Automation</h4>
+              <p>Streamlined processes for investment analysis, risk assessment, and decision documentation.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-file-contract"></i>
+            <div>
+              <h4>LP & Stakeholder Reporting</h4>
+              <p>Professional reporting solutions with customizable templates for limited partners and regulatory bodies.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-balance-scale"></i>
+            <div>
+              <h4>Regulatory Compliance Suite</h4>
+              <p>SEC Form ADV, AIFMD, and global investment regulatory compliance management.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <div class="tab-content" id="nbfc-tab">
+        <h3>NBFC & Lending Institution Solutions</h3>
+        <p>Specialized operational and compliance frameworks for non-banking financial companies navigating RBI regulations while scaling lending operations and managing credit risk.</p>
+       
+        <div class="tab-features">
+          <div class="tab-feature">
+            <i class="fas fa-university"></i>
+            <div>
+              <h4>RBI Compliance Automation</h4>
+              <p>End-to-end RBI regulatory compliance with circular tracking, reporting, and documentation management.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-calculator"></i>
+            <div>
+              <h4>Credit Risk Intelligence</h4>
+              <p>AI-powered credit evaluation, scoring models, and portfolio risk assessment frameworks.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <div>
+              <h4>Regulatory Reporting Engine</h4>
+              <p>Automated RBI returns, financial statements, and management reporting with audit trails.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <h4>Performance Monitoring Suite</h4>
+              <p>Real-time dashboards for portfolio quality, NPA management, and operational efficiency.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      <div class="tab-content" id="wealth-tab">
+        <h3>Wealth & Asset Management Excellence</h3>
+        <p>Operational sophistication for wealth management firms, family offices, and RIAs delivering personalized client experiences while maintaining regulatory and operational excellence.</p>
+       
+        <div class="tab-features">
+          <div class="tab-feature">
+            <i class="fas fa-user-tie"></i>
+            <div>
+              <h4>Client Lifecycle Management</h4>
+              <p>Integrated platform for client onboarding, KYC, relationship management, and service delivery.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-chart-pie"></i>
+            <div>
+              <h4>Portfolio Intelligence & Reporting</h4>
+              <p>Comprehensive portfolio analytics, performance reporting, and client communication tools.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <h4>Compliance & Risk Framework</h4>
+              <p>Fiduciary compliance, suitability assessment, and regulatory reporting for wealth advisors.</p>
+            </div>
+          </div>
+          <div class="tab-feature">
+            <i class="fas fa-sync-alt"></i>
+            <div>
+              <h4>Operational Efficiency Suite</h4>
+              <p>Back-office automation, fee billing, and workflow optimization for advisory practices.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section services-section">
     <div class="container">
-      <h2 class="section-title">Comprehensive Financial Operations Support</h2>
-      <p class="section-subtitle">Beyond technology - expert services to complement your team and accelerate your growth trajectory.</p>
+      <h2 class="section-title">Strategic Service Capabilities</h2>
+      <p class="section-description">Enterprise-grade financial operations services designed to augment your team, accelerate strategic initiatives, and deliver sustainable competitive advantage.</p>
+     
       <div class="service-grid">
         <div class="service-card">
-          <i class="fas fa-brain"></i>
-          <h3>Financial Research & Analytics</h3>
-          <p>Deep-dive market analysis, competitive intelligence, and financial modeling to support strategic decision-making and growth planning.</p>
-          <a href="Financial Research & Analytics.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+          <div class="service-card-header">
+            <i class="fas fa-brain"></i>
+            <h3>Strategic Research & Intelligence</h3>
+          </div>
+          <div class="service-card-body">
+            <p>Institutional-grade market research, competitive intelligence, financial modeling, and strategic analysis to inform critical business decisions and growth strategies.</p>
+            <ul class="service-features">
+              <li>Market opportunity assessment & sizing</li>
+              <li>Competitive landscape benchmarking</li>
+              <li>Financial modeling & valuation</li>
+              <li>Regulatory impact analysis</li>
+              <li>Strategic roadmap development</li>
+            </ul>
+            <a href="services.html#research" class="btn btn-primary" style="width: 100%; text-align: center;">
+              Explore Research Services
+            </a>
+          </div>
         </div>
+       
         <div class="service-card">
-          <i class="fas fa-cogs"></i>
-          <h3>Bookkeeping & Accounting</h3>
-          <p>Professional bookkeeping, accounting support, and financial reporting services ensuring accuracy and compliance with accounting standards.</p>
-          <a href="Bookkeeping & Accounting Support.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+          <div class="service-card-header compliance">
+            <i class="fas fa-cogs"></i>
+            <h3>Process Transformation & Optimization</h3>
+          </div>
+          <div class="service-card-body">
+            <p>End-to-end back-office transformation with workflow automation, quality assurance, and continuous improvement frameworks to drive operational excellence.</p>
+            <ul class="service-features">
+              <li>Process mapping & documentation</li>
+              <li>Regulatory compliance integration</li>
+              <li>Workflow automation design</li>
+              <li>Quality control frameworks</li>
+              <li>Performance measurement systems</li>
+            </ul>
+            <a href="services.html#process" class="btn btn-secondary" style="width: 100%; text-align: center;">
+              Transform Your Operations
+            </a>
+          </div>
         </div>
+       
         <div class="service-card">
-          <i class="fas fa-users"></i>
-          <h3>Strategic Outsourcing</h3>
-          <p>Dedicated financial operations teams that scale with your business needs, providing expertise without the overhead of full-time hires.</p>
-          <a href="Outsourcing Partnership.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-database"></i>
-          <h3>Data Automation</h3>
-          <p>Automated data collection, processing, and analysis to transform raw data into actionable business intelligence and insights.</p>
-          <a href="Data Scraping & Automation.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-file-contract"></i>
-          <h3>Tax Preparation</h3>
-          <p>Comprehensive tax preparation, planning, and compliance services to optimize your tax position and ensure regulatory adherence.</p>
-          <a href="Tax Preparation & Reporting.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-project-diagram"></i>
-          <h3>Process Optimization</h3>
-          <p>Workflow analysis, process documentation, and optimization strategies to enhance operational efficiency and reduce costs.</p>
-          <a href="Process Documentation & Workflow Support.html" style="color: var(--primary-blue); font-weight: 600; margin-top: auto;">Learn More →</a>
+          <div class="service-card-header">
+            <i class="fas fa-handshake"></i>
+            <h3>Strategic Partnership Outsourcing</h3>
+          </div>
+          <div class="service-card-body">
+            <p>Dedicated financial operations teams operating as an extension of your organization with flexible engagement models, SLAs, and performance guarantees.</p>
+            <ul class="service-features">
+              <li>Dedicated relationship managers</li>
+              <li>Custom engagement frameworks</li>
+              <li>Scalable resource allocation</li>
+              <li>Performance dashboards & SLAs</li>
+              <li>Cost-transparent pricing</li>
+            </ul>
+            <a href="services.html#outsourcing" class="btn btn-primary" style="width: 100%; text-align: center;">
+              Explore Partnership Models
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- ENHANCED TESTIMONIALS -->
-  <section class="testimonial-section">
+  
+  <section class="section benefits-section">
     <div class="container">
-      <h2 class="section-title">Trusted by Financial Innovators</h2>
-      <p class="section-subtitle">Discover how forward-thinking financial companies are transforming their operations with our platform and services.</p>
+      <h2 class="section-title">Strategic Partnership Advantages</h2>
+      <p class="section-description">Proven capabilities that distinguish Finology Nexus as the preferred strategic partner for financial institutions worldwide.</p>
+     
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Institutional Expertise</h3>
+          <p>Team with 15+ years average experience in global financial operations, regulatory compliance, and strategic advisory across banking, fintech, and investment sectors.</p>
+        </div>
+       
+        <div class="benefit-card">
+          <i class="fas fa-plug"></i>
+          <h3>Seamless Integration</h3>
+          <p>Proven integration methodology ensuring zero disruption and immediate value realization from partnership commencement.</p>
+        </div>
+       
+        <div class="benefit-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Enterprise-Grade Security</h3>
+          <p>SOC 2 Type II certified, ISO 27001 compliant infrastructure with bank-grade encryption and data protection protocols.</p>
+        </div>
+ 
+        <div class="benefit-card">
+          <i class="fas fa-bolt"></i>
+          <h3>Rapid Value Realization</h3>
+          <p>Structured onboarding delivers measurable ROI within 30 days through pre-built frameworks and expert guidance.</p>
+        </div>
+       
+        <div class="benefit-card">
+          <i class="fas fa-rocket"></i>
+          <h3>Scalable Architecture</h3>
+          <p>Flexible engagement models that scale seamlessly with your growth trajectory and strategic requirements.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-chart-bar"></i>
+          <h3>Quantifiable Results</h3>
+          <p>42% average cost reduction, 94% client retention, and 100% regulatory compliance success rate across engagements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section testimonial-section">
+    <div class="container">
+      <h2 class="section-title">Client Transformation Stories</h2>
+      <p class="section-description">Strategic partnerships that delivered measurable operational transformation and sustainable competitive advantage.</p>
+      
       <div class="testimonial-grid">
         <div class="testimonial">
-          <p>"The Vendor Risk Intelligence platform identified critical gaps we had completely overlooked. This single insight prevented potential penalties during our last audit."</p>
-          <p class="testimonial-author">— Compliance Director</p>
-          <p class="testimonial-role">Financial Technology Company</p>
+          <p>"Finology Nexus transformed our RBI compliance operations from a cost center into a strategic advantage. Their automated circular tracking and reporting platform reduced our compliance workload by 78% while ensuring perfect regulatory adherence."</p>
+          <p class="testimonial-author">— Chief Compliance Officer</p>
+          <p class="testimonial-role">Leading NBFC</p>
         </div>
+        
         <div class="testimonial">
-          <p>"The RBI compliance automation saved us 40% in operational costs while cutting our audit preparation time from 3 weeks to just 4 days. Game-changing for growing NBFCs."</p>
-          <p class="testimonial-author">— Chief Operations Officer</p>
-          <p class="testimonial-role">Emerging Digital NBFC</p>
+          <p>"The combination of global best practices with deep RBI expertise enabled us to scale our digital lending platform across India without compromising on compliance or operational efficiency. A true strategic partner."</p>
+          <p class="testimonial-author">— Chief Operating Officer</p>
+          <p class="testimonial-role">Leading Fintech Unicorn</p>
         </div>
+        
         <div class="testimonial">
-          <p>"The combination of technology and expert services has been transformative. We've scaled our operations 3x without increasing our compliance team."</p>
-          <p class="testimonial-author">— Head of Finance</p>
-          <p class="testimonial-role">Growing Fintech Startup</p>
+          <p>"Their vendor risk intelligence platform identified critical supply chain vulnerabilities we didn't know existed. The strategic insights and mitigation frameworks prevented potential regulatory issues and saved us millions."</p>
+          <p class="testimonial-author">— Head of Risk Management</p>
+          <p class="testimonial-role">Leading Global Investment Bank</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- ENHANCED CTA SECTION -->
+  
+  <section class="tech-stack">
+    <div class="tech-stack-container">
+      <h2 class="section-title">Strategic Technology Ecosystem</h2>
+      <p class="section-description">Enterprise-grade technology partners and platforms ensuring seamless integration, security, and performance at scale.</p>
+     
+      <div class="tech-logos">
+        <img src="https://cdn.worldvectorlogo.com/logos/salesforce.svg" alt="Salesforce">
+        <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+        <img src="https://cdn.worldvectorlogo.com/logos/python-5.svg" alt="Python">
+        <img src="PowerBi Logo.png" alt="Power BI">
+        <img src="https://cdn.worldvectorlogo.com/logos/quickbooks.svg" alt="QuickBooks">
+        <img src="https://cdn.worldvectorlogo.com/logos/xero-1.svg" alt="Xero">
+        <img src="https://cdn.worldvectorlogo.com/logos/sap-2.svg" alt="SAP">
+        <img src="https://cdn.worldvectorlogo.com/logos/microsoft-azure-1.svg" alt="Microsoft Azure">
+        <img src="https://cdn.worldvectorlogo.com/logos/amazon-web-services.svg" alt="AWS">
+      </div>
+    </div>
+  </section>
+  
   <section class="cta-section">
-    <div class="container" style="position:relative;z-index:2;">
-      <h2 style="font-size:2.75rem;margin-bottom:1.5rem;">Ready to Transform Your Financial Operations?</h2>
-      <p style="font-size:1.3rem;margin-bottom:2.5rem;opacity:0.95;">Join innovative financial companies that are automating compliance, reducing costs by 40%, and scaling with confidence.</p>
-      <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;">
-        <a href="free-scorecard.html" class="btn btn-secondary" style="min-width:280px;">
-          <i class="fas fa-chart-pie"></i>Get Free Vendor Assessment
-        </a>
-        <a href="contactus.html" class="btn btn-gold" style="min-width:280px;">
-          <i class="fas fa-phone-alt"></i>Schedule Expert Consultation
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- ENHANCED FREE ASSESSMENT SECTION -->
-  <section class="free-assessment section" id="assessment">
-    <div class="assessment-container">
-      <h2 style="font-size:2.25rem;margin-bottom:1rem;">Get Your Complimentary Vendor Risk Assessment</h2>
-      <p style="font-size:1.2rem;color:var(--text-medium);margin-bottom:2rem;">Complete our 5-minute assessment and receive a customized 15-page analysis with specific recommendations for optimization and growth.</p>
-     
-      <div class="assessment-features">
-        <div>
-          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Your Assessment Includes:</h3>
-          <ul class="feature-list">
-            <li><i class="fas fa-fire"></i> Vendor risk heat map & vulnerability scores</li>
-            <li><i class="fas fa-money-bill-wave"></i> Cost optimization opportunities</li>
-            <li><i class="fas fa-exclamation-triangle"></i> Compliance gap analysis</li>
-            <li><i class="fas fa-chart-line"></i> Benchmark against industry standards</li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="color:var(--text-dark);margin-bottom:1.5rem;">Completely Confidential:</h3>
-          <ul class="feature-list">
-            <li><i class="fas fa-ban"></i> No obligation or sales pressure</li>
-            <li><i class="fas fa-bolt"></i> Detailed PDF within 24 hours</li>
-            <li><i class="fas fa-handshake"></i> Optional expert review session</li>
-            <li><i class="fas fa-lock"></i> 100% secure and confidential</li>
-          </ul>
-        </div>
-      </div>
-     
-      <div class="urgency-badge">
-        <i class="fas fa-clock"></i> Limited complimentary assessments available this month. Secure your spot now.
-      </div>
-     
-      <form id="assessmentForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="max-width:600px;margin:2.5rem auto 0;">
-        <input type="hidden" name="_subject" value="Free Vendor Risk Assessment Request">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem;">
-          <input type="text" name="first_name" placeholder="First Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
-          <input type="text" name="last_name" placeholder="Last Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
-        </div>
-        <input type="email" name="email" placeholder="Work Email Address" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);width:100%;margin-bottom:1.25rem;font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
-        <input type="text" name="company" placeholder="Company Name" required style="padding:1rem;border:1px solid #e2e8f0;border-radius:var(--radius-sm);width:100%;margin-bottom:1.25rem;font-size:1rem;transition:var(--transition);" onfocus="this.style.borderColor='var(--primary-blue)'">
-        <button type="submit" class="btn btn-secondary" style="width:100%;padding:1.25rem;font-size:1.15rem;font-weight:800;">
-          <i class="fas fa-download"></i> Download Free Assessment
-        </button>
-      </form>
-    </div>
-  </section>
-  <!-- ENHANCED FOOTER WITH PROPER NAVIGATION -->
-  <footer>
     <div class="container">
-      <div class="footer-main">
-        <div class="footer-column">
-          <div class="footer-logo-group">
-            <img src="finology-logofavicon.png" alt="Finology Nexus" width="35" height="35">
-            <span>Finology Nexus</span>
-          </div>
-          <p class="footer-about">We empower financial companies to achieve operational excellence, regulatory compliance, and sustainable growth through intelligent automation and strategic partnership.</p>
-          <div class="footer-socials">
-            <a href="https://linkedin.com/company/finology-nexus" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/FinologyNexus" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://facebook.com/finologynexus" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          </div>
+      <div class="cta-content">
+        <h2>Ready to Transform Your Financial Operations?</h2>
+        <p>Join 65+ leading financial institutions that have partnered with Finology Nexus to achieve operational excellence, regulatory mastery, and sustainable growth.</p>
+        <div class="cta-buttons">
+          <a href="#assessment" class="btn btn-secondary">Begin Strategic Assessment</a>
+          <a href="contactus.html" class="btn btn-tertiary">Schedule Executive Consultation</a>
         </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Solutions</h4>
-            <ul>
-              <li><a href="vendor-scorecard.html">Vendor Risk Intelligence</a></li>
-              <li><a href="solutions.html">RBI Compliance Automation</a></li>
-              <li><a href="finance-checkup.html">Financial Dashboard</a></li>
-              <li><a href="solutions.html">Due Diligence Automation</a></li>
+      </div>
+    </div>
+  </section>
+  
+  <section class="free-assessment" id="assessment">
+    <div class="container">
+      <div class="assessment-container">
+        <h2>Comprehensive Operations Assessment</h2>
+        <p>Receive a detailed analysis of your current financial operations, compliance posture, and strategic optimization opportunities within 48 hours.</p>
+       
+        <div class="assessment-features">
+          <div class="feature-column">
+            <h3>Assessment Framework Includes:</h3>
+            <ul class="feature-list">
+              <li><i class="fas fa-search-dollar"></i> End-to-end operational efficiency audit</li>
+              <li><i class="fas fa-chart-pie"></i> Cost structure optimization analysis</li>
+              <li><i class="fas fa-shield-alt"></i> Regulatory compliance gap assessment</li>
+              <li><i class="fas fa-lightbulb"></i> Technology stack evaluation</li>
+              <li><i class="fas fa-bolt"></i> 90-day strategic improvement roadmap</li>
+            </ul>
+          </div>
+          <div class="feature-column">
+            <h3>Strategic Value Proposition:</h3>
+            <ul class="feature-list">
+              <li><i class="fas fa-gift"></i> Complimentary executive consultation</li>
+              <li><i class="fas fa-clock"></i> Detailed report within 48 hours</li>
+              <li><i class="fas fa-chart-line"></i> Data-driven strategic recommendations</li>
+              <li><i class="fas fa-users"></i> Expert review session with leadership</li>
+              <li><i class="fas fa-handshake"></i> No-obligation partnership discussion</li>
             </ul>
           </div>
         </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="Financial Research & Analytics.html">Research & Analytics</a></li>
-              <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping & Accounting</a></li>
-              <li><a href="Outsourcing Partnership.html">Strategic Outsourcing</a></li>
-              <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-              <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Blog & Insights</a></li>
-              <li><a href="contactus.html">Contact Us</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-              <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
+       
+        <div class="assessment-form">
+          <div class="form-box">
+            <form id="assessmentForm">
+              <div class="form-row">
+                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="Last Name" required>
+              </div>
+              <input type="email" placeholder="Corporate Email" required>
+              <input type="text" placeholder="Organization Name" required>
+              <input type="tel" placeholder="Phone Number" required>
+              <select required>
+                <option value="">Institution Type</option>
+                <option value="fintech">Fintech / Digital Bank</option>
+                <option value="investment">Investment Management</option>
+                <option value="nbfc">NBFC / Lending Institution</option>
+                <option value="wealth">Wealth Management</option>
+                <option value="bank">Traditional Bank</option>
+                <option value="other">Other Financial Services</option>
+              </select>
+              <select required>
+                <option value="">Primary Regulatory Jurisdiction</option>
+                <option value="rbi">RBI (India)</option>
+                <option value="sec">SEC (USA)</option>
+                <option value="fca">FCA (UK)</option>
+                <option value="mas">MAS (Singapore)</option>
+                <option value="global">Multiple Jurisdictions</option>
+              </select>
+              <textarea placeholder="Describe your current operational challenges, strategic objectives, and key priorities for the next 12 months..."></textarea>
+              <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                <i class="fas fa-paper-plane"></i> Submit Assessment Request
+              </button>
+            </form>
           </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html" style="color:#9ca3af;">Privacy Policy</a> | <a href="termsofservice.html" style="color:#9ca3af;">Terms of Service</a></p>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-main">
+      <div class="footer-column">
+        <div class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+          <span class="company-name">Finology Nexus</span>
+        </div>
+        <p class="footer-about">Global financial operations excellence with deep regulatory intelligence across 20+ jurisdictions. Strategic partnership delivering operational transformation, compliance mastery, and sustainable growth for financial institutions worldwide.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
+      
+      <div class="footer-column footer-links">
+        <h4>Strategic Solutions</h4>
+        <ul>
+          <li><a href="vendor-risk.html">Vendor Risk Intelligence</a></li>
+          <li><a href="rbi-compliance.html">RBI Compliance Automation</a></li>
+          <li><a href="compliance-automation.html">Global Compliance Suite</a></li>
+          <li><a href="performance-analytics.html">Performance Analytics</a></li>
+          <li><a href="due-diligence.html">Due Diligence Automation</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column footer-links">
+        <h4>Service Capabilities</h4>
+        <ul>
+          <li><a href="services.html#research">Strategic Research & Intelligence</a></li>
+          <li><a href="services.html#process">Process Transformation</a></li>
+          <li><a href="services.html#outsourcing">Strategic Partnership</a></li>
+          <li><a href="industries.html">Industry Expertise</a></li>
+          <li><a href="aboutus.html">Client Success Stories</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column footer-links">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="aboutus.html">About Finology Nexus</a></li>
+          <li><a href="contactus.html">Global Offices</a></li>
+          <li><a href="careers.html">Career Opportunities</a></li>
+          <li><a href="#">Security & Compliance</a></li>
+          <li><a href="contactus.html">Schedule Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2023 Finology Nexus. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Security & Compliance</a> | <a href="#">Cookie Policy</a></p>
+      <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
     </div>
   </footer>
-  <a href="free-scorecard.html" class="floating-cta">
-    <i class="fas fa-bolt"></i>Free Assessment
+  
+  <a href="#assessment" class="floating-cta">
+    <i class="fas fa-rocket"></i> Get Assessment
   </a>
+
   <script>
-    // Enhanced stats animation
-    document.querySelectorAll('.stat-number').forEach(stat => {
-      let target = +stat.getAttribute('data-target');
-      let count = 0;
-      let inc = target / 40;
-      let timer = setInterval(() => {
-        count += inc;
-        if (count >= target) {
-          stat.textContent = target;
-          clearInterval(timer);
-        } else {
-          stat.textContent = Math.floor(count);
-        }
-      }, 50);
-    });
-    // Particle animation
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 15;
-     
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-       
-        // Random properties
-        const size = Math.random() * 5 + 2;
-        const left = Math.random() * 100;
-        const animationDuration = Math.random() * 20 + 10;
-        const animationDelay = Math.random() * 5;
-       
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${left}%`;
-        particle.style.animationDuration = `${animationDuration}s`;
-        particle.style.animationDelay = `${animationDelay}s`;
-       
-        particlesContainer.appendChild(particle);
-      }
-    }
     // Mobile menu toggle
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav ul');
-     
-      if (window.innerWidth <= 768) {
-        menuToggle.style.display = 'block';
-        nav.style.display = 'none';
-       
-        menuToggle.addEventListener('click', function() {
-          nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-        });
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+      this.setAttribute('aria-expanded', nav.classList.contains('active'));
+    });
+
+    // Industry tabs functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons and tabs
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Show corresponding tab content
+        const tabId = this.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Form submission handler
+    document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real implementation, you would send form data to your server
+      // For demo purposes, we'll just show a success message
+      alert('Thank you for your assessment request! Our team will contact you within 24 hours.');
+      this.reset();
+    });
+
+    // Header shadow on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      } else {
+        header.style.boxShadow = 'var(--shadow-sm)';
       }
-      // Create particles
-      createParticles();
-      // Form submission handler
-      const form = document.getElementById('assessmentForm');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          // Add form submission logic here
-          alert('Thank you! Your free assessment request has been received. We will send your PDF within 24 hours.');
-          form.reset();
-        });
-      }
-      // Scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-      // Observe elements for scroll animation
-      document.querySelectorAll('.product-card, .service-card, .testimonial').forEach(el => {
-        observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
