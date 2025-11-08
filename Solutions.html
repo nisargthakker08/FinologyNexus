@@ -1566,7 +1566,7 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Download Our Product Overview</h2>
-                <p>Get detailed specifications, pricing options, and implementation timeline for the Vendor360 Essentials Suite.</p>
+                <p>Get detailed specifications and implementation timeline for the Vendor360 Essentials Suite.</p>
                 <div class="cta-buttons">
                     <a href="#" class="btn btn-secondary" id="downloadOverviewPdf">
                         <i class="fas fa-download"></i> Download PDF
@@ -1586,7 +1586,7 @@
             <div class="pdf-container">
                 <div class="pdf-header">
                     <h2>Nexus Global Vendor Rigor Framework</h2>
-                    <p>Sample Preview - Complete Framework Available Upon Request</p>
+                    <p>Comprehensive Vendor Compliance Framework</p>
                 </div>
                 <div class="pdf-content">
                     <div class="pdf-section">
@@ -1817,9 +1817,9 @@
             doc.rect(0, 0, 210, 40, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(20);
-            doc.text('Vendor360 Essentials Suite', 105, 20, { align: 'center' });
+            doc.text('✨ The Nexus Approach Service & Deliverable Guide', 105, 20, { align: 'center' });
             doc.setFontSize(12);
-            doc.text('Product Overview & Specifications', 105, 30, { align: 'center' });
+            doc.text('Fixed-Scope Service Deliverables', 105, 30, { align: 'center' });
             
             // Reset text color
             doc.setTextColor(0, 0, 0);
@@ -1828,92 +1828,75 @@
             let yPosition = 60;
             
             doc.setFontSize(16);
-            doc.text('Product Suite Overview', 20, yPosition);
+            doc.text('Service Overview', 20, yPosition);
             yPosition += 15;
             
             doc.setFontSize(11);
-            const overviewText = 'The Vendor360 Essentials Suite provides comprehensive vendor management solutions for financial institutions. Our suite includes six core products designed to streamline vendor risk assessment, compliance tracking, performance monitoring, and financial due diligence.';
+            const overviewText = 'The Nexus Approach redefines vendor governance for financial institutions through fixed-scope, productized services. Each engagement is designed to deliver measurable outcomes-rapid, regulator-aligned, and immediately deployable, without the overhead of enterprise platforms.';
             const overviewLines = doc.splitTextToSize(overviewText, 170);
             doc.text(overviewLines, 20, yPosition);
             yPosition += (overviewLines.length * 7) + 10;
             
-            // Products list
+            // Fixed-Scope Deliverables
             doc.setFontSize(14);
-            doc.text('Core Products:', 20, yPosition);
+            doc.text('Our Fixed-Scope Deliverables:', 20, yPosition);
             yPosition += 10;
             
             doc.setFontSize(11);
-            const products = [
-                '1. Vendor Health Scorecard - Standardized risk assessment with RAG status',
+            const deliverables = [
+                '1. Vendor Health Scorecard Template - Standardized risk assessment framework',
+                    'o Standardized framework for vendor risk scoring and RAG status evaluation'
+                    'o Enables objective, data-backed assessments within days'
+            
                 '2. Nexus Global Vendor Rigor Framework - Global compliance framework',
+                    'o Comprehensive, cross-jurisdiction compliance structure'
+                    'o Covers EU, US, and APAC regulatory mandates'
+            
                 '3. Cross-Jurisdiction Risk Diagnostic - Multi-regulatory compliance audit',
-                '4. Compliance & Risk Tracker - Automated deadline monitoring',
-                '5. Performance Dashboard - KPI visualization and SLA tracking',
+                    'o Rapid audit service assessing vendor risk and multi-regulatory gaps'
+                    'o Delivers a full RAG summary and prioritized remediation plan'
+            
+                '4. Compliance & Risk Tracker Template - Automated deadline monitoring system',
+                    'o Automated system for tracking deadlines, certifications, and documentation'
+                    'o Minimizes manual effort while ensuring audit readiness'
+
+                '5. Performance Dashboard Template - KPI visualization and SLA tracking',
+                    'o Visualizes KPIs, SLA adherence, and trend analysis'
+                    'o Supports objective vendor performance management'
+
                 '6. Financial Due Diligence Reports - Expert financial analysis'
+                    'o Expert-led financial health assessments and ratio analysis'
+                    'o Provides clear risk insights for procurement and compliance teams'
+
             ];
             
-            products.forEach(product => {
+            deliverables.forEach(item => {
                 if (yPosition > 270) {
                     doc.addPage();
                     yPosition = 20;
                 }
-                const productLines = doc.splitTextToSize(product, 160);
-                doc.text(productLines, 25, yPosition);
-                yPosition += (productLines.length * 7) + 5;
+                const itemLines = doc.splitTextToSize(item, 160);
+                doc.text(itemLines, 25, yPosition);
+                yPosition += (itemLines.length * 7) + 5;
             });
             
             yPosition += 10;
             
-            // Pricing section
-            if (yPosition > 250) {
-                doc.addPage();
-                yPosition = 20;
-            }
-            
-            doc.setFontSize(14);
-            doc.text('Pricing Options:', 20, yPosition);
-            yPosition += 10;
-            
-            doc.setFontSize(11);
-            const pricing = [
-                'Basic Suite: $1,500/month',
-                'Professional Suite: $2,500/month',
-                'Enterprise Suite: Custom pricing',
-                '',
-                'All plans include:',
-                '- Initial setup and configuration',
-                '- Basic training sessions',
-                '- Standard support',
-                '- Regular updates'
-            ];
-            
-            pricing.forEach(item => {
-                if (yPosition > 270) {
-                    doc.addPage();
-                    yPosition = 20;
-                }
-                doc.text(item, 25, yPosition);
-                yPosition += item === '' ? 5 : 7;
-            });
-            
-            yPosition += 10;
-            
-            // Implementation timeline
+            // Service Timeline
             if (yPosition > 240) {
                 doc.addPage();
                 yPosition = 20;
             }
             
             doc.setFontSize(14);
-            doc.text('Implementation Timeline:', 20, yPosition);
+            doc.text('Service Timeline:', 20, yPosition);
             yPosition += 10;
             
             doc.setFontSize(11);
             const timeline = [
-                'Week 1-2: Requirements gathering & setup',
-                'Week 3-4: Data migration & configuration',
-                'Week 5: User training & testing',
-                'Week 6: Go-live & support handover'
+                'Phase 1: Diagnostic (48 Hours) - Immediate risk assessment',
+                'Phase 2: Remediation Proposal (3 Days) - Actionable recommendations',
+                'Phase 3: Implementation Support - Template deployment guidance'
             ];
             
             timeline.forEach(item => {
@@ -1925,14 +1908,30 @@
                 yPosition += 8;
             });
             
+            // Pricing removed and replaced with contact info
+            if (yPosition > 250) {
+                doc.addPage();
+                yPosition = 20;
+            }
+            
+            doc.setFontSize(14);
+            doc.text('Service Investment', 20, yPosition);
+            yPosition += 10;
+            
+            doc.setFontSize(11);
+            doc.text('Contact us for fixed-price quotes tailored to your organization\'s specific needs.', 25, yPosition);
+            yPosition += 10;
+            doc.text('Our productized services deliver maximum value with clear, predictable pricing.', 25, yPosition);
+            yPosition += 10;
+            
             // Footer
             doc.setFontSize(10);
             doc.setTextColor(100, 100, 100);
-            doc.text('Finology Nexus - Vendor360 Essentials Suite', 105, 285, { align: 'center' });
-            doc.text('Contact: info@finologynexus.online', 105, 290, { align: 'center' });
+            doc.text('Finology Nexus - The Nexus Approach Service Guide', 105, 285, { align: 'center' });
+            doc.text('Contact: info@finologynexus.online | Fixed-price services available', 105, 290, { align: 'center' });
             
             // Save the PDF
-            doc.save('Vendor360-Essentials-Suite-Overview.pdf');
+            doc.save('The-Nexus-Approach-Service-Guide.pdf');
         }
 
         // Fix for Nexus Global Vendor Rigor Framework PDF
@@ -1945,57 +1944,96 @@
             
             const doc = new jspdf.jsPDF();
             
-            // Header
-            doc.setFillColor(16, 185, 129);
-            doc.rect(0, 0, 210, 40, 'F');
+            // Creative Header with gradient
+            doc.setFillColor(106, 13, 173);
+            doc.rect(0, 0, 210, 50, 'F');
             doc.setTextColor(255, 255, 255);
-            doc.setFontSize(18);
-            doc.text('Nexus Global Vendor Rigor Framework', 105, 20, { align: 'center' });
-            doc.setFontSize(12);
-            doc.text('Comprehensive Vendor Compliance Framework', 105, 30, { align: 'center' });
+            doc.setFontSize(22);
+            doc.text('Nexus Global Vendor Rigor Framework', 105, 25, { align: 'center' });
+            doc.setFontSize(14);
+            doc.text('Comprehensive Vendor Compliance Architecture for Financial Institutions', 105, 35, { align: 'center' });
+            
+            // Add decorative element
+            doc.setDrawColor(204, 153, 0);
+            doc.setLineWidth(1);
+            doc.line(50, 45, 160, 45);
             
             // Reset text color
             doc.setTextColor(0, 0, 0);
             
-            let yPosition = 60;
+            let yPosition = 70;
             
-            // Executive Summary
-            doc.setFontSize(14);
-            doc.text('Executive Summary', 20, yPosition);
-            yPosition += 10;
-            
+            // Executive Summary with colored background
+            doc.setFillColor(240, 249, 255);
+            doc.roundedRect(15, yPosition, 180, 40, 3, 3, 'F');
+            doc.setFontSize(16);
+            doc.text('Executive Summary', 25, yPosition + 10);
             doc.setFontSize(10);
-            const summaryText = 'The Nexus Global Vendor Rigor Framework provides financial institutions with a standardized approach to vendor risk management across multiple jurisdictions. This framework addresses critical regulatory requirements while offering practical implementation guidance for EU, US, and APAC regions.';
-            const summaryLines = doc.splitTextToSize(summaryText, 170);
-            doc.text(summaryLines, 20, yPosition);
-            yPosition += (summaryLines.length * 6) + 15;
+            const summaryText = 'The Nexus Global Vendor Rigor Framework equips financial institutions with a standardized, regulator-aligned approach to vendor risk management across multiple jurisdictions. It provides audit-ready governance models, risk quantification tools, and continuous compliance mechanisms—enabling institutions to achieve consistent oversight, regardless of geography. Designed to align with RBI, GDPR, FFIEC, and HKMA standards, this framework ensures that vendor management transitions from a compliance requirement to a strategic control function.';
+            const summaryLines = doc.splitTextToSize(summaryText, 160);
+            doc.text(summaryLines, 25, yPosition + 20);
+            yPosition += 50;
             
-            // Key Features
-            doc.setFontSize(14);
+            // Key Features with creative layout
+            doc.setFontSize(16);
             doc.text('Key Framework Components', 20, yPosition);
             yPosition += 10;
             
             doc.setFontSize(10);
             const features = [
-                '• Global Compliance Coverage: EU (GDPR, PSD2, MiFID II), US (GLBA, SOX, FFIEC), APAC (HKMA, RBI)',
-                '• Risk Assessment Matrix: Standardized scoring methodology',
-                '• Due Diligence Procedures: Step-by-step verification process',
-                '• Contract Management: Essential clauses and requirements',
-                '• Monitoring Framework: Ongoing oversight mechanisms',
-                '• Regulatory Updates: Regular compliance updates'
+                {title: 'Global Compliance Coverage', desc: 'EU (GDPR, PSD2, MiFID II), US (GLBA, SOX, FFIEC), APAC (HKMA, RBI)'},
+                {title: 'Risk Assessment Matrix', desc: 'Standardized scoring methodology with clear RAG status indicators'},
+                {title: 'Due Diligence Procedures', desc: 'Step-by-step verification process for vendor onboarding'},
+                {title: 'Contract Management', desc: 'Essential clauses and requirements for vendor agreements'},
+                {title: 'Monitoring Framework', desc: 'Ongoing oversight mechanisms and regulatory reporting'},
+                {title: 'Regulatory Updates', desc: 'Regular compliance updates across jurisdictions'}
             ];
             
+            let col = 0;
+            let row = 0;
             features.forEach(feature => {
-                if (yPosition > 270) {
+                if (yPosition > 250) {
                     doc.addPage();
                     yPosition = 20;
+                    col = 0;
+                    row = 0;
                 }
-                const featureLines = doc.splitTextToSize(feature, 160);
-                doc.text(featureLines, 25, yPosition);
-                yPosition += (featureLines.length * 6) + 8;
+                
+                const x = 20 + (col * 95);
+                const y = yPosition + (row * 45);
+                
+                // Feature box with colored background
+                doc.setFillColor(245, 243, 255);
+                doc.roundedRect(x, y, 90, 40, 3, 3, 'F');
+                
+                // Feature title
+                doc.setFontSize(11);
+                doc.setTextColor(106, 13, 173);
+                const titleLines = doc.splitTextToSize(feature.title, 80);
+                doc.text(titleLines, x + 5, y + 8);
+                
+                // Feature description
+                doc.setFontSize(9);
+                doc.setTextColor(0, 0, 0);
+                const descLines = doc.splitTextToSize(feature.desc, 80);
+                doc.text(descLines, x + 5, y + 20);
+                
+                col++;
+                if (col > 1) {
+                    col = 0;
+                    row++;
+                    if (row > 1) {
+                        row = 0;
+                        yPosition += 100;
+                        if (yPosition > 250) {
+                            doc.addPage();
+                            yPosition = 20;
+                        }
+                    }
+                }
             });
             
-            yPosition += 10;
+            yPosition += 100;
             
             // Risk Assessment Matrix
             if (yPosition > 220) {
@@ -2003,7 +2041,7 @@
                 yPosition = 20;
             }
             
-            doc.setFontSize(14);
+            doc.setFontSize(16);
             doc.text('Risk Assessment Matrix', 20, yPosition);
             yPosition += 10;
             
@@ -2031,52 +2069,73 @@
             
             yPosition += 10;
             
-            // Implementation Timeline
+            // Implementation Timeline with visual timeline
             if (yPosition > 250) {
                 doc.addPage();
                 yPosition = 20;
             }
             
-            doc.setFontSize(14);
+            doc.setFontSize(16);
             doc.text('Implementation Roadmap', 20, yPosition);
             yPosition += 10;
             
-            doc.setFontSize(10);
-            const roadmap = [
-                'Phase 1: Assessment (2 weeks)',
-                '  - Current state analysis',
-                '  - Regulatory gap assessment',
-                '',
-                'Phase 2: Planning (1 week)',
-                '  - Framework customization',
-                '  - Resource allocation',
-                '',
-                'Phase 3: Execution (3 weeks)',
-                '  - Process implementation',
-                '  - Tool configuration',
-                '  - Team training',
-                '',
-                'Phase 4: Monitoring (Ongoing)',
-                '  - Continuous compliance',
-                '  - Regular audits',
-                '  - Performance reviews'
+            // Visual timeline
+            const timelineData = [
+                {phase: 'Phase 1: Assessment', duration: '48 Hours', tasks: ['Current state analysis', 'Regulatory gap assessment']},
+                {phase: 'Phase 2: Planning', duration: '3 Days', tasks: ['Framework customization', 'Resource allocation']},
+                {phase: 'Phase 3: Execution', duration: '1 Week', tasks: ['Process implementation', 'Team training']},
+                {phase: 'Phase 4: Monitoring', duration: 'Ongoing', tasks: ['Continuous compliance', 'Performance reviews']}
             ];
             
-            roadmap.forEach(item => {
-                if (yPosition > 270) {
+            timelineData.forEach(phase => {
+                if (yPosition > 250) {
                     doc.addPage();
                     yPosition = 20;
                 }
-                doc.text(item, 25, yPosition);
-                yPosition += item === '' ? 5 : 7;
+                
+                // Phase header with colored background
+                doc.setFillColor(230, 240, 255);
+                doc.roundedRect(20, yPosition, 170, 15, 3, 3, 'F');
+                doc.setFontSize(11);
+                doc.setTextColor(0, 0, 0);
+                doc.text(phase.phase + ' - ' + phase.duration, 25, yPosition + 8);
+                yPosition += 20;
+                
+                // Tasks
+                doc.setFontSize(9);
+                phase.tasks.forEach(task => {
+                    if (yPosition > 270) {
+                        doc.addPage();
+                        yPosition = 20;
+                    }
+                    doc.text('• ' + task, 30, yPosition);
+                    yPosition += 6;
+                });
+                yPosition += 5;
             });
+            
+            // Service Investment section
+            if (yPosition > 250) {
+                doc.addPage();
+                yPosition = 20;
+            }
+            
+            doc.setFillColor(240, 255, 240);
+            doc.roundedRect(15, yPosition, 180, 30, 3, 3, 'F');
+            doc.setFontSize(14);
+            doc.setTextColor(16, 185, 129);
+            doc.text('Service Investment', 105, yPosition + 10, { align: 'center' });
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.text('Contact us for fixed-price quotes tailored to your organization\'s specific needs.', 105, yPosition + 20, { align: 'center' });
+            yPosition += 40;
             
             // Footer
             doc.setFontSize(9);
             doc.setTextColor(100, 100, 100);
-            doc.text('Nexus Global Vendor Rigor Framework - Sample Preview', 105, 280, { align: 'center' });
-            doc.text('Complete framework available upon request', 105, 285, { align: 'center' });
-            doc.text('Finology Nexus | info@finologynexus.online', 105, 290, { align: 'center' });
+            doc.text('Nexus Global Vendor Rigor Framework - Comprehensive Vendor Compliance', 105, 280, { align: 'center' });
+            doc.text('Finology Nexus | info@finologynexus.online | Fixed-price services available', 105, 285, { align: 'center' });
+            doc.text('Confidential & Proprietary - © 2025 Finology Nexus. All rights reserved.', 105, 290, { align: 'center' });
             
             // Save the PDF
             doc.save('Nexus-Global-Vendor-Rigor-Framework.pdf');
