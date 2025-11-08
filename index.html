@@ -261,137 +261,209 @@
       color: var(--accent-purple);
       padding: 0.5rem;
     }
-    /* ========== HERO SECTION ========== */
-    .hero {
-      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
-      color: var(--white);
-      padding: 8rem 1.25rem 5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
-        radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
-      animation: float 8s ease-in-out infinite;
-    }
+    /* ========== HERO SECTION (REFINED) ========== */
+.hero {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
+  color: var(--white);
+  padding: 8rem 1.25rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-    /* Animated particles background */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
+/* soft animated gradients for depth */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 75%, rgba(120,119,198,0.30) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(255,255,255,0.18) 0%, transparent 45%);
+  animation: float 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: particleFloat 15s infinite linear;
-    }
+/* particle container (keeps DOM small and performant) */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
 
-    @keyframes particleFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
+/* individual particle style (tiny, subtle, performant) */
+.particle {
+  position: absolute;
+  background: rgba(255,255,255,0.45);
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  opacity: 0;
+  transform: translateY(100vh);
+  animation: particleFloat 14s infinite linear;
+  will-change: transform, opacity;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.03); }
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 1s ease-out;
-      position: relative;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .hero p {
-      font-size: 1.35rem;
-      max-width: 50rem;
-      margin: 0 auto 2.5rem;
-      animation: fadeInUp 1s ease-out 0.2s both;
-      opacity: 0.95;
-      line-height: 1.7;
-    }
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.75rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 2;
-    }
-    /* Hero Stats - UPDATED */
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 3rem 0 1rem;
-      flex-wrap: wrap;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      padding: 2rem;
-      border-radius: var(--radius-lg);
-      max-width: 900px;
-      margin: 3rem auto 0;
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .hero-stat-item {
-      text-align: center;
-      padding: 0 1.25rem;
-      flex: 1;
-      min-width: 140px;
-    }
-    .hero-stat-number {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      line-height: 1.1;
-    }
-    .hero-stat-label {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      line-height: 1.3;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-2rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(2rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* particle animation (subtle rise) */
+@keyframes particleFloat {
+  0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+}
 
+/* floating background motion */
+@keyframes float {
+  0%,100% { transform: translateY(0) scale(1); }
+  50%     { transform: translateY(-12px) scale(1.02); }
+}
+
+/* headline and lead */
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  line-height: 1.05;
+  animation: fadeInDown 0.9s ease both;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.4vw, 1.35rem);
+  max-width: 52rem;
+  margin: 0 auto 2.25rem;
+  z-index: 2;
+  opacity: 0.98;
+  line-height: 1.6;
+  animation: fadeInUp 0.9s ease 0.15s both;
+}
+
+/* hero CTAs */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+/* ========== HERO STATS (REFINED & ACCESSIBLE) ========== */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2.25rem auto 0;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.10);   /* subtle glass */
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  max-width: 880px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  z-index: 2;
+  animation: fadeInStats 1s ease both;
+}
+
+/* stat item */
+.hero-stat-item {
+  text-align: center;
+  padding: 0 0.75rem;
+  flex: 1 1 160px;
+  min-width: 140px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: statFadeUp 0.9s ease forwards;
+}
+
+/* stagger */
+.hero-stat-item:nth-child(1) { animation-delay: 0.18s; }
+.hero-stat-item:nth-child(2) { animation-delay: 0.33s; }
+.hero-stat-item:nth-child(3) { animation-delay: 0.48s; }
+.hero-stat-item:nth-child(4) { animation-delay: 0.63s; }
+
+/* primary number / short hook */
+.hero-stat-number {
+  font-size: 1.6rem;         /* clearly visible but compact */
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.22);
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+}
+
+/* label — intentionally smaller and lighter so it reads as supporting text */
+.hero-stat-label {
+  font-size: 0.78rem;        /* reduced size for balance */
+  color: rgba(255,255,255,0.88);
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: 130px;
+  margin: 0 auto;
+  opacity: 0.95;
+}
+
+/* hover micro-interaction */
+.hero-stat-item:hover .hero-stat-number {
+  transform: translateY(-2px) scale(1.03);
+  transition: transform 220ms ease;
+}
+
+/* fade-in animations */
+@keyframes statFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInStats {
+  from { opacity: 0; transform: scale(0.995); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== RESPONSIVE TWEAKS ========== */
+@media (max-width: 992px) {
+  .hero { padding: 6.5rem 1rem 4rem; }
+  .hero-stats { padding: 1.25rem; gap: 1rem; }
+  .hero-stat-number { font-size: 1.4rem; }
+  .hero-stat-label { font-size: 0.75rem; max-width: 120px; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 5.5rem 1rem 3.5rem; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero p { font-size: 1rem; max-width: 36rem; }
+  .hero-stats { gap: 0.75rem; }
+  .hero-stat-item { min-width: 120px; }
+  .hero-stat-number { font-size: 1.25rem; }
+  .hero-stat-label { font-size: 0.72rem; }
+}
+
+/* ========== ACCESSIBILITY: prefers-reduced-motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .particle,
+  .hero-stats,
+  .hero h1,
+  .hero p,
+  .hero-stat-item {
+    animation: none !important;
+    transition: none !important;
+  }
+  .particle { display: none; }
+}
     /* ========== GLOBAL REACH SECTION ========== */
     .global-section {
       background: var(--white);
@@ -1483,8 +1555,8 @@
   <section class="hero">
     <div class="particles" id="particles"></div>
     <div class="container">
-      <h1>Strategic Vendor Risk Management for Global Enterprises</h1>
-      <p>Expert-led vendor risk assessment, global compliance automation, and precision financial services delivered through systematic frameworks. Founder-operated, deliverable-focused partnership for financial institutions worldwide.</p>
+      <h1>Redefining Financial Operations & Vendor Risk Excellence Worldwide</h1>
+      <p>EPartnering with financial institutions worldwide to simplify compliance, strengthen vendor ecosystems, and optimize financial operations. Finology Nexus blends expert insight with operational execution, transforming complexity into clarity and measurable business impact.</p>
       <div class="hero-buttons">
         <a href="#solutions" class="btn btn-secondary">
           <i class="fas fa-cube"></i> Explore Vendor360 Suite
@@ -1500,16 +1572,16 @@
       <!-- UPDATED HERO STATS -->
       <div class="hero-stats">
         <div class="hero-stat-item">
-          <div class="hero-stat-number">Productize</div>
-          <div class="hero-stat-label">Service Frameworks</div>
+          <div class="hero-stat-number">Zero Guesswork</div>
+          <div class="hero-stat-label">Standardized Vendor Assessments</div>
         </div>
         <div class="hero-stat-item">
           <div class="hero-stat-number">48-Hour</div>
           <div class="hero-stat-label">Vendor Risk Audits</div>
         </div>
         <div class="hero-stat-item">
-          <div class="hero-stat-number">Expert-Led</div>
-          <div class="hero-stat-label">Financial Operations</div>
+          <div class="hero-stat-number">End-to-End</div>
+          <div class="hero-stat-label">Finance & Risk Process Support</div>
         </div>
         <div class="hero-stat-item">
           <div class="hero-stat-number">Global</div>
@@ -2190,5 +2262,6 @@
   </script>
 </body>
 </html>
+
 
 
