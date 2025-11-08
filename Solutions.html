@@ -8,12 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+
+    
     <style>
         :root {
-            --primary-blue: #0077cc;
-            --primary-blue-dark: #005fa3;
-            --secondary-blue: #00c6ff;
-            --secondary-blue-light: #00a4e0;
+            --primary-blue: #0066cc;
+            --primary-blue-dark: #004d99;
+            --secondary-blue: #0099ff;
+            --accent-blue: #0077dd;
+            --accent-gold: #cc9900;
+            --accent-gold-light: #e6b800;
+            --accent-purple: #6a0dad;
+            --accent-purple-light: #8a2be2;
+            --accent-green: #10b981;
+            --accent-green-light: #34d399;
             --dark-bg: #1f2937;
             --light-bg: #f9fbfc;
             --text-dark: #1f2937;
@@ -47,21 +55,34 @@
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
+            margin-bottom: 0.75rem;
         }
 
         .section-title {
-            font-size: 2.25rem;
+            font-size: 2.75rem;
             margin-bottom: 1.25rem;
-            color: var(--text-dark);
-            text-align: center;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            border-radius: 2px;
         }
 
         .section-description {
             max-width: 50rem;
             margin: 0 auto 2.5rem;
             color: var(--text-medium);
-            font-size: 1.1rem;
-            text-align: center;
+            font-size: 1.15rem;
         }
 
         /* ========== BUTTON STYLES ========== */
@@ -69,32 +90,76 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 1.5rem;
+            padding: 0.875rem 1.75rem;
             border-radius: var(--radius-sm);
             font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
-            min-width: 180px;
+            min-width: 200px;
             text-align: center;
             gap: 0.5rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .btn-primary {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
             color: var(--white);
             border: none;
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
         }
-        
+
         .btn-secondary {
-            background: var(--white);
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+        }
+
+        .btn-tertiary {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-outline {
+            background: transparent;
             color: var(--primary-blue);
             border: 2px solid var(--primary-blue);
         }
-        
+
+        .btn-green {
+            background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
         .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+        .btn-secondary:hover,
+        .btn-tertiary:hover,
+        .btn-outline:hover,
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Button animation effects */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         /* ========== LAYOUT COMPONENTS ========== */
@@ -106,13 +171,14 @@
         }
 
         .section {
-            padding: 5rem 1.25rem;
+            padding: 6rem 1.25rem;
+            text-align: center;
         }
 
         /* ========== HEADER & NAVIGATION ========== */
         header {
             background: var(--white);
-            padding: 1rem 2.5rem;
+            padding: 1.25rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -120,18 +186,30 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .logo-group {
             display: flex;
             align-items: center;
-            gap: 0.625rem;
+            gap: 12px;
+        }
+
+        .company-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
         }
 
         .company-name {
-            font-size: 1.25rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -140,7 +218,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             margin: 0;
             padding: 0;
         }
@@ -151,18 +229,20 @@
             font-weight: 600;
             position: relative;
             transition: var(--transition);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            padding: 0.5rem 0;
         }
 
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: -4px;
+            height: 3px;
+            bottom: -6px;
             left: 0;
-            background: var(--primary-blue);
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
             transition: var(--transition);
+            border-radius: 2px;
         }
 
         nav a:hover::after,
@@ -171,112 +251,253 @@
         }
 
         nav a.active {
-            color: var(--primary-blue);
+            color: var(--accent-purple);
         }
 
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             cursor: pointer;
-            color: var(--primary-blue);
+            color: var(--accent-purple);
             padding: 0.5rem;
         }
 
         /* ========== HERO SECTION ========== */
         .hero {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
             color: var(--white);
-            padding: 6rem 1.25rem;
+            padding: 8rem 1.25rem 5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+                radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Animated particles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.03); }
+        }
+
         .hero h1 {
-            font-size: 2.875rem;
-            margin-bottom: 1.25rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            max-width: 43.75rem;
-            margin: 0 auto 2rem;
+            font-size: 1.35rem;
+            max-width: 50rem;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            opacity: 0.95;
+            line-height: 1.7;
         }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
-        /* ========== PRODUCT SUITE SECTION ========== */
-        .product-suite {
-            background-color: var(--white);
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== PRODUCTS OVERVIEW SECTION ========== */
+        .products-section {
+            padding: 6rem 1.25rem;
+            background: var(--light-bg);
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .products-section .section-title {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .products-section .section-description {
+            font-size: 1.25rem;
+            margin-bottom: 4rem;
+            color: var(--text-medium);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            text-align: left;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(106, 13, 173, 0.08);
+            position: relative;
+            overflow: hidden;
         }
 
         .product-card:hover {
-            transform: translateY(-0.5rem);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--accent-purple);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
         }
 
         .product-card-header {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            padding: 2rem 1.75rem;
+            background: var(--accent-purple);
             color: var(--white);
-            padding: 1.5rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        .product-card-header.compliance {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+        }
+
+        .product-card-header.rbi-starter {
+            background: linear-gradient(135deg, var(--accent-green), var(--primary-blue));
+        }
+
+        .product-card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(40%, -40%);
+        }
+
+        .product-card-header i {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 0.9;
         }
 
         .product-card-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            font-size: 1.75rem;
+            margin: 0;
+            line-height: 1.2;
         }
 
         .product-card-body {
-            padding: 1.5rem;
+            padding: 2rem 1.75rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .product-card-body p {
+            margin-bottom: 1.75rem;
             color: var(--text-medium);
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            flex-grow: 1;
         }
 
         .product-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin: 1.75rem 0;
+            flex-grow: 1;
         }
 
         .product-features li {
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             position: relative;
-            padding-left: 1.75rem;
+            padding-left: 2.25rem;
             color: var(--text-medium);
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
         .product-features li:before {
@@ -285,108 +506,339 @@
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: var(--secondary-blue);
+            color: var(--accent-gold);
+            font-size: 1.1rem;
         }
 
-        .product-cta {
-            margin-top: auto;
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+            border-left: 5px solid var(--accent-purple);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 1.05rem;
         }
 
-        /* ========== WHY CHOOSE SECTION ========== */
-        .why-choose {
-            background-color: var(--light-bg);
+        .highlight-box strong {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+
+        .rbi-badge {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .compliance-highlights {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-left: 4px solid var(--accent-green);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .compliance-highlights strong {
+            color: var(--accent-green);
+        }
+
+        .product-card-footer {
+            padding: 0 1.75rem 1.75rem;
+        }
+
+        /* ========== WHY CHOOSE US SECTION ========== */
+        .benefits-section {
+            background-color: var(--white);
+            padding: 6rem 1.25rem;
         }
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
         }
 
         .benefit-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
         }
 
         .benefit-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
         .benefit-card i {
-            font-size: 2.5rem;
-            color: var(--secondary-blue);
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         .benefit-card h3 {
-            color: var(--primary-blue);
+            color: var(--accent-purple);
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
         .benefit-card p {
             color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         /* ========== CTA SECTION ========== */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
             color: var(--white);
-            padding: 4rem 1.25rem;
+            padding: 6rem 1.25rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
         }
 
         .cta-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
         }
 
         .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 2rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
+        }
+
+        /* ========== FREE ASSESSMENT SECTION ========== */
+        .free-assessment {
+            padding: 6rem 1.25rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .assessment-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(106, 13, 173, 0.1);
+        }
+
+        .assessment-container h2 {
+            color: var(--accent-purple);
+            margin-bottom: 1.25rem;
+            font-size: 2.5rem;
+        }
+
+        .assessment-container p {
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .assessment-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .feature-column h3 {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .feature-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-list i {
+            color: var(--accent-gold);
+            margin-top: 0.35rem;
+            font-size: 1.1rem;
+        }
+
+        .assessment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(106, 13, 173, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .assessment-form input,
+        .assessment-form textarea,
+        .assessment-form select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d0d7de;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .assessment-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .assessment-form input:focus,
+        .assessment-form textarea:focus,
+        .assessment-form select:focus {
+            border-color: var(--accent-purple);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+        }
+
+        .assessment-form button {
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            color: var(--white);
+            border: none;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .assessment-form button:hover {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* ========== FOOTER ========== */
         footer {
             background: var(--dark-bg);
             color: var(--white);
-            padding: 3rem 1.25rem 1.5rem;
+            padding: 4rem 1.25rem 2rem;
         }
 
         .footer-main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: flex-start;
-            max-width: 75rem;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
         }
 
         .footer-column {
-            flex: 1;
             min-width: 200px;
         }
 
         .footer-logo-group {
             display: flex;
             align-items: center;
-            gap: 0.625rem;
-            margin-bottom: 1.5rem;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-logo-group img {
+            height: 2.5rem;
         }
 
         .footer-logo-group span {
-            font-size: 1.125rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -394,15 +846,28 @@
 
         .footer-about {
             color: #d1d5db;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
         }
 
         .footer-links h4 {
             color: var(--white);
-            margin-bottom: 1.25rem;
-            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
         }
 
         .footer-links ul {
@@ -410,119 +875,206 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .footer-links a {
             color: #d1d5db;
             text-decoration: none;
             transition: var(--transition);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            display: inline-block;
         }
 
         .footer-links a:hover {
-            color: var(--secondary-blue);
+            color: var(--accent-gold);
+            transform: translateX(5px);
         }
 
         .footer-socials {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
         }
 
         .footer-socials a {
             color: var(--white);
-            margin-right: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             transition: var(--transition);
-            text-decoration: none;
             display: inline-block;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .footer-socials a:hover {
-            color: var(--secondary-blue);
-            transform: translateY(-2px);
+            color: var(--accent-gold);
+            background: rgba(204, 153, 0, 0.2);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             margin-top: 3rem;
-            padding-top: 1.5rem;
+            padding-top: 2rem;
             border-top: 1px solid #374151;
             color: #9ca3af;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
         }
 
         /* ========== FLOATING CTA ========== */
         .floating-cta {
             position: fixed;
-            bottom: 1.875rem;
-            right: 1.875rem;
-            background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
             color: var(--white);
-            padding: 0.75rem 1.25rem;
-            border-radius: 1.875rem;
-            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
             text-decoration: none;
             box-shadow: var(--shadow-lg);
             z-index: 1000;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .floating-cta:hover {
-            background: linear-gradient(to right, var(--primary-blue), #005b99);
-            transform: translateY(-3px);
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .floating-cta i {
+            font-size: 1.25rem;
         }
 
         /* ========== RESPONSIVE STYLES ========== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
                 flex-wrap: wrap;
             }
-            
+
             .menu-toggle {
                 display: block;
                 order: 1;
             }
-            
+
             nav {
                 width: 100%;
                 order: 3;
                 display: none;
+                margin-top: 1.5rem;
+                background: var(--white);
+                padding: 1rem;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
             }
-            
+
             nav.active {
                 display: block;
-                margin-top: 1rem;
             }
-            
+
             nav ul {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 1rem;
             }
-            
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
-            
+
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
-            
+
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .section-title {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
-            
+
+            .product-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .assessment-features {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
             .footer-main {
-                flex-direction: column;
-                gap: 2rem;
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 4rem 1rem;
+            }
+            .assessment-container {
+                padding: 2rem;
+            }
+            .form-box {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .hero h1,
+            .hero p {
+                animation: none;
+            }
+            .hero::before {
+                animation: none;
             }
         }
 
@@ -532,23 +1084,25 @@
         input:focus-visible,
         textarea:focus-visible,
         select:focus-visible {
-            outline: 2px solid var(--primary-blue);
-            outline-offset: 2px;
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
             <span class="company-name">Finology Nexus</span>
         </div>
+
         <nav id="main-nav">
             <ul>
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blogs</a></li>
                 <li><a href="aboutus.html" class="nav-link">About Us</a></li>
                 <li><a href="contactus.html" class="nav-link">Contact</a></li>
             </ul>
@@ -559,30 +1113,32 @@
     </header>
 
     <section class="hero">
+        <div class="particles" id="particles"></div>
         <div class="container">
             <h1>Vendor360 Essentials Suite</h1>
             <p>Take Control of Your Vendor Ecosystem. Simply and Affordably.</p>
             <p>Our foundational suite gives you immediate visibility into vendor risk and performance, without the complexity and cost of enterprise platforms.</p>
             <div class="hero-buttons">
-                <a href="#products" class="btn btn-primary">
+                <a href="#products" class="btn btn-secondary">
                     <i class="fas fa-eye"></i> View Products
                 </a>
-                <a href="#contact" class="btn btn-secondary">
+                <a href="#contact" class="btn btn-primary">
                     <i class="fas fa-comment"></i> Request Demo
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="products" class="section product-suite">
-        <div class="container">
+    <section class="products-section" id="products">
+        <div class="products-container">
             <h2 class="section-title">The Essential Tools You Need</h2>
             <p class="section-description">Every robust vendor management program is built on four pillars: Risk, Compliance, Performance, and Financial Health. Our Essentials Suite provides dedicated tools for each, delivering value from day one.</p>
-            
+
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-card-header">
-                        <h3><i class="fas fa-heartbeat"></i> Vendor Health Scorecard</h3>
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Vendor Health Scorecard</h3>
                     </div>
                     <div class="product-card-body">
                         <p><strong>Your Central Source of Truth for Vendor Risk</strong><br>
@@ -593,39 +1149,79 @@
                             <li><strong>Simple Scoring Dashboard:</strong> Easy-to-understand Red/Amber/Green (RAG) statuses</li>
                             <li><strong>Actionable Insights:</strong> Immediately identify which vendors require your attention</li>
                         </ul>
-                        <div class="product-cta">
-                            <a href="#contact" class="btn btn-primary">Request Demo</a>
-                            <a href="vendor-scorecard.html" class="btn btn-secondary">
-                                <i class="fas fa-chart-line"></i> Check Vendor Health
-                            </a>
+                        <div class="highlight-box">
+                            <strong>Immediate Value:</strong> Transform subjective vendor evaluations into data-driven risk intelligence within days.
                         </div>
+                    </div>
+                    <div class="product-card-footer">
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Request Demo</a>
+                        <a href="vendor-scorecard.html" class="btn btn-secondary" style="width: 100%;">
+                            <i class="fas fa-chart-line"></i> Check Vendor Health
+                        </a>
                     </div>
                 </div>
 
                 <div class="product-card">
-    <div class="product-card-header">
-        <h3><i class="fas fa-shield-alt"></i> RBI Fine Risk: 48-Hour Vendor Audit</h3>
-    </div>
-    <div class="product-card-body">
-        <p><strong>Avoid RBI Penalties with Our Urgent Audit Service</strong><br>
-        RBI fined 48 NBFCs ₹7.29Cr in FY25 for vendor gaps – get a full RAG scorecard + compliance tracker in 48 hours</p>
-        <ul class="product-features">
-            <li><strong>Rapid RBI Check:</strong> Scan agreements for inspection clauses, BCP testing, and cyber reporting (per 2023 Outsourcing Directions).</li>
-            <li><strong>Automated Alerts:</strong> Setup for deadlines; avoid ₹10L/day fines.</li>
-            <li><strong>Risk-Free Guarantee:</strong> Free re-audit if fined post-service.</li>
-            <li><strong>Powered by Your Data:</strong> Build on our free Scorecard – upload for pro analysis.</li>
-        </ul>
-        <div class="product-cta">
-            <a href="#contact" class="btn btn-primary">Book 48-Hour Audit</a>
-            <a href="free-scorecard.html" class="btn btn-secondary">
-                <i class="fas fa-search"></i> Start with Free Scorecard
-            </a>
-        </div>
-    </div>
-</div>
+                    <div class="product-card-header rbi-starter">
+                        <i class="fas fa-file-contract"></i>
+                        <h3>RBI Compliance Starter Pack</h3>
+                    </div>
+                    <div class="product-card-body">
+                        <div class="rbi-badge">
+                            <i class="fas fa-shield-alt"></i> Essential for NBFCs & Financial Institutions
+                        </div>
+                        <p><strong>Your Quick Start Guide to RBI Compliance</strong><br>
+                        Avoid costly penalties with our essential checklist and guide for NBFCs and financial institutions.</p>
+                        <ul class="product-features">
+                            <li><strong>Essential Checklist:</strong> Key RBI compliance requirements for vendor management</li>
+                            <li><strong>Regulatory Updates:</strong> Summary of the latest RBI circulars and directives</li>
+                            <li><strong>Best Practices:</strong> Step-by-step guidance for building a compliant program</li>
+                            <li><strong>Documentation Templates:</strong> Ready-to-use templates for vendor agreements and audits</li>
+                        </ul>
+                        <div class="compliance-highlights">
+                            <strong>Critical Compliance Areas Covered:</strong> Outsourcing Guidelines, KYC Requirements, Data Localization, Cybersecurity Framework, and Business Continuity Planning.
+                        </div>
+                    </div>
+                    <div class="product-card-footer">
+                        <a href="#" class="btn btn-green" style="width: 100%; margin-bottom: 1rem;">
+                            <i class="fas fa-download"></i> Download Free PDF
+                        </a>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-info-circle"></i> Get Compliance Audit
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-card-header compliance">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>48-Hour Vendor Audit</h3>
+                    </div>
+                    <div class="product-card-body">
+                        <p><strong>Avoid RBI Penalties with Our Urgent Audit Service</strong><br>
+                        RBI fined 48 NBFCs ₹7.29Cr in FY25 for vendor gaps – get a full RAG scorecard + compliance tracker in 48 hours</p>
+                        <ul class="product-features">
+                            <li><strong>Rapid RBI Check:</strong> Scan agreements for inspection clauses, BCP testing, and cyber reporting (per 2023 Outsourcing Directions).</li>
+                            <li><strong>Automated Alerts:</strong> Setup for deadlines; avoid ₹10L/day fines.</li>
+                            <li><strong>Risk-Free Guarantee:</strong> Free re-audit if fined post-service.</li>
+                            <li><strong>Powered by Your Data:</strong> Build on our free Scorecard – upload for pro analysis.</li>
+                        </ul>
+                        <div class="highlight-box">
+                            <strong>Risk Reversal:</strong> Free re-audit if regulatory penalties occur post-assessment.
+                        </div>
+                    </div>
+                    <div class="product-card-footer">
+                        <a href="#contact" class="btn btn-secondary" style="width: 100%; margin-bottom: 1rem;">Book 48-Hour Audit</a>
+                        <a href="free-scorecard.html" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-search"></i> Start with Free Scorecard
+                        </a>
+                    </div>
+                </div>
+
                 <div class="product-card">
                     <div class="product-card-header">
-                        <h3><i class="fas fa-clipboard-check"></i> Compliance & Risk Tracker</h3>
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Compliance & Risk Tracker</h3>
                     </div>
                     <div class="product-card-body">
                         <p><strong>Never Miss a Critical Deadline Again</strong><br>
@@ -636,15 +1232,19 @@
                             <li><strong>Document Repository:</strong> Securely attach and store critical compliance documents</li>
                             <li><strong>Customizable Fields:</strong> Track specific certifications for your industry</li>
                         </ul>
-                        <div class="product-cta">
-                            <a href="#contact" class="btn btn-primary">Request Demo</a>
+                        <div class="highlight-box">
+                            <strong>Proactive Monitoring:</strong> Prevent compliance violations and associated penalties.
                         </div>
                     </div>
+                    <div class="product-card-footer">
+                        <a href="#contact" class="btn btn-primary" style="width: 100%;">Request Demo</a>
+                    </div>
                 </div>
-                
+
                 <div class="product-card">
                     <div class="product-card-header">
-                        <h3><i class="fas fa-chart-line"></i> Performance Dashboard</h3>
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Performance Dashboard</h3>
                     </div>
                     <div class="product-card-body">
                         <p><strong>Measure What Matters: Vendor Performance</strong><br>
@@ -655,15 +1255,19 @@
                             <li><strong>Future-Ready Architecture:</strong> Built to support API integrations as you grow</li>
                             <li><strong>Trend Analysis:</strong> Spot improving or deteriorating performance over time</li>
                         </ul>
-                        <div class="product-cta">
-                            <a href="#contact" class="btn btn-primary">Request Demo</a>
+                        <div class="highlight-box">
+                            <strong>Performance Intelligence:</strong> Move from subjective reviews to objective vendor performance management.
                         </div>
                     </div>
+                    <div class="product-card-footer">
+                        <a href="#contact" class="btn btn-primary" style="width: 100%;">Request Demo</a>
+                    </div>
                 </div>
-                
+
                 <div class="product-card">
                     <div class="product-card-header">
-                        <h3><i class="fas fa-file-invoice-dollar"></i> Financial Due Diligence Reports</h3>
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h3>Financial Due Diligence Reports</h3>
                     </div>
                     <div class="product-card-body">
                         <p><strong>Expert Financial Analysis, Without the Headcount</strong><br>
@@ -674,74 +1278,84 @@
                             <li><strong>Risk Highlights:</strong> Clear summary of potential financial red flags</li>
                             <li><strong>Productized Service:</strong> Request reports through the platform</li>
                         </ul>
-                        <div class="product-cta">
-                            <a href="#contact" class="btn btn-primary">Request Demo</a>
+                        <div class="highlight-box">
+                            <strong>Expert Analysis:</strong> Financial due diligence without the cost of specialized internal resources.
                         </div>
+                    </div>
+                    <div class="product-card-footer">
+                        <a href="#contact" class="btn btn-primary" style="width: 100%;">Request Demo</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section why-choose">
+    <section class="benefits-section">
         <div class="container">
             <h2 class="section-title">Why Start with the Essentials Suite?</h2>
-            
+            <p class="section-description">Our systematic approach transforms vendor management from a compliance checkbox into a strategic advantage.</p>
+
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <i class="fas fa-bolt"></i>
                     <h3>Launch Fast, Prove Value Quick</h3>
-                    <p>Implement a full vendor management program in weeks, not years. See a return on investment immediately.</p>
+                    <p>Implement a full vendor management program in weeks, not years. See a return on investment immediately with our streamlined frameworks.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <i class="fas fa-seedling"></i>
                     <h3>Designed for Growth</h3>
                     <p>Start with simple data entry and static reports. As your program matures, seamlessly integrate APIs and automate data feeds.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <i class="fas fa-tag"></i>
                     <h3>Transparent & Affordable</h3>
-                    <p>No shocking enterprise quotes. Simple, predictable pricing for the tools you actually need.</p>
+                    <p>No shocking enterprise quotes. Simple, predictable pricing for the tools you actually need with clear ROI demonstration.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <i class="fas fa-hands-helping"></i>
-                    <h3>The Power of the Human Touch</h3>
+                    <h3>The Power of Human Expertise</h3>
                     <p>Our unique Financial Due Diligence service provides expert insight that pure-play software can't match.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section class="free-assessment" id="contact">
         <div class="container">
-            <h2 class="section-title">Ready to Get Started?</h2>
-            <p class="section-description">Request a demo or contact us to learn how the Vendor360 Essentials Suite can transform your vendor management processes.</p>
-            
-            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-                <form action="https://formsubmit.co/your@email.com" method="POST">
-                    <input type="hidden" name="_subject" value="Vendor360 Essentials Suite Demo Request">
-                    <input type="hidden" name="_template" value="box">
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                        <input type="text" name="first_name" placeholder="First Name" required style="width: 100%; padding: 0.875rem; border: 1px solid #e0e0e0; border-radius: var(--radius-sm);">
-                        <input type="text" name="last_name" placeholder="Last Name" style="width: 100%; padding: 0.875rem; border: 1px solid #e0e0e0; border-radius: var(--radius-sm);">
+            <div class="assessment-container">
+                <h2>Ready to Get Started?</h2>
+                <p>Request a demo or contact us to learn how the Vendor360 Essentials Suite can transform your vendor management processes.</p>
+
+                <div class="assessment-form">
+                    <div class="form-box">
+                        <form id="assessmentForm">
+                            <div class="form-row">
+                                <input type="text" placeholder="First Name" required>
+                                <input type="text" placeholder="Last Name" required>
+                            </div>
+                            <input type="email" placeholder="Corporate Email" required>
+                            <input type="text" placeholder="Organization Name" required>
+                            <input type="tel" placeholder="Phone Number">
+                            <select required>
+                                <option value="">Product of Interest</option>
+                                <option value="scorecard">Vendor Health Scorecard</option>
+                                <option value="rbi-starter">RBI Compliance Starter Pack</option>
+                                <option value="audit">48-Hour Vendor Audit</option>
+                                <option value="tracker">Compliance & Risk Tracker</option>
+                                <option value="dashboard">Performance Dashboard</option>
+                                <option value="duediligence">Financial Due Diligence</option>
+                                <option value="suite">Full Vendor360 Suite</option>
+                            </select>
+                            <textarea placeholder="Tell us about your vendor management needs and challenges..."></textarea>
+                            <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Request Demo
+                            </button>
+                        </form>
                     </div>
-                    
-                    <input type="email" name="email" placeholder="Email Address" required style="width: 100%; padding: 0.875rem; border: 1px solid #e0e0e0; border-radius: var(--radius-sm); margin-bottom: 1rem;">
-                    
-                    <input type="text" name="company" placeholder="Company Name" style="width: 100%; padding: 0.875rem; border: 1px solid #e0e0e0; border-radius: var(--radius-sm); margin-bottom: 1rem;">
-                    
-                    <textarea name="message" placeholder="Tell us about your vendor management needs" style="width: 100%; padding: 0.875rem; border: 1px solid #e0e0e0; border-radius: var(--radius-sm); min-height: 120px; margin-bottom: 1rem;"></textarea>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Request Demo</button>
-                    
-                    <p style="font-size: 12px; color: var(--text-light); margin-top: 1rem;">
-                        We respect your privacy. By submitting, you agree to our <a href="privacypolicy.html" style="color: var(--primary-blue);">Privacy Policy</a>.
-                    </p>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -749,13 +1363,13 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Download Our Product Overview</h2>
-                <p style="font-size: 1.25rem; margin-bottom: 2rem;">Get detailed specifications, pricing options, and implementation timeline for the Vendor360 Essentials Suite.</p>
+                <h2>Download Our Product Overview</h2>
+                <p>Get detailed specifications, pricing options, and implementation timeline for the Vendor360 Essentials Suite.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">
+                    <a href="#" class="btn btn-secondary">
                         <i class="fas fa-download"></i> Download PDF
                     </a>
-                    <a href="contactus.html" class="btn btn-secondary">
+                    <a href="contactus.html" class="btn btn-tertiary">
                         <i class="fas fa-calendar"></i> Schedule Call
                     </a>
                 </div>
@@ -764,107 +1378,147 @@
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-main">
-                <div class="footer-column">
-                    <div class="footer-logo-group">
-                        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
-                        <span>Finology Nexus</span>
-                    </div>
-                    <p class="footer-about">
-                        We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-                    </p>
-                    <div class="footer-socials">
-                        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    </div>
+        <div class="footer-main">
+            <div class="footer-column">
+                <div class="footer-logo-group">
+                    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+                    <span class="company-name">Finology Nexus</span>
                 </div>
-                
-                <div class="footer-column">
-                    <div class="footer-links">
-                        <h4>Products</h4>
-                        <ul>
-                            <li><a href="vendor-scorecard.html">Vendor Health Scorecard</a></li>
-                            <li><a href="#">Compliance & Risk Tracker</a></li>
-                            <li><a href="#">Performance Dashboard</a></li>
-                            <li><a href="#">Financial Due Diligence</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <div class="footer-links">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="aboutus.html">About Us</a></li>
-                            <li><a href="blog.html">Case Studies</a></li>
-                            <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                            <li><a href="termsofservice.html">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <div class="footer-links">
-                        <h4>Contact</h4>
-                        <ul>
-                            <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
-                            <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
-                        </ul>
-                    </div>
+                <p class="footer-about">Finology Nexus aims to deliver global financial operations excellence with deep regulatory intelligence across key jurisdictions. We aspire to be a strategic partner, fostering operational transformation, compliance mastery, and sustainable growth for financial institutions worldwide.</p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+
+            <div class="footer-column footer-links">
+                <h4>Strategic Solutions</h4>
+                <ul>
+                    <li><a href="vendor-scorecard.html">Vendor Health Scorecard</a></li>
+                    <li><a href="rbi-compliance-starter.html">RBI Compliance Starter Pack</a></li>
+                    <li><a href="free-scorecard.html">48-Hour Vendor Audit</a></li>
+                    <li><a href="Solutions.html">Compliance & Risk Tracker</a></li>
+                    <li><a href="Solutions.html">Performance Dashboard</a></li>
+                    <li><a href="Solutions.html">Financial Due Diligence</a></li>
+                </ul>
             </div>
+
+            <div class="footer-column footer-links">
+                <h4>Service Capabilities</h4>
+                <ul>
+                    <li><a href="services.html#research">Research & Analytics</a></li>
+                    <li><a href="services.html#process">Accounting Operations</a></li>
+                    <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="aboutus.html">Our Vision</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Corporate</h4>
+                <ul>
+                    <li><a href="aboutus.html">About Finology Nexus</a></li>
+                    <li><a href="contactus.html">Schedule Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
+            <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
         </div>
     </footer>
 
-    <a href="#contact" class="floating-cta" title="Request Demo" aria-label="Request Demo">
+    <a href="#contact" class="floating-cta">
         <i class="fas fa-comments"></i> Request Demo
     </a>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Mobile menu toggle
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            
-            menuToggle.addEventListener('click', () => {
-                const isExpanded = nav.classList.toggle('active');
-                menuToggle.innerHTML = isExpanded 
-                    ? '<i class="fas fa-times"></i>' 
-                    : '<i class="fas fa-bars"></i>';
-                menuToggle.setAttribute('aria-expanded', isExpanded);
-            });
-            
-            // Set active nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.href === window.location.href) {
-                    link.classList.add('active');
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+
+        // Form submission handler
+        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // In a real implementation, you would send form data to your server
+            // For demo purposes, we'll just show a success message
+            alert('Thank you for your demo request! Our team will contact you within 24 hours.');
+            this.reset();
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
                 }
             });
-            
-            // Update copyright year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+        });
+
+        // Create animated particles for hero section
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random size and position
+                const size = Math.random() * 5 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+        
+        // PDF download handler for RBI Compliance Starter Pack
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            if (link.textContent.includes('Download Free PDF')) {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    // In a real implementation, this would trigger the PDF download
+                    alert('Thank you for your interest! The RBI Compliance Starter Pack PDF will begin downloading.');
+                    // You would replace this with actual PDF download logic
+                    // window.location.href = 'path-to-rbi-compliance-starter-pack.pdf';
                 });
-            });
+            }
         });
     </script>
 </body>
