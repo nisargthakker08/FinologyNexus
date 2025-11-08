@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Global Vendor Rigor Framework | Finology Nexus</title>
+    <meta name="description" content="Premium regulatory compliance framework for financial institutions. Navigate global vendor regulations with our comprehensive solution.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    
+    <style>
+        :root {
+            --primary-blue: #0066cc;
+            --primary-blue-dark: #004d99;
+            --secondary-blue: #0099ff;
+            --accent-blue: #0077dd;
+            --accent-gold: #cc9900;
+            --accent-gold-light: #e6b800;
+            --accent-purple: #6a0dad;
+            --accent-purple-light: #8a2be2;
+            --accent-green: #10b981;
+            --accent-green-light: #34d399;
+            --dark-bg: #1f2937;
+            --light-bg: #f9fbfc;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            margin-bottom: 1.25rem;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 50rem;
+            margin: 0 auto 2.5rem;
+            color: var(--text-medium);
+            font-size: 1.15rem;
+        }
+
+        /* ========== BUTTON STYLES ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            min-width: 200px;
+            text-align: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+        }
+
+        .btn-tertiary {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-green {
+            background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .btn-tertiary:hover,
+        .btn-outline:hover,
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== LAYOUT COMPONENTS ========== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .section {
+            padding: 6rem 1.25rem;
+            text-align: center;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+            background-size: cover;
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled {
+            background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .company-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -6px;
+            left: 0;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--accent-purple);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--accent-purple);
+            padding: 0.5rem;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: 
+                linear-gradient(rgba(30, 60, 114, 0.85), rgba(42, 82, 152, 0.85)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600"><defs><pattern id="chartPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><path d="M10,10 L10,90 L90,90" stroke="%23ffffff" stroke-width="2" opacity="0.2" fill="none"/><path d="M10,90 L30,70 L50,40 L70,20 L90,10" stroke="%23ffffff" stroke-width="3" opacity="0.3" fill="none"/><circle cx="30" cy="70" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="50" cy="40" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="70" cy="20" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="10" r="3" fill="%23ffffff" opacity="0.4"/></pattern></defs><rect width="1200" height="600" fill="url(%23chartPattern)"/></svg>');
+            background-size: cover;
+            color: var(--white);
+            padding: 8rem 1.25rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+                radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Animated particles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.03); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 50rem;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features-section {
+            padding: 6rem 1.25rem;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== NUMBERED FEATURES ========== */
+        .numbered-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+            counter-reset: feature-counter;
+        }
+
+        .numbered-feature {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            counter-increment: feature-counter;
+        }
+
+        .numbered-feature::before {
+            content: counter(feature-counter);
+            position: absolute;
+            top: 1.5rem;
+            left: 2rem;
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(106, 13, 173, 0.1);
+            line-height: 1;
+        }
+
+        .numbered-feature h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            padding-left: 3rem;
+        }
+
+        .numbered-feature p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== REGULATORY COVERAGE ========== */
+        .regulatory-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+            padding: 6rem 1.25rem;
+        }
+
+        .regulatory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .regulatory-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: left;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(106, 13, 173, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .regulatory-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-purple);
+        }
+
+        .regulatory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .eu .regulatory-card::before {
+            background: linear-gradient(to right, #003399, #3366cc);
+        }
+
+        .us .regulatory-card::before {
+            background: linear-gradient(to right, #B22234, #DC143C);
+        }
+
+        .apac .regulatory-card::before {
+            background: linear-gradient(to right, #008000, #32CD32);
+        }
+
+        .regulatory-header {
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        .eu .regulatory-header {
+            background: linear-gradient(135deg, #003399, #3366cc);
+        }
+
+        .us .regulatory-header {
+            background: linear-gradient(135deg, #B22234, #DC143C);
+        }
+
+        .apac .regulatory-header {
+            background: linear-gradient(135deg, #008000, #32CD32);
+        }
+
+        .regulatory-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .regulation {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid;
+            padding-left: 1rem;
+        }
+
+        .eu .regulation {
+            border-left-color: #003399;
+        }
+
+        .us .regulation {
+            border-left-color: #B22234;
+        }
+
+        .apac .regulation {
+            border-left-color: #008000;
+        }
+
+        .regulation h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .regulation p {
+            margin-bottom: 0.75rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .regulation ul {
+            padding-left: 1.25rem;
+        }
+
+        .regulation li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .regulation li:before {
+            content: "•";
+            color: #2c3e50;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* ========== PREMIUM FEATURES ========== */
+        .premium-section {
+            padding: 6rem 1.25rem;
+            background: var(--white);
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .premium-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .premium-card i {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .premium-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .premium-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+            color: var(--white);
+            padding: 6rem 1.25rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-section {
+            padding: 6rem 1.25rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(106, 13, 173, 0.1);
+        }
+
+        .contact-container h2 {
+            color: var(--accent-purple);
+            margin-bottom: 1.25rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-container p {
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(106, 13, 173, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d0d7de;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--accent-purple);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+        }
+
+        .contact-form button {
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            color: var(--white);
+            border: none;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 4rem 1.25rem 2rem;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column {
+            min-width: 200px;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-logo-group img {
+            height: 2.5rem;
+        }
+
+        .footer-logo-group span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-about {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-socials {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-gold);
+            background: rgba(204, 153, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== FLOATING CTA ========== */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .floating-cta:hover {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .floating-cta i {
+            font-size: 1.25rem;
+        }
+
+        /* ========== RESPONSIVE STYLES ========== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 1;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                display: none;
+                margin-top: 1.5rem;
+                background: var(--white);
+                padding: 1rem;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons, .cta-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .numbered-features,
+            .regulatory-grid,
+            .premium-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 4rem 1rem;
+            }
+            .contact-container {
+                padding: 2rem;
+            }
+            .form-box {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .hero h1,
+            .hero p {
+                animation: none;
+            }
+            .hero::before {
+                animation: none;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-group">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            <span class="company-name">Finology Nexus</span>
+        </div>
+
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="blog.html" class="nav-link">Blogs</a></li>
+                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li><a href="contactus.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <section class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="container">
+            <h1>Nexus Global Vendor Rigor Framework</h1>
+            <p>The Premium Regulatory Compliance Solution for Financial Institutions</p>
+            <p>Navigate complex global vendor regulations with a proven, regulator-aligned framework that standardizes vendor governance across jurisdictions.</p>
+            <p>Built for banks, NBFCs, fintechs, and investment firms — the framework delivers audit-ready compliance and risk transparency without enterprise complexity.</p>
+            <div class="cta-row">
+                <a href="#contact" class="btn btn-primary">Download Framework Overview</a>
+                <a href="#contact" class="btn btn-secondary">Request Premium Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Framework Highlights</h2>
+            <p class="section-description">Our framework brings structure, transparency, and repeatability to global vendor compliance programs — bridging the gap between policy and execution.</p>
+
+            <div class="numbered-features">
+                <div class="numbered-feature">
+                    <h3>Global Regulatory Coverage</h3>
+                    <p>Comprehensive mapping for EU (GDPR, PSD2, MiFID II), US (GLBA, SOX, FFIEC), and APAC (HKMA, RBI, MAS) with ongoing updates as regulations evolve.</p>
+                </div>
+
+                <div class="numbered-feature">
+                    <h3>Risk Assessment Matrix</h3>
+                    <p>Standardized scoring methodology with Red/Amber/Green indicators and weighted criteria for financial, operational, and cyber risk.</p>
+                </div>
+
+                <div class="numbered-feature">
+                    <h3>Contract Governance Toolkit</h3>
+                    <p>Pre-drafted clauses, risk categorization templates, and audit reference checklists for multi-jurisdiction vendor agreements.</p>
+                </div>
+
+                <div class="numbered-feature">
+                    <h3>Implementation Roadmap</h3>
+                    <p>Step-by-step guidance for deploying a compliant vendor management program — including governance model design, controls mapping, and monitoring cadence.</p>
+                </div>
+
+                <div class="numbered-feature">
+                    <h3>Performance Monitoring Framework</h3>
+                    <p>Define measurable KPIs, schedule periodic reviews, and maintain audit evidence through structured review templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="regulatory-section">
+        <div class="container">
+            <h2 class="section-title">Global Regulatory Coverage</h2>
+            <p class="section-description">Our framework provides comprehensive coverage of key financial regulations across all major jurisdictions.</p>
+
+            <div class="regulatory-grid">
+                <div class="regulatory-card eu">
+                    <div class="regulatory-header">
+                        <h2>European Union</h2>
+                    </div>
+                    <div class="regulatory-content">
+                        <div class="regulation">
+                            <h3>GDPR</h3>
+                            <p>Personal data protection, vendor data agreements, breach notification, and cross-border transfer mechanisms.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>PSD2</h3>
+                            <p>Payment provider compliance, third-party access control, and secure API management.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>MiFID II</h3>
+                            <p>Market integrity, reporting standards, and outsourced function accountability.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="regulatory-card us">
+                    <div class="regulatory-header">
+                        <h2>United States</h2>
+                    </div>
+                    <div class="regulatory-content">
+                        <div class="regulation">
+                            <h3>GLBA</h3>
+                            <p>Safeguarding customer financial data and non-public information.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>SOX</h3>
+                            <p>Financial control transparency, vendor oversight in audit and reporting functions.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>FFIEC</h3>
+                            <p>IT risk management and outsourcing guidance for banking institutions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="regulatory-card apac">
+                    <div class="regulatory-header">
+                        <h2>Asia-Pacific</h2>
+                    </div>
+                    <div class="regulatory-content">
+                        <div class="regulation">
+                            <h3>HKMA SPM (Hong Kong)</h3>
+                            <p>Outsourcing and critical vendor supervision.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>RBI Guidelines (India)</h3>
+                            <p>2023 Outsourcing of IT and Operations directions.</p>
+                        </div>
+                        
+                        <div class="regulation">
+                            <h3>APAC Data Localization</h3>
+                            <p>Region-specific requirements for in-country data residency and processing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="premium-section">
+        <div class="container">
+            <h2 class="section-title">Premium Framework Features</h2>
+            <p class="section-description">Human Expertise, Embedded in Every Step</p>
+            <p class="section-description">Get advisory support from our compliance specialists for implementation, customization, and validation of your vendor governance program.</p>
+
+            <div class="premium-grid">
+                <div class="premium-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Customizable Deployment</h3>
+                    <p>Tailor framework modules to fit your risk appetite, regulatory exposure, and internal process maturity.</p>
+                </div>
+
+                <div class="premium-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Continuous Regulatory Intelligence</h3>
+                    <p>Quarterly updates reflect evolving global standards, ensuring your documentation stays current and audit-ready.</p>
+                </div>
+
+                <div class="premium-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Advanced Risk Analytics</h3>
+                    <p>Use structured templates to generate risk heatmaps, RAG dashboards, and comparative vendor risk summaries.</p>
+                </div>
+
+                <div class="premium-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Collaborative Vendor Engagement</h3>
+                    <p>Framework supports vendor self-assessment and document submission formats — designed for secure exchange and traceable validation.</p>
+                </div>
+
+                <div class="premium-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Integration-Ready Design</h3>
+                    <p>Structured templates can plug into your existing data, compliance, or workflow systems for reporting automation.</p>
+                </div>
+
+                <div class="premium-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Expert Consultation</h3>
+                    <p>Access to our team of regulatory experts for implementation support, risk assessment validation, and compliance strategy development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Vendor Compliance?</h2>
+                <p>Join financial institutions using the Nexus Global Vendor Rigor Framework to enhance compliance, reduce audit risk, and optimize vendor performance.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-file-download"></i> Download Framework Overview
+                    </a>
+                    <a href="#contact" class="btn btn-tertiary">
+                        <i class="fas fa-calendar"></i> Schedule Premium Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2>Request Premium Framework Information</h2>
+                <p>Complete the form below and our regulatory experts will contact you with comprehensive details about our Nexus Global Vendor Rigor Framework.</p>
+
+                <div class="contact-form">
+                    <div class="form-box">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <input type="text" placeholder="First Name" required>
+                                <input type="text" placeholder="Last Name" required>
+                            </div>
+                            <input type="email" placeholder="Corporate Email" required>
+                            <input type="text" placeholder="Organization Name" required>
+                            <input type="tel" placeholder="Phone Number">
+                            <select required>
+                                <option value="">Primary Interest</option>
+                                <option value="framework">Framework Overview</option>
+                                <option value="demo">Premium Demo</option>
+                                <option value="consultation">Expert Consultation</option>
+                                <option value="pricing">Pricing Information</option>
+                            </select>
+                            <select multiple>
+                                <option value="eu">European Union Compliance</option>
+                                <option value="us">United States Compliance</option>
+                                <option value="apac">Asia-Pacific Compliance</option>
+                                <option value="rbi">RBI Guidelines (India)</option>
+                                <option value="global">Global Framework</option>
+                            </select>
+                            <small>Hold Ctrl/Cmd to select multiple options</small>
+                            <textarea placeholder="Tell us about your specific vendor compliance challenges and requirements..."></textarea>
+                            <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Request Premium Information
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-column">
+                <div class="footer-logo-group">
+                    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+                    <span class="company-name">Finology Nexus</span>
+                </div>
+                <p class="footer-about">Finology Nexus aims to deliver global financial operations excellence with deep regulatory intelligence across key jurisdictions. We aspire to be a strategic partner, fostering operational transformation, compliance mastery, and sustainable growth for financial institutions worldwide.</p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Strategic Solutions</h4>
+                <ul>
+                    <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
+                    <li><a href="nexus-global-vendor-rigor-framework.html">Nexus Global Vendor Rigor Framework</a></li>
+                    <li><a href="cross-jurisdiction-risk-diagnostic.html">Cross-Jurisdiction Risk Diagnostic</a></li>
+                    <li><a href="compliance-risk-tracker.html">Compliance & Risk Tracker</a></li>
+                    <li><a href="performance-dashboard.html">Performance Dashboard</a></li>
+                    <li><a href="financial-due-diligence.html">Financial Due Diligence</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Service Capabilities</h4>
+                <ul>
+                    <li><a href="services.html#research">Research & Analytics</a></li>
+                    <li><a href="services.html#process">Accounting Operations</a></li>
+                    <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="aboutus.html">Our Vision</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Corporate</h4>
+                <ul>
+                    <li><a href="aboutus.html">About Finology Nexus</a></li>
+                    <li><a href="contactus.html">Schedule Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
+            <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
+        </div>
+    </footer>
+
+    <a href="#contact" class="floating-cta">
+        <i class="fas fa-comments"></i> Request Demo
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.querySelector('#contactForm input[type="text"]').value;
+            const email = document.querySelector('#contactForm input[type="email"]').value;
+            const company = document.querySelector('#contactForm input[placeholder="Organization Name"]').value;
+            const interest = document.querySelector('#contactForm select').value;
+            const message = document.querySelector('#contactForm textarea').value;
+
+            // Create email content
+            const subject = `Premium Framework Request - ${company}`;
+            const body = `Name: ${name}%0D%0ACompany: ${company}%0D%0AEmail: ${email}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Open email client
+            window.location.href = `mailto:info@finologynexus.online,nisarg.thakker@finologynexus.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show confirmation
+            alert('Thank you for your interest in our Nexus Global Vendor Rigor Framework! Your email client will open with a pre-filled message. Please send it to complete your request.');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create animated particles for hero section
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random size and position
+                const size = Math.random() * 5 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+</html>
