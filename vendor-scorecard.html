@@ -7,22 +7,9 @@
   <meta name="description" content="Transform subjective vendor evaluations into data-driven risk intelligence. Get clear Red/Amber/Green ratings for your critical vendors.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
   <style>
     :root {
       --primary-blue: #0066cc;
@@ -903,6 +890,45 @@
       font-size: 1.25rem;
     }
 
+    /* ========== DOWNLOAD NOTICE ========== */
+    .download-notice {
+      background: linear-gradient(135deg, #10b981, #34d399);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      margin: 1rem 0;
+      text-align: center;
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2000;
+      box-shadow: var(--shadow-lg);
+      min-width: 300px;
+    }
+
+    .download-notice.show {
+      display: block;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .download-progress {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .download-progress-bar {
+      height: 100%;
+      background: white;
+      width: 0%;
+      transition: width 2s ease-in-out;
+    }
+
     /* ========== RESPONSIVE STYLES ========== */
     @media (max-width: 992px) {
       .hero h1 {
@@ -1495,6 +1521,14 @@
     <i class="fas fa-comments"></i> Let's Talk
   </a>
 
+  <!-- Download Notice -->
+  <div id="download-notice" class="download-notice">
+    <i class="fas fa-download"></i> Generating your detailed PDF report...
+    <div class="download-progress">
+      <div class="download-progress-bar" id="download-progress-bar"></div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Mobile menu toggle
@@ -1604,12 +1638,6 @@
         document.querySelector('.result-section').scrollIntoView({
           behavior: 'smooth'
         });
-        
-        // Simulate PDF download (in a real implementation, this would generate an actual PDF)
-        document.getElementById('download-link').addEventListener('click', function(e) {
-          e.preventDefault();
-          alert('In a production environment, this would download your Vendor Health Report PDF. For now, you can use the consultation link to get a personalized report.');
-        });
       });
 
       // Create animated particles for hero section
@@ -1638,6 +1666,210 @@
       // Initialize particles when page loads
       createParticles();
     });
+
+    // PDF Download Functionality
+    document.getElementById('download-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        generateDetailedPDFReport();
+    });
+
+    function generateDetailedPDFReport() {
+        // Get the score and risk category
+        const totalScore = parseInt(document.getElementById('score-display').textContent);
+        const riskCategory = document.getElementById('risk-badge').textContent;
+        const description = document.getElementById('result-description').textContent;
+        
+        // Get all the user's answers
+        const userAnswers = getUserAnswers();
+        
+        // Show download progress
+        const downloadNotice = document.getElementById('download-notice');
+        const progressBar = document.getElementById('download-progress-bar');
+        downloadNotice.classList.add('show');
+        progressBar.style.width = '0%';
+        
+        // Simulate progress
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+            progress += 10;
+            progressBar.style.width = `${progress}%`;
+            
+            if (progress >= 100) {
+                clearInterval(progressInterval);
+                
+                // Generate the PDF
+                generatePDF(totalScore, riskCategory, description, userAnswers);
+                
+                // Hide download notice after a delay
+                setTimeout(() => {
+                    downloadNotice.classList.remove('show');
+                }, 1000);
+            }
+        }, 100);
+    }
+
+    function getUserAnswers() {
+        const answers = [];
+        const questions = document.querySelectorAll('.question-group');
+        
+        questions.forEach((question, index) => {
+            const questionText = question.querySelector('.question-text').textContent;
+            const selectedOption = question.querySelector('input[type="radio"]:checked');
+            
+            if (selectedOption) {
+                const answerText = selectedOption.closest('.option').querySelector('.option-text').textContent;
+                const score = parseInt(selectedOption.value);
+                
+                answers.push({
+                    questionNumber: index + 1,
+                    question: questionText,
+                    answer: answerText,
+                    score: score
+                });
+            }
+        });
+        
+        return answers;
+    }
+
+    function generatePDF(totalScore, riskCategory, description, userAnswers) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Set document properties
+        doc.setProperties({
+            title: 'Vendor Health Assessment Report - Finology Nexus',
+            subject: 'Vendor Risk Assessment',
+            author: 'Finology Nexus',
+            keywords: 'vendor, risk, assessment, health, scorecard',
+            creator: 'Finology Nexus'
+        });
+        
+        // Add header
+        doc.setFillColor(0, 102, 204);
+        doc.rect(0, 0, 210, 30, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(20);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Finology Nexus', 105, 15, { align: 'center' });
+        doc.setFontSize(16);
+        doc.text('Vendor Health Assessment Report', 105, 25, { align: 'center' });
+        
+        // Add date
+        doc.setTextColor(100, 100, 100);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        const currentDate = new Date().toLocaleDateString();
+        doc.text(`Generated on: ${currentDate}`, 15, 40);
+        
+        // Add score section
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Overall Vendor Health Score', 15, 55);
+        
+        // Add score circle
+        doc.setFillColor(240, 240, 240);
+        doc.circle(105, 70, 20, 'F');
+        doc.setTextColor(0, 102, 204);
+        doc.setFontSize(24);
+        doc.setFont('helvetica', 'bold');
+        doc.text(totalScore.toString(), 105, 73, { align: 'center' });
+        doc.setTextColor(100, 100, 100);
+        doc.setFontSize(12);
+        doc.text('/24', 105, 82, { align: 'center' });
+        
+        // Add risk badge
+        let riskColor;
+        if (riskCategory.includes('High')) riskColor = [231, 76, 60];
+        else if (riskCategory.includes('Medium')) riskColor = [243, 156, 18];
+        else riskColor = [46, 204, 113];
+        
+        doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
+        doc.roundedRect(140, 60, 55, 15, 7.5, 7.5, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text(riskCategory, 167.5, 70, { align: 'center' });
+        
+        // Add description
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        const descriptionLines = doc.splitTextToSize(description, 180);
+        doc.text(descriptionLines, 15, 100);
+        
+        // Add recommendations section
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Recommendations', 15, 120);
+        
+        const recommendations = getRecommendations(totalScore);
+        const recommendationLines = doc.splitTextToSize(recommendations, 180);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.text(recommendationLines, 15, 130);
+        
+        // Add detailed answers (on a new page if needed)
+        let yPosition = 160;
+        
+        // Check if we need a new page
+        if (yPosition + (userAnswers.length * 20) > 270) {
+            doc.addPage();
+            yPosition = 30;
+        }
+        
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text('Detailed Assessment Results', 15, yPosition);
+        yPosition += 10;
+        
+        // Add each question and answer
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        
+        userAnswers.forEach((answer, index) => {
+            // Check if we need a new page
+            if (yPosition > 270) {
+                doc.addPage();
+                yPosition = 30;
+            }
+            
+            doc.setFont('helvetica', 'bold');
+            doc.text(`Q${answer.questionNumber}: ${answer.question}`, 15, yPosition);
+            yPosition += 5;
+            
+            doc.setFont('helvetica', 'normal');
+            const answerText = `Your answer: ${answer.answer} (Score: +${answer.score})`;
+            const answerLines = doc.splitTextToSize(answerText, 180);
+            doc.text(answerLines, 20, yPosition);
+            yPosition += (answerLines.length * 5) + 5;
+        });
+        
+        // Add footer
+        const pageCount = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+            doc.setPage(i);
+            doc.setFontSize(8);
+            doc.setTextColor(100, 100, 100);
+            doc.text('This report was generated using Finology Nexus Vendor Health Scorecard.', 105, 285, { align: 'center' });
+            doc.text(`Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
+        }
+        
+        // Save the PDF
+        const filename = `Vendor_Health_Report_${new Date().toISOString().split('T')[0]}.pdf`;
+        doc.save(filename);
+    }
+
+    function getRecommendations(totalScore) {
+        if (totalScore <= 10) {
+            return "Immediate Action Required: Conduct thorough vendor review meeting. Review and potentially renegotiate contract terms. Implement enhanced monitoring and reporting requirements. Develop contingency plan for vendor replacement. Schedule follow-up assessment in 30 days.";
+        } else if (totalScore <= 18) {
+            return "Moderate Risk - Monitor Closely: Address specific areas of concern. Request additional documentation for weak areas. Schedule quarterly review meetings. Consider contract amendments for problem areas. Reassess in 3-6 months.";
+        } else {
+            return "Low Risk - Maintain Partnership: Continue current governance practices. Maintain regular communication cadence. Annual comprehensive review recommended. Consider strategic partnership opportunities. Share positive feedback with vendor.";
+        }
+    }
   </script>
 </body>
 </html>
