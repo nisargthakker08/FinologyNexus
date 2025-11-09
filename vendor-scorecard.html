@@ -4,31 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vendor Health Scorecard | Finology Nexus</title>
-  <meta name="description" content="Free vendor risk assessment tool. Answer 12 questions to generate your customized vendor health report instantly." />
-  <meta name="keywords" content="vendor risk assessment, vendor health scorecard, supplier evaluation, risk management">
-  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
-  <!-- Google Fonts -->
+  <meta name="description" content="Transform subjective vendor evaluations into data-driven risk intelligence. Get clear Red/Amber/Green ratings for your critical vendors.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GZ1RDVHZZP');
-  </script>
-
   <style>
     :root {
-      --primary-blue: #0077cc;
-      --primary-blue-dark: #005fa3;
-      --secondary-blue: #00c6ff;
-      --secondary-blue-light: #00a4e0;
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #004d99;
+      --secondary-blue: #0099ff;
+      --accent-blue: #0077dd;
+      --accent-gold: #cc9900;
+      --accent-gold-light: #e6b800;
+      --accent-purple: #6a0dad;
+      --accent-purple-light: #8a2be2;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -42,9 +33,6 @@
       --radius-md: 12px;
       --radius-lg: 16px;
       --transition: all 0.3s ease;
-      --risk-high: #e74c3c;
-      --risk-medium: #f39c12;
-      --risk-low: #2ecc71;
     }
 
     * {
@@ -65,21 +53,34 @@
     h1, h2, h3, h4, h5, h6 {
       font-weight: 700;
       line-height: 1.2;
+      margin-bottom: 0.75rem;
     }
 
     .section-title {
-      font-size: 2.25rem;
+      font-size: 2.75rem;
       margin-bottom: 1.25rem;
-      color: var(--text-dark);
-      text-align: center;
+      color: var(--primary-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: 2px;
     }
 
     .section-description {
       max-width: 50rem;
       margin: 0 auto 2.5rem;
       color: var(--text-medium);
-      font-size: 1.1rem;
-      text-align: center;
+      font-size: 1.15rem;
     }
 
     /* ========== BUTTON STYLES ========== */
@@ -87,32 +88,61 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.75rem 1.5rem;
+      padding: 0.875rem 1.75rem;
       border-radius: var(--radius-sm);
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
-      min-width: 180px;
+      min-width: 200px;
       text-align: center;
       gap: 0.5rem;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
-    
+
     .btn-primary {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       border: none;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
     }
-    
+
     .btn-secondary {
-      background: var(--white);
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+    }
+
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline {
+      background: transparent;
       color: var(--primary-blue);
       border: 2px solid var(--primary-blue);
     }
-    
+
+    .btn-green {
+      background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
     .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+    .btn-secondary:hover,
+    .btn-tertiary:hover,
+    .btn-outline:hover,
+    .btn-green:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
     }
 
     /* ========== LAYOUT COMPONENTS ========== */
@@ -124,13 +154,16 @@
     }
 
     .section {
-      padding: 5rem 1.25rem;
+      padding: 6rem 1.25rem;
+      text-align: center;
     }
 
     /* ========== HEADER & NAVIGATION ========== */
     header {
-      background: var(--white);
-      padding: 1rem 2.5rem;
+      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+      background-size: cover;
+      padding: 1.25rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -138,18 +171,32 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    header.scrolled {
+      background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+      backdrop-filter: blur(10px);
     }
 
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
+      gap: 12px;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
     }
 
     .company-name {
-      font-size: 1.25rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -158,7 +205,7 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       margin: 0;
       padding: 0;
     }
@@ -169,18 +216,20 @@
       font-weight: 600;
       position: relative;
       transition: var(--transition);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      padding: 0.5rem 0;
     }
 
     nav a::after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -4px;
+      height: 3px;
+      bottom: -6px;
       left: 0;
-      background: var(--primary-blue);
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       transition: var(--transition);
+      border-radius: 2px;
     }
 
     nav a:hover::after,
@@ -189,22 +238,449 @@
     }
 
     nav a.active {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
     }
 
     .menu-toggle {
       display: none;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       cursor: pointer;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       padding: 0.5rem;
     }
 
-    /* ========== VENDOR SCORECARD SPECIFIC STYLES ========== */
-    .scorecard-hero {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+    /* ========== HERO SECTION ========== */
+    .hero {
+      background: 
+          linear-gradient(rgba(30, 60, 114, 0.85), rgba(42, 82, 152, 0.85)),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600"><defs><pattern id="chartPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><path d="M10,10 L10,90 L90,90" stroke="%23ffffff" stroke-width="2" opacity="0.2" fill="none"/><path d="M10,90 L30,70 L50,40 L70,20 L90,10" stroke="%23ffffff" stroke-width="3" opacity="0.3" fill="none"/><circle cx="30" cy="70" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="50" cy="40" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="70" cy="20" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="10" r="3" fill="%23ffffff" opacity="0.4"/></pattern></defs><rect width="1200" height="600" fill="url(%23chartPattern)"/></svg>');
+      background-size: cover;
+      color: var(--white);
+      padding: 8rem 1.25rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+          radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+          radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    /* Animated particles background */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+      }
+      10% {
+          opacity: 1;
+      }
+      90% {
+          opacity: 1;
+      }
+      100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.03); }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease-out;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-2rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(2rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== ASSESSMENT SECTION ========== */
+    .assessment-section {
+      padding: 6rem 1.25rem;
+      background: var(--white);
+    }
+
+    .assessment-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .assessment-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .assessment-intro {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      margin-bottom: 3rem;
+      border-left: 5px solid var(--accent-purple);
+    }
+
+    .assessment-intro p {
+      margin-bottom: 1rem;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    .assessment-intro strong {
+      color: var(--accent-purple);
+    }
+
+    /* Form styling */
+    .question-group {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(106, 13, 173, 0.1);
+      transition: var(--transition);
+    }
+
+    .question-group:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-purple);
+    }
+
+    .question-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .question-number {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .question-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e5e7eb;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background-color: #f9fafb;
+      border-color: var(--accent-purple);
+    }
+
+    .option.selected {
+      background-color: rgba(106, 13, 173, 0.05);
+      border-color: var(--accent-purple);
+    }
+
+    .option input {
+      margin-right: 1rem;
+      accent-color: var(--accent-purple);
+    }
+
+    .option-text {
+      flex: 1;
+      color: var(--text-medium);
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .features-section {
+      padding: 6rem 1.25rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-card i {
+      font-size: 3.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-medium);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ========== RESULT SECTION ========== */
+    .result-section {
+      padding: 6rem 1.25rem;
+      background: var(--white);
+      display: none;
+    }
+
+    .result-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(106, 13, 173, 0.1);
+    }
+
+    .risk-badge {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+      font-size: 1.25rem;
+    }
+
+    .risk-high {
+      background: linear-gradient(to right, #e74c3c, #c0392b);
+      color: white;
+    }
+
+    .risk-medium {
+      background: linear-gradient(to right, #f39c12, #e67e22);
+      color: white;
+    }
+
+    .risk-low {
+      background: linear-gradient(to right, #2ecc71, #27ae60);
+      color: white;
+    }
+
+    .progress-container {
+      width: 100%;
+      background-color: #e9ecef;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+      height: 12px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 0.5rem;
+      transition: width 0.5s ease;
+    }
+
+    .progress-high {
+      background: linear-gradient(to right, #e74c3c, #c0392b);
+    }
+
+    .progress-medium {
+      background: linear-gradient(to right, #f39c12, #e67e22);
+    }
+
+    .progress-low {
+      background: linear-gradient(to right, #2ecc71, #27ae60);
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+      padding: 6rem 1.25rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: left;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(106, 13, 173, 0.1);
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-text {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--accent-purple);
+    }
+
+    .testimonial-role {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
       color: var(--white);
       padding: 6rem 1.25rem;
       text-align: center;
@@ -212,275 +688,78 @@
       overflow: hidden;
     }
 
-    .scorecard-hero h1 {
-      font-size: 2.875rem;
-      margin-bottom: 1.25rem;
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
     }
 
-    .scorecard-hero p {
+    .cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .cta-content p {
       font-size: 1.25rem;
-      max-width: 43.75rem;
-      margin: 0 auto 2rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
     }
 
-    .hero-buttons {
+    .cta-buttons {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 2rem;
+      margin-top: 2.5rem;
       flex-wrap: wrap;
     }
 
-    .scorecard-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: var(--white);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-    }
-
-    fieldset {
-      border: 1px solid var(--light-bg);
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      background-color: var(--light-bg);
-      transition: var(--transition);
-    }
-    
-    fieldset:hover {
-      box-shadow: var(--shadow-sm);
-    }
-    
-    legend {
-      font-weight: 600;
-      padding: 0 0.5rem;
-      color: var(--primary-blue);
-      font-size: 1.1rem;
-    }
-    
-    label {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      cursor: pointer;
-      padding: 0.8rem;
-      border-radius: 6px;
-      transition: var(--transition);
-    }
-    
-    label:hover {
-      background-color: rgba(0, 119, 204, 0.05);
-    }
-    
-    input[type="radio"] {
-      margin-right: 0.8rem;
-      accent-color: var(--primary-blue);
-    }
-    
-    #risk-form button {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      font-weight: 600;
-      transition: var(--transition);
-      display: block;
-      margin: 2rem auto;
-      width: 100%;
-      max-width: 300px;
-    }
-    
-    #risk-form button:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    #result {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--light-bg);
-      border-radius: var(--radius-md);
-      margin-top: 2rem;
-      display: none;
-    }
-    
-    .risk-badge {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      border-radius: 2rem;
-      font-weight: 600;
-      margin: 1rem 0;
-    }
-    
-    .risk-high {
-      background-color: var(--risk-high);
-      color: white;
-    }
-    
-    .risk-medium {
-      background-color: var(--risk-medium);
-      color: white;
-    }
-    
-    .risk-low {
-      background-color: var(--risk-low);
-      color: white;
-    }
-    
-    #download-link {
-      display: inline-block;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      padding: 0.8rem 1.5rem;
-      text-decoration: none;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      margin: 1rem 0;
-      transition: var(--transition);
-    }
-    
-    #download-link:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .progress-container {
-      width: 100%;
-      background-color: #e9ecef;
-      border-radius: 0.5rem;
-      margin: 1rem 0;
-    }
-    
-    .progress-bar {
-      height: 0.5rem;
-      border-radius: 0.5rem;
-      transition: width 0.5s ease;
-    }
-    
-    .progress-high {
-      background-color: var(--risk-high);
-    }
-    
-    .progress-medium {
-      background-color: var(--risk-medium);
-    }
-    
-    .progress-low {
-      background-color: var(--risk-low);
-    }
-
-    /* ========== IMPROVED BENEFITS SECTION ========== */
-    .benefits-section {
-      background-color: var(--light-bg);
-      padding: 5rem 1.25rem;
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .benefit-card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-top: 4px solid var(--primary-blue);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .benefit-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-      color: white;
-      border-radius: 50%;
-      font-size: 1.8rem;
-    }
-
-    .benefit-card h3 {
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .benefit-card p {
-      color: var(--text-medium);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    .benefit-number {
-      position: absolute;
-      top: -15px;
-      right: 20px;
-      font-size: 5rem;
-      font-weight: 800;
-      color: rgba(0, 119, 204, 0.05);
-      z-index: 0;
-    }
-
-    /* ========== IMPROVED FOOTER ========== */
+    /* ========== FOOTER ========== */
     footer {
       background: var(--dark-bg);
       color: var(--white);
-      padding: 4rem 1.25rem 1.5rem;
+      padding: 4rem 1.25rem 2rem;
     }
 
     .footer-main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      max-width: 75rem;
-      margin: 0 auto;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
     }
 
     .footer-column {
-      display: flex;
-      flex-direction: column;
+      min-width: 200px;
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      margin-bottom: 1.5rem;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
     }
 
     .footer-logo-group img {
-      height: 40px;
-      width: auto;
+      height: 2.5rem;
     }
 
     .footer-logo-group span {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -488,28 +767,28 @@
 
     .footer-about {
       color: #d1d5db;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
 
     .footer-links h4 {
       color: var(--white);
       margin-bottom: 1.5rem;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       position: relative;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.75rem;
     }
 
-    .footer-links h4:after {
+    .footer-links h4::after {
       content: '';
       position: absolute;
-      left: 0;
       bottom: 0;
+      left: 0;
       width: 40px;
-      height: 2px;
-      background: var(--secondary-blue);
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
     }
 
     .footer-links ul {
@@ -517,147 +796,203 @@
     }
 
     .footer-links li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links a {
       color: #d1d5db;
       text-decoration: none;
       transition: var(--transition);
-      font-size: 0.95rem;
-      display: block;
-      padding: 0.25rem 0;
+      font-size: 1rem;
+      display: inline-block;
     }
 
     .footer-links a:hover {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       transform: translateX(5px);
     }
 
     .footer-socials {
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
-      margin-top: 1.5rem;
     }
 
     .footer-socials a {
       color: var(--white);
-      width: 40px;
-      height: 40px;
+      font-size: 1.5rem;
+      transition: var(--transition);
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.1);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: var(--transition);
-      font-size: 1.1rem;
     }
 
     .footer-socials a:hover {
-      background: var(--secondary-blue);
+      color: var(--accent-gold);
+      background: rgba(204, 153, 0, 0.2);
       transform: translateY(-3px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-      padding-top: 1.5rem;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
       border-top: 1px solid #374151;
       color: #9ca3af;
-      max-width: 75rem;
-      margin-left: auto;
-      margin-right: auto;
+    }
+
+    .footer-bottom a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
     }
 
     /* ========== FLOATING CTA ========== */
     .floating-cta {
       position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
-      font-weight: 600;
+      padding: 1rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: 700;
       text-decoration: none;
       box-shadow: var(--shadow-lg);
       z-index: 1000;
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .floating-cta i {
+      font-size: 1.25rem;
     }
 
     /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 1rem;
         flex-wrap: wrap;
       }
-      
+
       .menu-toggle {
         display: block;
         order: 1;
       }
-      
+
       nav {
         width: 100%;
         order: 3;
         display: none;
+        margin-top: 1.5rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
       }
-      
+
       nav.active {
         display: block;
-        margin-top: 1rem;
       }
-      
+
       nav ul {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
       }
-      
-      .scorecard-hero h1 {
-        font-size: 2rem;
+
+      .hero h1 {
+        font-size: 2.25rem;
       }
-      
-      .scorecard-hero p {
-        font-size: 1rem;
+
+      .hero p {
+        font-size: 1.1rem;
       }
-      
-      .hero-buttons {
+
+      .hero-buttons, .cta-row {
         flex-direction: column;
         align-items: center;
       }
-      
-      .scorecard-container {
-        padding: 1.5rem;
-      }
-      
-      fieldset {
-        padding: 1rem;
-      }
-      
+
       .section-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
       }
-      
+
+      .features-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
       .footer-main {
         grid-template-columns: 1fr;
-        gap: 2rem;
       }
-      
-      .benefits-grid {
-        grid-template-columns: 1fr;
+
+      .result-actions {
+        flex-direction: column;
+        align-items: center;
       }
-      
-      .footer-socials {
-        justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .section {
+        padding: 4rem 1rem;
+      }
+      .result-container {
+        padding: 2rem;
+      }
+      .question-group {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero h1,
+      .hero p {
+        animation: none;
+      }
+      .hero::before {
+        animation: none;
       }
     }
 
@@ -667,331 +1002,544 @@
     input:focus-visible,
     textarea:focus-visible,
     select:focus-visible {
-      outline: 2px solid var(--primary-blue);
-      outline-offset: 2px;
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
     }
   </style>
 </head>
 <body>
-  <!-- Header with Navigation -->
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
       <span class="company-name">Finology Nexus</span>
     </div>
-    
-    <button class="menu-toggle" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-    </button>
-    
+
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="blog.html" class="nav-link">Blogs</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
         <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
-  <!-- Vendor Scorecard Hero Section -->
-  <section class="scorecard-hero">
+  <section class="hero">
+    <div class="particles" id="particles"></div>
     <div class="container">
-      <h1>Vendor Health Scorecard</h1>
+      <h1>📊 Vendor Health Scorecard</h1>
       <p>Assess Vendor Risk in Minutes, Not Days</p>
-      <p>Our free tool helps you quickly evaluate vendor health with a simple 12-question assessment. Get instant insights and actionable recommendations.</p>
-      <div class="hero-buttons">
-        <a href="#assessment" class="btn btn-primary">
-          <i class="fas fa-clipboard-list"></i> Start Assessment
-        </a>
-        <a href="Solutions.html" class="btn btn-secondary">
-          <i class="fas fa-cube"></i> View All Solutions
-        </a>
+      <p>Every great partnership starts with trust — but in vendor relationships, trust needs structure.</p>
+      <p>The Vendor Health Scorecard by Finology Nexus helps you evaluate vendor reliability, compliance, and financial strength through a simple 12-question assessment.</p>
+      <p>It's fast, free, and designed for decision-makers who want clarity before the next audit or renewal cycle.</p>
+      <div class="cta-row">
+        <a href="#assessment" class="btn btn-primary">Start Assessment</a>
+        <a href="Solutions.html" class="btn btn-secondary">View All Solutions</a>
       </div>
     </div>
   </section>
 
-  <!-- Scorecard Form Section -->
-  <section id="assessment" class="section">
+  <section id="assessment" class="assessment-section">
     <div class="container">
-      <h2 class="section-title">Vendor Health Assessment</h2>
-      <p class="section-description">Answer these 12 questions to generate your free risk assessment report instantly. Be as honest as possible for the most accurate results.</p>
+      <div class="assessment-header">
+        <h2 class="section-title">💡 Your Free Vendor Health Assessment</h2>
+        <p class="section-description">Answer 12 quick questions to generate your instant risk profile and summary report.<br>No spreadsheets. No complex forms. Just honest answers and clear insights.</p>
+      </div>
       
-      <div class="scorecard-container">
+      <div class="assessment-intro">
+        <p><strong>(Be as transparent as possible — your accuracy depends on it.)</strong></p>
+      </div>
+      
+      <div class="assessment-container">
         <form id="risk-form">
-          <!-- QUESTION 1 -->
-          <fieldset>
-            <legend>1. How long have you been working with this vendor?</legend>
-            <label><input type="radio" name="q1" value="0" required> Less than 1 year</label>
-            <label><input type="radio" name="q1" value="1"> 1-3 years</label>
-            <label><input type="radio" name="q1" value="2"> More than 3 years</label>
-          </fieldset>
-
-          <!-- QUESTION 2 -->
-          <fieldset>
-            <legend>2. How would you rate the vendor's communication?</legend>
-            <label><input type="radio" name="q2" value="0" required> Poor</label>
-            <label><input type="radio" name="q2" value="1"> Average</label>
-            <label><input type="radio" name="q2" value="2"> Excellent</label>
-          </fieldset>
-
-          <!-- QUESTION 3 -->
-          <fieldset>
-            <legend>3. How reliable is their service delivery?</legend>
-            <label><input type="radio" name="q3" value="0" required> Frequently delayed or incomplete</label>
-            <label><input type="radio" name="q3" value="1"> Occasionally delayed</label>
-            <label><input type="radio" name="q3" value="2"> Always on time and complete</label>
-          </fieldset>
-
-          <!-- QUESTION 4 -->
-          <fieldset>
-            <legend>4. How would you rate the quality of their work?</legend>
-            <label><input type="radio" name="q4" value="0" required> Poor quality, requires frequent rework</label>
-            <label><input type="radio" name="q4" value="1"> Acceptable with occasional issues</label>
-            <label><input type="radio" name="q4" value="2"> Consistently high quality</label>
-          </fieldset>
-
-          <!-- QUESTION 5 -->
-          <fieldset>
-            <legend>5. How responsive are they to issues or concerns?</legend>
-            <label><input type="radio" name="q5" value="0" required> Slow to respond, often unresolved</label>
-            <label><input type="radio" name="q5" value="1"> Responds but resolution can be slow</label>
-            <label><input type="radio" name="q5" value="2"> Quick response and resolution</label>
-          </fieldset>
-
-          <!-- QUESTION 6 -->
-          <fieldset>
-            <legend>6. How transparent is their pricing structure?</legend>
-            <label><input type="radio" name="q6" value="0" required> Unclear with hidden fees</label>
-            <label><input type="radio" name="q6" value="1"> Mostly clear with some ambiguities</label>
-            <label><input type="radio" name="q6" value="2"> Completely transparent</label>
-          </fieldset>
-
-          <!-- QUESTION 7 -->
-          <fieldset>
-            <legend>7. How well do they adhere to security protocols?</legend>
-            <label><input type="radio" name="q7" value="0" required> Frequent security concerns</label>
-            <label><input type="radio" name="q7" value="1"> Basic compliance with minor issues</label>
-            <label><input type="radio" name="q7" value="2"> Excellent security practices</label>
-          </fieldset>
-
-          <!-- QUESTION 8 -->
-          <fieldset>
-            <legend>8. How innovative are their solutions?</legend>
-            <label><input type="radio" name="q8" value="0" required> Outdated methods and technologies</label>
-            <label><input type="radio" name="q8" value="1"> Occasionally introduces improvements</label>
-            <label><input type="radio" name="q8" value="2"> Continuously innovative and proactive</label>
-          </fieldset>
-
-          <!-- QUESTION 9 -->
-          <fieldset>
-            <legend>9. How would you rate their contract flexibility?</legend>
-            <label><input type="radio" name="q9" value="0" required> Rigid terms with unfavorable conditions</label>
-            <label><input type="radio" name="q9" value="1"> Some flexibility with negotiation</label>
-            <label><input type="radio" name="q9" value="2"> Very flexible and partnership-oriented</label>
-          </fieldset>
-
-          <!-- QUESTION 10 -->
-          <fieldset>
-            <legend>10. How stable is their company financially?</legend>
-            <label><input type="radio" name="q10" value="0" required> Signs of financial distress</label>
-            <label><input type="radio" name="q10" value="1"> Appears stable but limited information</label>
-            <label><input type="radio" name="q10" value="2"> Financially strong with transparent reporting</label>
-          </fieldset>
-
-          <!-- QUESTION 11 -->
-          <fieldset>
-            <legend>11. How would you rate their industry reputation?</legend>
-            <label><input type="radio" name="q11" value="0" required> Poor reputation among peers</label>
-            <label><input type="radio" name="q11" value="1"> Average or mixed reviews</label>
-            <label><input type="radio" name="q11" value="2"> Excellent reputation and references</label>
-          </fieldset>
-
-          <!-- QUESTION 12 -->
-          <fieldset>
-            <legend>12. How scalable are their services with your growth?</legend>
-            <label><input type="radio" name="q12" value="0" required> Limited capacity for growth</label>
-            <label><input type="radio" name"q12" value="1"> Can accommodate moderate growth</label>
-            <label><input type="radio" name="q12" value="2"> Highly scalable for rapid growth</label>
-          </fieldset>
-
-          <button type="submit">Generate My Free Report</button>
+          <!-- Question 1 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">1</div>
+              <div class="question-text">How long have you been working with this vendor?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q1" value="0" required>
+                <div class="option-text">Less than 1 year</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q1" value="1">
+                <div class="option-text">1–3 years</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q1" value="2">
+                <div class="option-text">More than 3 years</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">2</div>
+              <div class="question-text">How would you rate the vendor's communication?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q2" value="0" required>
+                <div class="option-text">Poor</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q2" value="1">
+                <div class="option-text">Average</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q2" value="2">
+                <div class="option-text">Excellent</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">3</div>
+              <div class="question-text">How reliable is their service delivery?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q3" value="0" required>
+                <div class="option-text">Frequently delayed or incomplete</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q3" value="1">
+                <div class="option-text">Occasionally delayed</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q3" value="2">
+                <div class="option-text">Always on time and complete</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">4</div>
+              <div class="question-text">How would you rate the quality of their work?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q4" value="0" required>
+                <div class="option-text">Poor quality, requires frequent rework</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q4" value="1">
+                <div class="option-text">Acceptable with occasional issues</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q4" value="2">
+                <div class="option-text">Consistently high quality</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">5</div>
+              <div class="question-text">How responsive are they to issues or concerns?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q5" value="0" required>
+                <div class="option-text">Slow to respond, often unresolved</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q5" value="1">
+                <div class="option-text">Responds but resolution can be slow</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q5" value="2">
+                <div class="option-text">Quick response and resolution</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 6 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">6</div>
+              <div class="question-text">How transparent is their pricing structure?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q6" value="0" required>
+                <div class="option-text">Unclear with hidden fees</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q6" value="1">
+                <div class="option-text">Mostly clear with some ambiguities</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q6" value="2">
+                <div class="option-text">Completely transparent</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 7 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">7</div>
+              <div class="question-text">How well do they adhere to security protocols?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q7" value="0" required>
+                <div class="option-text">Frequent security concerns</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q7" value="1">
+                <div class="option-text">Basic compliance with minor issues</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q7" value="2">
+                <div class="option-text">Excellent security practices</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 8 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">8</div>
+              <div class="question-text">How innovative are their solutions?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q8" value="0" required>
+                <div class="option-text">Outdated methods and technologies</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q8" value="1">
+                <div class="option-text">Occasionally introduces improvements</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q8" value="2">
+                <div class="option-text">Continuously innovative and proactive</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 9 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">9</div>
+              <div class="question-text">How would you rate their contract flexibility?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q9" value="0" required>
+                <div class="option-text">Rigid terms with unfavorable conditions</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q9" value="1">
+                <div class="option-text">Some flexibility with negotiation</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q9" value="2">
+                <div class="option-text">Very flexible and partnership-oriented</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 10 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">10</div>
+              <div class="question-text">How stable is their company financially?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q10" value="0" required>
+                <div class="option-text">Signs of financial distress</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q10" value="1">
+                <div class="option-text">Appears stable but limited information</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q10" value="2">
+                <div class="option-text">Financially strong with transparent reporting</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 11 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">11</div>
+              <div class="question-text">How would you rate their industry reputation?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q11" value="0" required>
+                <div class="option-text">Poor reputation among peers</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q11" value="1">
+                <div class="option-text">Average or mixed reviews</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q11" value="2">
+                <div class="option-text">Excellent reputation and references</div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 12 -->
+          <div class="question-group">
+            <div class="question-header">
+              <div class="question-number">12</div>
+              <div class="question-text">How scalable are their services with your growth?</div>
+            </div>
+            <div class="options-container">
+              <label class="option">
+                <input type="radio" name="q12" value="0" required>
+                <div class="option-text">Limited capacity for growth</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q12" value="1">
+                <div class="option-text">Can accommodate moderate growth</div>
+              </label>
+              <label class="option">
+                <input type="radio" name="q12" value="2">
+                <div class="option-text">Highly scalable for rapid growth</div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Generate My Free Report</button>
+          </div>
         </form>
-
-        <!-- This is where the PDF download link will appear -->
-        <div id="result">
-          <h2>Your Vendor Health Report is Ready!</h2>
-          <div id="risk-badge" class="risk-badge"></div>
-          <div class="progress-container">
-            <div id="progress-bar" class="progress-bar"></div>
-          </div>
-          <p><a id="download-link" href="#"><i class="fas fa-download"></i> Download Your Vendor Health Report (PDF)</a></p>
-          <p><strong>Want a professional to review it with you?</strong></p>
-          <p><a href="contactus.html" class="btn btn-secondary"><i class="fas fa-calendar"></i> Schedule a Free Consultation</a></p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Improved Benefits Section -->
-  <section class="benefits-section">
+  <section class="features-section">
     <div class="container">
-      <h2 class="section-title">Why Use Our Vendor Health Scorecard?</h2>
+      <h2 class="section-title">🌟 Why Use the Vendor Health Scorecard</h2>
       
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-number">01</div>
-          <div class="benefit-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3>Quick Assessment</h3>
-          <p>Complete our streamlined 12-question assessment in just 5 minutes and receive instant, actionable results.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-bolt"></i>
+          <h3>Quick and Simple</h3>
+          <p>Answer 12 questions in under 5 minutes and instantly receive a structured vendor health summary.</p>
         </div>
         
-        <div class="benefit-card">
-          <div class="benefit-number">02</div>
-          <div class="benefit-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <h3>Data-Driven Insights</h3>
-          <p>Move beyond gut feelings with our standardized, objective evaluation criteria that provides consistent scoring.</p>
+        <div class="feature-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Objective and Consistent</h3>
+          <p>Move beyond gut feelings. Each response contributes to a standardized scoring model that identifies strengths, risks, and blind spots.</p>
         </div>
         
-        <div class="benefit-card">
-          <div class="benefit-number">03</div>
-          <div class="benefit-icon">
-            <i class="fas fa-file-pdf"></i>
-          </div>
+        <div class="feature-card">
+          <i class="fas fa-file-pdf"></i>
           <h3>Professional Report</h3>
-          <p>Download a beautifully formatted PDF report complete with your company branding to share with stakeholders.</p>
+          <p>Get a clean, easy-to-share PDF report that's perfect for internal meetings or audit documentation.</p>
         </div>
         
-        <div class="benefit-card">
-          <div class="benefit-number">04</div>
-          <div class="benefit-icon">
-            <i class="fas fa-lock-open"></i>
-          </div>
-          <h3>No Commitment</h3>
-          <p>Completely free with no email required. Get started immediately without any obligations or hidden costs.</p>
+        <div class="feature-card">
+          <i class="fas fa-lock-open"></i>
+          <h3>No Strings Attached</h3>
+          <p>Completely free. No email required to get started. If you want a deeper analysis later, you can request a 48-hour diagnostic review.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Improved Footer -->
+  <section class="result-section" id="result">
+    <div class="container">
+      <div class="result-container">
+        <h2 class="section-title">Your Vendor Health Report is Ready!</h2>
+        <div id="risk-badge" class="risk-badge"></div>
+        <p id="result-description" class="section-description"></p>
+        <div class="progress-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <p><strong>Your Score: <span id="score-display"></span>/24</strong></p>
+        <div class="result-actions">
+          <a href="#" id="download-link" class="btn btn-primary"><i class="fas fa-download"></i> Download Your Vendor Health Report (PDF)</a>
+          <a href="contactus.html" class="btn btn-secondary"><i class="fas fa-calendar"></i> Schedule a Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">💬 What Our Clients Say</h2>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "We used the Scorecard before a vendor renewal and discovered gaps we never documented. It saved us from a potential compliance issue."
+          </div>
+          <div class="testimonial-author">Head of Compliance</div>
+          <div class="testimonial-role">NBFC, India</div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The simplicity is what sold us. It feels like a consultant's insight packed into a quick tool."
+          </div>
+          <div class="testimonial-author">COO</div>
+          <div class="testimonial-role">Fintech Startup, Singapore</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>✉️ Take the First Step</h2>
+        <p>Get your vendor's risk score today and see where you stand before the next audit.</p>
+        <div class="cta-buttons">
+          <a href="#assessment" class="btn btn-secondary">
+            <i class="fas fa-clipboard-list"></i> Start Free Assessment
+          </a>
+          <a href="contactus.html" class="btn btn-tertiary">
+            <i class="fas fa-file-alt"></i> Request Full Diagnostic
+          </a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 1.1rem;">Have questions? Reach out to info@finologynexus.online</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
-            <span>Finology Nexus</span>
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            <span class="company-name">Finology Nexus</span>
           </div>
-          <p class="footer-about">
-            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-          </p>
+          <p class="footer-about">Finology Nexus — helping financial institutions simplify vendor governance and stay audit-ready.</p>
           <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i class="fab fa-facebook"></i>
-            </a>
+            <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Solutions</h4>
-            <ul>
-              <li><a href="products.html">Vendor Health Scorecard</a></li>
-              <li><a href="products.html">Compliance & Risk Tracker</a></li>
-              <li><a href="products.html">Performance Dashboard</a></li>
-              <li><a href="products.html">Financial Due Diligence</a></li>
-            </ul>
-          </div>
+
+        <div class="footer-column footer-links">
+          <h4>Strategic Solutions</h4>
+          <ul>
+            <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
+            <li><a href="nexus-global-vendor-rigor-framework.html">Nexus Global Vendor Rigor Framework</a></li>
+            <li><a href="cross-jurisdiction-risk-diagnostic.html">Cross-Jurisdiction Risk Diagnostic</a></li>
+            <li><a href="compliance-risk-tracker.html">Compliance & Risk Tracker</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Case Studies</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-              <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
-          </div>
+
+        <div class="footer-column footer-links">
+          <h4>Service Capabilities</h4>
+          <ul>
+            <li><a href="services.html#research">Research & Analytics</a></li>
+            <li><a href="services.html#process">Accounting Operations</a></li>
+            <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="mailto:info@finologynexus.online"><i class="fas fa-envelope"></i> info@finologynexus.online</a></li>
-              <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
-              <li><a href="contactus.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Get in Touch</a></li>
-            </ul>
-          </div>
+
+        <div class="footer-column footer-links">
+          <h4>Corporate</h4>
+          <ul>
+            <li><a href="aboutus.html">About Finology Nexus</a></li>
+            <li><a href="contactus.html">Schedule Consultation</a></li>
+          </ul>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
-        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+        <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
+        <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
       </div>
     </div>
   </footer>
 
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
+  <a href="contactus.html" class="floating-cta">
     <i class="fas fa-comments"></i> Let's Talk
   </a>
-
-  <!-- Libraries to generate the PDF in the browser -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Mobile menu toggle
       const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
+      const nav = document.getElementById('main-nav');
       
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-        menuToggle.setAttribute('aria-expanded', isExpanded);
+      menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        this.setAttribute('aria-expanded', nav.classList.contains('active'));
       });
-      
-      // Set active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
+
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
         }
       });
-      
-      // Update copyright year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Smooth scroll for anchor links
+
+      // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
         });
       });
 
-      // Scoring Logic
+      // Form option selection styling
+      document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+          const radio = this.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            
+            // Remove selected class from all options in this question
+            this.parentNode.querySelectorAll('.option').forEach(opt => {
+              opt.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+          }
+        });
+      });
+
+      // Form submission handler
       document.getElementById('risk-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Stop the form from reloading the page
+        event.preventDefault();
 
         // Calculate the total score
         let totalScore = 0;
@@ -1001,22 +1549,25 @@
         }
 
         // Determine Risk Category
-        let riskCategory, riskClass, progressClass, progressWidth;
+        let riskCategory, riskClass, progressClass, progressWidth, description;
         if (totalScore <= 10) {
           riskCategory = "High Risk";
           riskClass = "risk-high";
           progressClass = "progress-high";
           progressWidth = "33%";
+          description = "🟥 Red: High risk — immediate remediation or vendor review recommended.";
         } else if (totalScore <= 18) {
           riskCategory = "Medium Risk";
           riskClass = "risk-medium";
           progressClass = "progress-medium";
           progressWidth = "66%";
+          description = "🟨 Amber: Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
         } else {
           riskCategory = "Low Risk";
           riskClass = "risk-low";
           progressClass = "progress-low";
           progressWidth = "100%";
+          description = "🟩 Green: Low risk — maintain current governance and periodic review.";
         }
 
         // Update the UI
@@ -1028,141 +1579,49 @@
         progressBar.className = `progress-bar ${progressClass}`;
         progressBar.style.width = progressWidth;
         
-        // Generate the PDF
-        generatePDF(totalScore, riskCategory, riskClass);
+        document.getElementById('score-display').textContent = totalScore;
+        document.getElementById('result-description').textContent = description;
+        
+        // Show the result section
+        document.querySelector('.result-section').style.display = 'block';
+        
+        // Scroll to result
+        document.querySelector('.result-section').scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Simulate PDF download (in a real implementation, this would generate an actual PDF)
+        document.getElementById('download-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          alert('In a production environment, this would download your Vendor Health Report PDF. For now, you can use the consultation link to get a personalized report.');
+        });
       });
 
-      function generatePDF(score, riskCategory, riskClass) {
-        // Create a hidden div that will become our PDF content
-        const source = document.createElement('div');
-        source.style.padding = '20px';
-        source.style.fontFamily = 'Inter, sans-serif';
-        source.style.color = '#374151';
-        source.style.maxWidth = '800px';
-        
-        source.innerHTML = `
-          <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #ddd;">
-            <div style="width: 50px; height: 50px; background: linear-gradient(to right, #0077cc, #00c6ff); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-              <img src="https://finologynexus.online/Finology%20Nexus%20Logo.png" alt="Finology Nexus Logo" style="width: 40px; height: 40px;">
-            </div>
-            <div>
-              <h1 style="color: #1a4f8b; margin: 0; font-size: 24px;">Finology Nexus</h1>
-              <h2 style="color: #6b7280; margin: 0; font-size: 18px; font-weight: 500;">Vendor Health Report</h2>
-            </div>
-          </div>
-          
-          <p style="text-align: center; margin-bottom: 20px; color: #6b7280;">Generated on: ${new Date().toLocaleDateString()}</p>
-          
-          <div style="text-align: center; margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 12px;">
-            <h3 style="color: #1a4f8b; margin-bottom: 15px;">Risk Assessment Result</h3>
-            <div style="display: inline-block; padding: 8px 20px; border-radius: 20px; font-weight: 600; margin: 10px 0; background-color: ${getRiskColor(riskClass)}; color: white;">
-              ${riskCategory}
-            </div>
-            <p style="font-size: 1.2rem; margin: 15px 0;">Overall Score: <strong>${score}/24</strong></p>
-            
-            <div style="width: 100%; background-color: #e9ecef; border-radius: 0.5rem; margin: 20px auto; max-width: 400px;">
-              <div style="height: 0.5rem; border-radius: 0.5rem; width: ${getProgressWidth(score)}; background-color: ${getRiskColor(riskClass)};"></div>
-            </div>
-          </div>
-          
-          <div style="margin: 30px 0;">
-            <h3 style="color: #1a4f8b; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 1px solid #ddd;">Key Recommendations</h3>
-            <div style="line-height: 1.6;">
-              ${getRecommendations(riskCategory)}
-            </div>
-          </div>
-          
-          <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 30px 0;">
-            <h3 style="color: #1a4f8b; margin-bottom: 15px;">Next Steps</h3>
-            <ul style="line-height: 1.8;">
-              <li>Review this report with your team</li>
-              <li>Consider scheduling a consultation for a detailed analysis</li>
-              <li>Monitor key vendor metrics regularly</li>
-              <li>Develop contingency plans based on risk level</li>
-            </ul>
-          </div>
-          
-          <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #6b7280;">
-            <p><strong>Need professional guidance?</strong></p>
-            <p>Contact us at: info@finologynexus.online</p>
-            <p style="font-size: 0.8rem; margin-top: 20px;"><em>Disclaimer: This report is generated automatically based on user-input and is for informational purposes only. It is not a substitute for professional advice.</em></p>
-          </div>
-        `;
+      // Create animated particles for hero section
+      function createParticles() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
 
-        document.body.appendChild(source);
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
 
-        // Use html2canvas and jsPDF to create the PDF
-        html2canvas(source, {scale: 2}).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
-          const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
-          const imgProps = pdf.getImageProperties(imgData);
-          const pdfWidth = pdf.internal.pageSize.getWidth();
-          const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+          // Random size and position
+          const size = Math.random() * 5 + 2;
+          const left = Math.random() * 100;
+          const delay = Math.random() * 15;
 
-          pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-          pdf.save('Vendor-Health-Report.pdf');
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${left}%`;
+          particle.style.animationDelay = `${delay}s`;
 
-          // Clean up and show the download link
-          document.body.removeChild(source);
-          document.getElementById('risk-form').style.display = 'none';
-          document.getElementById('result').style.display = 'block';
-          
-          // Track conversion
-          gtag('event', 'conversion', {
-            'event_category': 'Vendor Scorecard',
-            'event_label': 'Report Generated'
-          });
-        });
-      }
-
-      function getRiskColor(riskClass) {
-        if (riskClass === "risk-high") return "#e74c3c";
-        if (riskClass === "risk-medium") return "#f39c12";
-        return "#2ecc71";
-      }
-      
-      function getProgressWidth(score) {
-        return (score / 24 * 100) + '%';
-      }
-
-      function getRecommendations(category) {
-        if (category === "High Risk") {
-          return `
-            <p style="margin-bottom: 15px;"><strong style="color: #e74c3c;">Immediate Action Recommended</strong></p>
-            <ul style="line-height: 1.8;">
-              <li>Review contract terms and exit clauses immediately</li>
-              <li>Initiate search for alternative vendors to mitigate potential disruption</li>
-              <li>Implement additional oversight measures and request more frequent performance reports</li>
-              <li>Consider reducing dependency on this vendor where possible</li>
-              <li>Schedule an emergency review with the vendor to address concerns</li>
-            </ul>
-          `;
+          particlesContainer.appendChild(particle);
         }
-        
-        if (category === "Medium Risk") {
-          return `
-            <p style="margin-bottom: 15px;"><strong style="color: #f39c12;">Monitoring Recommended</strong></p>
-            <ul style="line-height: 1.8;">
-              <li>Establish clearer performance metrics and conduct quarterly reviews</li>
-              <li>Develop contingency plans in case performance deteriorates</li>
-              <li>Maintain open communication about areas needing improvement</li>
-              <li>Consider diversifying critical services across multiple vendors</li>
-              <li>Request financial stability reports if not already provided</li>
-            </ul>
-          `;
-        }
-        
-        return `
-          <p style="margin-bottom: 15px;"><strong style="color: #2ecc71;">Stable Partnership</strong></p>
-          <ul style="line-height: 1.8;">
-            <li>This vendor appears to be a stable partner - maintain open communication</li>
-            <li>Conduct an annual review to ensure continued performance</li>
-            <li>Continue nurturing the relationship while monitoring key performance indicators</li>
-            <li>Consider opportunities for strategic partnership and joint innovation</li>
-            <li>Share positive feedback with the vendor to reinforce good practices</li>
-          </ul>
-        `;
       }
+
+      // Initialize particles when page loads
+      createParticles();
     });
   </script>
 </body>
