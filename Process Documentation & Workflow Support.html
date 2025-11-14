@@ -1,1021 +1,1623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Process Documentation & Workflow Support | Finology Nexus</title>
-  <meta name="description" content="Standardize and optimize your financial operations with our SOP-driven workflow support. Ensure audit-ready processes with 40% fewer errors." />
-  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
-  
-  <style>
-    :root {
-      --primary-blue: #0077cc;
-      --primary-blue-dark: #005fa3;
-      --secondary-blue: #00c6ff;
-      --secondary-blue-light: #00a4e0;
-      --dark-bg: #1f2937;
-      --light-bg: #f9fbfc;
-      --text-dark: #1f2937;
-      --text-medium: #4b5563;
-      --text-light: #6b7280;
-      --white: #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ========== TYPOGRAPHY ========== */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .section-title {
-      font-size: 2.25rem;
-      margin-bottom: 1.25rem;
-      color: var(--text-dark);
-    }
-
-    .section-description {
-      max-width: 50rem;
-      margin: 0 auto;
-      color: var(--text-medium);
-      font-size: 1.1rem;
-    }
-
-    /* ========== BUTTON STYLES ========== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      min-width: 180px;
-      text-align: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Documentation & Workflow Support | Finology Nexus</title>
+    <meta name="description" content="Clear, repeatable workflows that strengthen control and eliminate operational uncertainty. Professional process documentation and workflow support services.">
+    <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     
-    .btn-primary {
-      background: var(--white);
-      color: var(--primary-blue);
-      border: 2px solid var(--white);
-    }
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window,document,"clarity","script","s1b20qvd2s");
+    </script>
     
-    .btn-secondary {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid var(--white);
-    }
-    
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-service {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
-      background: var(--primary-blue);
-      color: var(--white);
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      width: 100%;
-    }
-
-    .btn-service:hover {
-      background: var(--primary-blue-dark);
-    }
-
-    .btn-service i {
-      margin-left: 0.5rem;
-    }
-
-    /* ========== LAYOUT COMPONENTS ========== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .section {
-      padding: 5rem 1.25rem;
-      text-align: center;
-    }
-
-    /* ========== HEADER & NAVIGATION ========== */
-    header {
-      background: var(--white);
-      padding: 1rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-    }
-
-    .company-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      position: relative;
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: var(--primary-blue);
-      transition: var(--transition);
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    nav a.active {
-      color: var(--primary-blue);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--primary-blue);
-      padding: 0.5rem;
-    }
-
-    /* ========== PAGE HEADER ========== */
-    .page-header {
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      padding: 6rem 1.25rem;
-      text-align: center;
-      box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"></path></svg>');
-      background-size: cover;
-      opacity: 0.1;
-    }
-
-    .page-header h1 {
-      font-size: 2.875rem;
-      margin-bottom: 1.25rem;
-      animation: fadeInDown 1s ease-in-out;
-      position: relative;
-    }
-
-    .page-header p {
-      font-size: 1.25rem;
-      max-width: 43.75rem;
-      margin: 0 auto;
-      animation: fadeInUp 1s ease-in-out;
-      position: relative;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-1.25rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(1.25rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========== VALUE PROPOSITION SECTION ========== */
-    .value-props {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .value-card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      text-align: center;
-      border-top: 4px solid var(--secondary-blue);
-    }
-
-    .value-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .value-card i {
-      font-size: 2.5rem;
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-
-    .value-card h3 {
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-
-    .value-card p {
-      color: var(--text-medium);
-    }
-
-    /* ========== SERVICE FEATURES SECTION ========== */
-    .service-features-section {
-      background-color: var(--white);
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-      text-align: left;
-    }
-
-    .feature-card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .feature-card h3 {
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .feature-card h3 i {
-      color: var(--secondary-blue);
-    }
-
-    .feature-card ul {
-      list-style: none;
-    }
-
-    .feature-card li {
-      padding: 0.5rem 0;
-      position: relative;
-      padding-left: 1.75rem;
-      color: var(--text-medium);
-    }
-
-    .feature-card li:before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      position: absolute;
-      left: 0;
-      color: var(--secondary-blue);
-    }
-
-    /* ========== PROCESS SECTION ========== */
-    .process-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 3rem;
-      position: relative;
-    }
-
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      left: 1.5rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--secondary-blue);
-      z-index: 1;
-    }
-
-    .process-step {
-      display: flex;
-      gap: 1.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .step-number {
-      flex-shrink: 0;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background: var(--primary-blue);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.25rem;
-    }
-
-    .step-content {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      flex-grow: 1;
-      text-align: left;
-    }
-
-    .step-content h3 {
-      color: var(--primary-blue);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-content p {
-      color: var(--text-medium);
-    }
-
-    /* ========== TECH STACK SECTION ========== */
-    .tech-stack {
-      background-color: var(--white);
-      padding: 2.5rem 1.25rem;
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .tech-card {
-      background: var(--white);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .tech-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .tech-icon img {
-      height: 50px;
-      width: auto;
-      margin-bottom: 1rem;
-      transition: var(--transition);
-    }
-
-    .tech-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary-blue);
-    }
-
-    .tech-card p {
-      font-size: 0.9rem;
-      color: var(--text-medium);
-      font-weight: 500;
-    }
-
-    /* ========== CTA SECTION ========== */
-    .cta-section {
-      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      padding: 4rem 1.25rem;
-      text-align: center;
-    }
-
-    .cta-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      background: var(--dark-bg);
-      color: var(--white);
-      padding: 3rem 1.25rem 1.5rem;
-    }
-
-    .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 75rem;
-      margin: 0 auto;
-      gap: 3rem;
-    }
-
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-logo-group img {
-      height: 2rem;
-    }
-
-    .footer-logo-group span {
-      font-size: 1.125rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .footer-about {
-      color: #d1d5db;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links h4 {
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-links a {
-      color: #d1d5db;
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 0.9rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary-blue);
-    }
-
-    .footer-socials {
-      margin-top: 1.5rem;
-    }
-
-    .footer-socials a {
-      color: var(--white);
-      margin-right: 1rem;
-      font-size: 1.25rem;
-      transition: var(--transition);
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .footer-socials a:hover {
-      color: var(--secondary-blue);
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.875rem;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #374151;
-      color: #9ca3af;
-    }
-
-    /* ========== FLOATING CTA ========== */
-    .floating-cta {
-      position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-    }
-
-    .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
-    }
-
-    /* ========== RESPONSIVE STYLES ========== */
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem;
-        flex-wrap: wrap;
-      }
-      
-      .menu-toggle {
-        display: block;
-        order: 1;
-      }
-      
-      nav {
-        width: 100%;
-        order: 3;
-        display: none;
-      }
-      
-      nav.active {
-        display: block;
-        margin-top: 1rem;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .page-header h1 {
-        font-size: 2rem;
-      }
-      
-      .page-header p {
-        font-size: 1rem;
-      }
-      
-      .value-props,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .section-title {
-        font-size: 1.75rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .footer-main {
-        flex-direction: column;
-        gap: 2rem;
-      }
-      
-      .footer-column {
-        width: 100%;
-      }
-    }
-
-    /* ========== ACCESSIBILITY ========== */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-      
-      .page-header h1,
-      .page-header p {
-        animation: none;
-      }
-    }
-
-    /* Focus styles for accessibility */
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible {
-      outline: 2px solid var(--primary-blue);
-      outline-offset: 2px;
-    }
-  </style>
+    <style>
+        :root {
+            --primary-blue: #0066cc;
+            --primary-blue-dark: #004d99;
+            --secondary-blue: #0099ff;
+            --accent-blue: #0077dd;
+            --accent-gold: #cc9900;
+            --accent-gold-light: #e6b800;
+            --accent-purple: #6a0dad;
+            --accent-purple-light: #8a2be2;
+            --accent-green: #10b981;
+            --accent-green-light: #34d399;
+            --dark-bg: #1f2937;
+            --light-bg: #f9fbfc;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            margin-bottom: 1.25rem;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 50rem;
+            margin: 0 auto 2.5rem;
+            color: var(--text-medium);
+            font-size: 1.15rem;
+        }
+
+        /* ========== BUTTON STYLES ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            min-width: 200px;
+            text-align: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+        }
+
+        .btn-tertiary {
+            background: rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-green {
+            background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .btn-tertiary:hover,
+        .btn-outline:hover,
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== LAYOUT COMPONENTS ========== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .section {
+            padding: 6rem 1.25rem;
+            text-align: center;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+            background-size: cover;
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled {
+            background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .company-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+            font-size: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -6px;
+            left: 0;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--accent-purple);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--accent-purple);
+            padding: 0.5rem;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: 
+                linear-gradient(rgba(30, 60, 114, 0.85), rgba(42, 82, 152, 0.85)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600"><defs><pattern id="financialPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><rect x="10" y="10" width="80" height="5" fill="%23ffffff" opacity="0.3"/><rect x="10" y="25" width="60" height="5" fill="%23ffffff" opacity="0.3"/><rect x="10" y="40" width="70" height="5" fill="%23ffffff" opacity="0.3"/><rect x="10" y="55" width="50" height="5" fill="%23ffffff" opacity="0.3"/><rect x="10" y="70" width="65" height="5" fill="%23ffffff" opacity="0.3"/><rect x="10" y="85" width="75" height="5" fill="%23ffffff" opacity="0.3"/><circle cx="90" cy="20" r="5" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="40" r="5" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="60" r="5" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="80" r="5" fill="%23ffffff" opacity="0.4"/></pattern></defs><rect width="1200" height="600" fill="url(%23financialPattern)"/></svg>');
+            background-size: cover;
+            color: var(--white);
+            padding: 8rem 1.25rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+                radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Animated particles background */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.03); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+            position: relative;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 50rem;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.75rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(2rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features-section {
+            padding: 6rem 1.25rem;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== BENEFITS SECTION ========== */
+        .benefits-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+            padding: 6rem 1.25rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== PROCESS TIMELINE ========== */
+        .timeline-section {
+            background: var(--white);
+            padding: 6rem 1.25rem;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-marker {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            border: 4px solid;
+            border-color: var(--accent-purple);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent-purple);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-top: 1rem;
+        }
+
+        .timeline-content h3 {
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========== DELIVERABLES SECTION ========== */
+        .deliverables-section {
+            padding: 6rem 1.25rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .deliverable-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .deliverable-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .deliverable-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .deliverable-card i {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .deliverable-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .deliverable-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== TARGET AUDIENCE SECTION ========== */
+        .audience-section {
+            padding: 6rem 1.25rem;
+            background: var(--white);
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .audience-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+        }
+
+        .audience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .audience-card i {
+            font-size: 3rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .audience-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .audience-card p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* ========== DATA CONTROL SECTION ========== */
+        .data-control-section {
+            padding: 6rem 1.25rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+        }
+
+        .data-control-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            border-left: 5px solid var(--accent-green);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .data-control-box h2 {
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .data-control-box p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+            color: var(--white);
+            padding: 6rem 1.25rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-section {
+            padding: 6rem 1.25rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(106, 13, 173, 0.1);
+        }
+
+        .contact-container h2 {
+            color: var(--accent-purple);
+            margin-bottom: 1.25rem;
+            font-size: 2.5rem;
+        }
+
+        .contact-container p {
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(106, 13, 173, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d0d7de;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--accent-purple);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+        }
+
+        .contact-form button {
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            color: var(--white);
+            border: none;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 4rem 1.25rem 2rem;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column {
+            min-width: 200px;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-logo-group img {
+            height: 2.5rem;
+        }
+
+        .footer-logo-group span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-about {
+            color: #d1d5db;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            transform: translateX(5px);
+        }
+
+        .footer-socials {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            display: inline-block;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-gold);
+            background: rgba(204, 153, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.95rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== FLOATING CTA ========== */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .floating-cta:hover {
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .floating-cta i {
+            font-size: 1.25rem;
+        }
+
+        /* ========== RESPONSIVE STYLES ========== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .timeline::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: 1;
+            }
+
+            nav {
+                width: 100%;
+                order: 3;
+                display: none;
+                margin-top: 1.5rem;
+                background: var(--white);
+                padding: 1rem;
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons, .cta-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .benefits-grid,
+            .deliverables-grid,
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 4rem 1rem;
+            }
+            .contact-container {
+                padding: 2rem;
+            }
+            .form-box {
+                padding: 1.5rem;
+            }
+            .data-control-box {
+                padding: 2rem;
+            }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .hero h1,
+            .hero p {
+                animation: none;
+            }
+            .hero::before {
+                animation: none;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
+        }
+    </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <header>
+        <div class="logo-group">
+            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            <span class="company-name">Finology Nexus</span>
+        </div>
 
-  <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
-      <span class="company-name">Finology Nexus</span>
-    </div>
-    <nav id="main-nav">
-      <ul>
-<li><a href="index.html" class="nav-link">Home</a></li>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
                 <li><a href="services.html" class="nav-link active">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+                <li><a href="blog.html" class="nav-link">Blogs</a></li>
                 <li><a href="aboutus.html" class="nav-link">About Us</a></li>
                 <li><a href="contactus.html" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
-
-  <section class="page-header">
-    <div class="container">
-      <h1><i class="fas fa-cogs"></i> Process Documentation & Workflow Support</h1>
-      <p>Transform operational chaos into standardized, audit-ready workflows that reduce errors by 40%</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Operational Consistency Through Documentation</h2>
-      <p class="section-description">Inconsistent processes create risk, inefficiency, and training challenges. Our documentation services create clarity, accountability, and quality control in your financial operations.</p>
-      
-      <div class="value-props">
-        <div class="value-card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Risk Reduction</h3>
-          <p>Minimize compliance risks with clearly documented procedures that meet audit requirements.</p>
-        </div>
-        
-        <div class="value-card">
-          <i class="fas fa-clock"></i>
-          <h3>Efficiency Gains</h3>
-          <p>Reduce process variation that creates rework and inefficiencies across your team.</p>
-        </div>
-        
-        <div class="value-card">
-          <i class="fas fa-graduation-cap"></i>
-          <h3>Training Acceleration</h3>
-          <p>Cut new hire ramp-up time by 70% with clear, step-by-step process documentation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section service-features-section">
-    <div class="container">
-      <h2 class="section-title">Our Documentation Services</h2>
-      <p class="section-description">Comprehensive support for creating and maintaining your financial process documentation</p>
-      
-      <div class="feature-grid">
-        <div class="feature-card">
-          <h3><i class="fas fa-file-alt"></i> SOP Development</h3>
-          <ul>
-            <li>Standard Operating Procedure documentation</li>
-            <li>Step-by-step process flows with decision trees</li>
-            <li>Role-based responsibility matrices</li>
-            <li>Version control and change management</li>
-          </ul>
-        </div>
-        
-        <div class="feature-card">
-          <h3><i class="fas fa-project-diagram"></i> Workflow Mapping</h3>
-          <ul>
-            <li>Current state process visualization</li>
-            <li>Bottleneck and redundancy identification</li>
-            <li>Future state optimization recommendations</li>
-            <li>Swimlane diagrams for cross-functional processes</li>
-          </ul>
-        </div>
-        
-        <div class="feature-card">
-          <h3><i class="fas fa-check-double"></i> Quality Control Systems</h3>
-          <ul>
-            <li>Checklist-based verification protocols</li>
-            <li>Approval workflow documentation</li>
-            <li>Error prevention controls</li>
-            <li>Audit trail requirements</li>
-          </ul>
-        </div>
-        
-        <div class="feature-card">
-          <h3><i class="fas fa-sync-alt"></i> Process Improvement</h3>
-          <ul>
-            <li>Continuous improvement frameworks</li>
-            <li>KPI-based process monitoring</li>
-            <li>Automation opportunity assessment</li>
-            <li>Change management documentation</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section tech-stack">
-    <div class="container">
-      <h2 class="section-title">Documentation Platform Expertise</h2>
-      <p class="section-description">We work with all major documentation platforms to match your existing systems</p>
-      
-      <div class="tech-grid">
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="https://img.icons8.com/color/48/000000/confluence.png" alt="Confluence" loading="lazy">
-          </div>
-          <h3>Confluence</h3>
-          <p>Knowledge Management</p>
-        </div>
-        
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="https://img.icons8.com/color/48/000000/microsoft-visio.png" alt="Visio" loading="lazy">
-          </div>
-          <h3>Visio</h3>
-          <p>Process Mapping</p>
-        </div>
-        
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="Lucidchart.png.svg" alt="Lucidchart" loading="lazy">
-          </div>
-          <h3>Lucidchart</h3>
-          <p>Visual Workflows</p>
-        </div>
-        
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="https://img.icons8.com/color/48/000000/google-docs.png" alt="Google Docs" loading="lazy">
-          </div>
-          <h3>Google Docs</h3>
-          <p>Collaborative Editing</p>
-        </div>
-        
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="MSWord.svg.png" alt="Word" loading="lazy">
-          </div>
-          <h3>MS Word</h3>
-          <p>Policy Documentation</p>
-        </div>
-        
-        <div class="tech-card">
-          <div class="tech-icon">
-            <img src="https://img.icons8.com/color/48/000000/microsoft-excel-2019--v1.png" alt="Excel" loading="lazy">
-          </div>
-          <h3>Excel</h3>
-          <p>Process Checklists</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background-color: var(--light-bg);">
-    <div class="container">
-      <h2 class="section-title">Our Documentation Methodology</h2>
-      <p class="section-description">A proven approach to creating effective, user-friendly process documentation</p>
-      
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3>Process Discovery</h3>
-            <p>We conduct interviews and observe workflows to document current processes exactly as performed.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3>Gap Analysis</h3>
-            <p>Identify discrepancies between documented and actual processes, plus compliance requirements.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h3>Documentation Drafting</h3>
-            <p>Create clear, visual SOPs with screenshots, templates, and quality checkpoints.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h3>Stakeholder Review</h3>
-            <p>Collaboratively refine documentation with subject matter experts and process owners.</p>
-          </div>
-        </div>
-        
-        <div class="process-step">
-          <div class="step-number">5</div>
-          <div class="step-content">
-            <h3>Training & Implementation</h3>
-            <p>Train teams on new processes and documentation systems for successful adoption.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="cta-content">
-      <h2>Ready to Standardize Your Financial Processes?</h2>
-      <p>Our documentation specialists can help you create audit-ready workflows in as little as 4 weeks.</p>
-      <div class="cta-buttons">
-        <a href="contactus.html" class="btn btn-primary">Schedule Consultation</a>
-        <a href="services.html" class="btn btn-secondary">View All Services</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-column">
-          <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
-            <span>Finology Nexus</span>
-          </div>
-          <p class="footer-about">
-            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-          </p>
-          <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-              <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping</a></li>
-              <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
-              <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-              <li><a href="Process Documentation & Workflow.html">Process Documentation</a></li>
             </ul>
-          </div>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+<section class="hero">
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <h1>Process Documentation & Workflow Support</h1>
+        <p class="hero-sub">
+            Build clear, reliable workflows that improve control, reduce errors, and support audit-ready operations.
+        </p>
+
+        <p class="hero-desc">
+            From SOPs to workflow maps and control checklists, this service helps financial teams create 
+            consistent processes that scale without friction.
+        </p>
+
+        <div class="cta-row">
+            <a href="#contact" class="btn btn-primary">Schedule Consultation</a>
+            <a href="services.html" class="btn btn-secondary">Explore All Services</a>
         </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Case Studies</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-            <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Contact</h4>
-            <ul>
-              <li><i class="fas fa-envelope"></i> info@finologynexus.com</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
-      </div>
     </div>
-  </footer>
+</section>
 
-  <!-- Floating CTA Button -->
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
-    <i class="fas fa-comments"></i> Let's Talk
-  </a>
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Strong Documentation Matters</h2>
+            <p class="section-description">Clear documentation is not just a record of how work is done. It becomes the backbone of scalable, predictable financial operations.</p>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-      });
-      
-      // Set active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Reduces operational and compliance risk</h3>
+                    <p>Standardized processes minimize errors and ensure regulatory requirements are consistently met.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>Eliminates rework and inconsistent execution</h3>
+                    <p>Clear instructions prevent variations in how tasks are performed across teams and individuals.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Shortens onboarding and training cycles</h3>
+                    <p>New team members can get up to speed faster with comprehensive, easy-to-follow documentation.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Supports audit readiness and evidence tracking</h3>
+                    <p>Documented processes provide clear evidence of compliance and operational controls.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Improves accountability across functions</h3>
+                    <p>Clearly defined roles and responsibilities eliminate confusion and ensure ownership.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">What This Service Includes</h2>
+            <p class="section-description">Comprehensive process documentation and workflow support designed for financial operations excellence.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>SOP Development</h3>
+                    <p>Professionally written procedures that team members can follow without guesswork.</p>
+                    <p><strong>Includes:</strong> Step-by-step instructions, Screenshots and examples where helpful, Role and responsibility mapping, Version control and update guidance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Workflow Mapping</h3>
+                    <p>Visual clarity for even the most complex financial processes.</p>
+                    <p><strong>Includes:</strong> Current-state workflow diagrams, Bottleneck and risk identification, Optimized future-state workflows, Cross-functional swimlane diagrams.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Quality and Control Frameworks</h3>
+                    <p>Documentation that supports accuracy and consistency at every step.</p>
+                    <p><strong>Includes:</strong> Task-level checklists, Four-eyes review processes, Approval and escalation paths, Evidence and audit trail structure.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Process Improvement Support</h3>
+                    <p>Refinement of existing workflows to reduce effort and increase reliability.</p>
+                    <p><strong>Includes:</strong> KPI-driven process reviews, Inefficiency and redundancy analysis, Recommendations for automation, Updated documentation as processes evolve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deliverables-section">
+        <div class="container">
+            <h2 class="section-title">Tools and Platforms Supported</h2>
+            <p class="section-description">Documentation can be delivered using your preferred systems. No new software is required.</p>
+
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <i class="fab fa-confluence"></i>
+                    <h3>Confluence</h3>
+                    <p>Comprehensive documentation and knowledge management with team collaboration features.</p>
+                </div>
+
+                <div class="deliverable-card">
+                    <i class="fas fa-chart-network"></i>
+                    <h3>Lucidchart</h3>
+                    <p>Professional diagramming and workflow visualization with real-time collaboration.</p>
+                </div>
+
+                <div class="deliverable-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Visio</h3>
+                    <p>Industry-standard diagramming tool for complex process flows and organizational charts.</p>
+                </div>
+
+                <div class="deliverable-card">
+                    <i class="fab fa-google-drive"></i>
+                    <h3>Google Docs</h3>
+                    <p>Cloud-based documentation with real-time collaboration and version control.</p>
+                </div>
+
+                <div class="deliverable-card">
+                    <i class="fas fa-sticky-note"></i>
+                    <h3>Notion</h3>
+                    <p>All-in-one workspace for documentation, project management, and team collaboration.</p>
+                </div>
+
+                <div class="deliverable-card">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>MS Office Suite</h3>
+                    <p>Word for documentation, Excel for data and checklists, PowerPoint for presentations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">How the Documentation Process Works</h2>
+            <p class="section-description">A structured approach to creating clear, practical documentation your team will actually use.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Process Discovery</h3>
+                        <p>Understand how the work is done today through discussions, samples, and workflow observation.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Gap and Risk Review</h3>
+                        <p>Identify inconsistencies, delays, compliance concerns, and unclear responsibilities.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Documentation Drafting</h3>
+                        <p>Develop clear SOPs and workflow maps tailored to your operational environment.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Review and Alignment</h3>
+                        <p>Refine the documents with your stakeholders to ensure accuracy and usability.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>Implementation Support</h3>
+                        <p>Assist with rollout, training, and ongoing updates as workflows evolve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="section-title">The Outcome</h2>
+            <p class="section-description">Transform your operations with documentation that delivers tangible business benefits.</p>
+
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Standardized operations across teams</h3>
+                    <p>Consistent execution regardless of who performs the task or which location they work from.</p>
+                </div>
+
+                <div class="audience-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Faster training and onboarding</h3>
+                    <p>Reduce ramp-up time for new employees by 40-60% with clear, comprehensive documentation.</p>
+                </div>
+
+                <div class="audience-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Reduced dependency on individual knowledge</h3>
+                    <p>Critical process knowledge resides in the organization, not just with key individuals.</p>
+                </div>
+
+                <div class="audience-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Audit-ready documentation</h3>
+                    <p>Comprehensive evidence for regulators, partners, and internal compliance reviews.</p>
+                </div>
+
+                <div class="audience-card">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    <h3>Processes that scale as the business grows</h3>
+                    <p>Documented workflows that can be easily replicated across new teams, locations, and markets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="data-control-section">
+        <div class="container">
+            <h2 class="section-title">Security & Confidentiality</h2>
+            <div class="data-control-box">
+                <h2>Your Process Information is Protected</h2>
+                <p>All process documentation and workflow information is handled with strict confidentiality, following ISO 27001 and SOC 2 equivalent principles.</p>
+                <p><strong>No proprietary information is shared with third parties. All documentation work is conducted securely and controlled end-to-end.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Bring Clarity to Your Operations?</h2>
+                <p>If you want cleaner workflows, reduced errors, and documentation your team will actually use, this service provides the structure you need.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-calendar-check"></i> Schedule Consultation
+                    </a>
+                    <a href="services.html" class="btn btn-tertiary">
+                        <i class="fas fa-list"></i> Explore All Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <h2>Request Process Documentation & Workflow Support</h2>
+                <p>Complete the form below and our process documentation experts will contact you to discuss your specific requirements.</p>
+
+                <div class="contact-form">
+                    <div class="form-box">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <input type="text" placeholder="First Name" required>
+                                <input type="text" placeholder="Last Name" required>
+                            </div>
+                            <input type="email" placeholder="Corporate Email" required>
+                            <input type="text" placeholder="Organization Name" required>
+                            <input type="tel" placeholder="Phone Number">
+                            <select required>
+                                <option value="">Primary Interest</option>
+                                <option value="sop-development">SOP Development</option>
+                                <option value="workflow-mapping">Workflow Mapping</option>
+                                <option value="quality-frameworks">Quality & Control Frameworks</option>
+                                <option value="process-improvement">Process Improvement Support</option>
+                                <option value="full-service">Full Documentation Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <select>
+                                <option value="">Preferred Documentation Platform</option>
+                                <option value="confluence">Confluence</option>
+                                <option value="lucidchart">Lucidchart</option>
+                                <option value="visio">Visio</option>
+                                <option value="google-docs">Google Docs</option>
+                                <option value="notion">Notion</option>
+                                <option value="ms-office">MS Office</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <textarea placeholder="Tell us about your specific process documentation and workflow needs..."></textarea>
+                            <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Request Documentation Support
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-column">
+                <div class="footer-logo-group">
+                    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+                    <span class="company-name">Finology Nexus</span>
+                </div>
+                <p class="footer-about">Finology Nexus aims to deliver global financial operations excellence with deep regulatory intelligence across key jurisdictions. We aspire to be a strategic partner, fostering operational transformation, compliance mastery, and sustainable growth for financial institutions worldwide.</p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Strategic Solutions</h4>
+                <ul>
+                    <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
+                    <li><a href="nexus-global-vendor-rigor-framework.html">Nexus Global Vendor Rigor Framework</a></li>
+                    <li><a href="cross-jurisdiction-risk-diagnostic.html">Cross-Jurisdiction Risk Diagnostic</a></li>
+                    <li><a href="compliance-risk-tracker.html">Compliance & Risk Tracker</a></li>
+                    <li><a href="performance-dashboard.html">Performance Dashboard</a></li>
+                    <li><a href="process-documentation.html" class="active">Process Documentation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Service Capabilities</h4>
+                <ul>
+                    <li><a href="services.html#research">Research & Analytics</a></li>
+                    <li><a href="services.html#process">Accounting Operations</a></li>
+                    <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
+                    <li><a href="services.html#automation">Data Extraction & Automation</a></li>
+                    <li><a href="services.html#documentation">Process Documentation</a></li>
+                    <li><a href="aboutus.html">Our Vision</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-links">
+                <h4>Corporate</h4>
+                <ul>
+                    <li><a href="aboutus.html">About Finology Nexus</a></li>
+                    <li><a href="contactus.html">Schedule Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
+            <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
+        </div>
+    </footer>
+
+    <a href="#contact" class="floating-cta">
+        <i class="fas fa-file-alt"></i> Get Documentation
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.querySelector('#contactForm input[type="text"]').value;
+            const email = document.querySelector('#contactForm input[type="email"]').value;
+            const company = document.querySelector('#contactForm input[placeholder="Organization Name"]').value;
+            const interest = document.querySelector('#contactForm select').value;
+            const message = document.querySelector('#contactForm textarea').value;
+
+            // Create email content
+            const subject = `Process Documentation & Workflow Support Request - ${company}`;
+            const body = `Name: ${name}%0D%0ACompany: ${company}%0D%0AEmail: ${email}%0D%0AInterest: ${interest}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Open email client
+            window.location.href = `mailto:info@finologynexus.online,nisarg.thakker@finologynexus.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show confirmation
+            alert('Thank you for your interest in our Process Documentation & Workflow Support services! Your email client will open with a pre-filled message. Please send it to schedule your consultation.');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Create animated particles for hero section
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Random size and position
+                const size = Math.random() * 5 + 2;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 15;
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particlesContainer.appendChild(particle);
+            }
         }
-      });
-      
-      // Update copyright year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-    });
-  </script>
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
 </body>
 </html>
