@@ -2,32 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finology Nexus | Contact Us</title>
-  <meta name="description" content="Contact Finology Nexus – Reach out to explore tailored financial and business support solutions." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Finology Nexus</title>
+  <meta name="description" content="Get in touch with Finology Nexus - your trusted partner for financial operations support. Let's strengthen your financial operations with clarity and confidence.">
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="Finology Nexus, contact, outsourcing, support services">
-  <meta name="author" content="Finology Nexus">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Finology Nexus - Contact Us">
-  <meta property="og:description" content="Have a project in mind? Connect with Finology Nexus to explore impactful outsourcing solutions." />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Finology+Nexus" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ1RDVHZZP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GZ1RDVHZZP');
-  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
 
-  <!-- Microsoft Clarity tag -->
+  <!-- Microsoft Clarity -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -38,12 +29,18 @@
   
   <style>
     :root {
-      --primary-blue: #0077cc;
-      --primary-blue-dark: #005fa3;
-      --secondary-blue: #00c6ff;
-      --secondary-blue-light: #00a4e0;
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #004d99;
+      --secondary-blue: #0099ff;
+      --accent-blue: #0077dd;
+      --accent-gold: #cc9900;
+      --accent-gold-light: #e6b800;
+      --accent-purple: #6a0dad;
+      --accent-purple-light: #8a2be2;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
       --dark-bg: #1f2937;
-      --light-bg: #f8fafa;
+      --light-bg: #f9fbfc;
       --text-dark: #1f2937;
       --text-medium: #4b5563;
       --text-light: #6b7280;
@@ -71,10 +68,110 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--primary-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: 2px;
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      color: var(--text-medium);
+      font-size: 1.15rem;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 200px;
+      text-align: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+    }
+
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-tertiary:hover,
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 6rem 1.25rem;
+      text-align: center;
+    }
+
     /* ========== HEADER & NAVIGATION ========== */
     header {
       background: var(--white);
-      padding: 1rem 2.5rem;
+      padding: 1.25rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -82,19 +179,30 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
     }
 
     .logo-group {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
+      gap: 12px;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
     }
 
     .company-name {
-      font-size: 1.25rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -103,7 +211,7 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       margin: 0;
       padding: 0;
     }
@@ -114,18 +222,20 @@
       font-weight: 600;
       position: relative;
       transition: var(--transition);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      padding: 0.5rem 0;
     }
 
     nav a::after {
       content: '';
       position: absolute;
       width: 0;
-      height: 2px;
-      bottom: -4px;
+      height: 3px;
+      bottom: -6px;
       left: 0;
-      background: var(--primary-blue);
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       transition: var(--transition);
+      border-radius: 2px;
     }
 
     nav a:hover::after,
@@ -134,94 +244,195 @@
     }
 
     nav a.active {
-      color: var(--primary-blue);
+      color: var(--accent-purple);
     }
 
     .menu-toggle {
       display: none;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       cursor: pointer;
-      color: var(--primary-blue);
+      color: var(--accent-purple);
       padding: 0.5rem;
     }
 
     /* ========== HERO SECTION ========== */
-    .contact-hero {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+    .hero {
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
       color: var(--white);
-      padding: 6rem 1.25rem;
+      padding: 8rem 1.25rem 5rem;
       text-align: center;
-      box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
     }
 
-    .contact-hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.25rem;
-      animation: fadeInDown 1s ease-in-out;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
     }
 
-    .contact-hero p {
-      font-size: 1.25rem;
-      max-width: 43.75rem;
-      margin: 0 auto;
-      animation: fadeInUp 1s ease-in-out;
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.03); }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease-out;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-1.25rem); }
+      from { opacity: 0; transform: translateY(-2rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(1.25rem); }
+      from { opacity: 0; transform: translateY(2rem); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ========== CONTACT FORM SECTION ========== */
+    /* ========== CONTACT SECTION ========== */
     .contact-section {
-      padding: 5rem 1.25rem;
+      padding: 6rem 1.25rem;
+      background-color: var(--white);
     }
 
     .contact-container {
-      max-width: 56.25rem;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
     }
 
     .contact-info {
       background: var(--white);
-      padding: 2rem;
-      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
-      align-self: start;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
     }
 
     .contact-info h2 {
       color: var(--primary-blue);
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
     }
 
     .contact-method {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .contact-method:last-child {
+      border-bottom: none;
     }
 
     .contact-method i {
-      font-size: 1.25rem;
-      color: var(--secondary-blue);
+      font-size: 1.5rem;
+      color: var(--accent-purple);
       margin-top: 0.25rem;
+      width: 24px;
+      text-align: center;
     }
 
     .contact-method h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
       color: var(--text-dark);
     }
 
@@ -230,80 +441,23 @@
       color: var(--text-medium);
       text-decoration: none;
       transition: var(--transition);
+      line-height: 1.6;
     }
 
     .contact-method a:hover {
-      color: var(--secondary-blue);
+      color: var(--accent-purple);
     }
 
-    .contact-form {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: var(--radius-sm);
-      font-family: inherit;
-      transition: var(--transition);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--secondary-blue);
-      box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.1);
-    }
-
-    .form-group textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .btn-submit {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      width: 100%;
-    }
-
-    .btn-submit:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    /* Social Media Icons */
     .social-media-section {
-      margin-top: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
     
     .social-media-section h3 {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       color: var(--text-dark);
+      font-size: 1.3rem;
     }
     
     .social-icons {
@@ -315,10 +469,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background-color: var(--primary-blue);
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
       color: white;
       font-size: 1.2rem;
       transition: var(--transition);
@@ -326,47 +480,217 @@
     }
     
     .social-icons a:hover {
-      background-color: var(--primary-blue-dark);
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
       transform: translateY(-3px);
+    }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+    }
+
+    .form-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn-submit {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(to right, var(--accent-purple-light), var(--primary-blue-dark));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ========== EXPECTATIONS SECTION ========== */
+    .expectations-section {
+      padding: 6rem 1.25rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+    }
+
+    .expectations-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .expectation-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 5px solid var(--accent-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .expectation-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .expectation-card i {
+      font-size: 2.5rem;
+      color: var(--accent-purple);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .expectation-card h3 {
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .expectation-card p {
+      color: var(--text-medium);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      padding: 6rem 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
+    }
+
+    .cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .cta-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
     }
 
     /* ========== FOOTER ========== */
     footer {
       background: var(--dark-bg);
       color: var(--white);
-      padding: 3rem 1.25rem 1.5rem;
+      padding: 4rem 1.25rem 2rem;
     }
 
     .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 75rem;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
     }
 
     .footer-column {
-      flex: 1;
       min-width: 200px;
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      margin-bottom: 1.5rem;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
     }
 
     .footer-logo-group img {
-      height: 2rem;
+      height: 2.5rem;
     }
 
     .footer-logo-group span {
-      font-size: 1.125rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -374,15 +698,28 @@
 
     .footer-about {
       color: #d1d5db;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
 
     .footer-links h4 {
       color: var(--white);
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
     }
 
     .footer-links ul {
@@ -390,119 +727,192 @@
     }
 
     .footer-links li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links a {
       color: #d1d5db;
       text-decoration: none;
       transition: var(--transition);
-      font-size: 0.9rem;
+      font-size: 1rem;
+      display: inline-block;
     }
 
     .footer-links a:hover {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
+      transform: translateX(5px);
     }
 
     .footer-socials {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
     }
 
     .footer-socials a {
       color: var(--white);
-      margin-right: 1rem;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       transition: var(--transition);
-      text-decoration: none;
       display: inline-block;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .footer-socials a:hover {
-      color: var(--secondary-blue);
-      transform: translateY(-2px);
+      color: var(--accent-gold);
+      background: rgba(204, 153, 0, 0.2);
+      transform: translateY(-3px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 0.875rem;
+      font-size: 0.95rem;
       margin-top: 3rem;
-      padding-top: 1.5rem;
+      padding-top: 2rem;
       border-top: 1px solid #374151;
       color: #9ca3af;
+    }
+
+    .footer-bottom a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
     }
 
     /* ========== FLOATING CTA ========== */
     .floating-cta {
       position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
-      font-weight: 600;
+      padding: 1rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: 700;
       text-decoration: none;
       box-shadow: var(--shadow-lg);
       z-index: 1000;
       transition: var(--transition);
       display: flex;
       align-items: center;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .floating-cta i {
+      font-size: 1.25rem;
     }
 
     /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 1rem;
         flex-wrap: wrap;
       }
-      
+
       .menu-toggle {
         display: block;
         order: 1;
       }
-      
+
       nav {
         width: 100%;
         order: 3;
         display: none;
+        margin-top: 1.5rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
       }
-      
+
       nav.active {
         display: block;
-        margin-top: 1rem;
       }
-      
+
       nav ul {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
       }
-      
-      .contact-hero h1 {
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-title {
         font-size: 2rem;
       }
-      
-      .contact-hero p {
-        font-size: 1rem;
-      }
-      
-      .contact-container {
+
+      .expectations-container {
         grid-template-columns: 1fr;
       }
-      
-      .footer-main {
+
+      .contact-info,
+      .contact-form {
+        padding: 2rem;
+      }
+
+      .cta-buttons {
         flex-direction: column;
-        gap: 2rem;
       }
-      
-      .footer-column {
-        width: 100%;
+
+      .footer-main {
+        grid-template-columns: 1fr;
       }
-      
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .section {
+        padding: 4rem 1rem;
+      }
+      .contact-info,
+      .contact-form {
+        padding: 1.5rem;
+      }
       .social-icons {
         justify-content: center;
       }
@@ -515,9 +925,12 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      
-      .contact-hero h1,
-      .contact-hero p {
+
+      .hero h1,
+      .hero p {
+        animation: none;
+      }
+      .hero::before {
         animation: none;
       }
     }
@@ -528,24 +941,34 @@
     input:focus-visible,
     textarea:focus-visible,
     select:focus-visible {
-      outline: 2px solid var(--primary-blue);
-      outline-offset: 2px;
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
     }
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
+      <a href="index.html">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      </a>
       <span class="company-name">Finology Nexus</span>
     </div>
+
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
-                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
         <li><a href="contactus.html" class="nav-link active">Contact</a></li>
       </ul>
     </nav>
@@ -554,199 +977,301 @@
     </button>
   </header>
 
-  <section class="contact-hero" data-aos="fade-in">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="particles" id="particles"></div>
     <div class="container">
       <h1>Let's Build Something Great Together</h1>
-      <p>Have a project in mind or want to explore tailored outsourcing solutions? We're ready to listen, understand your challenges, and provide insights that drive impact.</p>
-    </div>
-  </section>
-
-  <section class="contact-section">
-    <div class="container contact-container">
-      <div class="contact-info" data-aos="fade-right">
-        <h2>Get in Touch</h2>
-        
-        <div class="contact-method">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <h3>Email Us</h3>
-            <a href="mailto:info@finologynexus.online">info@finologynexus.online</a>
-          </div>
-        </div>
-        
-        <div class="contact-method">
-          <i class="fas fa-clock"></i>
-          <div>
-            <h3>Working Hours</h3>
-            <p>Monday - Friday<br>9:00 AM - 6:00 PM EST</p>
-          </div>
-        </div>
-        
-        <div class="social-media-section">
-          <h3>Connect With Us</h3>
-          <div class="social-icons">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-                    
-          </div>
-        </div>
-      </div>
+      <p class="hero-sub">Let's strengthen your financial operations with clarity and confidence</p>
+      <p class="hero-desc">Whether you're exploring support for daily financial tasks, improving your reporting workflows, or looking for specialized help with analysis, compliance, or documentation, this is the place to start.</p>
       
-      <div class="contact-form" data-aos="fade-left">
-        <form action="https://formsubmit.co/info@finologynexus.online" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Finology Nexus. We'll get back to you shortly.">
-          
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone Number (Optional)</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group">
-            <label for="service">Service Interest</label>
-            <select id="service" name="service">
-              <option value="">Select a service</option>
-              <option value="Financial Research">Financial Research & Analytics</option>
-              <option value="Bookkeeping">Bookkeeping & Accounting</option>
-              <option value="Tax Preparation">Tax Preparation & Compliance</option>
-              <option value="Data Automation">Data Automation & Scraping</option>
-              <option value="Process Documentation">Process Documentation</option>
-              <option value="Dedicated Teams">Dedicated Finance Teams</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          
-          <button type="submit" class="btn-submit">Send Message</button>
-        </form>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Send a Message
+        </a>
+        <a href="#expectations" class="btn btn-tertiary">
+          <i class="fas fa-info-circle"></i> What to Expect
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-description">You will get thoughtful responses, not automated replies. Every inquiry is reviewed with care so the guidance you receive is relevant and practical.</p>
+      
+      <div class="contact-container">
+        <div class="contact-info" data-aos="fade-right">
+          <h2>Contact Details</h2>
+          
+          <div class="contact-method">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:info@finologynexus.online">info@finologynexus.online</a>
+              <p>Expect a response within one business day.</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h3>Working Hours</h3>
+              <p>Monday to Friday<br>9:00 AM to 6:00 PM EST</p>
+            </div>
+          </div>
+          
+          <div class="social-media-section">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form" data-aos="fade-left">
+          <h2>Send a Message</h2>
+          <form action="https://formsubmit.co/info@finologynexus.online" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Finology Nexus. We'll get back to you shortly.">
+            
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number (Optional)</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="Financial Research">Financial Research & Analytics</option>
+                <option value="Bookkeeping">Bookkeeping & Accounting</option>
+                <option value="Tax Preparation">Tax Preparation & Compliance</option>
+                <option value="Data Automation">Data Automation & Scraping</option>
+                <option value="Process Documentation">Process Documentation</option>
+                <option value="Dedicated Teams">Dedicated Finance Teams</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expectations Section -->
+  <section class="expectations-section" id="expectations">
+    <div class="container">
+      <h2 class="section-title">What You Can Expect After Reaching Out</h2>
+      <p class="section-description">Whether you're a growing startup, a financial services firm, or an established company looking to streamline operations, you will always receive guidance with professionalism and discretion.</p>
+      
+      <div class="expectations-container">
+        <div class="expectation-card" data-aos="fade-up">
+          <i class="fas fa-user-check"></i>
+          <h3>Your inquiry is reviewed personally</h3>
+          <p>Every message is read by our team, not automated systems. We take time to understand your specific situation.</p>
+        </div>
+        
+        <div class="expectation-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-comments"></i>
+          <h3>You'll receive clear answers</h3>
+          <p>We provide thoughtful responses tailored to your needs, not generic templates or canned replies.</p>
+        </div>
+        
+        <div class="expectation-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-phone-alt"></i>
+          <h3>A short call if needed</h3>
+          <p>If your needs require deeper discussion, we'll schedule a brief call to fully understand your requirements.</p>
+        </div>
+        
+        <div class="expectation-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Practical recommendations</h3>
+          <p>Our guidance will be practical, transparent and aligned with your business goals and priorities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Strengthen Your Financial Operations?</h2>
+        <p>If you have a project in mind, want to discuss your current challenges, or simply want to understand how Finology Nexus can support your team, reach out anytime.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-secondary">
+            <i class="fas fa-comments"></i> Send a Message
+          </a>
+          <a href="services.html" class="btn btn-tertiary">
+            <i class="fas fa-cogs"></i> Explore Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
-            <span>Finology Nexus</span>
+            <a href="index.html">
+              <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            </a>
+            <span class="company-name">Finology Nexus</span>
           </div>
-          <p class="footer-about">
-            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-          </p>
+          <p class="footer-about">We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise, structured workflows and modern automation.</p>
           <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/finologynexus/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/finologynexus/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Services</h4>
-            <ul>
-              <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
-              <li><a href="Bookkeeping & Accounting Suppor">Bookkeeping</a></li>
-              <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
-              <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
-              <li><a href="Process Documentation & Workflow">Process Documentation</a></li>
-            </ul>
-          </div>
+        <div class="footer-column footer-links">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="Financial Research & Analytics.html">Financial Research</a></li>
+            <li><a href="Bookkeeping & Accounting Support.html">Bookkeeping</a></li>
+            <li><a href="Tax Preparation & Reporting.html">Tax Preparation</a></li>
+            <li><a href="Data Scraping & Automation.html">Data Automation</a></li>
+            <li><a href="Process Documentation & Workflow Support.html">Process Documentation</a></li>
+          </ul>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Case Studies</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
+        <div class="footer-column footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
             <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
-          </div>
+          </ul>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Contact</h4>
-            <ul>
-              <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
-            </ul>
-          </div>
+        <div class="footer-column footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contactus.html">Get in Touch</a></li>
+            <li><a href="mailto:info@finologynexus.online">info@finologynexus.online</a></li>
+          </ul>
         </div>
       </div>
       
       <div class="footer-bottom">
-        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Finology Nexus. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating CTA Button -->
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
+  <!-- Floating CTA -->
+  <a href="#contact" class="floating-cta">
     <i class="fas fa-comments"></i> Let's Talk
   </a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-      });
-      
-      // Set active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+      this.setAttribute('aria-expanded', nav.classList.contains('active'));
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
         }
       });
-      
-      // Update copyright year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true
-      });
     });
+
+    // Create animated particles for hero section
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Random size and position
+        const size = Math.random() * 5 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 15;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Initialize particles when page loads
+    document.addEventListener('DOMContentLoaded', createParticles);
   </script>
 </body>
 </html>
-
-
