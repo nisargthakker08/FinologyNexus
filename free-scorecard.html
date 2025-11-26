@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free RBI Vendor Health Scorecard | Finology Nexus</title>
   <meta name="description" content="Free 2-minute RBI-compliant vendor risk quiz. Get instant RAG score + PDF report. Avoid ₹10L/day fines (FY25: 48 NBFCs hit ₹7.29Cr)." />
   <meta name="keywords" content="RBI vendor audit, NBFC compliance, vendor risk scorecard, free vendor health check, RBI fine avoidance" />
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <!-- Google tag (gtag.js) -->
@@ -21,10 +23,16 @@
   </script>
   <style>
     :root {
-      --primary-blue: #0077cc;
-      --primary-blue-dark: #005fa3;
-      --secondary-blue: #00c6ff;
-      --secondary-blue-light: #00a4e0;
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #004d99;
+      --secondary-blue: #0099ff;
+      --accent-blue: #0077dd;
+      --accent-gold: #cc9900;
+      --accent-gold-light: #e6b800;
+      --accent-purple: #6a0dad;
+      --accent-purple-light: #8a2be2;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -42,7 +50,13 @@
       --risk-medium: #f39c12;
       --risk-low: #2ecc71;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: var(--light-bg);
@@ -50,139 +64,685 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3 { font-weight: 700; line-height: 1.2; }
-    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
-    .section { padding: 5rem 1.25rem; }
-    /* HEADER */
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--primary-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: 2px;
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      color: var(--text-medium);
+      font-size: 1.15rem;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 200px;
+      text-align: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+    }
+
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-tertiary:hover,
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 6rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ========== HEADER & NAVIGATION ========== */
     header {
       background: var(--white);
-      padding: 1rem 2.5rem;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
     }
-    .logo-group { display: flex; align-items: center; gap: 0.625rem; }
-    .company-name {
-      font-size: 1.25rem; font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .tagline {
-      font-size: 0.9rem; color: var(--text-medium); margin-top: 0.25rem;
-    }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav a {
-      text-decoration: none; color: var(--text-dark); font-weight: 600; position: relative;
-      transition: var(--transition); font-size: 0.95rem;
-    }
-    nav a::after {
-      content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-      background: var(--primary-blue); transition: var(--transition);
-    }
-    nav a:hover::after, nav a.active::after { width: 100%; }
-    nav a.active { color: var(--primary-blue); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-blue); }
-    /* HERO */
-    .scorecard-hero {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white); padding: 6rem 1.25rem; text-align: center; overflow: hidden;
-    }
-    .scorecard-hero h1 { font-size: 2.875rem; margin-bottom: 1.25rem; }
-    .scorecard-hero p { font-size: 1.25rem; max-width: 43.75rem; margin: 0 auto 1rem; }
-    .hero-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-sm); font-weight: 600; text-decoration: none; transition: var(--transition);
-      min-width: 180px; text-align: center; gap: 0.5rem;
-    }
-    .btn-primary { background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue)); color: var(--white); border: none; }
-    .btn-secondary { background: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue); }
-    .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    /* FORM */
-    .scorecard-container {
-      max-width: 800px; margin: 0 auto; padding: 2rem; background: var(--white);
-      border-radius: var(--radius-md); box-shadow: var(--shadow-md);
-    }
-    fieldset {
-      border: 1px solid var(--light-bg); border-radius: var(--radius-sm); padding: 1.5rem;
-      margin-bottom: 1.5rem; background-color: var(--light-bg); transition: var(--transition);
-    }
-    fieldset:hover { box-shadow: var(--shadow-sm); }
-    legend { font-weight: 600; padding: 0 0.5rem; color: var(--primary-blue); font-size: 1.1rem; }
-    label {
-      display: flex; align-items: center; margin-bottom: 0.8rem; cursor: pointer;
-      padding: 0.8rem; border-radius: 6px; transition: var(--transition);
-    }
-    label:hover { background-color: rgba(0, 119, 204, 0.05); }
-    input[type="radio"] { margin-right: 0.8rem; accent-color: var(--primary-blue); }
-    input[type="email"], input[type="text"] {
-      width: 100%; padding: 1rem; margin: 1.5rem 0; 
-      border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;
-    }
-    #risk-form button {
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white); border: none; padding: 1rem 2rem; font-size: 1.1rem;
-      border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; transition: var(--transition);
-      display: block; margin: 2rem auto; width: 100%; max-width: 300px;
-    }
-    #risk-form button:hover {
-      background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light));
-      transform: translateY(-2px); box-shadow: var(--shadow-md);
-    }
-    #result { text-align: center; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-md); margin-top: 2rem; display: none; }
-    .risk-badge { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem; font-weight: 600; margin: 1rem 0; color: white; }
-    .risk-high { background-color: var(--risk-high); }
-    .risk-medium { background-color: var(--risk-medium); }
-    .risk-low { background-color: var(--risk-low); }
-    #download-link {
-      display: inline-block; background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      color: var(--white); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: var(--radius-sm);
-      font-weight: 600; margin: 1rem 0; transition: var(--transition);
-    }
-    #download-link:hover { background: linear-gradient(to right, var(--primary-blue-dark), var(--secondary-blue-light)); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .progress-container { width: 100%; background-color: #e9ecef; border-radius: 0.5rem; margin: 1rem 0; }
-    .progress-bar { height: 0.5rem; border-radius: 0.5rem; transition: width 0.5s ease; }
-    .progress-high { background-color: var(--risk-high); }
-    .progress-medium { background-color: var(--risk-medium); }
-    .progress-low { background-color: var(--risk-low); }
-    .cta-box { background: #e7f3ff; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; text-align: center; }
-    .cta-box strong { color: var(--primary-blue); }
 
-    /* ========== IMPROVED FOOTER ========== */
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .company-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      position: relative;
+      transition: var(--transition);
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 0;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--accent-purple);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+      color: var(--accent-purple);
+      padding: 0.5rem;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 8rem 1.25rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.03); }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease-out;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-2rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(2rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== STATISTICS SECTION ========== */
+    .statistics-section {
+      padding: 4rem 1.25rem;
+      background-color: var(--white);
+    }
+
+    .statistics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 5px solid var(--accent-gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-card i {
+      font-size: 2.5rem;
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .stat-card h3 {
+      color: var(--accent-purple);
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+
+    .stat-card p {
+      color: var(--text-medium);
+      font-size: 1rem;
+    }
+
+    /* ========== ASSESSMENT SECTION ========== */
+    .assessment-section {
+      padding: 6rem 1.25rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
+    }
+
+    .assessment-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 3rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .assessment-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+    }
+
+    .assessment-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .assessment-header h2 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .assessment-header p {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+    }
+
+    fieldset {
+      border: 1px solid #e9ecef;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background-color: #f8f9fa;
+      transition: var(--transition);
+    }
+
+    fieldset:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent-purple-light);
+    }
+
+    legend {
+      font-weight: 600;
+      padding: 0 0.5rem;
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+      background: white;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+      padding: 0.8rem;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    label:hover {
+      background-color: rgba(106, 13, 173, 0.05);
+    }
+
+    input[type="radio"] {
+      margin-right: 0.8rem;
+      accent-color: var(--accent-purple);
+    }
+
+    input[type="email"], input[type="text"] {
+      width: 100%;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input[type="email"]:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.1);
+    }
+
+    #risk-form button {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: block;
+      margin: 2rem auto;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    #risk-form button:hover {
+      background: linear-gradient(to right, var(--accent-purple-light), var(--primary-blue-dark));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    #result {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--light-bg);
+      border-radius: var(--radius-md);
+      margin-top: 2rem;
+      display: none;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .risk-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .risk-high {
+      background-color: var(--risk-high);
+    }
+
+    .risk-medium {
+      background-color: var(--risk-medium);
+    }
+
+    .risk-low {
+      background-color: var(--risk-low);
+    }
+
+    #download-link {
+      display: inline-block;
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      margin: 1rem 0;
+      transition: var(--transition);
+    }
+
+    #download-link:hover {
+      background: linear-gradient(to right, var(--accent-purple-light), var(--primary-blue-dark));
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .progress-container {
+      width: 100%;
+      background-color: #e9ecef;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      height: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 0.5rem;
+      transition: width 0.5s ease;
+    }
+
+    .progress-high {
+      background-color: var(--risk-high);
+    }
+
+    .progress-medium {
+      background-color: var(--risk-medium);
+    }
+
+    .progress-low {
+      background-color: var(--risk-low);
+    }
+
+    .cta-box {
+      background: #e7f3ff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+      text-align: center;
+      border-left: 4px solid var(--accent-gold);
+    }
+
+    .cta-box strong {
+      color: var(--primary-blue);
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .features-section {
+      padding: 6rem 1.25rem;
+      background-color: var(--white);
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 5px solid var(--accent-purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-card i {
+      font-size: 3rem;
+      color: var(--accent-purple);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      color: var(--accent-purple);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-medium);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      padding: 6rem 1.25rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
+    }
+
+    .cta-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-content h2 {
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .cta-content p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== FOOTER ========== */
     footer {
       background: var(--dark-bg);
       color: var(--white);
-      padding: 4rem 1.25rem 1.5rem;
+      padding: 4rem 1.25rem 2rem;
     }
 
     .footer-main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 3rem;
-      max-width: 75rem;
-      margin: 0 auto;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
     }
 
     .footer-column {
-      display: flex;
-      flex-direction: column;
+      min-width: 200px;
     }
 
     .footer-logo-group {
       display: flex;
       align-items: center;
-      gap: 0.625rem;
-      margin-bottom: 1.5rem;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
     }
 
     .footer-logo-group img {
-      height: 40px;
-      width: auto;
+      height: 2.5rem;
     }
 
     .footer-logo-group span {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -190,28 +750,28 @@
 
     .footer-about {
       color: #d1d5db;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
     }
 
     .footer-links h4 {
       color: var(--white);
       margin-bottom: 1.5rem;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       position: relative;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.75rem;
     }
 
-    .footer-links h4:after {
+    .footer-links h4::after {
       content: '';
       position: absolute;
-      left: 0;
       bottom: 0;
+      left: 0;
       width: 40px;
-      height: 2px;
-      background: var(--secondary-blue);
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
     }
 
     .footer-links ul {
@@ -219,116 +779,230 @@
     }
 
     .footer-links li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links a {
       color: #d1d5db;
       text-decoration: none;
       transition: var(--transition);
-      font-size: 0.95rem;
-      display: block;
-      padding: 0.25rem 0;
+      font-size: 1rem;
+      display: inline-block;
     }
 
     .footer-links a:hover {
-      color: var(--secondary-blue);
+      color: var(--accent-gold);
       transform: translateX(5px);
     }
 
     .footer-socials {
+      margin-top: 2rem;
       display: flex;
       gap: 1rem;
-      margin-top: 1.5rem;
     }
 
     .footer-socials a {
       color: var(--white);
-      width: 40px;
-      height: 40px;
+      font-size: 1.5rem;
+      transition: var(--transition);
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.1);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: var(--transition);
-      font-size: 1.1rem;
     }
 
     .footer-socials a:hover {
-      background: var(--secondary-blue);
+      color: var(--accent-gold);
+      background: rgba(204, 153, 0, 0.2);
       transform: translateY(-3px);
     }
 
     .footer-bottom {
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-      padding-top: 1.5rem;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
       border-top: 1px solid #374151;
       color: #9ca3af;
-      max-width: 75rem;
-      margin-left: auto;
-      margin-right: auto;
+    }
+
+    .footer-bottom a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
     }
 
     /* ========== FLOATING CTA ========== */
     .floating-cta {
       position: fixed;
-      bottom: 1.875rem;
-      right: 1.875rem;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
       color: var(--white);
-      padding: 0.75rem 1.25rem;
-      border-radius: 1.875rem;
-      font-weight: 600;
+      padding: 1rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: 700;
       text-decoration: none;
       box-shadow: var(--shadow-lg);
       z-index: 1000;
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .floating-cta:hover {
-      background: linear-gradient(to right, var(--primary-blue), #005b99);
-      transform: translateY(-3px);
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
     }
 
-    /* RESPONSIVE */
+    .floating-cta i {
+      font-size: 1.25rem;
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
-      header { padding: 1rem; flex-wrap: wrap; }
-      .menu-toggle { display: block; order: 1; }
-      nav { width: 100%; order: 3; display: none; }
-      nav.active { display: block; margin-top: 1rem; }
-      nav ul { flex-direction: column; gap: 0.5rem; }
-      .scorecard-hero h1 { font-size: 2rem; }
-      .scorecard-hero p { font-size: 1rem; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .scorecard-container { padding: 1.5rem; }
-      fieldset { padding: 1rem; }
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+        margin-top: 1.5rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .features-container {
+        grid-template-columns: 1fr;
+      }
+
+      .assessment-container {
+        padding: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
       .footer-main {
         grid-template-columns: 1fr;
-        gap: 2rem;
       }
-      .footer-socials {
-        justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
       }
+      .section {
+        padding: 4rem 1rem;
+      }
+      .assessment-container {
+        padding: 1.5rem;
+      }
+      .statistics-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero h1,
+      .hero p {
+        animation: none;
+      }
+      .hero::before {
+        animation: none;
+      }
+    }
+
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
     }
   </style>
 </head>
 <body>
-  <!-- HEADER WITH COMPLETE NAVIGATION -->
+  <!-- Header -->
   <header>
     <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
-      <div>
-        <div class="company-name">Finology Nexus</div>
-        <div class="tagline">Strategic Financial Operations Support • 40% Avg Cost Reduction • SOC2 Compliant</div>
-      </div>
+      <a href="index.html">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      </a>
+      <span class="company-name">Finology Nexus</span>
     </div>
-    <button class="menu-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
@@ -339,160 +1013,302 @@
         <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
-  <!-- HERO -->
-  <section class="scorecard-hero">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="particles" id="particles"></div>
     <div class="container">
       <h1>Free RBI Vendor Health Scorecard</h1>
-      <p>Answer 5 quick RBI-focused questions → Get instant RAG risk score + PDF report in 2 minutes</p>
-      <p><strong>Avoid ₹10L/day RBI fines</strong> – 48 NBFCs fined ₹7.29Cr in FY25 for vendor gaps</p>
+      <p class="hero-sub">Answer 5 quick RBI-focused questions → Get instant RAG risk score + PDF report in 2 minutes</p>
+      <p class="hero-desc"><strong>Avoid ₹10L/day RBI fines</strong> – 48 NBFCs fined ₹7.29Cr in FY25 for vendor gaps</p>
+      
       <div class="hero-buttons">
-        <a href="#assessment" class="btn btn-primary"><i class="fas fa-clipboard-list"></i> Start Free Quiz</a>
-        <a href="Solutions.html" class="btn btn-secondary"><i class="fas fa-cube"></i> All Products</a>
+        <a href="#assessment" class="btn btn-secondary">
+          <i class="fas fa-clipboard-list"></i> Start Free Quiz
+        </a>
+        <a href="Solutions.html" class="btn btn-tertiary">
+          <i class="fas fa-cube"></i> All Products
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- FORM -->
-  <section id="assessment" class="section">
+  <!-- Statistics Section -->
+  <section class="statistics-section">
     <div class="container">
-      <div class="scorecard-container">
+      <h2 class="section-title">Why RBI Compliance Matters</h2>
+      <p class="section-description">The stakes have never been higher for NBFCs and financial institutions</p>
+      
+      <div class="statistics-container">
+        <div class="stat-card" data-aos="fade-up">
+          <i class="fas fa-rupee-sign"></i>
+          <h3>₹7.29Cr</h3>
+          <p>Total fines imposed on NBFCs in FY25</p>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-building"></i>
+          <h3>48 NBFCs</h3>
+          <p>Faced RBI penalties for vendor compliance gaps</p>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-calendar-day"></i>
+          <h3>₹10L/day</h3>
+          <p>Potential penalty for non-compliance</p>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-shield-alt"></i>
+          <h3>100%</h3>
+          <p>RBI inspection focus on vendor risk management</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <h2 class="section-title">What You Get With Our Free Assessment</h2>
+      <p class="section-description">Comprehensive RBI compliance insights in minutes, not weeks</p>
+      
+      <div class="features-container">
+        <div class="feature-card" data-aos="fade-up">
+          <i class="fas fa-chart-pie"></i>
+          <h3>Instant RAG Score</h3>
+          <p>Get immediate Red-Amber-Green risk rating based on RBI compliance parameters</p>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-file-pdf"></i>
+          <h3>Detailed PDF Report</h3>
+          <p>Download professional report with compliance gaps and remediation roadmap</p>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-tasks"></i>
+          <h3>Actionable Insights</h3>
+          <p>Clear, prioritized recommendations to address RBI compliance gaps</p>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-bell"></i>
+          <h3>Risk Alerts</h3>
+          <p>Identify critical compliance gaps that need immediate attention</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment Section -->
+  <section id="assessment" class="assessment-section">
+    <div class="container">
+      <div class="assessment-container" data-aos="fade-up">
+        <div class="assessment-header">
+          <h2>RBI Vendor Health Assessment</h2>
+          <p>Answer 5 quick questions to get your customized RBI compliance scorecard</p>
+        </div>
+        
         <form id="risk-form">
           <fieldset>
             <legend>1. Do your vendor contracts have RBI inspection clause?</legend>
-            <label><input type="radio" name="q1" value="2" required> Yes</label>
-            <label><input type="radio" name="q1" value="0"> No</label>
-            <label><input type="radio" name="q1" value="1"> Partial</label>
+            <label><input type="radio" name="q1" value="2" required> Yes, all contracts include RBI inspection rights</label>
+            <label><input type="radio" name="q1" value="0"> No, contracts don't mention RBI inspection</label>
+            <label><input type="radio" name="q1" value="1"> Partial, only some contracts include this clause</label>
           </fieldset>
+          
           <fieldset>
-            <legend>2. Do you test vendor BCP annually?</legend>
-            <label><input type="radio" name="q2" value="2" required> Yes</label>
-            <label><input type="radio" name="q2" value="0"> No</label>
+            <legend>2. Do you test vendor Business Continuity Plan (BCP) annually?</legend>
+            <label><input type="radio" name="q2" value="2" required> Yes, we conduct annual BCP testing with documentation</label>
+            <label><input type="radio" name="q2" value="0"> No, we don't have a formal BCP testing process</label>
           </fieldset>
+          
           <fieldset>
-            <legend>3. Do you get alerts for certificate expiry?</legend>
-            <label><input type="radio" name="q3" value="2" required> Yes</label>
-            <label><input type="radio" name="q3" value="0"> No</label>
+            <legend>3. Do you get automated alerts for vendor certificate expiry?</legend>
+            <label><input type="radio" name="q3" value="2" required> Yes, we have automated tracking and alert system</label>
+            <label><input type="radio" name="q3" value="0"> No, we track manually or not at all</label>
           </fieldset>
+          
           <fieldset>
-            <legend>4. Do you have >50 vendors?</legend>
-            <label><input type="radio" name="q4" value="0" required> Yes (high risk)</label>
-            <label><input type="radio" name="q4" value="2"> No (lower risk)</label>
+            <legend>4. Do you have more than 50 active vendors?</legend>
+            <label><input type="radio" name="q4" value="0" required> Yes (higher compliance complexity)</label>
+            <label><input type="radio" name="q4" value="2"> No (lower compliance complexity)</label>
           </fieldset>
+          
           <fieldset>
             <legend>5. Do you track vendor SLA performance monthly?</legend>
-            <label><input type="radio" name="q5" value="2" required> Yes</label>
-            <label><input type="radio" name="q5" value="0"> No</label>
+            <label><input type="radio" name="q5" value="2" required> Yes, with formal monthly reporting and reviews</label>
+            <label><input type="radio" name="q5" value="0"> No, we don't track SLAs systematically</label>
           </fieldset>
+          
           <input type="email" placeholder="Work Email (to send full report)" required>
           <input type="text" placeholder="Company Name">
-          <button type="submit">Generate My Free Report</button>
+          
+          <button type="submit">Generate My Free RBI Compliance Report</button>
         </form>
+        
         <div id="result">
           <h2>Your RBI Vendor Health Report is Ready!</h2>
           <div id="risk-badge" class="risk-badge"></div>
-          <div class="progress-container"><div id="progress-bar" class="progress-bar"></div></div>
-          <p><a id="download-link" href="#" download><i class="fas fa-download"></i> Download Your Custom Report (PDF)</a></p>
+          <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+          <p><a id="download-link" href="#" download><i class="fas fa-download"></i> Download Your Custom RBI Compliance Report (PDF)</a></p>
+          
           <div class="cta-box">
-            <p><strong>Red/Amber score?</strong> Book our <strong>48-hour ₹2.5L RBI Vendor Audit</strong> – full RAG scorecard + auto-alerts.</p>
-            <a href="contactus.html" class="btn btn-primary">Book Audit Now</a>
+            <p><strong>Red/Amber score?</strong> Book our <strong>48-hour ₹2.5L RBI Vendor Audit</strong> – full RAG scorecard + auto-alerts + remediation plan.</p>
+            <a href="contactus.html" class="btn btn-primary">Book RBI Compliance Audit Now</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMPLETE FOOTER -->
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Comprehensive RBI Compliance Support?</h2>
+        <p>Our 48-hour RBI Vendor Audit provides complete compliance mapping, risk assessment, and actionable remediation roadmap.</p>
+        <div class="cta-buttons">
+          <a href="contactus.html" class="btn btn-secondary">
+            <i class="fas fa-calendar-check"></i> Book Consultation
+          </a>
+          <a href="Solutions.html" class="btn btn-tertiary">
+            <i class="fas fa-cube"></i> View All Solutions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
-            <span>Finology Nexus</span>
+            <a href="index.html">
+              <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            </a>
+            <span class="company-name">Finology Nexus</span>
           </div>
-          <p class="footer-about">
-            We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-          </p>
+          <p class="footer-about">We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.</p>
           <div class="footer-socials">
             <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-linkedin-in"></i>
             </a>
             <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <i class="fab fa-twitter"></i>
             </a>
             <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <i class="fab fa-facebook"></i>
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
             </a>
           </div>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Solutions</h4>
-            <ul>
-              <li><a href="free-scorecard.html">RBI Vendor Health Scorecard</a></li>
-              <li><a href="vendor-scorecard.html">Vendor Risk Assessment</a></li>
-              <li><a href="Solutions.html">Compliance & Risk Tracker</a></li>
-              <li><a href="Solutions.html">Performance Dashboard</a></li>
-            </ul>
-          </div>
+        <div class="footer-column footer-links">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="free-scorecard.html">RBI Vendor Health Scorecard</a></li>
+            <li><a href="vendor-scorecard.html">Vendor Risk Assessment</a></li>
+            <li><a href="Solutions.html">Compliance & Risk Tracker</a></li>
+            <li><a href="Solutions.html">Performance Dashboard</a></li>
+          </ul>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Company</h4>
-            <ul>
-              <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="blog.html">Case Studies</a></li>
-              <li><a href="careers.html">Careers</a></li>
-              <li><a href="privacypolicy.html">Privacy Policy</a></li>
-              <li><a href="termsofservice.html">Terms of Service</a></li>
-            </ul>
-          </div>
+        <div class="footer-column footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            <li><a href="termsofservice.html">Terms of Service</a></li>
+          </ul>
         </div>
         
-        <div class="footer-column">
-          <div class="footer-links">
-            <h4>Contact</h4>
-            <ul>
-              <li><a href="mailto:info@finologynexus.online"><i class="fas fa-envelope"></i> info@finologynexus.online</a></li>
-              <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
-              <li><a href="contactus.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Get in Touch</a></li>
-            </ul>
-          </div>
+        <div class="footer-column footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:info@finologynexus.online"><i class="fas fa-envelope"></i> info@finologynexus.online</a></li>
+            <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
+            <li><a href="contactus.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block; padding: 0.5rem 1rem; font-size: 0.9rem;">Get in Touch</a></li>
+          </ul>
         </div>
       </div>
       
       <div class="footer-bottom">
-        &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Finology Nexus. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- FLOATING CTA -->
-  <a href="contactus.html" class="floating-cta" title="Let's Talk" aria-label="Contact Us">
-    <i class="fas fa-comments"></i> Let's Talk
+  <!-- Floating CTA -->
+  <a href="#assessment" class="floating-cta">
+    <i class="fas fa-clipboard-list"></i> Take Free Quiz
   </a>
 
   <!-- PDF Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
-    // Mobile menu
-    document.addEventListener("DOMContentLoaded", function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-      });
-
-      // Set current year in footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
     });
+
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+      this.setAttribute('aria-expanded', nav.classList.contains('active'));
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Create animated particles for hero section
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Random size and position
+        const size = Math.random() * 5 + 2;
+        const left = Math.random() * 100;
+        const delay = Math.random() * 15;
+
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${left}%`;
+        particle.style.animationDelay = `${delay}s`;
+
+        particlesContainer.appendChild(particle);
+      }
+    }
 
     // Quiz + PDF Generation
     document.getElementById('risk-form').addEventListener('submit', function(e) {
@@ -549,7 +1365,7 @@
       const htmlContent = `
         <div style="font-family:Inter,sans-serif;padding:30px;max-width:800px;margin:auto;background:#fff;color:#374151;">
           <div style="display:flex;align-items:center;border-bottom:1px solid #eee;padding-bottom:15px;margin-bottom:20px;">
-            <div style="width:50px;height:50px;background:linear-gradient(to right,#0077cc,#00c6ff);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-right:15px;">
+            <div style="width:50px;height:50px;background:linear-gradient(to right,#6a0dad,#0066cc);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-right:15px;">
               <span style="color:white;font-weight:bold;font-size:12px;">FN</span>
             </div>
             <div>
@@ -655,6 +1471,9 @@
         `;
       }
     }
+
+    // Initialize particles when page loads
+    document.addEventListener('DOMContentLoaded', createParticles);
   </script>
 </body>
 </html>
