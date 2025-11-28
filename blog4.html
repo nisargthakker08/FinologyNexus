@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How a Digital Lending Fintech Became Audit-Ready in 14 Days | Finology Nexus</title>
-  <meta name="description" content="Discover how a fast-growing lending platform streamlined vendor documentation, closed compliance gaps, and prepared confidently for RBI supervision using the Vendor360 Essentials Suite.">
-  
+  <meta name="description" content="Discover how a fast-growing lending platform streamlined vendor documentation, closed compliance gaps, and prepared confidently for RBI supervision using the Vendor360 Essentials Suite." />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <meta name="keywords" content="vendor risk assessment, RBI compliance, audit readiness, fintech, Vendor360" />
+  <meta name="author" content="Finology Nexus" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How a Digital Lending Fintech Became Audit-Ready in 14 Days | Finology Nexus" />
+  <meta property="og:description" content="Discover how a fast-growing lending platform streamlined vendor documentation, closed compliance gaps, and prepared confidently for RBI supervision." />
+  <meta property="og:image" content="https://www.finologynexus.online/assets/images/vendor-risk-assessment.jpg" />
+  <meta property="og:url" content="https://www.finologynexus.online/blog-vendor360.html" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How a Digital Lending Fintech Became Audit-Ready in 14 Days" />
+  <meta name="twitter:description" content="Discover how a fintech achieved RBI audit readiness in just 14 days using Vendor360." />
+  <meta name="twitter:image" content="https://www.finologynexus.online/assets/images/vendor-risk-assessment.jpg" />
+
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Google Tag Manager -->
+
+  <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -28,6 +46,10 @@
     })(window,document,"clarity","script","s1b20qvd2s");
   </script>
   
+  <!-- jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  
   <style>
     :root {
       --primary-blue: #0066cc;
@@ -38,6 +60,10 @@
       --accent-gold-light: #e6b800;
       --accent-purple: #6a0dad;
       --accent-purple-light: #8a2be2;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -99,6 +125,7 @@
       margin: 0 auto 2.5rem;
       color: var(--text-medium);
       font-size: 1.15rem;
+      text-align: center;
     }
 
     /* ========== BUTTON STYLES ========== */
@@ -146,10 +173,18 @@
       border: 2px solid var(--primary-blue);
     }
 
+    .btn-green {
+      background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
     .btn-primary:hover,
     .btn-secondary:hover,
     .btn-tertiary:hover,
-    .btn-outline:hover {
+    .btn-outline:hover,
+    .btn-green:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
@@ -195,14 +230,7 @@
     .company-logo {
       width: 44px;
       height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 18px;
+      object-fit: contain;
     }
 
     .company-name {
@@ -303,6 +331,7 @@
       margin: 0 auto 2rem;
       opacity: 0.95;
       line-height: 1.6;
+      text-align: center;
     }
 
     .blog-meta {
@@ -312,6 +341,7 @@
       margin-top: 2rem;
       font-size: 1rem;
       opacity: 0.9;
+      flex-wrap: wrap;
     }
 
     .read-time {
@@ -402,6 +432,7 @@
       font-size: 1.1rem;
       line-height: 1.7;
       color: var(--text-medium);
+      text-align: left;
     }
 
     .blog-section ul, .blog-section ol {
@@ -565,6 +596,7 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
 
     .pdf-preview {
@@ -575,12 +607,13 @@
       max-width: 500px;
       box-shadow: var(--shadow-md);
       border: 1px dashed var(--accent-purple);
+      text-align: center;
     }
 
-    .pdf-icon {
-      font-size: 3rem;
-      color: var(--accent-purple);
-      margin-bottom: 1rem;
+    .finology-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
     }
 
     .pdf-title {
@@ -645,9 +678,8 @@
       margin-bottom: 1.75rem;
     }
 
-    .footer-logo-group .company-logo {
+    .footer-logo-group img {
       height: 2.5rem;
-      width: 2.5rem;
     }
 
     .footer-logo-group span {
@@ -894,16 +926,24 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <!-- Header -->
   <header>
     <div class="logo-group">
-      <a href="index.html" class="company-logo">FN</a>
+      <a href="index.html">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      </a>
       <span class="company-name">Finology Nexus</span>
     </div>
 
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="blog.html" class="nav-link active">Case Studies</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
@@ -1139,9 +1179,7 @@
       <p>Download our comprehensive Vendor Health Scorecard template used in this case study to assess your own vendor risk management framework.</p>
       
       <div class="pdf-preview">
-        <div class="pdf-icon">
-          <i class="fas fa-file-pdf"></i>
-        </div>
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="finology-logo">
         <div class="pdf-title">Vendor360 Scorecard Report</div>
         <div class="pdf-description">Complete vendor risk assessment framework with RAG scoring methodology</div>
         <a href="#" class="btn btn-primary" id="download-pdf">
@@ -1191,7 +1229,9 @@
       <div class="footer-main">
         <div class="footer-column">
           <div class="footer-logo-group">
-            <a href="index.html" class="company-logo">FN</a>
+            <a href="index.html">
+              <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            </a>
             <span class="company-name">Finology Nexus</span>
           </div>
           <p class="footer-about">Strategic financial solutions for growing businesses.</p>
@@ -1206,9 +1246,9 @@
           <h4>Company</h4>
           <ul>
             <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="Solutions.html">Solutions</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="blog.html">Case Studies</a></li>
-            <li><a href="Solutions.html">Solutions</a></li>
           </ul>
         </div>
         
@@ -1278,93 +1318,606 @@
       });
     });
 
-    // PDF Download functionality
+    // PDF Download functionality using jsPDF
     document.getElementById('download-pdf').addEventListener('click', function(e) {
       e.preventDefault();
       
-      // Create PDF content with illustrative vendor data
-      const pdfContent = `
-%PDF-1.4
-1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
-endobj
-2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
-endobj
-3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
-endobj
-4 0 obj
-<< /Length 1000 >>
-stream
-BT
-/F1 24 Tf
-50 750 Td
-(Vendor360 Scorecard Report) Tj
-0 -30 Td
-/F1 12 Tf
-(Complete vendor risk assessment framework with RAG scoring methodology) Tj
-0 -50 Td
-(Finology Nexus) Tj
-0 -30 Td
-(Sample Vendor Risk Assessment) Tj
-0 -40 Td
-/Vendor Name                    Risk Score    RAG Status/ Tj
-0 -20 Td
-/CloudTech Solutions            85/100        Green/ Tj
-0 -20 Td
-/DataSecure Inc.                45/100        Red/ Tj
-0 -20 Td
-/PaymentGateway Pro             72/100        Amber/ Tj
-0 -20 Td
-/KYC Validation Services        92/100        Green/ Tj
-0 -20 Td
-/CyberShield Ltd.               68/100        Amber/ Tj
-0 -20 Td
-/BCP Partners                   35/100        Red/ Tj
-0 -20 Td
-/Document Management Systems    88/100        Green/ Tj
-0 -40 Td
-/RAG Scoring Methodology:/ Tj
-0 -20 Td
-/Green (75-100): Low risk, compliant/ Tj
-0 -20 Td
-/Amber (50-74): Medium risk, requires monitoring/ Tj
-0 -20 Td
-/Red (0-49): High risk, immediate action needed/ Tj
-ET
-endstream
-endobj
-5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
-endobj
-xref
-0 6
-0000000000 65535 f 
-0000000009 00000 n 
-0000000058 00000 n 
-0000000115 00000 n 
-0000000254 00000 n 
-0000001354 00000 n 
-trailer
-<< /Size 6 /Root 1 0 R >>
-startxref
-1414
-%%EOF
-`;
-
-      // Create a blob and download link
-      const blob = new Blob([pdfContent], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Vendor360-Scorecard-Report.pdf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      // Initialize jsPDF
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
       
-      alert('Thank you for your interest! The Vendor360 Scorecard Report is now downloading.');
+      // Set document properties
+      doc.setProperties({
+        title: 'Digital Lending Fintech – Audit Readiness Report',
+        subject: 'Powered by Vendor360 Essentials Suite',
+        author: 'Finology Nexus',
+        keywords: 'vendor, risk, assessment, RAG, scoring, framework, RBI, audit, compliance',
+        creator: 'Finology Nexus'
+      });
+      
+      // ========== COVER PAGE ==========
+      // Add background color
+      doc.setFillColor(25, 35, 75); // Navy blue
+      doc.rect(0, 0, 220, 280, 'F');
+      
+      // Add gold accent line
+      doc.setDrawColor(204, 153, 0); // Gold
+      doc.setLineWidth(4);
+      doc.line(20, 60, 80, 60);
+      
+      // Add title
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(24);
+      doc.setFont(undefined, 'bold');
+      doc.text('Digital Lending Fintech', 20, 80);
+      doc.text('Audit Readiness Report', 20, 100);
+      
+      // Add subtitle
+      doc.setFontSize(14);
+      doc.setTextColor(204, 153, 0); // Gold
+      doc.text('Powered by Vendor360 Essentials Suite', 20, 120);
+      
+      // Add disclaimer
+      doc.setTextColor(200, 200, 200);
+      doc.setFontSize(10);
+      doc.text('Illustrative Sample Only — No Real Client Data', 20, 140);
+      
+      // Add Finology Nexus branding
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('Finology Nexus', 20, 180);
+      doc.setFontSize(12);
+      doc.text('Strategic Financial Advisory', 20, 195);
+      
+      // Add date
+      doc.setTextColor(150, 150, 150);
+      doc.setFontSize(10);
+      doc.text('Confidential • ' + new Date().toLocaleDateString(), 20, 250);
+      
+      // ========== EXECUTIVE SUMMARY ==========
+      doc.addPage();
+      
+      // Section header with gold accent
+      doc.setFillColor(25, 35, 75); // Navy blue
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('1. Executive Summary', 20, 25);
+      
+      // Content
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(11);
+      
+      // Properly aligned text with consistent spacing
+      const execSummaryLines = [
+        "This sample report illustrates how a digital lending fintech completed a 14-day vendor",
+        "governance audit-readiness program using Finology Nexus's Vendor360 Essentials Suite.",
+        "",
+        "The assessment covered 17 vendors, including KYC service providers, cloud hosting",
+        "partners, collection agencies, and technology vendors.",
+        "",
+        "Overall Audit Readiness Score: 92%",
+        "Final Risk Position: Medium Risk → Low Risk (Improved)",
+        "Documentation Completeness: 100%",
+        "Critical Clause Gaps Resolved: 7/7",
+        "RBI Outsourcing Alignment: 87/94 controls met",
+        "",
+        "This format demonstrates exactly what a real client receives at the end of a",
+        "Vendor360 engagement."
+      ];
+      
+      execSummaryLines.forEach((line, index) => {
+        doc.text(line, 20, 50 + (index * 8)); // Consistent 8-unit spacing
+      });
+      
+      // ========== VENDOR RISK OVERVIEW ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('2. Vendor Risk Overview', 20, 25);
+      
+      // Content
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(11);
+      doc.text('Vendor Portfolio Assessed: 17 Vendors', 20, 50);
+      
+      // Vendor status table
+      doc.autoTable({
+        startY: 60,
+        head: [['Status', 'Count', 'Notes']],
+        body: [
+          ['High Risk', '3', 'Urgent remediation required'],
+          ['Medium Risk', '8', 'Minor documentation or SLA gaps'],
+          ['Low Risk', '6', 'Fully compliant; no action needed']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173], // Purple
+          textColor: 255
+        },
+        styles: {
+          fontSize: 10,
+          cellPadding: 3
+        }
+      });
+      
+      const vendorY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(12);
+      doc.text('Major Risk Drivers (Top 3)', 20, vendorY);
+      
+      doc.setFontSize(10);
+      doc.text('• Missing breach notification clauses', 25, vendorY + 10);
+      doc.text('• Outdated BCP/DR testing records', 25, vendorY + 20);
+      doc.text('• No sub-processor disclosure from 2 vendors', 25, vendorY + 30);
+      
+      // ========== DOCUMENTATION COMPLETENESS ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('3. Documentation Completeness', 20, 25);
+      
+      doc.autoTable({
+        startY: 45,
+        head: [['Document Type', 'Required', 'Available', 'Status']],
+        body: [
+          ['Master Service Agreement', '17', '17', 'Complete'],
+          ['SLA/Uptime Annexure', '17', '16', '1 Pending'],
+          ['Data Processing Addendum', '17', '14', 'Missing 3'],
+          ['Cybersecurity Policies', '17', '13', 'Missing 4'],
+          ['BCP/DR Evidence', '17', '11', 'Missing 6'],
+          ['Pen Test Reports', '4 (critical vendors)', '3', 'Missing 1'],
+          ['Sub-Processor List', '17', '10', 'Missing 7']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const docY = doc.lastAutoTable.finalY + 10;
+      doc.setFontSize(11);
+      doc.text('Overall Documentation Completion: 100% after remediation', 20, docY);
+      doc.text('(11 missing items resolved during 14-day engagement)', 20, docY + 7);
+      
+      // ========== CONTRACT CLAUSE COMPLIANCE ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('4. Contract Clause Compliance', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Clause Gap Summary Before Remediation', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Clause Category', 'Total Gaps', 'Severity']],
+        body: [
+          ['Audit Rights', '3', 'High'],
+          ['Breach Notification', '3', 'High'],
+          ['Data Localization', '2', 'Medium'],
+          ['BCP/DR', '4', 'Medium'],
+          ['SLA & Penalties', '2', 'Low'],
+          ['Exit & Transition', '1', 'Low']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 10,
+          cellPadding: 3
+        }
+      });
+      
+      const clauseY = doc.lastAutoTable.finalY + 10;
+      doc.setFontSize(11);
+      doc.text('Total Identified Gaps: 15', 20, clauseY);
+      doc.text('Critical Gaps: 7', 20, clauseY + 7);
+      
+      doc.setFontSize(12);
+      doc.text('After Vendor360 Remediation', 20, clauseY + 20);
+      
+      doc.setFontSize(10);
+      doc.text('✓ All 7 critical gaps resolved', 25, clauseY + 30);
+      doc.text('✓ 8 medium/low gaps assigned to vendor for revision', 25, clauseY + 40);
+      doc.text('✓ Updated annexures issued for 9 vendors', 25, clauseY + 50);
+      doc.text('✓ Notations added to the audit evidence pack', 25, clauseY + 60);
+      
+      // ========== RBI COMPLIANCE SCORE ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('5. RBI Outsourcing Guidelines – Compliance Score', 20, 25);
+      
+      // Content for RBI Compliance Score
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(12);
+      doc.text('RBI Compliance Assessment Results', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Compliance Area', 'Status', 'Score']],
+        body: [
+          ['Due Diligence & Vendor Selection', 'Compliant', '100%'],
+          ['Contractual Agreements', 'Compliant', '95%'],
+          ['Risk Management', 'Partially Compliant', '85%'],
+          ['Business Continuity Planning', 'Compliant', '92%'],
+          ['Data Security & Privacy', 'Compliant', '96%'],
+          ['Monitoring & Control', 'Compliant', '94%'],
+          ['Exit Strategy', 'Partially Compliant', '78%']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 10,
+          cellPadding: 3
+        }
+      });
+      
+      const rbiY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(11);
+      doc.text('Overall RBI Compliance Score: 92%', 20, rbiY);
+      doc.text('Areas Requiring Attention:', 20, rbiY + 10);
+      
+      doc.setFontSize(10);
+      doc.text('• Risk Management: Need for enhanced vendor risk assessment framework', 25, rbiY + 20);
+      doc.text('• Exit Strategy: Missing detailed transition plans for 3 critical vendors', 25, rbiY + 30);
+      doc.text('• Monitoring: Quarterly review process needs formal documentation', 25, rbiY + 40);
+      
+      // ========== VENDOR RISK MITIGATION STRATEGY ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('6. Vendor Risk Mitigation Strategy', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Risk Mitigation Plan for High-Risk Vendors', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Vendor', 'Risk Category', 'Mitigation Action', 'Timeline']],
+        body: [
+          ['Vendor A', 'Data Security', 'Implement enhanced encryption & access controls', '30 days'],
+          ['Vendor B', 'BCP/DR', 'Conduct joint disaster recovery testing', '45 days'],
+          ['Vendor C', 'Contract Compliance', 'Renegotiate missing audit rights clause', '60 days']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const mitigationY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(12);
+      doc.text('Continuous Monitoring Framework', 20, mitigationY);
+      
+      doc.setFontSize(10);
+      doc.text('• Quarterly vendor performance reviews', 25, mitigationY + 15);
+      doc.text('• Semi-annual risk reassessments', 25, mitigationY + 25);
+      doc.text('• Annual contract compliance audits', 25, mitigationY + 35);
+      doc.text('• Real-time risk dashboard monitoring', 25, mitigationY + 45);
+      
+      // ========== AUDIT EVIDENCE PACK ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('7. Audit Evidence Pack Structure', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Complete Documentation Repository', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Section', 'Documents Included', 'Status']],
+        body: [
+          ['Vendor Master List', 'Complete vendor registry with risk scores', 'Complete'],
+          ['Contract Repository', 'All agreements with clause analysis', 'Complete'],
+          ['Compliance Evidence', 'RBI checklist with supporting documents', 'Complete'],
+          ['Risk Assessments', 'RAG scoring sheets & mitigation plans', 'Complete'],
+          ['Performance Monitoring', 'SLA reports & review minutes', 'Complete'],
+          ['BCP/DR Evidence', 'Testing reports & continuity plans', 'Complete']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const evidenceY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(11);
+      doc.text('Evidence Pack Organization:', 20, evidenceY);
+      
+      doc.setFontSize(10);
+      doc.text('• Chronological filing by assessment date', 25, evidenceY + 10);
+      doc.text('• Cross-referenced with RBI requirement mapping', 25, evidenceY + 20);
+      doc.text('• Digital signatures on all critical documents', 25, evidenceY + 30);
+      doc.text('• Version control maintained throughout', 25, evidenceY + 40);
+      
+      // ========== 14-DAY TRANSFORMATION ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('8. 14-Day Transformation Snapshot', 20, 25);
+      
+      doc.autoTable({
+        startY: 45,
+        head: [['Area', 'Before', 'After 14 Days']],
+        body: [
+          ['Documentation Completeness', '62%', '100%'],
+          ['High-Risk Vendors', '3', '0'],
+          ['Clause-Level Compliance', '7 gaps', '0 unresolved'],
+          ['Evidence Availability', 'Scattered', 'Centralized'],
+          ['RBI Alignment', '68%', '92%']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 10,
+          cellPadding: 3
+        }
+      });
+      
+      // ========== SUSTAINABLE GOVERNANCE FRAMEWORK ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('9. Sustainable Governance Framework', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Ongoing Vendor Management Process', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Process', 'Frequency', 'Responsibility']],
+        body: [
+          ['Vendor Risk Scoring', 'Quarterly', 'Compliance Team'],
+          ['Contract Review', 'Annual', 'Legal & Procurement'],
+          ['Performance Monitoring', 'Monthly', 'Business Owners'],
+          ['BCP/DR Testing', 'Semi-annual', 'IT & Operations'],
+          ['Compliance Audits', 'Annual', 'Internal Audit']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const governanceY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(12);
+      doc.text('Technology Enablement', 20, governanceY);
+      
+      doc.setFontSize(10);
+      doc.text('• Automated risk scoring algorithms', 25, governanceY + 15);
+      doc.text('• Centralized document repository with version control', 25, governanceY + 25);
+      doc.text('• Real-time compliance dashboard with alerts', 25, governanceY + 35);
+      doc.text('• Integration with existing GRC platforms', 25, governanceY + 45);
+      
+      // ========== FUTURE ROADMAP ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('10. Future Roadmap & Recommendations', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Strategic Initiatives for Next 6 Months', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Initiative', 'Priority', 'Timeline']],
+        body: [
+          ['Automated Vendor Risk Monitoring', 'High', '3 months'],
+          ['Vendor Performance Scorecards', 'Medium', '4 months'],
+          ['Contract Lifecycle Management', 'High', '6 months'],
+          ['Vendor Self-Assessment Portal', 'Medium', '5 months'],
+          ['Integrated Risk Dashboard', 'High', '4 months']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const roadmapY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(12);
+      doc.text('Key Recommendations for Sustained Compliance', 20, roadmapY);
+      
+      doc.setFontSize(10);
+      doc.text('• Establish quarterly vendor governance committee meetings', 25, roadmapY + 15);
+      doc.text('• Implement automated contract expiry alerts', 25, roadmapY + 25);
+      doc.text('• Develop vendor performance benchmarking', 25, roadmapY + 35);
+      doc.text('• Create vendor risk heat maps for board reporting', 25, roadmapY + 45);
+      
+      // ========== FINAL RECOMMENDATION ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('11. Final Recommendation', 20, 25);
+      
+      // Content for Final Recommendation
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(11);
+      doc.text('The fintech is now fully prepared for RBI supervision, with:', 20, 50);
+      
+      doc.setFontSize(10);
+      doc.text('✓ Clean audit trail with complete documentation', 25, 65);
+      doc.text('✓ Updated contracts addressing all compliance gaps', 25, 75);
+      doc.text('✓ Centralized evidence repository for easy access', 25, 85);
+      doc.text('✓ Clear risk oversight through RAG scoring system', 25, 95);
+      doc.text('✓ Sustainable monitoring plan for ongoing compliance', 25, 105);
+      
+      doc.setFontSize(12);
+      doc.text('Next Steps for Continuous Improvement', 20, 130);
+      
+      doc.setFontSize(10);
+      doc.text('• Implement automated vendor risk monitoring system', 25, 145);
+      doc.text('• Conduct quarterly vendor performance reviews', 25, 155);
+      doc.text('• Schedule annual contract compliance audits', 25, 165);
+      doc.text('• Establish vendor risk escalation protocols', 25, 175);
+      doc.text('• Develop vendor performance benchmarking framework', 25, 185);
+      
+      // ========== APPENDIX ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('12. Appendix: Vendor360 Framework Details', 20, 25);
+      
+      doc.setFontSize(12);
+      doc.text('Vendor360 Essentials Suite Components', 20, 50);
+      
+      doc.autoTable({
+        startY: 60,
+        head: [['Component', 'Description', 'Purpose']],
+        body: [
+          ['Vendor Health Scorecard', '12-question RAG assessment', 'Standardized risk scoring'],
+          ['Contract Clause Library', '31 critical compliance clauses', 'Contract gap analysis'],
+          ['RBI Compliance Checklist', '94 parameter assessment', 'Regulatory alignment'],
+          ['Evidence Pack Template', 'Pre-formatted documentation', 'Audit readiness'],
+          ['Risk Dashboard', 'Visual risk reporting', 'Executive oversight']
+        ],
+        theme: 'grid',
+        headStyles: {
+          fillColor: [106, 13, 173],
+          textColor: 255
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 2
+        }
+      });
+      
+      const appendixY = doc.lastAutoTable.finalY + 15;
+      doc.setFontSize(12);
+      doc.text('Implementation Methodology', 20, appendixY);
+      
+      doc.setFontSize(10);
+      doc.text('• Phase 1: Vendor Discovery & Data Collection (Days 1-3)', 25, appendixY + 15);
+      doc.text('• Phase 2: Risk Assessment & Gap Analysis (Days 4-7)', 25, appendixY + 25);
+      doc.text('• Phase 3: Compliance Validation (Days 8-10)', 25, appendixY + 35);
+      doc.text('• Phase 4: Evidence Pack Creation (Days 11-14)', 25, appendixY + 45);
+      doc.text('• Phase 5: Handover & Training (Day 14)', 25, appendixY + 55);
+      
+      // ========== DISCLAIMER ==========
+      doc.addPage();
+      
+      // Section header
+      doc.setFillColor(25, 35, 75);
+      doc.rect(0, 15, 220, 15, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(16);
+      doc.text('13. Disclaimer', 20, 25);
+      
+      // Content for Disclaimer
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(11);
+      const disclaimerLines = [
+        "This is a fictional, illustrative sample report intended to demonstrate the",
+        "format and depth of deliverables produced by Finology Nexus.",
+        "",
+        "No real client information has been used in this sample report.",
+        "",
+        "All data, metrics, and findings presented are for illustrative purposes only",
+        "and do not represent actual client engagements or results.",
+        "",
+        "For a personalized assessment and actual Vendor360 implementation,",
+        "please contact our team at contact@finologynexus.com",
+        "",
+        "© " + new Date().getFullYear() + " Finology Nexus. All rights reserved."
+      ];
+      
+      disclaimerLines.forEach((line, index) => {
+        doc.text(line, 20, 50 + (index * 8)); // Consistent 8-unit spacing
+      });
+      
+      // Add footer to all pages
+      const pageCount = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setTextColor(150, 150, 150);
+        doc.text('Finology Nexus - Vendor360 Essentials Suite', 20, 285);
+        doc.text(`Page ${i} of ${pageCount}`, 180, 285);
+      }
+      
+      // Save the PDF
+      doc.save('Vendor360-Audit-Readiness-Report.pdf');
+      
+      alert('Thank you for your interest! The Vendor360 Audit Readiness Report is now downloading.');
     });
   </script>
 </body>
