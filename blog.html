@@ -40,8 +40,6 @@
       --accent-gold-light: #e6b800;
       --accent-purple: #6a0dad;
       --accent-purple-light: #8a2be2;
-      --accent-green: #10b981;
-      --accent-green-light: #34d399;
       --dark-bg: #1f2937;
       --light-bg: #f9fbfc;
       --text-dark: #1f2937;
@@ -150,18 +148,10 @@
       border: 2px solid var(--primary-blue);
     }
 
-    .btn-green {
-      background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
-      color: var(--white);
-      border: none;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    }
-
     .btn-primary:hover,
     .btn-secondary:hover,
     .btn-tertiary:hover,
-    .btn-outline:hover,
-    .btn-green:hover {
+    .btn-outline:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
@@ -869,13 +859,13 @@
     <nav id="main-nav">
       <ul>
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
         <li><a href="services.html" class="nav-link">Services</a></li>
         <li><a href="blog.html" class="nav-link active">Case Studies</a></li>
         <li><a href="aboutus.html" class="nav-link">About Us</a></li>
         <li><a href="contactus.html" class="nav-link">Contact</a></li>
       </ul>
     </nav>
+
     <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
       <i class="fas fa-bars"></i>
     </button>
@@ -893,6 +883,9 @@
         <a href="#featured-posts" class="btn btn-secondary">
           <i class="fas fa-book-reader"></i> Read Our Articles
         </a>
+        <a href="Solutions.html" class="btn btn-tertiary">
+          <i class="fas fa-rocket"></i> Explore Solutions
+        </a>
         <a href="services.html" class="btn btn-primary">
           <i class="fas fa-chart-line"></i> Explore Services
         </a>
@@ -907,7 +900,70 @@
       <p class="section-description">Discover our most recent insights and analysis on financial operations and business growth</p>
       
       <div class="blog-grid">
-        <!-- Article 1 -->
+        <!-- NEW BLOG CARD 1 -->
+        <article class="blog-post">
+          <div class="blog-post-header">
+            <i class="fas fa-shield-alt blog-post-icon"></i>
+            <h3>How a Digital Lending Fintech Became Audit-Ready in 14 Days</h3>
+          </div>
+          
+          <div class="blog-post-body">
+            <p>Discover how a fast-growing lending platform could streamline vendor documentation, close compliance gaps, and prepare confidently for RBI supervision using the Vendor360 Essentials Suite.</p>
+            
+            <div class="post-meta">
+              <span>Finology Team</span>
+              <time datetime="2025-11-01">Nov 2025</time>
+            </div>
+            
+            <a href="blog4.html" class="read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+        
+        <!-- NEW BLOG CARD 2 -->
+        <article class="blog-post">
+          <div class="blog-post-header">
+            <i class="fas fa-globe blog-post-icon"></i>
+            <h3>How a Global Payments Startup Reduced Vendor Risk Exposure by 40%</h3>
+          </div>
+          
+          <div class="blog-post-body">
+            <p>See how a cross-border payments company could consolidate scattered vendor data, build a RAG-based risk profile, and strengthen contract governance for regulatory readiness.</p>
+            
+            <div class="post-meta">
+              <span>Finology Team</span>
+              <time datetime="2025-11-01">Nov 2025</time>
+            </div>
+            
+            <a href="blog5.html" class="read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+        
+        <!-- NEW BLOG CARD 3 -->
+        <article class="blog-post">
+          <div class="blog-post-header">
+            <i class="fas fa-lock blog-post-icon"></i>
+            <h3>How a SaaS Security Provider Could Strengthen Vendor Compliance for SOC 2</h3>
+          </div>
+          
+          <div class="blog-post-body">
+            <p>Learn how a security-focused SaaS business could structure vendor controls, simplify due diligence, and prepare the evidence needed for SOC 2 examinations.</p>
+            
+            <div class="post-meta">
+              <span>Finology Team</span>
+              <time datetime="2025-10-01">Oct 2025</time>
+            </div>
+            
+            <a href="blog6.html" class="read-more">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+        
+        <!-- UPDATED BLOG CARD 1 (changed date) -->
         <article class="blog-post">
           <div class="blog-post-header">
             <i class="fas fa-clock blog-post-icon"></i>
@@ -919,7 +975,7 @@
             
             <div class="post-meta">
               <span>Finology Team</span>
-              <time datetime="2024-06-15">June 15, 2024</time>
+              <time datetime="2024-09-15">September 15, 2024</time>
             </div>
             
             <a href="blog3.html" class="read-more">
@@ -928,7 +984,7 @@
           </div>
         </article>
         
-        <!-- Article 2 -->
+        <!-- UPDATED BLOG CARD 2 (changed date) -->
         <article class="blog-post">
           <div class="blog-post-header">
             <i class="fas fa-chart-line blog-post-icon"></i>
@@ -940,7 +996,7 @@
             
             <div class="post-meta">
               <span>Finology Team</span>
-              <time datetime="2024-06-10">June 10, 2024</time>
+              <time datetime="2024-08-10">August 10, 2024</time>
             </div>
             
             <a href="blog1.html" class="read-more">
@@ -949,7 +1005,7 @@
           </div>
         </article>
         
-        <!-- Article 3 -->
+        <!-- UPDATED BLOG CARD 3 (changed date) -->
         <article class="blog-post">
           <div class="blog-post-header">
             <i class="fas fa-tasks blog-post-icon"></i>
@@ -961,7 +1017,7 @@
             
             <div class="post-meta">
               <span>Finology Team</span>
-              <time datetime="2024-06-05">June 5, 2024</time>
+              <time datetime="2024-07-05">July 5, 2024</time>
             </div>
             
             <a href="blog2.html" class="read-more">
