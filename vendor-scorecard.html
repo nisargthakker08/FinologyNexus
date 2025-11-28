@@ -1621,6 +1621,15 @@
       document.getElementById('risk-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
+        // Validate vendor information
+        const vendorName = document.getElementById('vendor-name').value.trim();
+        const assessorName = document.getElementById('assessor-name').value.trim();
+        
+        if (!vendorName || !assessorName) {
+          alert('Please provide both vendor name and your name/title before submitting.');
+          return;
+        }
+
         // Calculate the total score
         let totalScore = 0;
         const formData = new FormData(this);
@@ -1745,8 +1754,9 @@
         const answers = [];
         const questions = document.querySelectorAll('.question-group');
         
+        // Capture the actual assessment questions
         questions.forEach((question, index) => {
-            // Skip the first question (vendor info)
+            // Skip the first question group (vendor info)
             if (index === 0) return;
             
             const questionText = question.querySelector('.question-text').textContent;
@@ -1757,7 +1767,7 @@
                 const score = parseInt(selectedOption.value);
                 
                 answers.push({
-                    questionNumber: index,
+                    questionNumber: index, // This will be 1-12
                     question: questionText,
                     answer: answerText,
                     score: score
@@ -1778,18 +1788,18 @@
         
         // Set document properties
         doc.setProperties({
-            title: 'Vendor Health Assessment Report - Finology Nexus',
+            title: `Vendor Health Assessment Report - ${vendorName}`,
             subject: 'Vendor Risk Assessment',
             author: 'Finology Nexus',
             keywords: 'vendor, risk, assessment, health, scorecard',
             creator: 'Finology Nexus'
         });
         
-        // Add header
+        // Add header with better styling
         doc.setFillColor(106, 13, 173); // Purple
         doc.rect(0, 0, 210, 40, 'F');
         
-        // Add white text for header
+        // Add white text for header with centered alignment
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(20);
         doc.setFont('helvetica', 'bold');
@@ -1797,28 +1807,32 @@
         doc.setFontSize(14);
         doc.text('Vendor Health Assessment Report', 105, 25, { align: 'center' });
         
-        // Add date and vendor info
+        // Vendor information section with better formatting
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(0, 0, 0);
+        doc.text('Assessment Details', 15, 50);
+        
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         const currentDate = new Date().toLocaleDateString();
-        doc.text(`Generated on: ${currentDate}`, 15, 50);
-        doc.text(`Vendor: ${vendorName}`, 15, 55);
-        doc.text(`Assessor: ${assessorName}`, 15, 60);
+        doc.text(`Report Date: ${currentDate}`, 15, 60);
+        doc.text(`Vendor Name: ${vendorName}`, 15, 67);
+        doc.text(`Assessed By: ${assessorName}`, 15, 74);
         
-        // Add score section
-        doc.setTextColor(0, 0, 0);
+        // Score section with better layout
         doc.setFontSize(16);
         doc.setFont('helvetica', 'bold');
-        doc.text('Overall Vendor Health Score', 15, 80);
+        doc.text('Overall Vendor Health Score', 15, 90);
         
-        // Add score with proper formatting
+        // Score display with better alignment
         doc.setFontSize(32);
         doc.setFont('helvetica', 'bold');
-        doc.text(totalScore.toString(), 30, 105);
-        doc.setFontSize(16);
-        doc.text('/24', 50, 105);
+        const scoreText = `${totalScore}/24`;
+        const scoreWidth = doc.getTextWidth(scoreText);
+        doc.text(scoreText, 105 - (scoreWidth / 2), 110, { align: 'center' });
         
-        // Risk badge
+        // Risk badge with centered alignment
         let riskColor;
         if (riskCategory.includes('High')) {
             riskColor = [231, 76, 60];
@@ -1829,34 +1843,50 @@
         }
         
         doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
-        doc.roundedRect(140, 85, 55, 20, 10, 10, 'F');
+        const badgeWidth = 55;
+        const badgeX = 105 - (badgeWidth / 2); // Center the badge
+        doc.roundedRect(badgeX, 120, badgeWidth, 20, 10, 10, 'F');
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(12);
         doc.setFont('helvetica', 'bold');
-        doc.text(riskCategory, 167.5, 97, { align: 'center' });
+        doc.text(riskCategory, 105, 132, { align: 'center' });
         
-        // Clean description
-        let cleanDescription = description.replace(/[^\x00-\x7F]/g, '');
-        
-        // Add description
+        // Description with proper text wrapping and alignment
         doc.setTextColor(0, 0, 0);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
-        const descriptionLines = doc.splitTextToSize(cleanDescription, 180);
-        doc.text(descriptionLines, 15, 130);
         
-        // Add recommendations section
+        // Clean description and ensure proper text
+        let cleanDescription = description.replace(/[^\x00-\x7F]/g, '');
+        if (!cleanDescription || cleanDescription.trim() === '') {
+            cleanDescription = "Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
+        }
+        
+        const descriptionLines = doc.splitTextToSize(cleanDescription, 180);
+        doc.text(descriptionLines, 15, 160);
+        
+        // Recommendations section with proper formatting
+        let yPosition = 160 + (descriptionLines.length * 5) + 10;
+        
+        // Check if we need a new page
+        if (yPosition > 250) {
+            doc.addPage();
+            yPosition = 20;
+        }
+        
         doc.setFontSize(14);
         doc.setFont('helvetica', 'bold');
-        doc.text('Recommendations', 15, 150);
+        doc.text('Recommendations', 15, yPosition);
+        yPosition += 10;
         
         const recommendations = getRecommendations(totalScore);
         const recommendationLines = doc.splitTextToSize(recommendations, 180);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
-        doc.text(recommendationLines, 15, 160);
+        doc.text(recommendationLines, 15, yPosition);
+        yPosition += (recommendationLines.length * 5) + 15;
         
-        // Start detailed answers on a new page
+        // Detailed answers on a new page
         doc.addPage();
         
         // Detailed answers header
@@ -1864,9 +1894,9 @@
         doc.setFont('helvetica', 'bold');
         doc.text('Detailed Assessment Results', 15, 20);
         
-        let yPosition = 35;
+        yPosition = 35;
         
-        // Add each question and answer
+        // Add each question and answer with proper formatting
         doc.setFontSize(10);
         
         userAnswers.forEach((answer, index) => {
@@ -1876,12 +1906,12 @@
                 yPosition = 20;
             }
             
-            // Question
+            // Question with proper numbering and wrapping
             doc.setFont('helvetica', 'bold');
-            const questionText = `Q${answer.questionNumber}: ${answer.question}`;
+            const questionText = `${answer.questionNumber}. ${answer.question}`;
             const questionLines = doc.splitTextToSize(questionText, 180);
             doc.text(questionLines, 15, yPosition);
-            yPosition += (questionLines.length * 5) + 2;
+            yPosition += (questionLines.length * 5) + 3;
             
             // Answer with score indicator
             doc.setFont('helvetica', 'normal');
@@ -1891,14 +1921,14 @@
             yPosition += (answerLines.length * 5) + 8;
             
             // Add separator line except for last item
-            if (index < userAnswers.length - 1) {
+            if (index < userAnswers.length - 1 && yPosition < 270) {
                 doc.setDrawColor(200, 200, 200);
                 doc.line(15, yPosition, 195, yPosition);
                 yPosition += 10;
             }
         });
         
-        // Add footer to all pages
+        // Add footer to all pages with proper alignment
         const pageCount = doc.internal.getNumberOfPages();
         for (let i = 1; i <= pageCount; i++) {
             doc.setPage(i);
@@ -1908,8 +1938,9 @@
             doc.text(`Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
         }
         
-        // Save the PDF
-        const filename = `Vendor_Health_Report_${vendorName.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
+        // Save the PDF with vendor name included
+        const cleanVendorName = vendorName.replace(/[^a-zA-Z0-9]/g, '_');
+        const filename = `Vendor_Health_Report_${cleanVendorName}_${new Date().toISOString().split('T')[0]}.pdf`;
         doc.save(filename);
     }
 
