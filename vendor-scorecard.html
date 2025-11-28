@@ -1637,19 +1637,19 @@
           riskClass = "risk-high";
           progressClass = "progress-high";
           progressWidth = "33%";
-          description = "Red: High risk — immediate remediation or vendor review recommended.";
+          description = "High risk — immediate remediation or vendor review recommended.";
         } else if (totalScore <= 18) {
           riskCategory = "Medium Risk";
           riskClass = "risk-medium";
           progressClass = "progress-medium";
           progressWidth = "66%";
-          description = "Amber: Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
+          description = "Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
         } else {
           riskCategory = "Low Risk";
           riskClass = "risk-low";
           progressClass = "progress-low";
           progressWidth = "100%";
-          description = "Green: Low risk — maintain current governance and periodic review.";
+          description = "Low risk — maintain current governance and periodic review.";
         }
 
         // Update the UI
@@ -1785,7 +1785,7 @@
             creator: 'Finology Nexus'
         });
         
-        // Add header with gradient background
+        // Add header
         doc.setFillColor(106, 13, 173); // Purple
         doc.rect(0, 0, 210, 40, 'F');
         
@@ -1809,32 +1809,16 @@
         doc.setTextColor(0, 0, 0);
         doc.setFontSize(16);
         doc.setFont('helvetica', 'bold');
-        doc.text('Overall Vendor Health Score', 15, 75);
+        doc.text('Overall Vendor Health Score', 15, 80);
         
-        // Add score circle with better styling
-        doc.setDrawColor(106, 13, 173);
-        doc.setLineWidth(2);
-        doc.circle(105, 95, 20, 'D'); // Draw circle outline
-        
-        // Fill based on risk level
-        if (riskCategory.includes('High')) {
-            doc.setFillColor(231, 76, 60); // Red
-        } else if (riskCategory.includes('Medium')) {
-            doc.setFillColor(243, 156, 18); // Amber
-        } else {
-            doc.setFillColor(46, 204, 113); // Green
-        }
-        doc.circle(105, 95, 18, 'F'); // Fill circle
-        
-        // Score text
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(18);
+        // Add score with proper formatting
+        doc.setFontSize(32);
         doc.setFont('helvetica', 'bold');
-        doc.text(totalScore.toString(), 105, 99, { align: 'center' });
-        doc.setFontSize(8);
-        doc.text('/24', 105, 105, { align: 'center' });
+        doc.text(totalScore.toString(), 30, 105);
+        doc.setFontSize(16);
+        doc.text('/24', 50, 105);
         
-        // Risk badge with better positioning
+        // Risk badge
         let riskColor;
         if (riskCategory.includes('High')) {
             riskColor = [231, 76, 60];
@@ -1845,32 +1829,32 @@
         }
         
         doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
-        doc.roundedRect(140, 80, 55, 20, 10, 10, 'F');
+        doc.roundedRect(140, 85, 55, 20, 10, 10, 'F');
         doc.setTextColor(255, 255, 255);
         doc.setFontSize(12);
         doc.setFont('helvetica', 'bold');
-        doc.text(riskCategory, 167.5, 92, { align: 'center' });
+        doc.text(riskCategory, 167.5, 97, { align: 'center' });
         
-        // Clean description without encoding issues
-        let cleanDescription = description.replace(/[^\x00-\x7F]/g, ''); // Remove non-ASCII characters
+        // Clean description
+        let cleanDescription = description.replace(/[^\x00-\x7F]/g, '');
         
         // Add description
         doc.setTextColor(0, 0, 0);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
         const descriptionLines = doc.splitTextToSize(cleanDescription, 180);
-        doc.text(descriptionLines, 15, 125);
+        doc.text(descriptionLines, 15, 130);
         
         // Add recommendations section
         doc.setFontSize(14);
         doc.setFont('helvetica', 'bold');
-        doc.text('Recommendations', 15, 145);
+        doc.text('Recommendations', 15, 150);
         
         const recommendations = getRecommendations(totalScore);
         const recommendationLines = doc.splitTextToSize(recommendations, 180);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
-        doc.text(recommendationLines, 15, 155);
+        doc.text(recommendationLines, 15, 160);
         
         // Start detailed answers on a new page
         doc.addPage();
