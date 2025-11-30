@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How a SaaS Security Provider Could Strengthen Vendor Compliance for SOC 2 | Finology Nexus</title>
+  <meta name="description" content="Learn how a security-focused SaaS business could structure vendor controls, simplify due diligence workflows, and prepare audit-ready evidence for SOC 2 examinations." />
+  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <meta name="keywords" content="SOC 2 compliance, vendor governance, SaaS security, vendor risk assessment, audit readiness" />
+  <meta name="author" content="Finology Nexus" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How a SaaS Security Provider Could Strengthen Vendor Compliance for SOC 2 | Finology Nexus" />
+  <meta property="og:description" content="Learn how a security-focused SaaS business could structure vendor controls, simplify due diligence workflows, and prepare audit-ready evidence for SOC 2 examinations." />
+  <meta property="og:image" content="https://www.finologynexus.online/assets/images/soc2-vendor-compliance.jpg" />
+  <meta property="og:url" content="https://www.finologynexus.online/blog6.html" />
+  <meta property="og:type" content="article" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How a SaaS Security Provider Could Strengthen Vendor Compliance for SOC 2" />
+  <meta name="twitter:description" content="Learn how a SaaS business could structure vendor controls and prepare audit-ready evidence for SOC 2." />
+  <meta name="twitter:image" content="https://www.finologynexus.online/assets/images/soc2-vendor-compliance.jpg" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","s1b20qvd2s");
+  </script>
+  
+  <style>
+    :root {
+      --primary-blue: #0066cc;
+      --primary-blue-dark: #004d99;
+      --secondary-blue: #0099ff;
+      --accent-blue: #0077dd;
+      --accent-gold: #cc9900;
+      --accent-gold-light: #e6b800;
+      --accent-purple: #6a0dad;
+      --accent-purple-light: #8a2be2;
+      --accent-green: #10b981;
+      --accent-green-light: #34d399;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --dark-bg: #1f2937;
+      --light-bg: #f9fbfc;
+      --text-dark: #1f2937;
+      --text-medium: #4b5563;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--primary-blue);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: 2px;
+    }
+
+    .section-description {
+      max-width: 50rem;
+      margin: 0 auto 2.5rem;
+      color: var(--text-medium);
+      font-size: 1.15rem;
+      text-align: center;
+    }
+
+    /* ========== BUTTON STYLES ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      min-width: 200px;
+      text-align: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
+    }
+
+    .btn-tertiary {
+      background: rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .btn-green {
+      background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-tertiary:hover,
+    .btn-outline:hover,
+    .btn-green:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ========== LAYOUT COMPONENTS ========== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 6rem 1.25rem;
+      text-align: center;
+    }
+
+    /* ========== HEADER & NAVIGATION ========== */
+    header {
+      background: var(--white);
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .company-logo {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .company-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      position: relative;
+      transition: var(--transition);
+      font-size: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 0;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--accent-purple);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      cursor: pointer;
+      color: var(--accent-purple);
+      padding: 0.5rem;
+    }
+
+    /* ========== BLOG POST STYLES ========== */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 6rem 1.25rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .blog-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .blog-hero .subtitle {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      font-size: 1rem;
+      opacity: 0.9;
+      flex-wrap: wrap;
+    }
+
+    .read-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-illustration {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dashboard-icon {
+      font-size: 4rem;
+      color: rgba(255, 255, 255, 0.8);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .blog-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.25rem;
+    }
+
+    .blog-section {
+      margin-bottom: 5rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
+      margin: 4rem 0;
+      position: relative;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+    }
+
+    .blog-section h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-blue);
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .blog-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: 2px;
+    }
+
+    .blog-section h3 {
+      font-size: 1.75rem;
+      margin: 2.5rem 0 1.25rem;
+      color: var(--accent-purple);
+    }
+
+    .blog-section p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-medium);
+      text-align: left;
+    }
+
+    .blog-section ul, .blog-section ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .blog-section li {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-medium);
+    }
+
+    .challenge-list, .solution-list {
+      background: #f8fafc;
+      border-left: 4px solid var(--accent-purple);
+      padding: 2rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 2rem 0;
+    }
+
+    .challenge-list h3, .solution-list h3 {
+      margin-top: 0;
+      color: var(--accent-purple);
+    }
+
+    .infographic-callouts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .infographic-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border-top: 4px solid var(--accent-gold);
+    }
+
+    .infographic-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .infographic-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-purple);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .infographic-text {
+      font-size: 1.1rem;
+      color: var(--text-medium);
+      font-weight: 600;
+    }
+
+    .timeline {
+      margin: 3rem 0;
+    }
+
+    .timeline-item {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--accent-gold);
+    }
+
+    .timeline-item h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+
+    .timeline-outcome {
+      background: #f0f9ff;
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      margin-top: 1rem;
+      border-left: 3px solid var(--accent-blue);
+    }
+
+    /* ========== IMPACT TABLE STYLES ========== */
+    .impact-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .impact-table th {
+      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
+      color: var(--white);
+      padding: 1.25rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .impact-table td {
+      padding: 1.25rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .impact-table tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    .impact-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-box {
+      background: #f0f9ff;
+      border: 2px solid var(--accent-purple);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .pdf-download-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e6f3ff 100%);
+      padding: 4rem 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      margin: 4rem 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    .pdf-download-section h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+
+    .pdf-download-section p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--text-medium);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .pdf-preview {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 500px;
+      box-shadow: var(--shadow-md);
+      border: 1px dashed var(--accent-purple);
+      text-align: center;
+    }
+
+    .finology-logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+    }
+
+    .pdf-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .pdf-description {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+      padding: 4rem 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      margin: 4rem 0;
+      color: var(--white);
+    }
+
+    .cta-section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* ========== BACK TO CASE STUDIES BUTTON ========== */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .back-button:hover {
+      color: var(--accent-purple);
+      transform: translateX(-5px);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--dark-bg);
+      color: var(--white);
+      padding: 4rem 1.25rem 2rem;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-column {
+      min-width: 200px;
+    }
+
+    .footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .footer-logo-group img {
+      height: 2.5rem;
+    }
+
+    .footer-logo-group span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-about {
+      color: #d1d5db;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links h4 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: 1.25rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    .footer-links h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent-gold);
+      border-radius: 2px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      transform: translateX(5px);
+    }
+
+    .footer-socials {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-socials a {
+      color: var(--white);
+      font-size: 1.5rem;
+      transition: var(--transition);
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent-gold);
+      background: rgba(204, 153, 0, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    .footer-bottom a {
+      color: var(--accent-gold);
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========== FLOATING CTA ========== */
+    .floating-cta {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.05rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .floating-cta:hover {
+      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    }
+
+    .floating-cta i {
+      font-size: 1.25rem;
+    }
+
+    /* ========== RESPONSIVE STYLES ========== */
+    @media (max-width: 992px) {
+      .blog-hero h1 {
+        font-size: 2.5rem;
+      }
+      .blog-hero .subtitle {
+        font-size: 1.3rem;
+      }
+      .infographic-callouts {
+        grid-template-columns: 1fr;
+      }
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+
+      nav {
+        width: 100%;
+        order: 3;
+        display: none;
+        margin-top: 1.5rem;
+        background: var(--white);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+
+      nav.active {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .blog-hero h1 {
+        font-size: 2rem;
+      }
+
+      .blog-hero .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .blog-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .blog-section h2 {
+        font-size: 1.75rem;
+      }
+
+      .blog-section h3 {
+        font-size: 1.5rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blog-hero {
+        padding: 4rem 1rem 3rem;
+      }
+      .blog-content {
+        padding: 3rem 1rem;
+      }
+      .timeline-item {
+        padding: 1.5rem;
+      }
+    }
+
+    /* ========== ACCESSIBILITY ========== */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <header>
+    <div class="logo-group">
+      <a href="index.html">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      </a>
+      <span class="company-name">Finology Nexus</span>
+    </div>
+
+    <nav id="main-nav">
+      <ul>
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="blog.html" class="nav-link active">Case Studies</a></li>
+        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+        <li><a href="contactus.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- Blog Hero Section -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-hero-content">
+        <h1>How a SaaS Security Provider Could Strengthen Vendor Compliance for SOC 2</h1>
+        <p class="subtitle">Learn how a security-focused SaaS business could structure vendor controls, simplify due diligence workflows, and prepare audit-ready evidence for SOC 2 examinations.</p>
+        <div class="blog-meta">
+          <div><strong>Author:</strong> Finology Team</div>
+          <div><strong>Date:</strong> October 2025</div>
+          <div class="read-time"><i class="far fa-clock"></i> Read Time: 6 mins</div>
+        </div>
+        <div class="hero-illustration">
+          <div class="dashboard-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Content -->
+  <div class="blog-content">
+    <!-- Back to Case Studies Button -->
+    <a href="blog.html" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Case Studies
+    </a>
+
+    <!-- Overview Section -->
+    <section class="blog-section">
+      <h2>Overview</h2>
+      <p>A rapidly scaling SaaS security provider preparing for its first SOC 2 Type I & II assessment faced a common but critical problem: vendor documentation scattered across teams, incomplete due diligence, and little clarity on how third-party risks mapped to SOC 2 Trust Service Criteria (TSC).</p>
+      <p>With customers demanding enterprise-grade assurance, the company needed a standardized, audit-friendly vendor governance structure — without slowing engineering velocity.</p>
+      <p>Using the Vendor360 Essentials Suite, the company could build a clean vendor control environment, centralize evidence, and demonstrate structured oversight to auditors.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Infographic Callouts -->
+    <div class="infographic-callouts">
+      <div class="infographic-item">
+        <div class="infographic-number">35%</div>
+        <div class="infographic-text">Faster Audit Prep</div>
+      </div>
+      <div class="infographic-item">
+        <div class="infographic-number">100%</div>
+        <div class="infographic-text">Evidence Completion</div>
+      </div>
+      <div class="infographic-item">
+        <div class="infographic-number">21</div>
+        <div class="infographic-text">Days to Implementation</div>
+      </div>
+    </div>
+
+    <!-- The Challenge Section -->
+    <section class="blog-section">
+      <h2>The Challenge</h2>
+      <p>Although the company excelled at application-level security, its third-party governance posture lacked structure:</p>
+      
+      <div class="challenge-list">
+        <h3>Critical Gaps Identified</h3>
+        <ul>
+          <li>Vendor inventory not centralized across engineering, finance, and ops</li>
+          <li>Missing security documents (SOC reports, pentests, breach policies)</li>
+          <li>No defined vendor risk classifications (Critical / High / Medium / Low)</li>
+          <li>Ad-hoc due diligence requests with no consistent format</li>
+          <li>No RAG-based scoring or periodic review cadence</li>
+          <li>Limited mapping of vendor controls to SOC 2 TSC:
+            <br>Security ⬩ Availability ⬩ Confidentiality ⬩ Processing Integrity ⬩ Privacy
+          </li>
+        </ul>
+        <p><strong>Result:</strong> Auditors flagged these issues as readiness gaps, delaying SOC 2 preparation and increasing review burden on internal teams.</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Our Approach Section -->
+    <section class="blog-section">
+      <h2>Our Approach</h2>
+      <p>Using a combination of structured frameworks and lightweight tools, Vendor360 enabled a complete vendor compliance foundation in under 3 weeks:</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>🔹 1. Vendor Inventory & Criticality Mapping (Days 1-3)</h4>
+          <p>All vendors were categorized based on data sensitivity, operational reliance, and access level.</p>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ Created a clean list of "in-scope vendors" for SOC 2</li>
+              <li>✓ 14 critical vendors identified for detailed assessment</li>
+              <li>✓ Standardized classification system implemented</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>🔹 2. Vendor Health Scorecard (12Q Assessment) (Days 4-7)</h4>
+          <p>Each in-scope vendor was evaluated for:</p>
+          <ul>
+            <li>Communication quality</li>
+            <li>Reliability</li>
+            <li>Issue resolution</li>
+            <li>Security maturity</li>
+            <li>Financial stability</li>
+            <li>Compliance posture</li>
+          </ul>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ Clear RAG distribution established</li>
+              <li>✓ 4 Red, 6 Amber, 4 Green vendors identified</li>
+              <li>✓ Actionable risk insights for each vendor</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>🔹 3. SOC 2 Evidence Checklist (Days 8-15)</h4>
+          <p>A tailored set of documents was established for each vendor tier:</p>
+          <ul>
+            <li>SOC 2 Type II report</li>
+            <li>BCP & DR testing summary</li>
+            <li>Security certifications (ISO 27001, CSA STAR)</li>
+            <li>Encryption & data handling policies</li>
+            <li>Incident response procedures</li>
+            <li>Sub-processor disclosures</li>
+          </ul>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ 100% document completeness across all critical vendors</li>
+              <li>✓ Standardized evidence collection process</li>
+              <li>✓ Clear documentation requirements for each vendor tier</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>🔹 4. Contract & Clause Review (Days 16-18)</h4>
+          <p>Contracts were reviewed for SOC 2-relevant areas:</p>
+          <ul>
+            <li>Audit rights</li>
+            <li>Breach notification</li>
+            <li>Data retention</li>
+            <li>Subcontracting</li>
+            <li>SLAs</li>
+          </ul>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ 18 vendor agreements comprehensively reviewed</li>
+              <li>✓ 7 contracts required amendments and were updated</li>
+              <li>✓ Standardized contract templates created</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>🔹 5. RAG-Based Risk Dashboard (Days 19-20)</h4>
+          <p>Each vendor received a Red/Amber/Green profile reflecting:</p>
+          <ul>
+            <li>Evidence completeness</li>
+            <li>Control alignment</li>
+            <li>Security posture</li>
+            <li>Risk exposure</li>
+          </ul>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ Real-time visibility into vendor risk status</li>
+              <li>✓ Prioritized remediation roadmap</li>
+              <li>✓ Executive-level reporting capabilities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <h4>🔹 6. Auditor-Ready Documentation Pack (Day 21)</h4>
+          <p>A structured folder set was created, enabling auditors to validate vendor controls in minutes instead of days.</p>
+          <div class="timeline-outcome">
+            <strong>Outcome:</strong>
+            <ul>
+              <li>✓ Pre-validated evidence repository</li>
+              <li>✓ SOC 2 TSC mapping completed for all critical vendors</li>
+              <li>✓ Dramatically reduced audit preparation time</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Illustrative Outcomes Section -->
+    <section class="blog-section">
+      <h2>🎯 Illustrative Outcomes</h2>
+      <p>Through the structured approach, the SaaS company could achieve:</p>
+      
+      <table class="impact-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before</th>
+            <th>After</th>
+            <th>Improvement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vendor Documentation Completeness</td>
+            <td>Partial</td>
+            <td>100%</td>
+            <td>All required security artifacts collected</td>
+          </tr>
+          <tr>
+            <td>Audit Preparation Time</td>
+            <td>Weeks</td>
+            <td>Days</td>
+            <td>35% reduction</td>
+          </tr>
+          <tr>
+            <td>SOC 2 TSC Mapping</td>
+            <td>Limited</td>
+            <td>Complete</td>
+            <td>Clear linkage to SOC 2 requirements</td>
+          </tr>
+          <tr>
+            <td>RAG Risk Exposure</td>
+            <td>52%</td>
+            <td>28%</td>
+            <td>46% improvement</td>
+          </tr>
+          <tr>
+            <td>Contract Gaps Resolved</td>
+            <td>Multiple</td>
+            <td>7 critical gaps closed</td>
+            <td>Added clarity on breach timelines & data retention</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <h3>Key Success Factor</h3>
+        <p>The company established a sustainable vendor governance program that not only addressed immediate SOC 2 requirements but also created a foundation for ongoing compliance management and risk reduction.</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PDF Download Section -->
+    <section class="pdf-download-section">
+      <h3>Download the Sample Vendor Compliance Report</h3>
+      <p>Get a redacted, illustrative version of the vendor compliance assessment used in SOC 2 preparation.</p>
+      
+      <div class="pdf-preview">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="finology-logo">
+        <div class="pdf-title">SOC 2 Vendor Compliance Assessment</div>
+        <div class="pdf-description">Complete vendor compliance framework with SOC 2 TSC mapping</div>
+        <button class="btn btn-primary" id="download-pdf">
+          <i class="fas fa-download"></i> Download Sample Report
+        </button>
+      </div>
+      
+      <p><small>By downloading, you agree to our Privacy Policy and consent to receive relevant communications.</small></p>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section class="blog-section">
+      <h2>Why This Matters for SaaS Security Companies</h2>
+      <p>Third-party controls form a significant portion of SOC 2 readiness, yet most tech companies underestimate this requirement.</p>
+      <p>By streamlining vendor compliance early, SaaS companies benefit from:</p>
+      <ul>
+        <li>Faster SOC 2 certification</li>
+        <li>Lower audit fatigue</li>
+        <li>Stronger customer trust</li>
+        <li>Better clarity on sensitive data flows</li>
+        <li>Reduced dependency risk</li>
+        <li>Competitive advantage in enterprise sales</li>
+      </ul>
+      <p>The Vendor360 Essentials Suite provides a structured approach to vendor governance that aligns with SOC 2 requirements while being lightweight enough for fast-growing SaaS companies.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h3>Ready to Streamline Your SOC 2 Vendor Compliance?</h3>
+      <p>Explore the Vendor360 Essentials Suite for SOC 2:</p>
+      <ul>
+        <li>✔ Vendor Inventory & Criticality Mapping</li>
+        <li>✔ SOC 2 Evidence Checklist</li>
+        <li>✔ Vendor Health Scorecard (12Q)</li>
+        <li>✔ Contract Gap Analysis</li>
+        <li>✔ Auditor-Ready Documentation Pack</li>
+      </ul>
+      <div class="cta-buttons">
+        <a href="contactus.html" class="btn btn-secondary">
+          <i class="fas fa-desktop"></i> Request Demo
+        </a>
+        <a href="#" class="btn btn-tertiary">
+          <i class="fas fa-download"></i> Download Framework
+        </a>
+        <a href="contactus.html" class="btn btn-tertiary">
+          <i class="fas fa-calendar"></i> Schedule a Call
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-column">
+          <div class="footer-logo-group">
+            <a href="index.html">
+              <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+            </a>
+            <span class="company-name">Finology Nexus</span>
+          </div>
+          <p class="footer-about">Strategic financial solutions for growing businesses.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/FinologyNexus" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="Solutions.html">Solutions</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Case Studies</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="tools.html">Free Tools</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column footer-links">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            <li><a href="termsofservice.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; <script>document.write(new Date().getFullYear())</script> Finology Nexus. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA -->
+  <a href="contactus.html" class="floating-cta">
+    <i class="fas fa-comments"></i> Let's Talk
+  </a>
+
+  <!-- Load jsPDF from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('active');
+      this.setAttribute('aria-expanded', nav.classList.contains('active'));
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // PDF Download functionality
+    document.getElementById('download-pdf').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Check if jsPDF is available
+      if (typeof jspdf !== 'undefined') {
+        generatePDF();
+      } else {
+        // If jsPDF is not available, try to load it dynamically
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        script.onload = function() {
+          generatePDF();
+        };
+        script.onerror = function() {
+          alert('PDF library failed to load. Please try again later.');
+        };
+        document.head.appendChild(script);
+      }
+    });
+
+    function generatePDF() {
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // Set document properties
+        doc.setProperties({
+          title: 'SOC 2 Vendor Compliance Assessment',
+          subject: 'Powered by Vendor360 Essentials Suite',
+          author: 'Finology Nexus',
+          keywords: 'SOC 2, vendor compliance, audit readiness, SaaS security',
+          creator: 'Finology Nexus'
+        });
+        
+        // ========== COVER PAGE ==========
+        // Add background color
+        doc.setFillColor(25, 35, 75); // Navy blue
+        doc.rect(0, 0, 220, 280, 'F');
+        
+        // Add gold accent line
+        doc.setDrawColor(204, 153, 0); // Gold
+        doc.setLineWidth(4);
+        doc.line(20, 60, 80, 60);
+        
+        // Add title
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(24);
+        doc.setFont(undefined, 'bold');
+        doc.text('How a SaaS Security Provider', 20, 80);
+        doc.text('Strengthened Vendor Compliance', 20, 100);
+        doc.text('for SOC 2', 20, 120);
+        
+        // Add subtitle
+        doc.setFontSize(14);
+        doc.setTextColor(204, 153, 0); // Gold
+        doc.text('Illustrative Sample Report', 20, 140);
+        
+        // Add disclaimer
+        doc.setTextColor(200, 200, 200);
+        doc.setFontSize(10);
+        doc.text('Prepared by Finology Nexus – Vendor360 Essentials Suite', 20, 160);
+        doc.text('October 2025', 20, 170);
+        doc.text('Illustrative Sample Only — No Real Client Data', 20, 185);
+        
+        // Add Finology Nexus branding
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Finology Nexus', 20, 220);
+        doc.setFontSize(12);
+        doc.text('Strategic Financial Advisory', 20, 235);
+        
+        // ========== EXECUTIVE SUMMARY ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Executive Summary', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        const execSummaryLines = [
+          "A rapidly scaling SaaS security provider preparing for SOC 2 Type I & II audits",
+          "faced significant challenges in third-party governance. Vendor documentation",
+          "was fragmented, review cycles were inconsistent, and no structured alignment",
+          "existed between vendor controls and SOC 2 Trust Service Criteria (TSC).",
+          "",
+          "Using the Vendor360 Essentials Suite, the company established a complete,",
+          "audit-ready vendor governance system within 21 days, enabling clean evidence",
+          "submission, structured due-diligence controls, and a measurable reduction",
+          "in vendor-related risk exposure."
+        ];
+        
+        execSummaryLines.forEach((line, index) => {
+          doc.text(line, 20, 50 + (index * 8));
+        });
+        
+        // ========== BACKGROUND ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Background', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        const backgroundLines = [
+          "The company provides enterprise-grade security solutions to global clients",
+          "and handles sensitive customer data. As part of its SOC 2 readiness efforts,",
+          "it needed a defensible, standardized vendor governance program that met the",
+          "expectations of external auditors and enterprise clients.",
+          "",
+          "Vendor360 helped the company:",
+          "",
+          "• Identify all in-scope vendors",
+          "• Evaluate their security maturity",
+          "• Collect and validate evidence",
+          "• Establish an auditor-ready documentation pack",
+          "• Improve controls aligning with SOC 2 TSC"
+        ];
+        
+        backgroundLines.forEach((line, index) => {
+          doc.text(line, 20, 50 + (index * 8));
+        });
+        
+        // ========== INITIAL OBSERVATIONS ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Initial Observations', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        doc.text('A 72-hour readiness review highlighted four major issues:', 20, 50);
+        
+        doc.setFontSize(12);
+        doc.text('1. Fragmented Vendor Inventory', 20, 65);
+        doc.setFontSize(10);
+        doc.text('Vendor list scattered across IT, engineering, procurement, and finance.', 25, 75);
+        
+        doc.setFontSize(12);
+        doc.text('2. Incomplete Evidence Sets', 20, 90);
+        doc.setFontSize(10);
+        doc.text('Missing SOC 2 reports, penetration tests, encryption policies, and sub-processor disclosures.', 25, 100);
+        
+        doc.setFontSize(12);
+        doc.text('3. No Risk Categorization', 20, 115);
+        doc.setFontSize(10);
+        doc.text('Vendors were not marked as Critical, High, Medium, or Low.', 25, 125);
+        
+        doc.setFontSize(12);
+        doc.text('4. Contractual Gaps', 20, 140);
+        doc.setFontSize(10);
+        doc.text('Missing clauses related to audit rights, breach notifications, and data retention.', 25, 150);
+        
+        doc.setFontSize(11);
+        doc.text('These gaps introduced audit risk, slowed readiness efforts, and prevented accurate control mapping.', 20, 170);
+        
+        // ========== VENDOR360 IMPLEMENTATION ROADMAP ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Vendor360 Implementation Roadmap', 20, 25);
+        
+        // Phase 1
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(12);
+        doc.text('Phase 1: Vendor Inventory & Criticality Mapping (Days 1–3)', 20, 50);
+        doc.setFontSize(10);
+        doc.text('• Consolidated a single vendor master list', 25, 62);
+        doc.text('• Assigned criticality tiers based on data sensitivity and operational reliance', 25, 70);
+        doc.text('• Identified "SOC 2 in-scope" vendors (14 total)', 25, 78);
+        
+        // Phase 2
+        doc.setFontSize(12);
+        doc.text('Phase 2: 12-Question Vendor Health Scorecard (Days 4–7)', 20, 95);
+        doc.setFontSize(10);
+        doc.text('Each vendor was assessed for:', 25, 107);
+        doc.text('• Responsiveness • Reliability • Security maturity', 30, 115);
+        doc.text('• Compliance posture • Financial stability • Issue resolution performance', 30, 123);
+        doc.setFontSize(11);
+        doc.text('Outcome: Clear RAG distribution - 4 Red, 6 Amber, 4 Green', 25, 135);
+        
+        // Phase 3
+        doc.setFontSize(12);
+        doc.text('Phase 3: SOC 2 Vendor Evidence Pack (Days 8–15)', 20, 150);
+        doc.setFontSize(10);
+        doc.text('Required documents included:', 25, 162);
+        doc.text('• SOC 2 Type II report • ISO 27001 certificate • Data flow diagrams', 30, 170);
+        doc.text('• Encryption policies • Incident response process', 30, 178);
+        doc.text('• Business continuity testing reports • Penetration test summary', 30, 186);
+        doc.text('• Sub-processor disclosures', 30, 194);
+        doc.setFontSize(11);
+        doc.text('Result: 100% document completeness across all critical vendors.', 25, 206);
+        
+        // ========== KEY RESULTS ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Key Results (Illustrative)', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(12);
+        doc.text('Risk Exposure Reduced by 33%', 20, 50);
+        doc.setFontSize(10);
+        doc.text('Red vendors dropped from 4 to 2 after corrective actions.', 25, 60);
+        
+        doc.setFontSize(12);
+        doc.text('100% Evidence Completion', 20, 75);
+        doc.setFontSize(10);
+        doc.text('All critical vendors provided complete SOC 2 documentation.', 25, 85);
+        
+        doc.setFontSize(12);
+        doc.text('35% Faster Audit Preparation', 20, 100);
+        doc.setFontSize(10);
+        doc.text('Auditors received a single, clean, structured repository.', 25, 110);
+        
+        doc.setFontSize(12);
+        doc.text('7 Contract Gaps Closed', 20, 125);
+        doc.setFontSize(10);
+        doc.text('Aligned contracts with SOC 2 expectations.', 25, 135);
+        
+        doc.setFontSize(12);
+        doc.text('Full Vendor Lifecycle Documented', 20, 150);
+        doc.setFontSize(10);
+        doc.text('Inventory → Due Diligence → Evidence → Risk Score → Review Cycle', 25, 160);
+        
+        // ========== DELIVERABLES PROVIDED ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Deliverables Provided', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        const deliverablesLines = [
+          "Vendor360 SOC 2 Readiness Dashboard",
+          "RAG-based vendor health and compliance visual.",
+          "",
+          "Standardized Vendor Documentation Pack",
+          "SOC 2 and ISO evidence, mapped to TSC.",
+          "",
+          "Contract Gap Assessment Report",
+          "Identified missing clauses and recommended revisions.",
+          "",
+          "21-Day Vendor Compliance Roadmap",
+          "Step-by-step audit preparation guide.",
+          "",
+          "Auditor Submission Folder",
+          "Clean, structured, pre-validated evidence repository."
+        ];
+        
+        deliverablesLines.forEach((line, index) => {
+          doc.text(line, 20, 50 + (index * 8));
+        });
+        
+        // ========== VENDOR RISK SUMMARY ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Illustrative Excerpt: Vendor Risk Summary', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(10);
+        doc.text('Vendor Name', 20, 50);
+        doc.text('Criticality', 70, 50);
+        doc.text('Evidence Status', 110, 50);
+        doc.text('RAG Score', 160, 50);
+        doc.text('Notes', 190, 50);
+        
+        // Draw line
+        doc.line(20, 55, 200, 55);
+        
+        // Vendor data
+        doc.text('Vendor A', 20, 65);
+        doc.text('Critical', 70, 65);
+        doc.text('Complete', 110, 65);
+        doc.text('Amber → Green', 160, 65);
+        doc.text('Added breach notification clause', 190, 65);
+        
+        doc.text('Vendor B', 20, 75);
+        doc.text('High', 70, 75);
+        doc.text('Missing 2 docs', 110, 75);
+        doc.text('Red', 160, 75);
+        doc.text('SOC 2 report outdated', 190, 75);
+        
+        doc.text('Vendor C', 20, 85);
+        doc.text('Medium', 70, 85);
+        doc.text('Complete', 110, 85);
+        doc.text('Green', 160, 85);
+        doc.text('Fully aligned with SOC 2', 190, 85);
+        
+        doc.text('Vendor D', 20, 95);
+        doc.text('Critical', 70, 95);
+        doc.text('Partial', 110, 95);
+        doc.text('Amber', 160, 95);
+        doc.text('Pending encryption policy', 190, 95);
+        
+        // ========== SAMPLE CLAUSE GAP FINDINGS ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Sample Clause Gap Findings', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(12);
+        doc.text('Missing or Weak Clauses Identified:', 20, 50);
+        
+        doc.setFontSize(10);
+        doc.text('• Right-to-audit not provided', 25, 65);
+        doc.text('• Sub-processor approval missing', 25, 75);
+        doc.text('• No defined breach notification window', 25, 85);
+        doc.text('• Unclear data destruction timelines', 25, 95);
+        doc.text('• Missing encryption requirements', 25, 105);
+        
+        doc.setFontSize(12);
+        doc.text('Actions Taken:', 20, 125);
+        
+        doc.setFontSize(10);
+        doc.text('• Updated 7 agreements', 25, 140);
+        doc.text('• Added standard vendor compliance addendum', 25, 150);
+        doc.text('• Created pre-approved contract templates', 25, 160);
+        
+        // ========== CONCLUSION ==========
+        doc.addPage();
+        
+        // Section header
+        doc.setFillColor(25, 35, 75);
+        doc.rect(0, 15, 220, 15, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(16);
+        doc.text('Conclusion', 20, 25);
+        
+        // Content
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        const conclusionLines = [
+          "This illustrative sample demonstrates how a SaaS security provider can",
+          "establish a complete SOC 2-ready vendor control environment in 21 days",
+          "using the Vendor360 Essentials Suite.",
+          "",
+          "The approach delivers clarity, audit predictability, and a measurable",
+          "reduction in third-party risk — positioning the company for successful",
+          "SOC 2 certification and stronger enterprise trust.",
+          "",
+          "About This Document",
+          "",
+          "This PDF is a sample created for demonstration purposes.",
+          "No real client data is used."
+        ];
+        
+        conclusionLines.forEach((line, index) => {
+          doc.text(line, 20, 50 + (index * 8));
+        });
+        
+        // Add footer to all pages
+        const pageCount = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+          doc.setPage(i);
+          doc.setFontSize(8);
+          doc.setTextColor(150, 150, 150);
+          doc.text('Finology Nexus - Vendor360 Essentials Suite', 20, 285);
+          doc.text(`Page ${i} of ${pageCount}`, 180, 285);
+        }
+        
+        // Save the PDF
+        doc.save('SOC2-Vendor-Compliance-Assessment.pdf');
+        
+        alert('Thank you for your interest! The SOC 2 Vendor Compliance Assessment is now downloading.');
+      } catch (error) {
+        console.error('PDF generation error:', error);
+        alert('There was an error generating the PDF. Please try again or contact us directly.');
+      }
+    }
+  </script>
+</body>
+</html>
