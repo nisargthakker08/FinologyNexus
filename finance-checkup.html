@@ -61,6 +61,11 @@
       color: var(--ink);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     /* NAV with logo */
@@ -400,6 +405,16 @@
   <div id="teaser" class="screen"></div>
 
   <script>
+    // Disable copy/paste shortcuts and context menu
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+      }
+    });
+
     // ── DATA ────────────────────────────────────────────────────────────────
     const sections = [
       {
