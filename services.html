@@ -54,6 +54,11 @@
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
     .section-label {
@@ -78,7 +83,7 @@
     }
     .logo-group {
       display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none; /* for link */
+      text-decoration: none;
       color: inherit;
     }
     .company-logo { width: 40px; height: 40px; object-fit: contain; }
@@ -113,7 +118,6 @@
       margin: 3rem 0;
     }
     .familiar-item { background: var(--paper); padding: 2rem; }
-    /* last item now has same background as others – no dark box */
     .familiar-text { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
 
     /* embedded work section */
@@ -158,7 +162,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 3rem;
       font-weight: 300;
-      color: var(--ink); /* darker for visibility */
+      color: var(--ink);
       line-height: 1;
       margin-bottom: 0.75rem;
     }
@@ -250,7 +254,6 @@
       <span class="company-name">Finology <span>Nexus</span></span>
     </a>
     <ul class="nav-links">
-      
       <li><a href="Solutions.html">Solutions</a></li>
       <li class="nav-highlight"><a href="services.html" class="active">Services</a></li>
       <li><a href="blog.html">Case Studies</a></li>
@@ -272,7 +275,7 @@
     </div>
   </section>
 
-  <!-- FAMILIAR PROBLEMS (last box now same background) -->
+  <!-- FAMILIAR PROBLEMS -->
   <section class="section" style="padding: 4rem 4rem 2rem;">
     <div class="section-label">If any of these feel familiar, you are in the right place</div>
     <div class="familiar-grid">
@@ -479,7 +482,7 @@
     <a href="finance-checkup.html" class="btn-primary" style="background: var(--accent); color: var(--ink);">Start with a free assessment →</a>
   </section>
 
-  <!-- FOOTER (email updated) -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
@@ -532,6 +535,16 @@
   </footer>
 
   <script>
+    // Disable copy/paste shortcuts and context menu
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+      }
+    });
+
     // Simple fade-up on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
