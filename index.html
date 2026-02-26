@@ -32,6 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    /* ----- GLOBAL STYLES (unchanged) ----- */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
       --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
@@ -43,17 +44,44 @@
       --transition:all 0.25s ease;
     }
     html{scroll-behavior:smooth;}
-    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
     h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
-    .section-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .section-label{
+      font-family:'DM Mono',monospace;
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:1.25rem;
+      display:flex;align-items:center;gap:0.75rem;
+    }
     .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
     .section-title{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--ink);margin-bottom:1rem;line-height:1.1;}
     .section-title em{font-style:italic;color:var(--accent);}
     .section-body{font-size:1rem;color:var(--ink-muted);max-width:560px;font-weight:300;line-height:1.7;}
 
-    /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(245,242,236,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
-    .logo-group{display:flex;align-items:center;gap:0.75rem;}
+    /* NAV (clickable logo) */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.25rem 4rem;
+      background:rgba(245,242,236,0.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .logo-group{
+      display:flex;align-items:center;gap:0.75rem;
+      text-decoration:none;color:inherit;
+    }
     .company-logo{width:40px;height:40px;object-fit:contain;}
     .company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);text-decoration:none;}
     .company-name span{color:var(--accent);}
@@ -294,10 +322,13 @@
     .btn-cta-ghost:hover{color:var(--paper);gap:0.8rem;}
     .btn-cta-ghost::after{content:'→';}
 
-    /* FOOTER */
+    /* FOOTER (with clickable logo and social links target="_blank") */
     footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:4rem 4rem 2.5rem;}
     .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
-    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;}
+    .footer-logo-group{
+      display:flex;align-items:center;gap:0.75rem;
+      text-decoration:none;color:inherit;
+    }
     .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
     .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
     .footer-logo-group span span{color:var(--accent);}
@@ -311,7 +342,7 @@
     .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
     .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
     .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
-    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
     .footer-socials a:hover{color:var(--accent);}
 
     .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
@@ -356,12 +387,12 @@
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- NAV -->
+<!-- NAV (logo clickable) -->
 <nav>
-  <div class="logo-group">
+  <a href="index.html" class="logo-group">
     <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
     <span class="company-name">Finology <span>Nexus</span></span>
-  </div>
+  </a>
   <ul class="nav-links">
     <li class="nav-highlight"><a href="index.html">Home</a></li>
     <li><a href="Solutions.html">Solutions</a></li>
@@ -879,19 +910,19 @@
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER (logo clickable, social links open new tabs) -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo-group">
+      <a href="index.html" class="footer-logo-group">
         <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
         <span>Finology <span>Nexus</span></span>
-      </div>
+      </a>
       <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
       <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="mailto:hello@finologynexus.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:info@finologynexus.online" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
     <div>
@@ -936,6 +967,16 @@
 </a>
 
 <script>
+  // Disable copy/paste shortcuts and context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a' || e.key === 'u' || e.key === 's')) {
+      e.preventDefault();
+    }
+  });
+
   // Scroll fade-up
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -995,4 +1036,3 @@
 </script>
 </body>
 </html>
-
