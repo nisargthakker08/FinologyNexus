@@ -76,7 +76,11 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
-    .logo-group { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-group {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; /* for link */
+      color: inherit;
+    }
     .company-logo { width: 40px; height: 40px; object-fit: contain; }
     .company-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .company-name span { color: var(--accent); }
@@ -197,7 +201,10 @@
     /* footer */
     footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 4rem 2.5rem; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
-    .footer-logo-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .footer-logo-group {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none; color: inherit;
+    }
     .footer-logo-group img { width: 40px; height: 40px; object-fit: contain; }
     .footer-logo-group span { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--paper); }
     .footer-logo-group span span { color: var(--accent); }
@@ -238,10 +245,10 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo-group">
+    <a href="index.html" class="logo-group">
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
       <span class="company-name">Finology <span>Nexus</span></span>
-    </div>
+    </a>
     <ul class="nav-links">
       
       <li><a href="Solutions.html">Solutions</a></li>
@@ -476,15 +483,15 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo-group">
+        <a href="index.html" class="footer-logo-group">
           <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
           <span>Finology <span>Nexus</span></span>
-        </div>
+        </a>
         <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="mailto:info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:info@finologynexus.online" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div>
@@ -533,6 +540,3 @@
   </script>
 </body>
 </html>
-
-
-
