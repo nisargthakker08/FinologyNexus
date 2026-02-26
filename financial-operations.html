@@ -101,6 +101,12 @@
     .nav-links a i { font-size: 0.6rem; transition: transform 0.2s; }
     .nav-links li:hover a i { transform: rotate(180deg); }
 
+    /* Active section (parent) highlight */
+    .active-section > a {
+      color: var(--accent) !important;
+      font-weight: 600;
+    }
+
     /* Dropdown */
     .dropdown-content {
       position: absolute; top: 2rem; left: -1rem;
@@ -118,6 +124,11 @@
       color: var(--ink-muted);
     }
     .dropdown-content a:hover { background: var(--paper-warm); color: var(--ink); }
+    .dropdown-content a.active {
+      color: var(--accent);
+      font-weight: 600;
+      background: var(--paper-warm);
+    }
 
     .nav-highlight a { color: var(--accent) !important; font-weight: 600 !important; }
     .nav-cta {
@@ -272,8 +283,10 @@
       <span class="company-name">Finology <span>Nexus</span></span>
     </a>
     <ul class="nav-links">
-      <!-- Services dropdown -->
-      <li>
+      <!-- Home link -->
+      <li><a href="index.html">Home</a></li>
+      <!-- Services dropdown (active section) -->
+      <li class="active-section">
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
           <a href="financial-operations.html" class="active">Financial Operations & Accounting</a>
@@ -303,7 +316,7 @@
           <a href="contactus.html">Contact</a>
         </div>
       </li>
-      <li class="nav-highlight"><a href="finance-checkup.html">FinPulse (Free)</a></li>
+      <li><a href="finance-checkup.html">FinPulse (Free)</a></li>
     </ul>
     <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
   </nav>
