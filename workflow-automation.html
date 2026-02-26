@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow and Process Automation · Finology Nexus</title>
+  <meta name="description" content="Redesign and automate operational workflows so processes become visible, repeatable, and controlled. Stop manual follow-ups and recurring errors.">
+  <meta name="keywords" content="workflow automation, process automation, operational efficiency, task automation, process design, Finology Nexus">
+  <meta name="author" content="Finology Nexus">
+  <link rel="canonical" href="https://www.finologynexus.online/workflow-automation.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="finology-logofavicon.png">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","s1b20qvd2s");
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ----- GLOBAL STYLES (consistent with Finology Nexus) ----- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #1c2a3a; --ink-light: #2a3a4a; --ink-muted: #6b7a8a;
+      --paper: #f5f2ec; --paper-warm: #ede9e1;
+      --accent: #b8955a; --accent-light: #d4b07a; --accent-pale: #f0e6d3;
+      --green: #2d5a3d; --green-light: #4a8c62;
+      --amber: #e67e22; --red-soft: #c0392b;
+      --line: rgba(28,42,58,0.12);
+      --transition: all 0.25s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--accent); display: inline-block; }
+    .section-title { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; line-height: 1.1; }
+    .section-title em { font-style: italic; color: var(--accent); }
+    .section-body { font-size: 1rem; color: var(--ink-muted); max-width: 560px; font-weight: 300; line-height: 1.7; }
+
+    /* NAV with dropdowns */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: rgba(245,242,236,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .logo-group {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .company-logo { width: 40px; height: 40px; object-fit: contain; }
+    .company-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .company-name span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links li { position: relative; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-muted); text-decoration: none; transition: color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a i { font-size: 0.6rem; transition: transform 0.2s; }
+    .nav-links li:hover a i { transform: rotate(180deg); }
+
+    /* Active section (parent) highlight */
+    .active-section > a {
+      color: var(--accent) !important;
+      font-weight: 600;
+    }
+
+    /* Dropdown */
+    .dropdown-content {
+      position: absolute; top: 2rem; left: -1rem;
+      background: white; border: 1px solid var(--line);
+      min-width: 200px; padding: 1rem 0;
+      opacity: 0; visibility: hidden; transition: all 0.2s;
+      box-shadow: var(--shadow-md); z-index: 10;
+    }
+    .nav-links li:hover .dropdown-content {
+      opacity: 1; visibility: visible;
+    }
+    .dropdown-content a {
+      display: block; padding: 0.5rem 1.5rem;
+      font-size: 0.75rem; text-transform: none; letter-spacing: 0.05em;
+      color: var(--ink-muted);
+    }
+    .dropdown-content a:hover { background: var(--paper-warm); color: var(--ink); }
+    .dropdown-content a.active {
+      color: var(--accent);
+      font-weight: 600;
+      background: var(--paper-warm);
+    }
+
+    /* FinPulse link – normal style (no highlight) */
+    .nav-links .finpulse-link a { color: var(--ink-muted); font-weight: 500; }
+    .nav-cta {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink);
+      padding: 0.6rem 1.4rem; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
+
+    /* Hero section */
+    .hero {
+      padding: 10rem 4rem 5rem;
+      background: linear-gradient(to bottom, var(--paper-warm), var(--paper));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-left h1 { font-size: clamp(2.8rem, 4vw, 3.8rem); margin-bottom: 1.5rem; }
+    .hero-left h1 em { color: var(--accent); font-style: italic; }
+    .hero-left p { font-size: 1rem; color: var(--ink-muted); margin-bottom: 2rem; max-width: 480px; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink); padding: 0.9rem 2rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink); background: transparent; border: 1px solid var(--ink-muted); padding: 0.9rem 2rem;
+      text-decoration: none; transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: var(--paper-warm); border-color: var(--ink); }
+
+    /* Corporate visual (right side) */
+    .hero-right {
+      background: var(--ink);
+      padding: 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .viz-row { display: flex; align-items: center; gap: 1rem; }
+    .viz-label { width: 100px; font-size: 0.7rem; color: rgba(255,255,255,0.5); font-family: 'DM Mono', monospace; }
+    .viz-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+    .viz-bar-fill { height: 100%; width: 0%; transition: width 1.5s ease; border-radius: 4px; }
+    .viz-bar-fill.green { background: var(--green-light); }
+    .viz-bar-fill.amber { background: var(--amber); }
+    .viz-bar-fill.red { background: var(--red-soft); }
+    .viz-metric {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px;
+      margin-top: 1rem;
+    }
+    .metric-item { text-align: center; }
+    .metric-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: white; }
+    .metric-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+
+    /* Content sections */
+    section { padding: 5rem 4rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .problem-list { list-style: none; }
+    .problem-list li { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .problem-list li::before { content: '—'; color: var(--accent); font-size: 0.9rem; }
+    .what-we-do-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+      background: var(--line); border: 1px solid var(--line);
+      margin-top: 2rem;
+    }
+    .wwd-card {
+      background: var(--paper-warm); padding: 2rem;
+      transition: background 0.3s;
+    }
+    .wwd-card:hover { background: var(--paper); }
+    .wwd-card i { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .wwd-card h3 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .wwd-card p { font-size: 0.85rem; color: var(--ink-muted); }
+
+    .embed-steps {
+      display: flex; gap: 1px; background: var(--line); border: 1px solid var(--line);
+      margin: 2rem 0;
+    }
+    .embed-step { background: var(--paper-warm); padding: 2rem; flex: 1; }
+    .step-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; }
+    .embed-step h4 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .embed-step p { font-size: 0.8rem; color: var(--ink-muted); }
+
+    .who-box {
+      background: var(--ink); color: white; padding: 3rem; border-radius: 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .who-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .who-item i { color: var(--accent); font-size: 1.2rem; margin-top: 0.2rem; }
+    .who-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
+    .outcome-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--line); border: 1px solid var(--line);
+      margin-top: 2rem;
+    }
+    .outcome-card { background: var(--paper-warm); padding: 2rem; text-align: center; }
+    .outcome-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
+    .outcome-card p { font-size: 0.85rem; color: var(--ink-muted); }
+
+    /* Footer */
+    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 4rem 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
+    .footer-logo-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit; }
+    .footer-logo-group img { width: 40px; height: 40px; object-fit: contain; }
+    .footer-logo-group span { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--paper); }
+    .footer-logo-group span span { color: var(--accent); }
+    .footer-tagline { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; font-weight: 300; max-width: 240px; margin-top: 0.5rem; }
+    .footer-col-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.6rem; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; }
+    .footer-links a:hover { color: var(--paper); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
+    .footer-email { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); text-decoration: none; }
+    .footer-socials { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
+    .footer-socials a { color: rgba(255,255,255,0.3); font-size: 1.2rem; transition: color 0.2s; text-decoration: none; }
+    .footer-socials a:hover { color: var(--accent); }
+
+    .fade-up { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.animate { opacity: 0; transform: translateY(20px); }
+    .fade-up.animate.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .who-box { grid-template-columns: 1fr; }
+      .embed-steps { flex-direction: column; }
+      .outcome-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- NAV with dropdowns -->
+  <nav>
+    <a href="index.html" class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      <span class="company-name">Finology <span>Nexus</span></span>
+    </a>
+    <ul class="nav-links">
+      <!-- Home link -->
+      <li><a href="index.html">Home</a></li>
+      <!-- Services dropdown (active section) -->
+      <li class="active-section">
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="financial-operations.html">Financial Operations & Accounting</a>
+          <a href="financial-intelligence.html">Financial Intelligence & Analysis</a>
+          <a href="data-automation.html">Data Extraction & Automation</a>
+          <a href="workflow-automation.html" class="active">Workflow & Process Automation</a>
+          <a href="process-design.html">Process Design & SOPs</a>
+          <a href="embedded-support.html">Embedded Support</a>
+        </div>
+      </li>
+      <!-- Solutions dropdown -->
+      <li>
+        <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="finance-checkup.html">FinPulse (Free)</a>
+          <a href="Solutions.html">CashMap</a>
+          <a href="Solutions.html">ComplianceCheck</a>
+          <a href="Solutions.html">VendorScan</a>
+        </div>
+      </li>
+      <!-- About dropdown -->
+      <li>
+        <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="aboutus.html">Our Practice</a>
+          <a href="blog.html">Case Studies</a>
+          <a href="contactus.html">Contact</a>
+        </div>
+      </li>
+      <!-- FinPulse link - normal style, no highlight -->
+      <li class="finpulse-link"><a href="finance-checkup.html">FinPulse (Free)</a></li>
+    </ul>
+    <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+  </nav>
+
+  <!-- HERO with visualisation -->
+  <section class="hero">
+    <div class="hero-left fade-up">
+      <div class="section-label">Workflow and Process Automation</div>
+      <h1>Manual processes break quietly <em>before they fail loudly</em></h1>
+      <p>As operations scale, workflows designed for smaller teams start leaking. Tasks slip, ownership blurs, and coordination becomes the hidden cost of growth.</p>
+      <p>This capability exists to stabilise execution. We redesign and automate workflows so processes become visible, repeatable, and controlled.</p>
+      <div class="hero-actions">
+        <a href="contactus.html" class="btn-primary">Discuss your needs →</a>
+        <a href="finance-checkup.html" class="btn-outline">Start with FinPulse</a>
+      </div>
+    </div>
+    <div class="hero-right fade-up" style="transition-delay:0.15s">
+      <!-- Sample workflow automation visual -->
+      <div class="viz-row">
+        <span class="viz-label">Manual follow‑ups</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:90%"></div></div>
+        <span class="viz-label" style="color:white; width:auto;">-90%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-label">Task completion</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:85%"></div></div>
+        <span class="viz-label" style="color:white; width:auto;">+85%</span>
+      </div>
+      <div class="viz-row">
+        <span class="viz-label">Error rate</span>
+        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:95%"></div></div>
+        <span class="viz-label" style="color:white; width:auto;">-95%</span>
+      </div>
+      <div class="viz-metric">
+        <div class="metric-item"><span class="metric-num">100%</span><div class="metric-desc">visibility</div></div>
+        <div class="metric-item"><span class="metric-num">24h</span><div class="metric-desc">cycle time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMS IT SOLVES -->
+  <section style="padding-top: 2rem;">
+    <div class="grid-2">
+      <div>
+        <div class="section-label">What this solves immediately</div>
+        <h2 class="section-title">Workflows that leak time and create friction.</h2>
+      </div>
+      <div>
+        <ul class="problem-list">
+          <li>Work depends on reminders and follow-ups</li>
+          <li>No clear view of task status or ownership</li>
+          <li>Errors repeat despite good intentions</li>
+          <li>Teams rely on spreadsheets for coordination</li>
+          <li>Scaling increases chaos instead of efficiency</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE ACTUALLY DO -->
+  <section style="background: var(--paper-warm);">
+    <div class="section-label">What we actually do</div>
+    <h2 class="section-title">We make workflows <em>visible and repeatable</em></h2>
+    <div class="what-we-do-grid">
+      <div class="wwd-card">
+        <i class="fas fa-map"></i>
+        <h3>Map current flows</h3>
+        <p>Understand how work truly moves today.</p>
+      </div>
+      <div class="wwd-card">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h3>Identify friction points</h3>
+        <p>Find where processes break or slow down.</p>
+      </div>
+      <div class="wwd-card">
+        <i class="fas fa-robot"></i>
+        <h3>Automate repetitive steps</h3>
+        <p>Remove manual, high-risk tasks.</p>
+      </div>
+      <div class="wwd-card">
+        <i class="fas fa-link"></i>
+        <h3>Connect systems</h3>
+        <p>Smooth handoffs between tools.</p>
+      </div>
+      <div class="wwd-card">
+        <i class="fas fa-exclamation-circle"></i>
+        <h3>Exception handling</h3>
+        <p>Build controls for when things go wrong.</p>
+      </div>
+      <div class="wwd-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Monitor & improve</h3>
+        <p>Ensure processes stay reliable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE EMBED -->
+  <section>
+    <div class="section-label">How we embed with your team</div>
+    <h2 class="section-title">Inside your tools, <em>no overengineering</em></h2>
+    <div class="embed-steps">
+      <div class="embed-step">
+        <div class="step-icon"><i class="fas fa-laptop"></i></div>
+        <h4>Your current tools</h4>
+        <p>Automation lives inside the systems your team already uses.</p>
+      </div>
+      <div class="embed-step">
+        <div class="step-icon"><i class="fas fa-hard-hat"></i></div>
+        <h4>Durable & clear</h4>
+        <p>We avoid overengineering. Focus is on reliability and clarity.</p>
+      </div>
+      <div class="embed-step">
+        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Controlled execution</h4>
+        <p>Processes that don't depend on constant oversight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO USUALLY NEEDS THIS -->
+  <section style="background: var(--paper-warm);">
+    <div class="section-label">Who usually needs this</div>
+    <div class="who-box">
+      <div class="who-item">
+        <i class="fas fa-chart-line"></i>
+        <p><strong>Teams scaling faster than process maturity</strong></p>
+      </div>
+      <div class="who-item">
+        <i class="fas fa-random"></i>
+        <p><strong>Operations with frequent handoffs</strong></p>
+      </div>
+      <div class="who-item">
+        <i class="fas fa-exclamation-circle"></i>
+        <p><strong>Businesses facing recurring execution errors</strong></p>
+      </div>
+      <div class="who-item">
+        <i class="fas fa-cogs"></i>
+        <p><strong>Any operation ready to reduce friction</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES -->
+  <section>
+    <div class="section-label">What changes after engagement</div>
+    <h2 class="section-title">From hidden friction to <em>visible flow</em></h2>
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon"><i class="fas fa-eye"></i></div>
+        <p>Clear ownership and visibility</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><i class="fas fa-bell-slash"></i></div>
+        <p>Fewer follow-ups and escalations</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><i class="fas fa-check-double"></i></div>
+        <p>Reduced error rates</p>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon"><i class="fas fa-chart-line"></i></div>
+        <p>Processes that scale with growth</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="background: var(--ink); color: white; text-align: center;">
+    <h2 style="font-size: 2.4rem; font-weight: 300; margin-bottom: 1rem;">Ready to make workflows <em style="color: var(--accent-light);">visible and controlled?</em></h2>
+    <p style="color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto 2rem;">A short conversation is enough to understand your current operational friction and what a well‑scoped engagement would look like.</p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="contactus.html" class="btn-primary" style="background: var(--accent); color: var(--ink);">Schedule a consultation</a>
+      <a href="finance-checkup.html" class="btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Run FinPulse free</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+          <span>Finology <span>Nexus</span></span>
+        </a>
+        <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:info@finologynexus.online" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Intelligence Suite</div>
+        <ul class="footer-links">
+          <li><a href="finance-checkup.html">FinPulse (Free)</a></li>
+          <li><a href="Solutions.html">CashMap</a></li>
+          <li><a href="Solutions.html">ComplianceCheck</a></li>
+          <li><a href="Solutions.html">VendorScan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="financial-operations.html">Financial Operations</a></li>
+          <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+          <li><a href="data-automation.html">Data Automation</a></li>
+          <li><a href="workflow-automation.html">Workflow Automation</a></li>
+          <li><a href="process-design.html">Process Design</a></li>
+          <li><a href="embedded-support.html">Embedded Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="blog.html">Case Studies</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="privacypolicy.html">Privacy</a></li>
+          <li><a href="termsofservice.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
+      <a href="mailto:info@finologynexus.online" class="footer-email">info@finologynexus.online</a>
+    </div>
+  </footer>
+
+  <script>
+    // Disable copy/paste shortcuts and context menu
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+      }
+    });
+
+    // Fade-up animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+  </script>
+</body>
+</html>
