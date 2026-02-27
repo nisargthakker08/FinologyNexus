@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinPulse: Free Business Financial Health Check · Finology Nexus</title>
+  <meta name="description" content="Run a free 4-minute financial health check on your business. Get an instant score, top risk flags, and a teaser report. No sign-up required.">
+  <meta name="keywords" content="FinPulse, business financial health check, financial health score, business diagnostics, Finology Nexus">
+  <meta name="author" content="Finology Nexus">
+  <link rel="canonical" href="https://www.finologynexus.online/finpulse.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.finologynexus.online/finpulse.html">
+  <meta property="og:title" content="FinPulse: Free Business Financial Health Check">
+  <meta property="og:description" content="Run a free 4-minute financial health check on your business. Get an instant score, top risk flags, and a teaser report. No sign-up required.">
+  <meta property="og:image" content="https://www.finologynexus.online/finology-og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.finologynexus.online/finpulse.html">
+  <meta property="twitter:title" content="FinPulse: Free Business Financial Health Check">
+  <meta property="twitter:description" content="Run a free 4-minute financial health check on your business. Get an instant score, top risk flags, and a teaser report. No sign-up required.">
+  <meta property="twitter:image" content="https://www.finologynexus.online/finology-og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="finology-logofavicon.png">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;--green-pale:#e8f2ec;
+      --amber:#c97d20;--amber-pale:#fdf6e8;
+      --blue:#1a3a5c;--blue-light:#2a5080;--blue-pale:#e8f0f8;
+      --teal:#1a4a4a;--teal-light:#2a7070;--teal-pale:#e8f5f5;
+      --line:rgba(28,42,58,0.12);
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-user-select:none;-moz-user-select:none;user-select:none;}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .section-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:1rem;line-height:1.1;}
+    .section-title em{font-style:italic;color:var(--accent);}
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(245,242,236,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .logo-group{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;}
+    .company-logo{width:40px;height:40px;object-fit:contain;}
+    .company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);}
+    .company-name span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links li{position:relative;}
+    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a i{font-size:0.6rem;transition:transform 0.2s;}
+    .nav-links li:hover>a i{transform:rotate(180deg);}
+    .nav-highlight a{color:var(--accent)!important;font-weight:600!important;}
+    .dropdown-content{position:absolute;top:2rem;left:-1rem;background:white;border:1px solid var(--line);min-width:220px;padding:1rem 0;opacity:0;visibility:hidden;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:10;}
+    .nav-links li:hover .dropdown-content{opacity:1;visibility:visible;}
+    .dropdown-content a{display:block;padding:0.5rem 1.5rem;font-size:0.75rem;text-transform:none;letter-spacing:0.05em;color:var(--ink-muted);border:none!important;}
+    .dropdown-content a:hover,.dropdown-content a.current{background:var(--paper-warm);color:var(--ink);}
+    .dropdown-content a.current{font-weight:500;color:var(--accent);}
+    .nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.6rem 1.4rem;text-decoration:none;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--accent);}
+    .btn-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--accent);}
+    .btn-outline{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink-muted);padding:0.9rem 2rem;text-decoration:none;transition:all 0.2s;}
+    .btn-outline:hover{background:var(--paper-warm);border-color:var(--ink);}
+    .ticker{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0.65rem 0;overflow:hidden;white-space:nowrap;}
+    .ticker-inner{display:inline-block;animation:ticker 50s linear infinite;}
+    .ticker-inner span{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin:0 2rem;opacity:0.5;}
+    .ticker-inner span.hl{color:var(--accent);opacity:1;}
+    @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    footer{background:var(--ink);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
+    @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}}
+
+    /* FinPulse: dark ink hero, green accent for "free" signals */
+    .ph-hero{min-height:100vh;background:var(--ink);display:grid;grid-template-columns:1.1fr 0.9fr;padding:9rem 4rem 5rem;gap:6rem;align-items:center;position:relative;overflow:hidden;}
+    .ph-hero::after{content:'FINPULSE';position:absolute;right:-3rem;bottom:-2rem;font-family:'Cormorant Garamond',serif;font-size:18rem;font-weight:600;color:rgba(255,255,255,0.018);line-height:1;pointer-events:none;letter-spacing:-0.04em;white-space:nowrap;}
+    .ph-breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;}
+    .ph-breadcrumb a{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+    .ph-breadcrumb a:hover{color:var(--accent);}
+    .ph-breadcrumb-sep{font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.15);}
+    .ph-breadcrumb-current{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);}
+    .ph-free-pill{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:white;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.5rem;}
+    .ph-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-light);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .ph-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent-light);}
+    .ph-title{font-size:clamp(3rem,5.5vw,5rem);font-weight:300;line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin-bottom:1.25rem;}
+    .ph-title em{font-style:italic;color:var(--accent-light);}
+    .ph-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);}
+    .ph-sub{font-size:1.05rem;color:rgba(255,255,255,0.5);line-height:1.85;font-weight:300;max-width:490px;margin-bottom:2.5rem;}
+    .ph-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+    .btn-fp-cta{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:1rem 2.25rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:background 0.2s;}
+    .btn-fp-cta:hover{background:var(--paper);}
+    .btn-fp-ghost{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s;}
+    .btn-fp-ghost::after{content:'→';}
+    .btn-fp-ghost:hover{color:var(--paper);gap:0.8rem;}
+    .ph-meta-strip{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;}
+    .ph-meta-item{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:0.4rem;}
+    /* Hero right: animated report card */
+    .fp-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2rem;}
+    .fpc-header{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.75rem;display:flex;justify-content:space-between;align-items:center;}
+    .fpc-score-row{display:flex;align-items:center;gap:1.75rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .fpc-ring{width:80px;height:80px;border-radius:50%;background:var(--amber);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
+    .fpc-ring-num{font-family:'Cormorant Garamond',serif;font-size:2rem;color:white;line-height:1;}
+    .fpc-ring-sub{font-family:'DM Mono',monospace;font-size:0.45rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;}
+    .fpc-score-text{}
+    .fpc-score-band{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.2rem 0.6rem;background:rgba(201,125,32,0.2);color:var(--amber);margin-bottom:0.5rem;display:inline-block;}
+    .fpc-verdict{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.65);line-height:1.45;font-style:italic;}
+    .fpc-dims{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.5rem;}
+    .fpc-dim{display:flex;align-items:center;gap:0.75rem;}
+    .fpc-dim-label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.05em;color:rgba(255,255,255,0.35);width:106px;flex-shrink:0;}
+    .fpc-dim-track{flex:1;height:4px;background:rgba(255,255,255,0.07);}
+    .fpc-dim-bar{height:100%;width:0;transition:width 1.4s ease;}
+    .fpc-dim-bar.g{background:var(--green-light);}
+    .fpc-dim-bar.a{background:var(--amber);}
+    .fpc-findings{display:flex;flex-direction:column;gap:0;}
+    .fpc-finding{display:flex;gap:0.65rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+    .fpc-finding:last-child{border-bottom:none;}
+    .fpc-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+    .fpc-dot.r{background:#e74c3c;}
+    .fpc-dot.a{background:var(--amber);}
+    .fpc-dot.g{background:var(--green-light);}
+    .fpc-finding-text{font-size:0.75rem;color:rgba(255,255,255,0.4);line-height:1.5;}
+    .fpc-lock-strip{margin-top:1.25rem;display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.65rem;background:rgba(184,149,90,0.08);border:1px solid rgba(184,149,90,0.15);}
+    .fpc-lock-text{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(184,149,90,0.5);}
+    /* How it works */
+    .how-section{padding:6rem 4rem;background:var(--paper-warm);}
+    .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem;}
+    .how-step{background:var(--paper);padding:2.5rem 2rem;position:relative;transition:background 0.2s;}
+    .how-step:hover{background:var(--accent-pale);}
+    .how-step-n{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(184,149,90,0.12);line-height:1;margin-bottom:0.75rem;}
+    .how-step-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;}
+    .how-step-desc{font-size:0.82rem;color:var(--ink-muted);line-height:1.65;font-weight:300;}
+    /* Dimensions */
+    .dims-section{padding:6rem 4rem;background:var(--paper);}
+    .dims-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem;}
+    .dim-card{background:var(--paper-warm);padding:2.75rem;transition:background 0.2s;}
+    .dim-card:hover{background:var(--accent-pale);}
+    .dim-icon{font-size:2rem;margin-bottom:1rem;}
+    .dim-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:0.75rem;}
+    .dim-score-bar{height:3px;background:var(--line);margin-bottom:1rem;overflow:hidden;}
+    .dim-score-fill{height:100%;background:var(--accent);width:0;transition:width 1.2s ease;}
+    .dim-desc{font-size:0.85rem;color:var(--ink-muted);line-height:1.7;font-weight:300;margin-bottom:1.25rem;}
+    .dim-items{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+    .dim-item{font-size:0.78rem;color:var(--ink-muted);display:flex;gap:0.5rem;align-items:flex-start;}
+    .dim-item::before{content:'—';color:var(--accent);font-size:0.7rem;flex-shrink:0;margin-top:0.15rem;}
+    /* Pricing tiers */
+    .pricing-section{padding:6rem 4rem;background:var(--ink);}
+    .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,0.05);margin-top:3.5rem;}
+    .price-tier{padding:3.5rem;background:rgba(255,255,255,0.02);}
+    .price-tier.featured{background:rgba(255,255,255,0.05);position:relative;}
+    .price-badge{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 0.75rem;display:inline-block;margin-bottom:1.5rem;}
+    .price-badge.free{background:rgba(46,90,61,0.4);color:var(--green-light);}
+    .price-badge.paid{background:rgba(184,149,90,0.2);color:var(--accent-light);}
+    .price-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--paper);margin-bottom:0.4rem;}
+    .price-amount{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--paper);line-height:1;margin:1rem 0 0.3rem;}
+    .price-amount small{font-size:1.5rem;vertical-align:top;margin-top:0.5rem;display:inline-block;}
+    .price-period{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:2rem;}
+    .price-items{list-style:none;display:flex;flex-direction:column;gap:0.65rem;margin-bottom:2.5rem;}
+    .price-item{display:flex;gap:0.75rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.5);font-weight:300;}
+    .pi-check{flex-shrink:0;margin-top:0.15rem;font-size:0.75rem;}
+    .pi-check.green{color:var(--green-light);}
+    .pi-check.gold{color:var(--accent-light);}
+    .btn-price-free{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--green);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-price-free:hover{background:var(--green-light);}
+    .btn-price-paid{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-price-paid:hover{background:var(--paper);}
+    /* FAQ */
+    .faq-section{padding:5rem 4rem;background:var(--paper-warm);}
+    .faq-inner{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start;margin-top:3rem;}
+    .faq-sticky{position:sticky;top:6rem;}
+    .faq-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);}
+    .faq-item{border-bottom:1px solid var(--line);}
+    .faq-item:last-child{border-bottom:none;}
+    .faq-q{padding:1.25rem 1.5rem;font-size:0.9rem;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--paper);transition:background 0.2s;user-select:none;}
+    .faq-q:hover{background:var(--accent-pale);}
+    .faq-q i{font-size:0.65rem;color:var(--accent);flex-shrink:0;transition:transform 0.25s;}
+    .faq-q.open i{transform:rotate(45deg);}
+    .faq-a{font-size:0.85rem;color:var(--ink-muted);line-height:1.7;font-weight:300;padding:0 1.5rem;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;}
+    .faq-a.open{max-height:300px;padding:0 1.5rem 1.25rem;}
+    /* Bottom CTA */
+    .fp-bottom-cta{background:var(--green);padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .fbc-title{font-size:clamp(2.5rem,4vw,3.8rem);font-weight:300;color:white;line-height:1.05;margin-bottom:1rem;}
+    .fbc-title em{font-style:italic;color:rgba(255,255,255,0.65);}
+    .fbc-sub{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;}
+    .fbc-right{display:flex;flex-direction:column;gap:1.25rem;}
+    .btn-fbc-main{font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);background:white;padding:1.1rem 2.5rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:background 0.2s;align-self:flex-start;}
+    .btn-fbc-main:hover{background:var(--green-pale);}
+    .fbc-note{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+    .fbc-also{font-size:0.82rem;color:rgba(255,255,255,0.5);font-weight:300;}
+    .fbc-also a{color:rgba(255,255,255,0.7);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.3);}
+    .fbc-also a:hover{color:white;}
+    /* Related products */
+    .related-section{padding:5rem 4rem;background:var(--paper);}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem;}
+    .related-card{background:var(--paper-warm);padding:2rem;text-decoration:none;transition:background 0.2s;display:block;}
+    .related-card:hover{background:var(--accent-pale);}
+    .rc-badge{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.2rem 0.6rem;display:inline-block;margin-bottom:0.75rem;}
+    .rc-badge.amber{background:var(--amber-pale);color:var(--amber);}
+    .rc-badge.blue{background:var(--blue-pale);color:var(--blue);}
+    .rc-badge.teal{background:var(--teal-pale);color:var(--teal);}
+    .rc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
+    .rc-desc{font-size:0.78rem;color:var(--ink-muted);line-height:1.6;font-weight:300;margin-bottom:1rem;}
+    .rc-link{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:0.4rem;}
+    .rc-link::after{content:'→';}
+    @media(max-width:1024px){.how-steps,.pricing-grid{grid-template-columns:1fr 1fr;}.related-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:900px){.ph-hero,.how-section,.dims-section,.pricing-section,.faq-section,.fp-bottom-cta,.related-section{padding:4rem 1.5rem;}.ph-hero{padding-top:7rem;grid-template-columns:1fr;}.dims-grid{grid-template-columns:1fr;}.faq-inner{grid-template-columns:1fr;gap:2rem;}.fp-bottom-cta{grid-template-columns:1fr;gap:3rem;}}
+    @media(max-width:600px){.how-steps,.pricing-grid,.related-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <nav>
+    <a href="index.html" class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      <span class="company-name">Finology <span>Nexus</span></span>
+    </a>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</li></a>
+      <li>
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="financial-operations.html">Financial Operations</a>
+          <a href="financial-intelligence.html">Financial Intelligence</a>
+          <a href="data-automation.html">Data Automation</a>
+          <a href="workflow-automation.html">Workflow Automation</a>
+          <a href="process-design.html">Process Design</a>
+          <a href="embedded-support.html">Embedded Support</a>
+        </div>
+      </li>
+      <li>
+        <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="finance-checkup.html" id="nav-fp">FinPulse Free</a>
+          <a href="cashmap.html" id="nav-cm">CashMap</a>
+          <a href="compliancecheck.html" id="nav-cc">ComplianceCheck</a>
+          <a href="vendorscan.html" id="nav-vs">VendorScan</a>
+        </div>
+      </li>
+      <li>
+        <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="aboutus.html">Our Practice</a>
+          <a href="blog.html">Case Studies</a>
+          <a href="contactus.html">Contact</a>
+        </div>
+      </li>
+      <li class="nav-highlight"><a href="finance-checkup.html">FinPulse Free</a></li>
+    </ul>
+    <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="ph-hero">
+    <div class="fade-up" style="position:relative;z-index:1;">
+      <div class="ph-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="ph-breadcrumb-sep">/</span>
+        <a href="Solutions.html">Intelligence Suite</a>
+        <span class="ph-breadcrumb-sep">/</span>
+        <span class="ph-breadcrumb-current">FinPulse</span>
+      </div>
+      <div class="ph-free-pill"><i class="fas fa-heartbeat"></i> &nbsp; Free. No sign-up required.</div>
+      <div class="ph-eyebrow">Intelligence Suite — Product 01</div>
+      <h1 class="ph-title">Your business<br>health score in<br><em>4 minutes.</em><br>Free.</h1>
+      <div class="ph-tagline">Business Financial Health Diagnostic</div>
+      <p class="ph-sub">FinPulse runs a structured diagnostic across profitability, cash flow, risk exposure, and operational efficiency. You answer 12 questions. We return an instant health score, dimension breakdown, top risk flags ranked by urgency, and a teaser of the full analyst report.</p>
+      <div class="ph-actions">
+        <a href="finance-checkup.html" class="btn-fp-cta"><i class="fas fa-heartbeat"></i> Run FinPulse Free</a>
+        <a href="#how-it-works" class="btn-fp-ghost">See how it works</a>
+      </div>
+      <div class="ph-meta-strip">
+        <span class="ph-meta-item"><i class="fas fa-clock"></i> 4 minutes</span>
+        <span class="ph-meta-item"><i class="fas fa-check"></i> No sign-up</span>
+        <span class="ph-meta-item"><i class="fas fa-file-alt"></i> Instant report</span>
+        <span class="ph-meta-item"><i class="fas fa-globe"></i> Any business globally</span>
+      </div>
+    </div>
+    <div class="fade-up" style="position:relative;z-index:1;transition-delay:0.15s;">
+      <div class="fp-card">
+        <div class="fpc-header">
+          <span>FinPulse · Sample Report</span>
+          <span style="color:rgba(255,255,255,0.15);">Finology Nexus</span>
+        </div>
+        <div class="fpc-score-row">
+          <div class="fpc-ring">
+            <div class="fpc-ring-num" id="fp-score">0</div>
+            <div class="fpc-ring-sub">/ 100</div>
+          </div>
+          <div class="fpc-score-text">
+            <div class="fpc-score-band">Needs Attention</div>
+            <div class="fpc-verdict">"Solid foundations with meaningful gaps in cash visibility requiring structured attention."</div>
+          </div>
+        </div>
+        <div class="fpc-dims">
+          <div class="fpc-dim"><span class="fpc-dim-label">Profitability</span><div class="fpc-dim-track"><div class="fpc-dim-bar a" data-w="62"></div></div><span style="font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.35);width:28px;text-align:right;">62</span></div>
+          <div class="fpc-dim"><span class="fpc-dim-label">Cash Flow</span><div class="fpc-dim-track"><div class="fpc-dim-bar a" data-w="48"></div></div><span style="font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.35);width:28px;text-align:right;">48</span></div>
+          <div class="fpc-dim"><span class="fpc-dim-label">Risk Exposure</span><div class="fpc-dim-track"><div class="fpc-dim-bar a" data-w="51"></div></div><span style="font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.35);width:28px;text-align:right;">51</span></div>
+          <div class="fpc-dim"><span class="fpc-dim-label">Efficiency</span><div class="fpc-dim-track"><div class="fpc-dim-bar g" data-w="71"></div></div><span style="font-family:'DM Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.35);width:28px;text-align:right;">71</span></div>
+        </div>
+        <div class="fpc-findings">
+          <div class="fpc-finding"><div class="fpc-dot r"></div><div class="fpc-finding-text">Cash flow visibility insufficient. Operating reactively creates compounding risk as the business grows</div></div>
+          <div class="fpc-finding"><div class="fpc-dot a"></div><div class="fpc-finding-text">Vendor concentration warrants a formal mitigation plan before it becomes a supply chain issue</div></div>
+          <div class="fpc-finding"><div class="fpc-dot g"></div><div class="fpc-finding-text">Revenue trajectory is a genuine strength. Consistent growth gives you the platform to address gaps</div></div>
+        </div>
+        <div class="fpc-lock-strip">
+          <span style="color:var(--accent);font-size:0.8rem;">🔒</span>
+          <span class="fpc-lock-text">5 priority actions + peer benchmarks unlocked in the full report</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="how-section">
+    <div class="fade-up">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Four steps to knowing<br>where your business <em>actually stands</em></h2>
+    </div>
+    <div class="how-steps fade-up">
+      <div class="how-step">
+        <div class="how-step-n">01</div>
+        <div class="how-step-title">Answer 12 questions</div>
+        <div class="how-step-desc">Four sections covering your business stage, revenue and profitability, cash flow and liquidity, and risk exposure. Takes 4 minutes. No financial data upload required.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-n">02</div>
+        <div class="how-step-title">Get an instant score</div>
+        <div class="how-step-desc">A health score out of 100, calculated in real time by a senior financial analyst model calibrated to your industry and business stage. Not a generic template.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-n">03</div>
+        <div class="how-step-title">See your top findings</div>
+        <div class="how-step-desc">Three findings ranked by severity: red, amber, green, each with a specific title and two-sentence explanation tied to your actual answers, not generic financial advice.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-n">04</div>
+        <div class="how-step-title">Decide what comes next</div>
+        <div class="how-step-desc">The teaser report is yours immediately. The full report unlocks 4 to 7 prioritised recommendations, peer benchmarks, and a live debrief call with a senior analyst.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR DIMENSIONS -->
+  <section class="dims-section">
+    <div class="fade-up">
+      <div class="section-label">What FinPulse measures</div>
+      <h2 class="section-title">Four dimensions. One<br><em>honest assessment.</em></h2>
+    </div>
+    <div class="dims-grid fade-up">
+      <div class="dim-card">
+        <div class="dim-icon">📊</div>
+        <div class="dim-title">P&L and Profitability</div>
+        <div class="dim-score-bar"><div class="dim-score-fill" data-w="78"></div></div>
+        <p class="dim-desc">Revenue trend assessment, gross and net margin health, cost structure analysis, and budget versus actual variance patterns. Margin gaps that are acceptable in SaaS may be critical in manufacturing. The scoring is calibrated to your industry.</p>
+        <ul class="dim-items">
+          <li>Revenue growth trajectory over the past 12 months</li>
+          <li>Gross margin vs industry benchmarks for your sector</li>
+          <li>Net profitability and margin stability</li>
+          <li>Budget variance patterns indicating forecasting quality</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">💧</div>
+        <div class="dim-title">Cash Flow and Liquidity</div>
+        <div class="dim-score-bar"><div class="dim-score-fill" data-w="55"></div></div>
+        <p class="dim-desc">Working capital position, cash runway quantification, debtor days, and cash management maturity. Most businesses with a cash flow problem do not discover it in the numbers. They discover it in a bank balance. FinPulse finds it earlier.</p>
+        <ul class="dim-items">
+          <li>Cash runway in months at current burn rate</li>
+          <li>Customer collection cycle and debtor days</li>
+          <li>Cash flow management approach and visibility</li>
+          <li>Working capital adequacy indicators</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">⚖️</div>
+        <div class="dim-title">Risk and Exposure</div>
+        <div class="dim-score-bar"><div class="dim-score-fill" data-w="48"></div></div>
+        <p class="dim-desc">Vendor concentration, cross-border financial exposure, FX risk, and repatriation complexity. Risks that feel manageable at the current scale can become critical within one funding cycle or one supplier failure.</p>
+        <ul class="dim-items">
+          <li>Vendor and supplier concentration levels</li>
+          <li>Cross-border financial flows and FX exposure</li>
+          <li>Transfer pricing and repatriation complexity</li>
+          <li>Biggest current financial concern, weighted in scoring</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <div class="dim-icon">⚙️</div>
+        <div class="dim-title">Operational Efficiency</div>
+        <div class="dim-score-bar"><div class="dim-score-fill" data-w="71"></div></div>
+        <p class="dim-desc">Process maturity, financial function stability, and reporting quality. The structural indicators that predict whether a business will handle the next phase of growth or be caught by it. Efficiency gaps rarely cause problems today. They compound quietly and then arrive at once.</p>
+        <ul class="dim-items">
+          <li>Financial process maturity and documentation</li>
+          <li>Reporting quality and decision-making support</li>
+          <li>Dependency on key individuals for financial execution</li>
+          <li>Audit and compliance readiness indicators</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section">
+    <div class="fade-up">
+      <div class="section-label" style="color:var(--accent-light);">Free vs Full Report</div>
+      <h2 class="section-title" style="color:var(--paper);">Start free. Go deeper<br>when the <em>numbers matter.</em></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.4);max-width:560px;line-height:1.75;font-weight:300;margin-top:1rem;">The free teaser tells you where you stand. The full report tells you exactly what to do about it, in what order, and why, delivered by a senior financial analyst with a live debrief call included.</p>
+    </div>
+    <div class="pricing-grid fade-up">
+      <div class="price-tier">
+        <div class="price-badge free">Free</div>
+        <div class="price-name">FinPulse Teaser</div>
+        <div class="price-amount">Free</div>
+        <div class="price-period">Available instantly. No sign-up required.</div>
+        <ul class="price-items">
+          <li class="price-item"><span class="pi-check green">✓</span>Health score out of 100</li>
+          <li class="price-item"><span class="pi-check green">✓</span>Dimension scores across 4 areas</li>
+          <li class="price-item"><span class="pi-check green">✓</span>Top 3 findings ranked by severity</li>
+          <li class="price-item"><span class="pi-check green">✓</span>Executive summary in plain language</li>
+          <li class="price-item"><span class="pi-check green">✓</span>AI-powered, contextual to your actual inputs</li>
+          <li class="price-item"><span class="pi-check green">✓</span>Works for any business globally</li>
+        </ul>
+        <a href="finance-checkup.html" class="btn-price-free">Run FinPulse Free →</a>
+      </div>
+      <div class="price-tier featured">
+        <div class="price-badge paid">Full Report</div>
+        <div class="price-name">FinPulse Full Report</div>
+        <div class="price-amount"><small>$</small>199</div>
+        <div class="price-period">One-time. Delivered within 3 business days. PDF + live debrief call.</div>
+        <ul class="price-items">
+          <li class="price-item"><span class="pi-check gold">✦</span>Everything in the free teaser</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Full P&L and margin analysis with industry benchmarks</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Cash flow deep-dive and 13-week runway modelling</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>4 to 7 prioritised recommendations in ranked order</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Vendor and concentration risk register</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Peer benchmarking against your industry and market</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Senior financial analyst review and interpretation</li>
+          <li class="price-item"><span class="pi-check gold">✦</span>Live debrief call with a Finology Nexus analyst included</li>
+        </ul>
+        <a href="contactus.html" class="btn-price-paid">Get the Full Report →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner fade-up">
+      <div class="faq-sticky">
+        <div class="section-label">Common questions</div>
+        <h2 class="section-title">What people ask<br>before running <em>FinPulse</em></h2>
+        <p class="section-body" style="margin-top:1rem;">If you have a question not answered here, email us at hello@finologynexus.com and we will respond within one business day.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Is FinPulse really free? What is the catch? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">Yes. The teaser report is free, takes 4 minutes, and requires no sign-up or payment information. The catch is that the full analysis: detailed recommendations, peer benchmarks, and a live call, requires a paid upgrade. The free version is a genuine diagnostic, not a marketing funnel disguised as a tool.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How accurate is an assessment based on 12 questions? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">Accurate enough to identify the highest-impact issues and give you a reliable directional read. The questions are designed by senior financial analysts to capture the indicators most predictive of financial health at each business stage. It is not a full audit. It is a triage. The full report goes deeper.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What happens with my data? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">Your responses are used only to generate your report. We do not store identifiable financial data beyond the session unless you opt into the full report engagement. No data is sold or shared with third parties. The assessment is designed to work without collecting sensitive financial documents.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Can I run FinPulse for a business outside India? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">Yes. FinPulse is designed to work for any business globally. The scoring adjusts for country of operations and industry context. ComplianceCheck is the India-specific product; FinPulse covers financial health universally.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How does the full report differ from the teaser? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">The teaser shows your score, dimension breakdown, and top 3 findings. The full report adds a detailed P&L analysis with benchmarks, a 13-week cash flow and runway model, 4 to 7 prioritised action recommendations in order, a vendor risk register, industry peer comparison, and a 30-minute live debrief call with a senior Finology Nexus analyst.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What if my answers change the score significantly? <i class="fas fa-plus"></i></div>
+          <div class="faq-a">You can retake FinPulse as often as you need. Many clients use it quarterly as a structured check-in against their financial position. Each run generates a fresh analysis based on your current inputs.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <div class="fp-bottom-cta fade-up">
+    <div>
+      <h2 class="fbc-title">4 minutes to know where<br>your business <em>actually stands</em></h2>
+      <p class="fbc-sub">No spreadsheets, no sign-up, no obligation. Just 12 questions and an honest read on your financial health from a model trained by senior financial analysts.</p>
+    </div>
+    <div class="fbc-right">
+      <a href="finance-checkup.html" class="btn-fbc-main"><i class="fas fa-heartbeat"></i> Run FinPulse Free</a>
+      <div class="fbc-note">Takes 4 minutes · No sign-up · Instant report</div>
+      <div class="fbc-also">Want to go straight to the full report? <a href="contactus.html">Contact us here.</a></div>
+    </div>
+  </div>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="related-section fade-up">
+    <div class="section-label">What comes after FinPulse</div>
+    <h2 class="section-title">Your score points to<br><em>the right next tool</em></h2>
+    <div class="related-grid">
+      <a href="cashmap.html" class="related-card">
+        <div class="rc-badge amber">Cash Flow Intelligence</div>
+        <div class="rc-title">CashMap</div>
+        <div class="rc-desc">If FinPulse flags cash flow as your critical dimension, CashMap gives you a 12-week rolling forecast with runway, burn rate, and risk flags built from your actual data.</div>
+        <div class="rc-link">Explore CashMap</div>
+      </a>
+      <a href="compliancecheck.html" class="related-card">
+        <div class="rc-badge blue">India Regulatory Scanner</div>
+        <div class="rc-title">ComplianceCheck</div>
+        <div class="rc-desc">If FinPulse surfaces risk exposure as your key gap and you operate in India, ComplianceCheck maps your regulatory position across RBI, FEMA, GST, and Companies Act.</div>
+        <div class="rc-link">Explore ComplianceCheck</div>
+      </a>
+      <a href="vendorscan.html" class="related-card">
+        <div class="rc-badge teal">Vendor Risk Assessment</div>
+        <div class="rc-title">VendorScan</div>
+        <div class="rc-desc">If FinPulse flags vendor concentration as a risk, VendorScan gives you a structured RAG assessment of your vendor base with financial health flags and mitigation guidance.</div>
+        <div class="rc-link">Explore VendorScan</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="hl">FinPulse Free</span><span>·</span><span>Business Health Score</span><span>·</span><span class="hl">4 Minutes</span><span>·</span><span>No Sign-Up</span><span>·</span><span class="hl">Instant Report</span><span>·</span><span>Profitability</span><span>·</span><span>Cash Flow</span><span>·</span><span>Risk</span><span>·</span><span>Efficiency</span><span>·</span>
+      <span class="hl">FinPulse Free</span><span>·</span><span>Business Health Score</span><span>·</span><span class="hl">4 Minutes</span><span>·</span><span>No Sign-Up</span><span>·</span><span class="hl">Instant Report</span><span>·</span><span>Profitability</span><span>·</span><span>Cash Flow</span><span>·</span><span>Risk</span><span>·</span><span>Efficiency</span><span>·</span>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+          <span>Finology <span>Nexus</span></span>
+        </a>
+        <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:hello@finologynexus.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Intelligence Suite</div>
+        <ul class="footer-links">
+          <li><a href="finance-checkup.html">FinPulse Free</a></li>
+          <li><a href="cashmap.html">CashMap</a></li>
+          <li><a href="compliancecheck.html">ComplianceCheck</a></li>
+          <li><a href="vendorscan.html">VendorScan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="financial-operations.html">Financial Operations</a></li>
+          <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+          <li><a href="data-automation.html">Data Automation</a></li>
+          <li><a href="workflow-automation.html">Workflow Automation</a></li>
+          <li><a href="process-design.html">Process Design</a></li>
+          <li><a href="embedded-support.html">Embedded Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="blog.html">Case Studies</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="privacypolicy.html">Privacy</a></li>
+          <li><a href="termsofservice.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
+      <a href="mailto:hello@finologynexus.com" class="footer-email">hello@finologynexus.com</a>
+    </div>
+  </footer>
+  <a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+    <i class="fas fa-heartbeat"></i> FinPulse Free
+  </a>
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('keydown', e => { if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault(); });
+    const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.08});
+    document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+  </script>
+  <script>
+    // Score counter
+    const scoreEl = document.getElementById('fp-score');
+    let animated = false;
+    const sObs = new IntersectionObserver(e => {
+      if (e[0].isIntersecting && !animated) {
+        animated = true;
+        let n = 0, target = 54;
+        const step = () => { if (n < target) { n++; scoreEl.textContent = n; requestAnimationFrame(step); } };
+        step();
+      }
+    }, {threshold:0.5});
+    if (scoreEl) sObs.observe(scoreEl);
+    // Dim bars
+    const bObs = new IntersectionObserver(e => {
+      e.forEach(x => { if (x.isIntersecting) { x.target.querySelectorAll('.fpc-dim-bar,[data-w]').forEach(b => { b.style.width = (b.dataset.w || b.getAttribute('data-w')) + '%'; }); } });
+    }, {threshold:0.3});
+    document.querySelectorAll('.fp-card,.dims-grid').forEach(el => bObs.observe(el));
+    // FAQ accordion
+    function toggleFaq(el) {
+      const a = el.nextElementSibling;
+      const isOpen = a.classList.contains('open');
+      document.querySelectorAll('.faq-a.open').forEach(x => { x.classList.remove('open'); x.previousElementSibling.classList.remove('open'); });
+      if (!isOpen) { a.classList.add('open'); el.classList.add('open'); }
+    }
+  </script>
+</body>
+</html>
