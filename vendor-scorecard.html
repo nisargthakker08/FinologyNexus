@@ -1,1958 +1,1359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vendor Health Scorecard | Finology Nexus</title>
-  <meta name="description" content="Transform subjective vendor evaluations into data-driven risk intelligence. Get clear Red/Amber/Green ratings for your critical vendors.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Health Scorecard · VendorScan · Finology Nexus</title>
+  <meta name="description" content="Run a structured, 12-question vendor health assessment in under 5 minutes. Get an instant RAG score, risk flags, and a downloadable PDF report. Free. No sign-up required.">
+  <meta name="keywords" content="vendor health scorecard, vendor risk assessment, RAG scoring, vendor due diligence, Finology Nexus, VendorScan">
+  <meta name="author" content="Finology Nexus">
+  <link rel="canonical" href="https://www.finologynexus.online/vendor-health-scorecard.html">
 
-   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.finologynexus.online/vendor-health-scorecard.html">
+  <meta property="og:title" content="Vendor Health Scorecard · VendorScan">
+  <meta property="og:description" content="Run a structured, 12-question vendor health assessment in under 5 minutes. Get an instant RAG score, risk flags, and a downloadable PDF report. Free.">
+  <meta property="og:image" content="https://www.finologynexus.online/finology-og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.finologynexus.online/vendor-health-scorecard.html">
+  <meta property="twitter:title" content="Vendor Health Scorecard · VendorScan">
+  <meta property="twitter:description" content="Run a structured, 12-question vendor health assessment in under 5 minutes. Get an instant RAG score, risk flags, and a downloadable PDF report. Free.">
+  <meta property="twitter:image" content="https://www.finologynexus.online/finology-og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="finology-logofavicon.png">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
   <!-- End Google Tag Manager -->
 
   <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
-  
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <style>
-    :root {
-      --primary-blue: #0066cc;
-      --primary-blue-dark: #004d99;
-      --secondary-blue: #0099ff;
-      --accent-blue: #0077dd;
-      --accent-gold: #cc9900;
-      --accent-gold-light: #e6b800;
-      --accent-purple: #6a0dad;
-      --accent-purple-light: #8a2be2;
-      --accent-green: #10b981;
-      --accent-green-light: #34d399;
-      --dark-bg: #1f2937;
-      --light-bg: #f9fbfc;
-      --text-dark: #1f2937;
-      --text-medium: #4b5563;
-      --text-light: #6b7280;
-      --white: #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --transition: all 0.3s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ========== TYPOGRAPHY ========== */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-size: 2.75rem;
-      margin-bottom: 1.25rem;
-      color: var(--primary-blue);
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-      border-radius: 2px;
-    }
-
-    .section-description {
-      max-width: 50rem;
-      margin: 0 auto 2.5rem;
-      color: var(--text-medium);
-      font-size: 1.15rem;
-    }
-
-    /* ========== BUTTON STYLES ========== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 1.75rem;
-      border-radius: var(--radius-sm);
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      min-width: 200px;
-      text-align: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
-      color: var(--white);
-      border: none;
-      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
-    }
-
-    .btn-secondary {
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
-      color: var(--white);
-      border: none;
-      box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
-    }
-
-    .btn-tertiary {
-      background: rgba(255, 255, 255, 0.25);
-      color: var(--white);
-      border: 2px solid rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--primary-blue);
-      border: 2px solid var(--primary-blue);
-    }
-
-    .btn-green {
-      background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
-      color: var(--white);
-      border: none;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    .btn-tertiary:hover,
-    .btn-outline:hover,
-    .btn-green:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* ========== LAYOUT COMPONENTS ========== */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .section {
-      padding: 6rem 1.25rem;
-      text-align: center;
-    }
-
-    /* ========== HEADER & NAVIGATION ========== */
-    header {
-      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
-      background-size: cover;
-      padding: 1.25rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.3s ease, background 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-
-    header.scrolled {
-      background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)), 
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="%230066cc" opacity="0.2"/><circle cx="50" cy="50" r="3" fill="%230066cc" opacity="0.2"/><circle cx="80" cy="80" r="2" fill="%230066cc" opacity="0.2"/></svg>');
-      backdrop-filter: blur(10px);
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .company-logo {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-    }
-
-    .company-name {
-      font-size: 1.75rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      position: relative;
-      transition: var(--transition);
-      font-size: 1rem;
-      padding: 0.5rem 0;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      bottom: -6px;
-      left: 0;
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-      transition: var(--transition);
-      border-radius: 2px;
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    nav a.active {
-      color: var(--accent-purple);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.75rem;
-      cursor: pointer;
-      color: var(--accent-purple);
-      padding: 0.5rem;
-    }
-
-    /* ========== HERO SECTION ========== */
-    .hero {
-      background: 
-          linear-gradient(rgba(30, 60, 114, 0.85), rgba(42, 82, 152, 0.85)),
-          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600"><defs><pattern id="chartPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="%230066cc" opacity="0.05"/><path d="M0,20 L100,20 M0,40 L100,40 M0,60 L100,60 M0,80 L100,80" stroke="%230066cc" stroke-width="1" opacity="0.1"/><path d="M10,10 L10,90 L90,90" stroke="%23ffffff" stroke-width="2" opacity="0.2" fill="none"/><path d="M10,90 L30,70 L50,40 L70,20 L90,10" stroke="%23ffffff" stroke-width="3" opacity="0.3" fill="none"/><circle cx="30" cy="70" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="50" cy="40" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="70" cy="20" r="3" fill="%23ffffff" opacity="0.4"/><circle cx="90" cy="10" r="3" fill="%23ffffff" opacity="0.4"/></pattern></defs><rect width="1200" height="600" fill="url(%23chartPattern)"/></svg>');
-      background-size: cover;
-      color: var(--white);
-      padding: 8rem 1.25rem 5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-          radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
-          radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
-      animation: float 8s ease-in-out infinite;
-    }
-
-    /* Animated particles background */
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: particleFloat 15s infinite linear;
-    }
-
-    @keyframes particleFloat {
-      0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-      }
-      10% {
-          opacity: 1;
-      }
-      90% {
-          opacity: 1;
-      }
-      100% {
-          transform: translateY(-100px) rotate(360deg);
-          opacity: 0;
-      }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-15px) scale(1.03); }
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeInDown 1s ease-out;
-      position: relative;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .hero p {
-      font-size: 1.35rem;
-      max-width: 50rem;
-      margin: 0 auto 2.5rem;
-      animation: fadeInUp 1s ease-out 0.2s both;
-      opacity: 0.95;
-      line-height: 1.7;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.75rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 10;
-    }
-
-    .cta-row {
-      display: flex;
-      justify-content: center;
-      gap: 1.75rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 10;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-2rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(2rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========== ASSESSMENT SECTION ========== */
-    .assessment-section {
-      padding: 6rem 1.25rem;
-      background: var(--white);
-    }
-
-    .assessment-container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .assessment-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .assessment-intro {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
-      padding: 2rem;
-      border-radius: var(--radius-lg);
-      margin-bottom: 3rem;
-      border-left: 5px solid var(--accent-purple);
-    }
-
-    .assessment-intro p {
-      margin-bottom: 1rem;
-      color: var(--text-medium);
-      font-size: 1.1rem;
-    }
-
-    .assessment-intro strong {
-      color: var(--accent-purple);
-    }
-
-    /* Form styling */
-    .question-group {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid rgba(106, 13, 173, 0.1);
-      transition: var(--transition);
-    }
-
-    .question-group:hover {
-      box-shadow: var(--shadow-lg);
-      border-color: var(--accent-purple);
-    }
-
-    .question-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .question-number {
-      background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      margin-right: 1rem;
-      flex-shrink: 0;
-    }
-
-    .question-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .options-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .option {
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid #e5e7eb;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .option:hover {
-      background-color: #f9fafb;
-      border-color: var(--accent-purple);
-    }
-
-    .option.selected {
-      background-color: rgba(106, 13, 173, 0.05);
-      border-color: var(--accent-purple);
-    }
-
-    .option input {
-      margin-right: 1rem;
-      accent-color: var(--accent-purple);
-    }
-
-    .option-text {
-      flex: 1;
-      color: var(--text-medium);
-    }
-
-    .form-submit {
-      text-align: center;
-      margin-top: 3rem;
-    }
-
-    /* ========== FEATURES SECTION ========== */
-    .features-section {
-      padding: 6rem 1.25rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3.5rem;
-    }
-
-    .feature-card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .feature-card i {
-      font-size: 3.5rem;
-      color: var(--accent-gold);
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .feature-card h3 {
-      color: var(--accent-purple);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .feature-card p {
-      color: var(--text-medium);
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    /* ========== RESULT SECTION ========== */
-    .result-section {
-      padding: 6rem 1.25rem;
-      background: var(--white);
-      display: none;
-    }
-
-    .result-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--white);
-      padding: 3rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      border: 1px solid rgba(106, 13, 173, 0.1);
-    }
-
-    .risk-badge {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: 2rem;
-      font-weight: 700;
-      margin: 1.5rem 0;
-      font-size: 1.25rem;
-    }
-
-    .risk-high {
-      background: linear-gradient(to right, #e74c3c, #c0392b);
-      color: white;
-    }
-
-    .risk-medium {
-      background: linear-gradient(to right, #f39c12, #e67e22);
-      color: white;
-    }
-
-    .risk-low {
-      background: linear-gradient(to right, #2ecc71, #27ae60);
-      color: white;
-    }
-
-    .progress-container {
-      width: 100%;
-      background-color: #e9ecef;
-      border-radius: 0.5rem;
-      margin: 2rem 0;
-      height: 12px;
-    }
-
-    .progress-bar {
-      height: 100%;
-      border-radius: 0.5rem;
-      transition: width 0.5s ease;
-    }
-
-    .progress-high {
-      background: linear-gradient(to right, #e74c3c, #c0392b);
-    }
-
-    .progress-medium {
-      background: linear-gradient(to right, #f39c12, #e67e22);
-    }
-
-    .progress-low {
-      background: linear-gradient(to right, #2ecc71, #27ae60);
-    }
-
-    .result-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* ========== TESTIMONIALS ========== */
-    .testimonials-section {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
-      padding: 6rem 1.25rem;
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3.5rem;
-    }
-
-    .testimonial-card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-      text-align: left;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 5rem;
-      font-weight: 700;
-      color: rgba(106, 13, 173, 0.1);
-      line-height: 1;
-      font-family: Georgia, serif;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .testimonial-text {
-      color: var(--text-medium);
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      color: var(--accent-purple);
-    }
-
-    .testimonial-role {
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-
-    /* ========== CTA SECTION ========== */
-    .cta-section {
-      background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
-      color: var(--white);
-      padding: 6rem 1.25rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
-    }
-
-    .cta-content {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .cta-content h2 {
-      font-size: 2.75rem;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    .cta-content p {
-      font-size: 1.25rem;
-      margin-bottom: 2.5rem;
-      opacity: 0.95;
-      line-height: 1.7;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    /* ========== FOOTER ========== */
-    footer {
-      background: var(--dark-bg);
-      color: var(--white);
-      padding: 4rem 1.25rem 2rem;
-    }
-
-    .footer-main {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto 3rem;
-    }
-
-    .footer-column {
-      min-width: 200px;
-    }
-
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .footer-logo-group img {
-      height: 2.5rem;
-    }
-
-    .footer-logo-group span {
-      font-size: 1.5rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .footer-about {
-      color: #d1d5db;
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .footer-links h4 {
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      font-size: 1.25rem;
-      position: relative;
-      padding-bottom: 0.75rem;
-    }
-
-    .footer-links h4::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40px;
-      height: 3px;
-      background: var(--accent-gold);
-      border-radius: 2px;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: #d1d5db;
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 1rem;
-      display: inline-block;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-gold);
-      transform: translateX(5px);
-    }
-
-    .footer-socials {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-    }
-
-    .footer-socials a {
-      color: var(--white);
-      font-size: 1.5rem;
-      transition: var(--transition);
-      display: inline-block;
-      width: 44px;
-      height: 44px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-socials a:hover {
-      color: var(--accent-gold);
-      background: rgba(204, 153, 0, 0.2);
-      transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.95rem;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #374151;
-      color: #9ca3af;
-    }
-
-    .footer-bottom a {
-      color: var(--accent-gold);
-      text-decoration: none;
-    }
-
-    .footer-bottom a:hover {
-      text-decoration: underline;
-    }
-
-    /* ========== FLOATING CTA ========== */
-    .floating-cta {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-      color: var(--white);
-      padding: 1rem 1.5rem;
-      border-radius: 3rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.05rem;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .floating-cta:hover {
-      background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-
-    .floating-cta i {
-      font-size: 1.25rem;
-    }
-
-    /* ========== DOWNLOAD NOTICE ========== */
-    .download-notice {
-      background: linear-gradient(135deg, #10b981, #34d399);
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius-md);
-      margin: 1rem 0;
-      text-align: center;
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2000;
-      box-shadow: var(--shadow-lg);
-      min-width: 300px;
-    }
-
-    .download-notice.show {
-      display: block;
-      animation: fadeInUp 0.5s ease-out;
-    }
-
-    .download-progress {
-      width: 100%;
-      height: 4px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 2px;
-      margin-top: 0.5rem;
-      overflow: hidden;
-    }
-
-    .download-progress-bar {
-      height: 100%;
-      background: white;
-      width: 0%;
-      transition: width 2s ease-in-out;
-    }
-
-    /* ========== RESPONSIVE STYLES ========== */
-    @media (max-width: 992px) {
-      .hero h1 {
-        font-size: 2.75rem;
-      }
-      .hero p {
-        font-size: 1.2rem;
-      }
-      .footer-main {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .menu-toggle {
-        display: block;
-        order: 1;
-      }
-
-      nav {
-        width: 100%;
-        order: 3;
-        display: none;
-        margin-top: 1.5rem;
-        background: var(--white);
-        padding: 1rem;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
-      }
-
-      nav.active {
-        display: block;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2.25rem;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-      }
-
-      .hero-buttons, .cta-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .features-grid,
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-main {
-        grid-template-columns: 1fr;
-      }
-
-      .result-actions {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .section {
-        padding: 4rem 1rem;
-      }
-      .result-container {
-        padding: 2rem;
-      }
-      .question-group {
-        padding: 1.5rem;
-      }
-    }
-
-    /* ========== ACCESSIBILITY ========== */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .hero h1,
-      .hero p {
-        animation: none;
-      }
-      .hero::before {
-        animation: none;
-      }
-    }
-
-    /* Focus styles for accessibility */
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    textarea:focus-visible,
-    select:focus-visible {
-      outline: 3px solid var(--accent-gold);
-      outline-offset: 3px;
-      border-radius: var(--radius-sm);
-    }
+    /* (existing styles – unchanged) */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;--green-pale:#e8f2ec;
+      --amber:#c97d20;--amber-pale:#fdf6e8;
+      --blue:#1a3a5c;--blue-light:#2a5080;--blue-pale:#e8f0f8;
+      --teal:#1a4a4a;--teal-light:#2a7070;--teal-pale:#e8f5f5;
+      --product:#1a4a4a;--product-light:#2a7070;--product-pale:#e8f5f5;--product-accent:#3aacac;
+      --red:#c0392b;--red-pale:#fdecea;
+      --line:rgba(28,42,58,0.12);
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-user-select:none;-moz-user-select:none;user-select:none;}
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(245,242,236,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .logo-group{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;}
+    .company-logo{width:40px;height:40px;object-fit:contain;}
+    .company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);}
+    .company-name span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links li{position:relative;}
+    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a i{font-size:0.6rem;transition:transform 0.2s;}
+    .nav-links li:hover>a i{transform:rotate(180deg);}
+    /* Active section highlight */
+    .nav-links li.active-section > a { color: var(--accent); }
+    .dropdown-content{position:absolute;top:2rem;left:-1rem;background:white;border:1px solid var(--line);min-width:220px;padding:1rem 0;opacity:0;visibility:hidden;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:10;}
+    .nav-links li:hover .dropdown-content{opacity:1;visibility:visible;}
+    .dropdown-content a{display:block;padding:0.5rem 1.5rem;font-size:0.75rem;text-transform:none;letter-spacing:0.05em;color:var(--ink-muted);border:none!important;}
+    .dropdown-content a:hover,.dropdown-content a.current-sub{background:var(--paper-warm);color:var(--ink);}
+    .dropdown-content a.current-sub{font-weight:500;color:var(--product-accent);}
+    .nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.6rem 1.4rem;text-decoration:none;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--accent);}
+
+    /* ─── rest of your existing styles (unchanged) ───────────────── */
+    /* (everything else remains exactly as you had it) */
+    .sc-hero{background:var(--product);padding:8rem 4rem 5rem;position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr 0.9fr;gap:6rem;align-items:center;min-height:70vh;}
+    .sc-hero::after{content:'SCORECARD';position:absolute;right:-2rem;bottom:-1rem;font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:600;color:rgba(255,255,255,0.018);line-height:1;pointer-events:none;letter-spacing:-0.04em;white-space:nowrap;}
+    .sc-breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+    .sc-breadcrumb a{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s;}
+    .sc-breadcrumb a:hover,.sc-breadcrumb .bc-current{color:var(--product-accent);}
+    .sc-breadcrumb .bc-sep{font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.12);padding:0 0.2rem;}
+    .sc-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--product-accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .sc-eyebrow::before{content:'';width:2rem;height:1px;background:var(--product-accent);}
+    .sc-free-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(58,172,172,0.15);border:1px solid rgba(58,172,172,0.3);color:var(--product-accent);font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.3rem 0.9rem;margin-bottom:1.5rem;}
+    .sc-title{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;line-height:1.03;letter-spacing:-0.025em;color:var(--paper);margin-bottom:1.25rem;}
+    .sc-title em{font-style:italic;color:#5ad0d0;}
+    .sc-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);}
+    .sc-sub{font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.85;font-weight:300;max-width:490px;margin-bottom:2.5rem;}
+    .sc-meta-strip{display:flex;gap:2rem;flex-wrap:wrap;}
+    .sc-meta-item{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.25);display:flex;align-items:center;gap:0.45rem;}
+    /* Hero right: sample score card preview */
+    .sc-preview-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:2rem;}
+    .spc-header{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--product-accent);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+    .spc-vendor-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--paper);margin-bottom:0.25rem;}
+    .spc-assessor{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .spc-score-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .spc-ring{width:72px;height:72px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+    .spc-ring.green{background:var(--green-light);}
+    .spc-ring.amber{background:var(--amber);}
+    .spc-ring.red{background:var(--red);}
+    .spc-ring-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;line-height:1;}
+    .spc-ring-sub{font-family:'DM Mono',monospace;font-size:0.42rem;color:rgba(255,255,255,0.65);letter-spacing:0.08em;text-transform:uppercase;}
+    .spc-verdict{}
+    .spc-rag-pill{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.22rem 0.65rem;display:inline-block;margin-bottom:0.5rem;}
+    .spc-rag-pill.low{background:rgba(74,140,98,0.2);color:var(--green-light);}
+    .spc-rag-pill.medium{background:rgba(201,125,32,0.2);color:var(--amber);}
+    .spc-rag-pill.high{background:rgba(192,57,43,0.2);color:#e74c3c;}
+    .spc-verdict-text{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.55;font-weight:300;}
+    .spc-dims{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.25rem;}
+    .spc-dim-row{display:flex;align-items:center;gap:0.75rem;}
+    .spc-dim-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.04em;color:rgba(255,255,255,0.3);width:90px;flex-shrink:0;}
+    .spc-dim-track{flex:1;height:3px;background:rgba(255,255,255,0.07);}
+    .spc-dim-fill{height:100%;width:0;transition:width 1.4s ease;}
+    .spc-dim-fill.g{background:var(--green-light);}
+    .spc-dim-fill.a{background:var(--amber);}
+    .spc-dim-fill.r{background:#e74c3c;}
+    .spc-dim-score{font-family:'DM Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.3);width:20px;text-align:right;}
+    .spc-cta{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.07);}
+    .spc-cta-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+    .spc-cta-btn{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--product-accent);display:flex;align-items:center;gap:0.4rem;}
+    .spc-cta-btn::after{content:'→';}
+
+    /* ─── INTRO BAND ────────────────────────────────────── */
+    .sc-intro-band{background:var(--ink);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;gap:4rem;flex-wrap:wrap;}
+    .sib-stat{text-align:center;}
+    .sib-stat-val{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--paper);line-height:1;}
+    .sib-stat-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+    .sib-divider{width:1px;height:40px;background:rgba(255,255,255,0.08);}
+    .sib-note{font-size:0.9rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:400px;}
+    .sib-note strong{color:rgba(255,255,255,0.7);font-weight:500;}
+
+    /* ─── ASSESSMENT SECTION ────────────────────────────── */
+    .sc-assessment{padding:6rem 4rem;background:var(--paper);}
+    .sc-assessment-inner{max-width:780px;margin:0 auto;}
+    .sc-assessment-header{margin-bottom:3.5rem;}
+    .sc-assessment-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:1rem;}
+    .sc-assessment-title em{font-style:italic;color:var(--product-accent);}
+    .sc-assessment-sub{font-size:0.95rem;color:var(--ink-muted);line-height:1.75;font-weight:300;}
+    /* Vendor info inputs */
+    .sc-info-block{background:var(--paper-warm);border:1px solid var(--line);padding:2rem;margin-bottom:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+    .sc-field{display:flex;flex-direction:column;gap:0.5rem;}
+    .sc-field label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
+    .sc-field input{font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--ink);background:white;border:1px solid var(--line);padding:0.8rem 1rem;outline:none;transition:border-color 0.2s;-webkit-user-select:text;-moz-user-select:text;user-select:text;}
+    .sc-field input:focus{border-color:var(--product-accent);}
+    .sc-field input::placeholder{color:var(--ink-muted);opacity:0.6;}
+    /* Progress tracker */
+    .sc-progress-bar-wrap{margin-bottom:2.5rem;}
+    .sc-progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
+    .sc-progress-label-text{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);}
+    .sc-progress-label-count{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--product-accent);}
+    .sc-progress-track{height:3px;background:var(--line);}
+    .sc-progress-fill{height:100%;background:var(--product-accent);width:0%;transition:width 0.4s ease;}
+    /* Question cards */
+    .sc-question{background:white;border:1px solid var(--line);margin-bottom:1px;transition:border-color 0.2s;}
+    .sc-question.answered{border-left:3px solid var(--product-accent);}
+    .sc-q-header{display:flex;align-items:flex-start;gap:1.25rem;padding:1.75rem 2rem;border-bottom:1px solid var(--line);}
+    .sc-q-num{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:white;background:var(--product);width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;}
+    .sc-q-num.answered{background:var(--product-accent);}
+    .sc-q-category{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--product-accent);margin-bottom:0.35rem;}
+    .sc-q-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);line-height:1.35;}
+    .sc-q-options{padding:0;}
+    .sc-option{display:flex;align-items:flex-start;gap:1rem;padding:1rem 2rem 1rem 4.25rem;border-bottom:1px solid rgba(28,42,58,0.05);cursor:pointer;transition:background 0.15s;position:relative;}
+    .sc-option:last-child{border-bottom:none;}
+    .sc-option:hover{background:var(--product-pale);}
+    .sc-option.selected{background:var(--product-pale);}
+    .sc-option input[type="radio"]{position:absolute;opacity:0;pointer-events:none;}
+    .sc-radio{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex-shrink:0;margin-top:2px;transition:all 0.15s;display:flex;align-items:center;justify-content:center;}
+    .sc-option.selected .sc-radio{border-color:var(--product-accent);background:var(--product-accent);}
+    .sc-option.selected .sc-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:white;}
+    .sc-option-body{}
+    .sc-option-text{font-size:0.88rem;color:var(--ink-muted);line-height:1.5;transition:color 0.15s;}
+    .sc-option.selected .sc-option-text{color:var(--ink);}
+    .sc-option-score-hint{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(28,42,58,0.2);margin-top:0.2rem;}
+    .sc-option.selected .sc-option-score-hint{color:var(--product-accent);}
+    /* Submit */
+    .sc-submit-row{margin-top:3rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+    .btn-sc-submit{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;background:var(--product);padding:1.1rem 2.5rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;transition:background 0.2s;}
+    .btn-sc-submit:hover{background:var(--product-light);}
+    .btn-sc-submit:disabled{opacity:0.4;cursor:not-allowed;}
+    .sc-submit-note{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);}
+    .sc-validation-msg{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:#c0392b;display:none;margin-top:0.75rem;}
+    .sc-validation-msg.show{display:block;}
+
+    /* ─── RESULT SECTION ────────────────────────────────── */
+    .sc-result{display:none;padding:6rem 4rem;background:var(--paper-warm);}
+    .sc-result.visible{display:block;}
+    .sc-result-inner{max-width:760px;margin:0 auto;}
+    /* Score header */
+    .sc-result-header{background:var(--ink);padding:3rem;margin-bottom:2px;}
+    .srh-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+    .srh-vendor-block{}
+    .srh-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.4rem;}
+    .srh-vendor-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--paper);line-height:1.1;}
+    .srh-assessor{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+    .srh-score-block{text-align:right;}
+    .srh-score-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:var(--paper);line-height:1;}
+    .srh-score-denom{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:rgba(255,255,255,0.3);}
+    .srh-score-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:0.25rem;}
+    .srh-rag-row{display:flex;align-items:center;gap:1.5rem;}
+    .srh-rag-badge{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.45rem 1.25rem;display:inline-block;}
+    .srh-rag-badge.low{background:rgba(74,140,98,0.25);color:var(--green-light);}
+    .srh-rag-badge.medium{background:rgba(201,125,32,0.25);color:var(--amber);}
+    .srh-rag-badge.high{background:rgba(192,57,43,0.25);color:#e74c3c;}
+    .srh-description{font-size:0.88rem;color:rgba(255,255,255,0.45);line-height:1.65;font-weight:300;max-width:440px;}
+    /* Progress bar */
+    .srh-progress-wrap{margin-top:2rem;}
+    .srh-progress-track{height:4px;background:rgba(255,255,255,0.08);}
+    .srh-progress-fill{height:100%;width:0;transition:width 1.2s ease;}
+    .srh-progress-fill.low{background:var(--green-light);}
+    .srh-progress-fill.medium{background:var(--amber);}
+    .srh-progress-fill.high{background:#e74c3c;}
+    /* Dimension breakdown */
+    .sc-result-dims{background:white;border:1px solid var(--line);margin-bottom:2px;}
+    .srd-header{padding:1.5rem 2rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+    .srd-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
+    .srd-grid{display:grid;grid-template-columns:1fr 1fr;}
+    .srd-dim{padding:1.75rem 2rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .srd-dim:nth-child(2n){border-right:none;}
+    .srd-dim:nth-last-child(-n+2){border-bottom:none;}
+    .srd-dim-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:0.6rem;}
+    .srd-dim-score{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:0.5rem;line-height:1;}
+    .srd-dim-track{height:3px;background:var(--line);margin-bottom:0.5rem;}
+    .srd-dim-fill{height:100%;width:0;transition:width 1.2s ease;}
+    .srd-dim-verdict{font-size:0.75rem;color:var(--ink-muted);font-weight:300;}
+    /* Recommendations */
+    .sc-result-recs{background:white;border:1px solid var(--line);margin-bottom:2px;}
+    .srr-header{padding:1.5rem 2rem;border-bottom:1px solid var(--line);}
+    .srr-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
+    .srr-items{display:flex;flex-direction:column;gap:0;}
+    .srr-item{display:flex;gap:1rem;padding:1.25rem 2rem;border-bottom:1px solid rgba(28,42,58,0.05);align-items:flex-start;}
+    .srr-item:last-child{border-bottom:none;}
+    .srr-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+    .srr-dot.r{background:#e74c3c;}
+    .srr-dot.a{background:var(--amber);}
+    .srr-dot.g{background:var(--green-light);}
+    .srr-text{font-size:0.85rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+    /* Answers detail */
+    .sc-result-answers{background:white;border:1px solid var(--line);margin-bottom:2rem;}
+    .sra-header{padding:1.5rem 2rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;}
+    .sra-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
+    .sra-toggle{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--product-accent);display:flex;align-items:center;gap:0.4rem;}
+    .sra-body{display:none;}
+    .sra-body.open{display:block;}
+    .sra-row{display:flex;gap:1rem;padding:1rem 2rem;border-bottom:1px solid rgba(28,42,58,0.05);align-items:flex-start;}
+    .sra-row:last-child{border-bottom:none;}
+    .sra-num{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(28,42,58,0.25);width:24px;flex-shrink:0;padding-top:2px;}
+    .sra-q{font-size:0.8rem;color:var(--ink-muted);flex:1;line-height:1.5;}
+    .sra-q strong{display:block;color:var(--ink);font-weight:500;margin-bottom:0.2rem;}
+    .sra-score-dot{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;flex-shrink:0;padding-top:2px;}
+    /* Actions */
+    .sc-result-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-dl-report{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:white;background:var(--product);padding:1rem 2rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.6rem;transition:background 0.2s;text-decoration:none;}
+    .btn-dl-report:hover{background:var(--product-light);}
+    .btn-consult{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink-muted);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;}
+    .btn-consult:hover{background:var(--paper-warm);border-color:var(--ink);}
+    .btn-retake{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);background:transparent;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.2s;padding:1rem 0;}
+    .btn-retake:hover{color:var(--ink);}
+
+    /* ─── WHY THIS TOOL ─────────────────────────────────── */
+    .sc-why{padding:6rem 4rem;background:var(--paper);}
+    .sc-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem;}
+    .sc-why-card{background:var(--paper-warm);padding:2.25rem 2rem;transition:background 0.2s;}
+    .sc-why-card:hover{background:var(--product-pale);}
+    .swc-icon{font-size:1.5rem;margin-bottom:1rem;}
+    .swc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;}
+    .swc-desc{font-size:0.82rem;color:var(--ink-muted);line-height:1.65;font-weight:300;}
+
+    /* ─── WHAT NEXT SECTION ────────────────────────────── */
+    .sc-next{padding:5rem 4rem;background:var(--product);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .scn-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--product-accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .scn-eyebrow::before{content:'';width:2rem;height:1px;background:var(--product-accent);}
+    .scn-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--paper);line-height:1.1;margin-bottom:1rem;}
+    .scn-title em{font-style:italic;color:#5ad0d0;}
+    .scn-sub{font-size:0.95rem;color:rgba(255,255,255,0.45);line-height:1.8;font-weight:300;}
+    .scn-steps{display:flex;flex-direction:column;gap:0;}
+    .scn-step{display:flex;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:flex-start;}
+    .scn-step:last-child{border-bottom:none;}
+    .scn-step-n{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--product-accent);width:24px;flex-shrink:0;padding-top:3px;}
+    .scn-step-body{}
+    .scn-step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--paper);margin-bottom:0.25rem;}
+    .scn-step-desc{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.6;font-weight:300;}
+    .btn-scn{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--product);background:white;padding:1rem 2.25rem;text-decoration:none;display:inline-block;transition:background 0.2s;margin-top:2rem;}
+    .btn-scn:hover{background:var(--product-pale);}
+
+    /* ─── TICKER ────────────────────────────────────────── */
+    .ticker{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0.65rem 0;overflow:hidden;white-space:nowrap;}
+    .ticker-inner{display:inline-block;animation:ticker 50s linear infinite;}
+    .ticker-inner span{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin:0 2rem;opacity:0.5;}
+    .ticker-inner span.hl{color:var(--accent);opacity:1;}
+    @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer{background:var(--ink);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links-list{list-style:none;}
+    .footer-links-list li{margin-bottom:0.6rem;}
+    .footer-links-list a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links-list a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
+
+    /* ─── PDF TOAST ─────────────────────────────────────── */
+    .pdf-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--product);color:white;padding:1rem 2rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;z-index:200;opacity:0;transition:all 0.4s ease;display:flex;align-items:center;gap:0.75rem;min-width:280px;justify-content:center;}
+    .pdf-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+    .pdf-toast-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--product-accent);width:0%;transition:width 2.5s ease;}
+
+    /* ─── FLOATING CTA ──────────────────────────────────── */
+    .floating-cta{position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;}
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media(max-width:1024px){.sc-why-grid{grid-template-columns:1fr 1fr;}.srd-grid{grid-template-columns:1fr;}.srd-dim{border-right:none;border-bottom:1px solid var(--line);}.srd-dim:last-child{border-bottom:none;}}
+    @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.sc-hero,.sc-assessment,.sc-result,.sc-why,.sc-next{padding:4rem 1.5rem;}.sc-hero{padding-top:7rem;grid-template-columns:1fr;}.sc-next{grid-template-columns:1fr;gap:3rem;}.sc-intro-band{padding:2rem 1.5rem;gap:1.5rem;}.sib-divider{display:none;}.sc-info-block{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}footer{padding:3rem 1.5rem 2rem;}}
+    @media(max-width:600px){.sc-why-grid{grid-template-columns:1fr;}.srh-top{flex-direction:column;gap:1rem;}.srh-score-block{text-align:left;}.sc-result-actions{flex-direction:column;}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
-      <span class="company-name">Finology Nexus</span>
-    </div>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <nav id="main-nav">
-      <ul>
-        <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
-        <li><a href="services.html" class="nav-link">Services</a></li>
-        <li><a href="blog.html" class="nav-link">Case Studies</a></li>
-        <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-        <li><a href="contactus.html" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
-
-  <section class="hero">
-    <div class="particles" id="particles"></div>
-    <div class="container">
-      <h1>Vendor Health Scorecard</h1>
-      <p><strong>Comprehensive Vendor Risk Clarity in Minutes</strong></p>
-      <p>A structured, regulator-aligned assessment that evaluates vendor reliability, operational discipline, and financial resilience.</p>
-      <p>Designed for teams that need clear, defensible insights before audits, renewals, or risk committee reviews.</p>
-      <div class="cta-row">
-        <a href="#assessment" class="btn btn-primary">Start Assessment</a>
-        <a href="Solutions.html" class="btn btn-secondary">View All Solutions</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="assessment" class="assessment-section">
-    <div class="container">
-      <div class="assessment-header">
-        <h2 class="section-title">Your Free Vendor Health Assessment</h2>
-        <p class="section-description">Answer 12 quick questions to generate your instant risk profile and summary report.<br>No spreadsheets. No complex forms. Just honest answers and clear insights.</p>
-      </div>
-      
-      <div class="assessment-intro">
-        <p><strong>(Be as transparent as possible — your accuracy depends on it.)</strong></p>
-      </div>
-      
-      <div class="assessment-container">
-        <form id="risk-form">
-          <!-- Vendor Information Question -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number"><i class="fas fa-building"></i></div>
-              <div class="question-text">Vendor Information</div>
-            </div>
-            <div class="options-container">
-              <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <input type="text" id="vendor-name" name="vendor-name" placeholder="Enter Vendor Name" style="padding: 1rem; border: 1px solid #e5e7eb; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem;" required>
-                <input type="text" id="assessor-name" name="assessor-name" placeholder="Your Name/Title" style="padding: 1rem; border: 1px solid #e5e7eb; border-radius: var(--radius-sm); font-family: inherit; font-size: 1rem;" required>
-              </div>
-            </div>
-          </div>
-
-          <!-- Question 1 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">1</div>
-              <div class="question-text">How long have you been working with this vendor?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q1" value="0" required>
-                <div class="option-text">Less than 1 year</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q1" value="1">
-                <div class="option-text">1–3 years</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q1" value="2">
-                <div class="option-text">More than 3 years</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 2 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">2</div>
-              <div class="question-text">How would you rate the vendor's communication?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q2" value="0" required>
-                <div class="option-text">Poor</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q2" value="1">
-                <div class="option-text">Average</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q2" value="2">
-                <div class="option-text">Excellent</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 3 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">3</div>
-              <div class="question-text">How reliable is their service delivery?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q3" value="0" required>
-                <div class="option-text">Frequently delayed or incomplete</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q3" value="1">
-                <div class="option-text">Occasionally delayed</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q3" value="2">
-                <div class="option-text">Always on time and complete</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 4 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">4</div>
-              <div class="question-text">How would you rate the quality of their work?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q4" value="0" required>
-                <div class="option-text">Poor quality, requires frequent rework</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q4" value="1">
-                <div class="option-text">Acceptable with occasional issues</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q4" value="2">
-                <div class="option-text">Consistently high quality</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 5 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">5</div>
-              <div class="question-text">How responsive are they to issues or concerns?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q5" value="0" required>
-                <div class="option-text">Slow to respond, often unresolved</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q5" value="1">
-                <div class="option-text">Responds but resolution can be slow</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q5" value="2">
-                <div class="option-text">Quick response and resolution</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 6 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">6</div>
-              <div class="question-text">How transparent is their pricing structure?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q6" value="0" required>
-                <div class="option-text">Unclear with hidden fees</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q6" value="1">
-                <div class="option-text">Mostly clear with some ambiguities</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q6" value="2">
-                <div class="option-text">Completely transparent</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 7 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">7</div>
-              <div class="question-text">How well do they adhere to security protocols?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q7" value="0" required>
-                <div class="option-text">Frequent security concerns</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q7" value="1">
-                <div class="option-text">Basic compliance with minor issues</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q7" value="2">
-                <div class="option-text">Excellent security practices</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 8 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">8</div>
-              <div class="question-text">How innovative are their solutions?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q8" value="0" required>
-                <div class="option-text">Outdated methods and technologies</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q8" value="1">
-                <div class="option-text">Occasionally introduces improvements</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q8" value="2">
-                <div class="option-text">Continuously innovative and proactive</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 9 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">9</div>
-              <div class="question-text">How would you rate their contract flexibility?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q9" value="0" required>
-                <div class="option-text">Rigid terms with unfavorable conditions</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q9" value="1">
-                <div class="option-text">Some flexibility with negotiation</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q9" value="2">
-                <div class="option-text">Very flexible and partnership-oriented</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 10 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">10</div>
-              <div class="question-text">How stable is their company financially?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q10" value="0" required>
-                <div class="option-text">Signs of financial distress</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q10" value="1">
-                <div class="option-text">Appears stable but limited information</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q10" value="2">
-                <div class="option-text">Financially strong with transparent reporting</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 11 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">11</div>
-              <div class="question-text">How would you rate their industry reputation?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q11" value="0" required>
-                <div class="option-text">Poor reputation among peers</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q11" value="1">
-                <div class="option-text">Average or mixed reviews</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q11" value="2">
-                <div class="option-text">Excellent reputation and references</div>
-              </label>
-            </div>
-          </div>
-          
-          <!-- Question 12 -->
-          <div class="question-group">
-            <div class="question-header">
-              <div class="question-number">12</div>
-              <div class="question-text">How scalable are their services with your growth?</div>
-            </div>
-            <div class="options-container">
-              <label class="option">
-                <input type="radio" name="q12" value="0" required>
-                <div class="option-text">Limited capacity for growth</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q12" value="1">
-                <div class="option-text">Can accommodate moderate growth</div>
-              </label>
-              <label class="option">
-                <input type="radio" name="q12" value="2">
-                <div class="option-text">Highly scalable for rapid growth</div>
-              </label>
-            </div>
-          </div>
-          
-          <div class="form-submit">
-            <button type="submit" class="btn btn-primary">Generate My Free Report</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="features-section">
-    <div class="container">
-      <h2 class="section-title">Why Use the Vendor Health Scorecard</h2>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <i class="fas fa-bolt"></i>
-          <h3>Quick and Simple</h3>
-          <p>Answer 12 questions in under 5 minutes and instantly receive a structured vendor health summary.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Objective and Consistent</h3>
-          <p>Move beyond gut feelings. Each response contributes to a standardized scoring model that identifies strengths, risks, and blind spots.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="fas fa-file-pdf"></i>
-          <h3>Professional Report</h3>
-          <p>Get a clean, easy-to-share PDF report that's perfect for internal meetings or audit documentation.</p>
-        </div>
-        
-        <div class="feature-card">
-          <i class="fas fa-lock-open"></i>
-          <h3>No Strings Attached</h3>
-          <p>Completely free. No email required to get started. If you want a deeper analysis later, you can request a 48-hour diagnostic review.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="result-section" id="result">
-    <div class="container">
-      <div class="result-container">
-        <h2 class="section-title">Your Vendor Health Report is Ready!</h2>
-        <div id="risk-badge" class="risk-badge"></div>
-        <p id="result-description" class="section-description"></p>
-        <div class="progress-container">
-          <div id="progress-bar" class="progress-bar"></div>
-        </div>
-        <p><strong>Your Score: <span id="score-display"></span>/24</strong></p>
-        <div class="result-actions">
-          <a href="#" id="download-link" class="btn btn-primary"><i class="fas fa-download"></i> Download Your Vendor Health Report (PDF)</a>
-          <a href="contactus.html" class="btn btn-secondary"><i class="fas fa-calendar"></i> Schedule a Free Consultation</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials-section">
-    <div class="container">
-      <h2 class="section-title">What Our Clients Say</h2>
-      
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            "We used the Scorecard before a vendor renewal and discovered gaps we never documented. It saved us from a potential compliance issue."
-          </div>
-          <div class="testimonial-author">Head of Compliance</div>
-          <div class="testimonial-role">NBFC, India</div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-text">
-            "The simplicity is what sold us. It feels like a consultant's insight packed into a quick tool."
-          </div>
-          <div class="testimonial-author">COO</div>
-          <div class="testimonial-role">Fintech Startup, Singapore</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-content">
-        <h2>Take the First Step</h2>
-        <p>Get your vendor's risk score today and see where you stand before the next audit.</p>
-        <div class="cta-buttons">
-          <a href="#assessment" class="btn btn-secondary">
-            <i class="fas fa-clipboard-list"></i> Start Free Assessment
-          </a>
-          <a href="contactus.html" class="btn btn-tertiary">
-            <i class="fas fa-file-alt"></i> Request Full Diagnostic
-          </a>
-        </div>
-        <p style="margin-top: 2rem; font-size: 1.1rem;">Have questions? Reach out to info@finologynexus.online</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-column">
-          <div class="footer-logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
-            <span class="company-name">Finology Nexus</span>
-          </div>
-          <p class="footer-about">Finology Nexus — helping financial institutions simplify vendor governance and stay audit-ready.</p>
-          <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
-
-        <div class="footer-column footer-links">
-          <h4>Strategic Solutions</h4>
-          <ul>
-            <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
-            <li><a href="nexus-global-vendor-rigor-framework.html">Nexus Global Vendor Rigor Framework</a></li>
-            <li><a href="cross-jurisdiction-risk-diagnostic.html">Cross-Jurisdiction Risk Diagnostic</a></li>
-            <li><a href="compliance-risk-tracker.html">Compliance & Risk Tracker</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column footer-links">
-          <h4>Service Capabilities</h4>
-          <ul>
-            <li><a href="services.html#research">Research & Analytics</a></li>
-            <li><a href="services.html#process">Accounting Operations</a></li>
-            <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
-            <li><a href="blog.html">Blogs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column footer-links">
-          <h4>Corporate</h4>
-          <ul>
-            <li><a href="aboutus.html">About Finology Nexus</a></li>
-            <li><a href="contactus.html">Schedule Consultation</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
-        <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="contactus.html" class="floating-cta">
-    <i class="fas fa-comments"></i> Let's Talk
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo-group">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+    <span class="company-name">Finology <span>Nexus</span></span>
   </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <!-- Services first -->
+    <li>
+      <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="financial-operations.html">Financial Operations</a>
+        <a href="financial-intelligence.html">Financial Intelligence</a>
+        <a href="data-automation.html">Data Automation</a>
+        <a href="workflow-automation.html">Workflow Automation</a>
+        <a href="process-design.html">Process Design</a>
+        <a href="embedded-support.html">Embedded Support</a>
+      </div>
+    </li>
+    <!-- Solutions with active-section class and current page in dropdown -->
+    <li class="active-section">
+      <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="finpulse.html">FinPulse Free</a>
+        <a href="cashmap.html">CashMap</a>
+        <a href="compliancecheck.html">ComplianceCheck</a>
+        <a href="vendorscan.html">VendorScan</a>
+        <a href="vendor-health-scorecard.html" class="current-sub">Vendor Health Scorecard</a>
+      </div>
+    </li>
+    <li>
+      <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="aboutus.html">Our Practice</a>
+        <a href="blog.html">Case Studies</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </li>
+    <!-- FinPulse Free as regular menu item (no highlight) -->
+    <li><a href="finpulse.html">FinPulse Free</a></li>
+  </ul>
+  <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+</nav>
 
-  <!-- Download Notice -->
-  <div id="download-notice" class="download-notice">
-    <i class="fas fa-download"></i> Generating your detailed PDF report...
-    <div class="download-progress">
-      <div class="download-progress-bar" id="download-progress-bar"></div>
+<!-- HERO -->
+<div class="sc-hero">
+  <div class="fade-up" style="position:relative;z-index:1;">
+    <div class="sc-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="Solutions.html">Intelligence Suite</a>
+      <span class="bc-sep">/</span>
+      <a href="vendorscan.html">VendorScan</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current">Vendor Health Scorecard</span>
+    </div>
+    <div class="sc-free-pill"><i class="fas fa-check-circle"></i> &nbsp; Free tool · No sign-up required</div>
+    <div class="sc-eyebrow">VendorScan — Scorecard Tool</div>
+    <h1 class="sc-title">Vendor health<br>score in under<br><em>5 minutes.</em> Free.</h1>
+    <div class="sc-tagline">RAG Risk Scoring · 12 Questions · Instant PDF Report</div>
+    <p class="sc-sub">Answer 12 structured questions about a vendor's reliability, financial health, and operational conduct. Get an instant Red/Amber/Green risk score, dimension breakdown, and a downloadable PDF report formatted for internal governance or audit documentation.</p>
+    <div class="sc-meta-strip">
+      <span class="sc-meta-item"><i class="fas fa-clock"></i> Under 5 minutes</span>
+      <span class="sc-meta-item"><i class="fas fa-check"></i> No sign-up</span>
+      <span class="sc-meta-item"><i class="fas fa-file-pdf"></i> Instant PDF</span>
+      <span class="sc-meta-item"><i class="fas fa-shield-alt"></i> Audit-ready format</span>
     </div>
   </div>
+  <div class="fade-up" style="position:relative;z-index:1;transition-delay:0.15s;">
+    <div class="sc-preview-card">
+      <div class="spc-header">
+        <span>Sample Scorecard Output</span>
+        <span style="color:rgba(255,255,255,0.18);">VendorScan</span>
+      </div>
+      <div class="spc-vendor-name">Acme Cloud Ltd.</div>
+      <div class="spc-assessor">Assessed by: Head of Procurement · 19 Feb 2026</div>
+      <div class="spc-score-row">
+        <div class="spc-ring amber">
+          <div class="spc-ring-num">15</div>
+          <div class="spc-ring-sub">/ 24</div>
+        </div>
+        <div class="spc-verdict">
+          <div class="spc-rag-pill medium">Medium Risk</div>
+          <div class="spc-verdict-text">Moderate risk. Vendor shows reliability issues and limited financial transparency. Recommend review before renewal.</div>
+        </div>
+      </div>
+      <div class="spc-dims">
+        <div class="spc-dim-row">
+          <span class="spc-dim-label">Reliability</span>
+          <div class="spc-dim-track"><div class="spc-dim-fill a" data-w="75"></div></div>
+          <span class="spc-dim-score">6/8</span>
+        </div>
+        <div class="spc-dim-row">
+          <span class="spc-dim-label">Financial</span>
+          <div class="spc-dim-track"><div class="spc-dim-fill r" data-w="38"></div></div>
+          <span class="spc-dim-score">3/8</span>
+        </div>
+        <div class="spc-dim-row">
+          <span class="spc-dim-label">Operations</span>
+          <div class="spc-dim-track"><div class="spc-dim-fill a" data-w="75"></div></div>
+          <span class="spc-dim-score">6/8</span>
+        </div>
+      </div>
+      <div class="spc-cta">
+        <span class="spc-cta-label">Your report ready instantly</span>
+        <a href="#assessment" class="spc-cta-btn">Run your assessment</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.getElementById('main-nav');
-      
-      menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        this.setAttribute('aria-expanded', nav.classList.contains('active'));
-      });
+<!-- INTRO STATS BAND -->
+<div class="sc-intro-band">
+  <div class="sib-stat">
+    <div class="sib-stat-val">12</div>
+    <div class="sib-stat-label">Questions</div>
+  </div>
+  <div class="sib-divider"></div>
+  <div class="sib-stat">
+    <div class="sib-stat-val">&lt;5min</div>
+    <div class="sib-stat-label">To Complete</div>
+  </div>
+  <div class="sib-divider"></div>
+  <div class="sib-stat">
+    <div class="sib-stat-val">3</div>
+    <div class="sib-stat-label">Risk Dimensions</div>
+  </div>
+  <div class="sib-divider"></div>
+  <div class="sib-stat">
+    <div class="sib-stat-val">PDF</div>
+    <div class="sib-stat-label">Instant Download</div>
+  </div>
+  <div class="sib-divider"></div>
+  <p class="sib-note">The scorecard is designed for teams that need <strong>clear, defensible vendor risk evidence</strong> before audits, renewals, or risk committee reviews. It takes 5 minutes and costs nothing.</p>
+</div>
 
-      // Header scroll effect
-      window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      });
+<!-- ASSESSMENT SECTION -->
+<section id="assessment" class="sc-assessment">
+  <div class="sc-assessment-inner">
+    <div class="sc-assessment-header fade-up">
+      <div class="section-label" style="color:var(--product-accent);">Vendor Health Scorecard</div>
+      <h2 class="sc-assessment-title">Score your vendor.<br><em>Know where you stand.</em></h2>
+      <p class="sc-assessment-sub">Answer honestly. The accuracy of your risk profile depends entirely on the accuracy of your inputs. If you are unsure of an answer, select the option that most closely reflects your experience, not the outcome you would prefer.</p>
+    </div>
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
+    <!-- Progress bar -->
+    <div class="sc-progress-bar-wrap fade-up">
+      <div class="sc-progress-label">
+        <span class="sc-progress-label-text">Assessment progress</span>
+        <span class="sc-progress-label-count" id="progress-count">0 / 12 answered</span>
+      </div>
+      <div class="sc-progress-track"><div class="sc-progress-fill" id="progress-fill"></div></div>
+    </div>
 
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
+    <form id="scorecard-form" autocomplete="off">
 
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 100,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
+      <!-- Vendor info -->
+      <div class="sc-info-block fade-up">
+        <div class="sc-field">
+          <label for="vendor-name">Vendor Name</label>
+          <input type="text" id="vendor-name" name="vendor-name" placeholder="e.g. Acme Cloud Ltd." required>
+        </div>
+        <div class="sc-field">
+          <label for="assessor-name">Your Name / Role</label>
+          <input type="text" id="assessor-name" name="assessor-name" placeholder="e.g. Head of Procurement" required>
+        </div>
+      </div>
 
-      // Form option selection styling
-      document.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', function() {
-          const radio = this.querySelector('input[type="radio"]');
-          if (radio) {
-            radio.checked = true;
-            
-            // Remove selected class from all options in this question
-            this.parentNode.querySelectorAll('.option').forEach(opt => {
-              opt.classList.remove('selected');
-            });
-            
-            // Add selected class to clicked option
-            this.classList.add('selected');
-          }
-        });
-      });
+      <!-- Q1: Relationship tenure -->
+      <div class="sc-question fade-up" data-q="1">
+        <div class="sc-q-header">
+          <div class="sc-q-num">01</div>
+          <div>
+            <div class="sc-q-category">Relationship Depth</div>
+            <div class="sc-q-text">How long has your organisation worked with this vendor?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q1" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Less than 1 year — limited track record to assess</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q1" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">1 to 3 years — sufficient history to identify patterns</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q1" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">More than 3 years — established relationship with documented history</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-      // Form submission handler
-      document.getElementById('risk-form').addEventListener('submit', function(event) {
-        event.preventDefault();
+      <!-- Q2: Communication -->
+      <div class="sc-question fade-up" data-q="2">
+        <div class="sc-q-header">
+          <div class="sc-q-num">02</div>
+          <div>
+            <div class="sc-q-category">Communication Quality</div>
+            <div class="sc-q-text">How would you rate the clarity and reliability of their communication?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q2" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Poor — slow responses, inconsistent information, escalations often unresolved</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q2" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Average — adequate but reactive, some communication gaps</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q2" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Excellent — proactive, structured, and consistently reliable</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-        // Validate vendor information
-        const vendorName = document.getElementById('vendor-name').value.trim();
-        const assessorName = document.getElementById('assessor-name').value.trim();
-        
-        if (!vendorName || !assessorName) {
-          alert('Please provide both vendor name and your name/title before submitting.');
-          return;
-        }
+      <!-- Q3: Service delivery -->
+      <div class="sc-question fade-up" data-q="3">
+        <div class="sc-q-header">
+          <div class="sc-q-num">03</div>
+          <div>
+            <div class="sc-q-category">Operational Reliability</div>
+            <div class="sc-q-text">How reliably does this vendor deliver against agreed commitments?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q3" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Frequently delayed or incomplete — delivery against SLA is unreliable</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q3" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Occasionally delayed — generally meets expectations with periodic lapses</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q3" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Consistently on time and complete — SLA adherence is documented and reliable</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-        // Calculate the total score
-        let totalScore = 0;
-        const formData = new FormData(this);
-        for (let [key, value] of formData) {
-          if (key.startsWith('q')) {
-            totalScore += parseInt(value, 10);
-          }
-        }
+      <!-- Q4: Quality -->
+      <div class="sc-question fade-up" data-q="4">
+        <div class="sc-q-header">
+          <div class="sc-q-num">04</div>
+          <div>
+            <div class="sc-q-category">Output Quality</div>
+            <div class="sc-q-text">How would you assess the quality of work or services delivered?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q4" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Poor — frequent errors, rework required, quality does not meet specifications</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q4" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Acceptable — meets baseline requirements with occasional quality issues</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q4" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Consistently high — quality exceeds specifications and is rarely a concern</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-        // Determine Risk Category
-        let riskCategory, riskClass, progressClass, progressWidth, description;
-        if (totalScore <= 10) {
-          riskCategory = "High Risk";
-          riskClass = "risk-high";
-          progressClass = "progress-high";
-          progressWidth = "33%";
-          description = "High risk — immediate remediation or vendor review recommended.";
-        } else if (totalScore <= 18) {
-          riskCategory = "Medium Risk";
-          riskClass = "risk-medium";
-          progressClass = "progress-medium";
-          progressWidth = "66%";
-          description = "Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
-        } else {
-          riskCategory = "Low Risk";
-          riskClass = "risk-low";
-          progressClass = "progress-low";
-          progressWidth = "100%";
-          description = "Low risk — maintain current governance and periodic review.";
-        }
+      <!-- Q5: Issue resolution -->
+      <div class="sc-question fade-up" data-q="5">
+        <div class="sc-q-header">
+          <div class="sc-q-num">05</div>
+          <div>
+            <div class="sc-q-category">Issue Resolution</div>
+            <div class="sc-q-text">When problems arise, how effectively does this vendor respond and resolve them?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q5" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Slow and often unresolved — issues frequently escalate or remain open</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q5" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Responds but resolution takes longer than acceptable</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q5" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Quick response and resolution — issues are documented and closed promptly</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-        // Update the UI
-        const riskBadge = document.getElementById('risk-badge');
-        riskBadge.textContent = riskCategory;
-        riskBadge.className = `risk-badge ${riskClass}`;
-        
-        const progressBar = document.getElementById('progress-bar');
-        progressBar.className = `progress-bar ${progressClass}`;
-        progressBar.style.width = progressWidth;
-        
-        document.getElementById('score-display').textContent = totalScore;
-        document.getElementById('result-description').textContent = description;
-        
-        // Show the result section
-        document.querySelector('.result-section').style.display = 'block';
-        
-        // Scroll to result
-        document.querySelector('.result-section').scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+      <!-- Q6: Pricing transparency -->
+      <div class="sc-question fade-up" data-q="6">
+        <div class="sc-q-header">
+          <div class="sc-q-num">06</div>
+          <div>
+            <div class="sc-q-category">Pricing Transparency</div>
+            <div class="sc-q-text">How transparent and predictable is this vendor's pricing structure?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q6" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Opaque — hidden fees, unexpected charges, or inconsistent invoicing</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q6" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Mostly clear — some ambiguities in scope or change pricing</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q6" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Fully transparent — pricing is documented, predictable, and consistently applied</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-      // Create animated particles for hero section
-      function createParticles() {
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 30;
+      <!-- Q7: Security -->
+      <div class="sc-question fade-up" data-q="7">
+        <div class="sc-q-header">
+          <div class="sc-q-num">07</div>
+          <div>
+            <div class="sc-q-category">Security and Compliance</div>
+            <div class="sc-q-text">How well does this vendor adhere to security and data handling requirements?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q7" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Frequent security concerns — incidents reported or certifications absent</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q7" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Basic compliance — meets minimum requirements with minor gaps</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q7" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Strong security posture — certified, audited, and proactively governed</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-        for (let i = 0; i < particleCount; i++) {
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
+      <!-- Q8: Innovation -->
+      <div class="sc-question fade-up" data-q="8">
+        <div class="sc-q-header">
+          <div class="sc-q-num">08</div>
+          <div>
+            <div class="sc-q-category">Forward-Looking Capability</div>
+            <div class="sc-q-text">How capable is this vendor of evolving their offer to meet your changing needs?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q8" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Outdated — methods and technology are falling behind market expectations</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q8" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Improving — occasional improvements introduced, generally reactive to market change</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q8" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Proactively innovative — regularly introduces improvements without being prompted</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-          // Random size and position
-          const size = Math.random() * 5 + 2;
-          const left = Math.random() * 100;
-          const delay = Math.random() * 15;
+      <!-- Q9: Contract flexibility -->
+      <div class="sc-question fade-up" data-q="9">
+        <div class="sc-q-header">
+          <div class="sc-q-num">09</div>
+          <div>
+            <div class="sc-q-category">Contract and Terms</div>
+            <div class="sc-q-text">How favourable and flexible are the contractual terms for your organisation?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q9" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Rigid and unfavourable — difficult exit terms, auto-renewal clauses, limited protections</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q9" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Moderate — some flexibility available through negotiation</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q9" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Flexible and fair — terms are reasonable, exit provisions are clear</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-          particle.style.width = `${size}px`;
-          particle.style.height = `${size}px`;
-          particle.style.left = `${left}%`;
-          particle.style.animationDelay = `${delay}s`;
+      <!-- Q10: Financial stability -->
+      <div class="sc-question fade-up" data-q="10">
+        <div class="sc-q-header">
+          <div class="sc-q-num">10</div>
+          <div>
+            <div class="sc-q-category">Financial Health</div>
+            <div class="sc-q-text">How financially stable does this vendor appear based on available information?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q10" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Signs of distress — delayed filings, unusual payment behaviour, leadership instability</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q10" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Appears stable — limited public information but no obvious distress signals</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q10" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Financially strong — transparent reporting, current filings, positive credit indicators</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
 
-          particlesContainer.appendChild(particle);
-        }
+      <!-- Q11: Reputation -->
+      <div class="sc-question fade-up" data-q="11">
+        <div class="sc-q-header">
+          <div class="sc-q-num">11</div>
+          <div>
+            <div class="sc-q-category">Market Reputation</div>
+            <div class="sc-q-text">How is this vendor regarded by peers and others in your industry?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q11" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Poor — negative reviews, known incidents, or concerns raised by peers</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q11" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Average — mixed or limited reputation data available</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q11" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Excellent — strong references, positive peer reviews, recognised in market</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
+
+      <!-- Q12: Scalability -->
+      <div class="sc-question fade-up" data-q="12">
+        <div class="sc-q-header">
+          <div class="sc-q-num">12</div>
+          <div>
+            <div class="sc-q-category">Scalability</div>
+            <div class="sc-q-text">How well can this vendor scale their services to match your growth trajectory?</div>
+          </div>
+        </div>
+        <div class="sc-q-options">
+          <label class="sc-option"><input type="radio" name="q12" value="0"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Limited capacity — service quality degrades under increased volume or complexity</div><div class="sc-option-score-hint">Score: 0</div></div></label>
+          <label class="sc-option"><input type="radio" name="q12" value="1"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Moderate — can accommodate incremental growth with some lead time required</div><div class="sc-option-score-hint">Score: 1</div></div></label>
+          <label class="sc-option"><input type="radio" name="q12" value="2"><div class="sc-radio"></div><div class="sc-option-body"><div class="sc-option-text">Highly scalable — demonstrated capacity to grow with clients rapidly</div><div class="sc-option-score-hint">Score: 2</div></div></label>
+        </div>
+      </div>
+
+      <div class="sc-submit-row fade-up">
+        <button type="submit" class="btn-sc-submit" id="submit-btn"><i class="fas fa-chart-bar"></i> Generate My Vendor Score</button>
+        <span class="sc-submit-note">Instant results · No data stored · Free</span>
+      </div>
+      <div class="sc-validation-msg" id="validation-msg"><i class="fas fa-exclamation-circle"></i> Please complete all 12 questions and enter vendor details before generating your report.</div>
+    </form>
+  </div>
+</section>
+
+<!-- RESULT SECTION (hidden until form submit) -->
+<section id="result" class="sc-result">
+  <div class="sc-result-inner">
+
+    <div class="section-label" style="color:var(--product-accent);">Your Vendor Health Report</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:2.5rem;">Assessment <em style="font-style:italic;color:var(--product-accent);">complete.</em></h2>
+
+    <!-- Score header card -->
+    <div class="sc-result-header">
+      <div class="srh-top">
+        <div class="srh-vendor-block">
+          <div class="srh-label">Vendor assessed</div>
+          <div class="srh-vendor-name" id="r-vendor-name">—</div>
+          <div class="srh-assessor" id="r-assessor-name">—</div>
+        </div>
+        <div class="srh-score-block">
+          <div class="srh-label">Overall Score</div>
+          <div><span class="srh-score-num" id="r-score">—</span><span class="srh-score-denom">/24</span></div>
+          <div class="srh-score-label">Composite Health Score</div>
+        </div>
+      </div>
+      <div class="srh-rag-row">
+        <div class="srh-rag-badge" id="r-rag-badge">—</div>
+        <div class="srh-description" id="r-description">—</div>
+      </div>
+      <div class="srh-progress-wrap">
+        <div class="srh-progress-track"><div class="srh-progress-fill" id="r-progress"></div></div>
+      </div>
+    </div>
+
+    <!-- Dimension breakdown -->
+    <div class="sc-result-dims">
+      <div class="srd-header">
+        <div class="srd-title">Score Breakdown by Dimension</div>
+      </div>
+      <div class="srd-grid">
+        <div class="srd-dim">
+          <div class="srd-dim-label">Reliability and Operations</div>
+          <div class="srd-dim-score" id="rd-reliability">—</div>
+          <div class="srd-dim-track"><div class="srd-dim-fill" id="rd-reliability-bar" style="background:var(--product-accent)"></div></div>
+          <div class="srd-dim-verdict" id="rd-reliability-text">—</div>
+        </div>
+        <div class="srd-dim">
+          <div class="srd-dim-label">Financial Health and Reputation</div>
+          <div class="srd-dim-score" id="rd-financial">—</div>
+          <div class="srd-dim-track"><div class="srd-dim-fill" id="rd-financial-bar" style="background:var(--product-accent)"></div></div>
+          <div class="srd-dim-verdict" id="rd-financial-text">—</div>
+        </div>
+        <div class="srd-dim">
+          <div class="srd-dim-label">Contract and Compliance</div>
+          <div class="srd-dim-score" id="rd-contract">—</div>
+          <div class="srd-dim-track"><div class="srd-dim-fill" id="rd-contract-bar" style="background:var(--product-accent)"></div></div>
+          <div class="srd-dim-verdict" id="rd-contract-text">—</div>
+        </div>
+        <div class="srd-dim">
+          <div class="srd-dim-label">Strategic Fit</div>
+          <div class="srd-dim-score" id="rd-strategic">—</div>
+          <div class="srd-dim-track"><div class="srd-dim-fill" id="rd-strategic-bar" style="background:var(--product-accent)"></div></div>
+          <div class="srd-dim-verdict" id="rd-strategic-text">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="sc-result-recs">
+      <div class="srr-header">
+        <div class="srr-title">Key Findings and Recommended Actions</div>
+      </div>
+      <div class="srr-items" id="r-recommendations"></div>
+    </div>
+
+    <!-- Answer detail (collapsible) -->
+    <div class="sc-result-answers">
+      <div class="sra-header" onclick="toggleAnswers(this)">
+        <div class="sra-title">View all 12 question responses</div>
+        <div class="sra-toggle"><i class="fas fa-plus" id="answers-toggle-icon"></i> Show</div>
+      </div>
+      <div class="sra-body" id="answers-detail"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="sc-result-actions">
+      <button class="btn-dl-report" id="download-btn"><i class="fas fa-download"></i> Download PDF Report</button>
+      <a href="contactus.html" class="btn-consult"><i class="fas fa-calendar"></i> Schedule Full VendorScan</a>
+      <button class="btn-retake" onclick="retakeAssessment()"><i class="fas fa-redo"></i> Assess another vendor</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY THIS TOOL -->
+<section class="sc-why">
+  <div class="fade-up">
+    <div class="section-label" style="color:var(--product-accent);">Why the Vendor Health Scorecard</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:0.5rem;line-height:1.1;">A structured read on every<br><em style="font-style:italic;color:var(--product-accent);">vendor relationship</em></h2>
+  </div>
+  <div class="sc-why-grid fade-up">
+    <div class="sc-why-card">
+      <div class="swc-icon">⚡</div>
+      <div class="swc-title">Quick and Structured</div>
+      <div class="swc-desc">12 questions across 4 risk dimensions. Designed to take under 5 minutes and produce a result you can use immediately: not a generic template, a scored assessment of this vendor.</div>
+    </div>
+    <div class="sc-why-card">
+      <div class="swc-icon">🚦</div>
+      <div class="swc-title">RAG Risk Output</div>
+      <div class="swc-desc">Red, Amber, Green classification calibrated to your answers, not a fixed score band. Each dimension is scored separately so you know exactly where the risk sits.</div>
+    </div>
+    <div class="sc-why-card">
+      <div class="swc-icon">📋</div>
+      <div class="swc-title">Audit-Ready PDF</div>
+      <div class="swc-desc">The downloadable report includes your vendor name, assessor, score, dimension breakdown, and specific recommendations. Formatted for risk committees, internal audits, and renewal discussions.</div>
+    </div>
+    <div class="sc-why-card">
+      <div class="swc-icon">🔒</div>
+      <div class="swc-title">No Data Retained</div>
+      <div class="swc-desc">Your answers are used only to generate the result in your browser session. Nothing is stored. No email required. The tool is genuinely free with no obligation to purchase anything.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT NEXT -->
+<div class="sc-next">
+  <div class="fade-up">
+    <div class="scn-eyebrow">Part of VendorScan</div>
+    <h2 class="scn-title">The scorecard tells you<br>where the risk is.<br><em>VendorScan tells you what to do about it.</em></h2>
+    <p class="scn-sub">The Vendor Health Scorecard covers what you already know about your vendor from direct experience. The full VendorScan assessment goes deeper: financial filings, credit indicators, contract review, concentration risk, and a senior analyst's interpretation delivered within 5 to 7 business days.</p>
+    <a href="contactus.html" class="btn-scn">Get a Full VendorScan</a>
+  </div>
+  <div class="fade-up" style="transition-delay:0.12s;">
+    <div class="scn-steps">
+      <div class="scn-step">
+        <div class="scn-step-n">01</div>
+        <div class="scn-step-body">
+          <div class="scn-step-title">Vendor Health Scorecard</div>
+          <div class="scn-step-desc">Free. Based on your direct experience. Takes 5 minutes. Gives you an instant RAG score you can use today for governance or renewal discussions.</div>
+        </div>
+      </div>
+      <div class="scn-step">
+        <div class="scn-step-n">02</div>
+        <div class="scn-step-body">
+          <div class="scn-step-title">VendorScan Full Assessment</div>
+          <div class="scn-step-desc">Analyst-led. Based on external financial data, filing review, and contract analysis. Covers your full vendor base across all four risk dimensions with a structured, defensible output.</div>
+        </div>
+      </div>
+      <div class="scn-step">
+        <div class="scn-step-n">03</div>
+        <div class="scn-step-body">
+          <div class="scn-step-title">Debrief and Action Planning</div>
+          <div class="scn-step-desc">Live walkthrough call with a senior Finology Nexus analyst. You leave with a prioritised action list and, if needed, support for vendor renegotiation or replacement planning.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="hl">Vendor Health Scorecard</span><span>·</span><span>RAG Risk Scoring</span><span>·</span><span class="hl">12 Questions</span><span>·</span><span>Instant PDF</span><span>·</span><span class="hl">Free Tool</span><span>·</span><span>No Sign-Up</span><span>·</span><span class="hl">VendorScan</span><span>·</span><span>Audit-Ready</span><span>·</span>
+    <span class="hl">Vendor Health Scorecard</span><span>·</span><span>RAG Risk Scoring</span><span>·</span><span class="hl">12 Questions</span><span>·</span><span>Instant PDF</span><span>·</span><span class="hl">Free Tool</span><span>·</span><span>No Sign-Up</span><span>·</span><span class="hl">VendorScan</span><span>·</span><span>Audit-Ready</span><span>·</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology <span>Nexus</span></span>
+      </a>
+      <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:hello@finologynexus.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Intelligence Suite</div>
+      <ul class="footer-links-list">
+        <li><a href="finpulse.html">FinPulse Free</a></li>
+        <li><a href="cashmap.html">CashMap</a></li>
+        <li><a href="compliancecheck.html">ComplianceCheck</a></li>
+        <li><a href="vendorscan.html">VendorScan</a></li>
+        <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links-list">
+        <li><a href="financial-operations.html">Financial Operations</a></li>
+        <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+        <li><a href="data-automation.html">Data Automation</a></li>
+        <li><a href="workflow-automation.html">Workflow Automation</a></li>
+        <li><a href="process-design.html">Process Design</a></li>
+        <li><a href="embedded-support.html">Embedded Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links-list">
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="blog.html">Case Studies</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="privacypolicy.html">Privacy</a></li>
+        <li><a href="termsofservice.html">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
+    <a href="mailto:hello@finologynexus.com" class="footer-email">hello@finologynexus.com</a>
+  </div>
+</footer>
+
+<a href="finance-checkup.html" class="floating-cta">
+  <i class="fas fa-heartbeat"></i> FinPulse Free
+</a>
+
+<!-- PDF Toast -->
+<div class="pdf-toast" id="pdf-toast">
+  <i class="fas fa-file-pdf"></i> Generating PDF report...
+  <div class="pdf-toast-bar" id="pdf-toast-bar"></div>
+</div>
+
+<script>
+  /* ─── COPY PROTECTION ──────────────────────────────────── */
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('keydown', e => { if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault(); });
+
+  /* ─── SCROLL ANIMATIONS ─────────────────────────────── */
+  const observer = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+
+  /* Animate preview card dimension bars */
+  const previewObs = new IntersectionObserver(e => {
+    e.forEach(x => {
+      if (x.isIntersecting) {
+        x.target.querySelectorAll('[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
       }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.sc-preview-card').forEach(el => previewObs.observe(el));
 
-      // Initialize particles when page loads
-      createParticles();
+  /* ─── PROGRESS TRACKER ──────────────────────────────── */
+  let answeredCount = 0;
+  function updateProgress() {
+    answeredCount = 0;
+    for (let i = 1; i <= 12; i++) {
+      if (document.querySelector(`input[name="q${i}"]:checked`)) answeredCount++;
+    }
+    document.getElementById('progress-count').textContent = `${answeredCount} / 12 answered`;
+    document.getElementById('progress-fill').style.width = `${(answeredCount / 12) * 100}%`;
+  }
+
+  /* ─── OPTION SELECTION ──────────────────────────────── */
+  document.querySelectorAll('.sc-option').forEach(opt => {
+    opt.addEventListener('click', function () {
+      const radio = this.querySelector('input[type="radio"]');
+      if (!radio) return;
+      radio.checked = true;
+      const qNum = radio.name;
+      this.closest('.sc-q-options').querySelectorAll('.sc-option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      // Mark question as answered
+      const qCard = this.closest('.sc-question');
+      if (qCard) {
+        qCard.classList.add('answered');
+        qCard.querySelector('.sc-q-num').classList.add('answered');
+      }
+      updateProgress();
+    });
+  });
+
+  /* ─── QUESTION DATA ─────────────────────────────────── */
+  const questions = [
+    { text: 'Relationship tenure', category: 'Relationship Depth', answers: ['Less than 1 year', '1 to 3 years', 'More than 3 years'] },
+    { text: 'Communication quality', category: 'Communication Quality', answers: ['Poor', 'Average', 'Excellent'] },
+    { text: 'Service delivery reliability', category: 'Operational Reliability', answers: ['Frequently delayed or incomplete', 'Occasionally delayed', 'Consistently on time and complete'] },
+    { text: 'Output quality', category: 'Output Quality', answers: ['Poor: frequent rework required', 'Acceptable with occasional issues', 'Consistently high quality'] },
+    { text: 'Issue resolution', category: 'Issue Resolution', answers: ['Slow and often unresolved', 'Responds but slow to resolve', 'Quick response and resolution'] },
+    { text: 'Pricing transparency', category: 'Pricing Transparency', answers: ['Opaque with hidden fees', 'Mostly clear with some ambiguity', 'Fully transparent and documented'] },
+    { text: 'Security and compliance', category: 'Security and Compliance', answers: ['Frequent security concerns', 'Basic compliance with minor gaps', 'Strong security posture and certified'] },
+    { text: 'Capability to evolve', category: 'Forward-Looking Capability', answers: ['Outdated methods and technology', 'Improving but reactive', 'Proactively innovative'] },
+    { text: 'Contract and terms', category: 'Contract and Terms', answers: ['Rigid and unfavourable', 'Moderate flexibility', 'Flexible and fair'] },
+    { text: 'Financial stability', category: 'Financial Health', answers: ['Signs of distress', 'Appears stable, limited data', 'Financially strong and transparent'] },
+    { text: 'Industry reputation', category: 'Market Reputation', answers: ['Poor reputation', 'Average or mixed', 'Excellent reputation and references'] },
+    { text: 'Scalability', category: 'Scalability', answers: ['Limited capacity', 'Moderate: incremental growth', 'Highly scalable for rapid growth'] },
+  ];
+
+  /* ─── DIMENSION SCORING MAPS ────────────────────────── */
+  // Reliability & Ops: Q1,Q2,Q3,Q4,Q5  (max 10)
+  // Financial & Reputation: Q10,Q11     (max 4)
+  // Contract & Compliance: Q6,Q7,Q9    (max 6)
+  // Strategic Fit: Q8,Q12              (max 4)
+  function getDimScores(answers) {
+    const a = answers; // index 0-11
+    return {
+      reliability: (a[0] + a[1] + a[2] + a[3] + a[4]),
+      reliabilityMax: 10,
+      financial:   (a[9] + a[10]),
+      financialMax: 4,
+      contract:    (a[5] + a[6] + a[8]),
+      contractMax: 6,
+      strategic:   (a[7] + a[11]),
+      strategicMax: 4,
+    };
+  }
+
+  function dimColor(score, max) {
+    const pct = score / max;
+    if (pct >= 0.75) return 'var(--green-light)';
+    if (pct >= 0.4)  return 'var(--amber)';
+    return '#e74c3c';
+  }
+
+  function dimVerdict(label, score, max) {
+    const pct = score / max;
+    if (pct >= 0.75) return `${label} is a strength. No immediate action required.`;
+    if (pct >= 0.4)  return `${label} shows gaps that warrant structured attention.`;
+    return `${label} is a material risk requiring priority action.`;
+  }
+
+  /* ─── RECOMMENDATIONS ───────────────────────────────── */
+  function buildRecommendations(totalScore, answers) {
+    const recs = [];
+    const a = answers;
+    if (totalScore >= 19) {
+      recs.push({ dot:'g', text:'Overall risk is low. Maintain current governance cadence. Annual comprehensive review recommended.' });
+    } else if (totalScore >= 11) {
+      recs.push({ dot:'a', text:'Moderate risk overall. Address the specific dimension gaps identified below before the next contract renewal.' });
+    } else {
+      recs.push({ dot:'r', text:'High risk. Immediate vendor review meeting recommended. Develop a contingency plan in parallel.' });
+    }
+    if (a[2] === 0 || a[3] === 0) recs.push({ dot:'r', text:'Service delivery and quality gaps are flagged. Request a formal SLA review and escalation pathway before renewal.' });
+    if (a[9] === 0) recs.push({ dot:'r', text:'Financial health concern identified. Request updated financial filings and credit references. Consider a VendorScan financial health review.' });
+    if (a[6] === 0) recs.push({ dot:'r', text:'Security and compliance gaps present. Request current certifications and audit reports. Validate data handling clauses against your requirements.' });
+    if (a[8] === 0) recs.push({ dot:'a', text:'Contract terms are unfavourable. Review exit provisions, auto-renewal clauses, and SLA enforcement mechanisms before next renewal.' });
+    if (a[0] === 0) recs.push({ dot:'a', text:'Limited relationship history. Apply enhanced monitoring for the next 12 months before treating this vendor as low risk.' });
+    if (a[5] === 0) recs.push({ dot:'a', text:'Pricing opacity creates financial exposure. Request a full pricing schedule with change mechanisms documented in writing.' });
+    return recs;
+  }
+
+  /* ─── FORM SUBMIT ────────────────────────────────────── */
+  document.getElementById('scorecard-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const vendorName = document.getElementById('vendor-name').value.trim();
+    const assessorName = document.getElementById('assessor-name').value.trim();
+    const validationMsg = document.getElementById('validation-msg');
+
+    if (!vendorName || !assessorName || answeredCount < 12) {
+      validationMsg.classList.add('show');
+      return;
+    }
+    validationMsg.classList.remove('show');
+
+    const answers = [];
+    for (let i = 1; i <= 12; i++) {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      answers.push(sel ? parseInt(sel.value) : 0);
+    }
+    const totalScore = answers.reduce((a, b) => a + b, 0);
+
+    // RAG classification
+    let ragClass, ragLabel, description;
+    if (totalScore <= 10) {
+      ragClass = 'high'; ragLabel = 'High Risk';
+      description = 'This vendor presents material risk across multiple dimensions. Immediate review is recommended before any contract renewal or expanded engagement.';
+    } else if (totalScore <= 18) {
+      ragClass = 'medium'; ragLabel = 'Medium Risk';
+      description = 'Moderate risk identified. Specific gaps are flagged below. Address these before renewal and consider enhanced monitoring in the interim period.';
+    } else {
+      ragClass = 'low'; ragLabel = 'Low Risk';
+      description = 'Vendor demonstrates strong performance across dimensions. Maintain current governance and review annually. No urgent action required.';
+    }
+
+    // Populate result header
+    document.getElementById('r-vendor-name').textContent = vendorName;
+    document.getElementById('r-assessor-name').textContent = `Assessed by: ${assessorName} · ${new Date().toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}`;
+    document.getElementById('r-score').textContent = totalScore;
+    const badge = document.getElementById('r-rag-badge');
+    badge.textContent = ragLabel;
+    badge.className = `srh-rag-badge ${ragClass}`;
+    document.getElementById('r-description').textContent = description;
+    // Progress
+    const prog = document.getElementById('r-progress');
+    prog.className = `srh-progress-fill ${ragClass}`;
+    setTimeout(() => { prog.style.width = `${(totalScore/24)*100}%`; }, 200);
+
+    // Dimensions
+    const dims = getDimScores(answers);
+    function fillDim(id, score, max) {
+      document.getElementById(`rd-${id}`).textContent = `${score} / ${max}`;
+      const bar = document.getElementById(`rd-${id}-bar`);
+      bar.style.background = dimColor(score, max);
+      setTimeout(() => { bar.style.width = `${(score/max)*100}%`; }, 300);
+      document.getElementById(`rd-${id}-text`).textContent = dimVerdict({ reliability:'Reliability and Operations', financial:'Financial health and reputation', contract:'Contract and compliance', strategic:'Strategic fit' }[id], score, max);
+    }
+    fillDim('reliability', dims.reliability, dims.reliabilityMax);
+    fillDim('financial',   dims.financial,   dims.financialMax);
+    fillDim('contract',    dims.contract,    dims.contractMax);
+    fillDim('strategic',   dims.strategic,   dims.strategicMax);
+    // Fix verdict text per dimension
+    document.getElementById('rd-reliability-text').textContent = dimVerdict('Reliability and operations', dims.reliability, dims.reliabilityMax);
+    document.getElementById('rd-financial-text').textContent   = dimVerdict('Financial health and reputation', dims.financial, dims.financialMax);
+    document.getElementById('rd-contract-text').textContent    = dimVerdict('Contract and compliance', dims.contract, dims.contractMax);
+    document.getElementById('rd-strategic-text').textContent   = dimVerdict('Strategic fit', dims.strategic, dims.strategicMax);
+
+    // Recommendations
+    const recs = buildRecommendations(totalScore, answers);
+    const recsEl = document.getElementById('r-recommendations');
+    recsEl.innerHTML = recs.map(r => `
+      <div class="srr-item">
+        <div class="srr-dot ${r.dot}"></div>
+        <div class="srr-text">${r.text}</div>
+      </div>`).join('');
+
+    // Answers detail
+    const detailEl = document.getElementById('answers-detail');
+    detailEl.innerHTML = answers.map((score, i) => {
+      const q = questions[i];
+      const chosen = q.answers[score] || `Score ${score}`;
+      const dotClass = score === 2 ? 'g' : score === 1 ? 'a' : 'r';
+      return `<div class="sra-row">
+        <div class="sra-num">Q${i+1}</div>
+        <div class="sra-q"><strong>${q.category}</strong>${q.text} → ${chosen}</div>
+        <div class="sra-score-dot" style="color:${score===2?'var(--green-light)':score===1?'var(--amber)':'#e74c3c'}">${score}/2</div>
+      </div>`;
+    }).join('');
+
+    // Store for PDF
+    window._scData = { vendorName, assessorName, totalScore, ragLabel, ragClass, description, answers, dims, recs };
+
+    // Show result, scroll to it
+    const resultSection = document.getElementById('result');
+    resultSection.classList.add('visible');
+    setTimeout(() => { resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+  });
+
+  /* ─── ANSWERS TOGGLE ────────────────────────────────── */
+  function toggleAnswers(header) {
+    const body = document.getElementById('answers-detail');
+    const icon = document.getElementById('answers-toggle-icon');
+    const toggle = header.querySelector('.sra-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open');
+    icon.className = isOpen ? 'fas fa-plus' : 'fas fa-minus';
+    toggle.innerHTML = (isOpen ? '<i class="fas fa-plus" id="answers-toggle-icon"></i> Show' : '<i class="fas fa-minus" id="answers-toggle-icon"></i> Hide');
+  }
+
+  /* ─── RETAKE ─────────────────────────────────────────── */
+  function retakeAssessment() {
+    document.getElementById('scorecard-form').reset();
+    document.querySelectorAll('.sc-option').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('.sc-question').forEach(q => { q.classList.remove('answered'); q.querySelector('.sc-q-num').classList.remove('answered'); });
+    document.getElementById('result').classList.remove('visible');
+    answeredCount = 0;
+    updateProgress();
+    document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  /* ─── PDF DOWNLOAD ──────────────────────────────────── */
+  document.getElementById('download-btn').addEventListener('click', function () {
+    const d = window._scData;
+    if (!d) return;
+
+    const toast = document.getElementById('pdf-toast');
+    const toastBar = document.getElementById('pdf-toast-bar');
+    toast.classList.add('show');
+    toastBar.style.width = '0%';
+    setTimeout(() => { toastBar.style.width = '100%'; }, 50);
+
+    setTimeout(() => {
+      generatePDF(d);
+      toast.classList.remove('show');
+    }, 2600);
+  });
+
+  function generatePDF(d) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const teal = [26, 74, 74];
+    const tealLight = [42, 112, 112];
+    const paper = [245, 242, 236];
+    const ink = [28, 42, 58];
+    const green = [74, 140, 98];
+    const amber = [201, 125, 32];
+    const red = [192, 57, 43];
+    const ragColor = d.ragClass === 'low' ? green : d.ragClass === 'medium' ? amber : red;
+
+    // Header strip
+    doc.setFillColor(...teal);
+    doc.rect(0, 0, 210, 38, 'F');
+    doc.setTextColor(245, 242, 236);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.text('Finology Nexus', 14, 14);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Vendor Health Scorecard Report', 14, 22);
+    doc.text(`Generated: ${new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' })}`, 14, 30);
+
+    // Vendor info
+    doc.setTextColor(...ink);
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.text(d.vendorName, 14, 52);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(107, 122, 138);
+    doc.text(`Assessed by: ${d.assessorName}`, 14, 59);
+
+    // Score block
+    doc.setFontSize(36);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...ragColor);
+    doc.text(`${d.totalScore}/24`, 14, 84);
+    doc.setFillColor(...ragColor);
+    doc.roundedRect(14, 88, 55, 10, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'bold');
+    doc.text(d.ragLabel.toUpperCase(), 41, 95, { align: 'center' });
+
+    // Description
+    doc.setTextColor(...ink);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    const descLines = doc.splitTextToSize(d.description, 120);
+    doc.text(descLines, 80, 52);
+
+    // Progress bar
+    doc.setFillColor(230, 230, 225);
+    doc.rect(14, 105, 182, 4, 'F');
+    doc.setFillColor(...ragColor);
+    doc.rect(14, 105, 182 * (d.totalScore / 24), 4, 'F');
+
+    // Divider
+    doc.setDrawColor(225, 220, 210);
+    doc.line(14, 116, 196, 116);
+
+    // Dimension breakdown
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...ink);
+    doc.text('Score Breakdown by Dimension', 14, 125);
+
+    const dims = [
+      { label: 'Reliability and Operations', score: d.dims.reliability, max: d.dims.reliabilityMax },
+      { label: 'Financial Health and Reputation', score: d.dims.financial, max: d.dims.financialMax },
+      { label: 'Contract and Compliance', score: d.dims.contract, max: d.dims.contractMax },
+      { label: 'Strategic Fit', score: d.dims.strategic, max: d.dims.strategicMax },
+    ];
+
+    let y = 133;
+    dims.forEach(dim => {
+      const pct = dim.score / dim.max;
+      const col = pct >= 0.75 ? green : pct >= 0.4 ? amber : red;
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(107, 122, 138);
+      doc.text(dim.label, 14, y);
+      doc.setTextColor(...col);
+      doc.setFont('helvetica', 'bold');
+      doc.text(`${dim.score}/${dim.max}`, 196, y, { align: 'right' });
+      doc.setFillColor(230, 230, 225);
+      doc.rect(14, y + 2, 170, 3, 'F');
+      doc.setFillColor(...col);
+      doc.rect(14, y + 2, 170 * pct, 3, 'F');
+      y += 14;
     });
 
-    // PDF Download Functionality
-    document.getElementById('download-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        generateDetailedPDFReport();
+    doc.line(14, y, 196, y);
+    y += 8;
+
+    // Recommendations
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(...ink);
+    doc.text('Key Findings and Recommended Actions', 14, y);
+    y += 8;
+
+    d.recs.forEach(rec => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      const col = rec.dot === 'g' ? green : rec.dot === 'a' ? amber : red;
+      doc.setFillColor(...col);
+      doc.circle(16, y - 1, 1.5, 'F');
+      doc.setTextColor(...ink);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      const lines = doc.splitTextToSize(rec.text, 173);
+      doc.text(lines, 21, y);
+      y += (lines.length * 5) + 4;
     });
 
-    function generateDetailedPDFReport() {
-        // Get the score and risk category
-        const totalScore = parseInt(document.getElementById('score-display').textContent);
-        const riskCategory = document.getElementById('risk-badge').textContent;
-        const description = document.getElementById('result-description').textContent;
-        
-        // Get all the user's answers
-        const userAnswers = getUserAnswers();
-        
-        // Show download progress
-        const downloadNotice = document.getElementById('download-notice');
-        const progressBar = document.getElementById('download-progress-bar');
-        downloadNotice.classList.add('show');
-        progressBar.style.width = '0%';
-        
-        // Simulate progress
-        let progress = 0;
-        const progressInterval = setInterval(() => {
-            progress += 10;
-            progressBar.style.width = `${progress}%`;
-            
-            if (progress >= 100) {
-                clearInterval(progressInterval);
-                
-                // Generate the PDF
-                generatePDF(totalScore, riskCategory, description, userAnswers);
-                
-                // Hide download notice after a delay
-                setTimeout(() => {
-                    downloadNotice.classList.remove('show');
-                }, 1000);
-            }
-        }, 100);
+    y += 4;
+    if (y > 240) { doc.addPage(); y = 20; }
+    doc.line(14, y, 196, y);
+    y += 8;
+
+    // Detailed answers
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(...ink);
+    doc.text('Detailed Question Responses', 14, y);
+    y += 8;
+
+    d.answers.forEach((score, i) => {
+      if (y > 270) { doc.addPage(); y = 20; }
+      const q = questions[i];
+      const chosen = q.answers[score] || `Score ${score}`;
+      const col = score === 2 ? green : score === 1 ? amber : red;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(...ink);
+      const qLines = doc.splitTextToSize(`${i+1}. ${q.category}: ${q.text}`, 168);
+      doc.text(qLines, 14, y);
+      y += qLines.length * 4 + 2;
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...col);
+      doc.text(`→ ${chosen} (${score}/2)`, 18, y);
+      y += 7;
+    });
+
+    // Footer on all pages
+    const pc = doc.internal.getNumberOfPages();
+    for (let p = 1; p <= pc; p++) {
+      doc.setPage(p);
+      doc.setFillColor(...teal);
+      doc.rect(0, 284, 210, 13, 'F');
+      doc.setTextColor(245, 242, 236);
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Confidential · Finology Nexus Vendor Health Scorecard', 105, 290, { align: 'center' });
+      doc.text(`Page ${p} of ${pc}  ·  finologynexus.online`, 105, 294, { align: 'center' });
     }
 
-    function getUserAnswers() {
-        const answers = [];
-        const questions = document.querySelectorAll('.question-group');
-        
-        // Capture the actual assessment questions
-        questions.forEach((question, index) => {
-            // Skip the first question group (vendor info)
-            if (index === 0) return;
-            
-            const questionText = question.querySelector('.question-text').textContent;
-            const selectedOption = question.querySelector('input[type="radio"]:checked');
-            
-            if (selectedOption) {
-                const answerText = selectedOption.closest('.option').querySelector('.option-text').textContent;
-                const score = parseInt(selectedOption.value);
-                
-                answers.push({
-                    questionNumber: index, // This will be 1-12
-                    question: questionText,
-                    answer: answerText,
-                    score: score
-                });
-            }
-        });
-        
-        return answers;
-    }
-
-    function generatePDF(totalScore, riskCategory, description, userAnswers) {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        
-        // Get vendor and assessor names
-        const vendorName = document.getElementById('vendor-name').value || 'Not Provided';
-        const assessorName = document.getElementById('assessor-name').value || 'Not Provided';
-        
-        // Set document properties
-        doc.setProperties({
-            title: `Vendor Health Assessment Report - ${vendorName}`,
-            subject: 'Vendor Risk Assessment',
-            author: 'Finology Nexus',
-            keywords: 'vendor, risk, assessment, health, scorecard',
-            creator: 'Finology Nexus'
-        });
-        
-        // Add header with better styling
-        doc.setFillColor(106, 13, 173); // Purple
-        doc.rect(0, 0, 210, 40, 'F');
-        
-        // Add white text for header with centered alignment
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(20);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Finology Nexus', 105, 15, { align: 'center' });
-        doc.setFontSize(14);
-        doc.text('Vendor Health Assessment Report', 105, 25, { align: 'center' });
-        
-        // Vendor information section with better formatting
-        doc.setFontSize(12);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(0, 0, 0);
-        doc.text('Assessment Details', 15, 50);
-        
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'normal');
-        const currentDate = new Date().toLocaleDateString();
-        doc.text(`Report Date: ${currentDate}`, 15, 60);
-        doc.text(`Vendor Name: ${vendorName}`, 15, 67);
-        doc.text(`Assessed By: ${assessorName}`, 15, 74);
-        
-        // Score section with better layout
-        doc.setFontSize(16);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Overall Vendor Health Score', 15, 90);
-        
-        // Score display with better alignment
-        doc.setFontSize(32);
-        doc.setFont('helvetica', 'bold');
-        const scoreText = `${totalScore}/24`;
-        const scoreWidth = doc.getTextWidth(scoreText);
-        doc.text(scoreText, 105 - (scoreWidth / 2), 110, { align: 'center' });
-        
-        // Risk badge with centered alignment
-        let riskColor;
-        if (riskCategory.includes('High')) {
-            riskColor = [231, 76, 60];
-        } else if (riskCategory.includes('Medium')) {
-            riskColor = [243, 156, 18];
-        } else {
-            riskColor = [46, 204, 113];
-        }
-        
-        doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
-        const badgeWidth = 55;
-        const badgeX = 105 - (badgeWidth / 2); // Center the badge
-        doc.roundedRect(badgeX, 120, badgeWidth, 20, 10, 10, 'F');
-        doc.setTextColor(255, 255, 255);
-        doc.setFontSize(12);
-        doc.setFont('helvetica', 'bold');
-        doc.text(riskCategory, 105, 132, { align: 'center' });
-        
-        // Description with proper text wrapping and alignment
-        doc.setTextColor(0, 0, 0);
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'normal');
-        
-        // Clean description and ensure proper text
-        let cleanDescription = description.replace(/[^\x00-\x7F]/g, '');
-        if (!cleanDescription || cleanDescription.trim() === '') {
-            cleanDescription = "Moderate risk — consider reviewing contracts, security practices, or reporting cadence.";
-        }
-        
-        const descriptionLines = doc.splitTextToSize(cleanDescription, 180);
-        doc.text(descriptionLines, 15, 160);
-        
-        // Recommendations section with proper formatting
-        let yPosition = 160 + (descriptionLines.length * 5) + 10;
-        
-        // Check if we need a new page
-        if (yPosition > 250) {
-            doc.addPage();
-            yPosition = 20;
-        }
-        
-        doc.setFontSize(14);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Recommendations', 15, yPosition);
-        yPosition += 10;
-        
-        const recommendations = getRecommendations(totalScore);
-        const recommendationLines = doc.splitTextToSize(recommendations, 180);
-        doc.setFontSize(10);
-        doc.setFont('helvetica', 'normal');
-        doc.text(recommendationLines, 15, yPosition);
-        yPosition += (recommendationLines.length * 5) + 15;
-        
-        // Detailed answers on a new page
-        doc.addPage();
-        
-        // Detailed answers header
-        doc.setFontSize(16);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Detailed Assessment Results', 15, 20);
-        
-        yPosition = 35;
-        
-        // Add each question and answer with proper formatting
-        doc.setFontSize(10);
-        
-        userAnswers.forEach((answer, index) => {
-            // Check if we need a new page
-            if (yPosition > 270) {
-                doc.addPage();
-                yPosition = 20;
-            }
-            
-            // Question with proper numbering and wrapping
-            doc.setFont('helvetica', 'bold');
-            const questionText = `${answer.questionNumber}. ${answer.question}`;
-            const questionLines = doc.splitTextToSize(questionText, 180);
-            doc.text(questionLines, 15, yPosition);
-            yPosition += (questionLines.length * 5) + 3;
-            
-            // Answer with score indicator
-            doc.setFont('helvetica', 'normal');
-            const answerText = `Answer: ${answer.answer} (Score: ${answer.score}/2)`;
-            const answerLines = doc.splitTextToSize(answerText, 180);
-            doc.text(answerLines, 20, yPosition);
-            yPosition += (answerLines.length * 5) + 8;
-            
-            // Add separator line except for last item
-            if (index < userAnswers.length - 1 && yPosition < 270) {
-                doc.setDrawColor(200, 200, 200);
-                doc.line(15, yPosition, 195, yPosition);
-                yPosition += 10;
-            }
-        });
-        
-        // Add footer to all pages with proper alignment
-        const pageCount = doc.internal.getNumberOfPages();
-        for (let i = 1; i <= pageCount; i++) {
-            doc.setPage(i);
-            doc.setFontSize(8);
-            doc.setTextColor(100, 100, 100);
-            doc.text('Confidential - Generated by Finology Nexus Vendor Health Scorecard', 105, 285, { align: 'center' });
-            doc.text(`Page ${i} of ${pageCount}`, 105, 290, { align: 'center' });
-        }
-        
-        // Save the PDF with vendor name included
-        const cleanVendorName = vendorName.replace(/[^a-zA-Z0-9]/g, '_');
-        const filename = `Vendor_Health_Report_${cleanVendorName}_${new Date().toISOString().split('T')[0]}.pdf`;
-        doc.save(filename);
-    }
-
-    function getRecommendations(totalScore) {
-        if (totalScore <= 10) {
-            return "IMMEDIATE ACTION REQUIRED: Conduct thorough vendor review meeting. Review and potentially renegotiate contract terms. Implement enhanced monitoring and reporting requirements. Develop contingency plan for vendor replacement. Schedule follow-up assessment in 30 days.";
-        } else if (totalScore <= 18) {
-            return "MODERATE RISK - MONITOR CLOSELY: Address specific areas of concern. Request additional documentation for weak areas. Schedule quarterly review meetings. Consider contract amendments for problem areas. Reassess in 3-6 months.";
-        } else {
-            return "LOW RISK - MAINTAIN PARTNERSHIP: Continue current governance practices. Maintain regular communication cadence. Annual comprehensive review recommended. Consider strategic partnership opportunities. Share positive feedback with vendor.";
-        }
-    }
-  </script>
+    const safeName = d.vendorName.replace(/[^a-zA-Z0-9]/g, '_');
+    doc.save(`Vendor_Health_Report_${safeName}_${new Date().toISOString().split('T')[0]}.pdf`);
+  }
+</script>
 </body>
 </html>
