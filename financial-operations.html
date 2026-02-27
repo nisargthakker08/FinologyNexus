@@ -171,7 +171,7 @@
     .metric-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: white; }
     .metric-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
 
-    /* Problem snapshot */
+    /* Problem snapshot (unified style for both problem blocks) */
     .problem-snapshot{border:1px solid var(--line);background:var(--paper);padding:2rem;}
     .ps-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;}
     .ps-items{display:flex;flex-direction:column;gap:0;}
@@ -419,8 +419,8 @@
     </div>
   </div>
 
-  <!-- PROBLEM SNAPSHOT (added) -->
-  <section style="padding: 0 4rem 4rem;">
+  <!-- PROBLEM SNAPSHOT 1 (financial operations) -->
+  <section style="padding: 0 4rem 2rem;">
     <div class="problem-snapshot">
       <div class="ps-label">When financial execution is unstable, everything else slows down</div>
       <div class="ps-items">
@@ -431,6 +431,21 @@
         <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Auditors or advisors ask basic questions repeatedly</div></div>
       </div>
       <div class="ps-resolution"><p>These are not strategy problems. They are execution gaps, and this is exactly where we work.</p></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SNAPSHOT 2 (added - from your request) -->
+  <section style="padding: 0 4rem 4rem;">
+    <div class="problem-snapshot">
+      <div class="ps-label">Data is not insight. Insight is knowing what to do next.</div>
+      <div class="ps-items">
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Reports exist but decisions still feel uncertain</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Forecasts change without clear explanation</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Leaders ask follow-up questions after every review</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Financial conversations feel reactive rather than planned</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Analysis is only created when urgently requested</div></div>
+      </div>
+      <div class="ps-resolution"><p>Most teams can produce reports. Very few can confidently explain what those numbers mean for decisions that actually matter.</p></div>
     </div>
   </section>
 
