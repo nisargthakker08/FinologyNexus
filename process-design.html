@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Process Design, SOPs, and Control Frameworks · Finology Nexus</title>
-  <meta name="description" content="Document, standardise, and strengthen operational processes so work does not depend on tribal knowledge. Reduce risk, improve audit readiness, and scale with confidence.">
+  <title>Process Design, SOPs and Control Frameworks · Finology Nexus</title>
+  <meta name="description" content="Document and strengthen operational processes so execution does not depend on individuals. End-to-end SOPs, internal controls, and audit readiness for growing businesses.">
   <meta name="keywords" content="process design, SOPs, standard operating procedures, control frameworks, internal controls, audit readiness, Finology Nexus">
   <meta name="author" content="Finology Nexus">
   <link rel="canonical" href="https://www.finologynexus.online/process-design.html">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="finology-logofavicon.png">
 
   <!-- Google Tag Manager -->
@@ -35,42 +33,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ----- GLOBAL STYLES (consistent with Finology Nexus) ----- */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #1c2a3a; --ink-light: #2a3a4a; --ink-muted: #6b7a8a;
-      --paper: #f5f2ec; --paper-warm: #ede9e1;
-      --accent: #b8955a; --accent-light: #d4b07a; --accent-pale: #f0e6d3;
-      --green: #2d5a3d; --green-light: #4a8c62;
-      --amber: #e67e22; --red-soft: #c0392b;
-      --line: rgba(28,42,58,0.12);
-      --transition: all 0.25s ease;
+    /* ----- GLOBAL STYLES (combined) ----- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;
+      --amber:#e67e22;--red-soft:#c0392b;
+      --line:rgba(28,42,58,0.12);
+      --transition:all 0.25s ease;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      /* Disable text selection */
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
     }
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.25rem;
-      display: flex; align-items: center; gap: 0.75rem;
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{
+      font-family:'DM Mono',monospace;
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:1.25rem;
+      display:flex;align-items:center;gap:0.75rem;
     }
-    .section-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--accent); display: inline-block; }
-    .section-title { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; line-height: 1.1; }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-body { font-size: 1rem; color: var(--ink-muted); max-width: 560px; font-weight: 300; line-height: 1.7; }
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .section-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:1rem;line-height:1.1;}
+    .section-title em{font-style:italic;color:var(--accent);}
+    .section-body{font-size:1rem;color:var(--ink-muted);max-width:560px;font-weight:300;line-height:1.7;}
 
     /* NAV with dropdowns */
     nav {
@@ -83,8 +77,7 @@
     }
     .logo-group {
       display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none;
-      color: inherit;
+      text-decoration: none; color: inherit;
     }
     .company-logo { width: 40px; height: 40px; object-fit: contain; }
     .company-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); text-decoration: none; }
@@ -101,13 +94,11 @@
     .nav-links a i { font-size: 0.6rem; transition: transform 0.2s; }
     .nav-links li:hover a i { transform: rotate(180deg); }
 
-    /* Active section (parent) highlight */
     .active-section > a {
       color: var(--accent) !important;
       font-weight: 600;
     }
 
-    /* Dropdown */
     .dropdown-content {
       position: absolute; top: 2rem; left: -1rem;
       background: white; border: 1px solid var(--line);
@@ -115,23 +106,15 @@
       opacity: 0; visibility: hidden; transition: all 0.2s;
       box-shadow: var(--shadow-md); z-index: 10;
     }
-    .nav-links li:hover .dropdown-content {
-      opacity: 1; visibility: visible;
-    }
+    .nav-links li:hover .dropdown-content { opacity: 1; visibility: visible; }
     .dropdown-content a {
       display: block; padding: 0.5rem 1.5rem;
       font-size: 0.75rem; text-transform: none; letter-spacing: 0.05em;
       color: var(--ink-muted);
     }
     .dropdown-content a:hover { background: var(--paper-warm); color: var(--ink); }
-    .dropdown-content a.active {
-      color: var(--accent);
-      font-weight: 600;
-      background: var(--paper-warm);
-    }
+    .dropdown-content a.active { color: var(--accent); font-weight: 600; background: var(--paper-warm); }
 
-    /* FinPulse link – normal style (no highlight) */
-    .nav-links .finpulse-link a { color: var(--ink-muted); font-weight: 500; }
     .nav-cta {
       font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--paper); background: var(--ink);
@@ -139,33 +122,30 @@
     }
     .nav-cta:hover { background: var(--accent); }
 
-    /* Hero section */
-    .hero {
-      padding: 10rem 4rem 5rem;
-      background: linear-gradient(to bottom, var(--paper-warm), var(--paper));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .hero-left h1 { font-size: clamp(2.8rem, 4vw, 3.8rem); margin-bottom: 1.5rem; }
-    .hero-left h1 em { color: var(--accent); font-style: italic; }
-    .hero-left p { font-size: 1rem; color: var(--ink-muted); margin-bottom: 2rem; max-width: 480px; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--paper); background: var(--ink); padding: 0.9rem 2rem;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .btn-primary:hover { background: var(--accent); }
-    .btn-outline {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink); background: transparent; border: 1px solid var(--ink-muted); padding: 0.9rem 2rem;
-      text-decoration: none; transition: background 0.2s, border-color 0.2s;
-    }
-    .btn-outline:hover { background: var(--paper-warm); border-color: var(--ink); }
+    /* HERO (left: text, right: chart) */
+    .page-hero{padding:9rem 4rem 0;display:grid;grid-template-columns:1.1fr 0.9fr;min-height:72vh;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:var(--paper-warm);z-index:0;}
+    .ph-left{position:relative;z-index:1;padding:4rem 4rem 5rem 0;display:flex;flex-direction:column;justify-content:center;}
+    .ph-right{position:relative;z-index:1;padding:4rem 0 5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .ph-breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;}
+    .ph-breadcrumb a{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;}
+    .ph-breadcrumb a:hover{color:var(--accent);}
+    .ph-breadcrumb span{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--line);padding:0 0.2rem;}
+    .ph-breadcrumb .current{color:var(--accent);}
+    .ph-eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .ph-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);display:inline-block;}
+    .ph-cap-num{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(28,42,58,0.3);margin-bottom:0.75rem;}
+    .ph-title{font-size:clamp(2.6rem,4.5vw,4rem);font-weight:300;line-height:1.05;letter-spacing:-0.015em;color:var(--ink);margin-bottom:1.25rem;}
+    .ph-title em{font-style:italic;color:var(--accent);}
+    .ph-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .ph-sub{font-size:1rem;color:var(--ink-muted);line-height:1.75;font-weight:300;max-width:480px;margin-bottom:2.5rem;}
+    .ph-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--accent);}
+    .btn-outline{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink-muted);padding:0.9rem 2rem;text-decoration:none;transition:background 0.2s,border-color 0.2s;}
+    .btn-outline:hover{background:var(--paper-warm);border-color:var(--ink);}
 
-    /* Corporate visual (right side) */
+    /* Hero right: chart */
     .hero-right {
       background: var(--ink);
       padding: 2.5rem;
@@ -191,85 +171,163 @@
     .metric-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: white; }
     .metric-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
 
-    /* Content sections */
-    section { padding: 5rem 4rem; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .problem-list { list-style: none; }
-    .problem-list li { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-    .problem-list li::before { content: '—'; color: var(--accent); font-size: 0.9rem; }
-    .what-we-do-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-      background: var(--line); border: 1px solid var(--line);
-      margin-top: 2rem;
+    /* Problem snapshot */
+    .problem-snapshot{border:1px solid var(--line);background:var(--paper);padding:2rem;}
+    .ps-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;}
+    .ps-items{display:flex;flex-direction:column;gap:0;}
+    .ps-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--line);}
+    .ps-item:last-child{border-bottom:none;}
+    .ps-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.5rem;}
+    .ps-item-text{font-size:0.83rem;color:var(--ink-muted);line-height:1.5;font-weight:300;}
+    .ps-resolution{margin-top:1.25rem;padding:1rem 1.25rem;background:var(--accent-pale);border-left:3px solid var(--accent);}
+    .ps-resolution p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink);font-style:italic;line-height:1.5;}
+
+    /* WHAT WE DO */
+    .what-section{padding:6rem 4rem;background:var(--paper-warm);}
+    .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem;}
+    .what-card{background:var(--paper);padding:2.5rem;transition:background 0.2s;}
+    .what-card:hover{background:var(--accent-pale);}
+    .what-card-icon{font-size:1.5rem;margin-bottom:1rem;display:block;}
+    .what-card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;line-height:1.2;}
+    .what-card-desc{font-size:0.83rem;color:var(--ink-muted);line-height:1.65;font-weight:300;}
+
+    /* HOW WE EMBED */
+    .embed-section{padding:0;display:grid;grid-template-columns:1fr 1fr;}
+    .embed-left{background:var(--ink);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .embed-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .embed-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--paper);line-height:1.15;margin-bottom:1.25rem;}
+    .embed-title em{font-style:italic;color:var(--accent-light);}
+    .embed-body{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.8;font-weight:300;margin-bottom:2rem;}
+    .embed-points{display:flex;flex-direction:column;gap:0.75rem;}
+    .embed-point{display:flex;align-items:flex-start;gap:0.75rem;}
+    .embed-point-icon{font-size:1rem;flex-shrink:0;margin-top:0.1rem;}
+    .embed-point-text{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.55;font-weight:300;}
+    .embed-right .section-label{color:var(--accent);}
+    .change-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);}
+    .change-item{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--line);transition:background 0.2s;}
+    .change-item:last-child{border-bottom:none;}
+    .change-item:hover{background:var(--accent-pale);}
+    .change-arrow{font-size:0.9rem;color:var(--accent);}
+    .change-text{font-size:0.85rem;color:var(--ink-muted);font-weight:300;line-height:1.45;}
+
+    /* WHO NEEDS IT */
+    .who-section{padding:5rem 4rem;background:var(--paper);}
+    .who-inner{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start;}
+    .who-sticky{position:sticky;top:7rem;}
+    .who-cards{display:flex;flex-direction:column;gap:1px;border:1px solid var(--line);background:var(--line);}
+    .who-card{background:var(--paper-warm);padding:1.75rem 2rem;transition:background 0.2s;}
+    .who-card:hover{background:var(--paper);}
+    .who-card-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
+    .who-card-desc{font-size:0.82rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+
+    /* OTHER CAPABILITIES (flex layout) */
+    .related-section{background:var(--paper-warm);padding:5rem 4rem;}
+    .related-grid{
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 3rem;
     }
-    .wwd-card {
-      background: var(--paper-warm); padding: 2rem;
-      transition: background 0.3s;
+    .related-card{
+      flex: 1 1 0;
+      background: var(--paper);
+      padding: 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: block;
     }
-    .wwd-card:hover { background: var(--paper); }
-    .wwd-card i { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .wwd-card h3 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.5rem; }
-    .wwd-card p { font-size: 0.85rem; color: var(--ink-muted); }
-
-    .embed-steps {
-      display: flex; gap: 1px; background: var(--line); border: 1px solid var(--line);
-      margin: 2rem 0;
+    .related-card:hover{
+      background: var(--accent-pale);
     }
-    .embed-step { background: var(--paper-warm); padding: 2rem; flex: 1; }
-    .step-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; }
-    .embed-step h4 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
-    .embed-step p { font-size: 0.8rem; color: var(--ink-muted); }
-
-    .who-box {
-      background: var(--ink); color: white; padding: 3rem; border-radius: 24px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    .related-card:not(:last-child){
+      border-right: 1px solid var(--line);
     }
-    .who-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .who-item i { color: var(--accent); font-size: 1.2rem; margin-top: 0.2rem; }
-    .who-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-
-    .outcome-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-      background: var(--line); border: 1px solid var(--line);
-      margin-top: 2rem;
+    .related-num{
+      font-family:'DM Mono',monospace;
+      font-size:0.55rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--accent);
+      opacity:0.7;
+      margin-bottom:0.75rem;
     }
-    .outcome-card { background: var(--paper-warm); padding: 2rem; text-align: center; }
-    .outcome-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
-    .outcome-card p { font-size: 0.85rem; color: var(--ink-muted); }
+    .related-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.15rem;
+      font-weight:400;
+      color:var(--ink);
+      margin-bottom:0.5rem;
+      line-height:1.2;
+    }
+    .related-desc{
+      font-size:0.78rem;
+      color:var(--ink-muted);
+      line-height:1.6;
+      font-weight:300;
+    }
+    .related-link{
+      font-family:'DM Mono',monospace;
+      font-size:0.58rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-top:1rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.4rem;
+    }
+    .related-link::after{content:'→';}
 
-    /* Footer */
-    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 4rem 2.5rem; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
-    .footer-logo-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit; }
-    .footer-logo-group img { width: 40px; height: 40px; object-fit: contain; }
-    .footer-logo-group span { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--paper); }
-    .footer-logo-group span span { color: var(--accent); }
-    .footer-tagline { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; font-weight: 300; max-width: 240px; margin-top: 0.5rem; }
-    .footer-col-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.25rem; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.6rem; }
-    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; }
-    .footer-links a:hover { color: var(--paper); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
-    .footer-email { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); text-decoration: none; }
-    .footer-socials { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
-    .footer-socials a { color: rgba(255,255,255,0.3); font-size: 1.2rem; transition: color 0.2s; text-decoration: none; }
-    .footer-socials a:hover { color: var(--accent); }
+    /* BOTTOM CTA */
+    .bottom-cta{background:var(--ink);padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .bc-title{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;color:var(--paper);line-height:1.1;margin-bottom:0.5rem;}
+    .bc-title em{font-style:italic;color:var(--accent-light);}
+    .bc-sub{font-size:0.9rem;color:rgba(255,255,255,0.4);margin-top:0.75rem;font-weight:300;line-height:1.7;}
+    .bc-actions{display:flex;flex-direction:column;gap:1rem;}
+    .btn-bc-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;align-self:flex-start;}
+    .btn-bc-primary:hover{background:var(--paper);}
+    .btn-bc-ghost{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:color 0.2s,gap 0.2s;align-self:flex-start;}
+    .btn-bc-ghost:hover{color:var(--paper);gap:0.8rem;}
+    .btn-bc-ghost::after{content:'→';}
+    .bc-note{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
 
-    .fade-up { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.animate { opacity: 0; transform: translateY(20px); }
-    .fade-up.animate.visible { opacity: 1; transform: none; }
+    /* FOOTER (email on left) */
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;color:inherit;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;margin-left:0;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
 
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .who-box { grid-template-columns: 1fr; }
-      .embed-steps { flex-direction: column; }
-      .outcome-grid { grid-template-columns: 1fr 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
+
+    @media(max-width:1024px){.related-grid{flex-wrap:wrap;}.related-card{flex:1 1 100%;border-right:none!important;}}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .page-hero,.what-section,.who-section,.related-section,.bottom-cta{padding:4rem 1.5rem;}
+      .page-hero{padding-top:8rem;grid-template-columns:1fr;}.page-hero::after{display:none;}.ph-left,.ph-right{padding:2rem 0;}
+      .what-grid{grid-template-columns:1fr;}
+      .embed-section{grid-template-columns:1fr;}
+      .embed-left,.embed-right{padding:4rem 1.5rem;}
+      .who-inner{grid-template-columns:1fr;gap:2.5rem;}
+      .related-grid{flex-wrap:wrap;}.related-card{flex:1 1 100%;border-right:none!important;}
+      .bottom-cta{grid-template-columns:1fr;gap:3rem;}
+      footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
     }
   </style>
 </head>
@@ -284,9 +342,7 @@
       <span class="company-name">Finology <span>Nexus</span></span>
     </a>
     <ul class="nav-links">
-      <!-- Home link -->
       <li><a href="index.html">Home</a></li>
-      <!-- Services dropdown (active section) -->
       <li class="active-section">
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -298,7 +354,6 @@
           <a href="embedded-support.html">Embedded Support</a>
         </div>
       </li>
-      <!-- Solutions dropdown -->
       <li>
         <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -308,7 +363,6 @@
           <a href="Solutions.html">VendorScan</a>
         </div>
       </li>
-      <!-- About dropdown -->
       <li>
         <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -317,198 +371,202 @@
           <a href="contactus.html">Contact</a>
         </div>
       </li>
-      <!-- FinPulse link - normal style, no highlight -->
-      <li class="finpulse-link"><a href="finance-checkup.html">FinPulse (Free)</a></li>
+      <li><a href="finance-checkup.html">FinPulse (Free)</a></li>
     </ul>
     <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
   </nav>
 
-  <!-- HERO with visualisation -->
-  <section class="hero">
-    <div class="hero-left fade-up">
-      <div class="section-label">Process Design, SOPs, and Control Frameworks</div>
-      <h1>When processes live only in people's heads, <em>risk grows</em></h1>
-      <p>Undocumented processes create dependency, inconsistency, and audit risk. Growth amplifies these weaknesses.</p>
-      <p>This capability exists to make execution explicit and resilient. We document, standardise, and strengthen operational processes so work does not depend on tribal knowledge.</p>
-      <div class="hero-actions">
-        <a href="contactus.html" class="btn-primary">Discuss your needs →</a>
-        <a href="finance-checkup.html" class="btn-outline">Start with FinPulse</a>
+  <!-- HERO (left: text from first HTML, right: chart from second) -->
+  <div class="page-hero">
+    <div class="ph-left fade-up">
+      <div class="ph-breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="services.html">Services</a><span>/</span>
+        <span class="current">Process Design, SOPs and Control Frameworks</span>
+      </div>
+      <div class="ph-cap-num">Capability 05 / 06</div>
+      <div class="ph-eyebrow">Capability 05</div>
+      <h1 class="ph-title">Process Design,<br>SOPs<br><em>and Control Frameworks</em></h1>
+      <div class="ph-tagline">Processes that scale instead of breaking under growth</div>
+      <p class="ph-sub">We document, standardise, and strengthen operational processes so work does not depend on tribal knowledge. Execution becomes explicit, consistent, and resilient, regardless of who is in the room.</p>
+      <div class="ph-actions">
+        <a href="contactus.html" class="btn-primary">Discuss This Capability</a>
+        <a href="finance-checkup.html" class="btn-outline">Run FinPulse Free</a>
       </div>
     </div>
-    <div class="hero-right fade-up" style="transition-delay:0.15s">
-      <!-- Sample process design visual -->
-      <div class="viz-row">
-        <span class="viz-label">Key‑person risk</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:95%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">-95%</span>
+    <div class="ph-right fade-up" style="transition-delay:0.15s">
+      <div class="hero-right">
+        <div class="viz-row">
+          <span class="viz-label">Key‑person risk</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:95%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">-95%</span>
+        </div>
+        <div class="viz-row">
+          <span class="viz-label">Audit readiness</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:90%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">+90%</span>
+        </div>
+        <div class="viz-row">
+          <span class="viz-label">Onboarding time</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:70%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">-70%</span>
+        </div>
+        <div class="viz-metric">
+          <div class="metric-item"><span class="metric-num">100%</span><div class="metric-desc">documented</div></div>
+          <div class="metric-item"><span class="metric-num">0</span><div class="metric-desc">tribal dependencies</div></div>
+        </div>
       </div>
-      <div class="viz-row">
-        <span class="viz-label">Audit readiness</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:90%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">+90%</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM SNAPSHOT (from first HTML) -->
+  <section style="padding: 0 4rem 4rem;">
+    <div class="problem-snapshot">
+      <div class="ps-label">When processes live only in people's heads, risk grows</div>
+      <div class="ps-items">
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Knowledge concentrated with one or two individuals</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Inconsistent execution across team members or shifts</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Difficulty onboarding new team members efficiently</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Stress and scrambling when audits or reviews approach</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Unclear accountability when things go wrong</div></div>
       </div>
-      <div class="viz-row">
-        <span class="viz-label">Onboarding time</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:70%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">-70%</span>
-      </div>
-      <div class="viz-metric">
-        <div class="metric-item"><span class="metric-num">100%</span><div class="metric-desc">documented</div></div>
-        <div class="metric-item"><span class="metric-num">0</span><div class="metric-desc">tribal dependencies</div></div>
-      </div>
+      <div class="ps-resolution"><p>Undocumented processes create dependency, inconsistency, and audit risk. Growth amplifies every one of these weaknesses.</p></div>
     </div>
   </section>
 
-  <!-- PROBLEMS IT SOLVES -->
-  <section style="padding-top: 2rem;">
-    <div class="grid-2">
-      <div>
-        <div class="section-label">What this solves immediately</div>
-        <h2 class="section-title">Knowledge concentrated, execution inconsistent.</h2>
-      </div>
-      <div>
-        <ul class="problem-list">
-          <li>Knowledge concentrated with a few individuals</li>
-          <li>Inconsistent execution across teams</li>
-          <li>Difficulty onboarding new members</li>
-          <li>Stress during audits or reviews</li>
-          <li>Unclear accountability</li>
-        </ul>
-      </div>
+  <!-- WHAT WE DO -->
+  <section class="what-section">
+    <div class="fade-up">
+      <div class="section-label">What this capability covers</div>
+      <h2 class="section-title">What we <em>actually do</em></h2>
     </div>
-  </section>
-
-  <!-- WHAT WE ACTUALLY DO -->
-  <section style="background: var(--paper-warm);">
-    <div class="section-label">What we actually do</div>
-    <h2 class="section-title">Make execution <em>explicit and resilient</em></h2>
-    <div class="what-we-do-grid">
-      <div class="wwd-card">
-        <i class="fas fa-eye"></i>
-        <h3>Observe reality</h3>
-        <p>See how work truly happens, not just how it should.</p>
+    <div class="what-grid fade-up">
+      <div class="what-card">
+        <span class="what-card-icon">🔍</span>
+        <div class="what-card-title">Process Observation and Mapping</div>
+        <div class="what-card-desc">We observe how work truly happens, including the informal paths and workarounds, not just the official version. Documentation reflects reality.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-file-alt"></i>
-        <h3>Document end‑to‑end</h3>
-        <p>Clear, usable process documentation.</p>
+      <div class="what-card">
+        <span class="what-card-icon">📄</span>
+        <div class="what-card-title">End-to-End SOP Documentation</div>
+        <div class="what-card-desc">Clear, structured SOPs that a new team member can follow on day one. Written for operational use, not compliance filing.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-user-check"></i>
-        <h3>Define ownership</h3>
-        <p>Clear accountability and escalation paths.</p>
+      <div class="what-card">
+        <span class="what-card-icon">👥</span>
+        <div class="what-card-title">Ownership and Escalation Mapping</div>
+        <div class="what-card-desc">Define who owns every step, who is responsible when things deviate, and how escalations should be handled, removing ambiguity from execution.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-shield-alt"></i>
-        <h3>Design controls</h3>
-        <p>Internal controls that actually reduce risk.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🛡️</span>
+        <div class="what-card-title">Internal Control Design</div>
+        <div class="what-card-desc">Design practical controls where risk warrants them. Approval gates, reconciliation checks, access management, and exception protocols.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-clipboard-check"></i>
-        <h3>Audit preparation</h3>
-        <p>Ready teams for reviews and inspections.</p>
+      <div class="what-card">
+        <span class="what-card-icon">📋</span>
+        <div class="what-card-title">Audit and Compliance Preparation</div>
+        <div class="what-card-desc">Prepare your team and documentation for audit interactions. Organised evidence, clear control narratives, and no surprises when auditors arrive.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-sync-alt"></i>
-        <h3>Build for scale</h3>
-        <p>Processes that grow with the business.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🔄</span>
+        <div class="what-card-title">Process Standardisation Across Teams</div>
+        <div class="what-card-desc">Where multiple people or teams perform the same work differently, we standardise around the best approach and document it consistently.</div>
       </div>
     </div>
   </section>
 
   <!-- HOW WE EMBED -->
-  <section>
-    <div class="section-label">How we embed with your team</div>
-    <h2 class="section-title">Alongside your operators, <em>reflecting reality</em></h2>
-    <div class="embed-steps">
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-users"></i></div>
-        <h4>Work alongside</h4>
-        <p>We observe and document with the people doing the work.</p>
+  <div class="embed-section">
+    <div class="embed-left fade-up">
+      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,149,90,0.6);margin-bottom:1.5rem;">How we embed with your team</div>
+      <h2 class="embed-title">We work inside<br>your setup, <em>not around it</em></h2>
+      <p class="embed-body">No new software to procure, no migration cost, no disruption to existing workflows. Your team stays in control. We handle execution.</p>
+      <div class="embed-points">
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">We work alongside your operators, documentation reflects how work actually happens</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">SOPs are written for use, not for filing, clear, actionable, and maintained</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">We adapt to your existing documentation standards and tools</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">Ownership mapping integrates with your team structure and reporting lines</div></div>
       </div>
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-check-double"></i></div>
-        <h4>Validate with reality</h4>
-        <p>Documentation reflects actual execution, not theory.</p>
+    </div>
+    <div class="embed-right fade-up" style="transition-delay:0.1s">
+      <div class="section-label">What changes after engagement</div>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.4rem);margin-bottom:2rem;">The difference you will <em>actually notice</em></h2>
+      <div class="change-list">
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Clear, usable documentation that teams actually refer to and follow</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Stronger audit readiness without last-minute scrambling</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Easier and faster onboarding for new team members</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">More consistent execution regardless of who is doing the work</div></div>
       </div>
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-file-export"></i></div>
-        <h4>Usable outputs</h4>
-        <p>SOPs and frameworks your team can actually use.</p>
+    </div>
+  </div>
+
+  <!-- WHO NEEDS THIS -->
+  <section class="who-section">
+    <div class="who-inner fade-up">
+      <div class="who-sticky">
+        <div class="section-label">Who usually needs this</div>
+        <h2 class="section-title">Is this the right<br>fit for <em>your business?</em></h2>
+        <p class="section-body" style="margin-top:1rem;">This capability is best suited for businesses at a specific stage or facing a specific set of challenges. See if any of these describe where you are right now.</p>
+      </div>
+      <div class="who-cards">
+        <div class="who-card"><div class="who-card-title">Businesses preparing for audits or regulatory review</div><div class="who-card-desc">Auditors ask for processes, not just results. When the answer to 'how is this done?' is 'we know how to do it,' you have a documentation problem that needs to be resolved before the review room.</div></div>
+        <div class="who-card"><div class="who-card-title">Teams scaling or restructuring</div><div class="who-card-desc">Growth means more people doing more things. Without documented processes, every new hire is a risk and every team change is a potential source of inconsistency.</div></div>
+        <div class="who-card"><div class="who-card-title">Leadership reducing key-person dependency</div><div class="who-card-desc">When critical operational knowledge lives in one person's head, that person's absence is a business continuity risk. Documentation removes that dependency explicitly.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- WHO USUALLY NEEDS THIS -->
-  <section style="background: var(--paper-warm);">
-    <div class="section-label">Who usually needs this</div>
-    <div class="who-box">
-      <div class="who-item">
-        <i class="fas fa-building"></i>
-        <p><strong>Businesses preparing for audits</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-chart-line"></i>
-        <p><strong>Teams scaling or restructuring</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-user-lock"></i>
-        <p><strong>Leadership reducing key‑person risk</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-cogs"></i>
-        <p><strong>Any team needing consistent execution</strong></p>
-      </div>
+  <!-- OTHER CAPABILITIES (horizontal flex) -->
+  <section class="related-section fade-up">
+    <div class="section-label">Other capabilities</div>
+    <h2 class="section-title">Often used <em>alongside this one</em></h2>
+    <div class="related-grid">
+      <a href="workflow-automation.html" class="related-card">
+        <div class="related-num">Capability 04</div>
+        <div class="related-title">Workflow and Process Automation</div>
+        <div class="related-desc">Build automation on top of well-documented processes for maximum reliability and maintainability.</div>
+        <div class="related-link">Explore</div>
+      </a>
+      <a href="financial-operations.html" class="related-card">
+        <div class="related-num">Capability 01</div>
+        <div class="related-title">Financial Operations and Accounting</div>
+        <div class="related-desc">Apply process design specifically to financial operations for clean, consistent execution.</div>
+        <div class="related-link">Explore</div>
+      </a>
+      <a href="embedded-support.html" class="related-card">
+        <div class="related-num">Capability 06</div>
+        <div class="related-title">Embedded Finance and Ops Support</div>
+        <div class="related-desc">Ongoing support to maintain, update, and strengthen processes as your business evolves.</div>
+        <div class="related-link">Explore</div>
+      </a>
     </div>
   </section>
 
-  <!-- OUTCOMES -->
-  <section>
-    <div class="section-label">What changes after engagement</div>
-    <h2 class="section-title">From tribal to <em>explicit</em></h2>
-    <div class="outcome-grid">
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-file-alt"></i></div>
-        <p>Clear, usable documentation</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-shield-alt"></i></div>
-        <p>Stronger audit readiness</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-user-plus"></i></div>
-        <p>Easier onboarding</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-check-circle"></i></div>
-        <p>More consistent execution</p>
-      </div>
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta fade-up">
+    <div>
+      <h2 class="bc-title">Ready to make your operations <em>resilient to change?</em></h2>
+      <p class="bc-sub">Start with a FinPulse check to identify where undocumented processes are creating operational risk. Or book a consultation to discuss what a documentation and controls engagement would look like for your team.</p>
     </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section style="background: var(--ink); color: white; text-align: center;">
-    <h2 style="font-size: 2.4rem; font-weight: 300; margin-bottom: 1rem;">Ready to make execution <em style="color: var(--accent-light);">explicit and resilient?</em></h2>
-    <p style="color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto 2rem;">A short conversation is enough to understand your current process gaps and what a well‑scoped engagement would look like.</p>
-    <div class="hero-actions" style="justify-content: center;">
-      <a href="contactus.html" class="btn-primary" style="background: var(--accent); color: var(--ink);">Schedule a consultation</a>
-      <a href="finance-checkup.html" class="btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Run FinPulse free</a>
+    <div class="bc-actions">
+      <a href="contactus.html" class="btn-bc-primary">Schedule a Consultation</a>
+      <a href="finance-checkup.html" class="btn-bc-ghost">Run FinPulse Free</a>
+      <div class="bc-note">No long-term contracts. Scoped before work begins.</div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
-      <div class="footer-brand">
+      <div>
         <a href="index.html" class="footer-logo-group">
           <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
           <span>Finology <span>Nexus</span></span>
         </a>
         <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="mailto:info@finologynexus.online" target="_blank"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:info@finologynexus.online" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div>
@@ -547,6 +605,11 @@
       <a href="mailto:info@finologynexus.online" class="footer-email">info@finologynexus.online</a>
     </div>
   </footer>
+
+  <!-- Floating CTA -->
+  <a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+    <i class="fas fa-heartbeat"></i> FinPulse Free
+  </a>
 
   <script>
     // Disable copy/paste shortcuts and context menu
