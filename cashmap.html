@@ -71,6 +71,7 @@
     .nav-links a i{font-size:0.6rem;transition:transform 0.2s;}
     .nav-links li:hover>a i{transform:rotate(180deg);}
     .nav-highlight a{color:var(--accent)!important;font-weight:600!important;}
+    .nav-links li.active-section > a { color: var(--accent); }
     .dropdown-content{position:absolute;top:2rem;left:-1rem;background:white;border:1px solid var(--line);min-width:220px;padding:1rem 0;opacity:0;visibility:hidden;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:10;}
     .nav-links li:hover .dropdown-content{opacity:1;visibility:visible;}
     .dropdown-content a{display:block;padding:0.5rem 1.5rem;font-size:0.75rem;text-transform:none;letter-spacing:0.05em;color:var(--ink-muted);border:none!important;}
@@ -176,250 +177,250 @@
     @media(max-width:1024px){.cm-pain-grid,.cm-what-grid,.cm-process-steps{grid-template-columns:1fr 1fr;}}
     @media(max-width:900px){.cm-hero,.cm-section,.cm-cta{padding:4rem 1.5rem;}.cm-hero{padding-top:7rem;grid-template-columns:1fr;}.cm-cta{grid-template-columns:1fr;gap:3rem;}}
     @media(max-width:600px){.cm-pain-grid,.cm-what-grid,.cm-process-steps{grid-template-columns:1fr;}}
-</style>
+  </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<nav>
-  <a href="index.html" class="logo-group">
-    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
-    <span class="company-name">Finology <span>Nexus</span></span>
+  <nav>
+    <a href="index.html" class="logo-group">
+      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+      <span class="company-name">Finology <span>Nexus</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <!-- Services moved before Solutions -->
+      <li>
+        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="financial-operations.html">Financial Operations</a>
+          <a href="financial-intelligence.html">Financial Intelligence</a>
+          <a href="data-automation.html">Data Automation</a>
+          <a href="workflow-automation.html">Workflow Automation</a>
+          <a href="process-design.html">Process Design</a>
+          <a href="embedded-support.html">Embedded Support</a>
+        </div>
+      </li>
+      <li class="active-section">
+        <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="finpulse.html">FinPulse Free</a>
+          <a href="cashmap.html" class="current">CashMap</a>
+          <a href="compliancecheck.html">ComplianceCheck</a>
+          <a href="vendorscan.html">VendorScan</a>
+        </div>
+      </li>
+      <li>
+        <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+          <a href="aboutus.html">Our Practice</a>
+          <a href="blog.html">Case Studies</a>
+          <a href="contactus.html">Contact</a>
+        </div>
+      </li>
+      <!-- Removed the separate highlighted FinPulse Free item -->
+    </ul>
+    <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="cm-hero">
+    <div class="fade-up" style="position:relative;z-index:1;">
+      <div class="cm-breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="Solutions.html">Intelligence Suite</a><span>/</span>
+        <span class="current">CashMap</span>
+      </div>
+      <div class="cm-eyebrow">Intelligence Suite — Product 02</div>
+      <h1 class="cm-title">CashMap:<br><em>cash flow</em><br>intelligence</h1>
+      <div class="cm-tagline">12-Week Rolling Cash Forecast</div>
+      <p class="cm-sub">Most businesses find out about a cash problem when it has already arrived. CashMap gives you a structured, 12-week rolling view of your cash position built from your actual receivables, payables, and operating commitments. You see what is coming 4 to 6 weeks before it happens.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contactus.html" class="btn-cm-cta">Get CashMap</a>
+        <a href="finpulse.html" class="btn-outline">Start with FinPulse Free</a>
+      </div>
+    </div>
+    <div class="fade-up" style="position:relative;z-index:1;transition-delay:0.15s;">
+      <div class="cm-forecast-card">
+        <div class="cfc-header">
+          <span>CashMap · 12-Week Forecast</span>
+          <div style="background:rgba(201,125,32,0.2);color:var(--product);font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;">Live View</div>
+        </div>
+        <div class="cfc-chart-wrap" id="cm-chart">
+          <div class="cfc-bar pos" data-h="68"></div>
+          <div class="cfc-bar pos" data-h="80"></div>
+          <div class="cfc-bar pos" data-h="58"></div>
+          <div class="cfc-bar pos" data-h="75"></div>
+          <div class="cfc-bar neg" data-h="38"></div>
+          <div class="cfc-bar pos" data-h="55"></div>
+          <div class="cfc-bar pos" data-h="62"></div>
+          <div class="cfc-bar proj" data-h="42"></div>
+          <div class="cfc-bar proj" data-h="48"></div>
+          <div class="cfc-bar proj" data-h="28"></div>
+          <div class="cfc-bar proj" data-h="52"></div>
+          <div class="cfc-bar proj" data-h="58"></div>
+        </div>
+        <div class="cfc-labels">
+          <div class="cfc-label">W1</div><div class="cfc-label">W2</div><div class="cfc-label">W3</div><div class="cfc-label">W4</div><div class="cfc-label">W5</div><div class="cfc-label">W6</div><div class="cfc-label">W7</div><div class="cfc-label" style="color:rgba(201,125,32,0.5);">W8→</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W9</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W10</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W11</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W12</div>
+        </div>
+        <div class="cfc-stats">
+          <div class="cfc-stat"><div class="cfc-stat-val" style="color:var(--green-light);">9.2 wks</div><div class="cfc-stat-label">Runway</div></div>
+          <div class="cfc-stat"><div class="cfc-stat-val" style="color:var(--product);">£42K</div><div class="cfc-stat-label">Burn / Mo</div></div>
+          <div class="cfc-stat"><div class="cfc-stat-val" style="color:#e74c3c;">Wk 10</div><div class="cfc-stat-label">Risk Point</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAIN POINTS -->
+  <section class="cm-section cm-pain">
+    <div class="fade-up">
+      <div class="section-label" style="color:var(--product);">Problems CashMap solves</div>
+      <h2 class="section-title" style="color:var(--paper);">The moment you realise<br>you need a <em>cash map</em></h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:560px;line-height:1.75;font-weight:300;margin-top:1rem;">These are not hypothetical scenarios. They are the conversations that happen in the week before a business runs into a cash problem it could have seen coming with the right visibility.</p>
+    </div>
+    <div class="cm-pain-grid fade-up">
+      <div class="cm-pain-card"><div class="cpc-icon">😰</div><div class="cpc-title">You discover a shortfall in the week it happens</div><div class="cpc-desc">With no lead time to respond, your only options are expensive: emergency credit, delayed payables, or a conversation you did not want to have. CashMap surfaces this 4 to 6 weeks earlier.</div></div>
+      <div class="cm-pain-card"><div class="cpc-icon">📉</div><div class="cpc-title">Revenue is growing but the bank balance does not reflect it</div><div class="cpc-desc">This is almost always a working capital and collection cycle problem. CashMap maps the gap between when revenue is recognised and when it actually lands. shows you how to close it.</div></div>
+      <div class="cm-pain-card"><div class="cpc-icon">🔮</div><div class="cpc-title">Every large payment feels like a risk</div><div class="cpc-desc">When you cannot see 8 to 12 weeks ahead, every significant outgoing feels uncertain. CashMap turns that uncertainty into a structured view with specific risk dates flagged in advance.</div></div>
+      <div class="cm-pain-card"><div class="cpc-icon">📋</div><div class="cpc-title">Your board asks about runway and you have to estimate</div><div class="cpc-desc">Investors and board members treat runway estimates as a proxy for financial discipline. CashMap gives you a defensible, data-driven answer built from your actual commitments, not a back-of-envelope calculation.</div></div>
+      <div class="cm-pain-card"><div class="cpc-icon">⏱️</div><div class="cpc-title">Hiring and investment decisions happen without cash visibility</div><div class="cpc-desc">Strategic decisions made without a cash model are guesses with consequences. CashMap lets you run the scenario before you commit. This shows you the cash impact of a hire, a campaign, or a major purchase over the next 12 weeks.</div></div>
+      <div class="cm-pain-card"><div class="cpc-icon">🔄</div><div class="cpc-title">Your cash model is a spreadsheet that nobody updates</div><div class="cpc-desc">A 12-week forecast that was accurate in January is meaningless in March. CashMap is designed to be a live view that stays current, not a quarterly exercise that gets filed and forgotten.</div></div>
+    </div>
+  </section>
+
+  <!-- WHAT IT DELIVERS -->
+  <section class="cm-section cm-what">
+    <div class="fade-up">
+      <div class="section-label">What CashMap delivers</div>
+      <h2 class="section-title">Twelve weeks of<br><em>structured cash clarity</em></h2>
+    </div>
+    <div class="cm-what-grid fade-up">
+      <div class="cm-what-card"><div class="cwc-icon">📅</div><div class="cwc-title">Week-by-Week Cash Flow Forecast</div><div class="cwc-desc">Built from your actual receivables, payables, payroll commitments, and operating costs. Not an average, a specific week-by-week view of cash in and cash out across 12 weeks.</div></div>
+      <div class="cm-what-card"><div class="cwc-icon">🔥</div><div class="cwc-title">Burn Rate Analysis by Category</div><div class="cwc-desc">Where is the money actually going? Burn broken down by expense category so leadership knows whether the rate is a people problem, an infrastructure problem, or a growth investment problem.</div></div>
+      <div class="cm-what-card"><div class="cwc-icon">🏃</div><div class="cwc-title">Runway Calculation Updated Weekly</div><div class="cwc-desc">How many weeks can you operate at current pace? CashMap recalculates this automatically as the forecast updates, so you always have a current number rather than one that is 6 weeks stale.</div></div>
+      <div class="cm-what-card"><div class="cwc-icon">⚙️</div><div class="cwc-title">Working Capital Cycle Analysis</div><div class="cwc-desc">Where is money tied up and how quickly can you release it? Working capital analysis shows you whether your cash problem is structural or timing-related. The solution is different for each.</div></div>
+      <div class="cm-what-card"><div class="cwc-icon">🚩</div><div class="cwc-title">Risk Flags with Lead Time to Act</div><div class="cwc-desc">Upcoming shortfalls are identified and flagged 4 to 6 weeks before they materialise. Enough lead time to negotiate terms, accelerate collections, or adjust expenditure, instead of reacting after the fact.</div></div>
+      <div class="cm-what-card"><div class="cwc-icon">🔀</div><div class="cwc-title">Scenario Modelling</div><div class="cwc-desc">What happens to your position if a key receivable delays by 30 days? If you make a senior hire? If you run a major campaign? Scenario modelling lets you test decisions before making them.</div></div>
+    </div>
+  </section>
+
+  <!-- PULLQUOTE -->
+  <div class="cm-quote fade-up">
+    <p class="cmq-text">"The difference between a cash crisis and a cash plan is the same information: <span>four to six weeks earlier.</span>"</p>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="cm-section cm-process">
+    <div class="fade-up">
+      <div class="section-label">How CashMap works</div>
+      <h2 class="section-title">From your data<br>to a <em>live forecast</em> in days</h2>
+    </div>
+    <div class="cm-process-steps fade-up">
+      <div class="cm-ps"><div class="cm-ps-n">01</div><div class="cm-ps-title">Data Collection</div><div class="cm-ps-desc">We collect your current receivables schedule, payables commitments, payroll, and fixed costs. This happens via a structured intake form. No accounting system access required unless preferred.</div></div>
+      <div class="cm-ps"><div class="cm-ps-n">02</div><div class="cm-ps-title">Forecast Build</div><div class="cm-ps-desc">A Finology Nexus analyst builds your 12-week cash model in a format calibrated to your business structure. Not a template: built from your actual commitments and payment terms.</div></div>
+      <div class="cm-ps"><div class="cm-ps-n">03</div><div class="cm-ps-title">Risk Flag and Analysis</div><div class="cm-ps-desc">Shortfall risk dates are identified, working capital gaps are mapped, and scenario analyses are run for the decisions you told us you are considering. Each risk flag comes with a recommended response.</div></div>
+      <div class="cm-ps"><div class="cm-ps-n">04</div><div class="cm-ps-title">Debrief and Handover</div><div class="cm-ps-desc">The model is delivered with a live walkthrough call. You leave knowing how to read it, how to update it, and exactly what needs your attention first. Ongoing support is available for businesses that want CashMap as a continuous service.</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cm-cta fade-up">
+    <div>
+      <h2 class="cm-cta-title">Stop guessing about<br><em>what your cash does next</em></h2>
+      <p class="cm-cta-sub">CashMap is built from your actual data by a senior financial analyst. The result is a 12-week forecast you can trust, with risk flags raised early enough to act on them. Delivered within 3 to 5 business days.</p>
+    </div>
+    <div class="cm-cta-actions">
+      <a href="contactus.html" class="btn-cm-main">Get CashMap</a>
+      <a href="finpulse.html" class="btn-cm-sec">Start with FinPulse Free first</a>
+      <div class="cm-also">Typical delivery: 3 to 5 business days</div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="hl">CashMap</span><span>·</span><span>12-Week Cash Forecast</span><span>·</span><span class="hl">Burn Rate</span><span>·</span><span>Cash Runway</span><span>·</span><span class="hl">Working Capital</span><span>·</span><span>Risk Flags</span><span>·</span><span class="hl">Scenario Modelling</span><span>·</span><span>No Surprises</span><span>·</span>
+      <span class="hl">CashMap</span><span>·</span><span>12-Week Cash Forecast</span><span>·</span><span class="hl">Burn Rate</span><span>·</span><span>Cash Runway</span><span>·</span><span class="hl">Working Capital</span><span>·</span><span>Risk Flags</span><span>·</span><span class="hl">Scenario Modelling</span><span>·</span><span>No Surprises</span><span>·</span>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo-group">
+          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+          <span>Finology <span>Nexus</span></span>
+        </a>
+        <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:hello@finologynexus.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Intelligence Suite</div>
+        <ul class="footer-links">
+          <li><a href="finpulse.html">FinPulse Free</a></li>
+          <li><a href="cashmap.html">CashMap</a></li>
+          <li><a href="compliancecheck.html">ComplianceCheck</a></li>
+          <li><a href="vendorscan.html">VendorScan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="financial-operations.html">Financial Operations</a></li>
+          <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+          <li><a href="data-automation.html">Data Automation</a></li>
+          <li><a href="workflow-automation.html">Workflow Automation</a></li>
+          <li><a href="process-design.html">Process Design</a></li>
+          <li><a href="embedded-support.html">Embedded Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="aboutus.html">About</a></li>
+          <li><a href="blog.html">Case Studies</a></li>
+          <li><a href="contactus.html">Contact</a></li>
+          <li><a href="privacypolicy.html">Privacy</a></li>
+          <li><a href="termsofservice.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
+      <a href="mailto:hello@finologynexus.com" class="footer-email">hello@finologynexus.com</a>
+    </div>
+  </footer>
+  <a href="finpulse.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+    <i class="fas fa-heartbeat"></i> FinPulse Free
   </a>
-  <ul class="nav-links">
-    <!-- Home link added -->
-    <li><a href="index.html">Home</a></li>
-    <li>
-      <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
-      <div class="dropdown-content">
-        <a href="financial-operations.html">Financial Operations</a>
-        <a href="financial-intelligence.html">Financial Intelligence</a>
-        <a href="data-automation.html">Data Automation</a>
-        <a href="workflow-automation.html">Workflow Automation</a>
-        <a href="process-design.html">Process Design</a>
-        <a href="embedded-support.html">Embedded Support</a>
-      </div>
-    </li>
-    <li>
-      <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
-      <div class="dropdown-content">
-        <a href="finance-checkup.html" id="nav-fp">FinPulse Free</a>
-        <a href="cashmap.html" id="nav-cm">CashMap</a>
-        <a href="compliancecheck.html" id="nav-cc">ComplianceCheck</a>
-        <a href="vendorscan.html" id="nav-vs">VendorScan</a>
-      </div>
-    </li>
-    <li>
-      <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
-      <div class="dropdown-content">
-        <a href="aboutus.html">Our Practice</a>
-        <a href="blog.html">Case Studies</a>
-        <a href="contactus.html">Contact</a>
-      </div>
-    </li>
-    <li class="nav-highlight"><a href="finance-checkup.html">FinPulse Free</a></li>
-  </ul>
-  <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
-</nav>
-
-<!-- HERO -->
-<div class="cm-hero">
-  <div class="fade-up" style="position:relative;z-index:1;">
-    <div class="cm-breadcrumb">
-      <a href="index.html">Home</a><span>/</span>
-      <a href="Solutions.html">Intelligence Suite</a><span>/</span>
-      <span class="current">CashMap</span>
-    </div>
-    <div class="cm-eyebrow">Intelligence Suite — Product 02</div>
-    <h1 class="cm-title">CashMap:<br><em>cash flow</em><br>intelligence</h1>
-    <div class="cm-tagline">12-Week Rolling Cash Forecast</div>
-    <p class="cm-sub">Most businesses find out about a cash problem when it has already arrived. CashMap gives you a structured, 12-week rolling view of your cash position built from your actual receivables, payables, and operating commitments. You see what is coming 4 to 6 weeks before it happens.</p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="contactus.html" class="btn-cm-cta">Get CashMap</a>
-      <a href="finance-checkup.html" class="btn-outline">Start with FinPulse Free</a>
-    </div>
-  </div>
-  <div class="fade-up" style="position:relative;z-index:1;transition-delay:0.15s;">
-    <div class="cm-forecast-card">
-      <div class="cfc-header">
-        <span>CashMap · 12-Week Forecast</span>
-        <div style="background:rgba(201,125,32,0.2);color:var(--product);font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;">Live View</div>
-      </div>
-      <div class="cfc-chart-wrap" id="cm-chart">
-        <div class="cfc-bar pos" data-h="68"></div>
-        <div class="cfc-bar pos" data-h="80"></div>
-        <div class="cfc-bar pos" data-h="58"></div>
-        <div class="cfc-bar pos" data-h="75"></div>
-        <div class="cfc-bar neg" data-h="38"></div>
-        <div class="cfc-bar pos" data-h="55"></div>
-        <div class="cfc-bar pos" data-h="62"></div>
-        <div class="cfc-bar proj" data-h="42"></div>
-        <div class="cfc-bar proj" data-h="48"></div>
-        <div class="cfc-bar proj" data-h="28"></div>
-        <div class="cfc-bar proj" data-h="52"></div>
-        <div class="cfc-bar proj" data-h="58"></div>
-      </div>
-      <div class="cfc-labels">
-        <div class="cfc-label">W1</div><div class="cfc-label">W2</div><div class="cfc-label">W3</div><div class="cfc-label">W4</div><div class="cfc-label">W5</div><div class="cfc-label">W6</div><div class="cfc-label">W7</div><div class="cfc-label" style="color:rgba(201,125,32,0.5);">W8→</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W9</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W10</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W11</div><div class="cfc-label" style="color:rgba(201,125,32,0.4);">W12</div>
-      </div>
-      <div class="cfc-stats">
-        <div class="cfc-stat"><div class="cfc-stat-val" style="color:var(--green-light);">9.2 wks</div><div class="cfc-stat-label">Runway</div></div>
-        <div class="cfc-stat"><div class="cfc-stat-val" style="color:var(--product);">£42K</div><div class="cfc-stat-label">Burn / Mo</div></div>
-        <div class="cfc-stat"><div class="cfc-stat-val" style="color:#e74c3c;">Wk 10</div><div class="cfc-stat-label">Risk Point</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAIN POINTS -->
-<section class="cm-section cm-pain">
-  <div class="fade-up">
-    <div class="section-label" style="color:var(--product);">Problems CashMap solves</div>
-    <h2 class="section-title" style="color:var(--paper);">The moment you realise<br>you need a <em>cash map</em></h2>
-    <p style="font-size:0.95rem;color:rgba(255,255,255,0.4);max-width:560px;line-height:1.75;font-weight:300;margin-top:1rem;">These are not hypothetical scenarios. They are the conversations that happen in the week before a business runs into a cash problem it could have seen coming with the right visibility.</p>
-  </div>
-  <div class="cm-pain-grid fade-up">
-    <div class="cm-pain-card"><div class="cpc-icon">😰</div><div class="cpc-title">You discover a shortfall in the week it happens</div><div class="cpc-desc">With no lead time to respond, your only options are expensive: emergency credit, delayed payables, or a conversation you did not want to have. CashMap surfaces this 4 to 6 weeks earlier.</div></div>
-    <div class="cm-pain-card"><div class="cpc-icon">📉</div><div class="cpc-title">Revenue is growing but the bank balance does not reflect it</div><div class="cpc-desc">This is almost always a working capital and collection cycle problem. CashMap maps the gap between when revenue is recognised and when it actually lands. shows you how to close it.</div></div>
-    <div class="cm-pain-card"><div class="cpc-icon">🔮</div><div class="cpc-title">Every large payment feels like a risk</div><div class="cpc-desc">When you cannot see 8 to 12 weeks ahead, every significant outgoing feels uncertain. CashMap turns that uncertainty into a structured view with specific risk dates flagged in advance.</div></div>
-    <div class="cm-pain-card"><div class="cpc-icon">📋</div><div class="cpc-title">Your board asks about runway and you have to estimate</div><div class="cpc-desc">Investors and board members treat runway estimates as a proxy for financial discipline. CashMap gives you a defensible, data-driven answer built from your actual commitments, not a back-of-envelope calculation.</div></div>
-    <div class="cm-pain-card"><div class="cpc-icon">⏱️</div><div class="cpc-title">Hiring and investment decisions happen without cash visibility</div><div class="cpc-desc">Strategic decisions made without a cash model are guesses with consequences. CashMap lets you run the scenario before you commit. This shows you the cash impact of a hire, a campaign, or a major purchase over the next 12 weeks.</div></div>
-    <div class="cm-pain-card"><div class="cpc-icon">🔄</div><div class="cpc-title">Your cash model is a spreadsheet that nobody updates</div><div class="cpc-desc">A 12-week forecast that was accurate in January is meaningless in March. CashMap is designed to be a live view that stays current, not a quarterly exercise that gets filed and forgotten.</div></div>
-  </div>
-</section>
-
-<!-- WHAT IT DELIVERS -->
-<section class="cm-section cm-what">
-  <div class="fade-up">
-    <div class="section-label">What CashMap delivers</div>
-    <h2 class="section-title">Twelve weeks of<br><em>structured cash clarity</em></h2>
-  </div>
-  <div class="cm-what-grid fade-up">
-    <div class="cm-what-card"><div class="cwc-icon">📅</div><div class="cwc-title">Week-by-Week Cash Flow Forecast</div><div class="cwc-desc">Built from your actual receivables, payables, payroll commitments, and operating costs. Not an average, a specific week-by-week view of cash in and cash out across 12 weeks.</div></div>
-    <div class="cm-what-card"><div class="cwc-icon">🔥</div><div class="cwc-title">Burn Rate Analysis by Category</div><div class="cwc-desc">Where is the money actually going? Burn broken down by expense category so leadership knows whether the rate is a people problem, an infrastructure problem, or a growth investment problem.</div></div>
-    <div class="cm-what-card"><div class="cwc-icon">🏃</div><div class="cwc-title">Runway Calculation Updated Weekly</div><div class="cwc-desc">How many weeks can you operate at current pace? CashMap recalculates this automatically as the forecast updates, so you always have a current number rather than one that is 6 weeks stale.</div></div>
-    <div class="cm-what-card"><div class="cwc-icon">⚙️</div><div class="cwc-title">Working Capital Cycle Analysis</div><div class="cwc-desc">Where is money tied up and how quickly can you release it? Working capital analysis shows you whether your cash problem is structural or timing-related. The solution is different for each.</div></div>
-    <div class="cm-what-card"><div class="cwc-icon">🚩</div><div class="cwc-title">Risk Flags with Lead Time to Act</div><div class="cwc-desc">Upcoming shortfalls are identified and flagged 4 to 6 weeks before they materialise. Enough lead time to negotiate terms, accelerate collections, or adjust expenditure, instead of reacting after the fact.</div></div>
-    <div class="cm-what-card"><div class="cwc-icon">🔀</div><div class="cwc-title">Scenario Modelling</div><div class="cwc-desc">What happens to your position if a key receivable delays by 30 days? If you make a senior hire? If you run a major campaign? Scenario modelling lets you test decisions before making them.</div></div>
-  </div>
-</section>
-
-<!-- PULLQUOTE -->
-<div class="cm-quote fade-up">
-  <p class="cmq-text">"The difference between a cash crisis and a cash plan is the same information: <span>four to six weeks earlier.</span>"</p>
-</div>
-
-<!-- PROCESS -->
-<section class="cm-section cm-process">
-  <div class="fade-up">
-    <div class="section-label">How CashMap works</div>
-    <h2 class="section-title">From your data<br>to a <em>live forecast</em> in days</h2>
-  </div>
-  <div class="cm-process-steps fade-up">
-    <div class="cm-ps"><div class="cm-ps-n">01</div><div class="cm-ps-title">Data Collection</div><div class="cm-ps-desc">We collect your current receivables schedule, payables commitments, payroll, and fixed costs. This happens via a structured intake form. No accounting system access required unless preferred.</div></div>
-    <div class="cm-ps"><div class="cm-ps-n">02</div><div class="cm-ps-title">Forecast Build</div><div class="cm-ps-desc">A Finology Nexus analyst builds your 12-week cash model in a format calibrated to your business structure. Not a template: built from your actual commitments and payment terms.</div></div>
-    <div class="cm-ps"><div class="cm-ps-n">03</div><div class="cm-ps-title">Risk Flag and Analysis</div><div class="cm-ps-desc">Shortfall risk dates are identified, working capital gaps are mapped, and scenario analyses are run for the decisions you told us you are considering. Each risk flag comes with a recommended response.</div></div>
-    <div class="cm-ps"><div class="cm-ps-n">04</div><div class="cm-ps-title">Debrief and Handover</div><div class="cm-ps-desc">The model is delivered with a live walkthrough call. You leave knowing how to read it, how to update it, and exactly what needs your attention first. Ongoing support is available for businesses that want CashMap as a continuous service.</div></div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cm-cta fade-up">
-  <div>
-    <h2 class="cm-cta-title">Stop guessing about<br><em>what your cash does next</em></h2>
-    <p class="cm-cta-sub">CashMap is built from your actual data by a senior financial analyst. The result is a 12-week forecast you can trust, with risk flags raised early enough to act on them. Delivered within 3 to 5 business days.</p>
-  </div>
-  <div class="cm-cta-actions">
-    <a href="contactus.html" class="btn-cm-main">Get CashMap</a>
-    <a href="finance-checkup.html" class="btn-cm-sec">Start with FinPulse Free first</a>
-    <div class="cm-also">Typical delivery: 3 to 5 business days</div>
-  </div>
-</div>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="hl">CashMap</span><span>·</span><span>12-Week Cash Forecast</span><span>·</span><span class="hl">Burn Rate</span><span>·</span><span>Cash Runway</span><span>·</span><span class="hl">Working Capital</span><span>·</span><span>Risk Flags</span><span>·</span><span class="hl">Scenario Modelling</span><span>·</span><span>No Surprises</span><span>·</span>
-    <span class="hl">CashMap</span><span>·</span><span>12-Week Cash Forecast</span><span>·</span><span class="hl">Burn Rate</span><span>·</span><span>Cash Runway</span><span>·</span><span class="hl">Working Capital</span><span>·</span><span>Risk Flags</span><span>·</span><span class="hl">Scenario Modelling</span><span>·</span><span>No Surprises</span><span>·</span>
-  </div>
-</div>
-<footer>
-  <div class="footer-top">
-    <div>
-      <a href="index.html" class="footer-logo-group">
-        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
-        <span>Finology <span>Nexus</span></span>
-      </a>
-      <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
-      <div class="footer-socials">
-        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-        <a href="mailto:hello@finologynexus.com"><i class="fas fa-envelope"></i></a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Intelligence Suite</div>
-      <ul class="footer-links">
-        <li><a href="finance-checkup.html">FinPulse Free</a></li>
-        <li><a href="cashmap.html">CashMap</a></li>
-        <li><a href="compliancecheck.html">ComplianceCheck</a></li>
-        <li><a href="vendorscan.html">VendorScan</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Services</div>
-      <ul class="footer-links">
-        <li><a href="financial-operations.html">Financial Operations</a></li>
-        <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
-        <li><a href="data-automation.html">Data Automation</a></li>
-        <li><a href="workflow-automation.html">Workflow Automation</a></li>
-        <li><a href="process-design.html">Process Design</a></li>
-        <li><a href="embedded-support.html">Embedded Support</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Company</div>
-      <ul class="footer-links">
-        <li><a href="aboutus.html">About</a></li>
-        <li><a href="blog.html">Case Studies</a></li>
-        <li><a href="contactus.html">Contact</a></li>
-        <li><a href="privacypolicy.html">Privacy</a></li>
-        <li><a href="termsofservice.html">Terms</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
-    <a href="mailto:hello@finologynexus.com" class="footer-email">hello@finologynexus.com</a>
-  </div>
-</footer>
-<a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
-  <i class="fas fa-heartbeat"></i> FinPulse Free
-</a>
-<script>
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('copy', e => e.preventDefault());
-  document.addEventListener('cut', e => e.preventDefault());
-  document.addEventListener('keydown', e => { if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault(); });
-  const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.08});
-  document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
-</script>
-<script>
-  // Animate CashMap chart bars on scroll
-  const cmObs = new IntersectionObserver(e => {
-    e.forEach(x => {
-      if (x.isIntersecting) {
-        x.target.querySelectorAll('[data-h]').forEach((b, i) => {
-          setTimeout(() => { b.style.height = b.dataset.h + '%'; }, i * 60);
-        });
-      }
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('keydown', e => { if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault(); });
+    const observer = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.08});
+    document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+  </script>
+  <script>
+    // Animate CashMap chart bars on scroll
+    const cmObs = new IntersectionObserver(e => {
+      e.forEach(x => {
+        if (x.isIntersecting) {
+          x.target.querySelectorAll('[data-h]').forEach((b, i) => {
+            setTimeout(() => { b.style.height = b.dataset.h + '%'; }, i * 60);
+          });
+        }
+      });
+    }, {threshold:0.3});
+    document.querySelectorAll('#cm-chart,.cfc-chart-wrap').forEach(el => {
+      el.querySelectorAll('[data-h]').forEach(b => b.style.height = '0');
+      cmObs.observe(el);
     });
-  }, {threshold:0.3});
-  document.querySelectorAll('#cm-chart,.cfc-chart-wrap').forEach(el => {
-    el.querySelectorAll('[data-h]').forEach(b => b.style.height = '0');
-    cmObs.observe(el);
-  });
-</script>
+  </script>
 </body>
 </html>
