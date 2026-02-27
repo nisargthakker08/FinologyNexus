@@ -4,12 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workflow and Process Automation · Finology Nexus</title>
-  <meta name="description" content="Redesign and automate operational workflows so processes become visible, repeatable, and controlled. Stop manual follow-ups and recurring errors.">
+  <meta name="description" content="Redesign and automate operational workflows for finance and operations teams. Less manual work, fewer errors, and processes that scale without adding headcount.">
   <meta name="keywords" content="workflow automation, process automation, operational efficiency, task automation, process design, Finology Nexus">
   <meta name="author" content="Finology Nexus">
   <link rel="canonical" href="https://www.finologynexus.online/workflow-automation.html">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="finology-logofavicon.png">
 
   <!-- Google Tag Manager -->
@@ -35,42 +33,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ----- GLOBAL STYLES (consistent with Finology Nexus) ----- */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #1c2a3a; --ink-light: #2a3a4a; --ink-muted: #6b7a8a;
-      --paper: #f5f2ec; --paper-warm: #ede9e1;
-      --accent: #b8955a; --accent-light: #d4b07a; --accent-pale: #f0e6d3;
-      --green: #2d5a3d; --green-light: #4a8c62;
-      --amber: #e67e22; --red-soft: #c0392b;
-      --line: rgba(28,42,58,0.12);
-      --transition: all 0.25s ease;
+    /* ----- GLOBAL STYLES (combined) ----- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;
+      --amber:#e67e22;--red-soft:#c0392b;
+      --line:rgba(28,42,58,0.12);
+      --transition:all 0.25s ease;
     }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      /* Disable text selection */
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
     }
-    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 1.25rem;
-      display: flex; align-items: center; gap: 0.75rem;
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{
+      font-family:'DM Mono',monospace;
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--accent);margin-bottom:1.25rem;
+      display:flex;align-items:center;gap:0.75rem;
     }
-    .section-label::before { content: ''; width: 1.5rem; height: 1px; background: var(--accent); display: inline-block; }
-    .section-title { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--ink); margin-bottom: 1rem; line-height: 1.1; }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-body { font-size: 1rem; color: var(--ink-muted); max-width: 560px; font-weight: 300; line-height: 1.7; }
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .section-title{font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:1rem;line-height:1.1;}
+    .section-title em{font-style:italic;color:var(--accent);}
+    .section-body{font-size:1rem;color:var(--ink-muted);max-width:560px;font-weight:300;line-height:1.7;}
 
     /* NAV with dropdowns */
     nav {
@@ -83,8 +77,7 @@
     }
     .logo-group {
       display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none;
-      color: inherit;
+      text-decoration: none; color: inherit;
     }
     .company-logo { width: 40px; height: 40px; object-fit: contain; }
     .company-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); text-decoration: none; }
@@ -101,13 +94,11 @@
     .nav-links a i { font-size: 0.6rem; transition: transform 0.2s; }
     .nav-links li:hover a i { transform: rotate(180deg); }
 
-    /* Active section (parent) highlight */
     .active-section > a {
       color: var(--accent) !important;
       font-weight: 600;
     }
 
-    /* Dropdown */
     .dropdown-content {
       position: absolute; top: 2rem; left: -1rem;
       background: white; border: 1px solid var(--line);
@@ -115,23 +106,15 @@
       opacity: 0; visibility: hidden; transition: all 0.2s;
       box-shadow: var(--shadow-md); z-index: 10;
     }
-    .nav-links li:hover .dropdown-content {
-      opacity: 1; visibility: visible;
-    }
+    .nav-links li:hover .dropdown-content { opacity: 1; visibility: visible; }
     .dropdown-content a {
       display: block; padding: 0.5rem 1.5rem;
       font-size: 0.75rem; text-transform: none; letter-spacing: 0.05em;
       color: var(--ink-muted);
     }
     .dropdown-content a:hover { background: var(--paper-warm); color: var(--ink); }
-    .dropdown-content a.active {
-      color: var(--accent);
-      font-weight: 600;
-      background: var(--paper-warm);
-    }
+    .dropdown-content a.active { color: var(--accent); font-weight: 600; background: var(--paper-warm); }
 
-    /* FinPulse link – normal style (no highlight) */
-    .nav-links .finpulse-link a { color: var(--ink-muted); font-weight: 500; }
     .nav-cta {
       font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--paper); background: var(--ink);
@@ -139,33 +122,30 @@
     }
     .nav-cta:hover { background: var(--accent); }
 
-    /* Hero section */
-    .hero {
-      padding: 10rem 4rem 5rem;
-      background: linear-gradient(to bottom, var(--paper-warm), var(--paper));
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .hero-left h1 { font-size: clamp(2.8rem, 4vw, 3.8rem); margin-bottom: 1.5rem; }
-    .hero-left h1 em { color: var(--accent); font-style: italic; }
-    .hero-left p { font-size: 1rem; color: var(--ink-muted); margin-bottom: 2rem; max-width: 480px; }
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--paper); background: var(--ink); padding: 0.9rem 2rem;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .btn-primary:hover { background: var(--accent); }
-    .btn-outline {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink); background: transparent; border: 1px solid var(--ink-muted); padding: 0.9rem 2rem;
-      text-decoration: none; transition: background 0.2s, border-color 0.2s;
-    }
-    .btn-outline:hover { background: var(--paper-warm); border-color: var(--ink); }
+    /* HERO (left: text, right: chart) */
+    .page-hero{padding:9rem 4rem 0;display:grid;grid-template-columns:1.1fr 0.9fr;min-height:72vh;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:var(--paper-warm);z-index:0;}
+    .ph-left{position:relative;z-index:1;padding:4rem 4rem 5rem 0;display:flex;flex-direction:column;justify-content:center;}
+    .ph-right{position:relative;z-index:1;padding:4rem 0 5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .ph-breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;}
+    .ph-breadcrumb a{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;}
+    .ph-breadcrumb a:hover{color:var(--accent);}
+    .ph-breadcrumb span{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--line);padding:0 0.2rem;}
+    .ph-breadcrumb .current{color:var(--accent);}
+    .ph-eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .ph-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);display:inline-block;}
+    .ph-cap-num{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(28,42,58,0.3);margin-bottom:0.75rem;}
+    .ph-title{font-size:clamp(2.6rem,4.5vw,4rem);font-weight:300;line-height:1.05;letter-spacing:-0.015em;color:var(--ink);margin-bottom:1.25rem;}
+    .ph-title em{font-style:italic;color:var(--accent);}
+    .ph-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .ph-sub{font-size:1rem;color:var(--ink-muted);line-height:1.75;font-weight:300;max-width:480px;margin-bottom:2.5rem;}
+    .ph-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--accent);}
+    .btn-outline{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink-muted);padding:0.9rem 2rem;text-decoration:none;transition:background 0.2s,border-color 0.2s;}
+    .btn-outline:hover{background:var(--paper-warm);border-color:var(--ink);}
 
-    /* Corporate visual (right side) */
+    /* Hero right: chart */
     .hero-right {
       background: var(--ink);
       padding: 2.5rem;
@@ -191,85 +171,163 @@
     .metric-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: white; }
     .metric-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
 
-    /* Content sections */
-    section { padding: 5rem 4rem; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .problem-list { list-style: none; }
-    .problem-list li { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-    .problem-list li::before { content: '—'; color: var(--accent); font-size: 0.9rem; }
-    .what-we-do-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
-      background: var(--line); border: 1px solid var(--line);
-      margin-top: 2rem;
+    /* Problem snapshot */
+    .problem-snapshot{border:1px solid var(--line);background:var(--paper);padding:2rem;}
+    .ps-label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;}
+    .ps-items{display:flex;flex-direction:column;gap:0;}
+    .ps-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid var(--line);}
+    .ps-item:last-child{border-bottom:none;}
+    .ps-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:0.5rem;}
+    .ps-item-text{font-size:0.83rem;color:var(--ink-muted);line-height:1.5;font-weight:300;}
+    .ps-resolution{margin-top:1.25rem;padding:1rem 1.25rem;background:var(--accent-pale);border-left:3px solid var(--accent);}
+    .ps-resolution p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink);font-style:italic;line-height:1.5;}
+
+    /* WHAT WE DO */
+    .what-section{padding:6rem 4rem;background:var(--paper-warm);}
+    .what-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3.5rem;}
+    .what-card{background:var(--paper);padding:2.5rem;transition:background 0.2s;}
+    .what-card:hover{background:var(--accent-pale);}
+    .what-card-icon{font-size:1.5rem;margin-bottom:1rem;display:block;}
+    .what-card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;line-height:1.2;}
+    .what-card-desc{font-size:0.83rem;color:var(--ink-muted);line-height:1.65;font-weight:300;}
+
+    /* HOW WE EMBED */
+    .embed-section{padding:0;display:grid;grid-template-columns:1fr 1fr;}
+    .embed-left{background:var(--ink);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .embed-right{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .embed-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--paper);line-height:1.15;margin-bottom:1.25rem;}
+    .embed-title em{font-style:italic;color:var(--accent-light);}
+    .embed-body{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.8;font-weight:300;margin-bottom:2rem;}
+    .embed-points{display:flex;flex-direction:column;gap:0.75rem;}
+    .embed-point{display:flex;align-items:flex-start;gap:0.75rem;}
+    .embed-point-icon{font-size:1rem;flex-shrink:0;margin-top:0.1rem;}
+    .embed-point-text{font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.55;font-weight:300;}
+    .embed-right .section-label{color:var(--accent);}
+    .change-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);}
+    .change-item{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--line);transition:background 0.2s;}
+    .change-item:last-child{border-bottom:none;}
+    .change-item:hover{background:var(--accent-pale);}
+    .change-arrow{font-size:0.9rem;color:var(--accent);}
+    .change-text{font-size:0.85rem;color:var(--ink-muted);font-weight:300;line-height:1.45;}
+
+    /* WHO NEEDS IT */
+    .who-section{padding:5rem 4rem;background:var(--paper);}
+    .who-inner{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start;}
+    .who-sticky{position:sticky;top:7rem;}
+    .who-cards{display:flex;flex-direction:column;gap:1px;border:1px solid var(--line);background:var(--line);}
+    .who-card{background:var(--paper-warm);padding:1.75rem 2rem;transition:background 0.2s;}
+    .who-card:hover{background:var(--paper);}
+    .who-card-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
+    .who-card-desc{font-size:0.82rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+
+    /* OTHER CAPABILITIES (flex layout) */
+    .related-section{background:var(--paper-warm);padding:5rem 4rem;}
+    .related-grid{
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 3rem;
     }
-    .wwd-card {
-      background: var(--paper-warm); padding: 2rem;
-      transition: background 0.3s;
+    .related-card{
+      flex: 1 1 0;
+      background: var(--paper);
+      padding: 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: block;
     }
-    .wwd-card:hover { background: var(--paper); }
-    .wwd-card i { color: var(--accent); font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .wwd-card h3 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.5rem; }
-    .wwd-card p { font-size: 0.85rem; color: var(--ink-muted); }
-
-    .embed-steps {
-      display: flex; gap: 1px; background: var(--line); border: 1px solid var(--line);
-      margin: 2rem 0;
+    .related-card:hover{
+      background: var(--accent-pale);
     }
-    .embed-step { background: var(--paper-warm); padding: 2rem; flex: 1; }
-    .step-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 1rem; }
-    .embed-step h4 { font-size: 1rem; font-weight: 400; margin-bottom: 0.5rem; }
-    .embed-step p { font-size: 0.8rem; color: var(--ink-muted); }
-
-    .who-box {
-      background: var(--ink); color: white; padding: 3rem; border-radius: 24px;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    .related-card:not(:last-child){
+      border-right: 1px solid var(--line);
     }
-    .who-item { display: flex; gap: 1rem; align-items: flex-start; }
-    .who-item i { color: var(--accent); font-size: 1.2rem; margin-top: 0.2rem; }
-    .who-item p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-
-    .outcome-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-      background: var(--line); border: 1px solid var(--line);
-      margin-top: 2rem;
+    .related-num{
+      font-family:'DM Mono',monospace;
+      font-size:0.55rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--accent);
+      opacity:0.7;
+      margin-bottom:0.75rem;
     }
-    .outcome-card { background: var(--paper-warm); padding: 2rem; text-align: center; }
-    .outcome-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
-    .outcome-card p { font-size: 0.85rem; color: var(--ink-muted); }
+    .related-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.15rem;
+      font-weight:400;
+      color:var(--ink);
+      margin-bottom:0.5rem;
+      line-height:1.2;
+    }
+    .related-desc{
+      font-size:0.78rem;
+      color:var(--ink-muted);
+      line-height:1.6;
+      font-weight:300;
+    }
+    .related-link{
+      font-family:'DM Mono',monospace;
+      font-size:0.58rem;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-top:1rem;
+      display:inline-flex;
+      align-items:center;
+      gap:0.4rem;
+    }
+    .related-link::after{content:'→';}
 
-    /* Footer */
-    footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 4rem 2.5rem; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem; }
-    .footer-logo-group { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; text-decoration: none; color: inherit; }
-    .footer-logo-group img { width: 40px; height: 40px; object-fit: contain; }
-    .footer-logo-group span { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--paper); }
-    .footer-logo-group span span { color: var(--accent); }
-    .footer-tagline { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.65; font-weight: 300; max-width: 240px; margin-top: 0.5rem; }
-    .footer-col-title { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.25rem; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.6rem; }
-    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 300; }
-    .footer-links a:hover { color: var(--paper); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
-    .footer-email { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); text-decoration: none; }
-    .footer-socials { display: flex; gap: 1.2rem; margin-top: 1.5rem; }
-    .footer-socials a { color: rgba(255,255,255,0.3); font-size: 1.2rem; transition: color 0.2s; text-decoration: none; }
-    .footer-socials a:hover { color: var(--accent); }
+    /* BOTTOM CTA */
+    .bottom-cta{background:var(--ink);padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .bc-title{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;color:var(--paper);line-height:1.1;margin-bottom:0.5rem;}
+    .bc-title em{font-style:italic;color:var(--accent-light);}
+    .bc-sub{font-size:0.9rem;color:rgba(255,255,255,0.4);margin-top:0.75rem;font-weight:300;line-height:1.7;}
+    .bc-actions{display:flex;flex-direction:column;gap:1rem;}
+    .btn-bc-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;align-self:flex-start;}
+    .btn-bc-primary:hover{background:var(--paper);}
+    .btn-bc-ghost{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:color 0.2s,gap 0.2s;align-self:flex-start;}
+    .btn-bc-ghost:hover{color:var(--paper);gap:0.8rem;}
+    .btn-bc-ghost::after{content:'→';}
+    .bc-note{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
 
-    .fade-up { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.animate { opacity: 0; transform: translateY(20px); }
-    .fade-up.animate.visible { opacity: 1; transform: none; }
+    /* FOOTER (email on left) */
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;color:inherit;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;margin-left:0;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
 
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .who-box { grid-template-columns: 1fr; }
-      .embed-steps { flex-direction: column; }
-      .outcome-grid { grid-template-columns: 1fr 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
+
+    @media(max-width:1024px){.related-grid{flex-wrap:wrap;}.related-card{flex:1 1 100%;border-right:none!important;}}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .page-hero,.what-section,.who-section,.related-section,.bottom-cta{padding:4rem 1.5rem;}
+      .page-hero{padding-top:8rem;grid-template-columns:1fr;}.page-hero::after{display:none;}.ph-left,.ph-right{padding:2rem 0;}
+      .what-grid{grid-template-columns:1fr;}
+      .embed-section{grid-template-columns:1fr;}
+      .embed-left,.embed-right{padding:4rem 1.5rem;}
+      .who-inner{grid-template-columns:1fr;gap:2.5rem;}
+      .related-grid{flex-wrap:wrap;}.related-card{flex:1 1 100%;border-right:none!important;}
+      .bottom-cta{grid-template-columns:1fr;gap:3rem;}
+      footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
     }
   </style>
 </head>
@@ -284,9 +342,7 @@
       <span class="company-name">Finology <span>Nexus</span></span>
     </a>
     <ul class="nav-links">
-      <!-- Home link -->
       <li><a href="index.html">Home</a></li>
-      <!-- Services dropdown (active section) -->
       <li class="active-section">
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -298,7 +354,6 @@
           <a href="embedded-support.html">Embedded Support</a>
         </div>
       </li>
-      <!-- Solutions dropdown -->
       <li>
         <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -308,7 +363,6 @@
           <a href="Solutions.html">VendorScan</a>
         </div>
       </li>
-      <!-- About dropdown -->
       <li>
         <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -317,198 +371,202 @@
           <a href="contactus.html">Contact</a>
         </div>
       </li>
-      <!-- FinPulse link - normal style, no highlight -->
-      <li class="finpulse-link"><a href="finance-checkup.html">FinPulse (Free)</a></li>
+      <li><a href="finance-checkup.html">FinPulse (Free)</a></li>
     </ul>
     <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
   </nav>
 
-  <!-- HERO with visualisation -->
-  <section class="hero">
-    <div class="hero-left fade-up">
-      <div class="section-label">Workflow and Process Automation</div>
-      <h1>Manual processes break quietly <em>before they fail loudly</em></h1>
-      <p>As operations scale, workflows designed for smaller teams start leaking. Tasks slip, ownership blurs, and coordination becomes the hidden cost of growth.</p>
-      <p>This capability exists to stabilise execution. We redesign and automate workflows so processes become visible, repeatable, and controlled.</p>
-      <div class="hero-actions">
-        <a href="contactus.html" class="btn-primary">Discuss your needs →</a>
-        <a href="finance-checkup.html" class="btn-outline">Start with FinPulse</a>
+  <!-- HERO (left: text, right: chart) -->
+  <div class="page-hero">
+    <div class="ph-left fade-up">
+      <div class="ph-breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="services.html">Services</a><span>/</span>
+        <span class="current">Workflow and Process Automation</span>
+      </div>
+      <div class="ph-cap-num">Capability 04 / 06</div>
+      <div class="ph-eyebrow">Capability 04</div>
+      <h1 class="ph-title">Workflow<br>and Process<br><em>Automation</em></h1>
+      <div class="ph-tagline">Less manual work, fewer errors, and more control over how things get done</div>
+      <p class="ph-sub">We redesign and automate operational workflows so processes become visible, repeatable, and controlled. Automation is implemented with controls, exception handling, and long-term reliability in mind, not just speed.</p>
+      <div class="ph-actions">
+        <a href="contactus.html" class="btn-primary">Discuss This Capability</a>
+        <a href="finance-checkup.html" class="btn-outline">Run FinPulse Free</a>
       </div>
     </div>
-    <div class="hero-right fade-up" style="transition-delay:0.15s">
-      <!-- Sample workflow automation visual -->
-      <div class="viz-row">
-        <span class="viz-label">Manual follow‑ups</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:90%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">-90%</span>
+    <div class="ph-right fade-up" style="transition-delay:0.15s">
+      <div class="hero-right">
+        <div class="viz-row">
+          <span class="viz-label">Manual follow‑ups</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:90%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">-90%</span>
+        </div>
+        <div class="viz-row">
+          <span class="viz-label">Task completion</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:85%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">+85%</span>
+        </div>
+        <div class="viz-row">
+          <span class="viz-label">Error rate</span>
+          <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:95%"></div></div>
+          <span class="viz-label" style="color:white; width:auto;">-95%</span>
+        </div>
+        <div class="viz-metric">
+          <div class="metric-item"><span class="metric-num">100%</span><div class="metric-desc">visibility</div></div>
+          <div class="metric-item"><span class="metric-num">24h</span><div class="metric-desc">cycle time</div></div>
+        </div>
       </div>
-      <div class="viz-row">
-        <span class="viz-label">Task completion</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:85%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">+85%</span>
+    </div>
+  </div>
+
+  <!-- PROBLEM SNAPSHOT (from first HTML) -->
+  <section style="padding: 0 4rem 4rem;">
+    <div class="problem-snapshot">
+      <div class="ps-label">Manual processes break quietly before they fail loudly</div>
+      <div class="ps-items">
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Work depends on reminders and follow-ups to move forward</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">No clear view of task status or ownership across the team</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Errors repeat despite good intentions and careful people</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Teams rely on shared spreadsheets for coordination</div></div>
+        <div class="ps-item"><div class="ps-dot"></div><div class="ps-item-text">Scaling operations increases chaos instead of efficiency</div></div>
       </div>
-      <div class="viz-row">
-        <span class="viz-label">Error rate</span>
-        <div class="viz-bar-track"><div class="viz-bar-fill green" style="width:95%"></div></div>
-        <span class="viz-label" style="color:white; width:auto;">-95%</span>
-      </div>
-      <div class="viz-metric">
-        <div class="metric-item"><span class="metric-num">100%</span><div class="metric-desc">visibility</div></div>
-        <div class="metric-item"><span class="metric-num">24h</span><div class="metric-desc">cycle time</div></div>
-      </div>
+      <div class="ps-resolution"><p>As operations scale, workflows designed for smaller teams start leaking. Tasks slip, ownership blurs, and coordination becomes the hidden cost of growth.</p></div>
     </div>
   </section>
 
-  <!-- PROBLEMS IT SOLVES -->
-  <section style="padding-top: 2rem;">
-    <div class="grid-2">
-      <div>
-        <div class="section-label">What this solves immediately</div>
-        <h2 class="section-title">Workflows that leak time and create friction.</h2>
-      </div>
-      <div>
-        <ul class="problem-list">
-          <li>Work depends on reminders and follow-ups</li>
-          <li>No clear view of task status or ownership</li>
-          <li>Errors repeat despite good intentions</li>
-          <li>Teams rely on spreadsheets for coordination</li>
-          <li>Scaling increases chaos instead of efficiency</li>
-        </ul>
-      </div>
+  <!-- WHAT WE DO -->
+  <section class="what-section">
+    <div class="fade-up">
+      <div class="section-label">What this capability covers</div>
+      <h2 class="section-title">What we <em>actually do</em></h2>
     </div>
-  </section>
-
-  <!-- WHAT WE ACTUALLY DO -->
-  <section style="background: var(--paper-warm);">
-    <div class="section-label">What we actually do</div>
-    <h2 class="section-title">We make workflows <em>visible and repeatable</em></h2>
-    <div class="what-we-do-grid">
-      <div class="wwd-card">
-        <i class="fas fa-map"></i>
-        <h3>Map current flows</h3>
-        <p>Understand how work truly moves today.</p>
+    <div class="what-grid fade-up">
+      <div class="what-card">
+        <span class="what-card-icon">🗺️</span>
+        <div class="what-card-title">Workflow Mapping and Analysis</div>
+        <div class="what-card-desc">Document how work truly flows today, including the informal paths, exceptions, and workarounds that never make it into official process diagrams.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-exclamation-triangle"></i>
-        <h3>Identify friction points</h3>
-        <p>Find where processes break or slow down.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🔎</span>
+        <div class="what-card-title">Friction and Failure Point Identification</div>
+        <div class="what-card-desc">Identify where handoffs break down, where errors concentrate, and where manual steps could be eliminated or systematised.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-robot"></i>
-        <h3>Automate repetitive steps</h3>
-        <p>Remove manual, high-risk tasks.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🤖</span>
+        <div class="what-card-title">Automation of Repetitive High-Risk Steps</div>
+        <div class="what-card-desc">Automate the steps most prone to error, delay, or inconsistency, particularly reconciliation, data transfer, report generation, and approval routing.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-link"></i>
-        <h3>Connect systems</h3>
-        <p>Smooth handoffs between tools.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🔗</span>
+        <div class="what-card-title">System-to-System Integrations</div>
+        <div class="what-card-desc">Connect the tools your team already uses so data flows between systems without manual intervention, copying, or re-entry.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-exclamation-circle"></i>
-        <h3>Exception handling</h3>
-        <p>Build controls for when things go wrong.</p>
+      <div class="what-card">
+        <span class="what-card-icon">🛡️</span>
+        <div class="what-card-title">Exception Handling and Controls</div>
+        <div class="what-card-desc">Build controls directly into automated workflows so exceptions are caught, flagged, and escalated appropriately rather than silently failing.</div>
       </div>
-      <div class="wwd-card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Monitor & improve</h3>
-        <p>Ensure processes stay reliable.</p>
+      <div class="what-card">
+        <span class="what-card-icon">📈</span>
+        <div class="what-card-title">Scalable Process Architecture</div>
+        <div class="what-card-desc">Design workflows that hold up under growth. Processes that work the same way at 3x the volume as they do today.</div>
       </div>
     </div>
   </section>
 
   <!-- HOW WE EMBED -->
-  <section>
-    <div class="section-label">How we embed with your team</div>
-    <h2 class="section-title">Inside your tools, <em>no overengineering</em></h2>
-    <div class="embed-steps">
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-laptop"></i></div>
-        <h4>Your current tools</h4>
-        <p>Automation lives inside the systems your team already uses.</p>
+  <div class="embed-section">
+    <div class="embed-left fade-up">
+      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(184,149,90,0.6);margin-bottom:1.5rem;">How we embed with your team</div>
+      <h2 class="embed-title">We work inside<br>your setup, <em>not around it</em></h2>
+      <p class="embed-body">No new software to procure, no migration cost, no disruption to existing workflows. Your team stays in control. We handle execution.</p>
+      <div class="embed-points">
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">Automation is built inside your current tools, not in new platforms you need to manage</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">We avoid overengineering and focus on durability and clarity over complexity</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">Every automated process is documented so your team can maintain and extend it</div></div>
+        <div class="embed-point"><span class="embed-point-icon">✦</span><div class="embed-point-text">Exception handling is built in from the start, not added as an afterthought</div></div>
       </div>
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-hard-hat"></i></div>
-        <h4>Durable & clear</h4>
-        <p>We avoid overengineering. Focus is on reliability and clarity.</p>
+    </div>
+    <div class="embed-right fade-up" style="transition-delay:0.1s">
+      <div class="section-label">What changes after engagement</div>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,2.5vw,2.4rem);margin-bottom:2rem;">The difference you will <em>actually notice</em></h2>
+      <div class="change-list">
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Clear ownership and visibility across every step of the workflow</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Fewer follow-ups, escalations, and coordination meetings</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Reduced error rates in processes that previously depended on manual vigilance</div></div>
+        <div class="change-item"><span class="change-arrow">→</span><div class="change-text">Processes that scale with growth instead of breaking under it</div></div>
       </div>
-      <div class="embed-step">
-        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
-        <h4>Controlled execution</h4>
-        <p>Processes that don't depend on constant oversight.</p>
+    </div>
+  </div>
+
+  <!-- WHO NEEDS THIS -->
+  <section class="who-section">
+    <div class="who-inner fade-up">
+      <div class="who-sticky">
+        <div class="section-label">Who usually needs this</div>
+        <h2 class="section-title">Is this the right<br>fit for <em>your business?</em></h2>
+        <p class="section-body" style="margin-top:1rem;">This capability is best suited for businesses at a specific stage or facing a specific set of challenges. See if any of these describe where you are right now.</p>
+      </div>
+      <div class="who-cards">
+        <div class="who-card"><div class="who-card-title">Teams scaling faster than process maturity</div><div class="who-card-desc">When the business is growing quickly but the operational processes that support it were designed for a much smaller team, automation closes the gap without adding headcount.</div></div>
+        <div class="who-card"><div class="who-card-title">Operations with frequent handoffs between people or systems</div><div class="who-card-desc">Every handoff is a point of failure. When work crosses teams, tools, or approval layers, automation enforces consistency that people alone cannot sustain.</div></div>
+        <div class="who-card"><div class="who-card-title">Businesses facing recurring execution errors</div><div class="who-card-desc">If the same types of mistakes appear repeatedly despite training and good intentions, the process itself is the problem. Automation removes the dependency on error-free manual execution.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- WHO USUALLY NEEDS THIS -->
-  <section style="background: var(--paper-warm);">
-    <div class="section-label">Who usually needs this</div>
-    <div class="who-box">
-      <div class="who-item">
-        <i class="fas fa-chart-line"></i>
-        <p><strong>Teams scaling faster than process maturity</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-random"></i>
-        <p><strong>Operations with frequent handoffs</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-exclamation-circle"></i>
-        <p><strong>Businesses facing recurring execution errors</strong></p>
-      </div>
-      <div class="who-item">
-        <i class="fas fa-cogs"></i>
-        <p><strong>Any operation ready to reduce friction</strong></p>
-      </div>
+  <!-- OTHER CAPABILITIES (horizontal flex) -->
+  <section class="related-section fade-up">
+    <div class="section-label">Other capabilities</div>
+    <h2 class="section-title">Often used <em>alongside this one</em></h2>
+    <div class="related-grid">
+      <a href="data-automation.html" class="related-card">
+        <div class="related-num">Capability 03</div>
+        <div class="related-title">Data Extraction and Automation</div>
+        <div class="related-desc">Automate the data collection and structuring that feeds into your operational workflows.</div>
+        <div class="related-link">Explore</div>
+      </a>
+      <a href="process-design.html" class="related-card">
+        <div class="related-num">Capability 05</div>
+        <div class="related-title">Process Design, SOPs and Controls</div>
+        <div class="related-desc">Document and standardise the processes that automation will be built on top of.</div>
+        <div class="related-link">Explore</div>
+      </a>
+      <a href="financial-operations.html" class="related-card">
+        <div class="related-num">Capability 01</div>
+        <div class="related-title">Financial Operations and Accounting</div>
+        <div class="related-desc">Apply automation specifically to financial operations: reconciliations, close processes, and reporting workflows.</div>
+        <div class="related-link">Explore</div>
+      </a>
     </div>
   </section>
 
-  <!-- OUTCOMES -->
-  <section>
-    <div class="section-label">What changes after engagement</div>
-    <h2 class="section-title">From hidden friction to <em>visible flow</em></h2>
-    <div class="outcome-grid">
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-eye"></i></div>
-        <p>Clear ownership and visibility</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-bell-slash"></i></div>
-        <p>Fewer follow-ups and escalations</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-check-double"></i></div>
-        <p>Reduced error rates</p>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-icon"><i class="fas fa-chart-line"></i></div>
-        <p>Processes that scale with growth</p>
-      </div>
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta fade-up">
+    <div>
+      <h2 class="bc-title">Ready to stop running your operation <em>manually?</em></h2>
+      <p class="bc-sub">Start with a FinPulse check to identify where manual work and process inefficiency are costing your team most. Or book a consultation to talk through what workflow automation would look like for your specific operational environment.</p>
     </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section style="background: var(--ink); color: white; text-align: center;">
-    <h2 style="font-size: 2.4rem; font-weight: 300; margin-bottom: 1rem;">Ready to make workflows <em style="color: var(--accent-light);">visible and controlled?</em></h2>
-    <p style="color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto 2rem;">A short conversation is enough to understand your current operational friction and what a well‑scoped engagement would look like.</p>
-    <div class="hero-actions" style="justify-content: center;">
-      <a href="contactus.html" class="btn-primary" style="background: var(--accent); color: var(--ink);">Schedule a consultation</a>
-      <a href="finance-checkup.html" class="btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Run FinPulse free</a>
+    <div class="bc-actions">
+      <a href="contactus.html" class="btn-bc-primary">Schedule a Consultation</a>
+      <a href="finance-checkup.html" class="btn-bc-ghost">Run FinPulse Free</a>
+      <div class="bc-note">No long-term contracts. Scoped before work begins.</div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
-      <div class="footer-brand">
+      <div>
         <a href="index.html" class="footer-logo-group">
           <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
           <span>Finology <span>Nexus</span></span>
         </a>
         <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://x.com/FinologyN57162" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="mailto:info@finologynexus.online" target="_blank"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:info@finologynexus.online" target="_blank" rel="noopener noreferrer" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div>
@@ -547,6 +605,11 @@
       <a href="mailto:info@finologynexus.online" class="footer-email">info@finologynexus.online</a>
     </div>
   </footer>
+
+  <!-- Floating CTA -->
+  <a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+    <i class="fas fa-heartbeat"></i> FinPulse Free
+  </a>
 
   <script>
     // Disable copy/paste shortcuts and context menu
