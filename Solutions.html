@@ -1,1551 +1,1179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendor360 Essentials Suite | Finology Nexus</title>
-    <meta name="description" content="Streamline vendor management with our essential suite of tools for risk assessment, compliance tracking, performance monitoring, and financial due diligence.">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-    <link rel="icon" type="image/png" href="finology-logofavicon.png" />
-    
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>    
-    
-    <style>
-        :root {
-            --primary-blue: #0066cc;
-            --primary-blue-dark: #004d99;
-            --secondary-blue: #0099ff;
-            --accent-blue: #0077dd;
-            --accent-gold: #cc9900;
-            --accent-gold-light: #e6b800;
-            --accent-purple: #6a0dad;
-            --accent-purple-light: #8a2be2;
-            --accent-green: #10b981;
-            --accent-green-light: #34d399;
-            --dark-bg: #1f2937;
-            --light-bg: #f9fbfc;
-            --text-dark: #1f2937;
-            --text-medium: #4b5563;
-            --text-light: #6b7280;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* ========== TYPOGRAPHY ========== */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 0.75rem;
-        }
-
-        .section-title {
-            font-size: 2.75rem;
-            margin-bottom: 1.25rem;
-            color: var(--primary-blue);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-            border-radius: 2px;
-        }
-
-        .section-description {
-            max-width: 50rem;
-            margin: 0 auto 2.5rem;
-            color: var(--text-medium);
-            font-size: 1.15rem;
-        }
-
-        /* ========== BUTTON STYLES ========== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.875rem 1.75rem;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            min-width: 200px;
-            text-align: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(to right, var(--accent-purple), var(--primary-blue));
-            color: var(--white);
-            border: none;
-            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-gold-light));
-            color: var(--white);
-            border: none;
-            box-shadow: 0 4px 15px rgba(204, 153, 0, 0.3);
-        }
-
-        .btn-tertiary {
-            background: rgba(255, 255, 255, 0.25);
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-green {
-            background: linear-gradient(to right, var(--accent-green), var(--accent-green-light));
-            color: var(--white);
-            border: none;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover,
-        .btn-tertiary:hover,
-        .btn-outline:hover,
-        .btn-green:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Button animation effects */
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* ========== LAYOUT COMPONENTS ========== */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.25rem;
-        }
-
-        .section {
-            padding: 6rem 1.25rem;
-            text-align: center;
-        }
-
-        /* ========== HEADER & NAVIGATION ========== */
-        header {
-            background: var(--white);
-            padding: 1.25rem 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: box-shadow 0.3s ease, background 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .company-logo {
-            width: 44px;
-            height: 44px;
-            object-fit: contain;
-        }
-
-        .company-name {
-            font-size: 1.75rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--accent-purple), var(--accent-gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            position: relative;
-            transition: var(--transition);
-            font-size: 1rem;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -6px;
-            left: 0;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        nav a.active {
-            color: var(--accent-purple);
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.75rem;
-            cursor: pointer;
-            color: var(--accent-purple);
-            padding: 0.5rem;
-        }
-
-        /* ========== HERO SECTION ========== */
-        .hero {
-            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-blue) 100%);
-            color: var(--white);
-            padding: 8rem 1.25rem 5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 15% 75%, rgba(120, 119, 198, 0.35) 0%, transparent 50%),
-                radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.25) 0%, transparent 50%);
-            animation: float 8s ease-in-out infinite;
-        }
-
-        /* Animated particles background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: particleFloat 15s infinite linear;
-        }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-15px) scale(1.03); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            animation: fadeInDown 1s ease-out;
-            position: relative;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .hero p {
-            font-size: 1.35rem;
-            max-width: 50rem;
-            margin: 0 auto 2.5rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.75rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-2rem); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(2rem); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ========== PRODUCTS OVERVIEW SECTION ========== */
-        .products-section {
-            padding: 6rem 1.25rem;
-            background: var(--light-bg);
-        }
-
-        .products-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .products-section .section-title {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .products-section .section-description {
-            font-size: 1.25rem;
-            margin-bottom: 4rem;
-            color: var(--text-medium);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            text-align: left;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(106, 13, 173, 0.08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-purple);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-        }
-
-        .product-card-header {
-            padding: 2rem 1.75rem;
-            background: var(--accent-purple);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card-header.compliance {
-            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
-        }
-
-        .product-card-header.rbi-starter {
-            background: linear-gradient(135deg, var(--accent-green), var(--primary-blue));
-        }
-
-        .product-card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transform: translate(40%, -40%);
-        }
-
-        .product-card-header i {
-            font-size: 2.75rem;
-            margin-bottom: 1rem;
-            display: block;
-            opacity: 0.9;
-        }
-
-        .product-card-header h3 {
-            font-size: 1.75rem;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .product-card-body {
-            padding: 2rem 1.75rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card-body p {
-            margin-bottom: 1.75rem;
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-
-        .product-features {
-            list-style: none;
-            margin: 1.75rem 0;
-            flex-grow: 1;
-        }
-
-        .product-features li {
-            padding: 0.75rem 0;
-            position: relative;
-            padding-left: 2.25rem;
-            color: var(--text-medium);
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .product-features li:before {
-            content: "\f00c";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-            font-size: 1.1rem;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f3ff 100%);
-            border-left: 5px solid var(--accent-purple);
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-            font-size: 1.05rem;
-        }
-
-        .highlight-box strong {
-            color: var(--accent-purple);
-            font-weight: 700;
-        }
-
-        .rbi-badge {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .compliance-highlights {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border-left: 4px solid var(--accent-green);
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        }
-
-        .compliance-highlights strong {
-            color: var(--accent-green);
-        }
-
-        .product-card-footer {
-            padding: 0 1.75rem 1.75rem;
-        }
-
-        /* ========== WHY CHOOSE US SECTION ========== */
-        .benefits-section {
-            background-color: var(--white);
-            padding: 6rem 1.25rem;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3.5rem;
-        }
-
-        .benefit-card {
-            background: var(--white);
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .benefit-card i {
-            font-size: 3.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .benefit-card h3 {
-            color: var(--accent-purple);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .benefit-card p {
-            color: var(--text-medium);
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-
-        /* ========== CTA SECTION ========== */
-        .cta-section {
-            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
-            color: var(--white);
-            padding: 6rem 1.25rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,30 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>') top left/100% 100% no-repeat;
-        }
-
-        .cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cta-content h2 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .cta-content p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            line-height: 1.7;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* ========== FREE ASSESSMENT SECTION ========== */
-        .free-assessment {
-            padding: 6rem 1.25rem;
-            background: var(--light-bg);
-            text-align: center;
-        }
-
-        .assessment-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 3.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(106, 13, 173, 0.1);
-        }
-
-        .assessment-container h2 {
-            color: var(--accent-purple);
-            margin-bottom: 1.25rem;
-            font-size: 2.5rem;
-        }
-
-        .assessment-container p {
-            color: var(--text-medium);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 1.15rem;
-            line-height: 1.7;
-        }
-
-        .assessment-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            text-align: left;
-            margin-bottom: 3rem;
-        }
-
-        .feature-column h3 {
-            font-size: 1.5rem;
-            color: var(--accent-purple);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-
-        .feature-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gold);
-            border-radius: 2px;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            font-size: 1.05rem;
-        }
-
-        .feature-list i {
-            color: var(--accent-gold);
-            margin-top: 0.35rem;
-            font-size: 1.1rem;
-        }
-
-        .assessment-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-box {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(106, 13, 173, 0.15);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .assessment-form input,
-        .assessment-form textarea,
-        .assessment-form select {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #d0d7de;
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-            transition: var(--transition);
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-
-        .assessment-form textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-
-        .assessment-form input:focus,
-        .assessment-form textarea:focus,
-        .assessment-form select:focus {
-            border-color: var(--accent-purple);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
-        }
-
-        .assessment-form button {
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-            color: var(--white);
-            border: none;
-            padding: 1.25rem;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .assessment-form button:hover {
-            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* ========== FOOTER ========== */
-        footer {
-            background: var(--dark-bg);
-            color: var(--white);
-            padding: 4rem 1.25rem 2rem;
-        }
-
-        .footer-main {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-        }
-
-        .footer-column {
-            min-width: 200px;
-        }
-
-        .footer-logo-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .footer-logo-group img {
-            height: 2.5rem;
-        }
-
-        .footer-logo-group span {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .footer-about {
-            color: #d1d5db;
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links h4 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-
-        .footer-links h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-gold);
-            border-radius: 2px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1rem;
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-gold);
-            transform: translateX(5px);
-        }
-
-        .footer-socials {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .footer-socials a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: var(--transition);
-            display: inline-block;
-            width: 44px;
-            height: 44px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-socials a:hover {
-            color: var(--accent-gold);
-            background: rgba(204, 153, 0, 0.2);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 0.95rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-        }
-
-        .footer-bottom a {
-            color: var(--accent-gold);
-            text-decoration: none;
-        }
-
-        .footer-bottom a:hover {
-            text-decoration: underline;
-        }
-
-        /* ========== FLOATING CTA ========== */
-        .floating-cta {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(to right, var(--accent-gold), var(--accent-purple));
-            color: var(--white);
-            padding: 1rem 1.5rem;
-            border-radius: 3rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.05rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .floating-cta:hover {
-            background: linear-gradient(to right, var(--accent-purple), var(--accent-purple-light));
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-
-        .floating-cta i {
-            font-size: 1.25rem;
-        }
-
-        /* ========== RESPONSIVE STYLES ========== */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-                flex-wrap: wrap;
-            }
-
-            .menu-toggle {
-                display: block;
-                order: 1;
-            }
-
-            nav {
-                width: 100%;
-                order: 3;
-                display: none;
-                margin-top: 1.5rem;
-                background: var(--white);
-                padding: 1rem;
-                border-radius: var(--radius-md);
-                box-shadow: var(--shadow-sm);
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .product-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .assessment-features {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-main {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .section {
-                padding: 4rem 1rem;
-            }
-            .assessment-container {
-                padding: 2rem;
-            }
-            .form-box {
-                padding: 1.5rem;
-            }
-        }
-
-        /* ========== ACCESSIBILITY ========== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-
-            .hero h1,
-            .hero p {
-                animation: none;
-            }
-            .hero::before {
-                animation: none;
-            }
-        }
-
-        /* Focus styles for accessibility */
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible,
-        select:focus-visible {
-            outline: 3px solid var(--accent-gold);
-            outline-offset: 3px;
-            border-radius: var(--radius-sm);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligence Suite · Finology Nexus</title>
+  <meta name="description" content="Four financial intelligence tools built for businesses that need answers, not more dashboards. FinPulse, CashMap, ComplianceCheck, VendorScan — start free.">
+  <link rel="icon" type="image/png" href="finology-logofavicon.png">
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;--green-pale:#e8f2ec;
+      --amber:#c97d20;--amber-pale:#fdf6e8;
+      --blue:#1a3a5c;--blue-light:#2a5080;--blue-pale:#e8f0f8;
+      --teal:#1a4a4a;--teal-light:#2a7070;--teal-pale:#e8f5f5;
+      --line:rgba(28,42,58,0.12);
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      /* Disable text selection */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .section-title{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;color:var(--ink);margin-bottom:1rem;line-height:1.1;}
+    .section-title em{font-style:italic;color:var(--accent);}
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
+
+    /* ─── NAV ─────────────────────────────── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(245,242,236,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .logo-group{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;}
+    .company-logo{width:40px;height:40px;object-fit:contain;}
+    .company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);}
+    .company-name span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links li{position:relative;}
+    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
+    .nav-links a:hover,.nav-links a.active-page{color:var(--ink);}
+    .nav-links a.active-page{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;}
+    .nav-links a i{font-size:0.6rem;transition:transform 0.2s;}
+    .nav-links li:hover>a i{transform:rotate(180deg);}
+    .nav-highlight a{color:var(--accent)!important;font-weight:600!important;}
+    .dropdown-content{position:absolute;top:2rem;left:-1rem;background:white;border:1px solid var(--line);min-width:200px;padding:1rem 0;opacity:0;visibility:hidden;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:10;}
+    .nav-links li:hover .dropdown-content{opacity:1;visibility:visible;}
+    .dropdown-content a{display:block;padding:0.5rem 1.5rem;font-size:0.75rem;text-transform:none;letter-spacing:0.05em;color:var(--ink-muted);border:none!important;}
+    .dropdown-content a:hover{background:var(--paper-warm);color:var(--ink);}
+    .nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.6rem 1.4rem;text-decoration:none;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--accent);}
+
+    /* ─── PAGE HERO ─────────────────────────── */
+    .page-hero{padding:8rem 4rem 5rem;position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:var(--paper-warm);z-index:0;}
+    .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;max-width:1400px;}
+    .hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+    .hero-eyebrow::before{content:'';width:2rem;height:1px;background:var(--accent);}
+    .hero-headline{font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.03;letter-spacing:-0.02em;color:var(--ink);margin-bottom:1.5rem;}
+    .hero-headline em{font-style:italic;color:var(--accent);}
+    .hero-sub{font-size:1rem;color:var(--ink-muted);line-height:1.8;font-weight:300;max-width:480px;margin-bottom:2.5rem;}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-primary:hover{background:var(--accent);}
+    .btn-outline{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--ink-muted);padding:0.9rem 2rem;text-decoration:none;transition:all 0.2s;}
+    .btn-outline:hover{background:var(--paper-warm);border-color:var(--ink);}
+
+    /* Hero right: product grid preview */
+    .hero-suite-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line);}
+    .hero-suite-card{background:var(--paper);padding:1.75rem;transition:background 0.2s;cursor:pointer;}
+    .hero-suite-card:hover{background:var(--accent-pale);}
+    .hsc-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.2rem 0.6rem;margin-bottom:0.75rem;}
+    .hsc-badge.free{background:var(--green-pale);color:var(--green);}
+    .hsc-badge.paid{background:var(--accent-pale);color:var(--accent);}
+    .hsc-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.35rem;}
+    .hsc-desc{font-size:0.75rem;color:var(--ink-muted);line-height:1.55;font-weight:300;}
+
+    /* ─── PRODUCT NAV ────────────────────────── */
+    .product-nav{background:var(--ink);padding:0;position:sticky;top:72px;z-index:90;overflow-x:auto;}
+    .product-nav-inner{display:flex;max-width:1400px;}
+    .pn-tab{flex:1;min-width:160px;padding:1rem 1.5rem;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);border:none;background:transparent;cursor:pointer;transition:all 0.2s;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:0.5rem;text-decoration:none;}
+    .pn-tab:hover{color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.04);}
+    .pn-tab.active{color:var(--paper);border-bottom-color:var(--accent);}
+    .pn-tab-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+    .pn-tab-dot.green{background:var(--green-light);}
+    .pn-tab-dot.amber{background:var(--amber);}
+    .pn-tab-dot.blue{background:#4a90c4;}
+    .pn-tab-dot.teal{background:#3aacac;}
+
+    /* ─── PRODUCT SECTIONS ──────────────────── */
+
+    /* FinPulse */
+    .fp-section{scroll-margin-top:130px;}
+    .fp-hero{background:var(--ink);padding:6rem 4rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:6rem;align-items:center;position:relative;overflow:hidden;}
+    .fp-hero::before{content:'FINPULSE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:14rem;font-weight:600;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+    .fp-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-light);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+    .fp-eyebrow::before{content:'';width:1.5rem;height:1px;background:var(--accent-light);}
+    .fp-free-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:white;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;margin-bottom:1.5rem;}
+    .fp-title{font-size:clamp(2.8rem,4.5vw,4rem);font-weight:300;color:var(--paper);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .fp-title em{font-style:italic;color:var(--accent-light);}
+    .fp-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);}
+    .fp-sub{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;max-width:500px;margin-bottom:2.5rem;}
+    .fp-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-fp-primary{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-fp-primary:hover{background:var(--paper);}
+    .btn-fp-ghost{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s;}
+    .btn-fp-ghost::after{content:'→';}
+    .btn-fp-ghost:hover{color:var(--paper);gap:0.8rem;}
+
+    /* FinPulse — right panel: live report preview */
+    .fp-report-preview{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:1.75rem;}
+    .fpr-header{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;justify-content:space-between;}
+    .fpr-score-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .fpr-ring{width:72px;height:72px;border-radius:50%;background:var(--amber);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+    .fpr-ring-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:white;line-height:1;}
+    .fpr-ring-sub{font-size:0.5rem;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.6);text-transform:uppercase;}
+    .fpr-verdict{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--paper);line-height:1.4;font-style:italic;}
+    .fpr-dims{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;}
+    .fpr-dim-row{display:flex;align-items:center;gap:0.75rem;}
+    .fpr-dim-label{font-size:0.72rem;color:rgba(255,255,255,0.45);width:110px;flex-shrink:0;font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.05em;}
+    .fpr-dim-track{flex:1;height:4px;background:rgba(255,255,255,0.08);overflow:hidden;}
+    .fpr-dim-fill{height:100%;width:0;transition:width 1.2s ease;}
+    .fpr-dim-fill.g{background:var(--green-light);}
+    .fpr-dim-fill.a{background:var(--amber);}
+    .fpr-dim-val{font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.4);width:32px;text-align:right;}
+    .fpr-findings{display:flex;flex-direction:column;gap:0;}
+    .fpr-finding{display:flex;gap:0.6rem;align-items:flex-start;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .fpr-finding:last-child{border-bottom:none;}
+    .fpr-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+    .fpr-dot.r{background:#c0392b;}
+    .fpr-dot.a{background:var(--amber);}
+    .fpr-dot.g{background:var(--green-light);}
+    .fpr-finding-text{font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.45;}
+    .fpr-lock{margin-top:1.25rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);display:flex;gap:0.6rem;align-items:center;}
+    .fpr-lock-icon{font-size:0.7rem;color:var(--accent);}
+    .fpr-lock-text{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);}
+
+    /* FinPulse — what it covers */
+    .fp-covers{padding:5rem 4rem;background:var(--paper-warm);}
+    .fp-covers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem;}
+    .fp-cover-card{background:var(--paper);padding:2rem;transition:background 0.2s;}
+    .fp-cover-card:hover{background:var(--accent-pale);}
+    .fcc-icon{font-size:1.75rem;margin-bottom:1rem;}
+    .fcc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;}
+    .fcc-desc{font-size:0.78rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+
+    /* FinPulse — free vs paid */
+    .fp-compare{padding:5rem 4rem;background:var(--paper);}
+    .fp-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:3rem;}
+    .fp-tier{padding:3rem;border:1px solid var(--line);}
+    .fp-tier.free{background:var(--paper-warm);}
+    .fp-tier.paid{background:var(--ink);}
+    .ft-badge{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.25rem 0.75rem;display:inline-block;margin-bottom:1.5rem;}
+    .ft-badge.free-badge{background:var(--green-pale);color:var(--green);}
+    .ft-badge.paid-badge{background:rgba(184,149,90,0.2);color:var(--accent-light);}
+    .ft-name{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:0.4rem;}
+    .fp-tier.paid .ft-name{color:var(--paper);}
+    .ft-price{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.75rem;}
+    .fp-tier.paid .ft-price{color:rgba(255,255,255,0.35);}
+    .ft-items{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;}
+    .ft-item{display:flex;gap:0.75rem;align-items:flex-start;font-size:0.83rem;color:var(--ink-muted);font-weight:300;}
+    .fp-tier.paid .ft-item{color:rgba(255,255,255,0.5);}
+    .ft-check{color:var(--green-light);flex-shrink:0;font-size:0.75rem;margin-top:0.2rem;}
+    .fp-tier.paid .ft-check{color:var(--accent-light);}
+    .btn-fp-free{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--green);padding:0.85rem 1.75rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-fp-free:hover{background:var(--green-light);}
+    .btn-fp-upgrade{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent-light);padding:0.85rem 1.75rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-fp-upgrade:hover{background:var(--paper);}
+
+    /* ─── CASHMAP ────────────────────────────── */
+    .cm-section{scroll-margin-top:130px;background:var(--paper);}
+    .cm-hero{padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;background:var(--paper-warm);position:relative;overflow:hidden;}
+    .cm-hero::before{content:'CASHMAP';position:absolute;right:-1rem;bottom:-1rem;font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:600;color:rgba(28,42,58,0.03);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+    .cm-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+    .cm-eyebrow::before{content:'';width:1.5rem;height:1px;background:var(--amber);}
+    .cm-title{font-size:clamp(2.8rem,4.5vw,4rem);font-weight:300;color:var(--ink);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .cm-title em{font-style:italic;color:var(--amber);}
+    .cm-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+    .cm-sub{font-size:1rem;color:var(--ink-muted);line-height:1.8;font-weight:300;max-width:500px;margin-bottom:2.5rem;}
+    .btn-cm{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--amber);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-cm:hover{background:#a06818;}
+
+    /* CashMap — right: forecast visualization */
+    .cm-viz{border:1px solid var(--line);background:var(--paper);padding:1.75rem;}
+    .cm-viz-header{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+    .cm-viz-badge{background:var(--amber-pale);color:var(--amber);font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.5rem;}
+    .cm-chart{display:flex;align-items:flex-end;gap:3px;height:100px;margin-bottom:1rem;}
+    .cm-bar{flex:1;min-width:0;border-radius:1px 1px 0 0;position:relative;transition:height 0.8s ease;}
+    .cm-bar.pos{background:var(--green-light);opacity:0.7;}
+    .cm-bar.neg{background:#c0392b;opacity:0.6;}
+    .cm-bar.proj{background:var(--amber);opacity:0.4;border:1px dashed var(--amber);}
+    .cm-chart-labels{display:flex;gap:3px;margin-bottom:1.5rem;}
+    .cm-chart-label{flex:1;font-family:'DM Mono',monospace;font-size:0.45rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-muted);text-align:center;overflow:hidden;}
+    .cm-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+    .cm-metric{background:var(--paper-warm);padding:0.9rem;text-align:center;}
+    .cm-metric-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--ink);}
+    .cm-metric-val.amber{color:var(--amber);}
+    .cm-metric-val.green{color:var(--green);}
+    .cm-metric-val.red{color:#c0392b;}
+    .cm-metric-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);margin-top:0.2rem;}
+
+    /* CashMap — problems solved */
+    .cm-problems{padding:5rem 4rem;}
+    .cm-problems-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+    .cm-problem-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);}
+    .cm-problem-item{display:flex;gap:1rem;padding:1.25rem 1.5rem;border-bottom:1px solid var(--line);transition:background 0.2s;}
+    .cm-problem-item:last-child{border-bottom:none;}
+    .cm-problem-item:hover{background:var(--amber-pale);}
+    .cp-icon{font-size:1.1rem;flex-shrink:0;}
+    .cp-text{font-size:0.85rem;color:var(--ink-muted);line-height:1.55;font-weight:300;}
+    .cm-what-list{display:flex;flex-direction:column;gap:0.75rem;}
+    .cm-what-item{display:flex;gap:0.75rem;align-items:flex-start;}
+    .cm-what-check{color:var(--amber);flex-shrink:0;font-size:0.8rem;margin-top:0.2rem;}
+    .cm-what-text{font-size:0.85rem;color:var(--ink-muted);line-height:1.55;font-weight:300;}
+
+    /* ─── COMPLIANCECHECK ──────────────────── */
+    .cc-section{scroll-margin-top:130px;}
+    .cc-hero{background:var(--blue);padding:6rem 4rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:6rem;align-items:center;position:relative;overflow:hidden;}
+    .cc-hero::before{content:'COMPLIANCE';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:11rem;font-weight:600;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+    .cc-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#4a90c4;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+    .cc-eyebrow::before{content:'';width:1.5rem;height:1px;background:#4a90c4;}
+    .cc-title{font-size:clamp(2.8rem,4.5vw,4rem);font-weight:300;color:var(--paper);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .cc-title em{font-style:italic;color:#6ab0e0;}
+    .cc-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);}
+    .cc-sub{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;max-width:500px;margin-bottom:2.5rem;}
+    .btn-cc{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--blue-light);border:1px solid rgba(255,255,255,0.2);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:all 0.2s;}
+    .btn-cc:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.4);}
+    .btn-cc-cta{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);background:white;padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-cc-cta:hover{background:var(--blue-pale);}
+
+    /* ComplianceCheck — right: status panel */
+    .cc-status-panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:1.75rem;}
+    .ccsp-header{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:#4a90c4;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+    .ccsp-overall{background:rgba(255,255,255,0.06);padding:1rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;}
+    .ccsp-overall-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.7);}
+    .ccsp-pill{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.75rem;}
+    .ccsp-pill.amber{background:rgba(201,125,32,0.2);color:var(--amber);}
+    .ccsp-pill.green{background:rgba(74,140,98,0.2);color:var(--green-light);}
+    .ccsp-pill.red{background:rgba(192,57,43,0.2);color:#e74c3c;}
+    .cc-reg-list{display:flex;flex-direction:column;gap:0;}
+    .cc-reg-item{display:flex;align-items:center;gap:0.75rem;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .cc-reg-item:last-child{border-bottom:none;}
+    .cc-reg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+    .cc-reg-dot.green{background:var(--green-light);}
+    .cc-reg-dot.amber{background:var(--amber);}
+    .cc-reg-dot.red{background:#e74c3c;}
+    .cc-reg-name{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;color:rgba(255,255,255,0.5);flex:1;}
+    .cc-reg-status{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;}
+    .cc-reg-status.green{color:var(--green-light);}
+    .cc-reg-status.amber{color:var(--amber);}
+    .cc-reg-status.red{color:#e74c3c;}
+    .cc-reg-gaps{font-size:0.58rem;color:rgba(255,255,255,0.25);font-family:'DM Mono',monospace;}
+
+    /* ComplianceCheck — frameworks covered */
+    .cc-frameworks{padding:5rem 4rem;background:var(--blue-pale);}
+    .cc-frameworks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(28,42,58,0.15);border:1px solid rgba(28,42,58,0.15);margin-top:3rem;}
+    .cc-fw-card{background:white;padding:2rem;transition:background 0.2s;}
+    .cc-fw-card:hover{background:var(--blue-pale);}
+    .cfw-icon{font-size:1.5rem;margin-bottom:0.75rem;}
+    .cfw-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--blue);margin-bottom:0.4rem;}
+    .cfw-desc{font-size:0.75rem;color:#4a6a8a;line-height:1.6;font-weight:300;}
+
+    /* ComplianceCheck — who needs it */
+    .cc-who{padding:5rem 4rem;background:var(--paper);}
+    .cc-who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem;}
+    .cc-who-card{background:var(--paper-warm);padding:2rem;transition:background 0.2s;}
+    .cc-who-card:hover{background:var(--blue-pale);}
+    .cwc-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;}
+    .cwc-desc{font-size:0.8rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+
+    /* ─── VENDORSCAN ─────────────────────────── */
+    .vs-section{scroll-margin-top:130px;}
+    .vs-hero{background:var(--teal);padding:6rem 4rem;display:grid;grid-template-columns:1.1fr 0.9fr;gap:6rem;align-items:center;position:relative;overflow:hidden;}
+    .vs-hero::before{content:'VENDOR';position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:14rem;font-weight:600;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;letter-spacing:-0.04em;}
+    .vs-eyebrow{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#3aacac;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+    .vs-eyebrow::before{content:'';width:1.5rem;height:1px;background:#3aacac;}
+    .vs-title{font-size:clamp(2.8rem,4.5vw,4rem);font-weight:300;color:var(--paper);line-height:1.05;letter-spacing:-0.02em;margin-bottom:1rem;}
+    .vs-title em{font-style:italic;color:#5ad0d0;}
+    .vs-tagline{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.5rem;padding:0.5rem 0;border-top:1px solid rgba(255,255,255,0.1);border-bottom:1px solid rgba(255,255,255,0.1);}
+    .vs-sub{font-size:1rem;color:rgba(255,255,255,0.55);line-height:1.8;font-weight:300;max-width:500px;margin-bottom:2.5rem;}
+    .btn-vs{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:all 0.2s;}
+    .btn-vs:hover{background:rgba(255,255,255,0.18);}
+    .btn-vs-cta{font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);background:white;padding:0.9rem 2rem;text-decoration:none;display:inline-block;transition:background 0.2s;}
+    .btn-vs-cta:hover{background:#e8f5f5;}
+
+    /* VendorScan — right: RAG matrix */
+    .vs-rag-panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);padding:1.75rem;}
+    .vsp-header{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:#3aacac;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+    .vs-vendor-list{display:flex;flex-direction:column;gap:0;}
+    .vs-vendor-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .vs-vendor-row:last-child{border-bottom:none;}
+    .vs-rag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .vs-rag-dot.green{background:var(--green-light);}
+    .vs-rag-dot.amber{background:var(--amber);}
+    .vs-rag-dot.red{background:#e74c3c;}
+    .vs-vendor-name{font-size:0.78rem;color:rgba(255,255,255,0.6);flex:1;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.04em;}
+    .vs-vendor-score{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.7);width:42px;text-align:right;}
+    .vs-vendor-flag{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+    .vs-summary-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);margin-top:1.25rem;}
+    .vs-summary-cell{padding:0.75rem;text-align:center;background:rgba(255,255,255,0.03);}
+    .vsc-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--paper);}
+    .vsc-label{font-family:'DM Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:0.2rem;}
+
+    /* VendorScan — what it covers */
+    .vs-covers{padding:5rem 4rem;background:var(--teal-pale);}
+    .vs-covers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(26,74,74,0.12);border:1px solid rgba(26,74,74,0.12);margin-top:3rem;}
+    .vs-cover-card{background:white;padding:2.25rem;transition:background 0.2s;}
+    .vs-cover-card:hover{background:var(--teal-pale);}
+    .vcc-icon{font-size:1.5rem;margin-bottom:0.75rem;}
+    .vcc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--teal);margin-bottom:0.5rem;}
+    .vcc-desc{font-size:0.78rem;color:#3a6060;line-height:1.6;font-weight:300;}
+
+    /* VendorScan — use cases */
+    .vs-usecases{padding:5rem 4rem;background:var(--paper);}
+    .vs-usecase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:3rem;}
+    .vs-usecase-card{background:var(--paper-warm);padding:2rem;transition:background 0.2s;}
+    .vs-usecase-card:hover{background:var(--teal-pale);}
+    .vuc-num{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:#3aacac;margin-bottom:0.6rem;}
+    .vuc-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;}
+    .vuc-desc{font-size:0.78rem;color:var(--ink-muted);line-height:1.6;font-weight:300;}
+
+    /* ─── COMPARE STRIP ──────────────────────── */
+    .compare-section{padding:6rem 4rem;background:var(--ink);}
+    .compare-table{width:100%;border-collapse:collapse;margin-top:3rem;}
+    .compare-table th{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 1.5rem;text-align:left;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:400;}
+    .compare-table th:first-child{color:rgba(255,255,255,0.3);}
+    .compare-table th.fp-col{color:var(--accent-light);}
+    .compare-table th.cm-col{color:var(--amber);}
+    .compare-table th.cc-col{color:#4a90c4;}
+    .compare-table th.vs-col{color:#3aacac;}
+    .compare-table td{padding:0.9rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.82rem;color:rgba(255,255,255,0.45);font-weight:300;vertical-align:middle;}
+    .compare-table td:first-child{color:rgba(255,255,255,0.6);font-weight:400;}
+    .compare-table tr:hover td{background:rgba(255,255,255,0.02);}
+    .ct-check{color:var(--green-light);font-size:0.9rem;}
+    .ct-partial{color:var(--amber);font-size:0.9rem;}
+    .ct-dash{color:rgba(255,255,255,0.15);font-size:0.9rem;}
+
+    /* ─── BOTTOM CTA ─────────────────────────── */
+    .suite-cta{padding:6rem 4rem;background:var(--paper-warm);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .sc-left h2{font-size:clamp(2.2rem,3.5vw,3.2rem);font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:1rem;}
+    .sc-left h2 em{font-style:italic;color:var(--accent);}
+    .sc-left p{font-size:0.95rem;color:var(--ink-muted);line-height:1.8;font-weight:300;}
+    .sc-right{display:flex;flex-direction:column;gap:1rem;}
+    .sc-action{display:flex;align-items:center;gap:1.25rem;padding:1.5rem;background:var(--paper);border:1px solid var(--line);text-decoration:none;transition:background 0.2s;}
+    .sc-action:hover{background:var(--accent-pale);}
+    .sca-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+    .sca-dot.green{background:var(--green-light);}
+    .sca-dot.amber{background:var(--amber);}
+    .sca-dot.blue{background:#4a90c4;}
+    .sca-dot.teal{background:#3aacac;}
+    .sca-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--ink);flex:1;}
+    .sca-cta{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+    .sca-arrow{color:var(--accent);transition:transform 0.2s;}
+    .sc-action:hover .sca-arrow{transform:translateX(4px);}
+
+    /* ─── FOOTER ─────────────────────────────── */
+    .ticker{background:var(--paper-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0.65rem 0;overflow:hidden;white-space:nowrap;}
+    .ticker-inner{display:inline-block;animation:ticker 50s linear infinite;}
+    .ticker-inner span{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin:0 2rem;opacity:0.5;}
+    .ticker-inner span.hl{color:var(--accent);opacity:1;}
+    @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
+
+    @media(max-width:1024px){.fp-covers-grid,.cc-frameworks-grid{grid-template-columns:1fr 1fr;}.compare-table td:nth-child(3),.compare-table th:nth-child(3){display:none;}}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .page-hero,.fp-covers,.fp-compare,.cm-problems,.cm-hero,.cc-who,.vs-usecases,.suite-cta,.compare-section,.vs-covers,.cc-frameworks,.cc-who{padding:4rem 1.5rem;}
+      .hero-inner,.fp-hero,.cm-hero,.cc-hero,.vs-hero{grid-template-columns:1fr;padding:5rem 1.5rem;}
+      .fp-hero,.cc-hero,.vs-hero{padding-top:6rem;}
+      .fp-compare-grid,.cc-who-grid,.vs-usecase-grid{grid-template-columns:1fr;}
+      .fp-covers-grid,.cc-frameworks-grid{grid-template-columns:1fr 1fr;}
+      .vs-covers-grid,.cm-problems-inner{grid-template-columns:1fr;}
+      .suite-cta{grid-template-columns:1fr;}
+      .hero-suite-grid{grid-template-columns:1fr 1fr;}
+      footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
+    }
+    @media(max-width:600px){.fp-covers-grid,.cc-frameworks-grid,.hero-suite-grid{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo-group">
-            <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
-            <span class="company-name">Finology Nexus</span>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo-group">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+    <span class="company-name">Finology <span>Nexus</span></span>
+  </a>
+  <ul class="nav-links">
+    <li>
+      <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="financial-operations.html">Financial Operations and Accounting</a>
+        <a href="financial-intelligence.html">Financial Intelligence and Analysis</a>
+        <a href="data-automation.html">Data Extraction and Automation</a>
+        <a href="workflow-automation.html">Workflow and Process Automation</a>
+        <a href="process-design.html">Process Design and SOPs</a>
+        <a href="embedded-support.html">Embedded Finance Support</a>
+      </div>
+    </li>
+    <li>
+      <a href="Solutions.html" class="active-page">Solutions <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="finance-checkup.html">FinPulse — Free</a>
+        <a href="Solutions.html#cashmap">CashMap</a>
+        <a href="Solutions.html#compliancecheck">ComplianceCheck</a>
+        <a href="Solutions.html#vendorscan">VendorScan</a>
+      </div>
+    </li>
+    <li>
+      <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="aboutus.html">Our Practice</a>
+        <a href="blog.html">Case Studies</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </li>
+    <li class="nav-highlight"><a href="finance-checkup.html">FinPulse Free</a></li>
+  </ul>
+  <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-eyebrow">Intelligence Suite</div>
+      <h1 class="hero-headline">Four tools built<br>for businesses that<br>need <em>answers,</em><br>not dashboards</h1>
+      <p class="hero-sub">The Finology Intelligence Suite converts financial complexity into specific, actionable clarity. Start free with FinPulse. Add depth with CashMap, ComplianceCheck, and VendorScan where your business needs it most.</p>
+      <div class="hero-actions">
+        <a href="finance-checkup.html" class="btn-primary">Start with FinPulse — Free</a>
+        <a href="#cashmap" class="btn-outline">Explore the Suite</a>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="hero-suite-grid">
+        <a href="finance-checkup.html" class="hero-suite-card" style="text-decoration:none;">
+          <div class="hsc-badge free">Free</div>
+          <div class="hsc-title">FinPulse</div>
+          <div class="hsc-desc">Business vitals diagnostic. 12 questions, instant health score, top risk flags.</div>
+        </a>
+        <a href="#cashmap" class="hero-suite-card" style="text-decoration:none;">
+          <div class="hsc-badge paid">Intelligence Report</div>
+          <div class="hsc-title">CashMap</div>
+          <div class="hsc-desc">12-week rolling cash forecast with burn rate, runway, and working capital visibility.</div>
+        </a>
+        <a href="#compliancecheck" class="hero-suite-card" style="text-decoration:none;">
+          <div class="hsc-badge paid">Scanner</div>
+          <div class="hsc-title">ComplianceCheck</div>
+          <div class="hsc-desc">India regulatory readiness scanner across RBI, FEMA, GST, and Companies Act.</div>
+        </a>
+        <a href="#vendorscan" class="hero-suite-card" style="text-decoration:none;">
+          <div class="hsc-badge paid">Risk Assessment</div>
+          <div class="hsc-title">VendorScan</div>
+          <div class="hsc-desc">Vendor risk quick assessment with RAG scoring, financial health flags, and concentration analysis.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT NAV -->
+<div class="product-nav">
+  <div class="product-nav-inner">
+    <a href="#finpulse" class="pn-tab active" data-target="finpulse"><div class="pn-tab-dot green"></div>FinPulse</a>
+    <a href="#cashmap" class="pn-tab" data-target="cashmap"><div class="pn-tab-dot amber"></div>CashMap</a>
+    <a href="#compliancecheck" class="pn-tab" data-target="compliancecheck"><div class="pn-tab-dot blue"></div>ComplianceCheck</a>
+    <a href="#vendorscan" class="pn-tab" data-target="vendorscan"><div class="pn-tab-dot teal"></div>VendorScan</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- FINPULSE -->
+<!-- ═══════════════════════════════════ -->
+<section id="finpulse" class="fp-section">
+
+  <div class="fp-hero">
+    <div class="fade-up">
+      <div class="fp-eyebrow">Product 01</div>
+      <div class="fp-free-badge"><i class="fas fa-heartbeat"></i> &nbsp; Free — No Sign-Up Required</div>
+      <h2 class="fp-title">FinPulse:<br>your business<br><em>vitals report</em></h2>
+      <div class="fp-tagline">Business Financial Health Diagnostic</div>
+      <p class="fp-sub">Most business owners carry a quiet sense that something is not quite right financially — but cannot pinpoint what. FinPulse surfaces the answer in 4 minutes. Answer 12 questions, get an instant health score across profitability, cash flow, risk, and efficiency, with the top findings ranked by urgency.</p>
+      <div class="fp-actions">
+        <a href="finance-checkup.html" class="btn-fp-primary"><i class="fas fa-heartbeat"></i> &nbsp; Run FinPulse — It Is Free</a>
+        <a href="#finpulse-details" class="btn-fp-ghost">What the full report shows</a>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:0.15s">
+      <div class="fp-report-preview">
+        <div class="fpr-header">
+          <span>FinPulse · Sample Report</span>
+          <span style="color:rgba(255,255,255,0.2);">Finology Nexus</span>
         </div>
-
-        <nav id="main-nav">
-            <ul>
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="Solutions.html" class="nav-link active">Solutions</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
-                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-                <li><a href="contactus.html" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-            <i class="fas fa-bars"></i>
-        </button>
-    </header>
-
-    <section class="hero">
-        <div class="particles" id="particles"></div>
-        <div class="container">
-            <h1>Vendor360 Essentials Suite</h1>
-            <p>Take Control of Your Vendor Ecosystem. Simply and Affordably.</p>
-            <p>Our foundational suite gives you immediate visibility into vendor risk and performance, without the complexity and cost of enterprise platforms.</p>
-            <div class="hero-buttons">
-                <a href="#products" class="btn btn-secondary">
-                    <i class="fas fa-eye"></i> View Products
-                </a>
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-comment"></i> Request Demo
-                </a>
-            </div>
+        <div class="fpr-score-row">
+          <div class="fpr-ring">
+            <div class="fpr-ring-num" id="fp-score-display">0</div>
+            <div class="fpr-ring-sub">/ 100</div>
+          </div>
+          <div class="fpr-verdict">"Solid foundations with meaningful gaps in cash visibility requiring structured attention."</div>
         </div>
-    </section>
-
-    <section class="products-section" id="products">
-        <div class="products-container">
-            <h2 class="section-title">The Nexus Approach to Vendor Governance</h2>
-            <p class="section-description">Every effective vendor governance model depends on four critical dimensions. Risk, Compliance, Performance, and Financial Health. The Nexus Approach transforms these principles into structured, expert-led services that deliver clarity, compliance, and measurable value from day one.</p>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Vendor Health Scorecard</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <p><strong>Your Central Source of Truth for Vendor Risk</strong><br>
-                        Go beyond gut feelings with a standardized, data-driven assessment of your most critical vendors.</p>
-                        <ul class="product-features">
-                            <li><strong>12-15 Core Questions:</strong> Focused on financial stability, compliance history, and operational resilience</li>
-                            <li><strong>Centralized Data Input:</strong> Collect and store all vendor assessments in one secure location</li>
-                            <li><strong>Simple Scoring Dashboard:</strong> Easy-to-understand Red/Amber/Green (RAG) statuses</li>
-                            <li><strong>Actionable Insights:</strong> Immediately identify which vendors require your attention</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <strong>Immediate Value:</strong> Transform subjective vendor evaluations into data-driven risk intelligence within days.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Request Demo</a>
-                        <a href="vendor-health-scorecard.html" class="btn btn-secondary" style="width: 100%;">
-                            <i class="fas fa-chart-line"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-card-header rbi-starter">
-                        <i class="fas fa-file-contract"></i>
-                        <h3>Nexus Global Vendor Rigor Framework</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <div class="rbi-badge">
-                            <i class="fas fa-shield-alt"></i> Essential for Financial Institutions Worldwide
-                        </div>
-                        <p><strong>Your Quick Start Guide to Global Compliance</strong><br>
-                        Avoid costly penalties with our essential checklist and guide for financial institutions worldwide, including specialized RBI module for Indian markets.</p>
-                        <ul class="product-features">
-                            <li><strong>Global Compliance Framework:</strong> Key regulatory requirements for vendor management across jurisdictions</li>
-                            <li><strong>RBI Module Included:</strong> Specific compliance check for Indian NBFCs and financial institutions</li>
-                            <li><strong>Regulatory Updates:</strong> Summary of the latest global financial directives</li>
-                            <li><strong>Best Practices:</strong> Step-by-step guidance for building a compliant program</li>
-                            <li><strong>Documentation Templates:</strong> Ready-to-use templates for vendor agreements and audits</li>
-                        </ul>
-                        <div class="compliance-highlights">
-                            <strong>Critical Compliance Areas Covered:</strong> Outsourcing Guidelines, KYC Requirements, Data Localization, Cybersecurity Framework, and Business Continuity Planning across multiple jurisdictions.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="Nexus Global Vendor Rigor Framework.pdf" class="btn btn-green" style="width: 100%; margin-bottom: 1rem;" download>
-                            <i class="fas fa-download"></i> Download Free PDF
-                        </a>
-                        <a href="nexus-global-vendor-rigor-framework.html" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-card-header compliance">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Cross-Jurisdiction Risk Diagnostic</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <p><strong>Avoid Global Regulatory Fines with Our Urgent Audit Service</strong><br>
-                        Multiple regulators worldwide are imposing heavy fines for vendor gaps – get a full RAG scorecard + compliance tracker in 48 hours with specialized RBI focus available.</p>
-                        <ul class="product-features">
-                            <li><strong>Global Regulatory Scan:</strong> Check agreements for inspection clauses, BCP testing, and cyber reporting across jurisdictions</li>
-                            <li><strong>RBI Focus Option:</strong> Specialized analysis for Indian financial institutions (per 2023 Outsourcing Directions)</li>
-                            <li><strong>Automated Alerts:</strong> Setup for deadlines; avoid regulatory penalties</li>
-                            <li><strong>Risk-Free Guarantee:</strong> Free re-audit if fined post-service</li>
-                            <li><strong>Powered by Your Data:</strong> Build on our free Scorecard – upload for pro analysis</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <strong>Risk Reversal:</strong> Free re-audit if regulatory penalties occur post-assessment.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="#contact" class="btn btn-secondary" style="width: 100%; margin-bottom: 1rem;">Book Diagnostic</a>
-                        <a href="cross-jurisdiction-risk-diagnostic.html" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-search"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <i class="fas fa-clipboard-check"></i>
-                        <h3>Compliance & Risk Tracker</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <p><strong>Never Miss a Critical Deadline Again</strong><br>
-                        Automate the tedious task of tracking certifications, insurance expirations, and audit schedules.</p>
-                        <ul class="product-features">
-                            <li><strong>Centralized Calendar:</strong> Visual dashboard of all upcoming vendor deadlines</li>
-                            <li><strong>Automated Alerts:</strong> Email notifications for expiring certificates</li>
-                            <li><strong>Document Repository:</strong> Securely attach and store critical compliance documents</li>
-                            <li><strong>Customizable Fields:</strong> Track specific certifications for your industry</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <strong>Proactive Monitoring:</strong> Prevent compliance violations and associated penalties.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Request Demo</a>
-                        <a href="compliance-risk-tracker.html" class="btn btn-secondary" style="width: 100%;">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Performance Dashboard</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <p><strong>Measure What Matters: Vendor Performance</strong><br>
-                        Move from subjective reviews to objective performance management with clear KPIs.</p>
-                        <ul class="product-features">
-                            <li><strong>KPI Visualization:</strong> Clear charts for delivery timelines and SLA adherence</li>
-                            <li><strong>Standardized Report Templates:</strong> Generate consistent performance reviews</li>
-                            <li><strong>Future-Ready Architecture:</strong> Built to support API integrations as you grow</li>
-                            <li><strong>Trend Analysis:</strong> Spot improving or deteriorating performance over time</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <strong>Performance Intelligence:</strong> Move from subjective reviews to objective vendor performance management.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Request Demo</a>
-                        <a href="performance-dashboard.html" class="btn btn-secondary" style="width: 100%;">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-card-header">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <h3>Financial Due Diligence Reports</h3>
-                    </div>
-                    <div class="product-card-body">
-                        <p><strong>Expert Financial Analysis, Without the Headcount</strong><br>
-                        We combine powerful software with human expertise to deliver deep-dive financial health reports.</p>
-                        <ul class="product-features">
-                            <li><strong>Semi-Automated Reports:</strong> Leverage pre-built templates and expert analysis</li>
-                            <li><strong>Key Ratio Analysis:</strong> Liquidity, solvency, and profitability metrics explained</li>
-                            <li><strong>Risk Highlights:</strong> Clear summary of potential financial red flags</li>
-                            <li><strong>Productized Service:</strong> Request reports through the platform</li>
-                        </ul>
-                        <div class="highlight-box">
-                            <strong>Expert Analysis:</strong> Financial due diligence without the cost of specialized internal resources.
-                        </div>
-                    </div>
-                    <div class="product-card-footer">
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Request Demo</a>
-                        <a href="financial-due-diligence.html" class="btn btn-secondary" style="width: 100%;">
-                            <i class="fas fa-info-circle"></i> Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="fpr-dims">
+          <div class="fpr-dim-row">
+            <span class="fpr-dim-label">Profitability</span>
+            <div class="fpr-dim-track"><div class="fpr-dim-fill a" data-width="62"></div></div>
+            <span class="fpr-dim-val">62</span>
+          </div>
+          <div class="fpr-dim-row">
+            <span class="fpr-dim-label">Cash Flow</span>
+            <div class="fpr-dim-track"><div class="fpr-dim-fill a" data-width="48"></div></div>
+            <span class="fpr-dim-val">48</span>
+          </div>
+          <div class="fpr-dim-row">
+            <span class="fpr-dim-label">Risk Exposure</span>
+            <div class="fpr-dim-track"><div class="fpr-dim-fill a" data-width="51"></div></div>
+            <span class="fpr-dim-val">51</span>
+          </div>
+          <div class="fpr-dim-row">
+            <span class="fpr-dim-label">Efficiency</span>
+            <div class="fpr-dim-track"><div class="fpr-dim-fill g" data-width="71"></div></div>
+            <span class="fpr-dim-val">71</span>
+          </div>
         </div>
-    </section>
-
-    <section class="benefits-section">
-        <div class="container">
-            <h2 class="section-title">Why Start with the Essentials Suite?</h2>
-            <p class="section-description">Our systematic approach transforms vendor management from a compliance checkbox into a strategic advantage.</p>
-
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Launch Fast, Prove Value Quick</h3>
-                    <p>Implement a full vendor management program in weeks, not years. See a return on investment immediately with our streamlined frameworks.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <i class="fas fa-seedling"></i>
-                    <h3>Designed for Growth</h3>
-                    <p>Start with simple data entry and static reports. As your program matures, seamlessly integrate APIs and automate data feeds.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <i class="fas fa-tag"></i>
-                    <h3>Transparent & Affordable</h3>
-                    <p>No shocking enterprise quotes. Simple, predictable pricing for the tools you actually need with clear ROI demonstration.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <i class="fas fa-hands-helping"></i>
-                    <h3>The Power of Human Expertise</h3>
-                    <p>Our unique Financial Due Diligence service provides expert insight that pure-play software can't match.</p>
-                </div>
-            </div>
+        <div class="fpr-findings">
+          <div class="fpr-finding"><div class="fpr-dot r"></div><div class="fpr-finding-text">Cash flow visibility insufficient — operating reactively on cash creates compounding risk as the business grows</div></div>
+          <div class="fpr-finding"><div class="fpr-dot a"></div><div class="fpr-finding-text">Vendor concentration warrants a formal mitigation plan before it becomes a supply chain issue</div></div>
+          <div class="fpr-finding"><div class="fpr-dot g"></div><div class="fpr-finding-text">Revenue trajectory is a genuine strength — consistent growth gives you the platform to address structural issues</div></div>
         </div>
-    </section>
-
-    <section class="free-assessment" id="contact">
-        <div class="container">
-            <div class="assessment-container">
-                <h2>Ready to Get Started?</h2>
-                <p>Request a demo or contact us to learn how the Vendor360 Essentials Suite can transform your vendor management processes.</p>
-
-                <div class="assessment-form">
-                    <div class="form-box">
-                        <form id="assessmentForm">
-                            <div class="form-row">
-                                <input type="text" placeholder="First Name" required>
-                                <input type="text" placeholder="Last Name" required>
-                            </div>
-                            <input type="email" placeholder="Corporate Email" required>
-                            <input type="text" placeholder="Organization Name" required>
-                            <input type="tel" placeholder="Phone Number">
-                            <select required>
-                                <option value="">Product of Interest</option>
-                                <option value="scorecard">Vendor Health Scorecard</option>
-                                <option value="nexus-framework">Nexus Global Vendor Rigor Framework</option>
-                                <option value="diagnostic">Cross-Jurisdiction Risk Diagnostic</option>
-                                <option value="tracker">Compliance & Risk Tracker</option>
-                                <option value="dashboard">Performance Dashboard</option>
-                                <option value="duediligence">Financial Due Diligence</option>
-                                <option value="suite">Full Vendor360 Suite</option>
-                            </select>
-                            <textarea placeholder="Tell us about your vendor management needs and challenges..."></textarea>
-                            <button type="submit" class="btn btn-secondary" style="width: 100%;">
-                                <i class="fas fa-paper-plane"></i> Request Demo
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="fpr-lock">
+          <span class="fpr-lock-icon">🔒</span>
+          <span class="fpr-lock-text">5 priority actions + peer benchmarks in full report</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Download Our Product Overview</h2>
-                <p>Get detailed specifications and implementation timeline for the Vendor360 Essentials Suite.</p>
-                <div class="cta-buttons">
-                    <a href="Nexus Approach Service Guide.pdf" class="btn btn-secondary" download>
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                    <a href="contactus.html" class="btn btn-tertiary">
-                        <i class="fas fa-calendar"></i> Schedule Call
-                    </a>
-                </div>
-            </div>
+  <div id="finpulse-details" class="fp-covers fade-up">
+    <div class="section-label">What FinPulse covers</div>
+    <h2 class="section-title">Four dimensions.<br><em>One clear score.</em></h2>
+    <div class="fp-covers-grid">
+      <div class="fp-cover-card">
+        <div class="fcc-icon">📊</div>
+        <div class="fcc-title">P&L and Profitability</div>
+        <div class="fcc-desc">Revenue trend assessment, gross and net margin health, cost structure analysis, and budget vs actual variance patterns that indicate forecasting quality.</div>
+      </div>
+      <div class="fp-cover-card">
+        <div class="fcc-icon">💧</div>
+        <div class="fcc-title">Cash Flow and Liquidity</div>
+        <div class="fcc-desc">Working capital position, cash runway quantification, debtor days and collection cycle analysis, and cash management maturity assessment.</div>
+      </div>
+      <div class="fp-cover-card">
+        <div class="fcc-icon">⚖️</div>
+        <div class="fcc-title">Risk and Exposure</div>
+        <div class="fcc-desc">Vendor concentration risk mapping, cross-border financial exposure, FX and repatriation risk flags, and operational dependency analysis.</div>
+      </div>
+      <div class="fp-cover-card">
+        <div class="fcc-icon">⚙️</div>
+        <div class="fcc-title">Operational Efficiency</div>
+        <div class="fcc-desc">Process maturity indicators, financial function stability, reporting quality, and the structural gaps most likely to create problems during growth or audit.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fp-compare fade-up">
+    <div class="section-label">Free vs Full Report</div>
+    <h2 class="section-title">Start free. Go deeper<br>when the <em>numbers matter.</em></h2>
+    <div class="fp-compare-grid">
+      <div class="fp-tier free">
+        <div class="ft-badge free-badge">Free — No Sign-Up</div>
+        <div class="ft-name">FinPulse Teaser</div>
+        <div class="ft-price">Available immediately · Takes 4 minutes</div>
+        <ul class="ft-items">
+          <li class="ft-item"><span class="ft-check">✓</span>Overall health score out of 100</li>
+          <li class="ft-item"><span class="ft-check">✓</span>Dimension scores across 4 areas</li>
+          <li class="ft-item"><span class="ft-check">✓</span>Top 3 findings ranked by severity</li>
+          <li class="ft-item"><span class="ft-check">✓</span>Executive summary in plain language</li>
+          <li class="ft-item"><span class="ft-check">✓</span>AI-powered, contextual to your inputs</li>
+          <li class="ft-item"><span class="ft-check">✓</span>Global — works for any business type</li>
+        </ul>
+        <a href="finance-checkup.html" class="btn-fp-free">Run FinPulse Free</a>
+      </div>
+      <div class="fp-tier paid">
+        <div class="ft-badge paid-badge">Full Report — Analyst Delivered</div>
+        <div class="ft-name" style="color:var(--paper);">FinPulse Full Report</div>
+        <div class="ft-price">From $199 · Delivered within 3 business days · PDF + debrief call</div>
+        <ul class="ft-items">
+          <li class="ft-item"><span class="ft-check">✦</span>Everything in the free teaser</li>
+          <li class="ft-item"><span class="ft-check">✦</span>Full P&L and margin analysis with industry benchmarks</li>
+          <li class="ft-item"><span class="ft-check">✦</span>Cash flow deep-dive and 13-week runway modelling</li>
+          <li class="ft-item"><span class="ft-check">✦</span>4 to 7 prioritised recommendations in ranked order</li>
+          <li class="ft-item"><span class="ft-check">✦</span>Vendor and concentration risk register</li>
+          <li class="ft-item"><span class="ft-check">✦</span>Peer benchmarking against your industry and stage</li>
+          <li class="ft-item"><span class="ft-check">✦</span>Senior financial analyst review and live debrief call</li>
+        </ul>
+        <a href="contactus.html" class="btn-fp-upgrade">Get the Full Report</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- CASHMAP -->
+<!-- ═══════════════════════════════════ -->
+<section id="cashmap" class="cm-section">
+
+  <div class="cm-hero fade-up">
+    <div>
+      <div class="cm-eyebrow">Product 02</div>
+      <h2 class="cm-title">CashMap:<br><em>cash flow</em><br>intelligence report</h2>
+      <div class="cm-tagline">12-Week Rolling Cash Forecast</div>
+      <p class="cm-sub">Most businesses find out about a cash problem when it has already arrived. CashMap gives you a structured, 12-week rolling view of your cash position — where it is coming from, where it is going, when it tightens, and what you need to do before it does.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contactus.html" class="btn-cm">Get CashMap</a>
+        <a href="contactus.html" class="btn-outline">Talk to us first</a>
+      </div>
+    </div>
+    <div>
+      <div class="cm-viz">
+        <div class="cm-viz-header">
+          <span>CashMap · 12-Week Forecast Preview</span>
+          <div class="cm-viz-badge">Live View</div>
         </div>
-    </section>
-
-    <footer>
-        <div class="footer-main">
-            <div class="footer-column">
-                <div class="footer-logo-group">
-                    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
-                    <span class="company-name">Finology Nexus</span>
-                </div>
-                <p class="footer-about">Finology Nexus aims to deliver global financial operations excellence with deep regulatory intelligence across key jurisdictions. We aspire to be a strategic partner, fostering operational transformation, compliance mastery, and sustainable growth for financial institutions worldwide.</p>
-                <div class="footer-socials">
-                    <a href="https://www.linkedin.com/company/finology-nexus/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/finologynexus" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/finologynexus" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/FinologyN57162" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="info@finologynexus.online" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-column footer-links">
-                <h4>Strategic Solutions</h4>
-                <ul>
-                    <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
-                    <li><a href="nexus-global-vendor-rigor-framework.html">Nexus Global Vendor Rigor Framework</a></li>
-                    <li><a href="cross-jurisdiction-risk-diagnostic.html">Cross-Jurisdiction Risk Diagnostic</a></li>
-                    <li><a href="compliance-risk-tracker.html">Compliance & Risk Tracker</a></li>
-                    <li><a href="performance-dashboard.html">Performance Dashboard</a></li>
-                    <li><a href="financial-due-diligence.html">Financial Due Diligence</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column footer-links">
-                <h4>Service Capabilities</h4>
-                <ul>
-                    <li><a href="services.html#research">Research & Analytics</a></li>
-                    <li><a href="services.html#process">Accounting Operations</a></li>
-                    <li><a href="services.html#outsourcing">Tax & Compliance</a></li>
-                    <li><a href="blog.html">Blogs</a></li>
-                    <li><a href="aboutus.html">Our Vision</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column footer-links">
-                <h4>Corporate</h4>
-                <ul>
-                    <li><a href="aboutus.html">About Finology Nexus</a></li>
-                    <li><a href="contactus.html">Schedule Consultation</a></li>
-                </ul>
-            </div>
+        <div class="cm-chart" id="cm-chart">
+          <div class="cm-bar pos" style="height:70%"></div>
+          <div class="cm-bar pos" style="height:80%"></div>
+          <div class="cm-bar pos" style="height:60%"></div>
+          <div class="cm-bar pos" style="height:75%"></div>
+          <div class="cm-bar neg" style="height:40%"></div>
+          <div class="cm-bar pos" style="height:55%"></div>
+          <div class="cm-bar pos" style="height:65%"></div>
+          <div class="cm-bar proj" style="height:45%"></div>
+          <div class="cm-bar proj" style="height:50%"></div>
+          <div class="cm-bar proj" style="height:30%"></div>
+          <div class="cm-bar proj" style="height:55%"></div>
+          <div class="cm-bar proj" style="height:60%"></div>
         </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 Finology Nexus. All rights reserved. | <a href="privacypolicy.html">Privacy Policy</a> | <a href="termsofservice.html">Terms of Service</a>
-            <p>Finology Nexus is a registered trademark. All other trademarks are the property of their respective owners.</p>
+        <div class="cm-chart-labels">
+          <div class="cm-chart-label">W1</div><div class="cm-chart-label">W2</div><div class="cm-chart-label">W3</div><div class="cm-chart-label">W4</div><div class="cm-chart-label">W5</div><div class="cm-chart-label">W6</div><div class="cm-chart-label">W7</div><div class="cm-chart-label">W8 →</div><div class="cm-chart-label">W9</div><div class="cm-chart-label">W10</div><div class="cm-chart-label">W11</div><div class="cm-chart-label">W12</div>
         </div>
-    </footer>
+        <div class="cm-metrics">
+          <div class="cm-metric">
+            <div class="cm-metric-val green">9.2 wks</div>
+            <div class="cm-metric-label">Runway</div>
+          </div>
+          <div class="cm-metric">
+            <div class="cm-metric-val amber">£42K</div>
+            <div class="cm-metric-label">Burn / Month</div>
+          </div>
+          <div class="cm-metric">
+            <div class="cm-metric-val red">Wk 10</div>
+            <div class="cm-metric-label">Risk Point</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <a href="#contact" class="floating-cta">
-        <i class="fas fa-comments"></i> Request Demo
+  <div class="cm-problems fade-up">
+    <div class="cm-problems-inner">
+      <div>
+        <div class="section-label">Problems CashMap solves</div>
+        <h2 class="section-title">The moment you<br>realise you need<br><em>a cash map</em></h2>
+        <div class="cm-problem-list" style="margin-top:2rem;">
+          <div class="cm-problem-item"><span class="cp-icon">😰</span><div class="cp-text">You discover a cash shortfall in the week it happens, with no lead time to respond</div></div>
+          <div class="cm-problem-item"><span class="cp-icon">📉</span><div class="cp-text">Revenue is growing but the bank balance does not reflect it — and you cannot explain why</div></div>
+          <div class="cm-problem-item"><span class="cp-icon">🔮</span><div class="cp-text">Every large payment feels like a risk because you do not know what else is coming</div></div>
+          <div class="cm-problem-item"><span class="cp-icon">📋</span><div class="cp-text">Your board or investor asks about cash runway and you have to estimate rather than report</div></div>
+          <div class="cm-problem-item"><span class="cp-icon">⏱️</span><div class="cp-text">You are making hiring and investment decisions without a clear view of what you can actually afford</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">What CashMap delivers</div>
+        <h2 class="section-title">Twelve weeks of<br><em>cash clarity</em></h2>
+        <div style="margin-top:2rem;" class="cm-what-list">
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Week-by-week cash flow forecast built from your actual receivables, payables, and operating commitments</div></div>
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Burn rate analysis broken down by category so you know exactly where cash is leaving the business</div></div>
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Runway calculation updated with every change, so you always know how many weeks you can operate at current pace</div></div>
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Working capital cycle analysis showing where money is tied up and how quickly you can release it</div></div>
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Risk flags raised with enough lead time to act: upcoming shortfalls identified 3 to 6 weeks before they materialise</div></div>
+          <div class="cm-what-item"><span class="cm-what-check">→</span><div class="cm-what-text">Scenario modelling: what happens to your position if a key receivable delays, if a large payment arrives early, or if you make a major hire</div></div>
+        </div>
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--amber-pale);border-left:3px solid var(--amber);">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ink);font-style:italic;line-height:1.6;">"The difference between a cash crisis and a cash plan is the same information — four to six weeks earlier."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- COMPLIANCECHECK -->
+<!-- ═══════════════════════════════════ -->
+<section id="compliancecheck" class="cc-section">
+
+  <div class="cc-hero fade-up">
+    <div>
+      <div class="cc-eyebrow">Product 03</div>
+      <h2 class="cc-title">Compliance<br>Check:<br><em>India regulatory</em><br>readiness scanner</h2>
+      <div class="cc-tagline">RBI · FEMA · GST · Companies Act</div>
+      <p class="cc-sub">India's regulatory environment is layered, interconnected, and changes without warning. A gap in one area often cascades into another. ComplianceCheck runs a structured scan of your regulatory position across four key frameworks and surfaces exactly what is ready, what needs attention, and what creates material risk if left unaddressed.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contactus.html" class="btn-cc-cta">Get ComplianceCheck</a>
+        <a href="contactus.html" class="btn-cc">Talk to us first</a>
+      </div>
+    </div>
+    <div>
+      <div class="cc-status-panel">
+        <div class="ccsp-header">
+          <span>ComplianceCheck · Status Overview</span>
+          <span style="color:rgba(255,255,255,0.2);">Sample Report</span>
+        </div>
+        <div class="ccsp-overall">
+          <span class="ccsp-overall-label">Overall Readiness</span>
+          <div class="ccsp-pill amber">Partially Ready</div>
+        </div>
+        <div class="cc-reg-list">
+          <div class="cc-reg-item">
+            <div class="cc-reg-dot amber"></div>
+            <span class="cc-reg-name">RBI — Reserve Bank of India</span>
+            <span class="cc-reg-status amber">3 Gaps</span>
+          </div>
+          <div class="cc-reg-item">
+            <div class="cc-reg-dot red"></div>
+            <span class="cc-reg-name">FEMA — Foreign Exchange Management</span>
+            <span class="cc-reg-status red">Critical</span>
+          </div>
+          <div class="cc-reg-item">
+            <div class="cc-reg-dot green"></div>
+            <span class="cc-reg-name">GST — Goods and Services Tax</span>
+            <span class="cc-reg-status green">Compliant</span>
+          </div>
+          <div class="cc-reg-item">
+            <div class="cc-reg-dot amber"></div>
+            <span class="cc-reg-name">Companies Act 2013</span>
+            <span class="cc-reg-status amber">2 Gaps</span>
+          </div>
+        </div>
+        <div style="margin-top:1.25rem;padding:0.75rem 1rem;background:rgba(192,57,43,0.1);border-left:2px solid #e74c3c;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:#e74c3c;margin-bottom:0.3rem;">Priority Action</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);">FEMA compliance for overseas remittances requires immediate documentation update — penalty exposure active</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-frameworks fade-up">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3rem;">
+      <div>
+        <div class="section-label" style="color:var(--blue);">Four regulatory frameworks</div>
+        <h2 class="section-title" style="color:var(--blue);">Every framework<br>that matters for<br><em>operating in India</em></h2>
+      </div>
+      <p style="font-size:0.95rem;color:#4a6a8a;line-height:1.8;font-weight:300;">Regulatory gaps do not announce themselves until there is a penalty, a failed audit, or a blocked transaction. ComplianceCheck maps your position across all four before that moment arrives.</p>
+    </div>
+    <div class="cc-frameworks-grid">
+      <div class="cc-fw-card">
+        <div class="cfw-icon">🏦</div>
+        <div class="cfw-name">RBI Compliance</div>
+        <div class="cfw-desc">External commercial borrowings, reporting obligations, payment system compliance, and NBFC-specific regulatory requirements under RBI guidelines.</div>
+      </div>
+      <div class="cc-fw-card">
+        <div class="cfw-icon">🌐</div>
+        <div class="cfw-name">FEMA Compliance</div>
+        <div class="cfw-desc">Foreign exchange transactions, overseas remittances, inbound FDI documentation, ODI requirements, and repatriation obligation tracking.</div>
+      </div>
+      <div class="cc-fw-card">
+        <div class="cfw-icon">🧾</div>
+        <div class="cfw-name">GST Compliance</div>
+        <div class="cfw-desc">Return filing currency, input tax credit eligibility, e-invoicing readiness, reverse charge mechanism compliance, and GST registration adequacy.</div>
+      </div>
+      <div class="cc-fw-card">
+        <div class="cfw-icon">⚖️</div>
+        <div class="cfw-name">Companies Act 2013</div>
+        <div class="cfw-desc">Board composition, statutory filing currency, CSR obligation status, related party transaction documentation, and disclosure requirement compliance.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-who fade-up">
+    <div class="section-label">Who needs ComplianceCheck most</div>
+    <h2 class="section-title">If you operate in India,<br><em>the risk is already there.</em><br>The question is whether you know where.</h2>
+    <div class="cc-who-grid" style="margin-top:3rem;">
+      <div class="cc-who-card">
+        <div class="cwc-title">Foreign Companies with India Operations</div>
+        <div class="cwc-desc">International businesses with Indian subsidiaries, representative offices, or significant remittance flows face FEMA and RBI obligations that are easy to mismanage from overseas. ComplianceCheck maps the exposure before it surfaces in an audit.</div>
+      </div>
+      <div class="cc-who-card">
+        <div class="cwc-title">NBFCs and Regulated Fintechs</div>
+        <div class="cwc-desc">RBI regulatory requirements for NBFCs and registered payment system operators are extensive and change regularly. ComplianceCheck flags where your current documentation and practices diverge from current requirements.</div>
+      </div>
+      <div class="cc-who-card">
+        <div class="cwc-title">Indian Businesses with Cross-Border Activity</div>
+        <div class="cwc-desc">Companies that make or receive overseas payments, invest abroad, or have foreign shareholders routinely underestimate their FEMA exposure. ComplianceCheck provides a clear picture before a statutory notice forces one.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- VENDORSCAN -->
+<!-- ═══════════════════════════════════ -->
+<section id="vendorscan" class="vs-section">
+
+  <div class="vs-hero fade-up">
+    <div>
+      <div class="vs-eyebrow">Product 04</div>
+      <h2 class="vs-title">VendorScan:<br>vendor risk<br><em>quick assessment</em></h2>
+      <div class="vs-tagline">RAG Scoring · Financial Health · Concentration Risk</div>
+      <p class="vs-sub">Vendor due diligence is one of the most consistently underdone processes in growing businesses — until a critical supplier fails, a payment dispute surfaces, or a regulator asks for evidence of vendor risk management. VendorScan runs a structured assessment of your vendor base and surfaces the risks that matter before they become problems.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="contactus.html" class="btn-vs-cta">Get VendorScan</a>
+        <a href="contactus.html" class="btn-vs">Talk to us first</a>
+      </div>
+    </div>
+    <div>
+      <div class="vs-rag-panel">
+        <div class="vsp-header">
+          <span>VendorScan · RAG Matrix Preview</span>
+          <span style="color:rgba(255,255,255,0.2);">8 vendors assessed</span>
+        </div>
+        <div class="vs-vendor-list">
+          <div class="vs-vendor-row">
+            <div class="vs-rag-dot red"></div>
+            <span class="vs-vendor-name">Cloud Infrastructure Provider</span>
+            <span class="vs-vendor-score">31</span>
+            <span class="vs-vendor-flag">Single-vendor · Critical</span>
+          </div>
+          <div class="vs-vendor-row">
+            <div class="vs-rag-dot amber"></div>
+            <span class="vs-vendor-name">Payment Processing Partner</span>
+            <span class="vs-vendor-score">58</span>
+            <span class="vs-vendor-flag">Contract renewal due</span>
+          </div>
+          <div class="vs-vendor-row">
+            <div class="vs-rag-dot amber"></div>
+            <span class="vs-vendor-name">Core Software Vendor</span>
+            <span class="vs-vendor-score">54</span>
+            <span class="vs-vendor-flag">Financial health flag</span>
+          </div>
+          <div class="vs-vendor-row">
+            <div class="vs-rag-dot green"></div>
+            <span class="vs-vendor-name">Legal Services Firm</span>
+            <span class="vs-vendor-score">82</span>
+            <span class="vs-vendor-flag">Low risk</span>
+          </div>
+          <div class="vs-vendor-row">
+            <div class="vs-rag-dot green"></div>
+            <span class="vs-vendor-name">Data Centre Colocation</span>
+            <span class="vs-vendor-score">78</span>
+            <span class="vs-vendor-flag">Low risk</span>
+          </div>
+        </div>
+        <div class="vs-summary-row">
+          <div class="vs-summary-cell">
+            <div class="vsc-val" style="color:#e74c3c;">1</div>
+            <div class="vsc-label">Critical</div>
+          </div>
+          <div class="vs-summary-cell">
+            <div class="vsc-val" style="color:var(--amber);">2</div>
+            <div class="vsc-label">Monitor</div>
+          </div>
+          <div class="vs-summary-cell">
+            <div class="vsc-val" style="color:var(--green-light);">2</div>
+            <div class="vsc-label">Low Risk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vs-covers fade-up">
+    <div style="margin-bottom:3rem;">
+      <div class="section-label" style="color:var(--teal);">What VendorScan assesses</div>
+      <h2 class="section-title" style="color:var(--teal);">Four lenses on every<br><em>vendor relationship</em></h2>
+    </div>
+    <div class="vs-covers-grid">
+      <div class="vs-cover-card">
+        <div class="vcc-icon">🚦</div>
+        <div class="vcc-title">RAG Risk Scoring</div>
+        <div class="vcc-desc">Each vendor receives a structured Red, Amber, Green score across financial health, operational dependency, contract terms, and compliance standing. The scoring is calibrated to your industry and operating context, not a generic template.</div>
+      </div>
+      <div class="vs-cover-card">
+        <div class="vcc-icon">🏥</div>
+        <div class="vcc-title">Vendor Financial Health Flags</div>
+        <div class="vcc-desc">Public financial data, Companies House filings, credit indicators, and payment behaviour patterns are reviewed to flag vendors showing signs of financial distress before it becomes your operational problem.</div>
+      </div>
+      <div class="vs-cover-card">
+        <div class="vcc-icon">⚖️</div>
+        <div class="vcc-title">Concentration Risk Analysis</div>
+        <div class="vcc-desc">Single-vendor dependencies and high-concentration relationships are mapped and quantified. You get a clear view of which relationships represent strategic risk and which need mitigation or alternative sourcing plans.</div>
+      </div>
+      <div class="vs-cover-card">
+        <div class="vcc-icon">📋</div>
+        <div class="vcc-title">Contract and Compliance Review</div>
+        <div class="vcc-desc">Key contract terms — renewal dates, SLAs, exit clauses, data handling obligations, and compliance requirements — are surfaced alongside any gaps that create risk in the event of a dispute, audit, or regulatory inquiry.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vs-usecases fade-up">
+    <div class="section-label">When businesses run VendorScan</div>
+    <h2 class="section-title">Three situations where<br><em>vendor risk becomes real</em></h2>
+    <div class="vs-usecase-grid" style="margin-top:3rem;">
+      <div class="vs-usecase-card">
+        <div class="vuc-num">Use Case 01</div>
+        <div class="vuc-title">Before a Funding Round or Audit</div>
+        <div class="vuc-desc">Investors and auditors routinely ask about vendor risk management. VendorScan gives you a documented, structured assessment that demonstrates operational due diligence without requiring weeks of internal preparation.</div>
+      </div>
+      <div class="vs-usecase-card">
+        <div class="vuc-num">Use Case 02</div>
+        <div class="vuc-title">After a Vendor Incident or Near-Miss</div>
+        <div class="vuc-desc">When a supplier delays, a service goes down, or a critical vendor goes quiet, the usual response is reactive. VendorScan turns that moment into a structured review of every vendor relationship before the next incident.</div>
+      </div>
+      <div class="vs-usecase-card">
+        <div class="vuc-num">Use Case 03</div>
+        <div class="vuc-title">As Part of Annual Operational Risk Review</div>
+        <div class="vuc-desc">Vendor relationships change: ownership changes, financial positions shift, contracts expire and auto-renew unnoticed. An annual VendorScan keeps your risk register current without requiring a dedicated procurement team to maintain it.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- COMPARE TABLE -->
+<!-- ═══════════════════════════════════ -->
+<section class="compare-section fade-up">
+  <div class="section-label" style="color:var(--accent-light);">Quick reference</div>
+  <h2 class="section-title" style="color:var(--paper);">Choose the right tool<br><em>for where you are now</em></h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="fp-col">FinPulse</th>
+        <th class="cm-col">CashMap</th>
+        <th class="cc-col">ComplianceCheck</th>
+        <th class="vs-col">VendorScan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>What it diagnoses</td><td>Overall financial health</td><td>Cash position and runway</td><td>Regulatory readiness</td><td>Vendor risk exposure</td></tr>
+      <tr><td>Primary output</td><td>Health score + findings</td><td>12-week forecast + flags</td><td>Compliance status report</td><td>RAG vendor risk matrix</td></tr>
+      <tr><td>Turnaround</td><td>Instant (4 mins)</td><td>3–5 business days</td><td>5–7 business days</td><td>5–7 business days</td></tr>
+      <tr><td>Pricing</td><td>Free</td><td>On request</td><td>On request</td><td>On request</td></tr>
+      <tr><td>Works for global businesses</td><td><i class="fas fa-check ct-check"></i></td><td><i class="fas fa-check ct-check"></i></td><td><span style="font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--amber);">India focus</span></td><td><i class="fas fa-check ct-check"></i></td></tr>
+      <tr><td>Analyst review included</td><td><span class="ct-dash">—</span> (upgrade)</td><td><i class="fas fa-check ct-check"></i></td><td><i class="fas fa-check ct-check"></i></td><td><i class="fas fa-check ct-check"></i></td></tr>
+      <tr><td>Debrief call included</td><td><span class="ct-dash">—</span> (upgrade)</td><td><i class="fas fa-check ct-check"></i></td><td><i class="fas fa-check ct-check"></i></td><td><i class="fas fa-check ct-check"></i></td></tr>
+      <tr><td>Pairs naturally with</td><td>All three below</td><td>FinPulse + Embedded Support</td><td>Embedded Finance Support</td><td>FinPulse + ComplianceCheck</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════ -->
+<!-- SUITE CTA -->
+<!-- ═══════════════════════════════════ -->
+<div class="suite-cta fade-up">
+  <div class="sc-left">
+    <h2>Not sure which tool<br>fits <em>where you are?</em></h2>
+    <p style="margin-top:1rem;">Start with FinPulse. It takes 4 minutes, costs nothing, and the score and findings will tell you whether CashMap, ComplianceCheck, or VendorScan belongs next. Or book a 30-minute consultation and we will tell you directly.</p>
+  </div>
+  <div class="sc-right">
+    <a href="finance-checkup.html" class="sc-action">
+      <div class="sca-dot green"></div>
+      <div>
+        <div class="sca-name">FinPulse — Free Business Health Check</div>
+        <div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">4 minutes · Instant score · No sign-up</div>
+      </div>
+      <span class="sca-cta">Start Free</span>
+      <span class="sca-arrow">→</span>
     </a>
+    <a href="contactus.html" class="sc-action">
+      <div class="sca-dot amber"></div>
+      <div>
+        <div class="sca-name">CashMap · Cash Flow Intelligence</div>
+        <div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">12-week forecast · Runway · Risk flags</div>
+      </div>
+      <span class="sca-cta">Get Started</span>
+      <span class="sca-arrow">→</span>
+    </a>
+    <a href="contactus.html" class="sc-action">
+      <div class="sca-dot blue"></div>
+      <div>
+        <div class="sca-name">ComplianceCheck · India Regulatory Scanner</div>
+        <div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">RBI · FEMA · GST · Companies Act</div>
+      </div>
+      <span class="sca-cta">Get Started</span>
+      <span class="sca-arrow">→</span>
+    </a>
+    <a href="contactus.html" class="sc-action">
+      <div class="sca-dot teal"></div>
+      <div>
+        <div class="sca-name">VendorScan · Vendor Risk Assessment</div>
+        <div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">RAG scoring · Financial health · Concentration risk</div>
+      </div>
+      <span class="sca-cta">Get Started</span>
+      <span class="sca-arrow">→</span>
+    </a>
+  </div>
+</div>
 
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.menu-toggle').addEventListener('click', function() {
-            const nav = document.getElementById('main-nav');
-            nav.classList.toggle('active');
-            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="hl">FinPulse Free</span><span>·</span>
+    <span>Business Health Score</span><span>·</span>
+    <span class="hl">CashMap</span><span>·</span>
+    <span>12-Week Cash Forecast</span><span>·</span>
+    <span class="hl">ComplianceCheck</span><span>·</span>
+    <span>RBI · FEMA · GST · Companies Act</span><span>·</span>
+    <span class="hl">VendorScan</span><span>·</span>
+    <span>RAG Vendor Risk Assessment</span><span>·</span>
+    <span class="hl">FinPulse Free</span><span>·</span>
+    <span>Business Health Score</span><span>·</span>
+    <span class="hl">CashMap</span><span>·</span>
+    <span>12-Week Cash Forecast</span><span>·</span>
+    <span class="hl">ComplianceCheck</span><span>·</span>
+    <span>RBI · FEMA · GST · Companies Act</span><span>·</span>
+    <span class="hl">VendorScan</span><span>·</span>
+    <span>RAG Vendor Risk Assessment</span><span>·</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology <span>Nexus</span></span>
+      </a>
+      <p class="footer-tagline">Embedded financial operations, intelligence diagnostics, and automation for businesses that need the work done properly.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:hello@finologynexus.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Intelligence Suite</div>
+      <ul class="footer-links">
+        <li><a href="finance-checkup.html">FinPulse — Free</a></li>
+        <li><a href="#cashmap">CashMap</a></li>
+        <li><a href="#compliancecheck">ComplianceCheck</a></li>
+        <li><a href="#vendorscan">VendorScan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="financial-operations.html">Financial Operations</a></li>
+        <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+        <li><a href="data-automation.html">Data Automation</a></li>
+        <li><a href="workflow-automation.html">Workflow Automation</a></li>
+        <li><a href="process-design.html">Process Design</a></li>
+        <li><a href="embedded-support.html">Embedded Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="blog.html">Case Studies</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="privacypolicy.html">Privacy</a></li>
+        <li><a href="termsofservice.html">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Finology Nexus. All rights reserved.</span>
+    <a href="mailto:hello@finologynexus.com" class="footer-email">hello@finologynexus.com</a>
+  </div>
+</footer>
+
+<a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+  <i class="fas fa-heartbeat"></i> FinPulse Free
+</a>
+
+<script>
+  // Disable copy/paste shortcuts and context menu
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault();
+  });
+
+  // Fade-up animation
+  const observer = new IntersectionObserver(e => e.forEach(x => {
+    if (x.isIntersecting) x.target.classList.add('visible');
+  }), { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+
+  // FinPulse score counter
+  const scoreEl = document.getElementById('fp-score-display');
+  let scoreAnimated = false;
+  const scoreObserver = new IntersectionObserver(e => {
+    if (e[0].isIntersecting && !scoreAnimated) {
+      scoreAnimated = true;
+      let current = 0;
+      const target = 54;
+      const step = () => { if (current < target) { current++; scoreEl.textContent = current; requestAnimationFrame(step); } };
+      step();
+    }
+  }, { threshold: 0.5 });
+  if (scoreEl) scoreObserver.observe(scoreEl);
+
+  // FinPulse dimension bars
+  const dimObserver = new IntersectionObserver(e => {
+    e.forEach(x => {
+      if (x.isIntersecting) {
+        x.target.querySelectorAll('.fpr-dim-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
         });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.fp-report-preview').forEach(el => dimObserver.observe(el));
 
-        // Form submission handler
-        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form values
-            const name = document.querySelector('#assessmentForm input[type="text"]').value;
-            const email = document.querySelector('#assessmentForm input[type="email"]').value;
-            const company = document.querySelector('#assessmentForm input[placeholder="Organization Name"]').value;
-            const product = document.querySelector('#assessmentForm select').value;
-            const message = document.querySelector('#assessmentForm textarea').value;
-
-            // Create email content
-            const subject = `Demo Request - ${product} - ${company}`;
-            const body = `Name: ${name}%0D%0ACompany: ${company}%0D%0AEmail: ${email}%0D%0AProduct: ${product}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-            
-            // Open email client
-            window.location.href = `mailto:info@finologynexus.online,nisarg.thakker@finologynexus.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Show confirmation
-            alert('Thank you for your demo request! Your email client will open with a pre-filled message. Please send it to complete your request.');
+  // Product nav active state on scroll
+  const sections = [
+    { id: 'finpulse', tab: document.querySelector('[data-target="finpulse"]') },
+    { id: 'cashmap', tab: document.querySelector('[data-target="cashmap"]') },
+    { id: 'compliancecheck', tab: document.querySelector('[data-target="compliancecheck"]') },
+    { id: 'vendorscan', tab: document.querySelector('[data-target="vendorscan"]') },
+  ];
+  const scrollObserver = new IntersectionObserver(e => {
+    e.forEach(x => {
+      if (x.isIntersecting) {
+        const id = x.target.id;
+        sections.forEach(s => {
+          s.tab?.classList.toggle('active', s.id === id);
         });
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Create animated particles for hero section
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                // Random size and position
-                const size = Math.random() * 5 + 2;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 15;
-
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${left}%`;
-                particle.style.animationDelay = `${delay}s`;
-
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize particles when page loads
-        document.addEventListener('DOMContentLoaded', createParticles);
-    </script>
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) scrollObserver.observe(el);
+  });
+</script>
 </body>
 </html>
