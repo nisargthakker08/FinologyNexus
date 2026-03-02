@@ -536,7 +536,89 @@
   }), { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
 </script>
+  <script>
+async function trackVisit() {
+  // Only track once per session
+  if (sessionStorage.getItem('tracked')) return;
 
+  let sessionId = localStorage.getItem('fn_session');
+  if (!sessionId) {
+    sessionId = crypto.randomUUID();
+    localStorage.setItem('fn_session', sessionId);
+  }
+
+  try {
+    await sb.from('visitors').insert({
+      page:       window.location.pathname,
+      referrer:   document.referrer || 'direct',
+      user_agent: navigator.userAgent,
+      session_id: sessionId
+    });
+
+    sessionStorage.setItem('tracked', '1');
+  } catch (err) {
+    console.error('Visitor tracking failed:', err);
+  }
+}
+
+trackVisit();
+</script>
+<script>
+  async function handleContactSubmit(e) {
+  e.preventDefault();
+
+  const data = {
+    name:        document.getElementById('contact-name').value,
+    email:       document.getElementById('contact-email').value,
+    company:     document.getElementById('contact-company')?.value || null,
+    country:     document.getElementById('contact-country')?.value || null,
+    service:     document.getElementById('contact-service')?.value || null,
+    message:     document.getElementById('contact-message').value,
+    source_page: window.location.pathname
+  };
+
+  try {
+    await sb.from('contact_submissions').insert(data);
+    // Show success message to user
+    showSuccessMessage('Thank you. We will be in touch shortly.');
+  } catch (err) {
+    // Still show success — do not expose errors to user
+    showSuccessMessage('Thank you. We will be in touch shortly.');
+    console.error('Supabase error:', err);
+  }
+}
+
+// Attach to your form
+document.getElementById('contact-form')
+  .addEventListener('submit', handleContactSubmit);
+  </script>
+
+  <script>
+    async function handleBookingSubmit(e) {
+  e.preventDefault();
+
+  const data = {
+    name:             document.getElementById('book-name').value,
+    email:            document.getElementById('book-email').value,
+    company:          document.getElementById('book-company')?.value || null,
+    country:          document.getElementById('book-country')?.value || null,
+    service_interest: document.getElementById('book-service')?.value || null,
+    preferred_time:   document.getElementById('book-time')?.value   || null,
+    message:          document.getElementById('book-message')?.value || null,
+    status:           'new'
+  };
+
+  const { error } = await sb.from('consultation_bookings').insert(data);
+
+  if (!error) {
+    showSuccessMessage('Booking received. We will confirm within 24 hours.');
+  } else {
+    showSuccessMessage('Booking received. We will confirm within 24 hours.');
+  }
+}
+
+document.getElementById('booking-form')
+  .addEventListener('submit', handleBookingSubmit);
+   </script> 
 </body>
 </html>
-
