@@ -3,362 +3,190 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy | Finology Nexus</title>
-  <meta name="description" content="Finology Nexus privacy policy outlining how we collect, use, and protect your personal information." />
+  <title>Privacy Policy · Finology Nexus</title>
+  <meta name="description" content="Finology Nexus privacy policy outlining how we collect, use, and protect your personal information. Your data security and transparency matter to us." />
+  <link rel="canonical" href="https://www.finologynexus.online/privacypolicy.html" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.finologynexus.online/privacypolicy.html" />
+  <meta property="og:title" content="Privacy Policy · Finology Nexus" />
+  <meta property="og:description" content="Finology Nexus privacy policy outlining how we collect, use, and protect your personal information." />
+  <meta property="og:image" content="https://www.finologynexus.online/finology-og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.finologynexus.online/privacypolicy.html" />
+  <meta property="twitter:title" content="Privacy Policy · Finology Nexus" />
+  <meta property="twitter:description" content="Finology Nexus privacy policy outlining how we collect, use, and protect your personal information." />
+  <meta property="twitter:image" content="https://www.finologynexus.online/finology-og-image.png" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="finology-logofavicon.png" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --primary-blue: #0077cc;
-      --primary-blue-dark: #005fa3;
-      --secondary-blue: #00c6ff;
-      --secondary-blue-light: #00a4e0;
-      --dark-bg: #1f2937;
-      --light-bg: #f9fbfc;
-      --text-dark: #1f2937;
-      --text-medium: #4b5563;
-      --text-light: #6b7280;
-      --white: #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --transition: all 0.3s ease;
+    /* ---------- DESIGN SYSTEM (same as main site) ---------- */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
+      --paper:#f5f2ec;--paper-warm:#ede9e1;
+      --accent:#b8955a;--accent-light:#d4b07a;--accent-pale:#f0e6d3;
+      --green:#2d5a3d;--green-light:#4a8c62;--green-pale:#e8f2ec;
+      --amber:#c97d20;--amber-pale:#fdf6e8;
+      --blue:#1a3a5c;--blue-light:#2a5080;--blue-pale:#e8f0f8;
+      --teal:#1a4a4a;--teal-light:#2a7070;--teal-pale:#e8f5f5;
+      --line:rgba(28,42,58,0.12);
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
     }
+    h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.1;}
+    .section-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;}
+    .section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent);display:inline-block;}
+    .fade-up{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .fade-up.animate{opacity:0;transform:translateY(22px);}
+    .fade-up.animate.visible{opacity:1;transform:none;}
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+    /* ---------- NAV ---------- */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;background:rgba(245,242,236,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .logo-group{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:inherit;}
+    .company-logo{width:40px;height:40px;object-fit:contain;}
+    .company-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);}
+    .company-name span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links li{position:relative;}
+    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;}
+    .nav-links a:hover,.nav-links a.active-page{color:var(--ink);}
+    .nav-links a.active-page{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;}
+    .nav-links a i{font-size:0.6rem;transition:transform 0.2s;}
+    .nav-links li:hover>a i{transform:rotate(180deg);}
+    .dropdown-content{position:absolute;top:2rem;left:-1rem;background:white;border:1px solid var(--line);min-width:200px;padding:1rem 0;opacity:0;visibility:hidden;transition:all 0.2s;box-shadow:0 8px 24px rgba(0,0,0,0.08);z-index:10;}
+    .nav-links li:hover .dropdown-content{opacity:1;visibility:visible;}
+    .dropdown-content a{display:block;padding:0.5rem 1.5rem;font-size:0.75rem;text-transform:none;letter-spacing:0.05em;color:var(--ink-muted);border:none!important;}
+    .dropdown-content a:hover,.dropdown-content a.current-sub{background:var(--paper-warm);color:var(--ink);}
+    .dropdown-content a.current-sub{font-weight:500;color:var(--accent);}
+    .nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:0.6rem 1.4rem;text-decoration:none;transition:background 0.2s;}
+    .nav-cta:hover{background:var(--accent);}
+
+    /* ---------- MAIN CONTENT (privacy) ---------- */
+    .privacy-page{padding:8rem 4rem 5rem;min-height:70vh;}
+    .privacy-container{max-width:900px;margin:0 auto;background:var(--paper);padding:3rem;border-radius:16px;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,0.03);}
+    .privacy-header{text-align:center;margin-bottom:3rem;}
+    .privacy-header h1{font-size:3rem;color:var(--blue);margin-bottom:1rem;font-weight:300;}
+    .privacy-header p{color:var(--ink-muted);font-size:0.9rem;}
+    .privacy-section{margin-bottom:3rem;}
+    .privacy-section h2{font-size:2rem;color:var(--blue);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:1px solid var(--line);font-weight:300;}
+    .privacy-section h3{font-size:1.3rem;color:var(--ink);margin:2rem 0 1rem;font-weight:400;}
+    .privacy-section p{color:var(--ink-muted);margin-bottom:1rem;line-height:1.7;}
+    .privacy-section ul,.privacy-section ol{margin-bottom:1.5rem;padding-left:1.5rem;color:var(--ink-muted);}
+    .privacy-section li{margin-bottom:0.5rem;}
+    .privacy-section a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+    .privacy-section a:hover{color:var(--ink);}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:var(--ink);padding:4rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
+    .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;}
+    .footer-logo-group img{width:40px;height:40px;object-fit:contain;}
+    .footer-logo-group span{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--paper);}
+    .footer-logo-group span span{color:var(--accent);}
+    .footer-tagline{font-size:0.82rem;color:rgba(255,255,255,0.35);line-height:1.65;font-weight:300;max-width:240px;margin-top:0.5rem;}
+    .footer-col-title{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--paper);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;}
+    .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
+    .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
+    .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
+    .footer-socials a:hover{color:var(--accent);}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+      .privacy-page{padding:6rem 1.5rem 3rem;}
+      .privacy-container{padding:2rem 1.5rem;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:2rem;padding:2rem 1.5rem;}
+      footer{padding:3rem 1.5rem 2rem;}
     }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--primary-blue);
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-      color: var(--text-medium);
-    }
-
-    ul, ol {
-      margin-bottom: 1.5rem;
-      padding-left: 1.5rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    a {
-      color: var(--primary-blue);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    a:hover {
-      color: var(--primary-blue-dark);
-    }
-
-    /* Header styles */
-    header {
-      background: var(--white);
-      padding: 1rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-    }
-
-    .company-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      position: relative;
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: var(--primary-blue);
-      transition: var(--transition);
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    nav a.active {
-      color: var(--primary-blue);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--primary-blue);
-      padding: 0.5rem;
-    }
-
-    /* Main content */
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    .privacy-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .privacy-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .privacy-header p {
-      color: var(--text-medium);
-      font-size: 1.1rem;
-    }
-
-    .privacy-section {
-      margin-bottom: 3rem;
-    }
-
-    .privacy-section h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--light-bg);
-    }
-
-    .privacy-section h3 {
-      font-size: 1.25rem;
-      margin-top: 1.5rem;
-    }
-
-    /* Footer styles */
-    footer {
-      background: var(--dark-bg);
-      color: var(--white);
-      padding: 3rem 1.25rem 1.5rem;
-    }
-
-    .footer-main {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 75rem;
-      margin: 0 auto;
-      gap: 3rem;
-    }
-
-    .footer-column {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .footer-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 0.625rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-logo-group img {
-      height: 2rem;
-    }
-
-    .footer-logo-group span {
-      font-size: 1.125rem;
-      font-weight: 700;
-      background: linear-gradient(to right, var(--secondary-blue), var(--primary-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .footer-about {
-      color: #d1d5db;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links h4 {
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-links a {
-      color: #d1d5db;
-      text-decoration: none;
-      transition: var(--transition);
-      font-size: 0.9rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--secondary-blue);
-    }
-
-    .footer-socials {
-      margin-top: 1.5rem;
-    }
-
-    .footer-socials a {
-      color: var(--white);
-      margin-right: 1rem;
-      font-size: 1.25rem;
-      transition: var(--transition);
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .footer-socials a:hover {
-      color: var(--secondary-blue);
-      transform: translateY(-2px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 0.875rem;
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #374151;
-      color: #9ca3af;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem;
-        flex-wrap: wrap;
-      }
-      
-      .menu-toggle {
-        display: block;
-        order: 1;
-      }
-      
-      nav {
-        width: 100%;
-        order: 3;
-        display: none;
-      }
-      
-      nav.active {
-        display: block;
-        margin-top: 1rem;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .privacy-header h1 {
-        font-size: 2rem;
-      }
-      
-      .container {
-        padding: 1.5rem 1rem;
-      }
-      
-      .footer-main {
-        flex-direction: column;
-        gap: 2rem;
-      }
-      
-      .footer-column {
-        width: 100%;
-      }
+    @media(max-width:600px){
+      .privacy-header h1{font-size:2.2rem;}
+      .privacy-section h2{font-size:1.6rem;}
+      .footer-top{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo-group">
-      <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="40" height="40">
-      <span class="company-name">Finology Nexus</span>
-    </div>
-    <nav id="main-nav">
-      <ul>
-        <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="Solutions.html" class="nav-link">Solutions</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="blog.html" class="nav-link">Case Studies</a></li>
-                <li><a href="aboutus.html" class="nav-link">About Us</a></li>
-                <li><a href="contactus.html" class="nav-link">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <main class="container">
+<!-- NAVIGATION (same as main site) -->
+<nav>
+  <a href="index.html" class="logo-group">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
+    <span class="company-name">Finology <span>Nexus</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li>
+      <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="financial-operations.html">Financial Operations</a>
+        <a href="financial-intelligence.html">Financial Intelligence</a>
+        <a href="data-automation.html">Data Automation</a>
+        <a href="workflow-automation.html">Workflow Automation</a>
+        <a href="process-design.html">Process Design</a>
+        <a href="embedded-support.html">Embedded Support</a>
+      </div>
+    </li>
+    <li>
+      <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="finpulse.html">FinPulse — Free</a>
+        <a href="cashmap.html">CashMap</a>
+        <a href="compliancecheck.html">ComplianceCheck</a>
+        <a href="vendorscan.html">VendorScan</a>
+        <a href="vendor-health-scorecard.html">Vendor Health Scorecard</a>
+      </div>
+    </li>
+    <li>
+      <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content">
+        <a href="aboutus.html">Our Practice</a>
+        <a href="blog.html">Case Studies</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </li>
+    <li><a href="finpulse.html">FinPulse Free</a></li>
+  </ul>
+  <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
+</nav>
+
+<!-- PRIVACY CONTENT -->
+<main class="privacy-page">
+  <div class="privacy-container">
     <div class="privacy-header">
       <h1>Privacy Policy</h1>
       <p>Last updated: January 1, 2025</p>
@@ -428,93 +256,90 @@
       <h2>Contact Us</h2>
       <p>If you have any questions about this Privacy Policy, please contact us:</p>
       <ul>
-        <li>By email: privacy@finologynexus.online</li>
+        <li>By email: <a href="mailto:info@finologynexus.online">info@finologynexus.online</a></li>
         <li>By visiting this page on our website: <a href="contactus.html">Contact Us</a></li>
       </ul>
     </div>
-  </main>
+  </div>
+</main>
 
-  <footer>
-    <div class="footer-main">
-      <div class="footer-column">
-        <div class="footer-logo-group">
-          <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" width="32" height="32">
-          <span>Finology Nexus</span>
-        </div>
-        <p class="footer-about">
-          We provide specialized financial operations support to businesses looking to optimize their back-office functions through a combination of expertise and smart automation.
-        </p>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.facebook.com/finologynexus/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <div class="footer-links">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services.html#research">Financial Research</a></li>
-            <li><a href="services.html#process">Process Support</a></li>
-            <li><a href="services.html#outsourcing">Outsourcing</a></li>
-            <li><a href="services.html">View All Services</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <div class="footer-links">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="blog.html">Case Studies</a></li>
-            <li><a href="privacypolicy.html">Privacy Policy</a></li>
-            <li><a href="termsofservice.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-column">
-        <div class="footer-links">
-          <h4>Contact</h4>
-          <ul>
-            <li><i class="fas fa-envelope"></i> info@finologynexus.online</li>
-            <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</li>
-          </ul>
-        </div>
+<!-- FOOTER (same as main site) -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="index.html" class="footer-logo-group">
+        <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo">
+        <span>Finology <span>Nexus</span></span>
+      </a>
+      <p class="footer-tagline">Embedded financial, data, and operational execution for businesses that value clarity, control, and dependable outcomes.</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/company/finology-nexus/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/FinologyN57162" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com/finologynexus" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/finologynexus" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    
-    <div class="footer-bottom">
-      &copy; <span id="current-year">2025</span> Finology Nexus. All rights reserved.
+    <div>
+      <div class="footer-col-title">Intelligence Suite</div>
+      <ul class="footer-links">
+        <li><a href="finpulse.html">FinPulse — Free</a></li>
+        <li><a href="cashmap.html">CashMap</a></li>
+        <li><a href="compliancecheck.html">ComplianceCheck</a></li>
+        <li><a href="vendorscan.html">VendorScan</a></li>
+        <li><a href="vendor-health-scorecard.html">Vendor Health Scorecard</a></li>
+      </ul>
     </div>
-  </footer>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="financial-operations.html">Financial Operations</a></li>
+        <li><a href="financial-intelligence.html">Financial Intelligence</a></li>
+        <li><a href="data-automation.html">Data Automation</a></li>
+        <li><a href="workflow-automation.html">Workflow Automation</a></li>
+        <li><a href="process-design.html">Process Design</a></li>
+        <li><a href="embedded-support.html">Embedded Support</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="blog.html">Case Studies</a></li>
+        <li><a href="contactus.html">Contact</a></li>
+        <li><a href="privacypolicy.html">Privacy</a></li>
+        <li><a href="termsofservice.html">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© <span id="current-year"></span> Finology Nexus. All rights reserved.</span>
+    <a href="mailto:info@finologynexus.com" class="footer-email">info@finologynexus.com</a>
+  </div>
+</footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = nav.classList.toggle('active');
-        menuToggle.innerHTML = isExpanded 
-          ? '<i class="fas fa-times"></i>' 
-          : '<i class="fas fa-bars"></i>';
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-      });
-      
-      // Set active nav link
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.href === window.location.href) {
-          link.classList.add('active');
-        }
-      });
-      
-      // Update copyright year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-    });
-  </script>
+<!-- Floating CTA (same as main site) -->
+<a href="contactus.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+  <i class="fas fa-heartbeat"></i> Let's Talk
+</a>
+
+<script>
+  // Anti-copy protections
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault();
+  });
+
+  // Mobile menu toggle (simple version)
+  document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    const nav = document.querySelector('nav ul');
+    nav.classList.toggle('active');
+  });
+
+  // Update copyright year
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
