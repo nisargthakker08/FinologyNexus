@@ -27,13 +27,13 @@
     })(window,document,"clarity","script","s1b20qvd2s");
   </script>
 
-  <!-- Add to <head> on every page -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-</script>
+  <!-- Supabase client (keep as is) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ----- GLOBAL STYLES (combined) ----- */
+    /* ----- GLOBAL STYLES (unchanged) ----- */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
       --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
@@ -110,9 +110,9 @@
     .dropdown-content {
       position: absolute; top: 2rem; left: -1rem;
       background: white; border: 1px solid var(--line);
-      min-width: 200px; padding: 1rem 0;
+      min-width: 220px; padding: 1rem 0;
       opacity: 0; visibility: hidden; transition: all 0.2s;
-      box-shadow: var(--shadow-md); z-index: 10;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08); z-index: 10;
     }
     .nav-links li:hover .dropdown-content { opacity: 1; visibility: visible; }
     .dropdown-content a {
@@ -300,7 +300,7 @@
     .btn-bc-ghost::after{content:'→';}
     .bc-note{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
 
-    /* FOOTER (email on left) */
+    /* FOOTER */
     footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.07);padding:4rem 4rem 2.5rem;}
     .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:2rem;}
     .footer-logo-group{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;text-decoration:none;color:inherit;}
@@ -315,7 +315,7 @@
     .footer-links a:hover{color:var(--paper);}
     .footer-bottom{display:flex;justify-content:space-between;align-items:center;}
     .footer-copy{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);}
-    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;margin-left:0;}
+    .footer-email{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;}
     .footer-socials{display:flex;gap:1.2rem;margin-top:1.5rem;}
     .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
     .footer-socials a:hover{color:var(--accent);}
@@ -340,16 +340,20 @@
   </style>
 </head>
 <body>
- 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <!-- NAV with dropdowns -->
+  <!-- NAVIGATION (FIXED) -->
   <nav>
     <a href="index.html" class="logo-group">
       <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
       <span class="company-name">Finology <span>Nexus</span></span>
     </a>
     <ul class="nav-links">
+      <!-- Home -->
       <li><a href="index.html">Home</a></li>
+
+      <!-- Services dropdown (active section) -->
       <li class="active-section">
         <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -361,15 +365,19 @@
           <a href="embedded-support.html">Embedded Support</a>
         </div>
       </li>
+
+      <!-- Solutions dropdown -->
       <li>
         <a href="Solutions.html">Solutions <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
-        <li><a href="finpulse.html">FinPulse (Free)</a></li>
-        <li><a href="cashmap.html">CashMap</a></li>
-        <li><a href="compliancecheck.html">ComplianceCheck</a></li>
-        <li><a href="vendorscan.html">VendorScan</a></li>
+          <a href="finpulse.html">FinPulse (Free)</a>
+          <a href="cashmap.html">CashMap</a>
+          <a href="compliancecheck.html">ComplianceCheck</a>
+          <a href="vendorscan.html">VendorScan</a>
         </div>
       </li>
+
+      <!-- About dropdown -->
       <li>
         <a href="aboutus.html">About <i class="fas fa-chevron-down"></i></a>
         <div class="dropdown-content">
@@ -377,8 +385,12 @@
           <a href="contactus.html">Contact</a>
         </div>
       </li>
-      <li><a href="finance-checkup.html">FinPulse (Free)</a></li>
+
+      <!-- FinPulse Free top-level link -->
+      <li><a href="finpulse.html">FinPulse (Free)</a></li>
     </ul>
+
+    <!-- Schedule Consultation button -->
     <a href="contactus.html" class="nav-cta">Schedule Consultation</a>
   </nav>
 
@@ -425,7 +437,7 @@
     </div>
   </div>
 
-  <!-- PROBLEM SNAPSHOT (from first HTML) -->
+  <!-- PROBLEM SNAPSHOT -->
   <section style="padding: 0 4rem 4rem;">
     <div class="problem-snapshot">
       <div class="ps-label">Manual processes break quietly before they fail loudly</div>
@@ -578,10 +590,10 @@
       <div>
         <div class="footer-col-title">Intelligence Suite</div>
         <ul class="footer-links">
-        <li><a href="finpulse.html">FinPulse (Free)</a></li>
-        <li><a href="cashmap.html">CashMap</a></li>
-        <li><a href="compliancecheck.html">ComplianceCheck</a></li>
-        <li><a href="vendorscan.html">VendorScan</a></li>
+          <li><a href="finpulse.html">FinPulse (Free)</a></li>
+          <li><a href="cashmap.html">CashMap</a></li>
+          <li><a href="compliancecheck.html">ComplianceCheck</a></li>
+          <li><a href="vendorscan.html">VendorScan</a></li>
         </ul>
       </div>
       <div>
@@ -632,33 +644,28 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
+
+    // Supabase tracking (unchanged)
+    async function trackVisit() {
+      if (sessionStorage.getItem('tracked')) return;
+      let sessionId = localStorage.getItem('fn_session');
+      if (!sessionId) {
+        sessionId = crypto.randomUUID();
+        localStorage.setItem('fn_session', sessionId);
+      }
+      try {
+        await sb.from('visitors').insert({
+          page:       window.location.pathname,
+          referrer:   document.referrer || 'direct',
+          user_agent: navigator.userAgent,
+          session_id: sessionId
+        });
+        sessionStorage.setItem('tracked', '1');
+      } catch (err) {
+        console.error('Visitor tracking failed:', err);
+      }
+    }
+    trackVisit();
   </script>
-  <script>
-async function trackVisit() {
-  // Only track once per session
-  if (sessionStorage.getItem('tracked')) return;
-
-  let sessionId = localStorage.getItem('fn_session');
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-    localStorage.setItem('fn_session', sessionId);
-  }
-
-  try {
-    await sb.from('visitors').insert({
-      page:       window.location.pathname,
-      referrer:   document.referrer || 'direct',
-      user_agent: navigator.userAgent,
-      session_id: sessionId
-    });
-
-    sessionStorage.setItem('tracked', '1');
-  } catch (err) {
-    console.error('Visitor tracking failed:', err);
-  }
-}
-
-trackVisit();
-</script>
 </body>
 </html>
