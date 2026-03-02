@@ -35,13 +35,13 @@
   <!-- Microsoft Clarity -->
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
 
-    <!-- Add to <head> on every page -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-</script>
+  <!-- Supabase client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +49,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* All your existing CSS remains exactly the same */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
       --ink:#1c2a3a;--ink-light:#2a3a4a;--ink-muted:#6b7a8a;
@@ -68,7 +69,6 @@
       font-size:16px;
       line-height:1.6;
       -webkit-font-smoothing:antialiased;
-      /* Disable text selection */
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -340,11 +340,11 @@
       </div>
     </div>
 
-    <!-- Contact form -->
+    <!-- Contact form (now with id and correct field ids) -->
     <div class="form-container">
       <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; margin-bottom:0.5rem;">Tell Us About Your Situation</h3>
       <p style="color:var(--ink-muted); margin-bottom:2rem;">A short overview helps us prepare a meaningful response. You do not need to be overly detailed. Context matters more than polish.</p>
-      <form action="#" method="post">
+      <form id="contact-form" method="post">
         <div class="form-grid">
           <div class="form-field half">
             <label for="name">Your Name</label>
@@ -521,6 +521,7 @@
   <i class="fas fa-heartbeat"></i> Let's Talk
 </a>
 
+<!-- Combined JavaScript -->
 <script>
   // Disable copy/paste shortcuts and context menu
   document.addEventListener('contextmenu', e => e.preventDefault());
@@ -535,90 +536,60 @@
     if (x.isIntersecting) x.target.classList.add('visible');
   }), { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
-</script>
-  <script>
-async function trackVisit() {
-  // Only track once per session
-  if (sessionStorage.getItem('tracked')) return;
 
-  let sessionId = localStorage.getItem('fn_session');
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-    localStorage.setItem('fn_session', sessionId);
+  // Track page visit (once per session)
+  async function trackVisit() {
+    if (sessionStorage.getItem('tracked')) return;
+    let sessionId = localStorage.getItem('fn_session');
+    if (!sessionId) {
+      sessionId = crypto.randomUUID();
+      localStorage.setItem('fn_session', sessionId);
+    }
+    try {
+      await sb.from('visitors').insert({
+        page:       window.location.pathname,
+        referrer:   document.referrer || 'direct',
+        user_agent: navigator.userAgent,
+        session_id: sessionId
+      });
+      sessionStorage.setItem('tracked', '1');
+    } catch (err) {
+      console.error('Visitor tracking failed:', err);
+    }
+  }
+  trackVisit();
+
+  // Simple success message (you can replace with a nicer UI)
+  function showSuccessMessage(msg) {
+    alert(msg); // For now; consider a toast or modal
   }
 
-  try {
-    await sb.from('visitors').insert({
-      page:       window.location.pathname,
-      referrer:   document.referrer || 'direct',
-      user_agent: navigator.userAgent,
-      session_id: sessionId
-    });
-
-    sessionStorage.setItem('tracked', '1');
-  } catch (err) {
-    console.error('Visitor tracking failed:', err);
-  }
-}
-
-trackVisit();
-</script>
-<script>
+  // Handle contact form submission
   async function handleContactSubmit(e) {
-  e.preventDefault();
+    e.preventDefault(); // ❗ prevents the 405 error
 
-  const data = {
-    name:        document.getElementById('contact-name').value,
-    email:       document.getElementById('contact-email').value,
-    company:     document.getElementById('contact-company')?.value || null,
-    country:     document.getElementById('contact-country')?.value || null,
-    service:     document.getElementById('contact-service')?.value || null,
-    message:     document.getElementById('contact-message').value,
-    source_page: window.location.pathname
-  };
+    const data = {
+      name:        document.getElementById('name').value,
+      email:       document.getElementById('email').value,
+      phone:       document.getElementById('phone').value || null,
+      service:     document.getElementById('interest').value || null,
+      message:     document.getElementById('message').value,
+      source_page: window.location.pathname
+    };
 
-  try {
-    await sb.from('contact_submissions').insert(data);
-    // Show success message to user
-    showSuccessMessage('Thank you. We will be in touch shortly.');
-  } catch (err) {
-    // Still show success — do not expose errors to user
-    showSuccessMessage('Thank you. We will be in touch shortly.');
-    console.error('Supabase error:', err);
+    try {
+      await sb.from('contact_submissions').insert(data);
+      showSuccessMessage('Thank you. We will be in touch shortly.');
+      e.target.reset(); // optional: clear the form
+    } catch (err) {
+      // Still show success — do not expose errors to user
+      showSuccessMessage('Thank you. We will be in touch shortly.');
+      console.error('Supabase error:', err);
+    }
   }
-}
 
-// Attach to your form
-document.getElementById('contact-form')
-  .addEventListener('submit', handleContactSubmit);
-  </script>
-
-  <script>
-    async function handleBookingSubmit(e) {
-  e.preventDefault();
-
-  const data = {
-    name:             document.getElementById('book-name').value,
-    email:            document.getElementById('book-email').value,
-    company:          document.getElementById('book-company')?.value || null,
-    country:          document.getElementById('book-country')?.value || null,
-    service_interest: document.getElementById('book-service')?.value || null,
-    preferred_time:   document.getElementById('book-time')?.value   || null,
-    message:          document.getElementById('book-message')?.value || null,
-    status:           'new'
-  };
-
-  const { error } = await sb.from('consultation_bookings').insert(data);
-
-  if (!error) {
-    showSuccessMessage('Booking received. We will confirm within 24 hours.');
-  } else {
-    showSuccessMessage('Booking received. We will confirm within 24 hours.');
-  }
-}
-
-document.getElementById('booking-form')
-  .addEventListener('submit', handleBookingSubmit);
-   </script> 
+  // Attach handler to form
+  document.getElementById('contact-form').addEventListener('submit', handleContactSubmit);
+</script>
 </body>
 </html>
