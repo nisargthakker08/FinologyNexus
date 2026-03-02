@@ -634,5 +634,33 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); observer.observe(el); });
   </script>
+  <script>
+async function trackVisit() {
+  // Only track once per session
+  if (sessionStorage.getItem('tracked')) return;
+
+  let sessionId = localStorage.getItem('fn_session');
+  if (!sessionId) {
+    sessionId = crypto.randomUUID();
+    localStorage.setItem('fn_session', sessionId);
+  }
+
+  try {
+    await sb.from('visitors').insert({
+      page:       window.location.pathname,
+      referrer:   document.referrer || 'direct',
+      user_agent: navigator.userAgent,
+      session_id: sessionId
+    });
+
+    sessionStorage.setItem('tracked', '1');
+  } catch (err) {
+    console.error('Visitor tracking failed:', err);
+  }
+}
+
+trackVisit();
+</script>
+
 </body>
 </html>
