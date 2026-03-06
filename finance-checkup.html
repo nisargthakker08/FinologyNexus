@@ -11,32 +11,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","s1b20qvd2s");
-  </script>
-
-    <!-- Add to <head> on every page -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-</script>
-  
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
@@ -313,6 +287,14 @@
       .peer-band{flex-direction:column;gap:1.5rem;}
     }
   </style>
+
+  <!-- ✅ Supabase Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  </script>
 </head>
 <body>
   <nav>
@@ -990,6 +972,9 @@ Write a JSON with:
     const company = (a.company || (useCase === 'peer' ? 'Competitor' : 'Target Business'));
     const today = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     const band = getBand(scores.overall);
+
+    // ✅ Save to Supabase — non-blocking
+    saveFinPulseResult(scores, answers, band).catch(() => {});
     const bench = INDUSTRY_BENCHMARKS[a.industry] || INDUSTRY_BENCHMARKS['Other'];
     const peerPos = getPeerPosition(scores.overall, a.industry);
     const useLabelMap = {self:'Own-Business Assessment',peer:'Competitor Analysis',target:'Due Diligence Profile'};
@@ -1277,6 +1262,44 @@ Write a JSON with:
     }, 500);
   }
 
+
+  // ─────────────────────────────────────────────────
+  // SAVE FINPULSE RESULT TO SUPABASE
+  // ─────────────────────────────────────────────────
+  async function saveFinPulseResult(scores, answers, band) {
+    try {
+      await sb.from('finpulse_results').insert({
+        company_name:    answers.company                  || null,
+        country:         answers.country                  || null,
+        industry:        answers.industry                 || null,
+        stage:           answers.stage                    || null,
+        use_case:        typeof useCase !== 'undefined' ? useCase : null,
+        overall_score:   scores.overall,
+        band:            band,
+        profitability:   scores.profitability,
+        cashflow:        scores.cashflow,
+        risk_exposure:   scores.risk,
+        efficiency:      scores.efficiency,
+        revenue_trend:   answers.revenue_trend            || null,
+        gross_margin:    answers.gross_margin             || null,
+        net_profit:      answers.net_profit               || null,
+        budget_variance: answers.budget_variance          || null,
+        cash_runway:     answers.cash_runway              || null,
+        collection:      answers.collection               || null,
+        cashflow_mgmt:   answers.cashflow_mgmt            || null,
+        vendor_conc:     answers.vendor_concentration     || null,
+        cross_border:    answers.cross_border             || null,
+        biggest_concern: answers.biggest_concern          || null,
+        source_page:     window.location.pathname,
+        utm_source:      new URLSearchParams(window.location.search).get('utm_source') || null,
+        referrer:        document.referrer                || 'direct',
+        session_id:      localStorage.getItem('fn_sid')  || null,
+      });
+    } catch (err) {
+      console.warn('FinPulse save:', err.message);
+    }
+  }
+
   function retakeAssessment() {
     Object.keys(answers).forEach(k=>delete answers[k]);
     useCase = null;
@@ -1293,32 +1316,126 @@ Write a JSON with:
     document.getElementById(id).classList.add('active');
   }
 </script>
-  <script>
-async function trackVisit() {
-  // Only track once per session
-  if (sessionStorage.getItem('tracked')) return;
+<script>
+/* ================================================================
+   FINOLOGY NEXUS — UNIVERSAL PAGE TRACKER v2
+   Captures: country, city, region, device, source, UTM tags,
+   referrer, scroll depth, time on page, session ID
+   ================================================================ */
+(async function () {
 
-  let sessionId = localStorage.getItem('fn_session');
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-    localStorage.setItem('fn_session', sessionId);
+  function getSession() {
+    const now = Date.now(), idle = 30 * 60 * 1000;
+    let sid = localStorage.getItem('fn_sid');
+    const last = parseInt(localStorage.getItem('fn_sid_t') || '0');
+    if (!sid || now - last > idle) {
+      sid = crypto.randomUUID();
+      localStorage.setItem('fn_sid', sid);
+    }
+    localStorage.setItem('fn_sid_t', now);
+    return sid;
   }
 
+  function getSource() {
+    const p = new URLSearchParams(window.location.search);
+    let source = p.get('utm_source') || 'organic';
+    if (!p.get('utm_source') && document.referrer) {
+      try {
+        const h = new URL(document.referrer).hostname.replace('www.', '');
+        if (h.includes('google'))                              source = 'google';
+        else if (h.includes('linkedin'))                       source = 'linkedin';
+        else if (h.includes('instagram'))                      source = 'instagram';
+        else if (h.includes('facebook'))                       source = 'facebook';
+        else if (h.includes('twitter') || h.includes('x.com')) source = 'twitter';
+        else if (h.includes('youtube'))                        source = 'youtube';
+        else source = h;
+      } catch (e) {}
+    }
+    return {
+      source,
+      utm_source:   p.get('utm_source')   || null,
+      utm_medium:   p.get('utm_medium')   || null,
+      utm_campaign: p.get('utm_campaign') || null,
+      referrer:     document.referrer     || 'direct',
+    };
+  }
+
+  function getDevice() {
+    const ua = navigator.userAgent;
+    if (/tablet|ipad/i.test(ua))            return 'tablet';
+    if (/mobile|iphone|android/i.test(ua))  return 'mobile';
+    return 'desktop';
+  }
+
+  async function getGeo() {
+    try {
+      const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3500) });
+      const d = await r.json();
+      return {
+        country:      d.country_name  || null,
+        country_code: d.country_code  || null,
+        city:         d.city          || null,
+        region:       d.region        || null,
+      };
+    } catch (e) {
+      return { country: null, country_code: null, city: null, region: null };
+    }
+  }
+
+  let maxScroll = 0;
+  function onScroll() {
+    const pct = Math.round(
+      ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100
+    );
+    if (pct > maxScroll) maxScroll = Math.min(pct, 100);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const pageStart = Date.now();
+  const sid = getSession();
+  const src = getSource();
+  const geo = await getGeo();
+
+  let visitId = null;
   try {
-    await sb.from('visitors').insert({
-      page:       window.location.pathname,
-      referrer:   document.referrer || 'direct',
-      user_agent: navigator.userAgent,
-      session_id: sessionId
-    });
+    const { data } = await sb.from('visitors').insert({
+      session_id:   sid,
+      page:         window.location.pathname + window.location.search,
+      page_title:   document.title,
+      referrer:     src.referrer,
+      source:       src.source,
+      utm_source:   src.utm_source,
+      utm_medium:   src.utm_medium,
+      utm_campaign: src.utm_campaign,
+      country:      geo.country,
+      country_code: geo.country_code,
+      city:         geo.city,
+      region:       geo.region,
+      device:       getDevice(),
+      user_agent:   navigator.userAgent,
+      screen:       window.screen.width + 'x' + window.screen.height,
+      language:     navigator.language,
+    }).select('id').single();
+    if (data) visitId = data.id;
+  } catch (e) { console.warn('Visitor track:', e.message); }
 
-    sessionStorage.setItem('tracked', '1');
-  } catch (err) {
-    console.error('Visitor tracking failed:', err);
+  async function saveExit() {
+    if (!visitId) return;
+    onScroll();
+    try {
+      await sb.from('visitors').update({
+        scroll_depth: maxScroll,
+        time_on_page: Math.round((Date.now() - pageStart) / 1000),
+      }).eq('id', visitId);
+    } catch (e) {}
   }
-}
+  window.addEventListener('pagehide', saveExit);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveExit();
+  });
 
-trackVisit();
+})();
 </script>
 </body>
 </html>
