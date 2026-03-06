@@ -31,7 +31,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_6TY3KCP4tJcE4xQRO6OqPw_1Q877W8b';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
   const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 </script>
 
@@ -660,6 +660,117 @@ async function trackVisit() {
 }
 
 trackVisit();
+</script>
+  <script>
+(async function () {
+  function getSession() {
+    const now = Date.now(), idle = 30 * 60 * 1000;
+    let sid = localStorage.getItem('fn_sid');
+    const last = parseInt(localStorage.getItem('fn_sid_t') || '0');
+    if (!sid || now - last > idle) {
+      sid = crypto.randomUUID();
+      localStorage.setItem('fn_sid', sid);
+    }
+    localStorage.setItem('fn_sid_t', now);
+    return sid;
+  }
+
+  function getSource() {
+    const p = new URLSearchParams(window.location.search);
+    let source = p.get('utm_source') || 'organic';
+    if (!p.get('utm_source') && document.referrer) {
+      try {
+        const h = new URL(document.referrer).hostname.replace('www.', '');
+        if (h.includes('google'))                       source = 'google';
+        else if (h.includes('linkedin'))                source = 'linkedin';
+        else if (h.includes('instagram'))               source = 'instagram';
+        else if (h.includes('facebook'))                source = 'facebook';
+        else if (h.includes('twitter') || h.includes('x.com')) source = 'twitter';
+        else if (h.includes('youtube'))                 source = 'youtube';
+        else source = h;
+      } catch (e) {}
+    }
+    return {
+      source,
+      utm_source:   p.get('utm_source')   || null,
+      utm_medium:   p.get('utm_medium')   || null,
+      utm_campaign: p.get('utm_campaign') || null,
+      referrer:     document.referrer     || 'direct',
+    };
+  }
+
+  function getDevice() {
+    const ua = navigator.userAgent;
+    if (/tablet|ipad/i.test(ua))           return 'tablet';
+    if (/mobile|iphone|android/i.test(ua)) return 'mobile';
+    return 'desktop';
+  }
+
+  async function getGeo() {
+    try {
+      const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+      const d = await r.json();
+      return {
+        country:      d.country_name  || null,
+        country_code: d.country_code  || null,
+        city:         d.city          || null,
+        region:       d.region        || null,
+      };
+    } catch (e) {
+      return { country: null, country_code: null, city: null, region: null };
+    }
+  }
+
+  let maxScroll = 0;
+  function onScroll() {
+    const pct = Math.round(
+      ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100
+    );
+    if (pct > maxScroll) maxScroll = Math.min(pct, 100);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const pageStart = Date.now();
+  const sid = getSession();
+  const src = getSource();
+  const geo = await getGeo();
+
+  const { data } = await sb.from('visitors').insert({
+    session_id:   sid,
+    page:         window.location.pathname + window.location.search,
+    page_title:   document.title,
+    referrer:     src.referrer,
+    source:       src.source,
+    utm_source:   src.utm_source,
+    utm_medium:   src.utm_medium,
+    utm_campaign: src.utm_campaign,
+    country:      geo.country,
+    country_code: geo.country_code,
+    city:         geo.city,
+    region:       geo.region,
+    device:       getDevice(),
+    user_agent:   navigator.userAgent,
+    screen:       `${window.screen.width}x${window.screen.height}`,
+    language:     navigator.language,
+  }).select('id').single();
+
+  const visitId = data?.id || null;
+
+  async function saveExit() {
+    if (!visitId) return;
+    onScroll();
+    await sb.from('visitors').update({
+      scroll_depth: maxScroll,
+      time_on_page: Math.round((Date.now() - pageStart) / 1000),
+    }).eq('id', visitId);
+  }
+
+  window.addEventListener('pagehide', saveExit);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveExit();
+  });
+})();
 </script>
 </body>
 </html>
