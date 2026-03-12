@@ -96,12 +96,12 @@ function isBot() {
     .test(navigator.userAgent);
 }
 
-/* ── GEO (CORS‑friendly ipwho.is) ─────────────────────────────── */
+/* ── GEO (ipapi.co) ─────────────────────────────────────────────── */
 async function getGeo() {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 4000);
-    const r = await fetch('https://ipwho.is/', { signal: controller.signal });
+    const r = await fetch('https://ipapi.co/json/', { signal: controller.signal });
     clearTimeout(timeout);
     const d = await r.json();
     return {
@@ -380,7 +380,6 @@ function attachFormCapture() {
   </style>
 </head>
 <body>
-  <script>window.FN_FORM_HANDLED = true;</script>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-GZ1RDVHZZP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav>
@@ -647,4 +646,5 @@ function attachFormCapture() {
 
 </body>
 </html>
+
 
