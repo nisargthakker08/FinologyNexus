@@ -190,28 +190,8 @@ function attachFormCapture() {
   const src = getSource();
   const geo = await getGeo();
 
-  let visitId = null;
-  try {
-    const { data, error } = await sb.from('visitors').insert({
-      session_id:   sid,
-      page:         window.location.pathname + window.location.search,
-      page_title:   document.title,
-      referrer:     src.referrer,
-      source:       src.source,
-      utm_source:   src.utm_source,
-      utm_medium:   src.utm_medium,
-      utm_campaign: src.utm_campaign,
-      country:      geo.country,
-      country_code: geo.country_code,
-      city:         geo.city,
-      region:       geo.region,
-      device:       getDevice(),
-      user_agent:   navigator.userAgent,
-      screen:       window.screen.width + 'x' + window.screen.height,
-      language:     navigator.language,
-    }).select('id').single();
-    if (data) visitId = data.id;
-    if (error) console.warn('Visitor insert:', error.message);
+  const visitId = crypto.randomUUID();
+    try {    if (error) console.warn('Visitor insert:', error.message);
   } catch (e) {
     console.warn('Tracker error:', e.message);
   }
@@ -241,7 +221,6 @@ function attachFormCapture() {
 
 })();
 </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
