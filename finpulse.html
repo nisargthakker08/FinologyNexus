@@ -33,12 +33,219 @@
   <!-- Microsoft Clarity -->
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
 
-      <!-- Add to <head> on every page -->
+<!-- ================================================================
+     FINOLOGY NEXUS · UNIVERSAL SNIPPET v3
+     Paste this block just before </head> on EVERY page.
+     It handles: visitor tracking, geo, scroll, time-on-page,
+     form capture → Supabase, and email alert via edge function.
+     ONE snippet. Works on all pages. No other changes needed.
+     ================================================================ -->
+
+<!-- Supabase Client -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+/* ── CONFIG ──────────────────────────────────────────────────── */
+const SB_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
+const EDGE_FN = 'https://bsloiodfgwdvnxrrefsz.supabase.co/functions/v1/send-notification';
+
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+/* ── SESSION ─────────────────────────────────────────────────── */
+function getSession() {
+  const now = Date.now(), idle = 30 * 60 * 1000;
+  let sid = localStorage.getItem('fn_sid');
+  const last = parseInt(localStorage.getItem('fn_sid_t') || '0');
+  if (!sid || now - last > idle) {
+    sid = crypto.randomUUID();
+    localStorage.setItem('fn_sid', sid);
+  }
+  localStorage.setItem('fn_sid_t', now);
+  return sid;
+}
+
+/* ── SOURCE DETECTION ────────────────────────────────────────── */
+function getSource() {
+  const p = new URLSearchParams(window.location.search);
+  let source = 'organic';
+  if (!p.get('utm_source') && document.referrer) {
+    try {
+      const h = new URL(document.referrer).hostname.replace('www.', '');
+      if (h.includes('google'))                               source = 'google';
+      else if (h.includes('linkedin'))                        source = 'linkedin';
+      else if (h.includes('instagram'))                       source = 'instagram';
+      else if (h.includes('facebook'))                        source = 'facebook';
+      else if (h.includes('twitter') || h.includes('x.com')) source = 'twitter';
+      else if (h.includes('youtube'))                         source = 'youtube';
+      else source = h;
+    } catch (e) {}
+  } else if (p.get('utm_source')) {
+    source = p.get('utm_source');
+  }
+  return {
+    source,
+    utm_source:   p.get('utm_source')   || null,
+    utm_medium:   p.get('utm_medium')   || null,
+    utm_campaign: p.get('utm_campaign') || null,
+    referrer:     document.referrer     || 'direct',
+  };
+}
+
+/* ── DEVICE ──────────────────────────────────────────────────── */
+function getDevice() {
+  const ua = navigator.userAgent;
+  if (/tablet|ipad/i.test(ua))           return 'tablet';
+  if (/mobile|iphone|android/i.test(ua)) return 'mobile';
+  return 'desktop';
+}
+
+/* ── BOT FILTER ──────────────────────────────────────────────── */
+function isBot() {
+  return /bot|crawler|spider|googlebot|bingbot|slurp|duckduck|baidu|yandex|dataprovider|applebot|headless/i
+    .test(navigator.userAgent);
+}
+
+/* ── GEO ─────────────────────────────────────────────────────── */
+async function getGeo() {
+  try {
+    const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    const d = await r.json();
+    return {
+      country:      d.country_name  || null,
+      country_code: d.country_code  || null,
+      city:         d.city          || null,
+      region:       d.region        || null,
+    };
+  } catch (e) {
+    return { country: null, country_code: null, city: null, region: null };
+  }
+}
+
+/* ── SCROLL TRACKING ─────────────────────────────────────────── */
+let maxScroll = 0;
+function onScroll() {
+  const pct = Math.round(
+    ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100
+  );
+  if (pct > maxScroll) maxScroll = Math.min(pct, 100);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ── EMAIL NOTIFICATION via Edge Function ────────────────────── */
+async function sendNotification(table, record) {
+  try {
+    await fetch(EDGE_FN, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ table, record })
+    });
+  } catch (e) {
+    console.warn('Notification error:', e.message);
+  }
+}
+
+/* ── FORM CAPTURE ────────────────────────────────────────────── */
+function attachFormCapture() {
+  document.querySelectorAll('form').forEach(form => {
+    // Skip forms already handled, hidden, or search forms
+    if (form.dataset.fnCaptured) return;
+    form.dataset.fnCaptured = '1';
+
+    form.addEventListener('submit', async function(e) {
+      const data = {};
+      new FormData(form).forEach((v, k) => { if (k && v) data[k] = v; });
+
+      // Skip empty or bot-trap forms
+      if (Object.keys(data).length === 0) return;
+
+      // Enrich with meta
+      data.source_page  = window.location.pathname;
+      data.referrer     = document.referrer || 'direct';
+      data.utm_source   = new URLSearchParams(window.location.search).get('utm_source') || null;
+      data.session_id   = localStorage.getItem('fn_sid') || null;
+
+      // Detect which table to use based on form fields or page
+      let table = 'contact_submissions';
+      const page = window.location.pathname;
+      if (page.includes('finance-checkup') || page.includes('finpulse')) {
+        table = 'finpulse_results';
+      } else if (data.service_interest || data.preferred_time) {
+        table = 'consultation_bookings';
+      } else if (!data.name && !data.message && data.email) {
+        table = 'newsletter_signups';
+      }
+
+      try {
+        const { error } = await sb.from(table).insert(data);
+        if (error) console.warn('Form capture error:', error.message);
+        else sendNotification(table, data); // fire email alert
+      } catch (err) {
+        console.warn('Form insert error:', err.message);
+      }
+    });
+  });
+}
+
+/* ── MAIN TRACKER ────────────────────────────────────────────── */
+(async function () {
+  if (isBot()) return; // skip bots entirely
+
+  const pageStart = Date.now();
+  const sid = getSession();
+  const src = getSource();
+  const geo = await getGeo();
+
+  let visitId = null;
+  try {
+    const { data, error } = await sb.from('visitors').insert({
+      session_id:   sid,
+      page:         window.location.pathname + window.location.search,
+      page_title:   document.title,
+      referrer:     src.referrer,
+      source:       src.source,
+      utm_source:   src.utm_source,
+      utm_medium:   src.utm_medium,
+      utm_campaign: src.utm_campaign,
+      country:      geo.country,
+      country_code: geo.country_code,
+      city:         geo.city,
+      region:       geo.region,
+      device:       getDevice(),
+      user_agent:   navigator.userAgent,
+      screen:       window.screen.width + 'x' + window.screen.height,
+      language:     navigator.language,
+    }).select('id').single();
+    if (data) visitId = data.id;
+    if (error) console.warn('Visitor insert:', error.message);
+  } catch (e) {
+    console.warn('Tracker error:', e.message);
+  }
+
+  // Save scroll depth + time on page exit
+  async function saveExit() {
+    if (!visitId) return;
+    onScroll();
+    try {
+      await sb.from('visitors').update({
+        scroll_depth: maxScroll,
+        time_on_page: Math.round((Date.now() - pageStart) / 1000),
+      }).eq('id', visitId);
+    } catch (e) {}
+  }
+  window.addEventListener('pagehide', saveExit);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveExit();
+  });
+
+  // Attach form capture after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachFormCapture);
+  } else {
+    attachFormCapture();
+  }
+
+})();
 </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
