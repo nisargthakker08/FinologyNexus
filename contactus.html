@@ -26,10 +26,9 @@
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
 
 <!-- ================================================================
-     FINOLOGY NEXUS · UNIVERSAL SNIPPET v4
-     Paste this block just before </head> on EVERY page.
+     FINOLOGY NEXUS · UNIVERSAL SNIPPET v4 (UPDATED)
      Handles: visitor tracking (geo, scroll, time‑on‑page),
-     and optionally form capture (if no custom handler exists).
+     and auto form capture with success message.
      ================================================================ -->
 
 <!-- Supabase Client -->
@@ -96,19 +95,19 @@ function isBot() {
     .test(navigator.userAgent);
 }
 
-/* ── GEO (ipapi.co) ─────────────────────────────────────────────── */
+/* ── GEO (CORS‑friendly ipapi.is) ────────────────────────────── */
 async function getGeo() {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 4000);
-    const r = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+    const r = await fetch('https://api.ipapi.is/', { signal: controller.signal });
     clearTimeout(timeout);
     const d = await r.json();
     return {
-      country:      d.country_name  || null,
-      country_code: d.country_code  || null,
-      city:         d.city          || null,
-      region:       d.region        || null,
+      country:      d.location?.country          || null,
+      country_code: d.location?.country_code     || null,
+      city:         d.location?.city             || null,
+      region:       d.location?.state            || null,
     };
   } catch (e) {
     return { country: null, country_code: null, city: null, region: null };
@@ -137,6 +136,22 @@ async function sendNotification(table, record) {
   } catch (e) {
     console.warn('Notification error:', e.message);
   }
+}
+
+/* ── SUCCESS MESSAGE AFTER FORM SUBMISSION ───────────────────── */
+function showSuccessMessage() {
+  const oldMsg = document.getElementById('fn-form-success');
+  if (oldMsg) oldMsg.remove();
+
+  const msg = document.createElement('div');
+  msg.id = 'fn-form-success';
+  msg.textContent = '✓ Thank you. We will be in touch within one business day.';
+  msg.style.cssText = 'margin-top:1rem;padding:1rem;background:#e8f2ec;color:#2d5a3d;border:1px solid #b0d4bb;font-size:0.9rem;border-radius:4px;text-align:center;';
+
+  const form = document.getElementById('contact-form');
+  if (form) form.insertAdjacentElement('afterend', msg);
+
+  setTimeout(() => msg.remove(), 8000);
 }
 
 /* ── OPTIONAL AUTO‑FORM CAPTURE ───────────────────────────────── */
@@ -172,8 +187,12 @@ function attachFormCapture() {
 
       try {
         const { error } = await sb.from(table).insert(data);
-        if (error) console.warn('Auto‑form capture error:', error.message);
-        else sendNotification(table, data);
+        if (error) {
+          console.warn('Auto‑form capture error:', error.message);
+        } else {
+          sendNotification(table, data);
+          showSuccessMessage(); // 👈 added success message
+        }
       } catch (err) {
         console.warn('Auto‑form insert error:', err.message);
       }
@@ -494,7 +513,7 @@ function attachFormCapture() {
           </div>
           <div class="form-field half">
             <label for="interest">Service Interest</label>
-            <select id="interest" name="interest">
+            <select id="interest" name="service"> <!-- changed from "interest" to "service" -->
               <option value="">Please select</option>
               <option value="Financial operations and reporting">Financial operations and reporting</option>
               <option value="Accounting and close processes">Accounting and close processes</option>
@@ -646,5 +665,3 @@ function attachFormCapture() {
 
 </body>
 </html>
-
-
