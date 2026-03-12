@@ -143,13 +143,12 @@
     e.preventDefault();
     e.stopPropagation();
 
-    const form   = e.target;
-    const btn    = form.querySelector('button[type="submit"]');
+    const form    = e.target;
+    const btn     = form.querySelector('button[type="submit"]');
     const origTxt = btn ? btn.textContent : '';
 
     if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
 
-    // Collect fields — matches EXACT IDs in the form below
     const record = {
       name:        document.getElementById('name')?.value?.trim()     || null,
       email:       document.getElementById('email')?.value?.trim()    || null,
@@ -162,24 +161,38 @@
       session_id:  localStorage.getItem('fn_sid') || null,
     };
 
-    // Basic validation
+    console.log('[FN] Contact submit — record:', JSON.stringify(record));
+
     if (!record.name || !record.email) {
       showFormMsg('error', 'Please fill in your name and email address.');
       if (btn) { btn.disabled = false; btn.textContent = origTxt; }
       return;
     }
 
+    let dbOk = false;
     try {
-      const { error } = await sb.from('contact_submissions').insert(record);
+      console.log('[FN] Inserting to contact_submissions...');
+      const { data, error } = await sb.from('contact_submissions').insert(record).select();
       if (error) {
-        console.warn('DB error:', error.message);
-        // Still show success — never expose errors to visitor
+        console.error('[FN] DB insert error:', error.code, error.message, error.details);
       } else {
-        // Fire email notification non-blocking
-        sendNotification('contact_submissions', record).catch(() => {});
+        dbOk = true;
+        console.log('[FN] DB insert OK:', data);
+        // Fire email — await it so we can log the result
+        try {
+          const notifyRes = await fetch(EDGE_FN, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ table: 'contact_submissions', record })
+          });
+          const notifyText = await notifyRes.text();
+          console.log('[FN] Edge function response:', notifyRes.status, notifyText);
+        } catch(ne) {
+          console.error('[FN] Edge function fetch error:', ne.message);
+        }
       }
     } catch(err) {
-      console.warn('Submit error:', err.message);
+      console.error('[FN] Submit catch error:', err.message);
     }
 
     if (btn) { btn.disabled = false; btn.textContent = origTxt; }
@@ -429,7 +442,10 @@
       <h3>Ways to Connect</h3>
       <div class="info-item">
         <div class="info-label">Email</div>
-        <div class="info-value">info@finologynexus.online</div>
+        <div class="info-value" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <a href="mailto&#58;finologynexus.online" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);font-size:1rem;">info&#64;finologynexus&#46;online</a>
+          <button onclick="navigator.clipboard.writeText('info@finologynexus.online').then(()=>{this.textContent='✓';this.style.color='var(--green)';setTimeout(()=>{this.textContent='📋';this.style.color='var(--accent)';},2000);})" style="color:var(--accent);background:none;border:none;padding:0.2rem 0.4rem;cursor:pointer;transition:all 0.2s;font-size:1rem;line-height:1;" title="Copy email" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--accent)'">&#128203;</button>
+        </div>
         <div style="font-size:0.85rem;color:var(--ink-muted);margin-top:0.3rem;">For teams that prefer written communication or want to share context in advance.</div>
       </div>
       <div class="info-item">
@@ -525,8 +541,8 @@
 
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="127b7c747d52747b7c7d7e7d756b7c776a67613c7d7c7e7b7c77">[email&#160;protected]</a></span><span>&middot;</span><span class="hl">Ahmedabad, India</span><span>&middot;</span>
-    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2dbdcd4ddf2d4dbdcdddeddd5cbdcd7cac7c19cdddcdedbdcd7">[email&#160;protected]</a></span><span>&middot;</span>
+    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl">finologynexus.online</span><span>&middot;</span><span class="hl">Ahmedabad, India</span><span>&middot;</span>
+    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl">finologynexus.online</span><span>&middot;</span>
   </div>
 </div>
 
@@ -574,13 +590,6 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 Finology Nexus. All rights reserved.</span>
-    <a href="/cdn-cgi/l/email-protection#472e29212807212e29282b28203e29223f32346928292b2e2922" class="footer-email"><span class="__cf_email__" data-cfemail="aac3c4ccc5eaccc3c4c5c6c5cdd3c4cfd2dfd984c5c4c6c3c4cf">[email&#160;protected]</span></a>
+    <span class="footer-email">info&#64;finologynexus&#46;online</span>
   </div>
-</footer>
-
-<a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
-  <i class="fas fa-heartbeat"></i> FINPULSE (FREE)
-</a>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5
-
+</foo
