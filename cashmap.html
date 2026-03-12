@@ -34,11 +34,10 @@
   <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
 
 <!-- ================================================================
-     FINOLOGY NEXUS · UNIVERSAL SNIPPET v3
+     FINOLOGY NEXUS · UNIVERSAL SNIPPET v4
      Paste this block just before </head> on EVERY page.
-     It handles: visitor tracking, geo, scroll, time-on-page,
-     form capture → Supabase, and email alert via edge function.
-     ONE snippet. Works on all pages. No other changes needed.
+     Handles: visitor tracking (geo, scroll, time‑on‑page),
+     and optionally form capture (if no custom handler exists).
      ================================================================ -->
 
 <!-- Supabase Client -->
@@ -105,10 +104,13 @@ function isBot() {
     .test(navigator.userAgent);
 }
 
-/* ── GEO ─────────────────────────────────────────────────────── */
+/* ── GEO (CORS‑friendly ipwho.is) ─────────────────────────────── */
 async function getGeo() {
   try {
-    const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    const r = await fetch('https://ipwho.is/', { signal: controller.signal });
+    clearTimeout(timeout);
     const d = await r.json();
     return {
       country:      d.country_name  || null,
@@ -137,7 +139,7 @@ async function sendNotification(table, record) {
   try {
     await fetch(EDGE_FN, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
       body: JSON.stringify({ table, record })
     });
   } catch (e) {
@@ -145,27 +147,27 @@ async function sendNotification(table, record) {
   }
 }
 
-/* ── FORM CAPTURE ────────────────────────────────────────────── */
+/* ── OPTIONAL AUTO‑FORM CAPTURE ───────────────────────────────── */
 function attachFormCapture() {
+  // If a custom handler exists (set window.FN_FORM_HANDLED = true on that page), skip
+  if (window.FN_FORM_HANDLED) return;
+
   document.querySelectorAll('form').forEach(form => {
-    // Skip forms already handled, hidden, or search forms
     if (form.dataset.fnCaptured) return;
     form.dataset.fnCaptured = '1';
 
     form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // stop normal POST
+
       const data = {};
       new FormData(form).forEach((v, k) => { if (k && v) data[k] = v; });
-
-      // Skip empty or bot-trap forms
       if (Object.keys(data).length === 0) return;
 
-      // Enrich with meta
       data.source_page  = window.location.pathname;
       data.referrer     = document.referrer || 'direct';
       data.utm_source   = new URLSearchParams(window.location.search).get('utm_source') || null;
       data.session_id   = localStorage.getItem('fn_sid') || null;
 
-      // Detect which table to use based on form fields or page
       let table = 'contact_submissions';
       const page = window.location.pathname;
       if (page.includes('finance-checkup') || page.includes('finpulse')) {
@@ -178,10 +180,10 @@ function attachFormCapture() {
 
       try {
         const { error } = await sb.from(table).insert(data);
-        if (error) console.warn('Form capture error:', error.message);
-        else sendNotification(table, data); // fire email alert
+        if (error) console.warn('Auto‑form capture error:', error.message);
+        else sendNotification(table, data);
       } catch (err) {
-        console.warn('Form insert error:', err.message);
+        console.warn('Auto‑form insert error:', err.message);
       }
     });
   });
@@ -189,20 +191,42 @@ function attachFormCapture() {
 
 /* ── MAIN TRACKER ────────────────────────────────────────────── */
 (async function () {
-  if (isBot()) return; // skip bots entirely
+  if (isBot()) return;
 
   const pageStart = Date.now();
   const sid = getSession();
   const src = getSource();
   const geo = await getGeo();
 
+  // Generate a client‑side UUID to use as the row id – avoids needing SELECT
   const visitId = crypto.randomUUID();
-    try {    if (error) console.warn('Visitor insert:', error.message);
+
+  try {
+    const { error } = await sb.from('visitors').insert({
+      id:           visitId,
+      session_id:   sid,
+      page:         window.location.pathname + window.location.search,
+      page_title:   document.title,
+      referrer:     src.referrer,
+      source:       src.source,
+      utm_source:   src.utm_source,
+      utm_medium:   src.utm_medium,
+      utm_campaign: src.utm_campaign,
+      country:      geo.country,
+      country_code: geo.country_code,
+      city:         geo.city,
+      region:       geo.region,
+      device:       getDevice(),
+      user_agent:   navigator.userAgent,
+      screen:       window.screen.width + 'x' + window.screen.height,
+      language:     navigator.language,
+    });
+    if (error) console.warn('Visitor insert:', error.message);
   } catch (e) {
     console.warn('Tracker error:', e.message);
   }
 
-  // Save scroll depth + time on page exit
+  // Update scroll depth and time on page when the user leaves
   async function saveExit() {
     if (!visitId) return;
     onScroll();
@@ -218,13 +242,12 @@ function attachFormCapture() {
     if (document.visibilityState === 'hidden') saveExit();
   });
 
-  // Attach form capture after DOM ready
+  // Attach auto‑form capture after DOM ready (if not suppressed)
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', attachFormCapture);
   } else {
     attachFormCapture();
   }
-
 })();
 </script>
   
