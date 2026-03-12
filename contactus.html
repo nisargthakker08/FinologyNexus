@@ -112,17 +112,18 @@
     const sid = getSession();
     const src = getSource();
     const geo = await getGeo();
-    let visitId = null;
+    // Generate client-side visit ID — avoids needing SELECT permission on visitors table
+    const visitId = crypto.randomUUID();
     try {
-      const { data, error } = await sb.from('visitors').insert({
+      const { error } = await sb.from('visitors').insert({
+        id:           visitId,
         session_id: sid, page: window.location.pathname + window.location.search,
         page_title: document.title, referrer: src.referrer, source: src.source,
         utm_source: src.utm_source, utm_medium: src.utm_medium, utm_campaign: src.utm_campaign,
         country: geo.country, country_code: geo.country_code, city: geo.city, region: geo.region,
         device: getDevice(), user_agent: navigator.userAgent,
         screen: window.screen.width + 'x' + window.screen.height, language: navigator.language,
-      }).select('id').single();
-      if (data) visitId = data.id;
+      });
       if (error) console.warn('Visitor insert:', error.message);
     } catch(e) { console.warn('Tracker error:', e.message); }
 
@@ -428,7 +429,7 @@
       <h3>Ways to Connect</h3>
       <div class="info-item">
         <div class="info-label">Email</div>
-        <div class="info-value"><a href="mailto:info@finologynexus.online">info@finologynexus.online</a></div>
+        <div class="info-value"><a href="/cdn-cgi/l/email-protection#137a7d757c53757a7d7c7f7c746a7d766b66603d7c7d7f7a7d76"><span class="__cf_email__" data-cfemail="731a1d151c33151a1d1c1f1c140a1d160b06005d1c1d1f1a1d16">[email&#160;protected]</span></a></div>
         <div style="font-size:0.85rem;color:var(--ink-muted);margin-top:0.3rem;">For teams that prefer written communication or want to share context in advance.</div>
       </div>
       <div class="info-item">
@@ -524,8 +525,8 @@
 
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl">info@finologynexus.online</span><span>&middot;</span><span class="hl">Ahmedabad, India</span><span>&middot;</span>
-    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl">info@finologynexus.online</span><span>&middot;</span>
+    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="127b7c747d52747b7c7d7e7d756b7c776a67613c7d7c7e7b7c77">[email&#160;protected]</a></span><span>&middot;</span><span class="hl">Ahmedabad, India</span><span>&middot;</span>
+    <span class="hl">Finology Nexus</span><span>&middot;</span><span>Embedded Execution</span><span>&middot;</span><span class="hl">Financial Operations</span><span>&middot;</span><span>Data Automation</span><span>&middot;</span><span class="hl">Workflow Design</span><span>&middot;</span><span>Clarity &middot; Control &middot; Confidence</span><span>&middot;</span><span class="hl"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2dbdcd4ddf2d4dbdcdddeddd5cbdcd7cac7c19cdddcdedbdcd7">[email&#160;protected]</a></span><span>&middot;</span>
   </div>
 </div>
 
@@ -573,7 +574,7 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">&copy; 2026 Finology Nexus. All rights reserved.</span>
-    <a href="mailto:info@finologynexus.online" class="footer-email">info@finologynexus.online</a>
+    <a href="/cdn-cgi/l/email-protection#472e29212807212e29282b28203e29223f32346928292b2e2922" class="footer-email"><span class="__cf_email__" data-cfemail="aac3c4ccc5eaccc3c4c5c6c5cdd3c4cfd2dfd984c5c4c6c3c4cf">[email&#160;protected]</span></a>
   </div>
 </footer>
 
@@ -581,13 +582,4 @@
   <i class="fas fa-heartbeat"></i> FINPULSE (FREE)
 </a>
 
-<script>
-  document.addEventListener('contextmenu', e => e.preventDefault());
-  document.addEventListener('copy', e => e.preventDefault());
-  document.addEventListener('cut', e => e.preventDefault());
-  document.addEventListener('keydown', e => { if (e.ctrlKey && ['c','x','a','u','s'].includes(e.key)) e.preventDefault(); });
-  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.08 });
-  document.querySelectorAll('.fade-up').forEach(el => { el.classList.add('animate'); obs.observe(el); });
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5
