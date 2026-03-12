@@ -334,7 +334,19 @@ async function getGeo() {
       region:       d.location?.state            || null,
     };
   } catch (e) {
-    return { country: null, country_code: null, city: null, region: null };
+    // fallback: try ipapi.co if ipapi.is fails (optional)
+    try {
+      const fallback = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+      const d2 = await fallback.json();
+      return {
+        country:      d2.country_name  || null,
+        country_code: d2.country_code  || null,
+        city:         d2.city          || null,
+        region:       d2.region        || null,
+      };
+    } catch (e2) {
+      return { country: null, country_code: null, city: null, region: null };
+    }
   }
 }
 
