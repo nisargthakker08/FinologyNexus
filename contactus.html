@@ -81,10 +81,10 @@
     try {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 4000);
-      const r = await fetch('https://freeipapi.com/api/json/', { signal: controller.signal });
+      const r = await fetch('https://ipwho.is/', { signal: controller.signal });
       clearTimeout(timer);
       const d = await r.json();
-      return { country: d.countryName||null, country_code: d.countryCode||null, city: d.cityName||null, region: d.regionName||null };
+      return { country: d.country||null, country_code: d.country_code||null, city: d.city||null, region: d.region||null };
     } catch(e) { return { country:null, country_code:null, city:null, region:null }; }
   }
 
@@ -369,7 +369,7 @@
     .footer-socials a{color:rgba(255,255,255,0.3);font-size:1.2rem;transition:color 0.2s;text-decoration:none;}
     .footer-socials a:hover{color:var(--accent);}
     @media(max-width:1024px){.expectations-grid{grid-template-columns:1fr 1fr;}.form-grid{grid-template-columns:1fr;}.form-field.half{grid-column:span 2;}}
-    @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.page-hero,.touch-section,.suite-cta{padding:4rem 1.5rem;}.hero-inner{grid-template-columns:1fr;padding-top:2rem;}.hero-suite-grid{grid-template-columns:1fr;}.suite-cta{grid-template-columns:1fr;}footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}}
+    @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.page-hero,.touch-section,.suite-cta{padding:4rem 1.5rem;} [style*='grid-template-columns:1fr auto']{grid-template-columns:1fr!important;} [style*='min-width:220px']{display:none!important;}.hero-inner{grid-template-columns:1fr;padding-top:2rem;}.hero-suite-grid{grid-template-columns:1fr;}.suite-cta{grid-template-columns:1fr;}footer{padding:3rem 1.5rem 2rem;}.footer-top{grid-template-columns:1fr 1fr;gap:2rem;}}
     @media(max-width:600px){.expectations-grid{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -449,7 +449,7 @@
       <div class="info-item">
         <div class="info-label">Email</div>
         <div class="info-value" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-          <a href="mailto&#58;finologynexus.online" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);font-size:1rem;">info&#64;finologynexus&#46;online</a>
+          <a href="mailto&#58;info&#64;finologynexus&#46;online" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);font-size:1rem;">info&#64;finologynexus&#46;online</a>
           <button onclick="navigator.clipboard.writeText('info@finologynexus.online').then(()=>{this.textContent='✓';this.style.color='var(--green)';setTimeout(()=>{this.textContent='📋';this.style.color='var(--accent)';},2000);})" style="color:var(--accent);background:none;border:none;padding:0.2rem 0.4rem;cursor:pointer;transition:all 0.2s;font-size:1rem;line-height:1;" title="Copy email" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--accent)'">&#128203;</button>
         </div>
         <div style="font-size:0.85rem;color:var(--ink-muted);margin-top:0.3rem;">For teams that prefer written communication or want to share context in advance.</div>
@@ -526,6 +526,35 @@
   </div>
 </section>
 
+<!-- FinPulse CTA Banner -->
+<div style="background:var(--ink);padding:5rem 4rem;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;"><span style="width:1.5rem;height:1px;background:var(--accent);display:inline-block;"></span>Free Financial Intelligence Tool</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--paper);line-height:1.1;margin-bottom:1rem;">Not Ready to Talk Yet?<br><em style="font-style:italic;color:var(--accent);">Run Your FinPulse Check First.</em></h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.8;max-width:520px;font-weight:300;">Answer 15 questions. Get an instant score across profitability, cash flow, risk, and efficiency — with peer benchmarks and AI-generated insights. Free, no sign-up required.</p>
+      <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+        <a href="finance-checkup.html" style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink);background:var(--accent);padding:0.9rem 2rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s;" onmouseover="this.style.background='#d4b07a'" onmouseout="this.style.background='var(--accent)'">&#9889; Take the Free Assessment</a>
+        <a href="#form" style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);background:transparent;border:1px solid rgba(255,255,255,0.2);padding:0.9rem 2rem;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">Or Contact Us Directly</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.25rem;min-width:220px;">
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-left:3px solid var(--accent);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.35rem;">Takes</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--paper);">5 minutes</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-left:3px solid var(--accent);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.35rem;">Covers</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--paper);">4 dimensions</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:1.25rem 1.5rem;border-left:3px solid var(--accent);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.35rem;">Cost</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--paper);">Free</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="suite-cta fade-up">
   <div class="sc-left">
     <h2>Serious About Improving Execution</h2>
@@ -536,6 +565,11 @@
       <div class="sca-dot accent"></div>
       <div><div class="sca-name">Request a Conversation</div><div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">No obligation &middot; Clear next steps</div></div>
       <span class="sca-cta">Get in touch</span><span class="sca-arrow">&rarr;</span>
+    </a>
+    <a href="finance-checkup.html" class="sc-action">
+      <div class="sca-dot accent"></div>
+      <div><div class="sca-name">Try FinPulse — Free</div><div style="font-size:0.75rem;color:var(--ink-muted);margin-top:0.2rem;">Instant financial health score &middot; No sign-up</div></div>
+      <span class="sca-cta">Start free</span><span class="sca-arrow">&rarr;</span>
     </a>
     <a href="services.html" class="sc-action">
       <div class="sca-dot accent"></div>
@@ -598,4 +632,11 @@
     <span class="footer-copy">&copy; 2026 Finology Nexus. All rights reserved.</span>
     <span class="footer-email">info&#64;finologynexus&#46;online</span>
   </div>
-</foo
+</footer>
+
+<a href="finance-checkup.html" style="position:fixed;bottom:2rem;right:2rem;z-index:99;padding:0.8rem 1.5rem;background:var(--accent);color:var(--ink);border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,0.15);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.2s;" onmouseover="this.style.background='#d4b07a'" onmouseout="this.style.background='var(--accent)'">
+  <i class="fas fa-heartbeat"></i> FinPulse (Free)
+</a>
+
+</body>
+</html>
