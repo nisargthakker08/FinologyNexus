@@ -300,7 +300,7 @@
       try {
         await fetch(EDGE_FN, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_KEY },
           body: JSON.stringify({ table, record })
         });
       } catch(e) { console.warn('Notify error:', e.message); }
@@ -1442,7 +1442,7 @@ Write a JSON with:
         };
         fetch(EDGE_FN, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SUPABASE_KEY },
           body: JSON.stringify({ table: 'finpulse_results', record: notifyRecord })
         }).catch(()=>{});
       }
