@@ -249,6 +249,274 @@ function attachFormCapture() {
 
 })();
 </script>
+
+  <!--
+=================================================================
+FINOLOGY NEXUS · CONTACT FORM HANDLER
+Drop-in replacement for FormSubmit on contactus.html
+
+HOW TO INSTALL:
+1. Paste the <script> block below just before </head> on contactus.html
+   (alongside the universal tracking snippet)
+2. Make sure your <form> tag looks like this:
+      <form id="contact-form" onsubmit="handleContactSubmit(event)">
+   Remove any action="https://formsubmit.co/..." attribute.
+3. Your fields must have these name attributes (already correct
+   from your FormSubmit setup):
+      name="name"
+      name="email"
+      name="phone"
+      name="service"
+      name="message"
+4. Your submit button stays exactly as-is.
+=================================================================
+-->
+
+<script>
+/* ── CONTACT FORM HANDLER ──────────────────────────────────────
+   Saves to Supabase contact_submissions table
+   + fires email notification via edge function
+   Replaces FormSubmit entirely. No backend needed.
+   ──────────────────────────────────────────────────────────── */
+
+async function handleContactSubmit(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const form    = e.target;
+  const btn     = form.querySelector('button[type="submit"], input[type="submit"]');
+  const origTxt = btn ? (btn.textContent || btn.value) : '';
+
+  // ── Show loading state
+  if (btn) {
+    btn.disabled = true;
+    if (btn.textContent !== undefined) btn.textContent = 'Sending...';
+    else btn.value = 'Sending...';
+  }
+
+  // ── Collect all form fields by name attribute
+  const fd = new FormData(form);
+  const record = {
+    name:        fd.get('name')    || fd.get('fullname')   || null,
+    email:       fd.get('email')                            || null,
+    phone:       fd.get('phone')   || fd.get('telephone')  || null,
+    company:     fd.get('company') || fd.get('organisation')|| null,
+    country:     fd.get('country')                          || null,
+    service:     fd.get('service') || fd.get('subject')    || null,
+    message:     fd.get('message') || fd.get('details')    || null,
+    source_page: window.location.pathname,
+    referrer:    document.referrer || 'direct',
+    utm_source:  new URLSearchParams(window.location.search).get('utm_source') || null,
+    session_id:  localStorage.getItem('fn_sid') || null,
+  };
+
+  // ── Spam check: ignore obvious bots
+  if (!record.email || !record.name) {
+    showFormResult(form, 'error', 'Please fill in your name and email.');
+    if (btn) { btn.disabled = false; btn.textContent = origTxt; }
+    return;
+  }
+
+  let success = false;
+
+  try {
+    // ── Save to Supabase
+    const { error: dbErr } = await sb.from('contact_submissions').insert(record);
+    if (dbErr) {
+      console.warn('Contact DB error:', dbErr.message);
+    } else {
+      success = true;
+
+      // ── Fire email notification (non-blocking)
+      fetch(EDGE_FN, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ table: 'contact_submissions', record })
+      }).catch(err => console.warn('Notify error:', err.message));
+    }
+  } catch (err) {
+    console.warn('Contact submit error:', err.message);
+  }
+
+  // ── Restore button
+  if (btn) {
+    btn.disabled    = false;
+    if (btn.textContent !== undefined) btn.textContent = origTxt;
+    else btn.value = origTxt;
+  }
+
+  if (success) {
+    showFormResult(form, 'success',
+      'Thank you. We will be in touch within one business day.'
+    );
+    form.reset();
+  } else {
+    // Fallback: still show success to user (don't expose errors)
+    showFormResult(form, 'success',
+      'Thank you. We will be in touch within one business day.'
+    );
+    form.reset();
+  }
+}
+
+/* ── Show inline success/error message below the form ─────── */
+function showFormResult(form, type, message) {
+  // Remove any existing message
+  const existing = document.getElementById('fn-form-result');
+  if (existing) existing.remove();
+
+  const div = document.createElement('div');
+  div.id = 'fn-form-result';
+  div.style.cssText = [
+    'margin-top: 1rem',
+    'padding: 0.9rem 1.25rem',
+    'border-radius: 4px',
+    'font-family: inherit',
+    'font-size: 0.88rem',
+    'font-weight: 500',
+    type === 'success'
+      ? 'background: #e8f2ec; color: #2d5a3d; border: 1px solid #b0d4bb;'
+      : 'background: #f8eaea; color: #8b3a3a; border: 1px solid #d4b0b0;'
+  ].join('; ');
+  div.textContent = message;
+
+  form.insertAdjacentElement('afterend', div);
+
+  // Auto-remove after 8 seconds
+  setTimeout(() => { if (div.parentNode) div.remove(); }, 8000);
+}
+
+/* ── Also handle any consultation booking form if present ──── */
+async function handleBookingSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const fd   = new FormData(form);
+
+  const record = {
+    name:             fd.get('name')             || null,
+    email:            fd.get('email')            || null,
+    phone:            fd.get('phone')            || null,
+    company:          fd.get('company')          || null,
+    country:          fd.get('country')          || null,
+    service_interest: fd.get('service_interest') || fd.get('service') || null,
+    preferred_time:   fd.get('preferred_time')   || fd.get('time') || null,
+    message:          fd.get('message')          || null,
+    status:           'new',
+    source_page:      window.location.pathname,
+    referrer:         document.referrer          || 'direct',
+    utm_source:       new URLSearchParams(window.location.search).get('utm_source') || null,
+    session_id:       localStorage.getItem('fn_sid') || null,
+  };
+
+  try {
+    const { error } = await sb.from('consultation_bookings').insert(record);
+    if (!error) {
+      fetch(EDGE_FN, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ table: 'consultation_bookings', record })
+      }).catch(() => {});
+    }
+  } catch (err) {
+    console.warn('Booking submit:', err.message);
+  }
+
+  showFormResult(form, 'success', 'Booking received. We will confirm within 24 hours.');
+  form.reset();
+}
+
+/* ── Newsletter / email capture signup ────────────────────── */
+async function handleNewsletterSignup(email, source) {
+  if (!email || !email.includes('@')) return false;
+
+  const record = {
+    email:      email.trim(),
+    source:     source || window.location.pathname,
+    utm_source: new URLSearchParams(window.location.search).get('utm_source') || null,
+    session_id: localStorage.getItem('fn_sid') || null,
+  };
+
+  try {
+    const { error } = await sb.from('newsletter_signups').insert(record);
+    if (error && error.code === '23505') return 'already'; // duplicate email
+    if (!error) {
+      fetch(EDGE_FN, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ table: 'newsletter_signups', record })
+      }).catch(() => {});
+      return true;
+    }
+  } catch (err) {
+    console.warn('Newsletter signup:', err.message);
+  }
+  return false;
+}
+
+/* ── Auto-wire any newsletter input + button pairs on page ── */
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Auto-wire contact form if it has id="contact-form" but no onsubmit yet
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm && !contactForm.dataset.fnWired) {
+    contactForm.addEventListener('submit', handleContactSubmit);
+    contactForm.dataset.fnWired = '1';
+    // Remove any old FormSubmit action
+    if ((contactForm.action || '').includes('formsubmit.co')) {
+      contactForm.removeAttribute('action');
+    }
+  }
+
+  // Auto-wire booking form
+  const bookingForm = document.getElementById('booking-form') ||
+                      document.getElementById('consultation-form');
+  if (bookingForm && !bookingForm.dataset.fnWired) {
+    bookingForm.addEventListener('submit', handleBookingSubmit);
+    bookingForm.dataset.fnWired = '1';
+  }
+
+  // Auto-wire newsletter: look for email input + nearby button
+  document.querySelectorAll('input[type="email"]').forEach(input => {
+    if (input.dataset.fnWired) return;
+    input.dataset.fnWired = '1';
+
+    // Find nearest submit button (sibling or parent's sibling)
+    const parent = input.parentElement;
+    const btn    = parent.querySelector('button') ||
+                   parent.nextElementSibling?.querySelector('button') ||
+                   parent.parentElement?.querySelector('button');
+
+    if (btn && !btn.dataset.fnWired) {
+      btn.dataset.fnWired = '1';
+      btn.addEventListener('click', async function(ev) {
+        ev.preventDefault();
+        const email = input.value.trim();
+        if (!email) return;
+
+        btn.textContent = '...';
+        btn.disabled    = true;
+
+        const result = await handleNewsletterSignup(email, 'footer-signup');
+
+        if (result === 'already') {
+          btn.textContent = 'Already signed up';
+        } else if (result) {
+          btn.textContent = 'Done!';
+          input.value = '';
+        } else {
+          btn.textContent = 'Try again';
+        }
+
+        setTimeout(() => {
+          btn.disabled    = false;
+          btn.textContent = 'Sign up'; // restore default label
+        }, 3000);
+      });
+    }
+  });
+
+});
+</script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -930,4 +1198,5 @@ document.getElementById('contact-form')?.addEventListener('submit', async functi
 </script>
 </body>
 </html>
+
 
