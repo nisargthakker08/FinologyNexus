@@ -79,9 +79,12 @@
   /* GEO */
   async function getGeo() {
     try {
-      const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 4000);
+      const r = await fetch('https://freeipapi.com/api/json/', { signal: controller.signal });
+      clearTimeout(timer);
       const d = await r.json();
-      return { country: d.country_name||null, country_code: d.country_code||null, city: d.city||null, region: d.region||null };
+      return { country: d.countryName||null, country_code: d.countryCode||null, city: d.cityName||null, region: d.regionName||null };
     } catch(e) { return { country:null, country_code:null, city:null, region:null }; }
   }
 
@@ -99,7 +102,10 @@
     try {
       await fetch(EDGE_FN, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + SB_KEY,
+        },
         body: JSON.stringify({ table, record })
       });
     } catch(e) { console.warn('Notify error:', e.message); }
@@ -182,7 +188,7 @@
         try {
           const notifyRes = await fetch(EDGE_FN, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
             body: JSON.stringify({ table: 'contact_submissions', record })
           });
           const notifyText = await notifyRes.text();
