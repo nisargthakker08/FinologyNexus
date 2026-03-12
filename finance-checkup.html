@@ -1431,10 +1431,19 @@ Write a JSON with:
       if (error) console.warn('FinPulse save error:', error.message);
       else {
         // Notify
+        // Enrich record with findings for the email
+        const notifyRecord = {
+          ...record,
+          findings_json: JSON.stringify((p.findings || []).slice(0, 3).map(f => ({
+            sev: f.sev, title: f.title, detail: f.detail
+          }))),
+          verdict_short: p.verdict?.short || null,
+          summary_text:  p.summary || null,
+        };
         fetch(EDGE_FN, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
-          body: JSON.stringify({ table: 'finpulse_results', record })
+          body: JSON.stringify({ table: 'finpulse_results', record: notifyRecord })
         }).catch(()=>{});
       }
     } catch(e) { console.warn('Gate save error:', e.message); }
@@ -1493,7 +1502,7 @@ Write a JSON with:
 
   async function getGeo() {
     try {
-      const r = await fetch('https://freeipapi.com/api/json/', { signal: AbortSignal.timeout(3500) });
+      const r = await fetch('https://ipwho.is/', { signal: AbortSignal.timeout(3500) });
       const d = await r.json();
       return {
         country:      d.country_name  || null,
