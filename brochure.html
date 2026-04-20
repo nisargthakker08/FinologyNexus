@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finology Nexus — Company Brochure</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0c1e35;
+  --navy2:   #102540;
+  --gold:    #c4973a;
+  --gold2:   #e0b055;
+  --cream:   #f9f5ee;
+  --warm:    #f0ead9;
+  --rule:    #ddd5c4;
+  --text:    #2e3a4a;
+  --muted:   #7a8694;
+  --white:   #ffffff;
+  --W: 900px;
+  --H: 560px;
+}
+
+html, body {
+  height: 100%;
+  background: #0a0f18;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+  overflow: hidden;
+  user-select: none;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, #1a2d4a 0%, #0a0f18 100%);
+  pointer-events: none;
+}
+
+#top-label {
+  position: fixed; top: 22px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.2); font-weight: 400;
+}
+
+#booklet {
+  position: relative;
+  width: var(--W);
+  height: var(--H);
+  perspective: 2800px;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.7));
+}
+
+#booklet::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.4));
+  z-index: 100;
+  pointer-events: none;
+}
+
+.page {
+  position: absolute; top: 0;
+  width: 50%; height: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.65s cubic-bezier(0.45, 0, 0.2, 1),
+              box-shadow 0.65s ease;
+}
+.page-l { left: 0; transform-origin: right center; }
+.page-r { right: 0; transform-origin: left center; }
+
+.page-l.hidden { transform: rotateY(-180deg); pointer-events: none; }
+.page-r.hidden { transform: rotateY(180deg); pointer-events: none; }
+.page.visible  { transform: rotateY(0deg); }
+
+.page-l.anim-out { animation: foldL 0.65s cubic-bezier(0.45,0,0.2,1) forwards; }
+.page-r.anim-out { animation: foldR 0.65s cubic-bezier(0.45,0,0.2,1) forwards; }
+.page-l.anim-in  { animation: unfoldL 0.65s cubic-bezier(0.45,0,0.2,1) forwards; }
+.page-r.anim-in  { animation: unfoldR 0.65s cubic-bezier(0.45,0,0.2,1) forwards; }
+
+@keyframes foldL   { from { transform: rotateY(0);    } to { transform: rotateY(-180deg); box-shadow: -20px 0 40px rgba(0,0,0,0.6); } }
+@keyframes foldR   { from { transform: rotateY(0);    } to { transform: rotateY(180deg);  box-shadow:  20px 0 40px rgba(0,0,0,0.6); } }
+@keyframes unfoldL { from { transform: rotateY(180deg); box-shadow: -20px 0 40px rgba(0,0,0,0.6); } to { transform: rotateY(0); box-shadow: none; } }
+@keyframes unfoldR { from { transform: rotateY(-180deg); box-shadow: 20px 0 40px rgba(0,0,0,0.6); } to { transform: rotateY(0); box-shadow: none; } }
+
+.nav-btn {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(196,151,58,0.12); border: 1px solid rgba(196,151,58,0.3);
+  color: var(--gold2); font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s; z-index: 200;
+}
+.nav-btn:hover { background: rgba(196,151,58,0.25); border-color: var(--gold); transform: translateY(-50%) scale(1.08); }
+.nav-btn.gone { opacity: 0; pointer-events: none; }
+#btn-prev { left: calc(50% - 480px); }
+#btn-next { right: calc(50% - 480px); }
+
+#dots {
+  position: fixed; bottom: 24px;
+  display: flex; gap: 8px; align-items: center;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.18); cursor: pointer;
+  transition: all 0.3s;
+}
+.dot.on { background: var(--gold); transform: scale(1.35); }
+
+#counter {
+  position: fixed; bottom: 24px; right: calc(50% - 450px);
+  font-size: 10px; letter-spacing: 2px;
+  color: rgba(255,255,255,0.25); font-weight: 400;
+}
+
+#btn-download {
+  position: fixed; top: 18px; right: calc(50% - 450px);
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 20px;
+  background: rgba(196,151,58,0.1); border: 1px solid rgba(196,151,58,0.3);
+  color: var(--gold2); font-size: 9px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s; z-index: 200;
+  font-family: 'Nunito Sans', sans-serif;
+}
+#btn-download:hover {
+  background: rgba(196,151,58,0.22); border-color: var(--gold);
+  transform: translateY(-1px);
+}
+#btn-download svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ── PRINT LAYOUT ── */
+#print-doc { display: none; }
+
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+  /* Hide interactive booklet entirely */
+  body::before,
+  #top-label, #btn-prev, #btn-next, #dots, #counter, #btn-download,
+  #booklet { display: none !important; }
+
+  /* Show the flat print document */
+  #print-doc {
+    display: block !important;
+    width: 100%; margin: 0; padding: 0;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 300;
+  }
+
+  html, body {
+    height: auto; overflow: visible;
+    background: #fff !important;
+    display: block; padding: 0; margin: 0;
+  }
+
+  /* Each spread = one landscape A4 page */
+  .ps {
+    display: flex;
+    width: 297mm; height: 210mm;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .ps:last-child { page-break-after: avoid; }
+
+  /* Each half-page */
+  .ph {
+    width: 50%; height: 100%;
+    position: relative; overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Colour variants */
+  .ph-navy { background: #0c1e35 !important; }
+  .ph-white { background: #ffffff !important; }
+
+  /* Typography resets for print */
+  .ps .eyebrow {
+    font-size: 7pt; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: #c4973a; margin-bottom: 6pt;
+  }
+  .ps .h1p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700; line-height: 1.15; color: #0c1e35;
+  }
+  .ps .h1p-wt { color: #ffffff; }
+  .ps .bodyp {
+    font-size: 8pt; font-weight: 300; line-height: 1.75; color: #2e3a4a;
+  }
+  .ps .bodyp-lt { color: rgba(255,255,255,0.55); }
+  .ps .gold-rule { width: 24pt; height: 1.5pt; background: #c4973a; margin: 7pt 0; }
+
+  /* Strip header */
+  .ps .pstrip {
+    background: #0c1e35 !important; padding: 6pt 16pt;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .ps .pstrip-logo {
+    font-family: 'Playfair Display', serif; font-size: 9pt; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+  .ps .pstrip-tag {
+    font-size: 6.5pt; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: #c4973a;
+  }
+
+  /* Footer bar */
+  .ps .pbar {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 4pt 14pt; border-top: 1pt solid #ddd5c4;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #ffffff !important; font-size: 6.5pt; color: #c0b49e;
+  }
+  .ps .pbar-dk {
+    border-color: rgba(255,255,255,0.1) !important;
+    background: rgba(0,0,0,0.2) !important;
+  }
+  .ps .pbar span { font-size: 6.5pt; }
+  .ps .pbar a { color: #c4973a; text-decoration: none; font-size: 6.5pt; }
+
+  /* Content padding */
+  .ps .ppad { padding: 10pt 16pt 24pt; height: calc(100% - 26pt); overflow: hidden; }
+
+  /* Story block */
+  .ps .sblk {
+    background: #f9f5ee !important; border-radius: 4pt;
+    border-left: 2pt solid #c4973a; padding: 7pt 10pt; margin: 6pt 0;
+  }
+  .ps .sblk-t {
+    font-family: 'Playfair Display', serif; font-size: 9pt; font-weight: 600;
+    color: #0c1e35; margin-bottom: 3pt;
+  }
+  .ps .sblk-b { font-size: 7.5pt; font-weight: 300; color: #2e3a4a; line-height: 1.7; }
+
+  /* Dark block */
+  .ps .dblk {
+    background: #0c1e35 !important; border-radius: 4pt;
+    padding: 8pt 11pt; margin: 6pt 0;
+  }
+  .ps .dblk-lbl {
+    font-size: 6.5pt; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #c4973a; font-weight: 500; margin-bottom: 3pt;
+  }
+  .ps .dblk-t {
+    font-family: 'Playfair Display', serif; font-size: 10pt;
+    font-weight: 600; color: #fff; margin-bottom: 3pt;
+  }
+  .ps .dblk-b { font-size: 7.5pt; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+  /* Mini stats */
+  .ps .mstats { display: flex; gap: 5pt; margin-top: 7pt; }
+  .ps .mcard {
+    flex: 1; background: #f9f5ee !important; border-radius: 3pt;
+    padding: 7pt 6pt; border-bottom: 1.5pt solid #c4973a; text-align: center;
+  }
+  .ps .mnum {
+    font-family: 'Playfair Display', serif; font-size: 16pt; font-weight: 700;
+    color: #0c1e35; line-height: 1; margin-bottom: 2pt;
+  }
+  .ps .mlbl { font-size: 6.5pt; font-weight: 300; color: #7a8694; line-height: 1.3; }
+
+  /* Service block */
+  .ps .svc {
+    display: flex; border: 0.75pt solid #ddd5c4; border-radius: 4pt;
+    overflow: hidden; margin-bottom: 5pt;
+  }
+  .ps .svc-bar { width: 3pt; background: #c4973a; flex-shrink: 0; }
+  .ps .svc-in { padding: 6pt 10pt; flex: 1; }
+  .ps .svc-t {
+    font-family: 'Playfair Display', serif; font-size: 9pt; font-weight: 600;
+    color: #0c1e35; margin-bottom: 2pt;
+  }
+  .ps .svc-b { font-size: 7pt; font-weight: 300; color: #2e3a4a; line-height: 1.65; }
+  .ps .tags { display: flex; flex-wrap: wrap; gap: 3pt; margin-top: 3pt; }
+  .ps .tag {
+    font-size: 6.5pt; color: #0c1e35; background: #f0ead9 !important;
+    border: 0.5pt solid #ddd5c4; border-radius: 10pt; padding: 1.5pt 6pt;
+  }
+
+  /* Compat box */
+  .ps .cbox {
+    background: #f0ead9 !important; border-radius: 4pt;
+    padding: 7pt 10pt; margin-top: 5pt;
+  }
+
+  /* Products grid */
+  .ps .pgrid { display: flex; flex-wrap: wrap; gap: 5pt; margin: 5pt 0; }
+  .ps .pcard {
+    width: calc(50% - 2.5pt); border: 0.75pt solid #ddd5c4; border-radius: 4pt;
+    padding: 7pt 8pt; background: #ffffff !important; box-sizing: border-box;
+  }
+  .ps .pcard-dev { border-color: rgba(196,151,58,0.4); background: #fdf9f1 !important; }
+  .ps .pcard-eye {
+    font-size: 6pt; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #c4973a; font-weight: 500; margin-bottom: 2pt;
+  }
+  .ps .pcard-name {
+    font-family: 'Playfair Display', serif; font-size: 10pt;
+    font-weight: 600; color: #0c1e35; margin-bottom: 2pt;
+  }
+  .ps .pcard-desc { font-size: 7pt; font-weight: 300; color: #2e3a4a; line-height: 1.55; }
+  .ps .ptags { display: flex; flex-wrap: wrap; gap: 2.5pt; margin-top: 4pt; }
+  .ps .ptag {
+    font-size: 6.5pt; font-weight: 500; color: #c4973a;
+    background: rgba(196,151,58,0.08) !important;
+    border: 0.5pt solid rgba(196,151,58,0.25);
+    border-radius: 2pt; padding: 1pt 5pt;
+  }
+  .ps .pcard-badge {
+    font-size: 5.5pt; color: #c4973a; border: 0.5pt solid rgba(196,151,58,0.3);
+    background: rgba(196,151,58,0.08) !important;
+    border-radius: 10pt; padding: 1pt 5pt;
+    display: inline-block; margin-bottom: 3pt;
+  }
+
+  /* Pulse strip */
+  .ps .pulse {
+    background: #0c1e35 !important; border-radius: 4pt;
+    padding: 7pt 10pt; display: flex; gap: 8pt; align-items: center;
+    margin-top: 5pt;
+  }
+  .ps .pulse-icon {
+    width: 24pt; height: 24pt; background: #c4973a !important;
+    border-radius: 4pt; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ps .pulse-name {
+    font-family: 'Playfair Display', serif; font-size: 10pt;
+    font-weight: 600; color: #fff; margin-bottom: 1pt;
+  }
+  .ps .pulse-desc { font-size: 7pt; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .ps .pulse-url { font-size: 7pt; font-weight: 500; color: #c4973a; margin-top: 2pt; display: block; }
+
+  /* Steps */
+  .ps .step { display: flex; gap: 8pt; margin-bottom: 6pt; align-items: flex-start; }
+  .ps .step-num {
+    width: 18pt; height: 18pt; border-radius: 50%; background: #0c1e35 !important;
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 9pt; font-weight: 700; color: #c4973a;
+  }
+  .ps .step-t {
+    font-family: 'Playfair Display', serif; font-size: 9pt;
+    font-weight: 600; color: #0c1e35; margin-bottom: 1pt;
+  }
+  .ps .step-b { font-size: 7pt; font-weight: 300; color: #2e3a4a; line-height: 1.65; }
+
+  /* Invest note */
+  .ps .inv {
+    background: #f9f5ee !important; border-left: 2pt solid #c4973a;
+    border-radius: 0 3pt 3pt 0; padding: 6pt 10pt; margin: 6pt 0;
+  }
+  .ps .inv-t { font-size: 8pt; font-weight: 600; color: #0c1e35; margin-bottom: 2pt; }
+  .ps .inv-b { font-size: 7pt; font-weight: 300; color: #2e3a4a; line-height: 1.6; }
+
+  /* Who grid */
+  .ps .wgrid { display: flex; flex-wrap: wrap; gap: 4pt; }
+  .ps .wcard {
+    width: calc(50% - 2pt); background: #f9f5ee !important;
+    border-radius: 3pt; padding: 6pt 8pt; box-sizing: border-box;
+  }
+  .ps .wcard-t {
+    font-family: 'Playfair Display', serif; font-size: 8pt;
+    font-weight: 600; color: #0c1e35; margin-bottom: 1.5pt;
+  }
+  .ps .wcard-b { font-size: 6.5pt; font-weight: 300; color: #2e3a4a; line-height: 1.55; }
+
+  /* Cover specifics */
+  .ps .c-quote {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: 10pt; color: rgba(255,255,255,0.35); line-height: 1.75;
+    margin-bottom: 10pt; position: relative;
+  }
+  .ps .c-quote::before {
+    content: '"'; font-size: 36pt; color: rgba(196,151,58,0.15);
+    position: absolute; top: -14pt; left: -4pt; line-height: 1;
+    font-family: 'Playfair Display', serif;
+  }
+  .ps .c-attr {
+    font-size: 6.5pt; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(196,151,58,0.5); font-weight: 500;
+  }
+  .ps .logo-mark-p {
+    width: 22pt; height: 22pt; background: #c4973a !important;
+    border-radius: 4pt; display: inline-flex; align-items: center;
+    justify-content: center; vertical-align: middle; margin-right: 6pt;
+  }
+  .ps .logo-name-p {
+    font-family: 'Playfair Display', serif; font-size: 13pt;
+    font-weight: 600; color: #fff; vertical-align: middle;
+  }
+  .ps .cover-hl {
+    font-family: 'Playfair Display', serif; font-size: 24pt;
+    font-weight: 700; color: #fff; line-height: 1.1; margin: 8pt 0 4pt;
+  }
+  .ps .cover-hl em { font-style: italic; color: #e0b055; }
+  .ps .cover-desc { font-size: 8pt; color: rgba(255,255,255,0.5); line-height: 1.75; }
+  .ps .stats-g { display: flex; flex-wrap: wrap; gap: 8pt 14pt; margin-top: 8pt; padding-top: 8pt; border-top: 0.5pt solid rgba(255,255,255,0.1); }
+  .ps .stat-big { font-family: 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #e0b055; line-height: 1; margin-bottom: 2pt; }
+  .ps .stat-lbl { font-size: 6.5pt; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.4; }
+  .ps .stat-item { width: calc(50% - 7pt); }
+
+  /* Back cover */
+  .ps .bc-cta {
+    font-family: 'Playfair Display', serif; font-size: 18pt;
+    font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 6pt;
+  }
+  .ps .bc-cta em { font-style: italic; color: #e0b055; }
+  .ps .bc-body { font-size: 7.5pt; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 10pt; }
+  .ps .cc {
+    background: rgba(255,255,255,0.05) !important;
+    border: 0.5pt solid rgba(255,255,255,0.1);
+    border-radius: 4pt; padding: 5pt 10pt; margin-bottom: 4pt;
+  }
+  .ps .cc-lbl {
+    font-size: 6pt; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #c4973a; font-weight: 500; margin-bottom: 1.5pt;
+  }
+  .ps .cc-val { font-size: 8.5pt; color: rgba(255,255,255,0.65); }
+  .ps .bc-foot {
+    border-top: 0.5pt solid rgba(255,255,255,0.1); padding-top: 6pt; margin-top: 8pt;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .ps .bc-brand { font-family: 'Playfair Display', serif; font-size: 11pt; font-weight: 600; color: #fff; }
+  .ps .bc-brand-sub { font-size: 6.5pt; color: rgba(255,255,255,0.25); margin-top: 1.5pt; }
+  .ps .bc-url { font-size: 8.5pt; color: #c4973a; }
+  .ps .pbar-dk span { color: rgba(255,255,255,0.22); }
+  .ps .pbar-dk a { color: #c4973a; }
+}
+
+/* SHARED */
+.pg { width: 100%; height: 100%; position: relative; overflow: hidden; }
+
+.serif { font-family: 'Playfair Display', Georgia, serif; }
+.sans  { font-family: 'Nunito Sans', sans-serif; }
+
+.eyebrow {
+  font-size: 8.5px; font-weight: 600; letter-spacing: 2.8px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+}
+.h1 {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  line-height: 1.12; color: var(--navy);
+}
+.body {
+  font-size: 11.5px; font-weight: 300; line-height: 1.85; color: var(--text);
+}
+.gold-line { width: 32px; height: 2px; background: var(--gold); margin: 10px 0; }
+
+.strip {
+  background: var(--navy); padding: 9px 22px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.strip-logo {
+  font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.5);
+}
+.strip-tag {
+  font-size: 8px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* FOOTER BAR — updated with email + phone */
+.bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 5px 14px; border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; font-size: 7.5px; color: #c0b49e;
+  flex-wrap: nowrap; gap: 4px;
+}
+.bar-dark {
+  background: rgba(0,0,0,0.25); border-color: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.22);
+}
+.bar span { font-size: 7.5px; white-space: nowrap; }
+.bar a { color: var(--gold); text-decoration: none; font-size: 7.5px; white-space: nowrap; }
+.bar-sep { color: #d5c9b4; }
+
+.pad { padding: 13px 20px 30px; height: calc(100% - 36px); overflow: hidden; }
+
+/* COVER */
+#s1l .pg { background: var(--navy); }
+.cover-left-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 28px 26px;
+}
+.c-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(196,151,58,0.12);
+}
+.c-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 12.5px; font-weight: 400;
+  color: rgba(255,255,255,0.32); line-height: 1.75;
+  margin-bottom: 14px; position: relative; z-index: 1;
+}
+.c-quote::before {
+  content: '"'; font-size: 48px; color: rgba(196,151,58,0.15);
+  position: absolute; top: -18px; left: -6px; line-height: 1;
+  font-family: 'Playfair Display', serif;
+}
+.c-attr {
+  font-size: 8px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(196,151,58,0.5); font-weight: 500; position: relative; z-index: 1;
+}
+.c-rule { width: 28px; height: 1px; background: rgba(196,151,58,0.35); margin-top: 10px; position: relative; z-index: 1; }
+.vline {
+  position: absolute; top: 28px; left: 26px;
+  width: 1px; height: 70px;
+  background: linear-gradient(to bottom, rgba(196,151,58,0.5), transparent);
+}
+
+#s1r .pg { background: var(--navy); }
+.cover-right-inner {
+  position: absolute; inset: 0; padding: 26px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.logo-row { display: flex; align-items: center; gap: 9px; }
+.logo-mark {
+  width: 28px; height: 28px; background: var(--gold); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.logo-mark svg { width: 15px; height: 15px; }
+.logo-name {
+  font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: #fff;
+}
+.logo-sub {
+  font-size: 7px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-top: 2px; margin-left: 37px;
+}
+.cover-headline {
+  font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700;
+  color: #fff; line-height: 1.1; margin: 4px 0;
+}
+.cover-headline em { font-style: italic; color: var(--gold2); }
+.cover-rule { width: 36px; height: 2px; background: var(--gold); margin: 10px 0; }
+.cover-desc {
+  font-size: 10.5px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.8;
+}
+.stats-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; margin-top: 10px;
+}
+.stat-big {
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: var(--gold2); line-height: 1; margin-bottom: 3px;
+}
+.stat-lbl {
+  font-size: 9px; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.4;
+}
+.cover-foot {
+  border-top: 1px solid rgba(255,255,255,0.07); padding-top: 8px;
+  display: flex; justify-content: space-between;
+  font-size: 8px; color: rgba(255,255,255,0.22); font-weight: 300;
+}
+.cover-foot a { color: var(--gold); text-decoration: none; font-size: 8px; }
+
+/* ABOUT — SPREAD 2 */
+.story-block {
+  background: var(--cream); border-radius: 7px;
+  border-left: 3px solid var(--gold);
+  padding: 10px 12px; margin: 7px 0;
+}
+.story-block-title {
+  font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 600;
+  color: var(--navy); margin-bottom: 3px;
+}
+.story-block-body {
+  font-size: 10px; font-weight: 300; color: var(--text); line-height: 1.7;
+}
+.dark-block {
+  background: var(--navy); border-radius: 7px; padding: 11px 13px; margin: 7px 0;
+}
+.dark-block-label {
+  font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 4px;
+}
+.dark-block-title {
+  font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600;
+  color: #fff; margin-bottom: 3px;
+}
+.dark-block-body {
+  font-size: 9.5px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.65;
+}
+.mini-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px;
+}
+.mini-card {
+  background: var(--cream); border-radius: 5px; padding: 9px 8px;
+  border-bottom: 2px solid var(--gold); text-align: center;
+}
+.mini-num {
+  font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700;
+  color: var(--navy); line-height: 1; margin-bottom: 2px;
+}
+.mini-lbl { font-size: 8px; font-weight: 300; color: var(--muted); line-height: 1.3; }
+
+/* SERVICES — SPREAD 3 */
+.svc {
+  display: flex; align-items: stretch;
+  border: 1px solid var(--rule); border-radius: 7px;
+  overflow: hidden; margin-bottom: 7px;
+}
+.svc-bar { width: 4px; background: var(--gold); flex-shrink: 0; }
+.svc-inner { padding: 8px 12px; flex: 1; }
+.svc-title {
+  font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 600;
+  color: var(--navy); margin-bottom: 2px;
+}
+.svc-body { font-size: 9.5px; font-weight: 300; color: var(--text); line-height: 1.65; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.tag {
+  font-size: 8px; color: var(--navy);
+  background: var(--warm); border: 1px solid var(--rule);
+  border-radius: 20px; padding: 2px 7px; font-weight: 400;
+}
+.compat-box {
+  background: var(--warm); border-radius: 7px; padding: 9px 12px; margin-top: 7px;
+}
+
+/* PRODUCTS — SPREAD 4 — FIXED */
+.prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0; }
+.prod-card {
+  border: 1px solid var(--rule); border-radius: 6px;
+  padding: 9px 10px; position: relative; overflow: hidden; background: #fff;
+}
+.prod-dev { border-color: rgba(196,151,58,0.35); background: #fdf9f1; }
+.prod-badge {
+  position: absolute; top: 6px; right: 6px;
+  font-size: 6.5px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(196,151,58,0.3);
+  background: rgba(196,151,58,0.08); border-radius: 20px; padding: 1px 6px;
+}
+.prod-eye {
+  font-size: 7px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 2px;
+}
+.prod-name {
+  font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600;
+  color: var(--navy); margin-bottom: 3px;
+}
+.prod-desc { font-size: 9px; font-weight: 300; color: var(--text); line-height: 1.55; }
+.ptags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 5px; }
+.ptag {
+  font-size: 7.5px; font-weight: 500; color: var(--gold);
+  background: rgba(196,151,58,0.08); border: 1px solid rgba(196,151,58,0.22);
+  border-radius: 3px; padding: 1px 5px;
+}
+/* PULSE STRIP COMPACT for page 4 */
+.pulse-strip {
+  background: var(--navy); border-radius: 6px; padding: 9px 12px;
+  display: flex; gap: 10px; align-items: center; margin-top: 6px;
+}
+.pulse-icon {
+  width: 30px; height: 30px; background: var(--gold); border-radius: 5px;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.pulse-icon svg { width: 16px; height: 16px; }
+.pulse-name {
+  font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 600;
+  color: #fff; margin-bottom: 1px;
+}
+.pulse-desc { font-size: 8.5px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.pulse-url { font-size: 8.5px; font-weight: 500; color: var(--gold); margin-top: 2px; display: block; }
+
+/* HOW WE WORK */
+.step { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+.step-circle {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--navy); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700;
+  color: var(--gold);
+}
+.step-title {
+  font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 600;
+  color: var(--navy); margin-bottom: 1px;
+}
+.step-body { font-size: 9.5px; font-weight: 300; color: var(--text); line-height: 1.6; }
+.invest-note {
+  background: var(--cream); border-left: 3px solid var(--gold);
+  border-radius: 0 5px 5px 0; padding: 8px 12px; margin: 8px 0;
+}
+.invest-title { font-size: 9.5px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.invest-body { font-size: 9px; font-weight: 300; color: var(--text); line-height: 1.6; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.who-card { background: var(--cream); border-radius: 5px; padding: 7px 9px; }
+.who-title {
+  font-family: 'Playfair Display', serif; font-size: 10.5px; font-weight: 600;
+  color: var(--navy); margin-bottom: 2px;
+}
+.who-body { font-size: 8.5px; font-weight: 300; color: var(--text); line-height: 1.55; }
+
+/* BACK COVER */
+#s5l .pg, #s5r .pg { background: var(--navy); }
+.bc-deco {
+  font-family: 'Playfair Display', serif; font-size: 90px; font-weight: 700;
+  color: rgba(196,151,58,0.04); letter-spacing: 8px;
+  position: absolute; right: -15px; top: 0; bottom: 0;
+  writing-mode: vertical-rl; line-height: 1; pointer-events: none;
+}
+.bc-quote {
+  font-family: 'Playfair Display', serif; font-style: italic; font-size: 12.5px;
+  font-weight: 400; color: rgba(255,255,255,0.35); line-height: 1.75;
+  margin-bottom: 14px; position: relative; z-index: 1;
+}
+.bc-attr {
+  font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(196,151,58,0.5); font-weight: 500; position: relative; z-index: 1;
+}
+.contact-cards { display: flex; flex-direction: column; gap: 5px; }
+.cc {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 6px; padding: 7px 12px;
+}
+.cc-label {
+  font-size: 7px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 2px;
+}
+.cc-val { font-size: 9.5px; font-weight: 400; color: rgba(255,255,255,0.65); }
+.bc-cta {
+  font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700;
+  color: #fff; line-height: 1.15; margin-bottom: 7px;
+}
+.bc-cta em { font-style: italic; color: var(--gold2); }
+.bc-body-text {
+  font-size: 9.5px; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.75;
+  margin-bottom: 12px;
+}
+.bc-brand-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.07); padding-top: 8px; margin-top: 10px;
+}
+.bc-brand {
+  font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 600; color: #fff;
+}
+.bc-brand-sub { font-size: 8px; color: rgba(255,255,255,0.25); margin-top: 2px; }
+.bc-url { font-size: 9.5px; color: var(--gold); }
+
+/* Dark footer bar for navy pages */
+.bar-dk {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 5px 14px; border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(0,0,0,0.2); font-size: 7.5px;
+  flex-wrap: nowrap; gap: 4px;
+}
+.bar-dk span { font-size: 7.5px; color: rgba(255,255,255,0.2); white-space: nowrap; }
+.bar-dk a { color: var(--gold); text-decoration: none; font-size: 7.5px; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<div id="top-label">Finology Nexus &nbsp;·&nbsp; Company Brochure</div>
+<button class="nav-btn gone" id="btn-prev">&#8592;</button>
+<button class="nav-btn" id="btn-next">&#8594;</button>
+<div id="dots"></div>
+<div id="counter">1 / 5</div>
+<button id="btn-download" onclick="window.print()">
+  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 1v5.5M3.5 4L6 6.5 8.5 4" stroke="#e0b055" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="1" y="8.5" width="10" height="2" rx="0.5" stroke="#e0b055" stroke-width="1.2"/>
+  </svg>
+  Download PDF
+</button>
+
+<div id="booklet">
+
+<!-- SPREAD 1 — COVER -->
+<div class="page page-l visible" id="s1l">
+  <div class="pg">
+    <div class="c-circle" style="width:300px;height:300px;right:-90px;top:-70px;"></div>
+    <div class="c-circle" style="width:180px;height:180px;right:30px;top:60px;border-color:rgba(196,151,58,0.07);"></div>
+    <div class="c-circle" style="width:130px;height:130px;left:-35px;bottom:70px;border-color:rgba(196,151,58,0.08);"></div>
+    <div class="vline"></div>
+    <div class="cover-left-inner">
+      <div class="c-quote">
+        Most growing businesses have good accountants. What they are missing is the operational infrastructure that makes their numbers actually reliable.
+      </div>
+      <div class="c-attr">Finology Nexus</div>
+      <div class="c-rule"></div>
+      <div style="margin-top:14px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.15);font-weight:300;position:relative;z-index:1;">
+        Company Brochure &nbsp;·&nbsp; Confidential
+      </div>
+    </div>
+    <div class="bar-dk">
+      <span>info@finologynexus.com &nbsp;·&nbsp; +91 95104 06535</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="page page-r visible" id="s1r">
+  <div class="pg">
+    <div class="c-circle" style="width:220px;height:220px;right:-55px;bottom:40px;border-color:rgba(196,151,58,0.07);"></div>
+    <div class="cover-right-inner">
+      <div style="position:relative;z-index:1;">
+        <div class="logo-row">
+          <div class="logo-mark">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 12L5.5 7.5L8.5 10.5L12.5 5.5" stroke="#0c1e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12.5" cy="5.5" r="1.4" fill="#0c1e35"/>
+            </svg>
+          </div>
+          <span class="logo-name">Finology Nexus</span>
+        </div>
+        <div class="logo-sub">Financial Intelligence &amp; Operations</div>
+      </div>
+      <div style="position:relative;z-index:1;">
+        <div class="cover-headline">
+          Where enterprise<br>discipline meets<br><em>growing business</em><br>reality.
+        </div>
+        <div class="cover-rule"></div>
+        <div class="cover-desc">
+          We bring the financial operations infrastructure that large enterprises take for granted within reach of fast-growing businesses that need it most but cannot yet afford to build it internally.
+        </div>
+        <div class="stats-grid">
+          <div><div class="stat-big">99.5%</div><div class="stat-lbl">Output accuracy across client datasets</div></div>
+          <div><div class="stat-big">83%</div><div class="stat-lbl">Reduction in manual validation time</div></div>
+          <div><div class="stat-big">3 days</div><div class="stat-lbl">Financial close, down from 10 days</div></div>
+          <div><div class="stat-big">40%</div><div class="stat-lbl">Efficiency gain through automation</div></div>
+        </div>
+      </div>
+      <div class="cover-foot" style="position:relative;z-index:1;">
+        <span>info@finologynexus.com &nbsp;·&nbsp; +91 95104 06535</span>
+        <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SPREAD 2 — WHO WE ARE -->
+<div class="page page-l hidden" id="s2l">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">Who We Are</div></div>
+    <div class="pad">
+      <div class="eyebrow" style="margin-top:4px;">The problem we solve</div>
+      <div class="h1" style="font-size:17px;margin-bottom:7px;">Your accountant does the books.<br>Nobody owns what sits between.</div>
+      <div class="body" style="font-size:10px;">
+        Most businesses at the $1M to $10M stage have accounting covered. They may even have a fractional CFO advising at the top. But the layer in between — the data infrastructure, workflows, reporting systems, and validation processes — is often nobody's job. The result? Reports that take too long, numbers that nobody fully trusts, and a finance function that is always catching up instead of looking ahead.
+      </div>
+      <div class="gold-line" style="margin:8px 0;"></div>
+      <div class="story-block">
+        <div class="story-block-title">Where Finology Nexus came from</div>
+        <div class="story-block-body">Our founder spent years inside enterprise finance environments, including S&amp;P Global, building the exact kind of infrastructure growing businesses rarely have access to. Automated validation pipelines. Clean data architecture. Reporting systems that actually run on schedule. We built Finology Nexus to make that same capability available to businesses that need it without needing a team of 20 to get there.</div>
+      </div>
+      <div class="mini-stats">
+        <div class="mini-card"><div class="mini-num">83%</div><div class="mini-lbl">Manual validation time cut</div></div>
+        <div class="mini-card"><div class="mini-num">10→3</div><div class="mini-lbl">Close days after rebuild</div></div>
+        <div class="mini-card"><div class="mini-num">18%</div><div class="mini-lbl">Rework rate reduction</div></div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="page page-r hidden" id="s2r">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">Our Team</div></div>
+    <div class="pad">
+      <div class="eyebrow" style="margin-top:4px;">Credentials</div>
+      <div class="h1" style="font-size:17px;margin-bottom:8px;">Enterprise expertise.<br>SMB focus.</div>
+      <div class="dark-block">
+        <div class="dark-block-label">Founding background</div>
+        <div class="dark-block-title">Built inside the institutions that set the benchmark</div>
+        <div class="dark-block-body">Our team brings direct experience from S&amp;P Global and leading US-based financial intelligence companies. We have built data pipelines, automated workflows pulling from Moody's, Fitch, and S&amp;P, cut daily validation time from 90 minutes to 15, and driven 99.5% output accuracy across all client deliverables. This is not theoretical. We have done it at scale.</div>
+      </div>
+      <div class="story-block" style="margin-top:7px;">
+        <div class="story-block-title">You always know who is doing the work</div>
+        <div class="story-block-body">Every engagement is led by our founding team directly. There is no account management layer, no handoff to junior staff after the contract is signed. The person who scopes the project delivers it. That accountability is intentional.</div>
+      </div>
+      <div style="margin-top:8px;">
+        <div class="eyebrow">How we fit alongside your controller or CFO</div>
+        <div class="body" style="font-size:9.5px;">We work in the infrastructure layer, not the strategy layer. Our outputs feed your controller or CFO, not around them. We define clear handoffs from day one and never step into a role that is already owned.</div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- SPREAD 3 — SERVICES -->
+<div class="page page-l hidden" id="s3l">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">Our Services</div></div>
+    <div class="pad">
+      <div class="eyebrow" style="margin-top:4px;">What we do</div>
+      <div class="h1" style="font-size:16px;margin-bottom:8px;">Five capabilities.<br>One operational layer.</div>
+
+      <div class="svc">
+        <div class="svc-bar"></div>
+        <div class="svc-inner">
+          <div class="svc-title">Financial Operations and Reporting</div>
+          <div class="svc-body">We build the reporting frameworks, cash flow models, and reconciliation systems that make your numbers reliable and your close predictable. If your team is spending more time preparing reports than reading them, this is where we start.</div>
+          <div class="tags"><span class="tag">Cash flow modelling</span><span class="tag">Month-end close</span><span class="tag">KPI dashboards</span></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-bar"></div>
+        <div class="svc-inner">
+          <div class="svc-title">Data Extraction and Automation</div>
+          <div class="svc-body">Every manual extraction, validation, and formatting task is a cost and a risk. We identify them, replace them with structured automation, and deliver auditable output on a consistent schedule without anyone chasing.</div>
+          <div class="tags"><span class="tag">Multi-source consolidation</span><span class="tag">QA governance</span><span class="tag">Audit trail</span></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-bar"></div>
+        <div class="svc-inner">
+          <div class="svc-title">Workflow and Process Automation</div>
+          <div class="svc-body">We map your financial workflows end to end, find where manual steps create bottlenecks or introduce error, and automate them cleanly. Everything we build is documented and handed over with clear ownership.</div>
+          <div class="tags"><span class="tag">Workflow mapping</span><span class="tag">QBO</span><span class="tag">Xero</span><span class="tag">Dynamics</span><span class="tag">Business Central</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="page page-r hidden" id="s3r">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">Our Services</div></div>
+    <div class="pad">
+      <div class="eyebrow" style="margin-top:4px;">Continued</div>
+      <div class="h1" style="font-size:16px;margin-bottom:8px;">Supporting the<br>complete picture.</div>
+
+      <div class="svc">
+        <div class="svc-bar"></div>
+        <div class="svc-inner">
+          <div class="svc-title">Process Design and Standard Operating Procedures</div>
+          <div class="svc-body">Fast growth often means critical processes live only in one person's head. We design formal, documented SOPs for every key financial process so the business can scale, onboard new team members, and hold itself accountable with confidence.</div>
+          <div class="tags"><span class="tag">SOP documentation</span><span class="tag">RACI mapping</span><span class="tag">Onboarding playbooks</span><span class="tag">Data governance</span></div>
+        </div>
+      </div>
+
+      <div class="svc">
+        <div class="svc-bar"></div>
+        <div class="svc-inner">
+          <div class="svc-title">Embedded Support and Offshore Operations</div>
+          <div class="svc-body">A dedicated financial operations function without the cost of an internal hire. We embed as a consistent part of your team, delivering on a defined schedule under clear SLAs. Fractional, reliable, and significantly more cost-effective than building in-house.</div>
+          <div class="tags"><span class="tag">Fractional data ops</span><span class="tag">SLA-backed delivery</span><span class="tag">Offshore efficiency</span></div>
+        </div>
+      </div>
+
+      <div class="compat-box">
+        <div class="eyebrow" style="margin-bottom:3px;">Tool compatibility</div>
+        <div class="body" style="font-size:9.5px;">We are completely tool-agnostic. Clients running QuickBooks, Xero, Dynamics 365, Business Central, SAP, or any other platform can engage us without changing a thing. We build on top of what you already have.</div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- SPREAD 4 — PRODUCTS + HOW WE WORK (FIXED OVERFLOW) -->
+<div class="page page-l hidden" id="s4l">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">Our Products</div></div>
+    <div class="pad" style="padding-bottom:28px;">
+      <div class="eyebrow" style="margin-top:3px;">Built tools</div>
+      <div class="h1" style="font-size:15px;margin-bottom:4px;">Clarity in your clients' hands.</div>
+      <div class="body" style="font-size:9px;margin-bottom:6px;">Alongside our services, we develop standalone tools that give business owners direct visibility without needing a consultant on call every time.</div>
+
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-eye">Product</div>
+          <div class="prod-name">VendorScan</div>
+          <div class="prod-desc">Vendor compliance documentation, structured and audit-ready. Verified vendor records without the spreadsheet chaos.</div>
+          <div class="ptags"><span class="ptag">Compliance</span><span class="ptag">Audit-ready</span></div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-eye">Product</div>
+          <div class="prod-name">CashMap</div>
+          <div class="prod-desc">Forward-looking cash flow visibility. See not just where money sits today, but where pressure will appear and when.</div>
+          <div class="ptags"><span class="ptag">Cash visibility</span><span class="ptag">Scenarios</span></div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-eye">Product</div>
+          <div class="prod-name">ComplianceCheck</div>
+          <div class="prod-desc">Financial compliance monitoring built for growing businesses that need structure without a dedicated compliance team.</div>
+          <div class="ptags"><span class="ptag">Monitoring</span><span class="ptag">Alerts</span></div>
+        </div>
+        <div class="prod-card prod-dev">
+          <div class="prod-badge">In development</div>
+          <div class="prod-eye">Coming soon</div>
+          <div class="prod-name" style="font-size:12px;">Financial Entry Tracker</div>
+          <div class="prod-desc">Every financial entry tracked and referenced centrally. Supports PDF, XML, JPEG, and multiple formats.</div>
+          <div class="ptags"><span class="ptag">PDF</span><span class="ptag">XML</span><span class="ptag">Multi-format</span></div>
+        </div>
+      </div>
+
+      <div class="pulse-strip">
+        <div class="pulse-icon">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path d="M3 13L6.5 8.5L10 12L14 7L17 9" stroke="#0c1e35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="17" cy="9" r="1.5" fill="#0c1e35"/>
+          </svg>
+        </div>
+        <div>
+          <div class="pulse-name">FinPulse <span style="font-size:8.5px;font-weight:300;color:rgba(255,255,255,0.4);">Free tool</span></div>
+          <div class="pulse-desc">A free financial health check any business owner can use. Share it with a client in 30 seconds. No signup required.</div>
+          <span class="pulse-url">www.finologynexus.com/finpulse</span>
+        </div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="page page-r hidden" id="s4r">
+  <div class="pg" style="background:#fff;">
+    <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">How We Work</div></div>
+    <div class="pad" style="padding-bottom:28px;">
+      <div class="eyebrow" style="margin-top:3px;">Our process</div>
+      <div class="h1" style="font-size:15px;margin-bottom:8px;">Simple, structured,<br>no surprises.</div>
+
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div><div class="step-title">Discovery call</div><div class="step-body">A 45-minute conversation to understand what is broken, what tools you are running, and what outcomes matter most. No quote before we understand the real problem.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div><div class="step-title">Scoped proposal with Statement of Work</div><div class="step-body">Clear deliverables, realistic timelines, and fixed fees. A formal SOW so both sides know exactly what is expected from the start.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div><div class="step-title">30-day build phase</div><div class="step-body">We map workflows, identify bottlenecks, and build the infrastructure. Ends with full documentation and a clear handover.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <div><div class="step-title">Ongoing support</div><div class="step-body">Monthly retainer or project-by-project, covered by defined SLAs. You know exactly what to expect and when.</div></div>
+      </div>
+
+      <div class="invest-note">
+        <div class="invest-title">Typical investment range</div>
+        <div class="invest-body">For businesses between $1M and $5M, retainer engagements typically start from $1,500 to $2,500 per month. Fixed-scope projects run $3,000 to $8,000. Scoped to deliverables, not hours.</div>
+      </div>
+
+      <div style="margin-top:7px;"><div class="eyebrow" style="margin-bottom:4px;">Who we work with best</div></div>
+      <div class="who-grid">
+        <div class="who-card"><div class="who-title">Growing SMBs</div><div class="who-body">$1M to $10M businesses where manual processes are breaking under growth pressure.</div></div>
+        <div class="who-card"><div class="who-title">Slow close cycles</div><div class="who-body">Month-end close taking more than a week with a structural root cause.</div></div>
+        <div class="who-card"><div class="who-title">Fractional CFO clients</div><div class="who-body">Businesses with part-time finance leadership that need cleaner ops underneath.</div></div>
+        <div class="who-card"><div class="who-title">Spreadsheet-dependent reporting</div><div class="who-body">Financial reporting still living in one person's Excel file.</div></div>
+      </div>
+    </div>
+    <div class="bar">
+      <span>Finology Nexus &nbsp;·&nbsp; Confidential</span>
+      <span class="bar-sep">·</span>
+      <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+      <span class="bar-sep">·</span>
+      <span>+91 95104 06535</span>
+      <span class="bar-sep">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- SPREAD 5 — BACK COVER -->
+<div class="page page-l hidden" id="s5l">
+  <div class="pg">
+    <div class="c-circle" style="width:320px;height:320px;right:-80px;top:-70px;"></div>
+    <div class="c-circle" style="width:180px;height:180px;left:-50px;bottom:30px;"></div>
+    <div class="bc-deco">FINOLOGY</div>
+    <div style="position:absolute;inset:0;padding:28px 26px 34px;display:flex;flex-direction:column;justify-content:center;z-index:1;">
+      <div style="width:28px;height:2px;background:rgba(196,151,58,0.4);margin-bottom:16px;"></div>
+      <div class="bc-quote">
+        When the infrastructure underneath is clean and structured, every financial conversation becomes more powerful. Because the numbers you are looking at are ones you can actually stand behind.
+      </div>
+      <div class="bc-attr">Finology Nexus &nbsp;·&nbsp; Our founding principle</div>
+      <div style="margin-top:18px;font-size:8px;letter-spacing:0.5px;color:rgba(255,255,255,0.2);font-weight:300;">
+        www.linkedin.com/company/finology-nexus
+      </div>
+    </div>
+    <div class="bar-dk">
+      <span>info@finologynexus.com</span>
+      <span style="color:rgba(196,151,58,0.4);">·</span>
+      <span>+91 95104 06535</span>
+      <span style="color:rgba(196,151,58,0.4);">·</span>
+      <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="page page-r hidden" id="s5r">
+  <div class="pg">
+    <div class="c-circle" style="width:250px;height:250px;right:-45px;bottom:-35px;"></div>
+    <div style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:space-between;z-index:1;">
+      <div>
+        <div class="bc-attr" style="margin-bottom:8px;">Get in touch</div>
+        <div class="bc-cta">
+          When you see the gap,<br>you will know<br><em>who to call.</em>
+        </div>
+        <div class="bc-body-text">
+          The best referrals happen naturally. When a client's reporting is unreliable, their close is running into the third week, or their financial data lives in a spreadsheet only one person understands, that is the moment. Reach out and we will take it from there.
+        </div>
+        <div class="contact-cards">
+          <div class="cc"><div class="cc-label">Website</div><div class="cc-val">www.finologynexus.com</div></div>
+          <div class="cc"><div class="cc-label">Email</div><div class="cc-val">info@finologynexus.com</div></div>
+          <div class="cc"><div class="cc-label">Phone</div><div class="cc-val">+91 95104 06535</div></div>
+          <div class="cc"><div class="cc-label">Free client tool</div><div class="cc-val">www.finologynexus.com/finpulse</div></div>
+          <div class="cc"><div class="cc-label">LinkedIn</div><div class="cc-val">www.linkedin.com/company/finology-nexus</div></div>
+        </div>
+      </div>
+      <div class="bc-brand-row">
+        <div>
+          <div class="bc-brand">Finology Nexus</div>
+          <div class="bc-brand-sub">Financial Intelligence &amp; Operations</div>
+        </div>
+        <div class="bc-url">www.finologynexus.com</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /booklet -->
+
+<!-- ═══════════════════════════════════
+     PRINT-ONLY DOCUMENT
+     Hidden on screen, shown only @print
+     5 spreads × A4 landscape
+════════════════════════════════════ -->
+<div id="print-doc">
+
+  <!-- SPREAD 1 — COVER -->
+  <div class="ps">
+    <div class="ph ph-navy" style="display:flex;flex-direction:column;justify-content:flex-end;padding:22pt 20pt 28pt;">
+      <div style="width:20pt;height:1pt;background:rgba(196,151,58,0.4);margin-bottom:14pt;"></div>
+      <div class="c-quote">Most growing businesses have good accountants. What they are missing is the operational infrastructure that makes their numbers actually reliable.</div>
+      <div class="c-attr">Finology Nexus</div>
+      <div style="width:20pt;height:0.75pt;background:rgba(196,151,58,0.35);margin-top:8pt;"></div>
+      <div style="margin-top:12pt;font-size:6.5pt;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.15);font-weight:300;">Company Overview · 2025</div>
+      <div class="pbar pbar-dk" style="background:rgba(0,0,0,0.2)!important;">
+        <span>info@finologynexus.com · +91 95104 06535</span>
+        <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+    <div class="ph ph-navy" style="padding:22pt 20pt;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div style="margin-bottom:4pt;">
+          <span class="logo-mark-p">
+            <svg viewBox="0 0 16 16" fill="none" width="12" height="12">
+              <path d="M2 12L5.5 7.5L8.5 10.5L12.5 5.5" stroke="#0c1e35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12.5" cy="5.5" r="1.4" fill="#0c1e35"/>
+            </svg>
+          </span>
+          <span class="logo-name-p">Finology Nexus</span>
+        </div>
+        <div style="font-size:6pt;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:6pt;">Financial Intelligence &amp; Operations</div>
+        <div class="cover-hl">Where enterprise<br>discipline meets<br><em>growing business</em><br>reality.</div>
+        <div style="width:28pt;height:1.5pt;background:#c4973a;margin:8pt 0;"></div>
+        <div class="cover-desc">We bring the financial operations infrastructure that large enterprises take for granted within reach of fast-growing businesses that need it most but cannot yet afford to build it internally.</div>
+        <div class="stats-g">
+          <div class="stat-item"><div class="stat-big">99.5%</div><div class="stat-lbl">Output accuracy across client datasets</div></div>
+          <div class="stat-item"><div class="stat-big">83%</div><div class="stat-lbl">Reduction in manual validation time</div></div>
+          <div class="stat-item"><div class="stat-big">3 days</div><div class="stat-lbl">Financial close, down from 10 days</div></div>
+          <div class="stat-item"><div class="stat-big">40%</div><div class="stat-lbl">Efficiency gain through automation</div></div>
+        </div>
+      </div>
+      <div style="border-top:0.5pt solid rgba(255,255,255,0.1);padding-top:6pt;display:flex;justify-content:space-between;font-size:6.5pt;color:rgba(255,255,255,0.22);">
+        <span>info@finologynexus.com · +91 95104 06535</span>
+        <a href="https://www.finologynexus.com" style="color:#c4973a;text-decoration:none;">www.finologynexus.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 2 — WHO WE ARE -->
+  <div class="ps">
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">Who We Are</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">The problem we solve</div>
+        <div class="h1p" style="font-size:14pt;margin-bottom:5pt;">Your accountant does the books.<br>Nobody owns what sits between.</div>
+        <div class="bodyp">Most businesses at the $1M to $10M stage have accounting covered. They may even have a fractional CFO advising at the top. But the layer in between — the data infrastructure, workflows, reporting systems, and validation processes — is often nobody's job. The result? Reports that take too long, numbers that nobody fully trusts, and a finance function that is always catching up instead of looking ahead.</div>
+        <div class="gold-rule"></div>
+        <div class="sblk">
+          <div class="sblk-t">Where Finology Nexus came from</div>
+          <div class="sblk-b">Our founder spent years inside enterprise finance environments, including S&amp;P Global, building the exact kind of infrastructure growing businesses rarely have access to. Automated validation pipelines. Clean data architecture. Reporting systems that actually run on schedule. We built Finology Nexus to make that same capability available to businesses that need it without needing a team of 20 to get there.</div>
+        </div>
+        <div class="mstats">
+          <div class="mcard"><div class="mnum">83%</div><div class="mlbl">Manual validation time cut</div></div>
+          <div class="mcard"><div class="mnum">10→3</div><div class="mlbl">Close days after rebuild</div></div>
+          <div class="mcard"><div class="mnum">18%</div><div class="mlbl">Rework rate reduction</div></div>
+        </div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">Our Team</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">Credentials</div>
+        <div class="h1p" style="font-size:14pt;margin-bottom:6pt;">Enterprise expertise.<br>SMB focus.</div>
+        <div class="dblk">
+          <div class="dblk-lbl">Founding background</div>
+          <div class="dblk-t">Built inside the institutions that set the benchmark</div>
+          <div class="dblk-b">Our team brings direct experience from S&amp;P Global and leading US-based financial intelligence companies. We have built data pipelines, automated workflows pulling from Moody's, Fitch, and S&amp;P, cut daily validation time from 90 minutes to 15, and driven 99.5% output accuracy across all client deliverables. This is not theoretical. We have done it at scale.</div>
+        </div>
+        <div class="sblk">
+          <div class="sblk-t">You always know who is doing the work</div>
+          <div class="sblk-b">Every engagement is led by our founding team directly. There is no account management layer, no handoff to junior staff after the contract is signed. The person who scopes the project delivers it. That accountability is intentional.</div>
+        </div>
+        <div style="margin-top:6pt;">
+          <div class="eyebrow">How we fit alongside your controller or CFO</div>
+          <div class="bodyp" style="font-size:7.5pt;">We work in the infrastructure layer, not the strategy layer. Our outputs feed your controller or CFO, not around them. We define clear handoffs from day one and never step into a role that is already owned.</div>
+        </div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 3 — SERVICES -->
+  <div class="ps">
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">Our Services</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">What we do</div>
+        <div class="h1p" style="font-size:13pt;margin-bottom:6pt;">Five capabilities.<br>One operational layer.</div>
+        <div class="svc"><div class="svc-bar"></div><div class="svc-in">
+          <div class="svc-t">Financial Operations and Reporting</div>
+          <div class="svc-b">We build the reporting frameworks, cash flow models, and reconciliation systems that make your numbers reliable and your close predictable.</div>
+          <div class="tags"><span class="tag">Cash flow modelling</span><span class="tag">Month-end close</span><span class="tag">KPI dashboards</span></div>
+        </div></div>
+        <div class="svc"><div class="svc-bar"></div><div class="svc-in">
+          <div class="svc-t">Data Extraction and Automation</div>
+          <div class="svc-b">Every manual extraction, validation, and formatting task is a cost and a risk. We identify them, replace them with structured automation, and deliver auditable output on a consistent schedule.</div>
+          <div class="tags"><span class="tag">Multi-source consolidation</span><span class="tag">QA governance</span><span class="tag">Audit trail</span></div>
+        </div></div>
+        <div class="svc"><div class="svc-bar"></div><div class="svc-in">
+          <div class="svc-t">Workflow and Process Automation</div>
+          <div class="svc-b">We map your financial workflows end to end, find where manual steps create bottlenecks or introduce error, and automate them cleanly.</div>
+          <div class="tags"><span class="tag">Workflow mapping</span><span class="tag">QBO</span><span class="tag">Xero</span><span class="tag">Dynamics</span><span class="tag">Business Central</span></div>
+        </div></div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">Our Services</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">Continued</div>
+        <div class="h1p" style="font-size:13pt;margin-bottom:6pt;">Supporting the<br>complete picture.</div>
+        <div class="svc"><div class="svc-bar"></div><div class="svc-in">
+          <div class="svc-t">Process Design and Standard Operating Procedures</div>
+          <div class="svc-b">Fast growth often means critical processes live only in one person's head. We design formal, documented SOPs for every key financial process so the business can scale and hold itself accountable.</div>
+          <div class="tags"><span class="tag">SOP documentation</span><span class="tag">RACI mapping</span><span class="tag">Onboarding playbooks</span><span class="tag">Data governance</span></div>
+        </div></div>
+        <div class="svc"><div class="svc-bar"></div><div class="svc-in">
+          <div class="svc-t">Embedded Support and Offshore Operations</div>
+          <div class="svc-b">A dedicated financial operations function without the cost of an internal hire. We embed as a consistent part of your team, delivering on a defined schedule under clear SLAs.</div>
+          <div class="tags"><span class="tag">Fractional data ops</span><span class="tag">SLA-backed delivery</span><span class="tag">Offshore efficiency</span></div>
+        </div></div>
+        <div class="cbox">
+          <div class="eyebrow" style="margin-bottom:2pt;">Tool compatibility</div>
+          <div class="bodyp" style="font-size:7.5pt;">We are completely tool-agnostic. Clients running QuickBooks, Xero, Dynamics 365, Business Central, SAP, or any other platform can engage us without changing a thing. We build on top of what you already have.</div>
+        </div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 4 — PRODUCTS + HOW WE WORK -->
+  <div class="ps">
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">Our Products</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">Built tools</div>
+        <div class="h1p" style="font-size:12pt;margin-bottom:3pt;">Clarity in your clients' hands.</div>
+        <div class="bodyp" style="font-size:7pt;margin-bottom:5pt;">Alongside our services, we develop standalone tools that give business owners direct visibility without needing a consultant on call every time.</div>
+        <div class="pgrid">
+          <div class="pcard">
+            <div class="pcard-eye">Product</div>
+            <div class="pcard-name">VendorScan</div>
+            <div class="pcard-desc">Vendor compliance documentation, structured and audit-ready.</div>
+            <div class="ptags"><span class="ptag">Compliance</span><span class="ptag">Audit-ready</span></div>
+          </div>
+          <div class="pcard">
+            <div class="pcard-eye">Product</div>
+            <div class="pcard-name">CashMap</div>
+            <div class="pcard-desc">Forward-looking cash flow visibility. See where pressure will appear and when.</div>
+            <div class="ptags"><span class="ptag">Cash visibility</span><span class="ptag">Scenarios</span></div>
+          </div>
+          <div class="pcard">
+            <div class="pcard-eye">Product</div>
+            <div class="pcard-name">ComplianceCheck</div>
+            <div class="pcard-desc">Financial compliance monitoring for growing businesses without a dedicated compliance team.</div>
+            <div class="ptags"><span class="ptag">Monitoring</span><span class="ptag">Alerts</span></div>
+          </div>
+          <div class="pcard pcard-dev">
+            <div class="pcard-badge">In development</div>
+            <div class="pcard-eye">Coming soon</div>
+            <div class="pcard-name" style="font-size:9pt;">Financial Entry Tracker</div>
+            <div class="pcard-desc">Every financial entry tracked centrally. Supports PDF, XML, JPEG.</div>
+            <div class="ptags"><span class="ptag">PDF</span><span class="ptag">XML</span></div>
+          </div>
+        </div>
+        <div class="pulse">
+          <div class="pulse-icon">
+            <svg viewBox="0 0 20 20" fill="none" width="14" height="14">
+              <path d="M3 13L6.5 8.5L10 12L14 7L17 9" stroke="#0c1e35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="17" cy="9" r="1.5" fill="#0c1e35"/>
+            </svg>
+          </div>
+          <div>
+            <div class="pulse-name">FinPulse <span style="font-size:7pt;font-weight:300;color:rgba(255,255,255,0.4);">Free tool</span></div>
+            <div class="pulse-desc">A free financial health check. Share it with a client in 30 seconds. No signup required.</div>
+            <span class="pulse-url">www.finologynexus.com/finpulse</span>
+          </div>
+        </div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+    <div class="ph ph-white">
+      <div class="pstrip"><div class="pstrip-logo">Finology Nexus</div><div class="pstrip-tag">How We Work</div></div>
+      <div class="ppad">
+        <div class="eyebrow" style="margin-top:3pt;">Our process</div>
+        <div class="h1p" style="font-size:12pt;margin-bottom:6pt;">Simple, structured,<br>no surprises.</div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-t">Discovery call</div><div class="step-b">A 45-minute conversation to understand what is broken, what tools you are running, and what outcomes matter most.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-t">Scoped proposal with Statement of Work</div><div class="step-b">Clear deliverables, realistic timelines, and fixed fees. A formal SOW so both sides know exactly what to expect.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-t">30-day build phase</div><div class="step-b">We map workflows, identify bottlenecks, and build the infrastructure. Full documentation and clear handover.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div><div class="step-t">Ongoing support</div><div class="step-b">Monthly retainer or project-by-project, covered by defined SLAs.</div></div></div>
+        <div class="inv">
+          <div class="inv-t">Typical investment range</div>
+          <div class="inv-b">Retainer engagements from $1,500–$2,500/month. Fixed-scope projects $3,000–$8,000. Scoped to deliverables, not hours.</div>
+        </div>
+        <div class="eyebrow" style="margin-bottom:4pt;">Who we work with best</div>
+        <div class="wgrid">
+          <div class="wcard"><div class="wcard-t">Growing SMBs</div><div class="wcard-b">$1M–$10M businesses where manual processes are breaking under growth.</div></div>
+          <div class="wcard"><div class="wcard-t">Slow close cycles</div><div class="wcard-b">Month-end close taking more than a week with a structural root cause.</div></div>
+          <div class="wcard"><div class="wcard-t">Fractional CFO clients</div><div class="wcard-b">Part-time finance leadership that needs cleaner ops underneath.</div></div>
+          <div class="wcard"><div class="wcard-t">Spreadsheet-dependent reporting</div><div class="wcard-b">Financial reporting living in one person's Excel file.</div></div>
+        </div>
+      </div>
+      <div class="pbar">
+        <span>Finology Nexus · Confidential</span>
+        <span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a>
+        <span>·</span><span>+91 95104 06535</span>
+        <span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPREAD 5 — BACK COVER -->
+  <div class="ps">
+    <div class="ph ph-navy" style="display:flex;flex-direction:column;justify-content:center;padding:22pt 20pt 28pt;">
+      <div style="width:20pt;height:1.5pt;background:rgba(196,151,58,0.4);margin-bottom:14pt;"></div>
+      <div class="c-quote">When the infrastructure underneath is clean and structured, every financial conversation becomes more powerful. Because the numbers you are looking at are ones you can actually stand behind.</div>
+      <div class="c-attr">Finology Nexus · Our founding principle</div>
+      <div style="margin-top:16pt;font-size:6.5pt;letter-spacing:0.5px;color:rgba(255,255,255,0.2);">www.linkedin.com/company/finology-nexus</div>
+      <div class="pbar pbar-dk">
+        <span>info@finologynexus.com · +91 95104 06535</span>
+        <a href="https://www.finologynexus.com">www.finologynexus.com</a>
+      </div>
+    </div>
+    <div class="ph ph-navy" style="padding:22pt 20pt;display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div class="c-attr" style="margin-bottom:7pt;">Get in touch</div>
+        <div class="bc-cta">When you see the gap,<br>you will know<br><em>who to call.</em></div>
+        <div class="bc-body">The best referrals happen naturally. When a client's reporting is unreliable, their close is running into the third week, or their financial data lives in a spreadsheet only one person understands — that is the moment. Reach out and we will take it from there.</div>
+        <div class="cc"><div class="cc-lbl">Website</div><div class="cc-val">www.finologynexus.com</div></div>
+        <div class="cc"><div class="cc-lbl">Email</div><div class="cc-val">info@finologynexus.com</div></div>
+        <div class="cc"><div class="cc-lbl">Phone</div><div class="cc-val">+91 95104 06535</div></div>
+        <div class="cc"><div class="cc-lbl">Free client tool</div><div class="cc-val">www.finologynexus.com/finpulse</div></div>
+        <div class="cc"><div class="cc-lbl">LinkedIn</div><div class="cc-val">www.linkedin.com/company/finology-nexus</div></div>
+      </div>
+      <div class="bc-foot">
+        <div><div class="bc-brand">Finology Nexus</div><div class="bc-brand-sub">Financial Intelligence &amp; Operations</div></div>
+        <div class="bc-url">www.finologynexus.com</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /print-doc -->
+
+<script>
+const TOTAL = 5;
+let cur = 1, busy = false;
+
+const LEFT  = ['s1l','s2l','s3l','s4l','s5l'];
+const RIGHT = ['s1r','s2r','s3r','s4r','s5r'];
+
+const btnP = document.getElementById('btn-prev');
+const btnN = document.getElementById('btn-next');
+const dotsEl = document.getElementById('dots');
+const ctr  = document.getElementById('counter');
+
+for (let i = 0; i < TOTAL; i++) {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  d.onclick = () => goTo(i + 1);
+  dotsEl.appendChild(d);
+}
+
+function el(id) { return document.getElementById(id); }
+
+function setVisible(spread) {
+  LEFT.forEach((id, i) => {
+    const e = el(id);
+    e.className = 'page page-l' + (i + 1 === spread ? ' visible' : ' hidden');
+  });
+  RIGHT.forEach((id, i) => {
+    const e = el(id);
+    e.className = 'page page-r' + (i + 1 === spread ? ' visible' : ' hidden');
+  });
+}
+
+function updateUI(n) {
+  ctr.textContent = n + ' / ' + TOTAL;
+  btnP.classList.toggle('gone', n === 1);
+  btnN.classList.toggle('gone', n === TOTAL);
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('on', i + 1 === n));
+}
+
+function goTo(target) {
+  if (busy || target === cur || target < 1 || target > TOTAL) return;
+  busy = true;
+
+  const dir = target > cur ? 1 : -1;
+  const oldL = el(LEFT[cur - 1]);
+  const oldR = el(RIGHT[cur - 1]);
+  const newL = el(LEFT[target - 1]);
+  const newR = el(RIGHT[target - 1]);
+
+  newL.className = 'page page-l hidden';
+  newR.className = 'page page-r hidden';
+  newL.offsetHeight; newR.offsetHeight;
+
+  if (dir === 1) {
+    oldL.className = 'page page-l anim-out';
+    oldR.className = 'page page-r anim-out';
+    newL.className = 'page page-l anim-in';
+    newR.className = 'page page-r anim-in';
+  } else {
+    oldR.className = 'page page-r anim-out';
+    oldL.className = 'page page-l anim-out';
+    newR.className = 'page page-r anim-in';
+    newL.className = 'page page-l anim-in';
+  }
+
+  setTimeout(() => {
+    setVisible(target);
+    cur = target;
+    updateUI(cur);
+    busy = false;
+  }, 670);
+}
+
+btnP.onclick = () => goTo(cur - 1);
+btnN.onclick = () => goTo(cur + 1);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(cur + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(cur - 1);
+});
+
+let tx = null;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 45) goTo(dx < 0 ? cur + 1 : cur - 1);
+  tx = null;
+});
+
+document.getElementById('booklet').addEventListener('click', e => {
+  const rect = document.getElementById('booklet').getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  if (x < rect.width * 0.35) goTo(cur - 1);
+  else if (x > rect.width * 0.65) goTo(cur + 1);
+});
+
+updateUI(1);
+</script>
+</body>
+</html>
