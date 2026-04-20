@@ -7,15 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c4973a'/%3E%3Cpath d='M6 24L11 17L15 21L21 13L26 16' stroke='%230c1e35' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='26' cy='16' r='2.5' fill='%230c1e35'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- ================================================================
-     FINOLOGY NEXUS · UNIVERSAL TRACKER v4
-     Visitor tracking: geo, scroll, time-on-page, UTM source detection.
-     Consistent with all other Finology Nexus pages.
-================================================================ -->
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','G-GZ1RDVHZZP');</script>
-<!-- End Google Tag Manager -->
 
 <!-- Microsoft Clarity -->
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s1b20qvd2s");</script>
@@ -136,8 +129,6 @@ async function sendNotification(table, record) {
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saveExit(); });
 })();
 </script>
-
-<!-- ================================================================ -->
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -421,7 +412,8 @@ body::before {
 .bar span { font-size: 7.5px; white-space: nowrap; }
 .bar a { color: var(--gold); text-decoration: none; font-size: 7.5px; white-space: nowrap; }
 .bar-sep { color: #d5c9b4; }
-.pad { padding: 13px 20px 30px; height: calc(100% - 36px); overflow: hidden; }
+/* FIX: pad height accounts for strip (36px) + bar (26px) = 62px total */
+.pad { padding: 13px 20px 32px; height: calc(100% - 36px); overflow: hidden; }
 
 /* COVER */
 #s1l .pg { background: var(--navy); }
@@ -489,18 +481,18 @@ body::before {
 .pulse-desc { font-size: 8.5px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
 .pulse-url { font-size: 8.5px; font-weight: 500; color: var(--gold); margin-top: 2px; display: block; }
 
-/* HOW WE WORK */
-.step { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
-.step-circle { width: 24px; height: 24px; border-radius: 50%; background: var(--navy); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 700; color: var(--gold); }
-.step-title { font-family: 'Playfair Display', serif; font-size: 11px; font-weight: 600; color: var(--navy); margin-bottom: 1px; }
-.step-body { font-size: 9.5px; font-weight: 300; color: var(--text); line-height: 1.6; }
-.invest-note { background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 5px 5px 0; padding: 8px 12px; margin: 8px 0; }
-.invest-title { font-size: 9.5px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-.invest-body { font-size: 9px; font-weight: 300; color: var(--text); line-height: 1.6; }
-.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-.who-card { background: var(--cream); border-radius: 5px; padding: 7px 9px; }
-.who-title { font-family: 'Playfair Display', serif; font-size: 10.5px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
-.who-body { font-size: 8.5px; font-weight: 300; color: var(--text); line-height: 1.55; }
+/* HOW WE WORK — FIX: tighter spacing to prevent overflow */
+.step { display: flex; gap: 9px; margin-bottom: 6px; align-items: flex-start; }
+.step-circle { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 10px; font-weight: 700; color: var(--gold); }
+.step-title { font-family: 'Playfair Display', serif; font-size: 10.5px; font-weight: 600; color: var(--navy); margin-bottom: 1px; }
+.step-body { font-size: 9px; font-weight: 300; color: var(--text); line-height: 1.55; }
+.invest-note { background: var(--cream); border-left: 3px solid var(--gold); border-radius: 0 5px 5px 0; padding: 7px 11px; margin: 7px 0; }
+.invest-title { font-size: 9px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.invest-body { font-size: 8.5px; font-weight: 300; color: var(--text); line-height: 1.55; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+.who-card { background: var(--cream); border-radius: 5px; padding: 6px 8px; }
+.who-title { font-family: 'Playfair Display', serif; font-size: 9.5px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.who-body { font-size: 8px; font-weight: 300; color: var(--text); line-height: 1.5; }
 
 /* BACK COVER */
 #s5l .pg, #s5r .pg { background: var(--navy); }
@@ -729,27 +721,60 @@ body::before {
   </div>
 </div>
 
+<!-- ============================================================
+     SPREAD 4 RIGHT — HOW WE WORK
+     FIX: Added missing </div> to close .invest-note
+          Added missing </div> to close .pad
+          Tightened spacing so content fits within page height
+     ============================================================ -->
 <div class="page page-r hidden" id="s4r">
   <div class="pg" style="background:#fff;">
     <div class="strip"><div class="strip-logo">Finology Nexus</div><div class="strip-tag">How We Work</div></div>
     <div class="pad" style="padding-bottom:28px;">
       <div class="eyebrow" style="margin-top:3px;">Our process</div>
-      <div class="h1" style="font-size:15px;margin-bottom:8px;">Simple, structured,<br>no surprises.</div>
-      <div class="step"><div class="step-circle">1</div><div><div class="step-title">Discovery call</div><div class="step-body">A 45-minute conversation to understand what is broken, what tools you are running, and what outcomes matter most. No quote before we understand the real problem.</div></div></div>
-      <div class="step"><div class="step-circle">2</div><div><div class="step-title">Scoped proposal with Statement of Work</div><div class="step-body">Clear deliverables, realistic timelines, and fixed fees. A formal SOW so both sides know exactly what is expected from the start.</div></div></div>
-      <div class="step"><div class="step-circle">3</div><div><div class="step-title">30-day build phase</div><div class="step-body">We map workflows, identify bottlenecks, and build the infrastructure. Ends with full documentation and a clear handover.</div></div></div>
-      <div class="step"><div class="step-circle">4</div><div><div class="step-title">Ongoing support</div><div class="step-body">Monthly retainer or project-by-project, covered by defined SLAs. You know exactly what to expect and when.</div></div></div>
+      <div class="h1" style="font-size:15px;margin-bottom:7px;">Simple, structured,<br>no surprises.</div>
+      <div class="step">
+        <div class="step-circle">1</div>
+        <div>
+          <div class="step-title">Discovery call</div>
+          <div class="step-body">A 45-minute conversation to understand what is broken, what tools you are running, and what outcomes matter most. No quote before we understand the real problem.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">2</div>
+        <div>
+          <div class="step-title">Scoped proposal with Statement of Work</div>
+          <div class="step-body">Clear deliverables, realistic timelines, and fixed fees. A formal SOW so both sides know exactly what is expected from the start.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <div>
+          <div class="step-title">30-day build phase</div>
+          <div class="step-body">We map workflows, identify bottlenecks, and build the infrastructure. Ends with full documentation and a clear handover.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <div>
+          <div class="step-title">Ongoing support</div>
+          <div class="step-body">Monthly retainer or project-by-project, covered by defined SLAs. You know exactly what to expect and when.</div>
+        </div>
+      </div>
+      <!-- FIX: invest-note is now its own self-contained block, properly closed -->
       <div class="invest-note">
         <div class="invest-title">Typical investment range</div>
-        <div class="invest-body">For businesses between $1M and $5M, retainer engagements typically start from $800/month, depending on workflow complexity, reporting scope, and automation depth. Fixed-scope projects typically start from $2,000, scoped to deliverables rather than hours.</div>
-      <div style="margin-top:7px;"><div class="eyebrow" style="margin-bottom:4px;">Who we work with best</div></div>
+        <div class="invest-body">For businesses between $1M to $15M, retainer engagements typically start from $800/month, depending on workflow complexity, reporting scope, and automation depth. Fixed-scope projects typically start from $2,000, scoped to deliverables rather than hours.</div>
+      </div>
+      <!-- FIX: who-grid is now a sibling of invest-note, not nested inside it -->
+      <div class="eyebrow" style="margin-bottom:4px;">Who we work with best</div>
       <div class="who-grid">
         <div class="who-card"><div class="who-title">Growing SMBs</div><div class="who-body">$1M to $10M businesses where manual processes are breaking under growth pressure.</div></div>
         <div class="who-card"><div class="who-title">Slow close cycles</div><div class="who-body">Month-end close taking more than a week with a structural root cause.</div></div>
         <div class="who-card"><div class="who-title">Fractional CFO clients</div><div class="who-body">Businesses with part-time finance leadership that need cleaner ops underneath.</div></div>
-        <div class="who-card"><div class="who-title">Spreadsheet-dependent reporting</div><div class="who-body">Financial reporting still living in one person's Excel file.</div></div>
+        <div class="who-card"><div class="who-title">Spreadsheet-dependent</div><div class="who-body">Financial reporting still living in one person's Excel file.</div></div>
       </div>
-    </div>
+    </div><!-- /pad -->
     <div class="bar">
       <span>Finology Nexus &nbsp;·&nbsp; Confidential</span><span class="bar-sep">·</span>
       <a href="mailto:info@finologynexus.com">info@finologynexus.com</a><span class="bar-sep">·</span>
@@ -843,7 +868,7 @@ body::before {
       <div class="ppad">
         <div class="eyebrow" style="margin-top:3pt;">The problem we solve</div>
         <div class="h1p" style="font-size:14pt;margin-bottom:5pt;">Your accountant does the books.<br>Nobody owns what sits between.</div>
-        <div class="bodyp">Most businesses at the $1M to $10M stage have accounting covered. They may even have a fractional CFO advising at the top. But the layer in between — the data infrastructure, workflows, reporting systems, and validation processes — is often nobody's job. The result? Reports that take too long, numbers that nobody fully trusts, and a finance function that is always catching up instead of looking ahead.</div>
+        <div class="bodyp">Most businesses at the $1M to $15M stage have accounting covered. They may even have a fractional CFO advising at the top. But the layer in between — the data infrastructure, workflows, reporting systems, and validation processes — is often nobody's job. The result? Reports that take too long, numbers that nobody fully trusts, and a finance function that is always catching up instead of looking ahead.</div>
         <div class="gold-rule"></div>
         <div class="sblk"><div class="sblk-t">Where Finology Nexus came from</div><div class="sblk-b">Our founder spent years inside enterprise finance environments, including S&amp;P Global, building the exact kind of infrastructure growing businesses rarely have access to. Automated validation pipelines. Clean data architecture. Reporting systems that actually run on schedule. We built Finology Nexus to make that same capability available to businesses that need it without needing a team of 20 to get there.</div></div>
         <div class="mstats"><div class="mcard"><div class="mnum">83%</div><div class="mlbl">Manual validation time cut</div></div><div class="mcard"><div class="mnum">10→3</div><div class="mlbl">Close days after rebuild</div></div><div class="mcard"><div class="mnum">18%</div><div class="mlbl">Rework rate reduction</div></div></div>
@@ -914,13 +939,13 @@ body::before {
         <div class="step"><div class="step-num">2</div><div><div class="step-t">Scoped proposal with Statement of Work</div><div class="step-b">Clear deliverables, realistic timelines, and fixed fees. A formal SOW so both sides know exactly what to expect.</div></div></div>
         <div class="step"><div class="step-num">3</div><div><div class="step-t">30-day build phase</div><div class="step-b">We map workflows, identify bottlenecks, and build the infrastructure. Full documentation and clear handover.</div></div></div>
         <div class="step"><div class="step-num">4</div><div><div class="step-t">Ongoing support</div><div class="step-b">Monthly retainer or project-by-project, covered by defined SLAs.</div></div></div>
-        <div class="inv"><div class="inv-t">Typical investment range</div><div class="inv-b">Retainer engagements from $1,500 to $2,500/month. Fixed-scope projects $3,000 to $8,000. Scoped to deliverables, not hours.</div></div>
+        <div class="inv"><div class="inv-t">Typical investment range</div><div class="inv-b">Retainer engagements from $800/month. Fixed-scope projects from $2,000. Scoped to deliverables, not hours.</div></div>
         <div class="eyebrow" style="margin-bottom:4pt;">Who we work with best</div>
         <div class="wgrid">
-          <div class="wcard"><div class="wcard-t">Growing SMBs</div><div class="wcard-b">$1M to $10M businesses where manual processes are breaking under growth.</div></div>
+          <div class="wcard"><div class="wcard-t">Growing SMBs</div><div class="wcard-b">$1M to $15M businesses where manual processes are breaking under growth.</div></div>
           <div class="wcard"><div class="wcard-t">Slow close cycles</div><div class="wcard-b">Month-end close taking more than a week with a structural root cause.</div></div>
           <div class="wcard"><div class="wcard-t">Fractional CFO clients</div><div class="wcard-b">Part-time finance leadership that needs cleaner ops underneath.</div></div>
-          <div class="wcard"><div class="wcard-t">Spreadsheet-dependent reporting</div><div class="wcard-b">Financial reporting living in one person's Excel file.</div></div>
+          <div class="wcard"><div class="wcard-t">Spreadsheet-dependent</div><div class="wcard-b">Financial reporting living in one person's Excel file.</div></div>
         </div>
       </div>
       <div class="pbar"><span>Finology Nexus · Confidential</span><span>·</span><a href="mailto:info@finologynexus.com">info@finologynexus.com</a><span>·</span><span>+91 95104 06535</span><span>·</span><a href="https://www.finologynexus.com">www.finologynexus.com</a></div>
