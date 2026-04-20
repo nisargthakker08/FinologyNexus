@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finology Nexus — Company Brochure</title>
+<title>Finology Nexus | Company Brochure</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23c4973a'/%3E%3Cpath d='M6 24L11 17L15 21L21 13L26 16' stroke='%230c1e35' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='26' cy='16' r='2.5' fill='%230c1e35'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -137,6 +138,23 @@ body::before {
 }
 #btn-download svg { width: 12px; height: 12px; flex-shrink: 0; }
 
+#btn-home {
+  position: fixed; top: 18px; left: calc(50% - 450px);
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 20px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.45); font-size: 9px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s; z-index: 200;
+  font-family: 'Nunito Sans', sans-serif;
+  text-decoration: none;
+}
+#btn-home:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.75); transform: translateY(-1px);
+}
+#btn-home svg { width: 12px; height: 12px; flex-shrink: 0; }
+
 /* ── PRINT LAYOUT ── */
 #print-doc { display: none; }
 
@@ -146,7 +164,7 @@ body::before {
 
   /* Hide interactive booklet entirely */
   body::before,
-  #top-label, #btn-prev, #btn-next, #dots, #counter, #btn-download,
+  #top-label, #btn-prev, #btn-next, #dots, #counter, #btn-download, #btn-home,
   #booklet { display: none !important; }
 
   /* Show the flat print document */
@@ -760,6 +778,12 @@ body::before {
 <body>
 
 <div id="top-label">Finology Nexus &nbsp;·&nbsp; Company Brochure</div>
+<a href="https://www.finologynexus.com" id="btn-home">
+  <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 5.5L6 1.5L11 5.5V11H8V8H4V11H1V5.5Z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Home
+</a>
 <button class="nav-btn gone" id="btn-prev">&#8592;</button>
 <button class="nav-btn" id="btn-next">&#8594;</button>
 <div id="dots"></div>
