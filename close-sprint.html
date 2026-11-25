@@ -669,6 +669,29 @@ else attachFormCapture();
       .sprint-facts{grid-template-columns:1fr 1fr 1fr;}
       .price-big{font-size:3.2rem;}
     }
+    /* ===== BOOKING FORM ===== */
+    .book-section{padding:7rem 4rem;background:var(--paper);display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;scroll-margin-top:5rem;}
+    .book-points{list-style:none;margin-top:2rem;}
+    .book-points li{font-size:0.9rem;color:var(--ink-muted);padding:0.7rem 0;border-bottom:1px solid var(--line);display:flex;gap:0.75rem;font-weight:300;}
+    .book-points li::before{content:'✦';color:var(--accent);font-size:0.6rem;margin-top:0.4rem;}
+    .book-form{background:var(--paper-warm);border:1px solid var(--line);padding:2.5rem;}
+    .bf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+    .bf-field{display:flex;flex-direction:column;gap:0.4rem;}
+    .bf-field.full{grid-column:span 2;}
+    .bf-field label{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);}
+    .bf-field input,.bf-field select,.bf-field textarea{font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--ink);background:white;border:1px solid var(--line);padding:0.75rem 0.9rem;outline:none;width:100%;-webkit-user-select:text;user-select:text;}
+    .bf-field input:focus,.bf-field select:focus,.bf-field textarea:focus{border-color:var(--accent);}
+    .bf-field textarea{min-height:90px;resize:vertical;}
+    .bf-submit{margin-top:1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+    .bf-note{font-size:0.75rem;color:var(--ink-muted);}
+    .bf-btn{font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:none;padding:0.95rem 2rem;cursor:pointer;transition:background 0.2s;}
+    .bf-btn:hover{background:var(--accent);}
+    .bf-btn:disabled{opacity:0.6;cursor:default;}
+    .bf-msg{font-size:0.82rem;margin-top:0.75rem;min-height:1rem;}
+    .bf-msg.err{color:#b94040;}
+    .bf-done{text-align:center;padding:2rem 1rem;}
+    .bf-done .cta-title{color:var(--ink);font-size:2rem;margin-bottom:0.75rem;}
+    @media(max-width:900px){.book-section{grid-template-columns:1fr;gap:2.5rem;padding:4rem 1.5rem;}.bf-grid{grid-template-columns:1fr;}.bf-field.full{grid-column:span 1;}.book-form{padding:1.75rem;}}
   </style>
 </head>
 <body>
@@ -734,7 +757,7 @@ else attachFormCapture();
       <div class="sprint-fact"><div class="sprint-fact-val">1 month</div><div class="sprint-fact-lbl">No lock-in</div></div>
     </div>
     <div class="hero-actions">
-      <a href="mailto:info@finologynexus.com?subject=Month-End%20Close%20Support%20Sprint" class="btn-primary">Book Your Sprint</a>
+      <a href="#book" class="btn-primary">Book Your Sprint</a>
       <a href="#included" class="btn-ghost">What's included</a>
     </div>
   </div>
@@ -749,7 +772,7 @@ else attachFormCapture();
         <li>Month-end reporting pack</li>
         <li>NDA signed upfront</li>
       </ul>
-      <a href="mailto:info@finologynexus.com?subject=Month-End%20Close%20Support%20Sprint" class="btn-fp-light">Start Your Sprint <i class="fas fa-arrow-right"></i></a>
+      <a href="#book" class="btn-fp-light">Start Your Sprint <i class="fas fa-arrow-right"></i></a>
       <div class="price-note">QuickBooks Online · Xero · Zoho Books</div>
     </div>
   </div>
@@ -834,9 +857,66 @@ else attachFormCapture();
   <div class="fade-up">
     <p class="cta-desc">One entity, one month, one fixed price. Judge the quality of our work on a single, clearly scoped close before deciding on anything longer-term.</p>
     <div class="cta-actions">
-      <a href="mailto:info@finologynexus.com?subject=Month-End%20Close%20Support%20Sprint" class="btn-cta-primary">Book Your Sprint</a>
+      <a href="#book" class="btn-cta-primary">Book Your Sprint</a>
       <a href="contactus.html" class="btn-cta-ghost">Ask a question first</a>
     </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="book-section" id="book">
+  <div class="fade-up">
+    <div class="section-label">Book Your Sprint</div>
+    <h2 class="section-title">Reserve a slot <em>in two minutes.</em></h2>
+    <p class="section-body">Share a few details and we'll reply within one business day to confirm scope, timing and a short intro call. No payment is taken at this stage.</p>
+    <ul class="book-points">
+      <li>Fixed $750 for one entity and one month</li>
+      <li>Delivered within 5 business days of complete records</li>
+      <li>NDA signed before any access</li>
+      <li>White-label available for your clients</li>
+    </ul>
+  </div>
+  <div class="fade-up">
+    <form class="book-form" id="sprint-form" data-fn-captured="1" novalidate>
+      <div class="bf-grid">
+        <div class="bf-field"><label for="bf-name">Your name *</label><input id="bf-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="bf-field"><label for="bf-email">Work email *</label><input id="bf-email" name="email" type="email" required autocomplete="email"></div>
+        <div class="bf-field"><label for="bf-company">Company / practice</label><input id="bf-company" name="company" type="text" autocomplete="organization"></div>
+        <div class="bf-field"><label for="bf-phone">Phone (optional)</label><input id="bf-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="bf-field"><label for="bf-role">You are</label>
+          <select id="bf-role" name="role">
+            <option value="">Please select</option>
+            <option>Fractional CFO / controller</option>
+            <option>Accounting or bookkeeping firm</option>
+            <option>In-house finance team</option>
+            <option>Business owner</option>
+            <option>Other</option>
+          </select></div>
+        <div class="bf-field"><label for="bf-system">Accounting system</label>
+          <select id="bf-system" name="system">
+            <option value="">Please select</option>
+            <option>QuickBooks Online</option>
+            <option>Xero</option>
+            <option>Zoho Books</option>
+            <option>Other / not sure</option>
+          </select></div>
+        <div class="bf-field full"><label for="bf-volume">Approximate monthly transactions</label>
+          <select id="bf-volume" name="volume">
+            <option value="">Please select</option>
+            <option>Under 250</option>
+            <option>250 to 500</option>
+            <option>500 to 1,000</option>
+            <option>Over 1,000</option>
+            <option>Not sure</option>
+          </select></div>
+        <div class="bf-field full"><label for="bf-notes">Anything we should know? (optional)</label><textarea id="bf-notes" name="notes" placeholder="e.g. which month you'd like covered, number of accounts, white-label for a client"></textarea></div>
+      </div>
+      <div class="bf-submit">
+        <span class="bf-note">We reply within one business day.</span>
+        <button type="submit" class="bf-btn" id="bf-btn">Request My Sprint</button>
+      </div>
+      <div class="bf-msg" id="bf-msg"></div>
+    </form>
   </div>
 </section>
 
@@ -958,5 +1038,55 @@ else attachFormCapture();
   }, { threshold: 0.25 });
   if (fpReport) fpObs.observe(fpReport);
 </script>
+<script>
+/* ── SPRINT BOOKING FORM → Supabase contact_submissions + email notification ── */
+(function () {
+  const form = document.getElementById('sprint-form');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const v = id => (document.getElementById(id)?.value || '').trim();
+    const msg = document.getElementById('bf-msg');
+    const btn = document.getElementById('bf-btn');
+    const name = v('bf-name'), email = v('bf-email');
+    if (!name) { msg.textContent = 'Please enter your name.'; msg.className = 'bf-msg err'; return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; msg.className = 'bf-msg err'; return; }
+    msg.textContent = ''; msg.className = 'bf-msg';
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    let sid = null; try { sid = localStorage.getItem('fn_sid'); } catch (err) {}
+    const rec = {
+      name:        name,
+      email:       email,
+      phone:       v('bf-phone') || null,
+      service:     'Month-End Close Sprint',
+      message:     'SPRINT BOOKING REQUEST | Company: ' + (v('bf-company') || '-') +
+                   ' | Role: ' + (v('bf-role') || '-') +
+                   ' | System: ' + (v('bf-system') || '-') +
+                   ' | Monthly transactions: ' + (v('bf-volume') || '-') +
+                   ' | Notes: ' + (v('bf-notes') || '-'),
+      source_page: window.location.pathname,
+      referrer:    document.referrer || 'direct',
+      utm_source:  new URLSearchParams(window.location.search).get('utm_source') || null,
+      session_id:  sid,
+    };
+    try {
+      const { error } = await sb.from('contact_submissions').insert(rec);
+      if (error) throw new Error(error.message);
+      if (typeof sendNotification === 'function') sendNotification('contact_submissions', rec);
+      try { window.dataLayer && window.dataLayer.push({ event: 'sprint_booking' }); } catch (err) {}
+      form.innerHTML = '<div class="bf-done"><div class="section-label" style="justify-content:center;">Request received</div>' +
+        '<h3 class="cta-title">Thank you, ' + name.replace(/[<>&"]/g, '') + '.</h3>' +
+        '<p class="section-body" style="margin:0 auto;">We\'ll be in touch within one business day to confirm scope and set up a short intro call.</p></div>';
+    } catch (err) {
+      console.warn('Sprint booking error:', err.message);
+      btn.disabled = false; btn.textContent = 'Request My Sprint';
+      msg.innerHTML = 'Sorry, something went wrong. Please email us at <a href="mailto:info@finologynexus.com">info@finologynexus.com</a>.';
+      msg.className = 'bf-msg err';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
