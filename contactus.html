@@ -165,11 +165,28 @@ function attachFormCapture() {
       if (page.includes('finance-checkup') || page.includes('finpulse')) table = 'finpulse_results';
       else if (data.service_interest || data.preferred_time)             table = 'consultation_bookings';
       else if (!data.name && !data.message && data.email)                 table = 'newsletter_signups';
+      const btn = form.querySelector('[type="submit"]');
+      const btnText = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      let ok = false;
       try {
         const { error } = await sb.from(table).insert(data);
         if (error) console.warn('Auto-form capture error:', error.message);
-        else sendNotification(table, data);
+        else { ok = true; sendNotification(table, data); }
       } catch (err) { console.warn('Auto-form insert error:', err.message); }
+      if (ok) {
+        const first = String(data.name || '').trim().split(' ')[0].replace(/[<>&"]/g, '');
+        form.innerHTML = '<div style="padding:2.5rem 1rem;text-align:center;">' +
+          '<div style="font-family:\'DM Mono\',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#b8955a;margin-bottom:0.75rem;">Message received</div>' +
+          '<div style="font-family:\'Cormorant Garamond\',serif;font-size:2rem;font-weight:300;color:#1c2a3a;margin-bottom:0.75rem;">Thank you' + (first ? ', ' + first : '') + '.</div>' +
+          '<p style="font-size:0.95rem;color:#6b7a8a;line-height:1.7;max-width:460px;margin:0 auto;">We\'ve received your message and will reply within one business day. A confirmation has been sent to your email.</p></div>';
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        if (btn) { btn.disabled = false; btn.textContent = btnText; }
+        let m = form.querySelector('.fn-form-error');
+        if (!m) { m = document.createElement('div'); m.className = 'fn-form-error'; m.style.cssText = 'margin-top:1rem;font-size:0.85rem;color:#b94040;'; form.appendChild(m); }
+        m.innerHTML = 'Sorry, something went wrong. Please try again or email us at <a href="mailto:info@finologynexus.com" style="color:#b94040;">info@finologynexus.com</a>.';
+      }
     });
   });
 }
@@ -367,7 +384,7 @@ else attachFormCapture();
 
 <nav>
   <a href="index.html" class="logo-group">
-    <img src="finology-logo.png" alt="Finology Nexus Logo" class="company-logo">
+    <img src="Finology Nexus Logo.png" alt="Finology Nexus Logo" class="company-logo">
     <span class="company-name">Finology <span>Nexus</span></span>
   </a>
   <ul class="nav-links">
@@ -607,7 +624,7 @@ else attachFormCapture();
         <li><a href="workflow-automation.html">Workflow Automation</a></li>
         <li><a href="process-design.html">Process Design</a></li>
         <li><a href="embedded-support.html">Embedded Support</a></li>
-        <li><a href="close-sprint.html">Month-End Close Sprint</a></li>
+        <li><a href="close-sprint.html">Moth-End Close Sprint</a></li>
       </ul>
     </div>
     <div>
