@@ -247,44 +247,76 @@
       .metrics-row{grid-template-columns:1fr 1fr;}
       .peer-band{flex-direction:column;gap:1.5rem;}
     }
+    /* ===== NO-GATE REPORT: download bar, optional follow-up, print-to-PDF ===== */
+    .fp-actions{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;background:var(--accent-pale);border:1px solid var(--accent);padding:1rem 1.5rem;margin-bottom:1rem;}
+    .fp-actions-text{font-size:0.85rem;color:var(--ink);}
+    .fp-dl-btn{font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:none;padding:0.8rem 1.4rem;cursor:pointer;transition:background 0.2s;}
+    .fp-dl-btn:hover{background:var(--accent);}
+    .fp-followup{background:white;border:1px solid var(--line);padding:2rem 2.5rem;margin-bottom:2px;}
+    .fpf-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
+    .fpf-sub{font-size:0.85rem;color:var(--ink-muted);line-height:1.65;margin-bottom:1.1rem;}
+    .fpf-row{display:flex;gap:0.6rem;flex-wrap:wrap;}
+    .fpf-row input{flex:1 1 180px;font-family:'DM Sans',sans-serif;font-size:0.88rem;padding:0.75rem 1rem;border:1px solid var(--line);background:var(--paper);outline:none;-webkit-user-select:text;user-select:text;}
+    .fpf-row input:focus{border-color:var(--accent);}
+    .fpf-row button{font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:none;padding:0.75rem 1.4rem;cursor:pointer;}
+    .fpf-row button:hover{background:var(--accent);}
+    .fpf-row button:disabled{opacity:0.6;cursor:default;}
+    .fpf-msg{font-size:0.8rem;margin-top:0.6rem;min-height:1rem;}
+    .fpf-msg.err{color:#b94040;}
+    .print-only{display:none;}
+    .fp-answers{background:white;border:1px solid var(--line);padding:2rem 2.5rem;margin-top:2px;break-before:page;page-break-before:always;}
+    .fp-answers h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:1rem;color:var(--ink);}
+    .fp-answers table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+    .fp-answers td{padding:0.5rem 0.4rem;border-bottom:1px solid var(--line);vertical-align:top;}
+    .fp-answers td:first-child{color:var(--ink-muted);width:45%;}
+    @media print{
+      @page{margin:12mm;}
+      .print-only{display:block!important;}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      body{background:#fff!important;}
+      nav,.no-print,.retake-btn,.btn-upgrade{display:none!important;}
+      #teaser{max-width:none;padding:0;}
+      .report-header,.report-section,.upgrade-block,.report-footer{break-inside:avoid;page-break-inside:avoid;}
+    }
   </style>
 
 <!-- ================================================================
-     FINOLOGY NEXUS · UNIVERSAL SNIPPET v4 (UPDATED)
-     Handles: visitor tracking (geo, scroll, time‑on‑page),
-     and provides sendNotification() for emails.
+     FINOLOGY NEXUS · UNIVERSAL SNIPPET v5
+     Replaces v4. Paste just before </head> on EVERY page.
+     ALSO DELETE from every page (near </body>):
+       - the <script> containing "async function trackVisit()"
+       - the <script> containing "(async function () { function getSession()"
+     Requires supabase-visitors-fix.sql to have been run once.
      ================================================================ -->
-
-<!-- Supabase Client -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ── CONFIG ──────────────────────────────────────────────────── */
-const SB_URL = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
-const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
+const SB_URL  = 'https://bsloiodfgwdvnxrrefsz.supabase.co';
+const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJzbG9pb2RmZ3dkdm54cnJlZnN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NDQ5MDcsImV4cCI6MjA4MTEyMDkwN30.Et_i7L3RMM4l4_aqLndNWW--cZJ0uYRHmHa0hAhe9Ug';
 const EDGE_FN = 'https://bsloiodfgwdvnxrrefsz.supabase.co/functions/v1/send-notification';
-
 const sb = supabase.createClient(SB_URL, SB_KEY);
 
 /* ── SESSION ─────────────────────────────────────────────────── */
 function getSession() {
   const now = Date.now(), idle = 30 * 60 * 1000;
-  let sid = localStorage.getItem('fn_sid');
-  const last = parseInt(localStorage.getItem('fn_sid_t') || '0');
-  if (!sid || now - last > idle) {
-    sid = crypto.randomUUID();
-    localStorage.setItem('fn_sid', sid);
-  }
-  localStorage.setItem('fn_sid_t', now);
+  let sid = null, last = 0;
+  try {
+    sid  = localStorage.getItem('fn_sid');
+    last = parseInt(localStorage.getItem('fn_sid_t') || '0');
+    if (!sid || now - last > idle) { sid = crypto.randomUUID(); localStorage.setItem('fn_sid', sid); }
+    localStorage.setItem('fn_sid_t', now);
+  } catch (e) { sid = sid || crypto.randomUUID(); }
   return sid;
 }
 
 /* ── SOURCE DETECTION ────────────────────────────────────────── */
 function getSource() {
   const p = new URLSearchParams(window.location.search);
-  let source = 'organic';
-  if (!p.get('utm_source') && document.referrer) {
+  let source = p.get('utm_source') || 'organic';
+  const ref = document.referrer || '';
+  if (!p.get('utm_source') && ref) {
     try {
-      const h = new URL(document.referrer).hostname.replace('www.', '');
+      const h = new URL(ref).hostname.replace('www.', '');
       if (h.includes('google'))                               source = 'google';
       else if (h.includes('linkedin'))                        source = 'linkedin';
       else if (h.includes('instagram'))                       source = 'instagram';
@@ -293,15 +325,13 @@ function getSource() {
       else if (h.includes('youtube'))                         source = 'youtube';
       else source = h;
     } catch (e) {}
-  } else if (p.get('utm_source')) {
-    source = p.get('utm_source');
   }
   return {
     source,
     utm_source:   p.get('utm_source')   || null,
     utm_medium:   p.get('utm_medium')   || null,
     utm_campaign: p.get('utm_campaign') || null,
-    referrer:     document.referrer     || 'direct',
+    referrer:     ref || 'direct',
   };
 }
 
@@ -319,49 +349,47 @@ function isBot() {
     .test(navigator.userAgent);
 }
 
-/* ── GEO (CORS‑friendly ipapi.is) ────────────────────────────── */
+/* ── GEO (two providers, short timeouts) ─────────────────────── */
 async function getGeo() {
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 4000);
-    const r = await fetch('https://api.ipapi.is/', { signal: controller.signal });
-    clearTimeout(timeout);
+    const r = await fetch('https://api.ipapi.is/', { signal: AbortSignal.timeout(3500) });
     const d = await r.json();
-    return {
-      country:      d.location?.country          || null,
-      country_code: d.location?.country_code     || null,
-      city:         d.location?.city             || null,
-      region:       d.location?.state            || null,
+    if (d && d.location) return {
+      country: d.location.country || null, country_code: d.location.country_code || null,
+      city: d.location.city || null, region: d.location.state || null,
     };
-  } catch (e) {
-    // fallback: try ipapi.co if ipapi.is fails (optional)
-    try {
-      const fallback = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
-      const d2 = await fallback.json();
-      return {
-        country:      d2.country_name  || null,
-        country_code: d2.country_code  || null,
-        city:         d2.city          || null,
-        region:       d2.region        || null,
-      };
-    } catch (e2) {
-      return { country: null, country_code: null, city: null, region: null };
-    }
-  }
+  } catch (e) {}
+  try {
+    const r2 = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+    const d2 = await r2.json();
+    if (d2 && !d2.error) return {
+      country: d2.country_name || null, country_code: d2.country_code || null,
+      city: d2.city || null, region: d2.region || null,
+    };
+  } catch (e) {}
+  return null;
+}
+
+/* ── UPDATE VISIT (RPC; keepalive survives page close) ───────── */
+function updateVisit(id, data) {
+  return fetch(SB_URL + '/rest/v1/rpc/update_visit', {
+    method: 'POST',
+    keepalive: true,
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ p_id: id, p_data: data }),
+  }).catch(() => {});
 }
 
 /* ── SCROLL TRACKING ─────────────────────────────────────────── */
 let maxScroll = 0;
 function onScroll() {
-  const pct = Math.round(
-    ((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100
-  );
+  const h = document.documentElement.scrollHeight || 1;
+  const pct = Math.round(((window.scrollY + window.innerHeight) / h) * 100);
   if (pct > maxScroll) maxScroll = Math.min(pct, 100);
 }
 window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
 
-/* ── EMAIL NOTIFICATION via Edge Function (exported) ─────────── */
+/* ── EMAIL NOTIFICATION via Edge Function ────────────────────── */
 async function sendNotification(table, record) {
   try {
     await fetch(EDGE_FN, {
@@ -369,65 +397,87 @@ async function sendNotification(table, record) {
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + SB_KEY },
       body: JSON.stringify({ table, record })
     });
-  } catch (e) {
-    console.warn('Notification error:', e.message);
-  }
+  } catch (e) { console.warn('Notification error:', e.message); }
 }
 
-/* ── OPTIONAL AUTO‑FORM CAPTURE (disabled on this page) ──────── */
-// (We will not use it – FinPulse has custom handlers)
+/* ── OPTIONAL AUTO-FORM CAPTURE (unchanged from v4) ──────────── */
+function attachFormCapture() {
+  if (window.FN_FORM_HANDLED) return;
+  document.querySelectorAll('form').forEach(form => {
+    if (form.dataset.fnCaptured) return;
+    form.dataset.fnCaptured = '1';
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const data = {};
+      new FormData(form).forEach((v, k) => { if (k && v) data[k] = v; });
+      if (Object.keys(data).length === 0) return;
+      data.source_page = window.location.pathname;
+      data.referrer    = document.referrer || 'direct';
+      data.utm_source  = new URLSearchParams(window.location.search).get('utm_source') || null;
+      try { data.session_id = localStorage.getItem('fn_sid') || null; } catch (err) { data.session_id = null; }
+      let table = 'contact_submissions';
+      const page = window.location.pathname;
+      if (page.includes('finance-checkup') || page.includes('finpulse')) table = 'finpulse_results';
+      else if (data.service_interest || data.preferred_time)             table = 'consultation_bookings';
+      else if (!data.name && !data.message && data.email)                 table = 'newsletter_signups';
+      try {
+        const { error } = await sb.from(table).insert(data);
+        if (error) console.warn('Auto-form capture error:', error.message);
+        else sendNotification(table, data);
+      } catch (err) { console.warn('Auto-form insert error:', err.message); }
+    });
+  });
+}
 
 /* ── MAIN TRACKER ────────────────────────────────────────────── */
 (async function () {
   if (isBot()) return;
 
   const pageStart = Date.now();
-  const sid = getSession();
-  const src = getSource();
-  const geo = await getGeo();
+  const visitId   = crypto.randomUUID();
+  const src       = getSource();
 
-  const visitId = crypto.randomUUID();
+  // 1) Save the visit IMMEDIATELY (no waiting for location)
+  const { error } = await sb.from('visitors').insert({
+    id:           visitId,
+    session_id:   getSession(),
+    page:         window.location.pathname + window.location.search,
+    page_title:   document.title,
+    referrer:     src.referrer,
+    source:       src.source,
+    utm_source:   src.utm_source,
+    utm_medium:   src.utm_medium,
+    utm_campaign: src.utm_campaign,
+    device:       getDevice(),
+    user_agent:   navigator.userAgent,
+    screen:       window.screen.width + 'x' + window.screen.height,
+    language:     navigator.language,
+  });
+  if (error) { console.warn('Visitor insert:', error.message); return; }
 
-  try {
-    const { error } = await sb.from('visitors').insert({
-      id:           visitId,
-      session_id:   sid,
-      page:         window.location.pathname + window.location.search,
-      page_title:   document.title,
-      referrer:     src.referrer,
-      source:       src.source,
-      utm_source:   src.utm_source,
-      utm_medium:   src.utm_medium,
-      utm_campaign: src.utm_campaign,
-      country:      geo.country,
-      country_code: geo.country_code,
-      city:         geo.city,
-      region:       geo.region,
-      device:       getDevice(),
-      user_agent:   navigator.userAgent,
-      screen:       window.screen.width + 'x' + window.screen.height,
-      language:     navigator.language,
-    });
-    if (error) console.warn('Visitor insert:', error.message);
-  } catch (e) {
-    console.warn('Tracker error:', e.message);
-  }
+  // 2) Add location as soon as it arrives
+  getGeo().then(geo => { if (geo) updateVisit(visitId, geo); });
 
-  async function saveExit() {
-    if (!visitId) return;
+  // 3) Save scroll depth and time on page when the visitor leaves
+  let saved = false;
+  function saveExit() {
+    if (saved) return;
+    saved = true;
     onScroll();
-    try {
-      await sb.from('visitors').update({
-        scroll_depth: maxScroll,
-        time_on_page: Math.round((Date.now() - pageStart) / 1000),
-      }).eq('id', visitId);
-    } catch (e) {}
+    updateVisit(visitId, {
+      scroll_depth: maxScroll,
+      time_on_page: Math.round((Date.now() - pageStart) / 1000),
+    });
   }
   window.addEventListener('pagehide', saveExit);
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') saveExit();
+    else saved = false; // visitor came back; allow a later save
   });
 })();
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attachFormCapture);
+else attachFormCapture();
 </script>
 </head>
 <body>
@@ -522,35 +572,7 @@ async function sendNotification(table, record) {
     </ul>
   </div>
 
-  <!-- ══ TEASER REPORT ══ -->
-  <div id="gate" class="screen">
-    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--paper);padding:2rem;">
-      <div style="max-width:480px;width:100%;background:white;border:1px solid var(--line);padding:3rem 2.5rem;text-align:center;">
-        <div style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Your Report Is Ready</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--ink);margin-bottom:0.75rem;line-height:1.2;">Where should we send your FinPulse report?</h2>
-        <p style="font-size:0.88rem;color:var(--ink-muted);margin-bottom:2rem;line-height:1.7;">Your score, benchmarks, and key findings are ready. Enter your details to view them now — we'll also email you a copy.</p>
-        <div style="display:flex;flex-direction:column;gap:1rem;text-align:left;">
-          <div>
-            <label style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:0.4rem;">Your Name *</label>
-            <input id="gate-name" type="text" placeholder="Full name" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;border:1px solid var(--line);outline:none;background:var(--paper);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          </div>
-          <div>
-            <label style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:0.4rem;">Work Email *</label>
-            <input id="gate-email" type="email" placeholder="you@company.com" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;border:1px solid var(--line);outline:none;background:var(--paper);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          </div>
-          <div>
-            <label style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:0.4rem;">Company Name *</label>
-            <input id="gate-company" type="text" placeholder="Your company" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.9rem;padding:0.75rem 1rem;border:1px solid var(--line);outline:none;background:var(--paper);" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          </div>
-          <div id="gate-error" style="display:none;font-size:0.8rem;color:#b94040;background:#fdf0f0;border:1px solid #e8c0c0;padding:0.6rem 0.9rem;"></div>
-          <button onclick="submitGate()" style="width:100%;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);border:none;padding:1rem;cursor:pointer;margin-top:0.5rem;transition:background 0.2s;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='var(--ink)'">
-            View My Results →
-          </button>
-          <p style="font-size:0.72rem;color:var(--ink-muted);text-align:center;margin-top:0.25rem;">No spam. No sales calls. Just your report.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ══ REPORT (no email gate) ══ -->
   <div id="teaser" class="screen"></div>
 
   <script>
@@ -1095,7 +1117,9 @@ Write a JSON with:
 
       setTimeout(()=>{
         window._fpPending = { scores, findings, verdict, summary, peers, aiReport };
-        show('gate');
+        show('teaser');
+        renderReport(scores, findings, verdict, summary, peers, aiReport);
+        saveFinPulseResult(window._fpPending);
       }, steps.length * 700 + 800);
     }
 
@@ -1119,6 +1143,12 @@ Write a JSON with:
 
       const screen = document.getElementById('teaser');
       screen.innerHTML = `
+        <!-- DOWNLOAD BAR -->
+        <div class="fp-actions no-print">
+          <div class="fp-actions-text">Your report is ready. Save a PDF copy for your records.</div>
+          <button class="fp-dl-btn" onclick="downloadReport()">&#11015; Download PDF Report</button>
+        </div>
+
         <!-- REPORT HEADER -->
         <div class="report-header">
           <div class="rh-top">
@@ -1331,6 +1361,18 @@ Write a JSON with:
           </div>
         </div>
 
+        <!-- OPTIONAL FOLLOW-UP (no gate) -->
+        <div class="fp-followup no-print" id="fp-followup">
+          <div class="fpf-title">Want a second opinion on these results?</div>
+          <p class="fpf-sub">Optional. Leave your email and we'll follow up with a short, free review of what these results mean for ${company}. No spam, no obligation.</p>
+          <div class="fpf-row">
+            <input id="fpf-name" type="text" placeholder="Your name (optional)">
+            <input id="fpf-email" type="email" placeholder="you@company.com">
+            <button id="fpf-btn" onclick="requestFollowUp()">Request Review</button>
+          </div>
+          <div id="fpf-msg" class="fpf-msg"></div>
+        </div>
+
         <!-- UPGRADE BLOCK -->
         <div class="upgrade-block">
           <div class="upgrade-eyebrow">Full Financial Health Report</div>
@@ -1354,12 +1396,19 @@ Write a JSON with:
           <div class="upgrade-disclaimer">Have questions first? Email info@finologynexus.online or book a 15-min call.</div>
         </div>
 
+        <!-- YOUR ANSWERS (appears in the downloaded PDF only) -->
+        <div class="fp-answers print-only">
+          <h3>Your Answers</h3>
+          <table>${answerRows()}</table>
+        </div>
+
         <!-- FOOTER -->
         <div class="report-footer">
           <div class="rf-brand">Finology <span>Nexus</span> · Financial Intelligence Practice</div>
           <div class="rf-date">${today} · Score: ${scores.overall}/100</div>
         </div>
-        <div style="text-align:center;margin-top:1.5rem;">
+        <div class="no-print" style="text-align:center;margin-top:1.5rem;">
+          <button class="fp-dl-btn" onclick="downloadReport()" style="margin-right:0.75rem;">&#11015; Download PDF Report</button>
           <button class="retake-btn" onclick="retakeAssessment()">← Run another assessment</button>
         </div>
       `;
@@ -1387,13 +1436,133 @@ Write a JSON with:
       }, 500);
     }
 
-    // saveFinPulseResult – kept for backward compatibility but not used
-    async function saveFinPulseResult(scores, answers, band) { /* (no longer called) */ }
+    // ─────────────────────────────────────────────────
+    // SAVE RESULT – anonymous, with visitor location (no email needed)
+    // ─────────────────────────────────────────────────
+    let _fpSaved = false;
+    async function saveFinPulseResult(p) {
+      if (_fpSaved || !p || !p.scores) return;
+      _fpSaved = true;
+      const scores = p.scores;
+      let sid = null; try { sid = localStorage.getItem('fn_sid'); } catch (e) {}
+      const geo = (typeof getGeo === 'function') ? await getGeo() : null;
+
+      const base = {
+        company_name:    answers.company    || null,
+        industry:        answers.industry   || null,
+        country:         answers.country    || null,
+        stage:           answers.stage      || null,
+        use_case:        useCase            || null,
+        overall_score:   scores.overall     ?? null,
+        band:            getBand(scores.overall || 0),
+        profitability:   scores.profitability ?? null,
+        cashflow:        scores.cashflow    ?? null,
+        risk_exposure:   scores.risk        ?? null,
+        efficiency:      scores.efficiency  ?? null,
+        biggest_concern: answers.biggest_concern || null,
+        source_page:     window.location.pathname,
+        utm_source:      new URLSearchParams(window.location.search).get('utm_source') || null,
+        referrer:        document.referrer || 'direct',
+        session_id:      sid,
+      };
+      const geoCols = geo ? {
+        visitor_country:      geo.country,
+        visitor_country_code: geo.country_code,
+        visitor_city:         geo.city,
+        visitor_region:       geo.region,
+      } : {};
+
+      try {
+        let { error } = await sb.from('finpulse_results').insert({ ...base, ...geoCols });
+        // If the location columns haven't been added yet, save without them
+        if (error && /visitor_/.test(error.message || '')) {
+          ({ error } = await sb.from('finpulse_results').insert(base));
+        }
+        if (error) { console.warn('FinPulse save error:', error.message); return; }
+
+        sendNotification('finpulse_results', {
+          ...base, ...geoCols,
+          findings_json: JSON.stringify((p.findings || []).slice(0, 3).map(f => ({ sev: f.sev, title: f.title, detail: f.detail }))),
+          verdict_short: p.verdict?.short || null,
+          summary_text:  p.summary || null,
+        });
+      } catch (e) {
+        console.warn('FinPulse save error:', e.message);
+      }
+    }
+
+    function answerRows() {
+      const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      const rows = [];
+      sections.forEach(sec => (sec.questions || []).forEach(q => {
+        const v = answers[q.id];
+        if (v === undefined || v === null || v === '') return;
+        const opt = (q.options || []).find(o => (o && typeof o === 'object') ? o.val === v : o === v);
+        const shown = opt && typeof opt === 'object' ? (opt.label || opt.val) : v;
+        rows.push('<tr><td>' + esc(q.label) + '</td><td>' + esc(shown) + '</td></tr>');
+      }));
+      return rows.join('');
+    }
+
+    // ─────────────────────────────────────────────────
+    // DOWNLOAD – browser "Save as PDF" with a clean print layout
+    // ─────────────────────────────────────────────────
+    function downloadReport() {
+      const p = window._fpPending || {};
+      const sc = document.getElementById('score-counter');
+      if (sc && p.scores) sc.textContent = p.scores.overall;
+      document.querySelectorAll('.mini-bar-fill[data-w]').forEach(b => { b.style.transition = 'none'; b.style.width = b.dataset.w + '%'; });
+      const oldTitle = document.title;
+      const co = String(answers.company || 'My Business').replace(/[^\w\s-]/g, '').trim() || 'My Business';
+      document.title = 'FinPulse Report - ' + co;
+      try { window.dataLayer && window.dataLayer.push({ event: 'finpulse_download' }); } catch (e) {}
+      window.print();
+      setTimeout(() => { document.title = oldTitle; }, 1500);
+    }
+
+    // ─────────────────────────────────────────────────
+    // OPTIONAL FOLLOW-UP – only if the visitor chooses to leave an email
+    // ─────────────────────────────────────────────────
+    async function requestFollowUp() {
+      const name  = (document.getElementById('fpf-name')?.value || '').trim();
+      const email = (document.getElementById('fpf-email')?.value || '').trim();
+      const msg   = document.getElementById('fpf-msg');
+      const btn   = document.getElementById('fpf-btn');
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        msg.textContent = 'Please enter a valid email address.'; msg.className = 'fpf-msg err'; return;
+      }
+      msg.textContent = ''; msg.className = 'fpf-msg';
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const s = (window._fpPending || {}).scores || {};
+      let sid = null; try { sid = localStorage.getItem('fn_sid'); } catch (e) {}
+      const rec = {
+        name:        name || null,
+        email:       email,
+        service:     'FinPulse follow-up',
+        message:     `FinPulse review request. Company: ${answers.company || '-'} | Industry: ${answers.industry || '-'} | Country: ${answers.country || '-'} | Stage: ${answers.stage || '-'} | Score: ${s.overall ?? '-'}/100 (${getBand(s.overall || 0)}) | Biggest concern: ${answers.biggest_concern || '-'}`,
+        source_page: window.location.pathname,
+        referrer:    document.referrer || 'direct',
+        utm_source:  new URLSearchParams(window.location.search).get('utm_source') || null,
+        session_id:  sid,
+      };
+      try {
+        const { error } = await sb.from('contact_submissions').insert(rec);
+        if (error) throw new Error(error.message);
+        sendNotification('contact_submissions', rec);
+        document.getElementById('fp-followup').innerHTML =
+          '<div class="fpf-title">Thank you.</div><p class="fpf-sub" style="margin-bottom:0;">We have your results and will be in touch within one business day.</p>';
+      } catch (e) {
+        console.warn('Follow-up save error:', e.message);
+        btn.disabled = false; btn.textContent = 'Request Review';
+        msg.textContent = 'Sorry, something went wrong. Please email info@finologynexus.online.'; msg.className = 'fpf-msg err';
+      }
+    }
 
     function retakeAssessment() {
       Object.keys(answers).forEach(k=>delete answers[k]);
       useCase = null;
       currentSection = 0;
+      _fpSaved = false;
       document.querySelectorAll('.use-card').forEach(c=>c.classList.remove('selected'));
       const btn = document.getElementById('btn-start');
       if (btn) { btn.disabled = true; btn.textContent = 'Select a use case to begin →'; }
@@ -1404,82 +1573,6 @@ Write a JSON with:
     function show(id){
       document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-    }
-
-    // ─────────────────────────────────────────────────
-    // SUBMIT GATE – the only place where we save to Supabase and send email
-    // ─────────────────────────────────────────────────
-    async function submitGate() {
-      const name    = document.getElementById('gate-name')?.value?.trim();
-      const email   = document.getElementById('gate-email')?.value?.trim();
-      const company = document.getElementById('gate-company')?.value?.trim();
-      const errEl   = document.getElementById('gate-error');
-
-      if (!name || !email || !company) {
-        errEl.textContent = 'Please fill in all fields to view your results.';
-        errEl.style.display = 'block';
-        return;
-      }
-      if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-        errEl.textContent = 'Please enter a valid email address.';
-        errEl.style.display = 'block';
-        return;
-      }
-      errEl.style.display = 'none';
-
-      // Store contact info on answers
-      answers.contact_name    = name;
-      answers.contact_email   = email;
-      answers.contact_company = company;
-
-      // Reveal results immediately
-      const p = window._fpPending || {};
-      show('teaser');
-      renderReport(p.scores, p.findings, p.verdict, p.summary, p.peers, p.aiReport);
-
-      // Save to Supabase with contact info (non-blocking)
-      try {
-        const scores = p.scores || {};
-        const band   = getBand(scores.overall || 0);
-        const record = {
-          company_name:    company,
-          contact_name:    name,
-          contact_email:   email,
-          industry:        answers.industry   || null,
-          country:         answers.country    || null,
-          stage:           answers.stage      || null,
-          use_case:        useCase            || null,
-          overall_score:   scores.overall     || null,
-          band:            band,
-          profitability:   scores.profitability || null,
-          cashflow:        scores.cashflow    || null,
-          risk_exposure:   scores.risk        || null,
-          efficiency:      scores.efficiency  || null,
-          biggest_concern: answers.biggest_concern || null,
-          source_page:     window.location.pathname,
-          utm_source:      new URLSearchParams(window.location.search).get('utm_source') || null,
-          referrer:        document.referrer || 'direct',
-          session_id:      localStorage.getItem('fn_sid') || null,
-        };
-
-        const { error } = await sb.from('finpulse_results').insert(record);
-        if (error) {
-          console.warn('FinPulse save error:', error.message);
-        } else {
-          // ✅ Send email using the universal snippet's function (which has correct SB_KEY)
-          const notifyRecord = {
-            ...record,
-            findings_json: JSON.stringify((p.findings || []).slice(0, 3).map(f => ({
-              sev: f.sev, title: f.title, detail: f.detail
-            }))),
-            verdict_short: p.verdict?.short || null,
-            summary_text:  p.summary || null,
-          };
-          sendNotification('finpulse_results', notifyRecord); // defined in universal snippet
-        }
-      } catch(e) {
-        console.warn('Gate save error:', e.message);
-      }
     }
   </script>
 
